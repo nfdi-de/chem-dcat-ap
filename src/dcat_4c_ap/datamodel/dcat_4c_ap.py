@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-10-25T15:39:32
+# Generation date: 2024-10-25T15:40:14
 # Schema: dcat-4C-ap
 #
 # id: https://w3id.org/StroemPhi/dcat-4C-ap

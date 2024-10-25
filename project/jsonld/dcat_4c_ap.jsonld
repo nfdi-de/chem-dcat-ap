@@ -584,7 +584,7 @@
   "source_file": "dcat_4c_ap.yaml",
   "source_file_date": "2024-10-25T15:39:02",
   "source_file_size": 2360,
-  "generation_date": "2024-10-25T15:39:32",
+  "generation_date": "2024-10-25T15:40:14",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",
