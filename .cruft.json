@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "21dc84dd378e7aade7affaa329956ce93d38202d",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "dcat-4C-ap",
+      "__project_slug": "dcat_4c_ap",
+      "github_org": "StroemPhi",
+      "__source_path": "src/dcat_4c_ap/schema/dcat_4c_ap.yaml",
+      "project_description": "This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI 4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.",
+      "full_name": "Philip Strömert",
+      "email": "philip.stroemert@tib.eu",
+      "__author": "Philip Strömert <philip.stroemert@tib.eu>",
+      "license": "MIT",
+      "main_schema_class": "Dataset",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "No",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}

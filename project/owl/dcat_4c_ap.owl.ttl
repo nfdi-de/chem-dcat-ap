@@ -1,0 +1,182 @@
+@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
+@prefix dcat_4c_ap: <https://w3id.org/StroemPhi/dcat-4C-ap/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcat_4c_ap:DatasetCollection a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DatasetCollection" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom dcat_4c_ap:Dataset ;
+            owl:onProperty dcat_4c_ap:entries ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:entries ] ;
+    skos:definition "A holder for Dataset objects" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+dcat_4c_ap:Dataset a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Dataset" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat_4c_ap:age_in_years ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat_4c_ap:primary_email ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:vital_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Integer ;
+            owl:onProperty dcat_4c_ap:age_in_years ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat_4c_ap:birth_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat_4c_ap:vital_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:string ;
+                    owl:withRestrictions ( [ xsd:pattern "^\\S+@[\\S+\\.]+\\S+" ] ) ] ;
+            owl:onProperty dcat_4c_ap:primary_email ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:age_in_years ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:birth_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:primary_email ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcat_4c_ap:PersonStatus ;
+            owl:onProperty dcat_4c_ap:vital_status ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty dcat_4c_ap:birth_date ],
+        dcat_4c_ap:NamedThing ;
+    skos:definition "Represents a Dataset" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+dcat_4c_ap:NamedThing a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "NamedThing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcat_4c_ap:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat_4c_ap:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat_4c_ap:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat_4c_ap:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty dcat_4c_ap:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcat_4c_ap:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcat_4c_ap:name ] ;
+    skos:definition "A generic grouping for any identifiable entity" ;
+    skos:exactMatch schema1:Thing ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+PATO:0001421 a owl:Class,
+        dcat_4c_ap:PersonStatus ;
+    rdfs:label "ALIVE" ;
+    rdfs:subClassOf dcat_4c_ap:PersonStatus .
+
+PATO:0001422 a owl:Class,
+        dcat_4c_ap:PersonStatus ;
+    rdfs:label "DEAD" ;
+    rdfs:subClassOf dcat_4c_ap:PersonStatus .
+
+<https://w3id.org/StroemPhi/dcat-4C-ap/PersonStatus#UNKNOWN> a owl:Class,
+        dcat_4c_ap:PersonStatus ;
+    rdfs:label "UNKNOWN" ;
+    rdfs:subClassOf dcat_4c_ap:PersonStatus .
+
+dcat_4c_ap:entries a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "entries" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+dcat_4c_ap:age_in_years a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "age_in_years" ;
+    rdfs:range linkml:Integer ;
+    skos:definition "Number of years since birth" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+dcat_4c_ap:birth_date a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "birth_date" ;
+    rdfs:range linkml:Date ;
+    skos:definition "Date on which a person is born" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+dcat_4c_ap:description a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    skos:definition "A human-readable description for a thing" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+dcat_4c_ap:id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "id" ;
+    rdfs:range linkml:Uriorcurie ;
+    skos:definition "A unique identifier for a thing" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+dcat_4c_ap:name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    skos:definition "A human-readable name for a thing" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+dcat_4c_ap:primary_email a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "primary_email" ;
+    skos:definition "The main email address of a person" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+dcat_4c_ap:vital_status a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "vital_status" ;
+    rdfs:range dcat_4c_ap:PersonStatus ;
+    skos:definition "living or dead status" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+dcat_4c_ap:PersonStatus a owl:Class,
+        linkml:EnumDefinition ;
+    owl:unionOf ( PATO:0001421 PATO:0001422 <https://w3id.org/StroemPhi/dcat-4C-ap/PersonStatus#UNKNOWN> ) ;
+    linkml:permissible_values PATO:0001421,
+        PATO:0001422,
+        <https://w3id.org/StroemPhi/dcat-4C-ap/PersonStatus#UNKNOWN> .
+
+<https://w3id.org/StroemPhi/dcat-4C-ap> a owl:Ontology ;
+    rdfs:label "dcat-4C-ap" ;
+    dcterms:license "MIT" ;
+    dcterms:title "dcat-4C-ap" ;
+    rdfs:seeAlso <https://StroemPhi.github.io/dcat-4C-ap> ;
+    skos:definition "This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI 4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset." .
+

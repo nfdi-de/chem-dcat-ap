@@ -1,0 +1,26 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.7.0
+// Represents a Dataset
+message Dataset
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  string primaryEmail = 0
+  date birthDate = 0
+  integer ageInYears = 0
+  personStatus vitalStatus = 0
+ }
+// A holder for Dataset objects
+message DatasetCollection
+ {
+ repeated  dataset entries = 0
+ }
+// A generic grouping for any identifiable entity
+message NamedThing
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+ }
