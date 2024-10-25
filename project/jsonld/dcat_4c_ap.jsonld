@@ -1,19 +1,21 @@
 {
   "name": "dcat-4C-ap",
   "description": "This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI 4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.",
-  "title": "dcat-4C-ap",
+  "title": "DCAT-4C-AP",
   "see_also": [
-    "https://StroemPhi.github.io/dcat-4C-ap"
+    "https://StroemPhi.github.io/dcat-NFDI-ap",
+    "https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml",
+    "https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads"
   ],
   "id": "https://w3id.org/StroemPhi/dcat-4C-ap",
   "imports": [
     "linkml:types"
   ],
-  "license": "MIT",
+  "license": "CC-BY 4.0",
   "prefixes": [
     {
-      "prefix_prefix": "dcat_4c_ap",
-      "prefix_reference": "https://w3id.org/StroemPhi/dcat-4C-ap/"
+      "prefix_prefix": "nfdi",
+      "prefix_reference": "https://w3id.org/StroemPhi/dcat_4C_ap/"
     },
     {
       "prefix_prefix": "linkml",
@@ -21,22 +23,114 @@
     },
     {
       "prefix_prefix": "biolink",
-      "prefix_reference": "https://w3id.org/biolink/"
+      "prefix_reference": "https://w3id.org/biolink/vocab/"
     },
     {
       "prefix_prefix": "schema",
       "prefix_reference": "http://schema.org/"
     },
     {
+      "prefix_prefix": "dcterms",
+      "prefix_reference": "http://purl.org/dc/terms/"
+    },
+    {
+      "prefix_prefix": "dcat",
+      "prefix_reference": "http://www.w3.org/ns/dcat#"
+    },
+    {
+      "prefix_prefix": "prov",
+      "prefix_reference": "http://www.w3.org/ns/prov#"
+    },
+    {
+      "prefix_prefix": "sosa",
+      "prefix_reference": "http://www.w3.org/ns/sosa/"
+    },
+    {
+      "prefix_prefix": "vcard",
+      "prefix_reference": "http://www.w3.org/2006/vcard/ns#"
+    },
+    {
+      "prefix_prefix": "rdf",
+      "prefix_reference": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    },
+    {
+      "prefix_prefix": "rdfs",
+      "prefix_reference": "http://www.w3.org/2000/01/rdf-schema#"
+    },
+    {
+      "prefix_prefix": "owl",
+      "prefix_reference": "http://www.w3.org/2002/07/owl#"
+    },
+    {
+      "prefix_prefix": "skos",
+      "prefix_reference": "http://www.w3.org/2004/02/skos/core#"
+    },
+    {
+      "prefix_prefix": "foaf",
+      "prefix_reference": "http://xmlns.com/foaf/0.1/"
+    },
+    {
+      "prefix_prefix": "qudt",
+      "prefix_reference": "http://qudt.org/schema/qudt/"
+    },
+    {
+      "prefix_prefix": "RO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/RO_"
+    },
+    {
       "prefix_prefix": "PATO",
       "prefix_reference": "http://purl.obolibrary.org/obo/PATO_"
     },
     {
-      "prefix_prefix": "example",
-      "prefix_reference": "https://example.org/"
+      "prefix_prefix": "OBI",
+      "prefix_reference": "http://purl.obolibrary.org/obo/OBI_"
+    },
+    {
+      "prefix_prefix": "IAO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/IAO_"
+    },
+    {
+      "prefix_prefix": "CHEBI",
+      "prefix_reference": "http://purl.obolibrary.org/obo/CHEBI_"
+    },
+    {
+      "prefix_prefix": "CHMO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/CHMO_"
+    },
+    {
+      "prefix_prefix": "BFO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/BFO_"
+    },
+    {
+      "prefix_prefix": "T4FS",
+      "prefix_reference": "http://purl.obolibrary.org/obo/T4FS_"
+    },
+    {
+      "prefix_prefix": "FOODON",
+      "prefix_reference": "http://purl.obolibrary.org/obo/FOODON_"
+    },
+    {
+      "prefix_prefix": "CHEMINF",
+      "prefix_reference": "http://semanticscience.org/resource/CHEMINF_"
+    },
+    {
+      "prefix_prefix": "ex",
+      "prefix_reference": "http://example.org/"
+    },
+    {
+      "prefix_prefix": "NCIT",
+      "prefix_reference": "http://purl.obolibrary.org/obo/NCIT_"
+    },
+    {
+      "prefix_prefix": "SIO",
+      "prefix_reference": "http://semanticscience.org/resource/SIO_"
+    },
+    {
+      "prefix_prefix": "doi",
+      "prefix_reference": "https://doi.org/"
     }
   ],
-  "default_prefix": "dcat_4c_ap",
+  "default_prefix": "nfdi",
   "default_range": "string",
   "types": [
     {
@@ -350,247 +444,1357 @@
   ],
   "enums": [
     {
-      "name": "PersonStatus",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/PersonStatus",
+      "name": "NMRSpectroscopyEnum",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/NMRSpectroscopyEnum",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "minus": [
+        {
+          "permissible_values": [
+            {
+              "text": "root_node",
+              "meaning": "CHMO:0000613"
+            }
+          ]
+        }
+      ],
+      "reachable_from": {
+        "source_ontology": "bioregistry:chmo",
+        "source_nodes": [
+          "CHMO:0000613"
+        ],
+        "relationship_types": [
+          "rdfs:subClassOf"
+        ]
+      }
+    },
+    {
+      "name": "EntityOfInterestTypeEnum",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/EntityOfInterestTypeEnum",
       "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
       "permissible_values": [
         {
-          "text": "ALIVE",
-          "description": "the person is living",
-          "meaning": "PATO:0001421"
-        },
-        {
-          "text": "DEAD",
-          "description": "the person is deceased",
-          "meaning": "PATO:0001422"
-        },
-        {
-          "text": "UNKNOWN",
-          "description": "the vital status is not known",
-          "todos": [
-            "map this to an ontology"
-          ]
+          "text": "Chemical Substance",
+          "meaning": "CHEBI:59999"
         }
       ]
+    },
+    {
+      "name": "ResearchActivityTypeEnum",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ResearchActivityTypeEnum",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap"
     }
   ],
   "slots": [
     {
-      "name": "id",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/id",
-      "description": "A unique identifier for a thing",
+      "name": "type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "description": "The slot to specify the rdf:type of an entity according to a controlled vocabulary.",
       "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
       "mappings": [
-        "http://schema.org/identifier"
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
-      "slot_uri": "http://schema.org/identifier",
-      "identifier": true,
-      "owner": "NamedThing",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "owner": "Attribute",
       "domain_of": [
-        "NamedThing"
+        "ResearchActivity",
+        "EntityOfInterest",
+        "Tool",
+        "Environment",
+        "PlanSpecification",
+        "Attribute"
+      ],
+      "range": "string",
+      "recommended": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "alternative_id",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/alternative_id",
+      "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://purl.org/dc/terms/identifier"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/identifier",
+      "owner": "Attribute",
+      "domain_of": [
+        "DefinedTerm",
+        "Dataset",
+        "ResearchActivity",
+        "EntityOfInterest",
+        "Tool",
+        "Environment",
+        "Attribute"
+      ],
+      "range": "uriorcurie",
+      "multivalued": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "id",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/id",
+      "description": "The slot to specify the canonical unique identifier of an entity.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/id",
+      "identifier": true,
+      "owner": "EntityOfInterest",
+      "domain_of": [
+        "DefinedTerm",
+        "Dataset",
+        "EntityOfInterest"
       ],
       "range": "uriorcurie",
       "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "name",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/name",
-      "description": "A human-readable name for a thing",
+      "name": "description",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/description",
+      "description": "The slot to provide a free-text account of a thing.",
       "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
       "mappings": [
+        "http://purl.org/dc/terms/description"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/description",
+      "owner": "Attribute",
+      "domain_of": [
+        "Dataset",
+        "ResearchActivity",
+        "EntityOfInterest",
+        "Tool",
+        "Environment",
+        "PlanSpecification",
+        "Attribute"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/name",
+      "description": "The slot to specify the label, name or title of a thing.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "exact_mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://www.w3.org/2004/02/skos/core#title",
         "http://schema.org/name"
       ],
-      "slot_uri": "http://schema.org/name",
-      "owner": "NamedThing",
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "owner": "Attribute",
       "domain_of": [
-        "NamedThing"
+        "DefinedTerm",
+        "Dataset",
+        "ResearchActivity",
+        "EntityOfInterest",
+        "Tool",
+        "Environment",
+        "PlanSpecification",
+        "Attribute"
       ],
       "range": "string",
+      "multivalued": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "description",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/description",
-      "description": "A human-readable description for a thing",
+      "name": "was_generated_by",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/was_generated_by",
+      "description": "The slot to provide the ResearchActivity that created a Dataset.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "exact_mappings": [
+        "http://www.w3.org/ns/prov#wasGeneratedBy"
+      ],
+      "close_mappings": [
+        "http://schema.org/measurementTechnique"
+      ],
+      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/was_generated_by",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "ResearchActivity",
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_dataset",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_dataset",
+      "description": "The slot to list the datasets of a catalog.",
       "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
       "mappings": [
-        "http://schema.org/description"
+        "http://www.w3.org/ns/dcat#dataset"
       ],
-      "slot_uri": "http://schema.org/description",
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "primary_email",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/primary_email",
-      "description": "The main email address of a person",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "slot_uri": "http://schema.org/email",
-      "owner": "Dataset",
-      "domain_of": [
-        "Dataset"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "birth_date",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/birth_date",
-      "description": "Date on which a person is born",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "http://schema.org/birthDate"
-      ],
-      "slot_uri": "http://schema.org/birthDate",
-      "owner": "Dataset",
-      "domain_of": [
-        "Dataset"
-      ],
-      "range": "date",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "age_in_years",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/age_in_years",
-      "description": "Number of years since birth",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/age_in_years",
-      "owner": "Dataset",
-      "domain_of": [
-        "Dataset"
-      ],
-      "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "vital_status",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/vital_status",
-      "description": "living or dead status",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/vital_status",
-      "owner": "Dataset",
-      "domain_of": [
-        "Dataset"
-      ],
-      "range": "PersonStatus",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "datasetCollection__entries",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/entries",
-      "alias": "entries",
+      "slot_uri": "http://www.w3.org/ns/dcat#dataset",
       "owner": "DatasetCollection",
       "domain_of": [
         "DatasetCollection"
       ],
       "range": "Dataset",
+      "recommended": true,
       "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evaluated_entity",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/evaluated_entity",
+      "description": "The slot to specify the entity of interest that was evaluated.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/ns/prov#used"
+      ],
+      "slot_uri": "http://www.w3.org/ns/prov#used",
+      "owner": "ResearchActivity",
+      "domain_of": [
+        "ResearchActivity"
+      ],
+      "range": "EntityOfInterest",
+      "recommended": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "Dataset_primary_email",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/primary_email",
-      "description": "The main email address of a person",
+      "name": "used_hardware",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/used_hardware",
+      "description": "The slot to specify the hardware that was used.",
       "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
       "mappings": [
-        "http://schema.org/email"
+        "http://www.w3.org/ns/prov#used"
       ],
-      "is_a": "primary_email",
+      "slot_uri": "http://www.w3.org/ns/prov#used",
+      "owner": "ResearchActivity",
+      "domain_of": [
+        "ResearchActivity"
+      ],
+      "range": "HardwareTool",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "used_software",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/used_software",
+      "description": "The slot to specify the hardware that was used.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/ns/prov#used"
+      ],
+      "slot_uri": "http://www.w3.org/ns/prov#used",
+      "owner": "ResearchActivity",
+      "domain_of": [
+        "ResearchActivity"
+      ],
+      "range": "SoftwareTool",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_part",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_part",
+      "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://purl.org/dc/terms/hasPart"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/hasPart",
+      "owner": "Tool",
+      "domain_of": [
+        "ResearchActivity",
+        "EntityOfInterest",
+        "Tool"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_attribute",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_attribute",
+      "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://purl.org/dc/terms/relation"
+      ],
+      "exact_mappings": [
+        "http://purl.obolibrary.org/obo/RO_0000053",
+        "http://semanticscience.org/resource/SIO_000223"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/relation",
+      "owner": "Environment",
+      "domain_of": [
+        "EntityOfInterest",
+        "Tool",
+        "Environment"
+      ],
+      "range": "Attribute",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_setting",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_setting",
+      "description": "The slot to specify the setting of a hardware or software tool.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "is_a": "has_attribute",
+      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_setting",
+      "owner": "Tool",
+      "domain_of": [
+        "Tool"
+      ],
+      "range": "SettingDatum",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_value",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_value",
+      "description": "A slot to provide the value of an attribute.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/ns/prov#value"
+      ],
+      "slot_uri": "http://www.w3.org/ns/prov#value",
+      "owner": "Attribute",
+      "domain_of": [
+        "Attribute"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "has_unit",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_unit",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_unit",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "definedTerm__from_CV",
+      "description": "The name of the controlled vocabulary.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://schema.org/inDefinedTermSet"
+      ],
+      "slot_uri": "http://schema.org/inDefinedTermSet",
+      "alias": "from_CV",
+      "owner": "DefinedTerm",
+      "domain_of": [
+        "DefinedTerm"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "chemicalSubstance__inchikey",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/inchikey",
+      "alias": "inchikey",
+      "owner": "ChemicalSubstance",
+      "domain_of": [
+        "ChemicalSubstance"
+      ],
+      "range": "InChIKey",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "chemicalSubstance__inchi",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/inchi",
+      "alias": "inchi",
+      "owner": "ChemicalSubstance",
+      "domain_of": [
+        "ChemicalSubstance"
+      ],
+      "range": "InChi",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "chemicalSubstance__iupac_name",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/iupac_name",
+      "alias": "iupac_name",
+      "owner": "ChemicalSubstance",
+      "domain_of": [
+        "ChemicalSubstance"
+      ],
+      "range": "IUPACName",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "quantifiableAttribute__has_quantity_kind",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasQuantityKind"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
+      "alias": "has_quantity_kind",
+      "owner": "QuantifiableAttribute",
+      "domain_of": [
+        "QuantifiableAttribute"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "quantifiableAttribute__applicable_unit",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://qudt.org/schema/qudt/applicableUnit"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/applicableUnit",
+      "alias": "applicable_unit",
+      "owner": "QuantifiableAttribute",
+      "domain_of": [
+        "QuantifiableAttribute"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "DefinedTerm_name",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/name",
+      "description": "The slot to specify the label, name or title of a thing.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://schema.org/name"
+      ],
+      "exact_mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://www.w3.org/2004/02/skos/core#title",
+        "http://schema.org/name"
+      ],
+      "is_a": "name",
+      "domain": "DefinedTerm",
+      "slot_uri": "http://schema.org/name",
+      "alias": "name",
+      "owner": "DefinedTerm",
+      "domain_of": [
+        "DefinedTerm"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name",
+      "range": "string",
+      "multivalued": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "DefinedTerm_alternative_id",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/alternative_id",
+      "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://schema.org/identifier"
+      ],
+      "is_a": "alternative_id",
+      "domain": "DefinedTerm",
+      "slot_uri": "http://schema.org/identifier",
+      "alias": "alternative_id",
+      "owner": "DefinedTerm",
+      "domain_of": [
+        "DefinedTerm"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "alternative_id",
+      "range": "uriorcurie",
+      "multivalued": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Dataset_name",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/name",
+      "description": "The label, name or title of a Dataset.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "exact_mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://www.w3.org/2004/02/skos/core#title",
+        "http://schema.org/name"
+      ],
+      "is_a": "name",
       "domain": "Dataset",
-      "slot_uri": "http://schema.org/email",
-      "alias": "primary_email",
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "alias": "name",
       "owner": "Dataset",
       "domain_of": [
         "Dataset"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "primary_email",
+      "usage_slot_name": "name",
       "range": "string",
-      "pattern": "^\\S+@[\\S+\\.]+\\S+",
+      "required": true,
+      "multivalued": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Dataset_description",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/description",
+      "description": "A free-text account of a Dataset.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://purl.org/dc/terms/description"
+      ],
+      "is_a": "description",
+      "domain": "Dataset",
+      "slot_uri": "http://purl.org/dc/terms/description",
+      "alias": "description",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "description",
+      "range": "string",
+      "required": true,
+      "multivalued": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Dataset_was_generated_by",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/was_generated_by",
+      "description": "The slot to provide the ResearchActivity that created a Dataset.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "exact_mappings": [
+        "http://www.w3.org/ns/prov#wasGeneratedBy"
+      ],
+      "close_mappings": [
+        "http://schema.org/measurementTechnique"
+      ],
+      "is_a": "was_generated_by",
+      "domain": "Dataset",
+      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/was_generated_by",
+      "alias": "was_generated_by",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "was_generated_by",
+      "range": "ResearchActivity",
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "DatasetCollection_id",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/id",
+      "description": "The unique identifier of a Catalog.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "is_a": "id",
+      "domain": "DatasetCollection",
+      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/id",
+      "identifier": true,
+      "alias": "id",
+      "owner": "DatasetCollection",
+      "domain_of": [
+        "DatasetCollection"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "DatasetCollection_name",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/name",
+      "description": "The name of a DatasetCollection.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://purl.org/dc/terms/title"
+      ],
+      "exact_mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://www.w3.org/2004/02/skos/core#title",
+        "http://schema.org/name"
+      ],
+      "is_a": "Dataset_name",
+      "domain": "DatasetCollection",
+      "slot_uri": "http://purl.org/dc/terms/title",
+      "alias": "name",
+      "owner": "DatasetCollection",
+      "domain_of": [
+        "DatasetCollection"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name",
+      "range": "string",
+      "required": true,
+      "multivalued": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "DatasetCollection_description",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/description",
+      "description": "A free-text account of a DatasetCollection.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://purl.org/dc/terms/description"
+      ],
+      "is_a": "Dataset_description",
+      "domain": "DatasetCollection",
+      "slot_uri": "http://purl.org/dc/terms/description",
+      "alias": "description",
+      "owner": "DatasetCollection",
+      "domain_of": [
+        "DatasetCollection"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "description",
+      "range": "string",
+      "required": true,
+      "multivalued": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ResearchActivity_type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "description": "The type of the ResearchActivity provided as a DefinedTerm.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ],
+      "is_a": "type",
+      "domain": "ResearchActivity",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "alias": "type",
+      "owner": "ResearchActivity",
+      "domain_of": [
+        "ResearchActivity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "DefinedTerm",
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "NMRSpectroscopy_evaluated_entity",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/evaluated_entity",
+      "description": "The slot to specify the entity of interest that was evaluated.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/ns/prov#used"
+      ],
+      "is_a": "evaluated_entity",
+      "domain": "NMRSpectroscopy",
+      "slot_uri": "http://www.w3.org/ns/prov#used",
+      "alias": "evaluated_entity",
+      "owner": "NMRSpectroscopy",
+      "domain_of": [
+        "NMRSpectroscopy"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "evaluated_entity",
+      "range": "ChemicalSubstance",
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "NMRSpectroscopy_type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "description": "The type of NMR Spectroscopy according provided as CURIE of a subclass of CHMO:0000613.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ],
+      "is_a": "ResearchActivity_type",
+      "domain": "NMRSpectroscopy",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "alias": "type",
+      "owner": "NMRSpectroscopy",
+      "domain_of": [
+        "NMRSpectroscopy"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "DefinedTerm",
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EntityOfInterest_type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "description": "The type of the EntityOfInterest provided as a DefinedTerm.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ],
+      "is_a": "type",
+      "domain": "EntityOfInterest",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "alias": "type",
+      "owner": "EntityOfInterest",
+      "domain_of": [
+        "EntityOfInterest"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "DefinedTerm",
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Tool_type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "description": "The type of the Tool provided as a DefinedTerm.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ],
+      "is_a": "type",
+      "domain": "Tool",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "alias": "type",
+      "owner": "Tool",
+      "domain_of": [
+        "Tool"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "DefinedTerm",
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Tool_has_part",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_part",
+      "description": "The slot to specify parts of a tool.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://purl.org/dc/terms/hasPart"
+      ],
+      "is_a": "has_part",
+      "domain": "Tool",
+      "slot_uri": "http://purl.org/dc/terms/hasPart",
+      "alias": "has_part",
+      "owner": "Tool",
+      "domain_of": [
+        "Tool"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_part",
+      "range": "Tool",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Environment_type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "description": "The type of Environment provided as a DefinedTerm.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ],
+      "is_a": "type",
+      "domain": "Environment",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "alias": "type",
+      "owner": "Environment",
+      "domain_of": [
+        "Environment"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "DefinedTerm",
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "PlanSpecification_type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "description": "The type of PlanSpecification provided as a DefinedTerm.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ],
+      "is_a": "type",
+      "domain": "PlanSpecification",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "alias": "type",
+      "owner": "PlanSpecification",
+      "domain_of": [
+        "PlanSpecification"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "DefinedTerm",
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Attribute_type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "description": "The slot to specify the type of Attribute provided as a DefinedTerm.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ],
+      "is_a": "type",
+      "domain": "Attribute",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "alias": "type",
+      "owner": "Attribute",
+      "domain_of": [
+        "Attribute"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "DefinedTerm",
+      "recommended": true,
+      "inlined": true,
       "@type": "SlotDefinition"
     }
   ],
   "classes": [
     {
-      "name": "NamedThing",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/NamedThing",
-      "description": "A generic grouping for any identifiable entity",
+      "name": "DefinedTerm",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/DefinedTerm",
+      "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.",
       "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
       "mappings": [
-        "schema:Thing"
+        "schema:DefinedTerm"
       ],
       "slots": [
         "id",
-        "name",
-        "description"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://schema.org/Thing",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Dataset",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/Dataset",
-      "description": "Represents a Dataset",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "is_a": "NamedThing",
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "Dataset_primary_email",
-        "birth_date",
-        "age_in_years",
-        "vital_status"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/Dataset",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "DatasetCollection",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/DatasetCollection",
-      "description": "A holder for Dataset objects",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "slots": [
-        "datasetCollection__entries"
+        "DefinedTerm_alternative_id",
+        "DefinedTerm_name",
+        "definedTerm__from_CV"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "entries",
-          "range": "Dataset",
-          "multivalued": true,
-          "inlined": true,
+          "name": "from_CV",
+          "description": "The name of the controlled vocabulary.",
+          "slot_uri": "schema:inDefinedTermSet",
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/StroemPhi/dcat-4C-ap/DatasetCollection",
+      "class_uri": "http://schema.org/DefinedTerm",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Dataset",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Dataset",
+      "implements": [
+        "dcat:Dataset"
+      ],
+      "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "dcat:Dataset"
+      ],
+      "slots": [
+        "id",
+        "Dataset_name",
+        "Dataset_description",
+        "alternative_id",
+        "Dataset_was_generated_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Dataset",
       "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DatasetCollection",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/DatasetCollection",
+      "description": "A curated collection of metadata about data resources.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "dcat:Catalog"
+      ],
+      "is_a": "Dataset",
+      "slots": [
+        "alternative_id",
+        "Dataset_was_generated_by",
+        "has_dataset",
+        "DatasetCollection_id",
+        "DatasetCollection_name",
+        "DatasetCollection_description"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Catalog",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ResearchActivity",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ResearchActivity",
+      "description": "An activity (process) that has the objective to produce information about an entity by evaluating it.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "prov:Activity"
+      ],
+      "narrow_mappings": [
+        "NCIT:C25598",
+        "sosa:Observation",
+        "OBI:0000070"
+      ],
+      "abstract": true,
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "ResearchActivity_type",
+        "evaluated_entity",
+        "used_hardware",
+        "used_software",
+        "has_part"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Activity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "NMRSpectroscopy",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/NMRSpectroscopy",
+      "description": "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "CHMO:0000613"
+      ],
+      "is_a": "ResearchActivity",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "used_hardware",
+        "used_software",
+        "has_part",
+        "NMRSpectroscopy_evaluated_entity",
+        "NMRSpectroscopy_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/CHMO_0000613",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "EntityOfInterest",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/EntityOfInterest",
+      "description": "Something that is being evaluated in a scientific process.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "prov:Entity"
+      ],
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "alternative_id",
+        "EntityOfInterest_type",
+        "has_attribute",
+        "has_part"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ChemicalReaction",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalReaction",
+      "description": "An experimental procedure with the aim of producing a portion of a given compound or mixture.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "RXNO:0000329"
+      ],
+      "is_a": "EntityOfInterest",
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "alternative_id",
+        "EntityOfInterest_type",
+        "has_attribute",
+        "has_part"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://example.org/UNKNOWN/RXNO/0000329",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ChemicalSubstance",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalSubstance",
+      "description": "A chemical substance that is being evaluated in a scientific process.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "CHEBI:59999"
+      ],
+      "is_a": "EntityOfInterest",
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "alternative_id",
+        "EntityOfInterest_type",
+        "has_attribute",
+        "has_part",
+        "chemicalSubstance__inchikey",
+        "chemicalSubstance__inchi",
+        "chemicalSubstance__iupac_name"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "inchikey",
+          "range": "InChIKey",
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "inchi",
+          "range": "InChi",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "iupac_name",
+          "range": "IUPACName",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://purl.obolibrary.org/obo/CHEBI_59999",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Tool",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Tool",
+      "description": "A entity with a certain function used within a scientific activity.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "prov:Entity"
+      ],
+      "broad_mappings": [
+        "prov:Entity"
+      ],
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Tool_type",
+        "Tool_has_part",
+        "has_attribute",
+        "has_setting"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "HardwareTool",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/HardwareTool",
+      "description": "A hardware with a certain function.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "aliases": [
+        "Device"
+      ],
+      "is_a": "Tool",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Tool_type",
+        "Tool_has_part",
+        "has_attribute",
+        "has_setting"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/HardwareTool",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SoftwareTool",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SoftwareTool",
+      "description": "A software with a certain function.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "is_a": "Tool",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Tool_type",
+        "Tool_has_part",
+        "has_attribute",
+        "has_setting"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SoftwareTool",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Environment",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Environment",
+      "description": "The environment in which the dataset creating Observation took place (e.g. a lab).",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "prov:Entity"
+      ],
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Environment_type",
+        "has_attribute"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Laboratory",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Laboratory",
+      "description": "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "prov:Entity"
+      ],
+      "is_a": "Environment",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Environment_type",
+        "has_attribute"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PlanSpecification",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/PlanSpecification",
+      "description": "\"A piece of information that specifies: \n    a) how an activity has to be carried out by its agents and \n    b) the attributes of the passive activity participants in terms of their presence and magnitude.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "prov:Entity"
+      ],
+      "slots": [
+        "name",
+        "description",
+        "PlanSpecification_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ResearchActivitySpecification",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ResearchActivitySpecification",
+      "description": "A PlanSpecification that specifies a ResearchActivity.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "prov:Entity"
+      ],
+      "is_a": "PlanSpecification",
+      "slots": [
+        "name",
+        "description",
+        "PlanSpecification_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Attribute",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Attribute",
+      "description": "A piece of information that is attributed to an entity of interest, tool or environment.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "IAO:0000030"
+      ],
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Attribute_type",
+        "has_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/IAO_0000030",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantifiableAttribute",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/QuantifiableAttribute",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "qudt:Quantity"
+      ],
+      "is_a": "Attribute",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Attribute_type",
+        "has_value",
+        "quantifiableAttribute__has_quantity_kind",
+        "quantifiableAttribute__applicable_unit"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "has_quantity_kind",
+          "slot_uri": "qudt:hasQuantityKind",
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "applicable_unit",
+          "slot_uri": "qudt:applicableUnit",
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "http://qudt.org/schema/qudt/Quantity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AttributeKind",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/AttributeKind",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "qudt:QuantityKind"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/QuantityKind",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Unit",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Unit",
+      "description": "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "qudt:Unit"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/Unit",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SettingDatum",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SettingDatum",
+      "description": "An attribute that specifies the configuration of a tool.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "IAO:0000140"
+      ],
+      "is_a": "Attribute",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Attribute_type",
+        "has_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/IAO_0000140",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "InChIKey",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/InChIKey",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "CHEMINF:000059"
+      ],
+      "is_a": "Attribute",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Attribute_type",
+        "has_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000059",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "InChi",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/InChi",
+      "description": "A structure descriptor which conforms to the InChI format specification.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "CHEMINF:000113"
+      ],
+      "is_a": "Attribute",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Attribute_type",
+        "has_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000113",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "IUPACName",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/IUPACName",
+      "description": "An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "CHEMINF:000107"
+      ],
+      "is_a": "Attribute",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Attribute_type",
+        "has_value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000107",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcat_4c_ap.yaml",
-  "source_file_date": "2024-10-25T15:39:02",
-  "source_file_size": 2360,
-  "generation_date": "2024-10-25T15:40:14",
+  "source_file_date": "2024-10-25T15:42:52",
+  "source_file_size": 13650,
+  "generation_date": "2024-10-25T15:45:48",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
     {
-      "@base": "https://w3id.org/StroemPhi/dcat-4C-ap/"
+      "@base": "https://w3id.org/StroemPhi/dcat_4C_ap/"
     }
   ]
 }

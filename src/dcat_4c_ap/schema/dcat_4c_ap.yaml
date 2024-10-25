@@ -1,96 +1,438 @@
 ---
 id: https://w3id.org/StroemPhi/dcat-4C-ap
 name: dcat-4C-ap
-title: dcat-4C-ap
+title: DCAT-4C-AP
 description: |-
   This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI 4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.
-license: MIT
+license: CC-BY 4.0
 see_also:
-  - https://StroemPhi.github.io/dcat-4C-ap
-
+  - https://StroemPhi.github.io/dcat-NFDI-ap
+  - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
+  - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
-  dcat_4c_ap: https://w3id.org/StroemPhi/dcat-4C-ap/
+  nfdi: https://w3id.org/StroemPhi/dcat_4C_ap/
   linkml: https://w3id.org/linkml/
-  biolink: https://w3id.org/biolink/
+  biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  prov: http://www.w3.org/ns/prov#
+  sosa: http://www.w3.org/ns/sosa/
+  vcard: http://www.w3.org/2006/vcard/ns#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  foaf: http://xmlns.com/foaf/0.1/
+  qudt: http://qudt.org/schema/qudt/
+  RO: http://purl.obolibrary.org/obo/RO_
   PATO: http://purl.obolibrary.org/obo/PATO_
-  example: https://example.org/
-default_prefix: dcat_4c_ap
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  IAO: http://purl.obolibrary.org/obo/IAO_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  T4FS: http://purl.obolibrary.org/obo/T4FS_
+  FOODON: http://purl.obolibrary.org/obo/FOODON_
+  CHEMINF: http://semanticscience.org/resource/CHEMINF_
+  ex: http://example.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  SIO: http://semanticscience.org/resource/SIO_
+  doi: https://doi.org/
+default_prefix: nfdi
 default_range: string
-
 imports:
   - linkml:types
 
 classes:
 
-  NamedThing:
+  DefinedTerm:
+    class_uri: schema:DefinedTerm
+    description: A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.
+    attributes:
+      from_CV:
+        slot_uri: schema:inDefinedTermSet
+        description: The name of the controlled vocabulary.
+    slots:
+      - id
+      - alternative_id
+      - name
+    slot_usage:
+      name:
+        slot_uri: schema:name
+      alternative_id:
+        slot_uri: schema:identifier
+  
+  #################
+  # Dataset Types #
+  #################
+  Dataset:
+    tree_root: true
+    class_uri: dcat:Dataset
+    implements:
+      - dcat:Dataset
     description: >-
-      A generic grouping for any identifiable entity
+      A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
     slots:
       - id
       - name
       - description
-    class_uri: schema:Thing
-
-  Dataset:
-    is_a: NamedThing
-    description: >-
-      Represents a Dataset
-    slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
+      - alternative_id
+      - was_generated_by
     slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
-
+      # required according to DCAT-AP specs
+      name:
+        description: The label, name or title of a Dataset.
+        required: true
+      description:
+        description: A free-text account of a Dataset.
+        required: true
+      was_generated_by:
+        ## the range will be changed with regard to the profile.
+        range: ResearchActivity
+  
   DatasetCollection:
-    tree_root: true
-    description: >-
-      A holder for Dataset objects
-    attributes:
-      entries:
-        range: Dataset
-        multivalued: true
+    class_uri: dcat:Catalog
+    is_a: Dataset
+    description: A curated collection of metadata about data resources.
+    slots:
+      - has_dataset
+    slot_usage:
+      id:
+        description: The unique identifier of a Catalog.
+      name:
+        description: The name of a DatasetCollection.
+      description:
+        description: A free-text account of a DatasetCollection.
+  
+  
+  #############################
+  # Research Activity Types #
+  #############################
+  ResearchActivity:
+    abstract: true
+    class_uri: prov:Activity
+    description: An activity (process) that has the objective to produce information about an entity by evaluating it.
+    slots:
+      - name
+      - description
+      - alternative_id
+      - type
+      - evaluated_entity
+      - used_hardware
+      - used_software
+      # - used_plan
+      - has_part
+    slot_usage:
+      type:
+        description: The type of the ResearchActivity provided as a DefinedTerm.
+        range: DefinedTerm
         inlined: true
+    narrow_mappings:
+      - NCIT:C25598
+      - sosa:Observation
+      - OBI:0000070
+  
+  NMRSpectroscopy:
+    is_a: ResearchActivity
+    class_uri: CHMO:0000613
+    description: Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.
+    slot_usage:
+      evaluated_entity:
+        range: ChemicalSubstance
+      type:
+        description: The type of NMR Spectroscopy according provided as CURIE of a subclass of CHMO:0000613.
 
+
+  ##############################
+  # Entities of Interest Types #
+  ##############################
+  EntityOfInterest:
+    class_uri: prov:Entity
+    description: Something that is being evaluated in a scientific process.
+    slots:
+      - id
+      - name
+      - description
+      - alternative_id
+      - type
+      - has_attribute
+      - has_part
+    slot_usage:
+      type:
+        description: The type of the EntityOfInterest provided as a DefinedTerm.
+        range: DefinedTerm
+        inlined: true
+  
+  ChemicalReaction:
+    is_a: EntityOfInterest
+    class_uri: RXNO:0000329
+    description: An experimental procedure with the aim of producing a portion of a given compound or mixture.
+  ChemicalSubstance:
+    is_a: EntityOfInterest
+    class_uri: CHEBI:59999
+    description: A chemical substance that is being evaluated in a scientific process.
+    attributes:
+      inchikey:
+        range: InChIKey
+        #required: true
+        inlined: true
+      inchi:
+        range: InChi
+      iupac_name:
+        range: IUPACName
+  
+  
+  
+  ##############
+  # Tool Types #
+  ##############
+  Tool:
+    class_uri: prov:Entity
+    description: A entity with a certain function used within a scientific activity.
+    slots:
+      - name
+      - description
+      - alternative_id
+      - type
+      - has_part
+      - has_attribute
+      - has_setting
+    slot_usage:
+      type:
+        description: The type of the Tool provided as a DefinedTerm.
+        range: DefinedTerm
+        inlined: true
+      has_part:
+        description: The slot to specify parts of a tool.
+        range: Tool
+        inlined: true
+        multivalued: true
+        inlined_as_list: true
+    broad_mappings:
+      - prov:Entity
+  
+  HardwareTool:
+    is_a: Tool
+    aliases:
+      - Device
+    description: A hardware with a certain function.
+  
+  SoftwareTool:
+    is_a: Tool
+    description: A software with a certain function.
+  #####################
+  # Environment Types #
+  #####################
+  Environment:
+    class_uri: prov:Entity
+    description: The environment in which the dataset creating Observation took place (e.g. a lab).
+    slots:
+      - name
+      - description
+      - alternative_id
+      - type
+      - has_attribute
+    slot_usage:
+      type:
+        description: The type of Environment provided as a DefinedTerm.
+        range: DefinedTerm
+        inlined: true
+  
+  Laboratory:
+    is_a: Environment
+    class_uri: prov:Entity
+    description: A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
+  
+  ############################
+  # Plan Specification Types #
+  ############################
+  PlanSpecification:
+    class_uri: prov:Entity
+    description: |-
+      "A piece of information that specifies: 
+          a) how an activity has to be carried out by its agents and 
+          b) the attributes of the passive activity participants in terms of their presence and magnitude.
+    slots:
+      - name
+      - description
+      - type
+    slot_usage:
+      type:
+        description: The type of PlanSpecification provided as a DefinedTerm.
+        range: DefinedTerm
+        inlined: true
+  
+  ResearchActivitySpecification:
+    class_uri: prov:Entity
+    is_a: PlanSpecification
+    description: A PlanSpecification that specifies a ResearchActivity.
+  
+  ###################
+  # Attribute Types #
+  ###################
+  Attribute:
+    class_uri: IAO:0000030
+    description: A piece of information that is attributed to an entity of interest, tool or environment.
+    slots:
+      - name
+      - description
+      - alternative_id
+      - type
+      - has_value
+    slot_usage:
+      type:
+        description: The slot to specify the type of Attribute provided as a DefinedTerm.
+        range: DefinedTerm
+        inlined: true
+  
+  QuantifiableAttribute:
+    is_a: Attribute
+    class_uri: qudt:Quantity
+    attributes:
+      has_quantity_kind:
+        slot_uri: qudt:hasQuantityKind
+      applicable_unit:
+        slot_uri: qudt:applicableUnit
+  AttributeKind:
+    class_uri: qudt:QuantityKind
+  Unit:
+    class_uri: qudt:Unit
+    description: A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).
+  SettingDatum:
+    class_uri: IAO:0000140
+    is_a: Attribute
+    description: An attribute that specifies the configuration of a tool.
+  
+  InChIKey:
+    class_uri: CHEMINF:000059
+    is_a: Attribute
+  InChi:
+    class_uri: CHEMINF:000113
+    is_a: Attribute
+    description: A structure descriptor which conforms to the InChI format specification.
+  IUPACName:
+    class_uri: CHEMINF:000107
+    is_a: Attribute
+    description: An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).
+
+
+# Slots
 slots:
-  id:
-    identifier: true
-    slot_uri: schema:identifier
+  type:
+    slot_uri: rdf:type
+    description: The slot to specify the rdf:type of an entity according to a controlled vocabulary.
+    recommended: true
+  alternative_id:
+    slot_uri: dcterms:identifier
+    description: The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.
+    multivalued: true
+    inlined_as_list: true
     range: uriorcurie
-    description: A unique identifier for a thing
-  name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
+  id:
+    range: uriorcurie
+    identifier: true
+    description: The slot to specify the canonical unique identifier of an entity.
   description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
-    range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
+    slot_uri: dcterms:description
+    description: The slot to provide a free-text account of a thing.
+    multivalued: true
+    inlined_as_list: true
+  name:
+    slot_uri: dcterms:title
+    description: The slot to specify the label, name or title of a thing.
+    multivalued: true
+    inlined_as_list: true
+    exact_mappings:
+      - rdfs:label
+      - skos:title
+      - schema:name
+  was_generated_by:
+    description: The slot to provide the ResearchActivity that created a Dataset.
+    range: ResearchActivity
+    recommended: true
+    inlined: true
+    exact_mappings:
+      - prov:wasGeneratedBy
+    close_mappings:
+      - schema:measurementTechnique
+  has_dataset:
+    slot_uri: dcat:dataset
+    description: The slot to list the datasets of a catalog.
+    range: Dataset
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    recommended: true
+  evaluated_entity:
+    slot_uri: prov:used
+    description: The slot to specify the entity of interest that was evaluated.
+    recommended: true
+    inlined: true
+    range: EntityOfInterest
+  used_hardware:
+    slot_uri: prov:used
+    description: The slot to specify the hardware that was used.
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    range: HardwareTool
+  used_software:
+    slot_uri: prov:used
+    description: The slot to specify the hardware that was used.
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    range: SoftwareTool
+  has_part:
+    slot_uri: dcterms:hasPart
+    description: A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.
+  has_attribute:
+    slot_uri: dcterms:relation
+    description: The slot to related an attribute to an entity of interest, tool or environment.
+    range: Attribute
+    inlined: true
+    multivalued: true
+    inlined_as_list: true
+    exact_mappings:
+      - RO:0000053
+      - SIO:000223
+  has_setting:
+    is_a: has_attribute
+    description: The slot to specify the setting of a hardware or software tool.
+    range: SettingDatum
+    inlined: true
+    multivalued: true
+    inlined_as_list: true
+  has_value:
+    slot_uri: prov:value
+    description: A slot to provide the value of an attribute.
+  has_unit:
+
 
 enums:
-  PersonStatus:
+  ## Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should be used to constrain the range 
+  ## of the type of ResearchActivity instead of using the default DefinedTerm as range.
+  ## This will be done in profiles of this schema where we define ResearchActivity subclasses, e.g. NMRSpectroscopy.
+  NMRSpectroscopyEnum:
+    reachable_from:
+      source_ontology: bioregistry:chmo
+      source_nodes:
+        - CHMO:0000613 # pulsed nuclear magnetic resonance spectroscopy
+      is_direct: false
+      relationship_types:
+        - rdfs:subClassOf
+    minus:
+      - permissible_values:
+          root_node:
+            meaning: CHMO:0000613 # pulsed nuclear magnetic resonance spectroscopy
+
+  EntityOfInterestTypeEnum:
     permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+      Chemical Substance:
+        meaning: CHEBI:59999
+  
+  ResearchActivityTypeEnum:
+    

@@ -18,5 +18,5 @@ class TestData(unittest.TestCase):
     def test_data(self):
         """Data test."""
         for path in EXAMPLE_FILES:
-            obj = yaml_loader.load(path, target_class=DatasetCollection)
+            obj = yaml_loader.load(path, target_class=Dataset)
             assert obj

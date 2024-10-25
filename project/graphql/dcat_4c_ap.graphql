@@ -1,31 +1,222 @@
 # metamodel_version: 1.7.0
-enum PersonStatus
+enum EntityOfInterestTypeEnum
   {
-    ALIVE
-    DEAD
-    UNKNOWN
+    Chemical_Substance
+  }
+
+type Attribute
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasValue: String
+  }
+
+type AttributeKind
+  {
+  }
+
+type ChemicalReaction
+  {
+    id: Uriorcurie!
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasAttribute: [Attribute]
+    hasPart: String
+  }
+
+type ChemicalSubstance
+  {
+    id: Uriorcurie!
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasAttribute: [Attribute]
+    hasPart: String
+    inchikey: InChIKey
+    inchi: InChi
+    iupacName: IUPACName
   }
 
 type Dataset
   {
     id: Uriorcurie!
-    name: String
-    description: String
-    primaryEmail: String
-    birthDate: Date
-    ageInYears: Integer
-    vitalStatus: PersonStatus
+    name: [String]!
+    description: [String]!
+    alternativeId: [Uriorcurie]
+    wasGeneratedBy: ResearchActivity
   }
 
 type DatasetCollection
   {
-    entries: [Dataset]
+    alternativeId: [Uriorcurie]
+    wasGeneratedBy: ResearchActivity
+    hasDataset: [Dataset]
+    id: Uriorcurie!
+    name: [String]!
+    description: [String]!
   }
 
-type NamedThing
+type DefinedTerm
   {
     id: Uriorcurie!
-    name: String
-    description: String
+    alternativeId: [Uriorcurie]
+    name: [String]
+    fromCV: String
+  }
+
+type EntityOfInterest
+  {
+    id: Uriorcurie!
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasAttribute: [Attribute]
+    hasPart: String
+  }
+
+type Environment
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasAttribute: [Attribute]
+  }
+
+type HardwareTool
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasPart: [Tool]
+    hasAttribute: [Attribute]
+    hasSetting: [SettingDatum]
+  }
+
+type InChi
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasValue: String
+  }
+
+type InChIKey
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasValue: String
+  }
+
+type IUPACName
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasValue: String
+  }
+
+type Laboratory
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasAttribute: [Attribute]
+  }
+
+type NMRSpectroscopy
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    usedHardware: [HardwareTool]
+    usedSoftware: [SoftwareTool]
+    hasPart: String
+    evaluatedEntity: ChemicalSubstance
+    type: DefinedTerm
+  }
+
+type PlanSpecification
+  {
+    name: [String]
+    description: [String]
+    type: DefinedTerm
+  }
+
+type QuantifiableAttribute
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasValue: String
+    hasQuantityKind: String
+    applicableUnit: String
+  }
+
+interface ResearchActivity
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    evaluatedEntity: EntityOfInterest
+    usedHardware: [HardwareTool]
+    usedSoftware: [SoftwareTool]
+    hasPart: String
+  }
+
+type ResearchActivitySpecification
+  {
+    name: [String]
+    description: [String]
+    type: DefinedTerm
+  }
+
+type SettingDatum
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasValue: String
+  }
+
+type SoftwareTool
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasPart: [Tool]
+    hasAttribute: [Attribute]
+    hasSetting: [SettingDatum]
+  }
+
+type Tool
+  {
+    name: [String]
+    description: [String]
+    alternativeId: [Uriorcurie]
+    type: DefinedTerm
+    hasPart: [Tool]
+    hasAttribute: [Attribute]
+    hasSetting: [SettingDatum]
+  }
+
+type Unit
+  {
   }
 

@@ -1,161 +1,392 @@
 {
     "$defs": {
-        "Dataset": {
+        "Attribute": {
             "additionalProperties": false,
-            "description": "Represents a Dataset",
+            "description": "A piece of information that is attributed to an entity of interest, tool or environment.",
             "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "integer",
+                        "array",
                         "null"
                     ]
                 },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_value": {
+                    "description": "A slot to provide the value of an attribute.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                }
+            },
+            "title": "Attribute",
+            "type": "object"
+        },
+        "AttributeKind": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "AttributeKind",
+            "type": "object"
+        },
+        "ChemicalReaction": {
+            "additionalProperties": false,
+            "description": "An experimental procedure with the aim of producing a portion of a given compound or mixture.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "description": {
-                    "description": "A human-readable description for a thing",
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_attribute": {
+                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/Attribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "id": {
-                    "description": "A unique identifier for a thing",
+                    "description": "The slot to specify the canonical unique identifier of an entity.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "A human-readable name for a thing",
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of the EntityOfInterest provided as a DefinedTerm."
                 }
             },
             "required": [
                 "id"
+            ],
+            "title": "ChemicalReaction",
+            "type": "object"
+        },
+        "ChemicalSubstance": {
+            "additionalProperties": false,
+            "description": "A chemical substance that is being evaluated in a scientific process.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_attribute": {
+                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/Attribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "The slot to specify the canonical unique identifier of an entity.",
+                    "type": "string"
+                },
+                "inchi": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InChi"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "inchikey": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InChIKey"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "iupac_name": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/IUPACName"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of the EntityOfInterest provided as a DefinedTerm."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "ChemicalSubstance",
+            "type": "object"
+        },
+        "Dataset": {
+            "additionalProperties": false,
+            "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A free-text account of a Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "The slot to specify the canonical unique identifier of an entity.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The label, name or title of a Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "was_generated_by": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ResearchActivity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to provide the ResearchActivity that created a Dataset."
+                }
+            },
+            "required": [
+                "id",
+                "name",
+                "description"
             ],
             "title": "Dataset",
             "type": "object"
         },
         "DatasetCollection": {
             "additionalProperties": false,
-            "description": "A holder for Dataset objects",
+            "description": "A curated collection of metadata about data resources.",
             "properties": {
-                "entries": {
-                    "additionalProperties": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/Dataset__identifier_optional"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ]
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": [
-                        "object",
-                        "null"
-                    ]
-                }
-            },
-            "title": "DatasetCollection",
-            "type": "object"
-        },
-        "Dataset__identifier_optional": {
-            "additionalProperties": false,
-            "description": "Represents a Dataset",
-            "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
                 "description": {
-                    "description": "A human-readable description for a thing",
+                    "description": "A free-text account of a DatasetCollection.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_dataset": {
+                    "description": "The slot to list the datasets of a catalog.",
+                    "items": {
+                        "$ref": "#/$defs/Dataset"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
                 "id": {
-                    "description": "A unique identifier for a thing",
+                    "description": "The unique identifier of a Catalog.",
                     "type": "string"
                 },
                 "name": {
-                    "description": "A human-readable name for a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "The name of a DatasetCollection.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
+                "was_generated_by": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ResearchActivity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to provide the ResearchActivity that created a Dataset."
                 }
             },
-            "required": [],
-            "title": "Dataset",
+            "required": [
+                "id",
+                "name",
+                "description"
+            ],
+            "title": "DatasetCollection",
             "type": "object"
         },
-        "NamedThing": {
+        "DefinedTerm": {
             "additionalProperties": false,
-            "description": "A generic grouping for any identifiable entity",
+            "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.",
             "properties": {
-                "description": {
-                    "description": "A human-readable description for a thing",
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "from_CV": {
+                    "description": "The name of the controlled vocabulary.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "id": {
-                    "description": "A unique identifier for a thing",
+                    "description": "The slot to specify the canonical unique identifier of an entity.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "name": {
-                    "description": "A human-readable name for a thing",
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 }
@@ -163,43 +394,970 @@
             "required": [
                 "id"
             ],
-            "title": "NamedThing",
+            "title": "DefinedTerm",
             "type": "object"
         },
-        "PersonStatus": {
+        "EntityOfInterest": {
+            "additionalProperties": false,
+            "description": "Something that is being evaluated in a scientific process.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_attribute": {
+                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/Attribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "The slot to specify the canonical unique identifier of an entity.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of the EntityOfInterest provided as a DefinedTerm."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "EntityOfInterest",
+            "type": "object"
+        },
+        "EntityOfInterestTypeEnum": {
             "description": "",
             "enum": [
-                "ALIVE",
-                "DEAD",
-                "UNKNOWN"
+                "Chemical Substance"
             ],
-            "title": "PersonStatus",
+            "title": "EntityOfInterestTypeEnum",
             "type": "string"
+        },
+        "Environment": {
+            "additionalProperties": false,
+            "description": "The environment in which the dataset creating Observation took place (e.g. a lab).",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_attribute": {
+                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/Attribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of Environment provided as a DefinedTerm."
+                }
+            },
+            "title": "Environment",
+            "type": "object"
+        },
+        "HardwareTool": {
+            "additionalProperties": false,
+            "description": "A hardware with a certain function.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_attribute": {
+                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/Attribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "The slot to specify parts of a tool.",
+                    "items": {
+                        "$ref": "#/$defs/Tool"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_setting": {
+                    "description": "The slot to specify the setting of a hardware or software tool.",
+                    "items": {
+                        "$ref": "#/$defs/SettingDatum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of the Tool provided as a DefinedTerm."
+                }
+            },
+            "title": "HardwareTool",
+            "type": "object"
+        },
+        "IUPACName": {
+            "additionalProperties": false,
+            "description": "An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_value": {
+                    "description": "A slot to provide the value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                }
+            },
+            "title": "IUPACName",
+            "type": "object"
+        },
+        "InChIKey": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_value": {
+                    "description": "A slot to provide the value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                }
+            },
+            "title": "InChIKey",
+            "type": "object"
+        },
+        "InChi": {
+            "additionalProperties": false,
+            "description": "A structure descriptor which conforms to the InChI format specification.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_value": {
+                    "description": "A slot to provide the value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                }
+            },
+            "title": "InChi",
+            "type": "object"
+        },
+        "Laboratory": {
+            "additionalProperties": false,
+            "description": "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_attribute": {
+                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/Attribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of Environment provided as a DefinedTerm."
+                }
+            },
+            "title": "Laboratory",
+            "type": "object"
+        },
+        "NMRSpectroscopy": {
+            "additionalProperties": false,
+            "description": "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "evaluated_entity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ChemicalSubstance"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the entity of interest that was evaluated."
+                },
+                "has_part": {
+                    "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of NMR Spectroscopy according provided as CURIE of a subclass of CHMO:0000613."
+                },
+                "used_hardware": {
+                    "description": "The slot to specify the hardware that was used.",
+                    "items": {
+                        "$ref": "#/$defs/HardwareTool"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "used_software": {
+                    "description": "The slot to specify the hardware that was used.",
+                    "items": {
+                        "$ref": "#/$defs/SoftwareTool"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "NMRSpectroscopy",
+            "type": "object"
+        },
+        "NMRSpectroscopyEnum": {
+            "description": "",
+            "title": "NMRSpectroscopyEnum",
+            "type": "string"
+        },
+        "PlanSpecification": {
+            "additionalProperties": false,
+            "description": "\"A piece of information that specifies: \n    a) how an activity has to be carried out by its agents and \n    b) the attributes of the passive activity participants in terms of their presence and magnitude.",
+            "properties": {
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of PlanSpecification provided as a DefinedTerm."
+                }
+            },
+            "title": "PlanSpecification",
+            "type": "object"
+        },
+        "QuantifiableAttribute": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "applicable_unit": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantity_kind": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_value": {
+                    "description": "A slot to provide the value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                }
+            },
+            "title": "QuantifiableAttribute",
+            "type": "object"
+        },
+        "ResearchActivitySpecification": {
+            "additionalProperties": false,
+            "description": "A PlanSpecification that specifies a ResearchActivity.",
+            "properties": {
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of PlanSpecification provided as a DefinedTerm."
+                }
+            },
+            "title": "ResearchActivitySpecification",
+            "type": "object"
+        },
+        "ResearchActivityTypeEnum": {
+            "description": "",
+            "title": "ResearchActivityTypeEnum",
+            "type": "string"
+        },
+        "SettingDatum": {
+            "additionalProperties": false,
+            "description": "An attribute that specifies the configuration of a tool.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_value": {
+                    "description": "A slot to provide the value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                }
+            },
+            "title": "SettingDatum",
+            "type": "object"
+        },
+        "SoftwareTool": {
+            "additionalProperties": false,
+            "description": "A software with a certain function.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_attribute": {
+                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/Attribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "The slot to specify parts of a tool.",
+                    "items": {
+                        "$ref": "#/$defs/Tool"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_setting": {
+                    "description": "The slot to specify the setting of a hardware or software tool.",
+                    "items": {
+                        "$ref": "#/$defs/SettingDatum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of the Tool provided as a DefinedTerm."
+                }
+            },
+            "title": "SoftwareTool",
+            "type": "object"
+        },
+        "Tool": {
+            "additionalProperties": false,
+            "description": "A entity with a certain function used within a scientific activity.",
+            "properties": {
+                "alternative_id": {
+                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_attribute": {
+                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/Attribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "The slot to specify parts of a tool.",
+                    "items": {
+                        "$ref": "#/$defs/Tool"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_setting": {
+                    "description": "The slot to specify the setting of a hardware or software tool.",
+                    "items": {
+                        "$ref": "#/$defs/SettingDatum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of the Tool provided as a DefinedTerm."
+                }
+            },
+            "title": "Tool",
+            "type": "object"
+        },
+        "Unit": {
+            "additionalProperties": false,
+            "description": "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).",
+            "title": "Unit",
+            "type": "object"
         }
     },
     "$id": "https://w3id.org/StroemPhi/dcat-4C-ap",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "description": "A holder for Dataset objects",
+    "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",
     "metamodel_version": "1.7.0",
     "properties": {
-        "entries": {
-            "additionalProperties": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/Dataset__identifier_optional"
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
+        "alternative_id": {
+            "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+            "items": {
+                "type": "string"
             },
             "type": [
-                "object",
+                "array",
                 "null"
             ]
+        },
+        "description": {
+            "description": "A free-text account of a Dataset.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "id": {
+            "description": "The slot to specify the canonical unique identifier of an entity.",
+            "type": "string"
+        },
+        "name": {
+            "description": "The label, name or title of a Dataset.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "was_generated_by": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/ResearchActivity"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "The slot to provide the ResearchActivity that created a Dataset."
         }
     },
+    "required": [
+        "id",
+        "name",
+        "description"
+    ],
     "title": "dcat-4C-ap",
     "type": "object",
     "version": null

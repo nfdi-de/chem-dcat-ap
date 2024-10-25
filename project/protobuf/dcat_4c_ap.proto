@@ -1,26 +1,199 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// Represents a Dataset
+// A piece of information that is attributed to an entity of interest, tool or environment.
+message Attribute
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+  string hasValue = 0
+ }
+// An experimental procedure with the aim of producing a portion of a given compound or mixture.
+message ChemicalReaction
+ {
+  uriorcurie id = 0
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+ repeated  attribute hasAttribute = 0
+  string hasPart = 0
+ }
+// A chemical substance that is being evaluated in a scientific process.
+message ChemicalSubstance
+ {
+  uriorcurie id = 0
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+ repeated  attribute hasAttribute = 0
+  string hasPart = 0
+  inChIKey inchikey = 0
+  inChi inchi = 0
+  iUPACName iupacName = 0
+ }
+// A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
 message Dataset
  {
   uriorcurie id = 0
-  string name = 0
-  string description = 0
-  string primaryEmail = 0
-  date birthDate = 0
-  integer ageInYears = 0
-  personStatus vitalStatus = 0
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  researchActivity wasGeneratedBy = 0
  }
-// A holder for Dataset objects
+// A curated collection of metadata about data resources.
 message DatasetCollection
  {
- repeated  dataset entries = 0
+ repeated  uriorcurie alternativeId = 0
+  researchActivity wasGeneratedBy = 0
+ repeated  dataset hasDataset = 0
+  uriorcurie id = 0
+ repeated  string name = 0
+ repeated  string description = 0
  }
-// A generic grouping for any identifiable entity
-message NamedThing
+// A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.
+message DefinedTerm
  {
   uriorcurie id = 0
-  string name = 0
-  string description = 0
+ repeated  uriorcurie alternativeId = 0
+ repeated  string name = 0
+  string fromCV = 0
+ }
+// Something that is being evaluated in a scientific process.
+message EntityOfInterest
+ {
+  uriorcurie id = 0
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+ repeated  attribute hasAttribute = 0
+  string hasPart = 0
+ }
+// The environment in which the dataset creating Observation took place (e.g. a lab).
+message Environment
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+ repeated  attribute hasAttribute = 0
+ }
+// A hardware with a certain function.
+message HardwareTool
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+ repeated  tool hasPart = 0
+ repeated  attribute hasAttribute = 0
+ repeated  settingDatum hasSetting = 0
+ }
+// A structure descriptor which conforms to the InChI format specification.
+message InChi
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+  string hasValue = 0
+ }
+message InChIKey
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+  string hasValue = 0
+ }
+// An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).
+message IUPACName
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+  string hasValue = 0
+ }
+// A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
+message Laboratory
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+ repeated  attribute hasAttribute = 0
+ }
+// Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.
+message NMRSpectroscopy
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+ repeated  hardwareTool usedHardware = 0
+ repeated  softwareTool usedSoftware = 0
+  string hasPart = 0
+  chemicalSubstance evaluatedEntity = 0
+  definedTerm type = 0
+ }
+// "A piece of information that specifies: 
+//     a) how an activity has to be carried out by its agents and 
+//     b) the attributes of the passive activity participants in terms of their presence and magnitude.
+message PlanSpecification
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+  definedTerm type = 0
+ }
+message QuantifiableAttribute
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+  string hasValue = 0
+  string hasQuantityKind = 0
+  string applicableUnit = 0
+ }
+// A PlanSpecification that specifies a ResearchActivity.
+message ResearchActivitySpecification
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+  definedTerm type = 0
+ }
+// An attribute that specifies the configuration of a tool.
+message SettingDatum
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+  string hasValue = 0
+ }
+// A software with a certain function.
+message SoftwareTool
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+ repeated  tool hasPart = 0
+ repeated  attribute hasAttribute = 0
+ repeated  settingDatum hasSetting = 0
+ }
+// A entity with a certain function used within a scientific activity.
+message Tool
+ {
+ repeated  string name = 0
+ repeated  string description = 0
+ repeated  uriorcurie alternativeId = 0
+  definedTerm type = 0
+ repeated  tool hasPart = 0
+ repeated  attribute hasAttribute = 0
+ repeated  settingDatum hasSetting = 0
  }

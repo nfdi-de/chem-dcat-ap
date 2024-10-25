@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dcat_4c_ap"
-version = "0.1.0"
+version = "0.0.0.post2.dev0+cd63f19"
 description = "This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI 4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset."
 authors = ["Philip Strömert <philip.stroemert@tib.eu>"]
 license = "MIT"

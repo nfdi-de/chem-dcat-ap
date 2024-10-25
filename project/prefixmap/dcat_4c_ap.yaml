@@ -1,11 +1,95 @@
 {
+   "BFO": "http://purl.obolibrary.org/obo/BFO_",
+   "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_",
+   "CHEMINF": "http://semanticscience.org/resource/CHEMINF_",
+   "CHMO": "http://purl.obolibrary.org/obo/CHMO_",
+   "FOODON": "http://purl.obolibrary.org/obo/FOODON_",
+   "IAO": "http://purl.obolibrary.org/obo/IAO_",
+   "NCIT": "http://purl.obolibrary.org/obo/NCIT_",
+   "OBI": "http://purl.obolibrary.org/obo/OBI_",
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
-   "biolink": "https://w3id.org/biolink/",
-   "dcat_4c_ap": "https://w3id.org/StroemPhi/dcat-4C-ap/",
-   "example": "https://example.org/",
+   "RO": "http://purl.obolibrary.org/obo/RO_",
+   "RXNO": "http://example.org/UNKNOWN/RXNO/",
+   "SIO": "http://semanticscience.org/resource/SIO_",
+   "T4FS": "http://purl.obolibrary.org/obo/T4FS_",
+   "biolink": "https://w3id.org/biolink/vocab/",
+   "dcat": "http://www.w3.org/ns/dcat#",
+   "dcterms": "http://purl.org/dc/terms/",
+   "doi": "https://doi.org/",
+   "ex": "http://example.org/",
+   "foaf": "http://xmlns.com/foaf/0.1/",
    "linkml": "https://w3id.org/linkml/",
+   "nfdi": "https://w3id.org/StroemPhi/dcat_4C_ap/",
+   "owl": "http://www.w3.org/2002/07/owl#",
+   "prov": "http://www.w3.org/ns/prov#",
+   "qudt": "http://qudt.org/schema/qudt/",
+   "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
    "schema": "http://schema.org/",
-   "NamedThing": {
-      "@id": "schema:Thing"
+   "skos": "http://www.w3.org/2004/02/skos/core#",
+   "sosa": "http://www.w3.org/ns/sosa/",
+   "vcard": "http://www.w3.org/2006/vcard/ns#",
+   "Attribute": {
+      "@id": "IAO:0000030"
+   },
+   "AttributeKind": {
+      "@id": "qudt:QuantityKind"
+   },
+   "ChemicalReaction": {
+      "@id": "RXNO:0000329"
+   },
+   "ChemicalSubstance": {
+      "@id": "CHEBI:59999"
+   },
+   "Dataset": {
+      "@id": "dcat:Dataset"
+   },
+   "DatasetCollection": {
+      "@id": "dcat:Catalog"
+   },
+   "DefinedTerm": {
+      "@id": "schema:DefinedTerm"
+   },
+   "EntityOfInterest": {
+      "@id": "prov:Entity"
+   },
+   "Environment": {
+      "@id": "prov:Entity"
+   },
+   "InChi": {
+      "@id": "CHEMINF:000113"
+   },
+   "InChIKey": {
+      "@id": "CHEMINF:000059"
+   },
+   "IUPACName": {
+      "@id": "CHEMINF:000107"
+   },
+   "Laboratory": {
+      "@id": "prov:Entity"
+   },
+   "NMRSpectroscopy": {
+      "@id": "CHMO:0000613"
+   },
+   "PlanSpecification": {
+      "@id": "prov:Entity"
+   },
+   "QuantifiableAttribute": {
+      "@id": "qudt:Quantity"
+   },
+   "ResearchActivity": {
+      "@id": "prov:Activity"
+   },
+   "ResearchActivitySpecification": {
+      "@id": "prov:Entity"
+   },
+   "SettingDatum": {
+      "@id": "IAO:0000140"
+   },
+   "Tool": {
+      "@id": "prov:Entity"
+   },
+   "Unit": {
+      "@id": "qudt:Unit"
    }
 }

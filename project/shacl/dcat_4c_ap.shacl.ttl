@@ -1,90 +1,800 @@
-@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
-@prefix dcat_4c_ap: <https://w3id.org/StroemPhi/dcat-4C-ap/> .
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix CHEMINF: <http://semanticscience.org/resource/CHEMINF_> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix nfdi: <https://w3id.org/StroemPhi/dcat_4C_ap/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema1: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-schema1:Thing a sh:NodeShape ;
+<RXNO:0000329> a sh:NodeShape ;
     sh:closed true ;
-    sh:description "A generic grouping for any identifiable entity" ;
-    sh:ignoredProperties ( dcat_4c_ap:vital_status schema1:email rdf:type schema1:birthDate dcat_4c_ap:age_in_years ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A human-readable name for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path schema1:name ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path schema1:identifier ],
-        [ sh:datatype xsd:string ;
-            sh:description "A human-readable description for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path schema1:description ] ;
-    sh:targetClass schema1:Thing .
-
-dcat_4c_ap:DatasetCollection a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A holder for Dataset objects" ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class dcat_4c_ap:Dataset ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path dcat_4c_ap:entries ] ;
-    sh:targetClass dcat_4c_ap:DatasetCollection .
-
-dcat_4c_ap:Dataset a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "Represents a Dataset" ;
+    sh:description "An experimental procedure with the aim of producing a portion of a given compound or mixture." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A human-readable description for a thing" ;
+            sh:description "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
-            sh:path schema1:description ],
-        [ sh:datatype xsd:string ;
-            sh:description "The main email address of a person" ;
-            sh:maxCount 1 ;
+            sh:path dcterms:hasPart ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path schema1:email ;
-            sh:pattern "^\\S+@[\\S+\\.]+\\S+" ],
-        [ sh:datatype xsd:date ;
-            sh:description "Date on which a person is born" ;
-            sh:maxCount 1 ;
+            sh:order 3 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path schema1:birthDate ],
-        [ sh:datatype xsd:string ;
-            sh:description "A human-readable name for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path schema1:name ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of years since birth" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path dcat_4c_ap:age_in_years ],
+            sh:path dcterms:title ],
         [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier for a thing" ;
+            sh:description "The slot to specify the canonical unique identifier of an entity." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path schema1:identifier ],
-        [ sh:description "living or dead status" ;
-            sh:in ( PATO:0001421 PATO:0001422 "UNKNOWN" ) ;
+            sh:order 0 ;
+            sh:path nfdi:id ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of the EntityOfInterest provided as a DefinedTerm." ;
             sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path rdf:type ],
+        [ sh:class IAO:0000030 ;
+            sh:description "The slot to related an attribute to an entity of interest, tool or environment." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path dcterms:relation ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:description ] ;
+    sh:targetClass <RXNO:0000329> .
+
+CHMO:0000613 a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class nfdi:HardwareTool ;
+            sh:description "The slot to specify the hardware that was used." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path prov:used ],
+        [ sh:datatype xsd:string ;
+            sh:description "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path dcterms:hasPart ],
+        [ sh:class CHEBI:59999 ;
+            sh:description "The slot to specify the entity of interest that was evaluated." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path prov:used ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:class nfdi:SoftwareTool ;
+            sh:description "The slot to specify the hardware that was used." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path prov:used ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of NMR Spectroscopy according provided as CURIE of a subclass of CHMO:0000613." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
             sh:order 3 ;
-            sh:path dcat_4c_ap:vital_status ] ;
-    sh:targetClass dcat_4c_ap:Dataset .
+            sh:path rdf:type ] ;
+    sh:targetClass CHMO:0000613 .
+
+qudt:Quantity a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path qudt:applicableUnit ],
+        [ sh:datatype xsd:string ;
+            sh:description "A slot to provide the value of an attribute." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path prov:value ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:title ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The slot to specify the type of Attribute provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path qudt:hasQuantityKind ] ;
+    sh:targetClass qudt:Quantity .
+
+qudt:QuantityKind a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass qudt:QuantityKind .
+
+qudt:Unit a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension)." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass qudt:Unit .
+
+dcat:Catalog a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A curated collection of metadata about data resources." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The name of a DatasetCollection." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path dcterms:identifier ],
+        [ sh:class dcat:Dataset ;
+            sh:description "The slot to list the datasets of a catalog." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path dcat:dataset ],
+        [ sh:class prov:Activity ;
+            sh:description "The slot to provide the ResearchActivity that created a Dataset." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path nfdi:was_generated_by ],
+        [ sh:datatype xsd:string ;
+            sh:description "A free-text account of a DatasetCollection." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The unique identifier of a Catalog." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path nfdi:id ] ;
+    sh:targetClass dcat:Catalog .
+
+CHEBI:59999 a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A chemical substance that is being evaluated in a scientific process." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path dcterms:description ],
+        [ sh:class CHEMINF:000113 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path nfdi:inchi ],
+        [ sh:class CHEMINF:000107 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 2 ;
+            sh:path nfdi:iupac_name ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the canonical unique identifier of an entity." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path nfdi:id ],
+        [ sh:class IAO:0000030 ;
+            sh:description "The slot to related an attribute to an entity of interest, tool or environment." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 8 ;
+            sh:path dcterms:relation ],
+        [ sh:datatype xsd:string ;
+            sh:description "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path dcterms:hasPart ],
+        [ sh:class CHEMINF:000059 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path nfdi:inchikey ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of the EntityOfInterest provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 7 ;
+            sh:path rdf:type ] ;
+    sh:targetClass CHEBI:59999 .
+
+CHEMINF:000059 a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class schema1:DefinedTerm ;
+            sh:description "The slot to specify the type of Attribute provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "A slot to provide the value of an attribute." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path prov:value ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ] ;
+    sh:targetClass CHEMINF:000059 .
+
+CHEMINF:000107 a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC)." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The slot to specify the type of Attribute provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "A slot to provide the value of an attribute." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path prov:value ] ;
+    sh:targetClass CHEMINF:000107 .
+
+CHEMINF:000113 a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A structure descriptor which conforms to the InChI format specification." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "A slot to provide the value of an attribute." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path prov:value ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The slot to specify the type of Attribute provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ] ;
+    sh:targetClass CHEMINF:000113 .
+
+dcat:Dataset a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A collection of data, published or curated by a single agent, and available for access or download in one or more representations." ;
+    sh:ignoredProperties ( rdf:type dcat:dataset ) ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the canonical unique identifier of an entity." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path nfdi:id ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path dcterms:identifier ],
+        [ sh:class prov:Activity ;
+            sh:description "The slot to provide the ResearchActivity that created a Dataset." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path nfdi:was_generated_by ],
+        [ sh:datatype xsd:string ;
+            sh:description "The label, name or title of a Dataset." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "A free-text account of a Dataset." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:description ] ;
+    sh:targetClass dcat:Dataset .
+
+prov:Activity a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "An activity (process) that has the objective to produce information about an entity by evaluating it." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:class nfdi:HardwareTool ;
+            sh:description "The slot to specify the hardware that was used." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path prov:used ],
+        [ sh:class prov:Entity ;
+            sh:description "The slot to specify the entity of interest that was evaluated." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path prov:used ],
+        [ sh:class nfdi:SoftwareTool ;
+            sh:description "The slot to specify the hardware that was used." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path prov:used ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of the ResearchActivity provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 7 ;
+            sh:path dcterms:hasPart ] ;
+    sh:targetClass prov:Activity .
+
+nfdi:HardwareTool a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A hardware with a certain function." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class IAO:0000140 ;
+            sh:description "The slot to specify the setting of a hardware or software tool." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path nfdi:has_setting ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:class prov:Entity ;
+            sh:description "The slot to specify parts of a tool." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path dcterms:hasPart ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:class IAO:0000030 ;
+            sh:description "The slot to related an attribute to an entity of interest, tool or environment." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path dcterms:relation ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of the Tool provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ] ;
+    sh:targetClass nfdi:HardwareTool .
+
+nfdi:SoftwareTool a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A software with a certain function." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class prov:Entity ;
+            sh:description "The slot to specify parts of a tool." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path dcterms:hasPart ],
+        [ sh:class IAO:0000140 ;
+            sh:description "The slot to specify the setting of a hardware or software tool." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path nfdi:has_setting ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:class IAO:0000030 ;
+            sh:description "The slot to related an attribute to an entity of interest, tool or environment." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path dcterms:relation ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of the Tool provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ] ;
+    sh:targetClass nfdi:SoftwareTool .
+
+IAO:0000140 a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "An attribute that specifies the configuration of a tool." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The slot to specify the type of Attribute provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "A slot to provide the value of an attribute." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path prov:value ] ;
+    sh:targetClass IAO:0000140 .
+
+prov:Entity a sh:NodeShape ;
+    sh:closed true ;
+    sh:description """"A piece of information that specifies: 
+    a) how an activity has to be carried out by its agents and 
+    b) the attributes of the passive activity participants in terms of their presence and magnitude.""",
+        "A PlanSpecification that specifies a ResearchActivity.",
+        "A entity with a certain function used within a scientific activity.",
+        "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.",
+        "Something that is being evaluated in a scientific process.",
+        "The environment in which the dataset creating Observation took place (e.g. a lab)." ;
+    sh:ignoredProperties ( rdf:type ),
+        ( rdf:type ),
+        ( rdf:type ),
+        ( rdf:type ),
+        ( rdf:type ),
+        ( nfdi:inchi rdf:type nfdi:iupac_name nfdi:inchikey ) ;
+    sh:property [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of PlanSpecification provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path rdf:type ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of Environment provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the canonical unique identifier of an entity." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path nfdi:id ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:title ],
+        [ sh:class IAO:0000030 ;
+            sh:description "The slot to related an attribute to an entity of interest, tool or environment." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path dcterms:relation ],
+        [ sh:class prov:Entity ;
+            sh:description "The slot to specify parts of a tool." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path dcterms:hasPart ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:class IAO:0000030 ;
+            sh:description "The slot to related an attribute to an entity of interest, tool or environment." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path dcterms:relation ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:class IAO:0000140 ;
+            sh:description "The slot to specify the setting of a hardware or software tool." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 6 ;
+            sh:path nfdi:has_setting ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of PlanSpecification provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path dcterms:hasPart ],
+        [ sh:class IAO:0000030 ;
+            sh:description "The slot to related an attribute to an entity of interest, tool or environment." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 4 ;
+            sh:path dcterms:relation ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:class IAO:0000030 ;
+            sh:description "The slot to related an attribute to an entity of interest, tool or environment." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 5 ;
+            sh:path dcterms:relation ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of the Tool provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of Environment provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:description ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of the EntityOfInterest provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path dcterms:identifier ] ;
+    sh:targetClass prov:Entity .
+
+IAO:0000030 a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A piece of information that is attributed to an entity of interest, tool or environment." ;
+    sh:ignoredProperties ( rdf:type qudt:applicableUnit qudt:hasQuantityKind ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "A slot to provide the value of an attribute." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path prov:value ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dcterms:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dcterms:title ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The slot to specify the type of Attribute provided as a DefinedTerm." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path rdf:type ],
+        [ sh:datatype xsd:string ;
+            sh:description "The slot to provide a free-text account of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ] ;
+    sh:targetClass IAO:0000030 .
+
+schema1:DefinedTerm a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "The slot to specify the label, name or title of a thing." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path schema1:name ],
+        [ sh:datatype xsd:string ;
+            sh:description "The name of the controlled vocabulary." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path schema1:inDefinedTermSet ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path schema1:identifier ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "The slot to specify the canonical unique identifier of an entity." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path nfdi:id ] ;
+    sh:targetClass schema1:DefinedTerm .
 
