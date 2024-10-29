@@ -1,0 +1,149 @@
+---
+id: https://w3id.org/StroemPhi/dcat-4nfdi-ap-sosa
+name: dcat-4nfdi-ap-sosa
+title: DCAT-4NFDI-AP-SOSA
+description: |-
+  DCAT-AP core extension for NFDI mapped to SOSA so that the research activity becomes a SOSA:Observation.   
+license: CC-BY 4.0
+see_also:
+  - https://StroemPhi.github.io/dcat-NFDI-ap
+  - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
+  - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
+prefixes:
+  nfdi: https://w3id.org/StroemPhi/dcat-4nfdi-ap/
+  nfdi_sosa: https://w3id.org/StroemPhi/dcat-4nfdi-ap-sosa/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/vocab/
+  schema: http://schema.org/
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  prov: http://www.w3.org/ns/prov#
+  sosa: http://www.w3.org/ns/sosa/
+  vcard: http://www.w3.org/2006/vcard/ns#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  foaf: http://xmlns.com/foaf/0.1/
+  qudt: http://qudt.org/schema/qudt/
+  RO: http://purl.obolibrary.org/obo/RO_
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  IAO: http://purl.obolibrary.org/obo/IAO_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  T4FS: http://purl.obolibrary.org/obo/T4FS_
+  FOODON: http://purl.obolibrary.org/obo/FOODON_
+  CHEMINF: http://semanticscience.org/resource/CHEMINF_
+  RXNO: http://semanticscience.org/resource/RXNO_
+  ex: http://example.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  SIO: http://semanticscience.org/resource/SIO_
+  doi: https://doi.org/
+  NMR: "http://nmrML.org/nmrCV#NMR:"
+default_prefix: nfdi_sosa
+default_range: string
+imports:
+  - linkml:types
+  - dcat-4nfdi-ap
+
+classes:
+  
+  ObservationDataset:
+    is_a: Dataset
+    tree_root: true
+    class_uri: dcat:Dataset
+    description: >-
+      A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
+    slot_usage:
+      # required according to DCAT-AP specs
+      name:
+        description: The label, name or title of a Dataset.
+        required: true
+      description:
+        description: A free-text account of a Dataset.
+        required: true
+      was_generated_by:
+        ## the range will be changed with regard to the profile.
+        range: Observation
+
+  Observation:
+    is_a: ResearchActivity
+    class_uri: sosa:Observation
+    aliases:
+      - Observation
+    description: Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with.
+    slot_usage:
+      evaluated_entity:
+        slot_uri: sosa:hasFeatureOfInterest
+        description: The relation between an Observation and the entity whose quality was observed, or between an   Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled.
+        range: FeatureOfInterest
+      used_tool:
+        slot_uri: sosa:madeBySensor
+        range: Sensor
+        description: Thee relation between an Observation and the Sensor which made the Observation.
+      used_plan:
+        slot_uri: sosa:usedProcedure
+        range: Procedure
+      type:
+        description: The slot to specify the type of the ResearchActivity provided as a DefinedTerm.
+        range: DefinedTerm
+        inlined: true
+      has_part:
+        description: The slot to specify one or more parts of the ResearchActivity that are themselves also research activities.
+        range: Observation
+        inlined: true
+    narrow_mappings:
+      - NCIT:C25598
+      - sosa:Observation
+      - OBI:0000070
+  
+  FeatureOfInterest:
+    is_a: EntityOfInterest
+    class_uri: sosa:FeatureOfInterest
+    description: The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling.
+    slot_usage:
+      type:
+        description: The type of the EntityOfInterest provided as a DefinedTerm.
+        range: DefinedTerm
+        inlined: true
+  
+  Sensor:
+    is_a: Tool
+    class_uri: sosa:Sensor
+    description: Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms.
+    slot_usage:
+      type:
+        description: The type of the Tool provided as a DefinedTerm.
+        range: DefinedTerm
+        inlined: true
+      has_part:
+        description: The slot to specify parts of a tool.
+        range: Tool
+        inlined: true
+        multivalued: true
+        inlined_as_list: true
+    broad_mappings:
+      - prov:Entity
+    
+  Procedure:
+    is_a: ActivitySpecification
+    class_uri: sosa:Procedure
+    aliases:
+      - Method
+    description: |-
+      "A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results."
+    slot_usage:
+      type:
+        description: The type of Procedure provided as a DefinedTerm.
+        range: DefinedTerm
+        inlined: true
+    examples:
+      - description: "We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3)."
+  
+  ###################
+  # Attribute Types #
+  ###################
+
+# Slots
