@@ -19,12 +19,27 @@ was_generated_by:
     name: "CRS-37013"
     alternative_id:
       - https://www.chemotion-repository.net/pid/37013
-    inchikey:
-      has_value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
+    has_attribute:
+      - #id: doi:10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N/CHMO0000595/InChiKey
+        type:
+          id: CHEMINF:000059
+          name: InChiKey
+        value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
   used_tool:
     - #id: doi:10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N/CHMO0000595/spectrometer
       type:
         id: OBI:0000566
         name: "NMR instrument"
-          #has_setting: 
+      has_attribute:
+        - type: 
+            id: NMR:1400037
+            name: NMR pulse sequence
+          value: zgpg30
+      has_quantifiable_attribute:
+        - type: 
+            id: http://qudt.org/vocab/quantitykind/Temperature
+            name: Temperature
+          value: 298.0
+          unit: https://qudt.org/vocab/unit/K
+            
                       
