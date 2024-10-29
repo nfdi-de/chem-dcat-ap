@@ -237,13 +237,13 @@
     click Tool href "../Tool"
 
 
-      Tool : has_setting
+      Tool : has_quantifiable_attribute
 
 
 
 
-    Tool --&gt; "*" SettingDatum : has_setting
-    click SettingDatum href "../SettingDatum"
+    Tool --&gt; "*" QuantifiableAttribute : has_quantifiable_attribute
+    click QuantifiableAttribute href "../QuantifiableAttribute"
 
 
       Tool : name
@@ -311,13 +311,13 @@
 <tr>
 <td><a href="../has_attribute/">has_attribute</a></td>
 <td>* <br/> <a href="../Attribute/">Attribute</a></td>
-<td>The slot to related an attribute to an entity of interest, tool or environmen...</td>
+<td>The slot to relate an attribute to an entity of interest, tool or environment</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../has_setting/">has_setting</a></td>
-<td>* <br/> <a href="../SettingDatum/">SettingDatum</a></td>
-<td>The slot to specify the setting of a hardware or software tool</td>
+<td><a href="../has_quantifiable_attribute/">has_quantifiable_attribute</a></td>
+<td>* <br/> <a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
+<td>The slot to relate a quantifiable attribute to an entity of interest, tool or...</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -334,8 +334,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="./">Tool</a></td>
-<td><a href="../has_part/">has_part</a></td>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td><a href="../used_tool/">used_tool</a></td>
 <td>range</td>
 <td><a href="./">Tool</a></td>
 </tr>
@@ -347,6 +347,18 @@
 </tr>
 <tr>
 <td><a href="../SoftwareTool/">SoftwareTool</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Tool</a></td>
+</tr>
+<tr>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+<td><a href="../used_tool/">used_tool</a></td>
+<td>range</td>
+<td><a href="./">Tool</a></td>
+</tr>
+<tr>
+<td><a href="./">Tool</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">Tool</a></td>
@@ -373,7 +385,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:Tool</td>
+<td>nfdi4c:Tool</td>
 </tr>
 <tr>
 <td>broad</td>
@@ -397,7 +409,7 @@ slots:
 - type
 - has_part
 - has_attribute
-- has_setting
+- has_quantifiable_attribute
 slot_usage:
   type:
     name: type
@@ -455,7 +467,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -475,7 +487,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -515,7 +527,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: DefinedTerm
     recommended: true
@@ -538,7 +550,7 @@ attributes:
     inlined_as_list: true
   has_attribute:
     name: has_attribute
-    description: The slot to related an attribute to an entity of interest, tool or
+    description: The slot to relate an attribute to an entity of interest, tool or
       environment.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     exact_mappings:
@@ -556,17 +568,21 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  has_setting:
-    name: has_setting
-    description: The slot to specify the setting of a hardware or software tool.
+  has_quantifiable_attribute:
+    name: has_quantifiable_attribute
+    description: The slot to relate a quantifiable attribute to an entity of interest,
+      tool or environment.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     is_a: has_attribute
-    alias: has_setting
+    slot_uri: dcterms:relation
+    alias: has_quantifiable_attribute
     owner: Tool
     domain_of:
+    - EntityOfInterest
     - Tool
-    range: SettingDatum
+    - Environment
+    range: QuantifiableAttribute
     multivalued: true
     inlined: true
     inlined_as_list: true

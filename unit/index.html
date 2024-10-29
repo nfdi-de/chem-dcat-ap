@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/NMRSpectroscopyEnum/">
+        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/unit/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Enum: NMRSpectroscopyEnum - dcat-4C-ap</title>
+        <title>Slot: unit - dcat-4C-ap</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#enum-nmrspectroscopyenum" class="md-skip">
+        <a href="#slot-unit" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Enum: NMRSpectroscopyEnum
+              Slot: unit
             
           </span>
         </div>
@@ -256,6 +256,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    Applicable Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    Properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     Identifier and Mapping Information
   </a>
@@ -272,6 +286,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    Mappings
+  </a>
   
 </li>
       
@@ -296,38 +317,78 @@
                 
                   
 
-  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/NMRSpectroscopyEnum.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/unit.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="enum-nmrspectroscopyenum">Enum: NMRSpectroscopyEnum</h1>
-<p>URI: <a href="./">NMRSpectroscopyEnum</a></p>
-<p><em>This is a dynamic enum</em></p>
+<h1 id="slot-unit">Slot: unit</h1>
+<p>URI: <a href="http://qudt.org/schema/qudt/applicableUnit">qudt:applicableUnit</a></p>
+<!-- no inheritance hierarchy -->
+
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
+<td>An attribute that is quantifiable</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h2 id="properties">Properties</h2>
+<ul>
+<li>Range: <a href="../DefinedTerm/">DefinedTerm</a></li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/StroemPhi/dcat-4C-ap</li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>qudt:applicableUnit</td>
+</tr>
+<tr>
+<td>native</td>
+<td>nfdi4c:unit</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: NMRSpectroscopyEnum
+<pre><code class="language-yaml">name: unit
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
 rank: 1000
-minus:
-- permissible_values:
-    root_node:
-      text: root_node
-      meaning: CHMO:0000613
-reachable_from:
-  source_ontology: bioregistry:chmo
-  source_nodes:
-  - CHMO:0000613
-  relationship_types:
-  - rdfs:subClassOf
-  is_direct: false
+slot_uri: qudt:applicableUnit
+alias: unit
+owner: QuantifiableAttribute
+domain_of:
+- QuantifiableAttribute
+range: DefinedTerm
+bindings:
+- range: QUDTUnitEnum
+  obligation_level: RECOMMENDED
+  binds_value_of: id
+  description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
 
 </code></pre>
 

@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/ResearchActivityTypeEnum/">
+        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/QUDTQuantityKindEnum/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Enum: ResearchActivityTypeEnum - dcat-4C-ap</title>
+        <title>Enum: QUDTQuantityKindEnum - dcat-4C-ap</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#enum-researchactivitytypeenum" class="md-skip">
+        <a href="#enum-qudtquantitykindenum" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Enum: ResearchActivityTypeEnum
+              Enum: QUDTQuantityKindEnum
             
           </span>
         </div>
@@ -296,14 +296,15 @@
                 
                   
 
-  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/ResearchActivityTypeEnum.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/QUDTQuantityKindEnum.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="enum-researchactivitytypeenum">Enum: ResearchActivityTypeEnum</h1>
-<p>URI: <a href="./">ResearchActivityTypeEnum</a></p>
+<h1 id="enum-qudtquantitykindenum">Enum: QUDTQuantityKindEnum</h1>
+<p><em>Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.</em></p>
+<p>URI: <a href="./">QUDTQuantityKindEnum</a></p>
 <p><em>This is a dynamic enum</em></p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -313,9 +314,20 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: ResearchActivityTypeEnum
+<pre><code class="language-yaml">name: QUDTQuantityKindEnum
+implements:
+- owl:NamedIndividual
+description: Possible kinds of quantifiable attribute types provided as QUDT QualityKind
+  instances.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
 rank: 1000
+reachable_from:
+  source_ontology: http://qudt.org/2.1/vocab/quantitykind
+  source_nodes:
+  - qudt:QuantityKind
+  relationship_types:
+  - rdfs:type
+  is_direct: true
 
 </code></pre>
 

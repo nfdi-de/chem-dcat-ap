@@ -321,7 +321,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:Dataset</td>
+<td>nfdi4c:Dataset</td>
 </tr>
 </tbody>
 </table>
@@ -330,8 +330,6 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Dataset
-implements:
-- dcat:Dataset
 description: A collection of data, published or curated by a single agent, and available
   for access or download in one or more representations.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
@@ -361,8 +359,6 @@ tree_root: true
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Dataset
-implements:
-- dcat:Dataset
 description: A collection of data, published or curated by a single agent, and available
   for access or download in one or more representations.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
@@ -412,7 +408,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     required: true
@@ -433,7 +429,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     required: true
@@ -470,6 +466,7 @@ attributes:
     close_mappings:
     - schema:measurementTechnique
     rank: 1000
+    slot_uri: prov:wasGeneratedBy
     alias: was_generated_by
     owner: Dataset
     domain_of:

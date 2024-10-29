@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/inchi/">
+        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/NMRAssayEnum/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: inchi - dcat-4C-ap</title>
+        <title>Enum: NMRAssayEnum - dcat-4C-ap</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-inchi" class="md-skip">
+        <a href="#enum-nmrassayenum" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: inchi
+              Enum: NMRAssayEnum
             
           </span>
         </div>
@@ -256,20 +256,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    Applicable Classes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     Identifier and Mapping Information
   </a>
@@ -286,13 +272,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    Mappings
-  </a>
   
 </li>
       
@@ -317,72 +296,35 @@
                 
                   
 
-  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/inchi.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/NMRAssayEnum.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-inchi">Slot: inchi</h1>
-<p>URI: <a href="https://w3id.org/StroemPhi/dcat_4C_ap/inchi">nfdi:inchi</a></p>
-<!-- no inheritance hierarchy -->
-
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A chemical substance that is being evaluated in a scientific process</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../InChi/">InChi</a></li>
-</ul>
+<h1 id="enum-nmrassayenum">Enum: NMRAssayEnum</h1>
+<p><em>NMR types from the Chemical Methods Ontology</em></p>
+<p>URI: <a href="./">NMRAssayEnum</a></p>
+<p><em>This is a dynamic enum</em></p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/StroemPhi/dcat-4C-ap</li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>nfdi:inchi</td>
-</tr>
-<tr>
-<td>native</td>
-<td>nfdi:inchi</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: inchi
+<pre><code class="language-yaml">name: NMRAssayEnum
+description: NMR types from the Chemical Methods Ontology
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
 rank: 1000
-alias: inchi
-owner: ChemicalSubstance
-domain_of:
-- ChemicalSubstance
-range: InChi
+reachable_from:
+  source_ontology: bioregistry:chmo
+  source_nodes:
+  - CHMO:0000613
+  relationship_types:
+  - rdfs:subClassOf
+  is_direct: false
 
 </code></pre>
 

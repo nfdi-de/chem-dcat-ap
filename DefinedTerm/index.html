@@ -265,19 +265,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ResearchActivity/">ResearchActivity</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
-<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
 <td><a href="../type/">type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
@@ -295,12 +283,6 @@
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
-<td><a href="../Tool/">Tool</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
 <td><a href="../HardwareTool/">HardwareTool</a></td>
 <td><a href="../type/">type</a></td>
 <td>range</td>
@@ -313,43 +295,7 @@
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
-<td><a href="../Environment/">Environment</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
 <td><a href="../Laboratory/">Laboratory</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
-<td><a href="../PlanSpecification/">PlanSpecification</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
-<td><a href="../ResearchActivitySpecification/">ResearchActivitySpecification</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
-<td><a href="../Attribute/">Attribute</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
-<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
-<td><a href="../SettingDatum/">SettingDatum</a></td>
 <td><a href="../type/">type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
@@ -368,6 +314,54 @@
 </tr>
 <tr>
 <td><a href="../IUPACName/">IUPACName</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../Tool/">Tool</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../Environment/">Environment</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../ActivitySpecification/">ActivitySpecification</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../Attribute/">Attribute</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
+<td><a href="../unit/">unit</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
 <td><a href="../type/">type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
@@ -394,7 +388,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:DefinedTerm</td>
+<td>nfdi4c:DefinedTerm</td>
 </tr>
 </tbody>
 </table>
@@ -421,7 +415,7 @@ attributes:
   from_CV:
     name: from_CV
     description: The name of the controlled vocabulary.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    from_schema: https://w3id.org/StroemPhi/dcat-4nfdi-ap
     rank: 1000
     slot_uri: schema:inDefinedTermSet
     domain_of:
@@ -447,7 +441,7 @@ attributes:
   from_CV:
     name: from_CV
     description: The name of the controlled vocabulary.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    from_schema: https://w3id.org/StroemPhi/dcat-4nfdi-ap
     rank: 1000
     slot_uri: schema:inDefinedTermSet
     alias: from_CV
@@ -468,6 +462,7 @@ attributes:
     - Dataset
     - EntityOfInterest
     range: uriorcurie
+    required: true
   alternative_id:
     name: alternative_id
     description: The slot to specify the unique identifier of an entity that is not
@@ -487,6 +482,7 @@ attributes:
     - Attribute
     range: uriorcurie
     multivalued: true
+    inlined: true
     inlined_as_list: true
   name:
     name: name
@@ -507,10 +503,11 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
+    inlined: true
     inlined_as_list: true
 class_uri: schema:DefinedTerm
 

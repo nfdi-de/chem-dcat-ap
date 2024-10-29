@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/inchikey/">
+        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/is_delta_attribute/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: inchikey - dcat-4C-ap</title>
+        <title>Slot: is_delta_attribute - dcat-4C-ap</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-inchikey" class="md-skip">
+        <a href="#slot-is_delta_attribute" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: inchikey
+              Slot: is_delta_attribute
             
           </span>
         </div>
@@ -317,14 +317,15 @@
                 
                   
 
-  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/inchikey.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/is_delta_attribute.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-inchikey">Slot: inchikey</h1>
-<p>URI: <a href="https://w3id.org/StroemPhi/dcat_4C_ap/inchikey">nfdi:inchikey</a></p>
+<h1 id="slot-is_delta_attribute">Slot: is_delta_attribute</h1>
+<p><em>This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets.</em></p>
+<p>URI: <a href="http://qudt.org/schema/qudt/Quantity-isDeltaQuantity">qudt:Quantity-isDeltaQuantity</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -338,15 +339,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A chemical substance that is being evaluated in a scientific process</td>
+<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
+<td>An attribute that is quantifiable</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../InChIKey/">InChIKey</a></li>
+<li>Range: <a href="../Boolean/">Boolean</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -364,26 +365,30 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>nfdi:inchikey</td>
+<td>qudt:Quantity-isDeltaQuantity</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:inchikey</td>
+<td>nfdi4c:is_delta_attribute</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: inchikey
+<pre><code class="language-yaml">name: is_delta_attribute
+description: This property is used to identify a Quantity instance that is a measure
+  of a change, or interval, of some property, rather than a measure of its absolute
+  value. This is important for measurements such as temperature differences where
+  the conversion among units would be calculated differently because of offsets.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
 rank: 1000
-alias: inchikey
-owner: ChemicalSubstance
+slot_uri: qudt:Quantity-isDeltaQuantity
+alias: is_delta_attribute
+owner: QuantifiableAttribute
 domain_of:
-- ChemicalSubstance
-range: InChIKey
-inlined: true
+- QuantifiableAttribute
+range: boolean
 
 </code></pre>
 

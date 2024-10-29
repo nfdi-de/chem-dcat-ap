@@ -152,11 +152,6 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-    Usages
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#aliases">
     Aliases
   </a>
@@ -211,7 +206,7 @@
 </a>
 <h1 id="class-hardwaretool">Class: HardwareTool</h1>
 <p><em>A hardware with a certain function.</em></p>
-<p>URI: <a href="https://w3id.org/StroemPhi/dcat_4C_ap/HardwareTool">nfdi:HardwareTool</a></p>
+<p>URI: <a href="https://w3id.org/StroemPhi/dcat_4C_ap/HardwareTool">nfdi4c:HardwareTool</a></p>
 <div class="mermaid"> classDiagram
     class HardwareTool
     click HardwareTool href "../HardwareTool"
@@ -240,13 +235,13 @@
     click Tool href "../Tool"
 
 
-      HardwareTool : has_setting
+      HardwareTool : has_quantifiable_attribute
 
 
 
 
-    HardwareTool --&gt; "*" SettingDatum : has_setting
-    click SettingDatum href "../SettingDatum"
+    HardwareTool --&gt; "*" QuantifiableAttribute : has_quantifiable_attribute
+    click QuantifiableAttribute href "../QuantifiableAttribute"
 
 
       HardwareTool : name
@@ -313,39 +308,14 @@
 <tr>
 <td><a href="../has_attribute/">has_attribute</a></td>
 <td>* <br/> <a href="../Attribute/">Attribute</a></td>
-<td>The slot to related an attribute to an entity of interest, tool or environmen...</td>
+<td>The slot to relate an attribute to an entity of interest, tool or environment</td>
 <td><a href="../Tool/">Tool</a></td>
 </tr>
 <tr>
-<td><a href="../has_setting/">has_setting</a></td>
-<td>* <br/> <a href="../SettingDatum/">SettingDatum</a></td>
-<td>The slot to specify the setting of a hardware or software tool</td>
+<td><a href="../has_quantifiable_attribute/">has_quantifiable_attribute</a></td>
+<td>* <br/> <a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
+<td>The slot to relate a quantifiable attribute to an entity of interest, tool or...</td>
 <td><a href="../Tool/">Tool</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../ResearchActivity/">ResearchActivity</a></td>
-<td><a href="../used_hardware/">used_hardware</a></td>
-<td>range</td>
-<td><a href="./">HardwareTool</a></td>
-</tr>
-<tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td><a href="../used_hardware/">used_hardware</a></td>
-<td>range</td>
-<td><a href="./">HardwareTool</a></td>
 </tr>
 </tbody>
 </table>
@@ -369,11 +339,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>nfdi:HardwareTool</td>
+<td>nfdi4c:HardwareTool</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:HardwareTool</td>
+<td>nfdi4c:HardwareTool</td>
 </tr>
 </tbody>
 </table>
@@ -418,7 +388,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -438,7 +408,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -478,7 +448,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: DefinedTerm
     recommended: true
@@ -501,7 +471,7 @@ attributes:
     inlined_as_list: true
   has_attribute:
     name: has_attribute
-    description: The slot to related an attribute to an entity of interest, tool or
+    description: The slot to relate an attribute to an entity of interest, tool or
       environment.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     exact_mappings:
@@ -519,17 +489,21 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  has_setting:
-    name: has_setting
-    description: The slot to specify the setting of a hardware or software tool.
+  has_quantifiable_attribute:
+    name: has_quantifiable_attribute
+    description: The slot to relate a quantifiable attribute to an entity of interest,
+      tool or environment.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     is_a: has_attribute
-    alias: has_setting
+    slot_uri: dcterms:relation
+    alias: has_quantifiable_attribute
     owner: HardwareTool
     domain_of:
+    - EntityOfInterest
     - Tool
-    range: SettingDatum
+    - Environment
+    range: QuantifiableAttribute
     multivalued: true
     inlined: true
     inlined_as_list: true

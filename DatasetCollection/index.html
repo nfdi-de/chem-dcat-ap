@@ -312,7 +312,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:DatasetCollection</td>
+<td>nfdi4c:DatasetCollection</td>
 </tr>
 </tbody>
 </table>
@@ -405,7 +405,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     required: true
@@ -426,7 +426,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     required: true
@@ -463,6 +463,7 @@ attributes:
     close_mappings:
     - schema:measurementTechnique
     rank: 1000
+    slot_uri: prov:wasGeneratedBy
     alias: was_generated_by
     owner: DatasetCollection
     domain_of:

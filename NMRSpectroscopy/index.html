@@ -223,6 +223,13 @@
 
       NMRSpectroscopy : has_part
 
+
+
+
+    NMRSpectroscopy --&gt; "0..1" ResearchActivity : has_part
+    click ResearchActivity href "../ResearchActivity"
+
+
       NMRSpectroscopy : name
 
       NMRSpectroscopy : type
@@ -234,22 +241,22 @@
     click DefinedTerm href "../DefinedTerm"
 
 
-      NMRSpectroscopy : used_hardware
+      NMRSpectroscopy : used_plan
 
 
 
 
-    NMRSpectroscopy --&gt; "* _recommended_" HardwareTool : used_hardware
-    click HardwareTool href "../HardwareTool"
+    NMRSpectroscopy --&gt; "0..1 _recommended_" ActivitySpecification : used_plan
+    click ActivitySpecification href "../ActivitySpecification"
 
 
-      NMRSpectroscopy : used_software
+      NMRSpectroscopy : used_tool
 
 
 
 
-    NMRSpectroscopy --&gt; "* _recommended_" SoftwareTool : used_software
-    click SoftwareTool href "../SoftwareTool"
+    NMRSpectroscopy --&gt; "* _recommended_" Tool : used_tool
+    click Tool href "../Tool"
 
 
 
@@ -303,21 +310,21 @@
 <td><a href="../ResearchActivity/">ResearchActivity</a></td>
 </tr>
 <tr>
-<td><a href="../used_hardware/">used_hardware</a></td>
-<td>* <em>recommended</em> <br/> <a href="../HardwareTool/">HardwareTool</a></td>
-<td>The slot to specify the hardware that was used</td>
+<td><a href="../used_tool/">used_tool</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Tool/">Tool</a></td>
+<td>The slot to specify the tool that was used</td>
 <td><a href="../ResearchActivity/">ResearchActivity</a></td>
 </tr>
 <tr>
-<td><a href="../used_software/">used_software</a></td>
-<td>* <em>recommended</em> <br/> <a href="../SoftwareTool/">SoftwareTool</a></td>
-<td>The slot to specify the hardware that was used</td>
+<td><a href="../used_plan/">used_plan</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../ActivitySpecification/">ActivitySpecification</a></td>
+<td>The slot to specify the PlanSpecification (Method) that was used in the Resea...</td>
 <td><a href="../ResearchActivity/">ResearchActivity</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A transitive, reflexive and antisymmetric relation between a whole and itself...</td>
+<td>0..1 <br/> <a href="../ResearchActivity/">ResearchActivity</a></td>
+<td>The slot to specify one or more parts of the ResearchActivity that are themse...</td>
 <td><a href="../ResearchActivity/">ResearchActivity</a></td>
 </tr>
 </tbody>
@@ -342,7 +349,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:NMRSpectroscopy</td>
+<td>nfdi4c:NMRSpectroscopy</td>
 </tr>
 </tbody>
 </table>
@@ -365,6 +372,13 @@ slot_usage:
     name: type
     description: The type of NMR Spectroscopy according provided as CURIE of a subclass
       of CHMO:0000613.
+    range: DefinedTerm
+    bindings:
+    - range: NMRAssayEnum
+      obligation_level: RECOMMENDED
+      binds_value_of: id
+      description: NMR types from the Chemical Methods Ontology
+    inlined: true
 class_uri: CHMO:0000613
 
 </code></pre>
@@ -386,6 +400,13 @@ slot_usage:
     name: type
     description: The type of NMR Spectroscopy according provided as CURIE of a subclass
       of CHMO:0000613.
+    range: DefinedTerm
+    bindings:
+    - range: NMRAssayEnum
+      obligation_level: RECOMMENDED
+      binds_value_of: id
+      description: NMR types from the Chemical Methods Ontology
+    inlined: true
 attributes:
   name:
     name: name
@@ -406,7 +427,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -426,7 +447,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -467,9 +488,14 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: DefinedTerm
+    bindings:
+    - range: NMRAssayEnum
+      obligation_level: RECOMMENDED
+      binds_value_of: id
+      description: NMR types from the Chemical Methods Ontology
     recommended: true
     inlined: true
   evaluated_entity:
@@ -485,40 +511,38 @@ attributes:
     range: ChemicalSubstance
     recommended: true
     inlined: true
-  used_hardware:
-    name: used_hardware
-    description: The slot to specify the hardware that was used.
+  used_tool:
+    name: used_tool
+    description: The slot to specify the tool that was used.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     slot_uri: prov:used
-    alias: used_hardware
+    alias: used_tool
     owner: NMRSpectroscopy
     domain_of:
     - ResearchActivity
-    range: HardwareTool
+    range: Tool
     recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
-  used_software:
-    name: used_software
-    description: The slot to specify the hardware that was used.
+  used_plan:
+    name: used_plan
+    description: The slot to specify the PlanSpecification (Method) that was used
+      in the ResearchActivity.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     slot_uri: prov:used
-    alias: used_software
+    alias: used_plan
     owner: NMRSpectroscopy
     domain_of:
     - ResearchActivity
-    range: SoftwareTool
+    range: ActivitySpecification
     recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   has_part:
     name: has_part
-    description: A transitive, reflexive and antisymmetric relation between a whole
-      and itself or a whole and its part.
+    description: The slot to specify one or more parts of the ResearchActivity that
+      are themselves also research activities.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:hasPart
@@ -528,7 +552,8 @@ attributes:
     - ResearchActivity
     - EntityOfInterest
     - Tool
-    range: string
+    range: ResearchActivity
+    inlined: true
 class_uri: CHMO:0000613
 
 </code></pre>

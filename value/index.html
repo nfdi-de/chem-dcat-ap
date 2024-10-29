@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/has_unit/">
+        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/value/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: has_unit - dcat-4C-ap</title>
+        <title>Slot: value - dcat-4C-ap</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-has_unit" class="md-skip">
+        <a href="#slot-value" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: has_unit
+              Slot: value
             
           </span>
         </div>
@@ -256,6 +256,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    Applicable Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     Properties
   </a>
@@ -310,16 +317,54 @@
                 
                   
 
-  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/has_unit.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/value.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-has_unit">Slot: has_unit</h1>
-<p>URI: <a href="https://w3id.org/StroemPhi/dcat_4C_ap/has_unit">nfdi:has_unit</a></p>
+<h1 id="slot-value">Slot: value</h1>
+<p><em>A slot to provide the value of an attribute.</em></p>
+<p>URI: <a href="http://www.w3.org/ns/prov#value">prov:value</a></p>
 <!-- no inheritance hierarchy -->
 
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../InChIKey/">InChIKey</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Attribute/">Attribute</a></td>
+<td>A piece of information that is attributed to an entity of interest, tool or e...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
+<td>An attribute that is quantifiable</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../InChi/">InChi</a></td>
+<td>A structure descriptor which conforms to the InChI format specification</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../IUPACName/">IUPACName</a></td>
+<td>An IUPAC name is a systematic name which is formulated according to the rules...</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
@@ -340,21 +385,25 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>nfdi:has_unit</td>
+<td>prov:value</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:has_unit</td>
+<td>nfdi4c:value</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: has_unit
+<pre><code class="language-yaml">name: value
+description: A slot to provide the value of an attribute.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
 rank: 1000
-alias: has_unit
+slot_uri: prov:value
+alias: value
+domain_of:
+- Attribute
 range: string
 
 </code></pre>

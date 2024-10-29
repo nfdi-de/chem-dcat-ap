@@ -393,6 +393,14 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="ActivitySpecification/">ActivitySpecification</a></td>
+<td>"A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude."</td>
+</tr>
+<tr>
+<td><a href="Any/">Any</a></td>
+<td>None</td>
+</tr>
+<tr>
 <td><a href="Attribute/">Attribute</a></td>
 <td>A piece of information that is attributed to an entity of interest, tool or environment.</td>
 </tr>
@@ -410,14 +418,10 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="QuantifiableAttribute/">QuantifiableAttribute</a></td>
-<td>None</td>
+<td>An attribute that is quantifiable.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SettingDatum/">SettingDatum</a></td>
-<td>An attribute that specifies the configuration of a tool.</td>
-</tr>
-<tr>
-<td><a href="AttributeKind/">AttributeKind</a></td>
+<td><a href="ChemAnalysisDataset/">ChemAnalysisDataset</a></td>
 <td>None</td>
 </tr>
 <tr>
@@ -453,22 +457,6 @@
 <td>A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.</td>
 </tr>
 <tr>
-<td><a href="PlanSpecification/">PlanSpecification</a></td>
-<td>"A piece of information that specifies:</td>
-</tr>
-<tr>
-<td>a) how an activity has to be carried out by its agents and</td>
-<td></td>
-</tr>
-<tr>
-<td>b) the attributes of the passive activity participants in terms of their presence and magnitude.</td>
-<td></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ResearchActivitySpecification/">ResearchActivitySpecification</a></td>
-<td>A PlanSpecification that specifies a ResearchActivity.</td>
-</tr>
-<tr>
 <td><a href="ResearchActivity/">ResearchActivity</a></td>
 <td>An activity (process) that has the objective to produce information about an entity by evaluating it.</td>
 </tr>
@@ -488,10 +476,6 @@
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SoftwareTool/">SoftwareTool</a></td>
 <td>A software with a certain function.</td>
 </tr>
-<tr>
-<td><a href="Unit/">Unit</a></td>
-<td>A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).</td>
-</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -508,10 +492,6 @@
 <td>The slot to specify the unique identifier of an entity that is not considered...</td>
 </tr>
 <tr>
-<td><a href="applicable_unit/">applicable_unit</a></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="description/">description</a></td>
 <td>The slot to provide a free-text account of a thing</td>
 </tr>
@@ -525,7 +505,7 @@
 </tr>
 <tr>
 <td><a href="has_attribute/">has_attribute</a></td>
-<td>The slot to related an attribute to an entity of interest, tool or environmen...</td>
+<td>The slot to relate an attribute to an entity of interest, tool or environment</td>
 </tr>
 <tr>
 <td><a href="has_dataset/">has_dataset</a></td>
@@ -536,36 +516,16 @@
 <td>A transitive, reflexive and antisymmetric relation between a whole and itself...</td>
 </tr>
 <tr>
-<td><a href="has_quantity_kind/">has_quantity_kind</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_setting/">has_setting</a></td>
-<td>The slot to specify the setting of a hardware or software tool</td>
-</tr>
-<tr>
-<td><a href="has_unit/">has_unit</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="has_value/">has_value</a></td>
-<td>A slot to provide the value of an attribute</td>
+<td><a href="has_quantifiable_attribute/">has_quantifiable_attribute</a></td>
+<td>The slot to relate a quantifiable attribute to an entity of interest, tool or...</td>
 </tr>
 <tr>
 <td><a href="id/">id</a></td>
 <td>The slot to specify the canonical unique identifier of an entity</td>
 </tr>
 <tr>
-<td><a href="inchi/">inchi</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="inchikey/">inchikey</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="iupac_name/">iupac_name</a></td>
-<td></td>
+<td><a href="is_delta_attribute/">is_delta_attribute</a></td>
+<td>This property is used to identify a Quantity instance that is a measure of a ...</td>
 </tr>
 <tr>
 <td><a href="name/">name</a></td>
@@ -576,12 +536,20 @@
 <td>The slot to specify the rdf:type of an entity according to a controlled vocab...</td>
 </tr>
 <tr>
-<td><a href="used_hardware/">used_hardware</a></td>
-<td>The slot to specify the hardware that was used</td>
+<td><a href="unit/">unit</a></td>
+<td></td>
 </tr>
 <tr>
-<td><a href="used_software/">used_software</a></td>
-<td>The slot to specify the hardware that was used</td>
+<td><a href="used_plan/">used_plan</a></td>
+<td>The slot to specify the PlanSpecification (Method) that was used in the Resea...</td>
+</tr>
+<tr>
+<td><a href="used_tool/">used_tool</a></td>
+<td>The slot to specify the tool that was used</td>
+</tr>
+<tr>
+<td><a href="value/">value</a></td>
+<td>A slot to provide the value of an attribute</td>
 </tr>
 <tr>
 <td><a href="was_generated_by/">was_generated_by</a></td>
@@ -599,16 +567,16 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="EntityOfInterestTypeEnum/">EntityOfInterestTypeEnum</a></td>
-<td></td>
+<td><a href="NMRAssayEnum/">NMRAssayEnum</a></td>
+<td>NMR types from the Chemical Methods Ontology</td>
 </tr>
 <tr>
-<td><a href="NMRSpectroscopyEnum/">NMRSpectroscopyEnum</a></td>
-<td></td>
+<td><a href="QUDTQuantityKindEnum/">QUDTQuantityKindEnum</a></td>
+<td>Possible kinds of quantifiable attribute types provided as QUDT QualityKind i...</td>
 </tr>
 <tr>
-<td><a href="ResearchActivityTypeEnum/">ResearchActivityTypeEnum</a></td>
-<td></td>
+<td><a href="QUDTUnitEnum/">QUDTUnitEnum</a></td>
+<td>Possible kinds of QUDT unit instances</td>
 </tr>
 </tbody>
 </table>

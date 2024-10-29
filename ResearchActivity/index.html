@@ -206,9 +206,6 @@
 </a>
 <h1 id="class-researchactivity">Class: ResearchActivity</h1>
 <p><em>An activity (process) that has the objective to produce information about an entity by evaluating it.</em></p>
-<ul>
-<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
-</ul>
 <p>URI: <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></p>
 <div class="mermaid"> classDiagram
     class ResearchActivity
@@ -231,6 +228,13 @@
 
       ResearchActivity : has_part
 
+
+
+
+    ResearchActivity --&gt; "0..1" ResearchActivity : has_part
+    click ResearchActivity href "../ResearchActivity"
+
+
       ResearchActivity : name
 
       ResearchActivity : type
@@ -242,22 +246,22 @@
     click DefinedTerm href "../DefinedTerm"
 
 
-      ResearchActivity : used_hardware
+      ResearchActivity : used_plan
 
 
 
 
-    ResearchActivity --&gt; "* _recommended_" HardwareTool : used_hardware
-    click HardwareTool href "../HardwareTool"
+    ResearchActivity --&gt; "0..1 _recommended_" ActivitySpecification : used_plan
+    click ActivitySpecification href "../ActivitySpecification"
 
 
-      ResearchActivity : used_software
+      ResearchActivity : used_tool
 
 
 
 
-    ResearchActivity --&gt; "* _recommended_" SoftwareTool : used_software
-    click SoftwareTool href "../SoftwareTool"
+    ResearchActivity --&gt; "* _recommended_" Tool : used_tool
+    click Tool href "../Tool"
 
 
 
@@ -301,7 +305,7 @@
 <tr>
 <td><a href="../type/">type</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
-<td>The type of the ResearchActivity provided as a DefinedTerm</td>
+<td>The slot to specify the type of the ResearchActivity provided as a DefinedTer...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -311,21 +315,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../used_hardware/">used_hardware</a></td>
-<td>* <em>recommended</em> <br/> <a href="../HardwareTool/">HardwareTool</a></td>
-<td>The slot to specify the hardware that was used</td>
+<td><a href="../used_tool/">used_tool</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Tool/">Tool</a></td>
+<td>The slot to specify the tool that was used</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../used_software/">used_software</a></td>
-<td>* <em>recommended</em> <br/> <a href="../SoftwareTool/">SoftwareTool</a></td>
-<td>The slot to specify the hardware that was used</td>
+<td><a href="../used_plan/">used_plan</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../ActivitySpecification/">ActivitySpecification</a></td>
+<td>The slot to specify the PlanSpecification (Method) that was used in the Resea...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A transitive, reflexive and antisymmetric relation between a whole and itself...</td>
+<td>0..1 <br/> <a href="./">ResearchActivity</a></td>
+<td>The slot to specify one or more parts of the ResearchActivity that are themse...</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -342,6 +346,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">ResearchActivity</a></td>
+</tr>
+<tr>
 <td><a href="../Dataset/">Dataset</a></td>
 <td><a href="../was_generated_by/">was_generated_by</a></td>
 <td>range</td>
@@ -350,6 +360,12 @@
 <tr>
 <td><a href="../DatasetCollection/">DatasetCollection</a></td>
 <td><a href="../was_generated_by/">was_generated_by</a></td>
+<td>range</td>
+<td><a href="./">ResearchActivity</a></td>
+</tr>
+<tr>
+<td><a href="./">ResearchActivity</a></td>
+<td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">ResearchActivity</a></td>
 </tr>
@@ -375,7 +391,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:ResearchActivity</td>
+<td>nfdi4c:ResearchActivity</td>
 </tr>
 <tr>
 <td>narrow</td>
@@ -395,21 +411,27 @@ narrow_mappings:
 - NCIT:C25598
 - sosa:Observation
 - OBI:0000070
-abstract: true
 slots:
 - name
 - description
 - alternative_id
 - type
 - evaluated_entity
-- used_hardware
-- used_software
+- used_tool
+- used_plan
 - has_part
 slot_usage:
   type:
     name: type
-    description: The type of the ResearchActivity provided as a DefinedTerm.
+    description: The slot to specify the type of the ResearchActivity provided as
+      a DefinedTerm.
     range: DefinedTerm
+    inlined: true
+  has_part:
+    name: has_part
+    description: The slot to specify one or more parts of the ResearchActivity that
+      are themselves also research activities.
+    range: ResearchActivity
     inlined: true
 class_uri: prov:Activity
 
@@ -425,12 +447,18 @@ narrow_mappings:
 - NCIT:C25598
 - sosa:Observation
 - OBI:0000070
-abstract: true
 slot_usage:
   type:
     name: type
-    description: The type of the ResearchActivity provided as a DefinedTerm.
+    description: The slot to specify the type of the ResearchActivity provided as
+      a DefinedTerm.
     range: DefinedTerm
+    inlined: true
+  has_part:
+    name: has_part
+    description: The slot to specify one or more parts of the ResearchActivity that
+      are themselves also research activities.
+    range: ResearchActivity
     inlined: true
 attributes:
   name:
@@ -452,7 +480,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -472,7 +500,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -501,7 +529,8 @@ attributes:
     inlined_as_list: true
   type:
     name: type
-    description: The type of the ResearchActivity provided as a DefinedTerm.
+    description: The slot to specify the type of the ResearchActivity provided as
+      a DefinedTerm.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     slot_uri: rdf:type
@@ -512,7 +541,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: DefinedTerm
     recommended: true
@@ -530,40 +559,38 @@ attributes:
     range: EntityOfInterest
     recommended: true
     inlined: true
-  used_hardware:
-    name: used_hardware
-    description: The slot to specify the hardware that was used.
+  used_tool:
+    name: used_tool
+    description: The slot to specify the tool that was used.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     slot_uri: prov:used
-    alias: used_hardware
+    alias: used_tool
     owner: ResearchActivity
     domain_of:
     - ResearchActivity
-    range: HardwareTool
+    range: Tool
     recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
-  used_software:
-    name: used_software
-    description: The slot to specify the hardware that was used.
+  used_plan:
+    name: used_plan
+    description: The slot to specify the PlanSpecification (Method) that was used
+      in the ResearchActivity.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     slot_uri: prov:used
-    alias: used_software
+    alias: used_plan
     owner: ResearchActivity
     domain_of:
     - ResearchActivity
-    range: SoftwareTool
+    range: ActivitySpecification
     recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   has_part:
     name: has_part
-    description: A transitive, reflexive and antisymmetric relation between a whole
-      and itself or a whole and its part.
+    description: The slot to specify one or more parts of the ResearchActivity that
+      are themselves also research activities.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:hasPart
@@ -573,7 +600,8 @@ attributes:
     - ResearchActivity
     - EntityOfInterest
     - Tool
-    range: string
+    range: ResearchActivity
+    inlined: true
 class_uri: prov:Activity
 
 </code></pre>

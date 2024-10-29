@@ -339,18 +339,38 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../InChIKey/">InChIKey</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Attribute/">Attribute</a></td>
 <td>A piece of information that is attributed to an entity of interest, tool or e...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../HardwareTool/">HardwareTool</a></td>
-<td>A hardware with a certain function</td>
+<td><a href="../SoftwareTool/">SoftwareTool</a></td>
+<td>A software with a certain function</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PlanSpecification/">PlanSpecification</a></td>
-<td>"A piece of information that specifies:</td>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+<td>An activity (process) that has the objective to produce information about an ...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Tool/">Tool</a></td>
+<td>A entity with a certain function used within a scientific activity</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ActivitySpecification/">ActivitySpecification</a></td>
+<td>"A piece of information that specifies: a) how an activity has to be carried ...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -359,13 +379,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SettingDatum/">SettingDatum</a></td>
-<td>An attribute that specifies the configuration of a tool</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
+<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
+<td>An attribute that is quantifiable</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -374,29 +389,14 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Tool/">Tool</a></td>
-<td>A entity with a certain function used within a scientific activity</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../IUPACName/">IUPACName</a></td>
-<td>An IUPAC name is a systematic name which is formulated according to the rules...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../InChIKey/">InChIKey</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SoftwareTool/">SoftwareTool</a></td>
-<td>A software with a certain function</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
 <td>A chemical substance that is being evaluated in a scientific process</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../Environment/">Environment</a></td>
+<td>The environment in which the dataset creating Observation took place (e</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../InChi/">InChi</a></td>
@@ -404,8 +404,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ResearchActivitySpecification/">ResearchActivitySpecification</a></td>
-<td>A PlanSpecification that specifies a ResearchActivity</td>
+<td><a href="../HardwareTool/">HardwareTool</a></td>
+<td>A hardware with a certain function</td>
 <td>no</td>
 </tr>
 <tr>
@@ -414,18 +414,8 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ResearchActivity/">ResearchActivity</a></td>
-<td>An activity (process) that has the objective to produce information about an ...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Environment/">Environment</a></td>
-<td>The environment in which the dataset creating Observation took place (e</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
-<td></td>
+<td><a href="../IUPACName/">IUPACName</a></td>
+<td>An IUPAC name is a systematic name which is formulated according to the rules...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -459,7 +449,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:type</td>
+<td>nfdi4c:type</td>
 </tr>
 </tbody>
 </table>
@@ -478,7 +468,7 @@ domain_of:
 - EntityOfInterest
 - Tool
 - Environment
-- PlanSpecification
+- ActivitySpecification
 - Attribute
 range: string
 recommended: true

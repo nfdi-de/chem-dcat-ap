@@ -210,22 +210,18 @@
 <div class="mermaid"> classDiagram
     class Attribute
     click Attribute href "../Attribute"
-      Attribute &lt;|-- QuantifiableAttribute
-        click QuantifiableAttribute href "../QuantifiableAttribute"
-      Attribute &lt;|-- SettingDatum
-        click SettingDatum href "../SettingDatum"
       Attribute &lt;|-- InChIKey
         click InChIKey href "../InChIKey"
       Attribute &lt;|-- InChi
         click InChi href "../InChi"
       Attribute &lt;|-- IUPACName
         click IUPACName href "../IUPACName"
+      Attribute &lt;|-- QuantifiableAttribute
+        click QuantifiableAttribute href "../QuantifiableAttribute"
 
       Attribute : alternative_id
 
       Attribute : description
-
-      Attribute : has_value
 
       Attribute : name
 
@@ -238,16 +234,17 @@
     click DefinedTerm href "../DefinedTerm"
 
 
+      Attribute : value
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Attribute</strong><ul>
-<li><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></li>
-<li><a href="../SettingDatum/">SettingDatum</a></li>
 <li><a href="../InChIKey/">InChIKey</a></li>
 <li><a href="../InChi/">InChi</a></li>
 <li><a href="../IUPACName/">IUPACName</a></li>
+<li><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></li>
 </ul>
 </li>
 </ul>
@@ -287,7 +284,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../has_value/">has_value</a></td>
+<td><a href="../value/">value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A slot to provide the value of an attribute</td>
 <td>direct</td>
@@ -306,12 +303,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
-<td><a href="../has_attribute/">has_attribute</a></td>
-<td>range</td>
-<td><a href="./">Attribute</a></td>
-</tr>
-<tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td><a href="../has_attribute/">has_attribute</a></td>
 <td>range</td>
@@ -319,12 +310,6 @@
 </tr>
 <tr>
 <td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td><a href="../has_attribute/">has_attribute</a></td>
-<td>range</td>
-<td><a href="./">Attribute</a></td>
-</tr>
-<tr>
-<td><a href="../Tool/">Tool</a></td>
 <td><a href="../has_attribute/">has_attribute</a></td>
 <td>range</td>
 <td><a href="./">Attribute</a></td>
@@ -342,13 +327,25 @@
 <td><a href="./">Attribute</a></td>
 </tr>
 <tr>
-<td><a href="../Environment/">Environment</a></td>
+<td><a href="../Laboratory/">Laboratory</a></td>
 <td><a href="../has_attribute/">has_attribute</a></td>
 <td>range</td>
 <td><a href="./">Attribute</a></td>
 </tr>
 <tr>
-<td><a href="../Laboratory/">Laboratory</a></td>
+<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
+<td><a href="../has_attribute/">has_attribute</a></td>
+<td>range</td>
+<td><a href="./">Attribute</a></td>
+</tr>
+<tr>
+<td><a href="../Tool/">Tool</a></td>
+<td><a href="../has_attribute/">has_attribute</a></td>
+<td>range</td>
+<td><a href="./">Attribute</a></td>
+</tr>
+<tr>
+<td><a href="../Environment/">Environment</a></td>
 <td><a href="../has_attribute/">has_attribute</a></td>
 <td>range</td>
 <td><a href="./">Attribute</a></td>
@@ -375,7 +372,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:Attribute</td>
+<td>nfdi4c:Attribute</td>
 </tr>
 </tbody>
 </table>
@@ -392,7 +389,7 @@ slots:
 - description
 - alternative_id
 - type
-- has_value
+- value
 slot_usage:
   type:
     name: type
@@ -435,7 +432,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -455,7 +452,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -495,18 +492,18 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: DefinedTerm
     recommended: true
     inlined: true
-  has_value:
-    name: has_value
+  value:
+    name: value
     description: A slot to provide the value of an attribute.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     slot_uri: prov:value
-    alias: has_value
+    alias: value
     owner: Attribute
     domain_of:
     - Attribute

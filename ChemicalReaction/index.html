@@ -201,7 +201,7 @@
 </a>
 <h1 id="class-chemicalreaction">Class: ChemicalReaction</h1>
 <p><em>An experimental procedure with the aim of producing a portion of a given compound or mixture.</em></p>
-<p>URI: <a href="RXNO:0000329">RXNO:0000329</a></p>
+<p>URI: <a href="http://semanticscience.org/resource/RXNO_0000329">RXNO:0000329</a></p>
 <div class="mermaid"> classDiagram
     class ChemicalReaction
     click ChemicalReaction href "../ChemicalReaction"
@@ -222,6 +222,15 @@
 
 
       ChemicalReaction : has_part
+
+      ChemicalReaction : has_quantifiable_attribute
+
+
+
+
+    ChemicalReaction --&gt; "*" QuantifiableAttribute : has_quantifiable_attribute
+    click QuantifiableAttribute href "../QuantifiableAttribute"
+
 
       ChemicalReaction : id
 
@@ -289,7 +298,13 @@
 <tr>
 <td><a href="../has_attribute/">has_attribute</a></td>
 <td>* <br/> <a href="../Attribute/">Attribute</a></td>
-<td>The slot to related an attribute to an entity of interest, tool or environmen...</td>
+<td>The slot to relate an attribute to an entity of interest, tool or environment</td>
+<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
+</tr>
+<tr>
+<td><a href="../has_quantifiable_attribute/">has_quantifiable_attribute</a></td>
+<td>* <br/> <a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
+<td>The slot to relate a quantifiable attribute to an entity of interest, tool or...</td>
 <td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
 </tr>
 <tr>
@@ -320,7 +335,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi:ChemicalReaction</td>
+<td>nfdi4c:ChemicalReaction</td>
 </tr>
 </tbody>
 </table>
@@ -378,7 +393,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -398,7 +413,7 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: string
     multivalued: true
@@ -438,14 +453,14 @@ attributes:
     - EntityOfInterest
     - Tool
     - Environment
-    - PlanSpecification
+    - ActivitySpecification
     - Attribute
     range: DefinedTerm
     recommended: true
     inlined: true
   has_attribute:
     name: has_attribute
-    description: The slot to related an attribute to an entity of interest, tool or
+    description: The slot to relate an attribute to an entity of interest, tool or
       environment.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     exact_mappings:
@@ -460,6 +475,24 @@ attributes:
     - Tool
     - Environment
     range: Attribute
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  has_quantifiable_attribute:
+    name: has_quantifiable_attribute
+    description: The slot to relate a quantifiable attribute to an entity of interest,
+      tool or environment.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    is_a: has_attribute
+    slot_uri: dcterms:relation
+    alias: has_quantifiable_attribute
+    owner: ChemicalReaction
+    domain_of:
+    - EntityOfInterest
+    - Tool
+    - Environment
+    range: QuantifiableAttribute
     multivalued: true
     inlined: true
     inlined_as_list: true
