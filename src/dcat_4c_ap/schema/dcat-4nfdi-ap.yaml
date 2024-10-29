@@ -48,6 +48,21 @@ imports:
 
 classes:
   
+  ClassifierMixin:
+    description: A mixin to provide the slots with which an entity of this schema can be classified either via an rdf:type or dcterms:type relation.
+    mixin: true
+    abstract: true
+    slots:
+      - type
+      - rdf_type
+    slot_usage: 
+      type:
+        inlined: true
+        range: DefinedTerm
+      rdf_type:
+        inlined: true
+        range: DefinedTerm
+
   DefinedTerm:
     class_uri: schema:DefinedTerm
     description: A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.
@@ -104,22 +119,20 @@ classes:
         description: A free-text account of a DatasetCollection.
 
   ResearchActivity:
+    mixins:
+      - ClassifierMixin
     class_uri: prov:Activity
     description: An activity (process) that has the objective to produce information about an entity by evaluating it.
     slots:
       - name
       - description
       - alternative_id
-      - type
       - evaluated_entity
       - used_tool
       - used_plan
       - has_part
+      - occurred_in
     slot_usage:
-      type:
-        description: The slot to specify the type of the ResearchActivity provided as a DefinedTerm.
-        range: DefinedTerm
-        inlined: true
       has_part:
         description: The slot to specify one or more parts of the ResearchActivity that are themselves also research activities.
         range: ResearchActivity
@@ -130,6 +143,8 @@ classes:
       - OBI:0000070
   
   EntityOfInterest:
+    mixins:
+      - ClassifierMixin
     class_uri: prov:Entity
     description: Something that is being evaluated in a scientific process.
     slots:
@@ -137,32 +152,23 @@ classes:
       - name
       - description
       - alternative_id
-      - type
       - has_attribute
       - has_quantifiable_attribute
       - has_part
-    slot_usage:
-      type:
-        description: The type of the EntityOfInterest provided as a DefinedTerm.
-        range: DefinedTerm
-        inlined: true
   
   Tool:
+    mixins:
+      - ClassifierMixin
     class_uri: prov:Entity
     description: A entity with a certain function used within a scientific activity.
     slots:
       - name
       - description
       - alternative_id
-      - type
       - has_part
       - has_attribute
       - has_quantifiable_attribute
     slot_usage:
-      type:
-        description: The type of the Tool provided as a DefinedTerm.
-        range: DefinedTerm
-        inlined: true
       has_part:
         description: The slot to specify parts of a tool.
         range: Tool
@@ -173,36 +179,28 @@ classes:
       - prov:Entity
   
   Environment:
+    mixins:
+      - ClassifierMixin
     class_uri: prov:Entity
     description: The environment in which the dataset creating Observation took place (e.g. a lab).
     slots:
       - name
       - description
       - alternative_id
-      - type
       - has_attribute
       - has_quantifiable_attribute
-    slot_usage:
-      type:
-        description: The type of Environment provided as a DefinedTerm.
-        range: DefinedTerm
-        inlined: true
   
   ActivitySpecification:
+    mixins:
+      - ClassifierMixin
     class_uri: prov:Entity
     aliases:
       - Method
     description: |-
-      "A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude."
+      A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.
     slots:
       - name
       - description
-      - type
-    slot_usage:
-      type:
-        description: The type of PlanSpecification provided as a DefinedTerm.
-        range: DefinedTerm
-        inlined: true
     examples:
       - description: "We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3)."
   
@@ -210,19 +208,15 @@ classes:
   # Attribute Types #
   ###################
   Attribute:
+    mixins:
+      - ClassifierMixin
     class_uri: IAO:0000030
     description: A piece of information that is attributed to an entity of interest, tool or environment.
     slots:
       - name
       - description
       - alternative_id
-      - type
       - value
-    slot_usage:
-      type:
-        description: The slot to specify the type of Attribute provided as a DefinedTerm.
-        range: DefinedTerm
-        inlined: true
         
   QuantifiableAttribute:
     is_a: Attribute
@@ -241,9 +235,9 @@ classes:
         slot_uri: qudt:Quantity-isDeltaQuantity
         description: This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets.
         range: boolean
-    slot_usage:
-      type:
+      has_quantity_type:
         range: DefinedTerm
+        description: The type of quality that is quantifiable according to the QUDT ontology.
         slot_uri: qudt:hasQuantityKind
         inlined: true
         bindings: ## new feature not yet implemented, see: https://github.com/linkml/linkml-model/releases/tag/v1.8.0
@@ -259,7 +253,7 @@ classes:
 slots:
   rdf_type:
     slot_uri: rdf:type
-    description: The slot to specify the ontology class that is instantiated by an entity. 
+    description: The slot to specify the ontology class that is instantiated by an entity.
     recommended: true
   type:
     slot_uri: dcterms:type
@@ -326,6 +320,10 @@ slots:
     description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
     recommended: true
     range: ActivitySpecification
+  occurred_in:
+    slot_uri: BFO:0000066
+    description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
+    range: ActivitySpecification
   has_part:
     slot_uri: dcterms:hasPart
     description: A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.
@@ -366,7 +364,7 @@ enums:
         - qudt:QuantityKind
       is_direct: true
       relationship_types:
-        - rdfs:type
+        - rdf:type
   QUDTUnitEnum:
     description: Possible kinds of QUDT unit instances.
     implements:
@@ -377,7 +375,7 @@ enums:
         - qudt:Unit
       is_direct: true
       relationship_types:
-        - rdfs:type
+        - rdf:type
     
 
 

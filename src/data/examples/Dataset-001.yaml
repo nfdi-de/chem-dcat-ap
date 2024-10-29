@@ -8,7 +8,7 @@ name: "13C nuclear magnetic resonance spectroscopy (13C NMR)"
 description: "Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)"
 was_generated_by:
   #id: doi:10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N/CHMO0000595/spectroscopy
-  type: #CHMO:0000595 # 'inlined' must be 'false' when 'range' of 'type' is set to an Enum
+  rdf_type: #CHMO:0000595 # 'inlined' must be 'false' when 'range' of 'type' is set to an Enum
     id: CHMO:0000595
     name: "13C nuclear magnetic resonance spectroscopy"
   evaluated_entity:

@@ -25,16 +25,16 @@ was_generated_by:
     rdf_type:
         id: OBI:0000566
         name: "NMR instrument"
-      has_attribute:
-        - rdf_type:
-            id: NMR:1400037
-            name: NMR pulse sequence
-          value: zgpg30
-      has_quantifiable_attribute:
-        - rdf_type:
-            id: http://qudt.org/vocab/quantitykind/Temperature
-            name: Temperature
-          value: 298.0
-          unit: https://qudt.org/vocab/unit/K
+    has_attribute:
+      - rdf_type:
+          id: NMR:1400037
+          name: NMR pulse sequence
+        value: zgpg30
+    has_quantifiable_attribute:
+      - rdf_type:
+          id: http://qudt.org/vocab/quantitykind/Temperature
+          name: Temperature
+        value: 298.0
+        unit: https://qudt.org/vocab/unit/K
 
                       

@@ -77,7 +77,7 @@ classes:
       used_plan:
         slot_uri: sosa:usedProcedure
         range: Procedure
-      type:
+      rdf_type:
         description: The slot to specify the type of the ResearchActivity provided as a DefinedTerm.
         range: DefinedTerm
         inlined: true
@@ -95,7 +95,7 @@ classes:
     class_uri: sosa:FeatureOfInterest
     description: The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling.
     slot_usage:
-      type:
+      rdf_type:
         description: The type of the EntityOfInterest provided as a DefinedTerm.
         range: DefinedTerm
         inlined: true
@@ -105,7 +105,7 @@ classes:
     class_uri: sosa:Sensor
     description: Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms.
     slot_usage:
-      type:
+      rdf_type:
         description: The type of the Sensor provided as a DefinedTerm.
         range: DefinedTerm
         inlined: true
@@ -124,9 +124,9 @@ classes:
     aliases:
       - Method
     description: |-
-      "A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results."
+      A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results.
     slot_usage:
-      type:
+      rdf_type:
         description: The type of Procedure provided as a DefinedTerm.
         range: DefinedTerm
         inlined: true
