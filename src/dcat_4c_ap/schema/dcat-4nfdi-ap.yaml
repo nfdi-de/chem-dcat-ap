@@ -291,7 +291,7 @@ slots:
     slot_uri: prov:wasGeneratedBy
     description: The slot to provide the ResearchActivity that created a Dataset.
     range: ResearchActivity
-    recommended: true
+    required: true
     inlined: true
     exact_mappings:
       - prov:wasGeneratedBy
