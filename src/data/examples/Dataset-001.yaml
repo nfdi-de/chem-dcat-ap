@@ -12,7 +12,7 @@ was_generated_by:
     id: CHMO:0000595
     name: "13C nuclear magnetic resonance spectroscopy"
   evaluated_entity:
-    rdf_type:
+    type:
       id: CHEBI:59999
       name: "Chemical Substance"
     id: doi:10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N.1
@@ -21,22 +21,22 @@ was_generated_by:
       - https://www.chemotion-repository.net/pid/37013
     has_attribute:
       - #id: doi:10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N/CHMO0000595/InChiKey
-        rdf_type:
+        type:
           id: CHEMINF:000059
           name: InChiKey
         value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
   used_tool:
     - #id: doi:10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N/CHMO0000595/spectrometer
-      rdf_type:
+      type:
         id: OBI:0000566
         name: "NMR instrument"
       has_attribute:
-        - rdf_type: 
+        - type: 
             id: NMR:1400037
             name: NMR pulse sequence
           value: zgpg30
       has_quantifiable_attribute:
-        - rdf_type: 
+        - type: 
             id: http://qudt.org/vocab/quantitykind/Temperature
             name: Temperature
           value: 298.0

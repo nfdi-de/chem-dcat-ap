@@ -22,16 +22,16 @@ was_generated_by:
     iupac_formula:
       value: "C48H38CuN3P2S"
   used_tool:
-    rdf_type:
+      type:
         id: OBI:0000566
         name: "NMR instrument"
       has_attribute:
-        - rdf_type:
+        - type:
             id: NMR:1400037
             name: NMR pulse sequence
           value: zgpg30
       has_quantifiable_attribute:
-        - rdf_type:
+        - type:
             id: http://qudt.org/vocab/quantitykind/Temperature
             name: Temperature
           value: 298.0
