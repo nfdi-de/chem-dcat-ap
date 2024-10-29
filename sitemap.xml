@@ -81,7 +81,7 @@
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/IUPACName/</loc>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/IUPACChemicalFormula/</loc>
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
@@ -161,6 +161,10 @@
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/SMILES/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Sensor/</loc>
          <lastmod>2024-10-29</lastmod>
     </url>
@@ -237,11 +241,27 @@
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/inchi/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/inchikey/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/is_delta_attribute/</loc>
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/iupac_formula/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/name/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/smiles/</loc>
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>

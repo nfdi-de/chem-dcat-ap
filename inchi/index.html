@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/has_quantifiable_attribute/">
+        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/inchi/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: has_quantifiable_attribute - dcat-4C-ap</title>
+        <title>Slot: inchi - dcat-4C-ap</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-has_quantifiable_attribute" class="md-skip">
+        <a href="#slot-inchi" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: has_quantifiable_attribute
+              Slot: inchi
             
           </span>
         </div>
@@ -324,19 +324,19 @@
                 
                   
 
-  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/has_quantifiable_attribute.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/inchi.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-has_quantifiable_attribute">Slot: has_quantifiable_attribute</h1>
-<p><em>The slot to relate a quantifiable attribute to an entity of interest, tool or environment.</em></p>
-<p>URI: <a href="http://purl.org/dc/terms/relation">dcterms:relation</a></p>
+<h1 id="slot-inchi">Slot: inchi</h1>
+<p><em>The slot to provide the InChi descriptor of a chemical substance.</em></p>
+<p>URI: <a href="http://semanticscience.org/resource/CHEMINF_000143">CHEMINF:000143</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../has_attribute/">has_attribute</a><ul>
-<li><strong>has_quantifiable_attribute</strong></li>
+<li><strong>inchi</strong></li>
 </ul>
 </li>
 </ul>
@@ -351,53 +351,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../FeatureOfInterest/">FeatureOfInterest</a></td>
-<td>The thing whose property is being estimated or calculated in the course of an...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
-<td>Something that is being evaluated in a scientific process</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HardwareTool/">HardwareTool</a></td>
-<td>A hardware with a certain function</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Tool/">Tool</a></td>
-<td>A entity with a certain function used within a scientific activity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Sensor/">Sensor</a></td>
-<td>Device, agent (including humans), or software (simulation) involved in, or im...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
 <td>A portion of matter of constant composition, composed of molecular entities o...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
-<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Laboratory/">Laboratory</a></td>
-<td>A facility that provides controlled conditions in which scientific or technol...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Environment/">Environment</a></td>
-<td>The environment in which the dataset creating Observation took place (e</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SoftwareTool/">SoftwareTool</a></td>
-<td>A software with a certain function</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -405,7 +360,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../QuantifiableAttribute/">QuantifiableAttribute</a></p>
+<p>Range: <a href="../Attribute/">Attribute</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -427,30 +382,28 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>dcterms:relation</td>
+<td>CHEMINF:000143</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi4c:has_quantifiable_attribute</td>
+<td>nfdi4c:inchi</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: has_quantifiable_attribute
-description: The slot to relate a quantifiable attribute to an entity of interest,
-  tool or environment.
+<pre><code class="language-yaml">name: inchi
+description: The slot to provide the InChi descriptor of a chemical substance.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
 rank: 1000
 is_a: has_attribute
-slot_uri: dcterms:relation
-alias: has_quantifiable_attribute
+slot_uri: CHEMINF:000143
+alias: inchi
+owner: ChemicalSubstance
 domain_of:
-- EntityOfInterest
-- Tool
-- Environment
-range: QuantifiableAttribute
+- ChemicalSubstance
+range: Attribute
 multivalued: true
 inlined: true
 inlined_as_list: true
