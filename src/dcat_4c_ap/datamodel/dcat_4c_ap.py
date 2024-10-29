@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-10-25T15:45:58
+# Generation date: 2024-10-29T09:00:30
 # Schema: dcat-4C-ap
 #
 # id: https://w3id.org/StroemPhi/dcat-4C-ap
@@ -57,8 +57,8 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import URIorCURIE
+from linkml_runtime.linkml_model.types import Boolean, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE
 
 metamodel_version = "1.7.0"
 version = None
@@ -74,10 +74,11 @@ CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
 FOODON = CurieNamespace('FOODON', 'http://purl.obolibrary.org/obo/FOODON_')
 IAO = CurieNamespace('IAO', 'http://purl.obolibrary.org/obo/IAO_')
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
+NMR = CurieNamespace('NMR', 'http://nmrML.org/nmrCV#NMR:')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
 RO = CurieNamespace('RO', 'http://purl.obolibrary.org/obo/RO_')
-RXNO = CurieNamespace('RXNO', 'http://example.org/UNKNOWN/RXNO/')
+RXNO = CurieNamespace('RXNO', 'http://semanticscience.org/resource/RXNO_')
 SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/SIO_')
 T4FS = CurieNamespace('T4FS', 'http://purl.obolibrary.org/obo/T4FS_')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
@@ -87,7 +88,8 @@ DOI = CurieNamespace('doi', 'https://doi.org/')
 EX = CurieNamespace('ex', 'http://example.org/')
 FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-NFDI = CurieNamespace('nfdi', 'https://w3id.org/StroemPhi/dcat_4C_ap/')
+NFDI = CurieNamespace('nfdi', 'https://w3id.org/StroemPhi/dcat-4nfdi-ap/')
+NFDI4C = CurieNamespace('nfdi4c', 'https://w3id.org/StroemPhi/dcat_4C_ap/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
@@ -97,7 +99,7 @@ SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 SOSA = CurieNamespace('sosa', 'http://www.w3.org/ns/sosa/')
 VCARD = CurieNamespace('vcard', 'http://www.w3.org/2006/vcard/ns#')
-DEFAULT_ = NFDI
+DEFAULT_ = NFDI4C
 
 
 # Types
@@ -127,6 +129,17 @@ class ChemicalSubstanceId(EntityOfInterestId):
     pass
 
 
+class ChemAnalysisDataset(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NFDI4C["ChemAnalysisDataset"]
+    class_class_curie: ClassVar[str] = "nfdi4c:ChemAnalysisDataset"
+    class_name: ClassVar[str] = "ChemAnalysisDataset"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.ChemAnalysisDataset
+
+
+Any = Any
+
 @dataclass(repr=False)
 class DefinedTerm(YAMLRoot):
     """
@@ -138,7 +151,7 @@ class DefinedTerm(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SCHEMA["DefinedTerm"]
     class_class_curie: ClassVar[str] = "schema:DefinedTerm"
     class_name: ClassVar[str] = "DefinedTerm"
-    class_model_uri: ClassVar[URIRef] = NFDI.DefinedTerm
+    class_model_uri: ClassVar[URIRef] = NFDI4C.DefinedTerm
 
     id: Union[str, DefinedTermId] = None
     alternative_id: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
@@ -176,7 +189,7 @@ class Dataset(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
     class_class_curie: ClassVar[str] = "dcat:Dataset"
     class_name: ClassVar[str] = "Dataset"
-    class_model_uri: ClassVar[URIRef] = NFDI.Dataset
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Dataset
 
     id: Union[str, DatasetId] = None
     name: Union[str, List[str]] = None
@@ -222,7 +235,7 @@ class DatasetCollection(Dataset):
     class_class_uri: ClassVar[URIRef] = DCAT["Catalog"]
     class_class_curie: ClassVar[str] = "dcat:Catalog"
     class_name: ClassVar[str] = "DatasetCollection"
-    class_model_uri: ClassVar[URIRef] = NFDI.DatasetCollection
+    class_model_uri: ClassVar[URIRef] = NFDI4C.DatasetCollection
 
     id: Union[str, DatasetCollectionId] = None
     name: Union[str, List[str]] = None
@@ -262,16 +275,16 @@ class ResearchActivity(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = PROV["Activity"]
     class_class_curie: ClassVar[str] = "prov:Activity"
     class_name: ClassVar[str] = "ResearchActivity"
-    class_model_uri: ClassVar[URIRef] = NFDI.ResearchActivity
+    class_model_uri: ClassVar[URIRef] = NFDI4C.ResearchActivity
 
     name: Optional[Union[str, List[str]]] = empty_list()
     description: Optional[Union[str, List[str]]] = empty_list()
     alternative_id: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     type: Optional[Union[dict, DefinedTerm]] = None
     evaluated_entity: Optional[Union[dict, "EntityOfInterest"]] = None
-    used_hardware: Optional[Union[Union[dict, "HardwareTool"], List[Union[dict, "HardwareTool"]]]] = empty_list()
-    used_software: Optional[Union[Union[dict, "SoftwareTool"], List[Union[dict, "SoftwareTool"]]]] = empty_list()
-    has_part: Optional[str] = None
+    used_tool: Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]] = empty_list()
+    used_plan: Optional[Union[dict, "ActivitySpecification"]] = None
+    has_part: Optional[Union[dict, "ResearchActivity"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if not isinstance(self.name, list):
@@ -292,16 +305,15 @@ class ResearchActivity(YAMLRoot):
         if self.evaluated_entity is not None and not isinstance(self.evaluated_entity, EntityOfInterest):
             self.evaluated_entity = EntityOfInterest(**as_dict(self.evaluated_entity))
 
-        if not isinstance(self.used_hardware, list):
-            self.used_hardware = [self.used_hardware] if self.used_hardware is not None else []
-        self.used_hardware = [v if isinstance(v, HardwareTool) else HardwareTool(**as_dict(v)) for v in self.used_hardware]
+        if not isinstance(self.used_tool, list):
+            self.used_tool = [self.used_tool] if self.used_tool is not None else []
+        self.used_tool = [v if isinstance(v, Tool) else Tool(**as_dict(v)) for v in self.used_tool]
 
-        if not isinstance(self.used_software, list):
-            self.used_software = [self.used_software] if self.used_software is not None else []
-        self.used_software = [v if isinstance(v, SoftwareTool) else SoftwareTool(**as_dict(v)) for v in self.used_software]
+        if self.used_plan is not None and not isinstance(self.used_plan, ActivitySpecification):
+            self.used_plan = ActivitySpecification(**as_dict(self.used_plan))
 
-        if self.has_part is not None and not isinstance(self.has_part, str):
-            self.has_part = str(self.has_part)
+        if self.has_part is not None and not isinstance(self.has_part, ResearchActivity):
+            self.has_part = ResearchActivity(**as_dict(self.has_part))
 
         super().__post_init__(**kwargs)
 
@@ -318,7 +330,7 @@ class NMRSpectroscopy(ResearchActivity):
     class_class_uri: ClassVar[URIRef] = CHMO["0000613"]
     class_class_curie: ClassVar[str] = "CHMO:0000613"
     class_name: ClassVar[str] = "NMRSpectroscopy"
-    class_model_uri: ClassVar[URIRef] = NFDI.NMRSpectroscopy
+    class_model_uri: ClassVar[URIRef] = NFDI4C.NMRSpectroscopy
 
     evaluated_entity: Optional[Union[dict, "ChemicalSubstance"]] = None
     type: Optional[Union[dict, DefinedTerm]] = None
@@ -343,7 +355,7 @@ class EntityOfInterest(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = PROV["Entity"]
     class_class_curie: ClassVar[str] = "prov:Entity"
     class_name: ClassVar[str] = "EntityOfInterest"
-    class_model_uri: ClassVar[URIRef] = NFDI.EntityOfInterest
+    class_model_uri: ClassVar[URIRef] = NFDI4C.EntityOfInterest
 
     id: Union[str, EntityOfInterestId] = None
     name: Optional[Union[str, List[str]]] = empty_list()
@@ -351,6 +363,7 @@ class EntityOfInterest(YAMLRoot):
     alternative_id: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     type: Optional[Union[dict, DefinedTerm]] = None
     has_attribute: Optional[Union[Union[dict, "Attribute"], List[Union[dict, "Attribute"]]]] = empty_list()
+    has_quantifiable_attribute: Optional[Union[Union[dict, "QuantifiableAttribute"], List[Union[dict, "QuantifiableAttribute"]]]] = empty_list()
     has_part: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -378,6 +391,10 @@ class EntityOfInterest(YAMLRoot):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
         self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
+        if not isinstance(self.has_quantifiable_attribute, list):
+            self.has_quantifiable_attribute = [self.has_quantifiable_attribute] if self.has_quantifiable_attribute is not None else []
+        self.has_quantifiable_attribute = [v if isinstance(v, QuantifiableAttribute) else QuantifiableAttribute(**as_dict(v)) for v in self.has_quantifiable_attribute]
+
         if self.has_part is not None and not isinstance(self.has_part, str):
             self.has_part = str(self.has_part)
 
@@ -394,7 +411,7 @@ class ChemicalReaction(EntityOfInterest):
     class_class_uri: ClassVar[URIRef] = RXNO["0000329"]
     class_class_curie: ClassVar[str] = "RXNO:0000329"
     class_name: ClassVar[str] = "ChemicalReaction"
-    class_model_uri: ClassVar[URIRef] = NFDI.ChemicalReaction
+    class_model_uri: ClassVar[URIRef] = NFDI4C.ChemicalReaction
 
     id: Union[str, ChemicalReactionId] = None
 
@@ -417,27 +434,15 @@ class ChemicalSubstance(EntityOfInterest):
     class_class_uri: ClassVar[URIRef] = CHEBI["59999"]
     class_class_curie: ClassVar[str] = "CHEBI:59999"
     class_name: ClassVar[str] = "ChemicalSubstance"
-    class_model_uri: ClassVar[URIRef] = NFDI.ChemicalSubstance
+    class_model_uri: ClassVar[URIRef] = NFDI4C.ChemicalSubstance
 
     id: Union[str, ChemicalSubstanceId] = None
-    inchikey: Optional[Union[dict, "InChIKey"]] = None
-    inchi: Optional[Union[dict, "InChi"]] = None
-    iupac_name: Optional[Union[dict, "IUPACName"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ChemicalSubstanceId):
             self.id = ChemicalSubstanceId(self.id)
-
-        if self.inchikey is not None and not isinstance(self.inchikey, InChIKey):
-            self.inchikey = InChIKey(**as_dict(self.inchikey))
-
-        if self.inchi is not None and not isinstance(self.inchi, InChi):
-            self.inchi = InChi(**as_dict(self.inchi))
-
-        if self.iupac_name is not None and not isinstance(self.iupac_name, IUPACName):
-            self.iupac_name = IUPACName(**as_dict(self.iupac_name))
 
         super().__post_init__(**kwargs)
 
@@ -452,7 +457,7 @@ class Tool(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = PROV["Entity"]
     class_class_curie: ClassVar[str] = "prov:Entity"
     class_name: ClassVar[str] = "Tool"
-    class_model_uri: ClassVar[URIRef] = NFDI.Tool
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Tool
 
     name: Optional[Union[str, List[str]]] = empty_list()
     description: Optional[Union[str, List[str]]] = empty_list()
@@ -460,7 +465,7 @@ class Tool(YAMLRoot):
     type: Optional[Union[dict, DefinedTerm]] = None
     has_part: Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]] = empty_list()
     has_attribute: Optional[Union[Union[dict, "Attribute"], List[Union[dict, "Attribute"]]]] = empty_list()
-    has_setting: Optional[Union[Union[dict, "SettingDatum"], List[Union[dict, "SettingDatum"]]]] = empty_list()
+    has_quantifiable_attribute: Optional[Union[Union[dict, "QuantifiableAttribute"], List[Union[dict, "QuantifiableAttribute"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if not isinstance(self.name, list):
@@ -486,9 +491,9 @@ class Tool(YAMLRoot):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
         self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
-        if not isinstance(self.has_setting, list):
-            self.has_setting = [self.has_setting] if self.has_setting is not None else []
-        self.has_setting = [v if isinstance(v, SettingDatum) else SettingDatum(**as_dict(v)) for v in self.has_setting]
+        if not isinstance(self.has_quantifiable_attribute, list):
+            self.has_quantifiable_attribute = [self.has_quantifiable_attribute] if self.has_quantifiable_attribute is not None else []
+        self.has_quantifiable_attribute = [v if isinstance(v, QuantifiableAttribute) else QuantifiableAttribute(**as_dict(v)) for v in self.has_quantifiable_attribute]
 
         super().__post_init__(**kwargs)
 
@@ -499,10 +504,10 @@ class HardwareTool(Tool):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NFDI["HardwareTool"]
-    class_class_curie: ClassVar[str] = "nfdi:HardwareTool"
+    class_class_uri: ClassVar[URIRef] = NFDI4C["HardwareTool"]
+    class_class_curie: ClassVar[str] = "nfdi4c:HardwareTool"
     class_name: ClassVar[str] = "HardwareTool"
-    class_model_uri: ClassVar[URIRef] = NFDI.HardwareTool
+    class_model_uri: ClassVar[URIRef] = NFDI4C.HardwareTool
 
 
 class SoftwareTool(Tool):
@@ -511,10 +516,10 @@ class SoftwareTool(Tool):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NFDI["SoftwareTool"]
-    class_class_curie: ClassVar[str] = "nfdi:SoftwareTool"
+    class_class_uri: ClassVar[URIRef] = NFDI4C["SoftwareTool"]
+    class_class_curie: ClassVar[str] = "nfdi4c:SoftwareTool"
     class_name: ClassVar[str] = "SoftwareTool"
-    class_model_uri: ClassVar[URIRef] = NFDI.SoftwareTool
+    class_model_uri: ClassVar[URIRef] = NFDI4C.SoftwareTool
 
 
 @dataclass(repr=False)
@@ -527,13 +532,14 @@ class Environment(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = PROV["Entity"]
     class_class_curie: ClassVar[str] = "prov:Entity"
     class_name: ClassVar[str] = "Environment"
-    class_model_uri: ClassVar[URIRef] = NFDI.Environment
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Environment
 
     name: Optional[Union[str, List[str]]] = empty_list()
     description: Optional[Union[str, List[str]]] = empty_list()
     alternative_id: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     type: Optional[Union[dict, DefinedTerm]] = None
     has_attribute: Optional[Union[Union[dict, "Attribute"], List[Union[dict, "Attribute"]]]] = empty_list()
+    has_quantifiable_attribute: Optional[Union[Union[dict, "QuantifiableAttribute"], List[Union[dict, "QuantifiableAttribute"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if not isinstance(self.name, list):
@@ -555,6 +561,10 @@ class Environment(YAMLRoot):
             self.has_attribute = [self.has_attribute] if self.has_attribute is not None else []
         self.has_attribute = [v if isinstance(v, Attribute) else Attribute(**as_dict(v)) for v in self.has_attribute]
 
+        if not isinstance(self.has_quantifiable_attribute, list):
+            self.has_quantifiable_attribute = [self.has_quantifiable_attribute] if self.has_quantifiable_attribute is not None else []
+        self.has_quantifiable_attribute = [v if isinstance(v, QuantifiableAttribute) else QuantifiableAttribute(**as_dict(v)) for v in self.has_quantifiable_attribute]
+
         super().__post_init__(**kwargs)
 
 
@@ -568,22 +578,22 @@ class Laboratory(Environment):
     class_class_uri: ClassVar[URIRef] = PROV["Entity"]
     class_class_curie: ClassVar[str] = "prov:Entity"
     class_name: ClassVar[str] = "Laboratory"
-    class_model_uri: ClassVar[URIRef] = NFDI.Laboratory
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Laboratory
 
 
 @dataclass(repr=False)
-class PlanSpecification(YAMLRoot):
+class ActivitySpecification(YAMLRoot):
     """
-    "A piece of information that specifies:
-    a) how an activity has to be carried out by its agents and
-    b) the attributes of the passive activity participants in terms of their presence and magnitude.
+    "A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the
+    attributes of the passive activity participants that are used by the agents in terms of their presence and
+    magnitude."
     """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = PROV["Entity"]
     class_class_curie: ClassVar[str] = "prov:Entity"
-    class_name: ClassVar[str] = "PlanSpecification"
-    class_model_uri: ClassVar[URIRef] = NFDI.PlanSpecification
+    class_name: ClassVar[str] = "ActivitySpecification"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.ActivitySpecification
 
     name: Optional[Union[str, List[str]]] = empty_list()
     description: Optional[Union[str, List[str]]] = empty_list()
@@ -604,18 +614,6 @@ class PlanSpecification(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-class ResearchActivitySpecification(PlanSpecification):
-    """
-    A PlanSpecification that specifies a ResearchActivity.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
-    class_class_curie: ClassVar[str] = "prov:Entity"
-    class_name: ClassVar[str] = "ResearchActivitySpecification"
-    class_model_uri: ClassVar[URIRef] = NFDI.ResearchActivitySpecification
-
-
 @dataclass(repr=False)
 class Attribute(YAMLRoot):
     """
@@ -626,13 +624,13 @@ class Attribute(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = IAO["0000030"]
     class_class_curie: ClassVar[str] = "IAO:0000030"
     class_name: ClassVar[str] = "Attribute"
-    class_model_uri: ClassVar[URIRef] = NFDI.Attribute
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Attribute
 
     name: Optional[Union[str, List[str]]] = empty_list()
     description: Optional[Union[str, List[str]]] = empty_list()
     alternative_id: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     type: Optional[Union[dict, DefinedTerm]] = None
-    has_value: Optional[str] = None
+    value: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if not isinstance(self.name, list):
@@ -650,66 +648,10 @@ class Attribute(YAMLRoot):
         if self.type is not None and not isinstance(self.type, DefinedTerm):
             self.type = DefinedTerm(**as_dict(self.type))
 
-        if self.has_value is not None and not isinstance(self.has_value, str):
-            self.has_value = str(self.has_value)
+        if self.value is not None and not isinstance(self.value, str):
+            self.value = str(self.value)
 
         super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class QuantifiableAttribute(Attribute):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
-    class_class_curie: ClassVar[str] = "qudt:Quantity"
-    class_name: ClassVar[str] = "QuantifiableAttribute"
-    class_model_uri: ClassVar[URIRef] = NFDI.QuantifiableAttribute
-
-    has_quantity_kind: Optional[str] = None
-    applicable_unit: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.has_quantity_kind is not None and not isinstance(self.has_quantity_kind, str):
-            self.has_quantity_kind = str(self.has_quantity_kind)
-
-        if self.applicable_unit is not None and not isinstance(self.applicable_unit, str):
-            self.applicable_unit = str(self.applicable_unit)
-
-        super().__post_init__(**kwargs)
-
-
-class AttributeKind(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = QUDT["QuantityKind"]
-    class_class_curie: ClassVar[str] = "qudt:QuantityKind"
-    class_name: ClassVar[str] = "AttributeKind"
-    class_model_uri: ClassVar[URIRef] = NFDI.AttributeKind
-
-
-class Unit(YAMLRoot):
-    """
-    A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other
-    quantities the same kind (more generally of equivalent dimension).
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = QUDT["Unit"]
-    class_class_curie: ClassVar[str] = "qudt:Unit"
-    class_name: ClassVar[str] = "Unit"
-    class_model_uri: ClassVar[URIRef] = NFDI.Unit
-
-
-class SettingDatum(Attribute):
-    """
-    An attribute that specifies the configuration of a tool.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = IAO["0000140"]
-    class_class_curie: ClassVar[str] = "IAO:0000140"
-    class_name: ClassVar[str] = "SettingDatum"
-    class_model_uri: ClassVar[URIRef] = NFDI.SettingDatum
 
 
 class InChIKey(Attribute):
@@ -718,7 +660,7 @@ class InChIKey(Attribute):
     class_class_uri: ClassVar[URIRef] = CHEMINF["000059"]
     class_class_curie: ClassVar[str] = "CHEMINF:000059"
     class_name: ClassVar[str] = "InChIKey"
-    class_model_uri: ClassVar[URIRef] = NFDI.InChIKey
+    class_model_uri: ClassVar[URIRef] = NFDI4C.InChIKey
 
 
 class InChi(Attribute):
@@ -730,7 +672,7 @@ class InChi(Attribute):
     class_class_uri: ClassVar[URIRef] = CHEMINF["000113"]
     class_class_curie: ClassVar[str] = "CHEMINF:000113"
     class_name: ClassVar[str] = "InChi"
-    class_model_uri: ClassVar[URIRef] = NFDI.InChi
+    class_model_uri: ClassVar[URIRef] = NFDI4C.InChi
 
 
 class IUPACName(Attribute):
@@ -743,33 +685,68 @@ class IUPACName(Attribute):
     class_class_uri: ClassVar[URIRef] = CHEMINF["000107"]
     class_class_curie: ClassVar[str] = "CHEMINF:000107"
     class_name: ClassVar[str] = "IUPACName"
-    class_model_uri: ClassVar[URIRef] = NFDI.IUPACName
+    class_model_uri: ClassVar[URIRef] = NFDI4C.IUPACName
+
+
+@dataclass(repr=False)
+class QuantifiableAttribute(Attribute):
+    """
+    An attribute that is quantifiable.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
+    class_class_curie: ClassVar[str] = "qudt:Quantity"
+    class_name: ClassVar[str] = "QuantifiableAttribute"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.QuantifiableAttribute
+
+    unit: Optional[Union[str, DefinedTermId]] = None
+    is_delta_attribute: Optional[Union[bool, Bool]] = None
+    type: Optional[Union[dict, DefinedTerm]] = None
+    value: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.unit is not None and not isinstance(self.unit, DefinedTermId):
+            self.unit = DefinedTermId(self.unit)
+
+        if self.is_delta_attribute is not None and not isinstance(self.is_delta_attribute, Bool):
+            self.is_delta_attribute = Bool(self.is_delta_attribute)
+
+        if self.type is not None and not isinstance(self.type, DefinedTerm):
+            self.type = DefinedTerm(**as_dict(self.type))
+
+        if self.value is not None and not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        super().__post_init__(**kwargs)
 
 
 # Enumerations
-class NMRSpectroscopyEnum(EnumDefinitionImpl):
-
+class NMRAssayEnum(EnumDefinitionImpl):
+    """
+    NMR types from the Chemical Methods Ontology
+    """
     _defn = EnumDefinition(
-        name="NMRSpectroscopyEnum",
+        name="NMRAssayEnum",
+        description="NMR types from the Chemical Methods Ontology",
     )
 
-class EntityOfInterestTypeEnum(EnumDefinitionImpl):
-
+class QUDTQuantityKindEnum(EnumDefinitionImpl):
+    """
+    Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.
+    """
     _defn = EnumDefinition(
-        name="EntityOfInterestTypeEnum",
+        name="QUDTQuantityKindEnum",
+        description="Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.",
     )
 
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Chemical Substance",
-            PermissibleValue(
-                text="Chemical Substance",
-                meaning=CHEBI["59999"]))
-
-class ResearchActivityTypeEnum(EnumDefinitionImpl):
-
+class QUDTUnitEnum(EnumDefinitionImpl):
+    """
+    Possible kinds of QUDT unit instances.
+    """
     _defn = EnumDefinition(
-        name="ResearchActivityTypeEnum",
+        name="QUDTUnitEnum",
+        description="Possible kinds of QUDT unit instances.",
     )
 
 # Slots
@@ -777,115 +754,112 @@ class slots:
     pass
 
 slots.type = Slot(uri=RDF.type, name="type", curie=RDF.curie('type'),
-                   model_uri=NFDI.type, domain=None, range=Optional[str])
+                   model_uri=NFDI4C.type, domain=None, range=Optional[str])
 
 slots.alternative_id = Slot(uri=DCTERMS.identifier, name="alternative_id", curie=DCTERMS.curie('identifier'),
-                   model_uri=NFDI.alternative_id, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+                   model_uri=NFDI4C.alternative_id, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
 
 slots.id = Slot(uri=NFDI.id, name="id", curie=NFDI.curie('id'),
-                   model_uri=NFDI.id, domain=None, range=URIRef)
+                   model_uri=NFDI4C.id, domain=None, range=URIRef)
 
 slots.description = Slot(uri=DCTERMS.description, name="description", curie=DCTERMS.curie('description'),
-                   model_uri=NFDI.description, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NFDI4C.description, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.name = Slot(uri=DCTERMS.title, name="name", curie=DCTERMS.curie('title'),
-                   model_uri=NFDI.name, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NFDI4C.name, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.was_generated_by = Slot(uri=NFDI.was_generated_by, name="was_generated_by", curie=NFDI.curie('was_generated_by'),
-                   model_uri=NFDI.was_generated_by, domain=None, range=Optional[Union[dict, ResearchActivity]])
+slots.was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="was_generated_by", curie=PROV.curie('wasGeneratedBy'),
+                   model_uri=NFDI4C.was_generated_by, domain=None, range=Optional[Union[dict, ResearchActivity]])
 
 slots.has_dataset = Slot(uri=DCAT.dataset, name="has_dataset", curie=DCAT.curie('dataset'),
-                   model_uri=NFDI.has_dataset, domain=None, range=Optional[Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]]])
+                   model_uri=NFDI4C.has_dataset, domain=None, range=Optional[Union[Dict[Union[str, DatasetId], Union[dict, Dataset]], List[Union[dict, Dataset]]]])
 
 slots.evaluated_entity = Slot(uri=PROV.used, name="evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=NFDI.evaluated_entity, domain=None, range=Optional[Union[dict, EntityOfInterest]])
+                   model_uri=NFDI4C.evaluated_entity, domain=None, range=Optional[Union[dict, EntityOfInterest]])
 
-slots.used_hardware = Slot(uri=PROV.used, name="used_hardware", curie=PROV.curie('used'),
-                   model_uri=NFDI.used_hardware, domain=None, range=Optional[Union[Union[dict, HardwareTool], List[Union[dict, HardwareTool]]]])
+slots.used_tool = Slot(uri=PROV.used, name="used_tool", curie=PROV.curie('used'),
+                   model_uri=NFDI4C.used_tool, domain=None, range=Optional[Union[Union[dict, Tool], List[Union[dict, Tool]]]])
 
-slots.used_software = Slot(uri=PROV.used, name="used_software", curie=PROV.curie('used'),
-                   model_uri=NFDI.used_software, domain=None, range=Optional[Union[Union[dict, SoftwareTool], List[Union[dict, SoftwareTool]]]])
+slots.used_plan = Slot(uri=PROV.used, name="used_plan", curie=PROV.curie('used'),
+                   model_uri=NFDI4C.used_plan, domain=None, range=Optional[Union[dict, ActivitySpecification]])
 
 slots.has_part = Slot(uri=DCTERMS.hasPart, name="has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=NFDI.has_part, domain=None, range=Optional[str])
+                   model_uri=NFDI4C.has_part, domain=None, range=Optional[str])
 
 slots.has_attribute = Slot(uri=DCTERMS.relation, name="has_attribute", curie=DCTERMS.curie('relation'),
-                   model_uri=NFDI.has_attribute, domain=None, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
+                   model_uri=NFDI4C.has_attribute, domain=None, range=Optional[Union[Union[dict, Attribute], List[Union[dict, Attribute]]]])
 
-slots.has_setting = Slot(uri=NFDI.has_setting, name="has_setting", curie=NFDI.curie('has_setting'),
-                   model_uri=NFDI.has_setting, domain=None, range=Optional[Union[Union[dict, SettingDatum], List[Union[dict, SettingDatum]]]])
+slots.has_quantifiable_attribute = Slot(uri=DCTERMS.relation, name="has_quantifiable_attribute", curie=DCTERMS.curie('relation'),
+                   model_uri=NFDI4C.has_quantifiable_attribute, domain=None, range=Optional[Union[Union[dict, QuantifiableAttribute], List[Union[dict, QuantifiableAttribute]]]])
 
-slots.has_value = Slot(uri=PROV.value, name="has_value", curie=PROV.curie('value'),
-                   model_uri=NFDI.has_value, domain=None, range=Optional[str])
-
-slots.has_unit = Slot(uri=NFDI.has_unit, name="has_unit", curie=NFDI.curie('has_unit'),
-                   model_uri=NFDI.has_unit, domain=None, range=Optional[str])
+slots.value = Slot(uri=PROV.value, name="value", curie=PROV.curie('value'),
+                   model_uri=NFDI4C.value, domain=None, range=Optional[str])
 
 slots.definedTerm__from_CV = Slot(uri=SCHEMA.inDefinedTermSet, name="definedTerm__from_CV", curie=SCHEMA.curie('inDefinedTermSet'),
-                   model_uri=NFDI.definedTerm__from_CV, domain=None, range=Optional[str])
+                   model_uri=NFDI4C.definedTerm__from_CV, domain=None, range=Optional[str])
 
-slots.chemicalSubstance__inchikey = Slot(uri=NFDI.inchikey, name="chemicalSubstance__inchikey", curie=NFDI.curie('inchikey'),
-                   model_uri=NFDI.chemicalSubstance__inchikey, domain=None, range=Optional[Union[dict, InChIKey]])
+slots.quantifiableAttribute__unit = Slot(uri=QUDT.applicableUnit, name="quantifiableAttribute__unit", curie=QUDT.curie('applicableUnit'),
+                   model_uri=NFDI4C.quantifiableAttribute__unit, domain=None, range=Optional[Union[str, DefinedTermId]])
 
-slots.chemicalSubstance__inchi = Slot(uri=NFDI.inchi, name="chemicalSubstance__inchi", curie=NFDI.curie('inchi'),
-                   model_uri=NFDI.chemicalSubstance__inchi, domain=None, range=Optional[Union[dict, InChi]])
-
-slots.chemicalSubstance__iupac_name = Slot(uri=NFDI.iupac_name, name="chemicalSubstance__iupac_name", curie=NFDI.curie('iupac_name'),
-                   model_uri=NFDI.chemicalSubstance__iupac_name, domain=None, range=Optional[Union[dict, IUPACName]])
-
-slots.quantifiableAttribute__has_quantity_kind = Slot(uri=QUDT.hasQuantityKind, name="quantifiableAttribute__has_quantity_kind", curie=QUDT.curie('hasQuantityKind'),
-                   model_uri=NFDI.quantifiableAttribute__has_quantity_kind, domain=None, range=Optional[str])
-
-slots.quantifiableAttribute__applicable_unit = Slot(uri=QUDT.applicableUnit, name="quantifiableAttribute__applicable_unit", curie=QUDT.curie('applicableUnit'),
-                   model_uri=NFDI.quantifiableAttribute__applicable_unit, domain=None, range=Optional[str])
-
-slots.DefinedTerm_name = Slot(uri=SCHEMA.name, name="DefinedTerm_name", curie=SCHEMA.curie('name'),
-                   model_uri=NFDI.DefinedTerm_name, domain=DefinedTerm, range=Optional[Union[str, List[str]]])
-
-slots.DefinedTerm_alternative_id = Slot(uri=SCHEMA.identifier, name="DefinedTerm_alternative_id", curie=SCHEMA.curie('identifier'),
-                   model_uri=NFDI.DefinedTerm_alternative_id, domain=DefinedTerm, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
-
-slots.Dataset_name = Slot(uri=DCTERMS.title, name="Dataset_name", curie=DCTERMS.curie('title'),
-                   model_uri=NFDI.Dataset_name, domain=Dataset, range=Union[str, List[str]])
-
-slots.Dataset_description = Slot(uri=DCTERMS.description, name="Dataset_description", curie=DCTERMS.curie('description'),
-                   model_uri=NFDI.Dataset_description, domain=Dataset, range=Union[str, List[str]])
-
-slots.Dataset_was_generated_by = Slot(uri=NFDI.was_generated_by, name="Dataset_was_generated_by", curie=NFDI.curie('was_generated_by'),
-                   model_uri=NFDI.Dataset_was_generated_by, domain=Dataset, range=Optional[Union[dict, "ResearchActivity"]])
-
-slots.DatasetCollection_id = Slot(uri=NFDI.id, name="DatasetCollection_id", curie=NFDI.curie('id'),
-                   model_uri=NFDI.DatasetCollection_id, domain=DatasetCollection, range=Union[str, DatasetCollectionId])
-
-slots.DatasetCollection_name = Slot(uri=DCTERMS.title, name="DatasetCollection_name", curie=DCTERMS.curie('title'),
-                   model_uri=NFDI.DatasetCollection_name, domain=DatasetCollection, range=Union[str, List[str]])
-
-slots.DatasetCollection_description = Slot(uri=DCTERMS.description, name="DatasetCollection_description", curie=DCTERMS.curie('description'),
-                   model_uri=NFDI.DatasetCollection_description, domain=DatasetCollection, range=Union[str, List[str]])
-
-slots.ResearchActivity_type = Slot(uri=RDF.type, name="ResearchActivity_type", curie=RDF.curie('type'),
-                   model_uri=NFDI.ResearchActivity_type, domain=ResearchActivity, range=Optional[Union[dict, DefinedTerm]])
+slots.quantifiableAttribute__is_delta_attribute = Slot(uri=QUDT['Quantity-isDeltaQuantity'], name="quantifiableAttribute__is_delta_attribute", curie=QUDT.curie('Quantity-isDeltaQuantity'),
+                   model_uri=NFDI4C.quantifiableAttribute__is_delta_attribute, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.NMRSpectroscopy_evaluated_entity = Slot(uri=PROV.used, name="NMRSpectroscopy_evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=NFDI.NMRSpectroscopy_evaluated_entity, domain=NMRSpectroscopy, range=Optional[Union[dict, "ChemicalSubstance"]])
+                   model_uri=NFDI4C.NMRSpectroscopy_evaluated_entity, domain=NMRSpectroscopy, range=Optional[Union[dict, "ChemicalSubstance"]])
 
 slots.NMRSpectroscopy_type = Slot(uri=RDF.type, name="NMRSpectroscopy_type", curie=RDF.curie('type'),
-                   model_uri=NFDI.NMRSpectroscopy_type, domain=NMRSpectroscopy, range=Optional[Union[dict, DefinedTerm]])
+                   model_uri=NFDI4C.NMRSpectroscopy_type, domain=NMRSpectroscopy, range=Optional[Union[dict, DefinedTerm]])
+
+slots.DefinedTerm_name = Slot(uri=SCHEMA.name, name="DefinedTerm_name", curie=SCHEMA.curie('name'),
+                   model_uri=NFDI4C.DefinedTerm_name, domain=DefinedTerm, range=Optional[Union[str, List[str]]])
+
+slots.DefinedTerm_alternative_id = Slot(uri=SCHEMA.identifier, name="DefinedTerm_alternative_id", curie=SCHEMA.curie('identifier'),
+                   model_uri=NFDI4C.DefinedTerm_alternative_id, domain=DefinedTerm, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]])
+
+slots.Dataset_name = Slot(uri=DCTERMS.title, name="Dataset_name", curie=DCTERMS.curie('title'),
+                   model_uri=NFDI4C.Dataset_name, domain=Dataset, range=Union[str, List[str]])
+
+slots.Dataset_description = Slot(uri=DCTERMS.description, name="Dataset_description", curie=DCTERMS.curie('description'),
+                   model_uri=NFDI4C.Dataset_description, domain=Dataset, range=Union[str, List[str]])
+
+slots.Dataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="Dataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
+                   model_uri=NFDI4C.Dataset_was_generated_by, domain=Dataset, range=Optional[Union[dict, "ResearchActivity"]])
+
+slots.DatasetCollection_id = Slot(uri=NFDI.id, name="DatasetCollection_id", curie=NFDI.curie('id'),
+                   model_uri=NFDI4C.DatasetCollection_id, domain=DatasetCollection, range=Union[str, DatasetCollectionId])
+
+slots.DatasetCollection_name = Slot(uri=DCTERMS.title, name="DatasetCollection_name", curie=DCTERMS.curie('title'),
+                   model_uri=NFDI4C.DatasetCollection_name, domain=DatasetCollection, range=Union[str, List[str]])
+
+slots.DatasetCollection_description = Slot(uri=DCTERMS.description, name="DatasetCollection_description", curie=DCTERMS.curie('description'),
+                   model_uri=NFDI4C.DatasetCollection_description, domain=DatasetCollection, range=Union[str, List[str]])
+
+slots.ResearchActivity_type = Slot(uri=RDF.type, name="ResearchActivity_type", curie=RDF.curie('type'),
+                   model_uri=NFDI4C.ResearchActivity_type, domain=ResearchActivity, range=Optional[Union[dict, DefinedTerm]])
+
+slots.ResearchActivity_has_part = Slot(uri=DCTERMS.hasPart, name="ResearchActivity_has_part", curie=DCTERMS.curie('hasPart'),
+                   model_uri=NFDI4C.ResearchActivity_has_part, domain=ResearchActivity, range=Optional[Union[dict, "ResearchActivity"]])
 
 slots.EntityOfInterest_type = Slot(uri=RDF.type, name="EntityOfInterest_type", curie=RDF.curie('type'),
-                   model_uri=NFDI.EntityOfInterest_type, domain=EntityOfInterest, range=Optional[Union[dict, DefinedTerm]])
+                   model_uri=NFDI4C.EntityOfInterest_type, domain=EntityOfInterest, range=Optional[Union[dict, DefinedTerm]])
 
 slots.Tool_type = Slot(uri=RDF.type, name="Tool_type", curie=RDF.curie('type'),
-                   model_uri=NFDI.Tool_type, domain=Tool, range=Optional[Union[dict, DefinedTerm]])
+                   model_uri=NFDI4C.Tool_type, domain=Tool, range=Optional[Union[dict, DefinedTerm]])
 
 slots.Tool_has_part = Slot(uri=DCTERMS.hasPart, name="Tool_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=NFDI.Tool_has_part, domain=Tool, range=Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]])
+                   model_uri=NFDI4C.Tool_has_part, domain=Tool, range=Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]])
 
 slots.Environment_type = Slot(uri=RDF.type, name="Environment_type", curie=RDF.curie('type'),
-                   model_uri=NFDI.Environment_type, domain=Environment, range=Optional[Union[dict, DefinedTerm]])
+                   model_uri=NFDI4C.Environment_type, domain=Environment, range=Optional[Union[dict, DefinedTerm]])
 
-slots.PlanSpecification_type = Slot(uri=RDF.type, name="PlanSpecification_type", curie=RDF.curie('type'),
-                   model_uri=NFDI.PlanSpecification_type, domain=PlanSpecification, range=Optional[Union[dict, DefinedTerm]])
+slots.ActivitySpecification_type = Slot(uri=RDF.type, name="ActivitySpecification_type", curie=RDF.curie('type'),
+                   model_uri=NFDI4C.ActivitySpecification_type, domain=ActivitySpecification, range=Optional[Union[dict, DefinedTerm]])
 
 slots.Attribute_type = Slot(uri=RDF.type, name="Attribute_type", curie=RDF.curie('type'),
-                   model_uri=NFDI.Attribute_type, domain=Attribute, range=Optional[Union[dict, DefinedTerm]])
+                   model_uri=NFDI4C.Attribute_type, domain=Attribute, range=Optional[Union[dict, DefinedTerm]])
+
+slots.QuantifiableAttribute_type = Slot(uri=QUDT.hasQuantityKind, name="QuantifiableAttribute_type", curie=QUDT.curie('hasQuantityKind'),
+                   model_uri=NFDI4C.QuantifiableAttribute_type, domain=QuantifiableAttribute, range=Optional[Union[dict, DefinedTerm]])
+
+slots.QuantifiableAttribute_value = Slot(uri=QUDT.value, name="QuantifiableAttribute_value", curie=QUDT.curie('value'),
+                   model_uri=NFDI4C.QuantifiableAttribute_value, domain=QuantifiableAttribute, range=Optional[str])

@@ -9,13 +9,18 @@
   ],
   "id": "https://w3id.org/StroemPhi/dcat-4C-ap",
   "imports": [
-    "linkml:types"
+    "linkml:types",
+    "dcat-4nfdi-ap"
   ],
   "license": "CC-BY 4.0",
   "prefixes": [
     {
-      "prefix_prefix": "nfdi",
+      "prefix_prefix": "nfdi4c",
       "prefix_reference": "https://w3id.org/StroemPhi/dcat_4C_ap/"
+    },
+    {
+      "prefix_prefix": "nfdi",
+      "prefix_reference": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/"
     },
     {
       "prefix_prefix": "linkml",
@@ -114,6 +119,10 @@
       "prefix_reference": "http://semanticscience.org/resource/CHEMINF_"
     },
     {
+      "prefix_prefix": "RXNO",
+      "prefix_reference": "http://semanticscience.org/resource/RXNO_"
+    },
+    {
       "prefix_prefix": "ex",
       "prefix_reference": "http://example.org/"
     },
@@ -128,9 +137,13 @@
     {
       "prefix_prefix": "doi",
       "prefix_reference": "https://doi.org/"
+    },
+    {
+      "prefix_prefix": "NMR",
+      "prefix_reference": "http://nmrML.org/nmrCV#NMR:"
     }
   ],
-  "default_prefix": "nfdi",
+  "default_prefix": "nfdi4c",
   "default_range": "string",
   "types": [
     {
@@ -444,19 +457,10 @@
   ],
   "enums": [
     {
-      "name": "NMRSpectroscopyEnum",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/NMRSpectroscopyEnum",
+      "name": "NMRAssayEnum",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/NMRAssayEnum",
+      "description": "NMR types from the Chemical Methods Ontology",
       "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "minus": [
-        {
-          "permissible_values": [
-            {
-              "text": "root_node",
-              "meaning": "CHMO:0000613"
-            }
-          ]
-        }
-      ],
       "reachable_from": {
         "source_ontology": "bioregistry:chmo",
         "source_nodes": [
@@ -468,28 +472,50 @@
       }
     },
     {
-      "name": "EntityOfInterestTypeEnum",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/EntityOfInterestTypeEnum",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "permissible_values": [
-        {
-          "text": "Chemical Substance",
-          "meaning": "CHEBI:59999"
-        }
-      ]
+      "name": "QUDTQuantityKindEnum",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/QUDTQuantityKindEnum",
+      "implements": [
+        "owl:NamedIndividual"
+      ],
+      "description": "Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "reachable_from": {
+        "source_ontology": "http://qudt.org/2.1/vocab/quantitykind",
+        "source_nodes": [
+          "qudt:QuantityKind"
+        ],
+        "relationship_types": [
+          "rdfs:type"
+        ],
+        "is_direct": true
+      }
     },
     {
-      "name": "ResearchActivityTypeEnum",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ResearchActivityTypeEnum",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap"
+      "name": "QUDTUnitEnum",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/QUDTUnitEnum",
+      "implements": [
+        "owl:NamedIndividual"
+      ],
+      "description": "Possible kinds of QUDT unit instances.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "reachable_from": {
+        "source_ontology": "https://qudt.org/vocab/unit/",
+        "source_nodes": [
+          "qudt:Unit"
+        ],
+        "relationship_types": [
+          "rdfs:type"
+        ],
+        "is_direct": true
+      }
     }
   ],
   "slots": [
     {
       "name": "type",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/type",
       "description": "The slot to specify the rdf:type of an entity according to a controlled vocabulary.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
@@ -500,7 +526,7 @@
         "EntityOfInterest",
         "Tool",
         "Environment",
-        "PlanSpecification",
+        "ActivitySpecification",
         "Attribute"
       ],
       "range": "string",
@@ -509,9 +535,9 @@
     },
     {
       "name": "alternative_id",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/alternative_id",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/alternative_id",
       "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://purl.org/dc/terms/identifier"
       ],
@@ -533,10 +559,10 @@
     },
     {
       "name": "id",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/id",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/id",
       "description": "The slot to specify the canonical unique identifier of an entity.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/id",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "slot_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/id",
       "identifier": true,
       "owner": "EntityOfInterest",
       "domain_of": [
@@ -550,9 +576,9 @@
     },
     {
       "name": "description",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/description",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/description",
       "description": "The slot to provide a free-text account of a thing.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://purl.org/dc/terms/description"
       ],
@@ -564,7 +590,7 @@
         "EntityOfInterest",
         "Tool",
         "Environment",
-        "PlanSpecification",
+        "ActivitySpecification",
         "Attribute"
       ],
       "range": "string",
@@ -574,9 +600,9 @@
     },
     {
       "name": "name",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/name",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/name",
       "description": "The slot to specify the label, name or title of a thing.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -594,7 +620,7 @@
         "EntityOfInterest",
         "Tool",
         "Environment",
-        "PlanSpecification",
+        "ActivitySpecification",
         "Attribute"
       ],
       "range": "string",
@@ -604,16 +630,19 @@
     },
     {
       "name": "was_generated_by",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/was_generated_by",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/was_generated_by",
       "description": "The slot to provide the ResearchActivity that created a Dataset.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "mappings": [
+        "http://www.w3.org/ns/prov#wasGeneratedBy"
+      ],
       "exact_mappings": [
         "http://www.w3.org/ns/prov#wasGeneratedBy"
       ],
       "close_mappings": [
         "http://schema.org/measurementTechnique"
       ],
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/was_generated_by",
+      "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
       "owner": "Dataset",
       "domain_of": [
         "Dataset"
@@ -625,9 +654,9 @@
     },
     {
       "name": "has_dataset",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_dataset",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/has_dataset",
       "description": "The slot to list the datasets of a catalog.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/ns/dcat#dataset"
       ],
@@ -645,9 +674,9 @@
     },
     {
       "name": "evaluated_entity",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/evaluated_entity",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/evaluated_entity",
       "description": "The slot to specify the entity of interest that was evaluated.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
       ],
@@ -662,10 +691,10 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "used_hardware",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/used_hardware",
-      "description": "The slot to specify the hardware that was used.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "name": "used_tool",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/used_tool",
+      "description": "The slot to specify the tool that was used.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
       ],
@@ -674,7 +703,7 @@
       "domain_of": [
         "ResearchActivity"
       ],
-      "range": "HardwareTool",
+      "range": "Tool",
       "recommended": true,
       "multivalued": true,
       "inlined": true,
@@ -682,10 +711,10 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "used_software",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/used_software",
-      "description": "The slot to specify the hardware that was used.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "name": "used_plan",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/used_plan",
+      "description": "The slot to specify the PlanSpecification (Method) that was used in the ResearchActivity.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
       ],
@@ -694,18 +723,16 @@
       "domain_of": [
         "ResearchActivity"
       ],
-      "range": "SoftwareTool",
+      "range": "ActivitySpecification",
       "recommended": true,
-      "multivalued": true,
       "inlined": true,
-      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "has_part",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_part",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/has_part",
       "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
       ],
@@ -721,9 +748,9 @@
     },
     {
       "name": "has_attribute",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_attribute",
-      "description": "The slot to related an attribute to an entity of interest, tool or environment.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/has_attribute",
+      "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://purl.org/dc/terms/relation"
       ],
@@ -745,27 +772,32 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "has_setting",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_setting",
-      "description": "The slot to specify the setting of a hardware or software tool.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "is_a": "has_attribute",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_setting",
-      "owner": "Tool",
-      "domain_of": [
-        "Tool"
+      "name": "has_quantifiable_attribute",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/has_quantifiable_attribute",
+      "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "mappings": [
+        "http://purl.org/dc/terms/relation"
       ],
-      "range": "SettingDatum",
+      "is_a": "has_attribute",
+      "slot_uri": "http://purl.org/dc/terms/relation",
+      "owner": "Environment",
+      "domain_of": [
+        "EntityOfInterest",
+        "Tool",
+        "Environment"
+      ],
+      "range": "QuantifiableAttribute",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "has_value",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_value",
+      "name": "value",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/value",
       "description": "A slot to provide the value of an attribute.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/ns/prov#value"
       ],
@@ -778,17 +810,9 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "has_unit",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_unit",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_unit",
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "definedTerm__from_CV",
       "description": "The name of the controlled vocabulary.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://schema.org/inDefinedTermSet"
       ],
@@ -802,79 +826,113 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "chemicalSubstance__inchikey",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/inchikey",
-      "alias": "inchikey",
-      "owner": "ChemicalSubstance",
-      "domain_of": [
-        "ChemicalSubstance"
-      ],
-      "range": "InChIKey",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "chemicalSubstance__inchi",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/inchi",
-      "alias": "inchi",
-      "owner": "ChemicalSubstance",
-      "domain_of": [
-        "ChemicalSubstance"
-      ],
-      "range": "InChi",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "chemicalSubstance__iupac_name",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/iupac_name",
-      "alias": "iupac_name",
-      "owner": "ChemicalSubstance",
-      "domain_of": [
-        "ChemicalSubstance"
-      ],
-      "range": "IUPACName",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "quantifiableAttribute__has_quantity_kind",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "http://qudt.org/schema/qudt/hasQuantityKind"
-      ],
-      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
-      "alias": "has_quantity_kind",
-      "owner": "QuantifiableAttribute",
-      "domain_of": [
-        "QuantifiableAttribute"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "quantifiableAttribute__applicable_unit",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "name": "quantifiableAttribute__unit",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://qudt.org/schema/qudt/applicableUnit"
       ],
       "slot_uri": "http://qudt.org/schema/qudt/applicableUnit",
-      "alias": "applicable_unit",
+      "alias": "unit",
       "owner": "QuantifiableAttribute",
       "domain_of": [
         "QuantifiableAttribute"
       ],
-      "range": "string",
+      "range": "DefinedTerm",
+      "bindings": [
+        {
+          "range": "QUDTUnitEnum",
+          "obligation_level": {
+            "text": "RECOMMENDED",
+            "description": "The metadata element is recommended to be present in the model",
+            "@type": "PermissibleValue"
+          },
+          "binds_value_of": "id",
+          "description": "Restricts the allowable defined terms to the QUDT Unit vocabulary.",
+          "@type": "EnumBinding"
+        }
+      ],
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "quantifiableAttribute__is_delta_attribute",
+      "description": "This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "mappings": [
+        "http://qudt.org/schema/qudt/Quantity-isDeltaQuantity"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/Quantity-isDeltaQuantity",
+      "alias": "is_delta_attribute",
+      "owner": "QuantifiableAttribute",
+      "domain_of": [
+        "QuantifiableAttribute"
+      ],
+      "range": "boolean",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "NMRSpectroscopy_evaluated_entity",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/evaluated_entity",
+      "description": "The slot to specify the entity of interest that was evaluated.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "mappings": [
+        "http://www.w3.org/ns/prov#used"
+      ],
+      "is_a": "evaluated_entity",
+      "domain": "NMRSpectroscopy",
+      "slot_uri": "http://www.w3.org/ns/prov#used",
+      "alias": "evaluated_entity",
+      "owner": "NMRSpectroscopy",
+      "domain_of": [
+        "NMRSpectroscopy"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "evaluated_entity",
+      "range": "ChemicalSubstance",
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "NMRSpectroscopy_type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/type",
+      "description": "The type of NMR Spectroscopy according provided as CURIE of a subclass of CHMO:0000613.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "mappings": [
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      ],
+      "is_a": "type",
+      "domain": "NMRSpectroscopy",
+      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "alias": "type",
+      "owner": "NMRSpectroscopy",
+      "domain_of": [
+        "NMRSpectroscopy"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "DefinedTerm",
+      "bindings": [
+        {
+          "range": "NMRAssayEnum",
+          "obligation_level": {
+            "text": "RECOMMENDED",
+            "description": "The metadata element is recommended to be present in the model",
+            "@type": "PermissibleValue"
+          },
+          "binds_value_of": "id",
+          "description": "NMR types from the Chemical Methods Ontology",
+          "@type": "EnumBinding"
+        }
+      ],
+      "recommended": true,
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "DefinedTerm_name",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/name",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/name",
       "description": "The slot to specify the label, name or title of a thing.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://schema.org/name"
       ],
@@ -900,9 +958,9 @@
     },
     {
       "name": "DefinedTerm_alternative_id",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/alternative_id",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/alternative_id",
       "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://schema.org/identifier"
       ],
@@ -923,9 +981,9 @@
     },
     {
       "name": "Dataset_name",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/name",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/name",
       "description": "The label, name or title of a Dataset.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -952,9 +1010,9 @@
     },
     {
       "name": "Dataset_description",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/description",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/description",
       "description": "A free-text account of a Dataset.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://purl.org/dc/terms/description"
       ],
@@ -976,9 +1034,12 @@
     },
     {
       "name": "Dataset_was_generated_by",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/was_generated_by",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/was_generated_by",
       "description": "The slot to provide the ResearchActivity that created a Dataset.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "mappings": [
+        "http://www.w3.org/ns/prov#wasGeneratedBy"
+      ],
       "exact_mappings": [
         "http://www.w3.org/ns/prov#wasGeneratedBy"
       ],
@@ -987,7 +1048,7 @@
       ],
       "is_a": "was_generated_by",
       "domain": "Dataset",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/was_generated_by",
+      "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
       "alias": "was_generated_by",
       "owner": "Dataset",
       "domain_of": [
@@ -1002,12 +1063,12 @@
     },
     {
       "name": "DatasetCollection_id",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/id",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/id",
       "description": "The unique identifier of a Catalog.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "is_a": "id",
       "domain": "DatasetCollection",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/id",
+      "slot_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/id",
       "identifier": true,
       "alias": "id",
       "owner": "DatasetCollection",
@@ -1022,9 +1083,9 @@
     },
     {
       "name": "DatasetCollection_name",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/name",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/name",
       "description": "The name of a DatasetCollection.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -1051,9 +1112,9 @@
     },
     {
       "name": "DatasetCollection_description",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/description",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/description",
       "description": "A free-text account of a DatasetCollection.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://purl.org/dc/terms/description"
       ],
@@ -1075,9 +1136,9 @@
     },
     {
       "name": "ResearchActivity_type",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
-      "description": "The type of the ResearchActivity provided as a DefinedTerm.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/type",
+      "description": "The slot to specify the type of the ResearchActivity provided as a DefinedTerm.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
@@ -1097,56 +1158,32 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "NMRSpectroscopy_evaluated_entity",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/evaluated_entity",
-      "description": "The slot to specify the entity of interest that was evaluated.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "name": "ResearchActivity_has_part",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/has_part",
+      "description": "The slot to specify one or more parts of the ResearchActivity that are themselves also research activities.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
-        "http://www.w3.org/ns/prov#used"
+        "http://purl.org/dc/terms/hasPart"
       ],
-      "is_a": "evaluated_entity",
-      "domain": "NMRSpectroscopy",
-      "slot_uri": "http://www.w3.org/ns/prov#used",
-      "alias": "evaluated_entity",
-      "owner": "NMRSpectroscopy",
+      "is_a": "has_part",
+      "domain": "ResearchActivity",
+      "slot_uri": "http://purl.org/dc/terms/hasPart",
+      "alias": "has_part",
+      "owner": "ResearchActivity",
       "domain_of": [
-        "NMRSpectroscopy"
+        "ResearchActivity"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "evaluated_entity",
-      "range": "ChemicalSubstance",
-      "recommended": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "NMRSpectroscopy_type",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
-      "description": "The type of NMR Spectroscopy according provided as CURIE of a subclass of CHMO:0000613.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-      ],
-      "is_a": "ResearchActivity_type",
-      "domain": "NMRSpectroscopy",
-      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-      "alias": "type",
-      "owner": "NMRSpectroscopy",
-      "domain_of": [
-        "NMRSpectroscopy"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "type",
-      "range": "DefinedTerm",
-      "recommended": true,
+      "usage_slot_name": "has_part",
+      "range": "ResearchActivity",
       "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "EntityOfInterest_type",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/type",
       "description": "The type of the EntityOfInterest provided as a DefinedTerm.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
@@ -1167,9 +1204,9 @@
     },
     {
       "name": "Tool_type",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/type",
       "description": "The type of the Tool provided as a DefinedTerm.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
@@ -1190,9 +1227,9 @@
     },
     {
       "name": "Tool_has_part",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_part",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/has_part",
       "description": "The slot to specify parts of a tool.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
       ],
@@ -1214,9 +1251,9 @@
     },
     {
       "name": "Environment_type",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/type",
       "description": "The type of Environment provided as a DefinedTerm.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
@@ -1236,20 +1273,20 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "PlanSpecification_type",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "name": "ActivitySpecification_type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/type",
       "description": "The type of PlanSpecification provided as a DefinedTerm.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
       "is_a": "type",
-      "domain": "PlanSpecification",
+      "domain": "ActivitySpecification",
       "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
       "alias": "type",
-      "owner": "PlanSpecification",
+      "owner": "ActivitySpecification",
       "domain_of": [
-        "PlanSpecification"
+        "ActivitySpecification"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "type",
@@ -1260,9 +1297,9 @@
     },
     {
       "name": "Attribute_type",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/type",
       "description": "The slot to specify the type of Attribute provided as a DefinedTerm.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
@@ -1280,14 +1317,280 @@
       "recommended": true,
       "inlined": true,
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantifiableAttribute_type",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/type",
+      "description": "The slot to specify the rdf:type of an entity according to a controlled vocabulary.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasQuantityKind"
+      ],
+      "is_a": "Attribute_type",
+      "domain": "QuantifiableAttribute",
+      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
+      "alias": "type",
+      "owner": "QuantifiableAttribute",
+      "domain_of": [
+        "QuantifiableAttribute"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "type",
+      "range": "DefinedTerm",
+      "bindings": [
+        {
+          "range": "QUDTQuantityKindEnum",
+          "obligation_level": {
+            "text": "RECOMMENDED",
+            "description": "The metadata element is recommended to be present in the model",
+            "@type": "PermissibleValue"
+          },
+          "binds_value_of": "id",
+          "description": "Binds the type of a quantifyable attribute to a QUDT Quantity Kind instance from the QUDT Quantity Kind vocabulary.",
+          "@type": "EnumBinding"
+        }
+      ],
+      "recommended": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantifiableAttribute_value",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/value",
+      "description": "A data property to relate an observable thing with a value of any kind.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "mappings": [
+        "http://qudt.org/schema/qudt/value"
+      ],
+      "is_a": "value",
+      "domain": "QuantifiableAttribute",
+      "slot_uri": "http://qudt.org/schema/qudt/value",
+      "alias": "value",
+      "owner": "QuantifiableAttribute",
+      "domain_of": [
+        "QuantifiableAttribute"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "value",
+      "range": "string",
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
     {
-      "name": "DefinedTerm",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/DefinedTerm",
-      "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.",
+      "name": "ChemAnalysisDataset",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemAnalysisDataset",
       "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemAnalysisDataset",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "NMRSpectroscopy",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/NMRSpectroscopy",
+      "description": "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "CHMO:0000613"
+      ],
+      "is_a": "ResearchActivity",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "used_tool",
+        "used_plan",
+        "ResearchActivity_has_part",
+        "NMRSpectroscopy_evaluated_entity",
+        "NMRSpectroscopy_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/CHMO_0000613",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ChemicalReaction",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalReaction",
+      "description": "An experimental procedure with the aim of producing a portion of a given compound or mixture.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "RXNO:0000329"
+      ],
+      "is_a": "EntityOfInterest",
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "alternative_id",
+        "EntityOfInterest_type",
+        "has_attribute",
+        "has_quantifiable_attribute",
+        "has_part"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/RXNO_0000329",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ChemicalSubstance",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalSubstance",
+      "description": "A chemical substance that is being evaluated in a scientific process.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "CHEBI:59999"
+      ],
+      "is_a": "EntityOfInterest",
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "alternative_id",
+        "EntityOfInterest_type",
+        "has_attribute",
+        "has_quantifiable_attribute",
+        "has_part"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/CHEBI_59999",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "HardwareTool",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/HardwareTool",
+      "description": "A hardware with a certain function.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "aliases": [
+        "Device"
+      ],
+      "is_a": "Tool",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Tool_type",
+        "Tool_has_part",
+        "has_attribute",
+        "has_quantifiable_attribute"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/HardwareTool",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SoftwareTool",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SoftwareTool",
+      "description": "A software with a certain function.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "is_a": "Tool",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Tool_type",
+        "Tool_has_part",
+        "has_attribute",
+        "has_quantifiable_attribute"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SoftwareTool",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Laboratory",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Laboratory",
+      "description": "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "prov:Entity"
+      ],
+      "is_a": "Environment",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Environment_type",
+        "has_attribute",
+        "has_quantifiable_attribute"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "InChIKey",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/InChIKey",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "CHEMINF:000059"
+      ],
+      "is_a": "Attribute",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Attribute_type",
+        "value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000059",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "InChi",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/InChi",
+      "description": "A structure descriptor which conforms to the InChI format specification.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "CHEMINF:000113"
+      ],
+      "is_a": "Attribute",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Attribute_type",
+        "value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000113",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "IUPACName",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/IUPACName",
+      "description": "An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "mappings": [
+        "CHEMINF:000107"
+      ],
+      "is_a": "Attribute",
+      "slots": [
+        "name",
+        "description",
+        "alternative_id",
+        "Attribute_type",
+        "value"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000107",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Any",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/Any",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "mappings": [
+        "linkml:Any"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/Any",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "DefinedTerm",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/DefinedTerm",
+      "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "schema:DefinedTerm"
       ],
@@ -1311,12 +1614,9 @@
     },
     {
       "name": "Dataset",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Dataset",
-      "implements": [
-        "dcat:Dataset"
-      ],
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/Dataset",
       "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "dcat:Dataset"
       ],
@@ -1334,9 +1634,9 @@
     },
     {
       "name": "DatasetCollection",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/DatasetCollection",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/DatasetCollection",
       "description": "A curated collection of metadata about data resources.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "dcat:Catalog"
       ],
@@ -1355,9 +1655,9 @@
     },
     {
       "name": "ResearchActivity",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ResearchActivity",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/ResearchActivity",
       "description": "An activity (process) that has the objective to produce information about an entity by evaluating it.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "prov:Activity"
       ],
@@ -1366,49 +1666,25 @@
         "sosa:Observation",
         "OBI:0000070"
       ],
-      "abstract": true,
       "slots": [
         "name",
         "description",
         "alternative_id",
         "ResearchActivity_type",
         "evaluated_entity",
-        "used_hardware",
-        "used_software",
-        "has_part"
+        "used_tool",
+        "used_plan",
+        "ResearchActivity_has_part"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Activity",
       "@type": "ClassDefinition"
     },
     {
-      "name": "NMRSpectroscopy",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/NMRSpectroscopy",
-      "description": "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "CHMO:0000613"
-      ],
-      "is_a": "ResearchActivity",
-      "slots": [
-        "name",
-        "description",
-        "alternative_id",
-        "used_hardware",
-        "used_software",
-        "has_part",
-        "NMRSpectroscopy_evaluated_entity",
-        "NMRSpectroscopy_type"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://purl.obolibrary.org/obo/CHMO_0000613",
-      "@type": "ClassDefinition"
-    },
-    {
       "name": "EntityOfInterest",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/EntityOfInterest",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/EntityOfInterest",
       "description": "Something that is being evaluated in a scientific process.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "prov:Entity"
       ],
@@ -1419,6 +1695,7 @@
         "alternative_id",
         "EntityOfInterest_type",
         "has_attribute",
+        "has_quantifiable_attribute",
         "has_part"
       ],
       "slot_usage": {},
@@ -1426,75 +1703,10 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "ChemicalReaction",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalReaction",
-      "description": "An experimental procedure with the aim of producing a portion of a given compound or mixture.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "RXNO:0000329"
-      ],
-      "is_a": "EntityOfInterest",
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "alternative_id",
-        "EntityOfInterest_type",
-        "has_attribute",
-        "has_part"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://example.org/UNKNOWN/RXNO/0000329",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "ChemicalSubstance",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalSubstance",
-      "description": "A chemical substance that is being evaluated in a scientific process.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "CHEBI:59999"
-      ],
-      "is_a": "EntityOfInterest",
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "alternative_id",
-        "EntityOfInterest_type",
-        "has_attribute",
-        "has_part",
-        "chemicalSubstance__inchikey",
-        "chemicalSubstance__inchi",
-        "chemicalSubstance__iupac_name"
-      ],
-      "slot_usage": {},
-      "attributes": [
-        {
-          "name": "inchikey",
-          "range": "InChIKey",
-          "inlined": true,
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "inchi",
-          "range": "InChi",
-          "@type": "SlotDefinition"
-        },
-        {
-          "name": "iupac_name",
-          "range": "IUPACName",
-          "@type": "SlotDefinition"
-        }
-      ],
-      "class_uri": "http://purl.obolibrary.org/obo/CHEBI_59999",
-      "@type": "ClassDefinition"
-    },
-    {
       "name": "Tool",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Tool",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/Tool",
       "description": "A entity with a certain function used within a scientific activity.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "prov:Entity"
       ],
@@ -1508,58 +1720,17 @@
         "Tool_type",
         "Tool_has_part",
         "has_attribute",
-        "has_setting"
+        "has_quantifiable_attribute"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Entity",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "HardwareTool",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/HardwareTool",
-      "description": "A hardware with a certain function.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "aliases": [
-        "Device"
-      ],
-      "is_a": "Tool",
-      "slots": [
-        "name",
-        "description",
-        "alternative_id",
-        "Tool_type",
-        "Tool_has_part",
-        "has_attribute",
-        "has_setting"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/HardwareTool",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "SoftwareTool",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SoftwareTool",
-      "description": "A software with a certain function.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "is_a": "Tool",
-      "slots": [
-        "name",
-        "description",
-        "alternative_id",
-        "Tool_type",
-        "Tool_has_part",
-        "has_attribute",
-        "has_setting"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SoftwareTool",
       "@type": "ClassDefinition"
     },
     {
       "name": "Environment",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Environment",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/Environment",
       "description": "The environment in which the dataset creating Observation took place (e.g. a lab).",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "prov:Entity"
       ],
@@ -1568,62 +1739,34 @@
         "description",
         "alternative_id",
         "Environment_type",
-        "has_attribute"
+        "has_attribute",
+        "has_quantifiable_attribute"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Entity",
       "@type": "ClassDefinition"
     },
     {
-      "name": "Laboratory",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Laboratory",
-      "description": "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "prov:Entity"
+      "name": "ActivitySpecification",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/ActivitySpecification",
+      "description": "\"A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.\"",
+      "examples": [
+        {
+          "description": "We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3).",
+          "@type": "Example"
+        }
       ],
-      "is_a": "Environment",
-      "slots": [
-        "name",
-        "description",
-        "alternative_id",
-        "Environment_type",
-        "has_attribute"
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
+      "aliases": [
+        "Method"
       ],
-      "slot_usage": {},
-      "class_uri": "http://www.w3.org/ns/prov#Entity",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "PlanSpecification",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/PlanSpecification",
-      "description": "\"A piece of information that specifies: \n    a) how an activity has to be carried out by its agents and \n    b) the attributes of the passive activity participants in terms of their presence and magnitude.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
       "mappings": [
         "prov:Entity"
       ],
       "slots": [
         "name",
         "description",
-        "PlanSpecification_type"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://www.w3.org/ns/prov#Entity",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "ResearchActivitySpecification",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ResearchActivitySpecification",
-      "description": "A PlanSpecification that specifies a ResearchActivity.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "prov:Entity"
-      ],
-      "is_a": "PlanSpecification",
-      "slots": [
-        "name",
-        "description",
-        "PlanSpecification_type"
+        "ActivitySpecification_type"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Entity",
@@ -1631,9 +1774,9 @@
     },
     {
       "name": "Attribute",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Attribute",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/Attribute",
       "description": "A piece of information that is attributed to an entity of interest, tool or environment.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "IAO:0000030"
       ],
@@ -1642,7 +1785,7 @@
         "description",
         "alternative_id",
         "Attribute_type",
-        "has_value"
+        "value"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/IAO_0000030",
@@ -1650,8 +1793,9 @@
     },
     {
       "name": "QuantifiableAttribute",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/QuantifiableAttribute",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
+      "definition_uri": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/QuantifiableAttribute",
+      "description": "An attribute that is quantifiable.",
+      "from_schema": "https://w3id.org/StroemPhi/dcat-4nfdi-ap",
       "mappings": [
         "qudt:Quantity"
       ],
@@ -1660,139 +1804,54 @@
         "name",
         "description",
         "alternative_id",
-        "Attribute_type",
-        "has_value",
-        "quantifiableAttribute__has_quantity_kind",
-        "quantifiableAttribute__applicable_unit"
+        "quantifiableAttribute__unit",
+        "quantifiableAttribute__is_delta_attribute",
+        "QuantifiableAttribute_type",
+        "QuantifiableAttribute_value"
       ],
       "slot_usage": {},
       "attributes": [
         {
-          "name": "has_quantity_kind",
-          "slot_uri": "qudt:hasQuantityKind",
+          "name": "unit",
+          "slot_uri": "qudt:applicableUnit",
+          "range": "DefinedTerm",
+          "bindings": [
+            {
+              "range": "QUDTUnitEnum",
+              "obligation_level": {
+                "text": "RECOMMENDED",
+                "description": "The metadata element is recommended to be present in the model",
+                "@type": "PermissibleValue"
+              },
+              "binds_value_of": "id",
+              "description": "Restricts the allowable defined terms to the QUDT Unit vocabulary.",
+              "@type": "EnumBinding"
+            }
+          ],
           "@type": "SlotDefinition"
         },
         {
-          "name": "applicable_unit",
-          "slot_uri": "qudt:applicableUnit",
+          "name": "is_delta_attribute",
+          "description": "This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets.",
+          "slot_uri": "qudt:Quantity-isDeltaQuantity",
+          "range": "boolean",
           "@type": "SlotDefinition"
         }
       ],
       "class_uri": "http://qudt.org/schema/qudt/Quantity",
       "@type": "ClassDefinition"
-    },
-    {
-      "name": "AttributeKind",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/AttributeKind",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "qudt:QuantityKind"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://qudt.org/schema/qudt/QuantityKind",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Unit",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Unit",
-      "description": "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "qudt:Unit"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://qudt.org/schema/qudt/Unit",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "SettingDatum",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SettingDatum",
-      "description": "An attribute that specifies the configuration of a tool.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "IAO:0000140"
-      ],
-      "is_a": "Attribute",
-      "slots": [
-        "name",
-        "description",
-        "alternative_id",
-        "Attribute_type",
-        "has_value"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://purl.obolibrary.org/obo/IAO_0000140",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "InChIKey",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/InChIKey",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "CHEMINF:000059"
-      ],
-      "is_a": "Attribute",
-      "slots": [
-        "name",
-        "description",
-        "alternative_id",
-        "Attribute_type",
-        "has_value"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://semanticscience.org/resource/CHEMINF_000059",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "InChi",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/InChi",
-      "description": "A structure descriptor which conforms to the InChI format specification.",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "CHEMINF:000113"
-      ],
-      "is_a": "Attribute",
-      "slots": [
-        "name",
-        "description",
-        "alternative_id",
-        "Attribute_type",
-        "has_value"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://semanticscience.org/resource/CHEMINF_000113",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "IUPACName",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/IUPACName",
-      "description": "An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).",
-      "from_schema": "https://w3id.org/StroemPhi/dcat-4C-ap",
-      "mappings": [
-        "CHEMINF:000107"
-      ],
-      "is_a": "Attribute",
-      "slots": [
-        "name",
-        "description",
-        "alternative_id",
-        "Attribute_type",
-        "has_value"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://semanticscience.org/resource/CHEMINF_000107",
-      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcat_4c_ap.yaml",
-  "source_file_date": "2024-10-25T15:42:52",
-  "source_file_size": 13650,
-  "generation_date": "2024-10-25T15:45:48",
+  "source_file_date": "2024-10-29T08:58:01",
+  "source_file_size": 5577,
+  "generation_date": "2024-10-29T09:00:26",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
+    "dcat-4nfdi-ap.context.jsonld",
     {
       "@base": "https://w3id.org/StroemPhi/dcat_4C_ap/"
     }

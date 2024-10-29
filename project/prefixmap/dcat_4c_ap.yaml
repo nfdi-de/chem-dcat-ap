@@ -6,10 +6,11 @@
    "FOODON": "http://purl.obolibrary.org/obo/FOODON_",
    "IAO": "http://purl.obolibrary.org/obo/IAO_",
    "NCIT": "http://purl.obolibrary.org/obo/NCIT_",
+   "NMR": "http://nmrML.org/nmrCV#NMR:",
    "OBI": "http://purl.obolibrary.org/obo/OBI_",
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
    "RO": "http://purl.obolibrary.org/obo/RO_",
-   "RXNO": "http://example.org/UNKNOWN/RXNO/",
+   "RXNO": "http://semanticscience.org/resource/RXNO_",
    "SIO": "http://semanticscience.org/resource/SIO_",
    "T4FS": "http://purl.obolibrary.org/obo/T4FS_",
    "biolink": "https://w3id.org/biolink/vocab/",
@@ -19,7 +20,8 @@
    "ex": "http://example.org/",
    "foaf": "http://xmlns.com/foaf/0.1/",
    "linkml": "https://w3id.org/linkml/",
-   "nfdi": "https://w3id.org/StroemPhi/dcat_4C_ap/",
+   "nfdi": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/",
+   "nfdi4c": "https://w3id.org/StroemPhi/dcat_4C_ap/",
    "owl": "http://www.w3.org/2002/07/owl#",
    "prov": "http://www.w3.org/ns/prov#",
    "qudt": "http://qudt.org/schema/qudt/",
@@ -29,11 +31,14 @@
    "skos": "http://www.w3.org/2004/02/skos/core#",
    "sosa": "http://www.w3.org/ns/sosa/",
    "vcard": "http://www.w3.org/2006/vcard/ns#",
+   "ActivitySpecification": {
+      "@id": "prov:Entity"
+   },
+   "Any": {
+      "@id": "linkml:Any"
+   },
    "Attribute": {
       "@id": "IAO:0000030"
-   },
-   "AttributeKind": {
-      "@id": "qudt:QuantityKind"
    },
    "ChemicalReaction": {
       "@id": "RXNO:0000329"
@@ -71,25 +76,13 @@
    "NMRSpectroscopy": {
       "@id": "CHMO:0000613"
    },
-   "PlanSpecification": {
-      "@id": "prov:Entity"
-   },
    "QuantifiableAttribute": {
       "@id": "qudt:Quantity"
    },
    "ResearchActivity": {
       "@id": "prov:Activity"
    },
-   "ResearchActivitySpecification": {
-      "@id": "prov:Entity"
-   },
-   "SettingDatum": {
-      "@id": "IAO:0000140"
-   },
    "Tool": {
       "@id": "prov:Entity"
-   },
-   "Unit": {
-      "@id": "qudt:Unit"
    }
 }

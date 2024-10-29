@@ -1,7 +1,13 @@
 # metamodel_version: 1.7.0
-enum EntityOfInterestTypeEnum
+type ActivitySpecification
   {
-    Chemical_Substance
+    name: [String]
+    description: [String]
+    type: DefinedTerm
+  }
+
+type Any
+  {
   }
 
 type Attribute
@@ -10,10 +16,10 @@ type Attribute
     description: [String]
     alternativeId: [Uriorcurie]
     type: DefinedTerm
-    hasValue: String
+    value: String
   }
 
-type AttributeKind
+type ChemAnalysisDataset
   {
   }
 
@@ -25,6 +31,7 @@ type ChemicalReaction
     alternativeId: [Uriorcurie]
     type: DefinedTerm
     hasAttribute: [Attribute]
+    hasQuantifiableAttribute: [QuantifiableAttribute]
     hasPart: String
   }
 
@@ -36,10 +43,8 @@ type ChemicalSubstance
     alternativeId: [Uriorcurie]
     type: DefinedTerm
     hasAttribute: [Attribute]
+    hasQuantifiableAttribute: [QuantifiableAttribute]
     hasPart: String
-    inchikey: InChIKey
-    inchi: InChi
-    iupacName: IUPACName
   }
 
 type Dataset
@@ -77,6 +82,7 @@ type EntityOfInterest
     alternativeId: [Uriorcurie]
     type: DefinedTerm
     hasAttribute: [Attribute]
+    hasQuantifiableAttribute: [QuantifiableAttribute]
     hasPart: String
   }
 
@@ -87,6 +93,7 @@ type Environment
     alternativeId: [Uriorcurie]
     type: DefinedTerm
     hasAttribute: [Attribute]
+    hasQuantifiableAttribute: [QuantifiableAttribute]
   }
 
 type HardwareTool
@@ -97,7 +104,7 @@ type HardwareTool
     type: DefinedTerm
     hasPart: [Tool]
     hasAttribute: [Attribute]
-    hasSetting: [SettingDatum]
+    hasQuantifiableAttribute: [QuantifiableAttribute]
   }
 
 type InChi
@@ -106,7 +113,7 @@ type InChi
     description: [String]
     alternativeId: [Uriorcurie]
     type: DefinedTerm
-    hasValue: String
+    value: String
   }
 
 type InChIKey
@@ -115,7 +122,7 @@ type InChIKey
     description: [String]
     alternativeId: [Uriorcurie]
     type: DefinedTerm
-    hasValue: String
+    value: String
   }
 
 type IUPACName
@@ -124,7 +131,7 @@ type IUPACName
     description: [String]
     alternativeId: [Uriorcurie]
     type: DefinedTerm
-    hasValue: String
+    value: String
   }
 
 type Laboratory
@@ -134,6 +141,7 @@ type Laboratory
     alternativeId: [Uriorcurie]
     type: DefinedTerm
     hasAttribute: [Attribute]
+    hasQuantifiableAttribute: [QuantifiableAttribute]
   }
 
 type NMRSpectroscopy
@@ -141,17 +149,10 @@ type NMRSpectroscopy
     name: [String]
     description: [String]
     alternativeId: [Uriorcurie]
-    usedHardware: [HardwareTool]
-    usedSoftware: [SoftwareTool]
-    hasPart: String
+    usedTool: [Tool]
+    usedPlan: ActivitySpecification
+    hasPart: ResearchActivity
     evaluatedEntity: ChemicalSubstance
-    type: DefinedTerm
-  }
-
-type PlanSpecification
-  {
-    name: [String]
-    description: [String]
     type: DefinedTerm
   }
 
@@ -160,38 +161,22 @@ type QuantifiableAttribute
     name: [String]
     description: [String]
     alternativeId: [Uriorcurie]
+    unit: DefinedTerm
+    isDeltaAttribute: Boolean
     type: DefinedTerm
-    hasValue: String
-    hasQuantityKind: String
-    applicableUnit: String
+    value: String
   }
 
-interface ResearchActivity
+type ResearchActivity
   {
     name: [String]
     description: [String]
     alternativeId: [Uriorcurie]
     type: DefinedTerm
     evaluatedEntity: EntityOfInterest
-    usedHardware: [HardwareTool]
-    usedSoftware: [SoftwareTool]
-    hasPart: String
-  }
-
-type ResearchActivitySpecification
-  {
-    name: [String]
-    description: [String]
-    type: DefinedTerm
-  }
-
-type SettingDatum
-  {
-    name: [String]
-    description: [String]
-    alternativeId: [Uriorcurie]
-    type: DefinedTerm
-    hasValue: String
+    usedTool: [Tool]
+    usedPlan: ActivitySpecification
+    hasPart: ResearchActivity
   }
 
 type SoftwareTool
@@ -202,7 +187,7 @@ type SoftwareTool
     type: DefinedTerm
     hasPart: [Tool]
     hasAttribute: [Attribute]
-    hasSetting: [SettingDatum]
+    hasQuantifiableAttribute: [QuantifiableAttribute]
   }
 
 type Tool
@@ -213,10 +198,6 @@ type Tool
     type: DefinedTerm
     hasPart: [Tool]
     hasAttribute: [Attribute]
-    hasSetting: [SettingDatum]
-  }
-
-type Unit
-  {
+    hasQuantifiableAttribute: [QuantifiableAttribute]
   }
 

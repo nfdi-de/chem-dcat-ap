@@ -1,5 +1,56 @@
 {
     "$defs": {
+        "ActivitySpecification": {
+            "additionalProperties": false,
+            "description": "\"A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.\"",
+            "properties": {
+                "description": {
+                    "description": "The slot to provide a free-text account of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The slot to specify the label, name or title of a thing.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of PlanSpecification provided as a DefinedTerm."
+                }
+            },
+            "title": "ActivitySpecification",
+            "type": "object"
+        },
+        "Any": {
+            "additionalProperties": true,
+            "description": "",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
         "Attribute": {
             "additionalProperties": false,
             "description": "A piece of information that is attributed to an entity of interest, tool or environment.",
@@ -24,13 +75,6 @@
                         "null"
                     ]
                 },
-                "has_value": {
-                    "description": "A slot to provide the value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "The slot to specify the label, name or title of a thing.",
                     "items": {
@@ -51,15 +95,22 @@
                         }
                     ],
                     "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                },
+                "value": {
+                    "description": "A slot to provide the value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "title": "Attribute",
             "type": "object"
         },
-        "AttributeKind": {
+        "ChemAnalysisDataset": {
             "additionalProperties": false,
             "description": "",
-            "title": "AttributeKind",
+            "title": "ChemAnalysisDataset",
             "type": "object"
         },
         "ChemicalReaction": {
@@ -87,7 +138,7 @@
                     ]
                 },
                 "has_attribute": {
-                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
                     "items": {
                         "$ref": "#/$defs/Attribute"
                     },
@@ -100,6 +151,16 @@
                     "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "has_quantifiable_attribute": {
+                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantifiableAttribute"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -160,7 +221,7 @@
                     ]
                 },
                 "has_attribute": {
-                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
                     "items": {
                         "$ref": "#/$defs/Attribute"
                     },
@@ -176,39 +237,19 @@
                         "null"
                     ]
                 },
+                "has_quantifiable_attribute": {
+                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantifiableAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "The slot to specify the canonical unique identifier of an entity.",
                     "type": "string"
-                },
-                "inchi": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/InChi"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "inchikey": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/InChIKey"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "iupac_name": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/IUPACName"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
                 },
                 "name": {
                     "description": "The slot to specify the label, name or title of a thing.",
@@ -422,7 +463,7 @@
                     ]
                 },
                 "has_attribute": {
-                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
                     "items": {
                         "$ref": "#/$defs/Attribute"
                     },
@@ -435,6 +476,16 @@
                     "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "has_quantifiable_attribute": {
+                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantifiableAttribute"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -470,14 +521,6 @@
             "title": "EntityOfInterest",
             "type": "object"
         },
-        "EntityOfInterestTypeEnum": {
-            "description": "",
-            "enum": [
-                "Chemical Substance"
-            ],
-            "title": "EntityOfInterestTypeEnum",
-            "type": "string"
-        },
         "Environment": {
             "additionalProperties": false,
             "description": "The environment in which the dataset creating Observation took place (e.g. a lab).",
@@ -503,9 +546,19 @@
                     ]
                 },
                 "has_attribute": {
-                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
                     "items": {
                         "$ref": "#/$defs/Attribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantifiable_attribute": {
+                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantifiableAttribute"
                     },
                     "type": [
                         "array",
@@ -562,7 +615,7 @@
                     ]
                 },
                 "has_attribute": {
-                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
                     "items": {
                         "$ref": "#/$defs/Attribute"
                     },
@@ -581,10 +634,10 @@
                         "null"
                     ]
                 },
-                "has_setting": {
-                    "description": "The slot to specify the setting of a hardware or software tool.",
+                "has_quantifiable_attribute": {
+                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "$ref": "#/$defs/SettingDatum"
+                        "$ref": "#/$defs/QuantifiableAttribute"
                     },
                     "type": [
                         "array",
@@ -640,13 +693,6 @@
                         "null"
                     ]
                 },
-                "has_value": {
-                    "description": "A slot to provide the value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "The slot to specify the label, name or title of a thing.",
                     "items": {
@@ -667,6 +713,13 @@
                         }
                     ],
                     "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                },
+                "value": {
+                    "description": "A slot to provide the value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "title": "IUPACName",
@@ -696,13 +749,6 @@
                         "null"
                     ]
                 },
-                "has_value": {
-                    "description": "A slot to provide the value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "The slot to specify the label, name or title of a thing.",
                     "items": {
@@ -723,6 +769,13 @@
                         }
                     ],
                     "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                },
+                "value": {
+                    "description": "A slot to provide the value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "title": "InChIKey",
@@ -752,13 +805,6 @@
                         "null"
                     ]
                 },
-                "has_value": {
-                    "description": "A slot to provide the value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "The slot to specify the label, name or title of a thing.",
                     "items": {
@@ -779,6 +825,13 @@
                         }
                     ],
                     "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                },
+                "value": {
+                    "description": "A slot to provide the value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "title": "InChi",
@@ -809,9 +862,19 @@
                     ]
                 },
                 "has_attribute": {
-                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
                     "items": {
                         "$ref": "#/$defs/Attribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantifiable_attribute": {
+                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantifiableAttribute"
                     },
                     "type": [
                         "array",
@@ -842,6 +905,11 @@
             },
             "title": "Laboratory",
             "type": "object"
+        },
+        "NMRAssayEnum": {
+            "description": "NMR types from the Chemical Methods Ontology",
+            "title": "NMRAssayEnum",
+            "type": "string"
         },
         "NMRSpectroscopy": {
             "additionalProperties": false,
@@ -879,11 +947,15 @@
                     "description": "The slot to specify the entity of interest that was evaluated."
                 },
                 "has_part": {
-                    "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ResearchActivity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify one or more parts of the ResearchActivity that are themselves also research activities."
                 },
                 "name": {
                     "description": "The slot to specify the label, name or title of a thing.",
@@ -906,20 +978,21 @@
                     ],
                     "description": "The type of NMR Spectroscopy according provided as CURIE of a subclass of CHMO:0000613."
                 },
-                "used_hardware": {
-                    "description": "The slot to specify the hardware that was used.",
-                    "items": {
-                        "$ref": "#/$defs/HardwareTool"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                "used_plan": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ActivitySpecification"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the PlanSpecification (Method) that was used in the ResearchActivity."
                 },
-                "used_software": {
-                    "description": "The slot to specify the hardware that was used.",
+                "used_tool": {
+                    "description": "The slot to specify the tool that was used.",
                     "items": {
-                        "$ref": "#/$defs/SoftwareTool"
+                        "$ref": "#/$defs/Tool"
                     },
                     "type": [
                         "array",
@@ -930,53 +1003,19 @@
             "title": "NMRSpectroscopy",
             "type": "object"
         },
-        "NMRSpectroscopyEnum": {
-            "description": "",
-            "title": "NMRSpectroscopyEnum",
+        "QUDTQuantityKindEnum": {
+            "description": "Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.",
+            "title": "QUDTQuantityKindEnum",
             "type": "string"
         },
-        "PlanSpecification": {
-            "additionalProperties": false,
-            "description": "\"A piece of information that specifies: \n    a) how an activity has to be carried out by its agents and \n    b) the attributes of the passive activity participants in terms of their presence and magnitude.",
-            "properties": {
-                "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The type of PlanSpecification provided as a DefinedTerm."
-                }
-            },
-            "title": "PlanSpecification",
-            "type": "object"
+        "QUDTUnitEnum": {
+            "description": "Possible kinds of QUDT unit instances.",
+            "title": "QUDTUnitEnum",
+            "type": "string"
         },
         "QuantifiableAttribute": {
             "additionalProperties": false,
-            "description": "",
+            "description": "An attribute that is quantifiable.",
             "properties": {
                 "alternative_id": {
                     "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
@@ -988,12 +1027,6 @@
                         "null"
                     ]
                 },
-                "applicable_unit": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "description": {
                     "description": "The slot to provide a free-text account of a thing.",
                     "items": {
@@ -1004,16 +1037,10 @@
                         "null"
                     ]
                 },
-                "has_quantity_kind": {
+                "is_delta_attribute": {
+                    "description": "This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets.",
                     "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "has_value": {
-                    "description": "A slot to provide the value of an attribute.",
-                    "type": [
-                        "string",
+                        "boolean",
                         "null"
                     ]
                 },
@@ -1037,58 +1064,27 @@
                         }
                     ],
                     "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                },
+                "unit": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "A data property to relate an observable thing with a value of any kind.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "title": "QuantifiableAttribute",
             "type": "object"
         },
-        "ResearchActivitySpecification": {
+        "ResearchActivity": {
             "additionalProperties": false,
-            "description": "A PlanSpecification that specifies a ResearchActivity.",
-            "properties": {
-                "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The type of PlanSpecification provided as a DefinedTerm."
-                }
-            },
-            "title": "ResearchActivitySpecification",
-            "type": "object"
-        },
-        "ResearchActivityTypeEnum": {
-            "description": "",
-            "title": "ResearchActivityTypeEnum",
-            "type": "string"
-        },
-        "SettingDatum": {
-            "additionalProperties": false,
-            "description": "An attribute that specifies the configuration of a tool.",
+            "description": "An activity (process) that has the objective to produce information about an entity by evaluating it.",
             "properties": {
                 "alternative_id": {
                     "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
@@ -1110,12 +1106,27 @@
                         "null"
                     ]
                 },
-                "has_value": {
-                    "description": "A slot to provide the value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                "evaluated_entity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/EntityOfInterest"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the entity of interest that was evaluated."
+                },
+                "has_part": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ResearchActivity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify one or more parts of the ResearchActivity that are themselves also research activities."
                 },
                 "name": {
                     "description": "The slot to specify the label, name or title of a thing.",
@@ -1136,10 +1147,31 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                    "description": "The slot to specify the type of the ResearchActivity provided as a DefinedTerm."
+                },
+                "used_plan": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ActivitySpecification"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the PlanSpecification (Method) that was used in the ResearchActivity."
+                },
+                "used_tool": {
+                    "description": "The slot to specify the tool that was used.",
+                    "items": {
+                        "$ref": "#/$defs/Tool"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 }
             },
-            "title": "SettingDatum",
+            "title": "ResearchActivity",
             "type": "object"
         },
         "SoftwareTool": {
@@ -1167,7 +1199,7 @@
                     ]
                 },
                 "has_attribute": {
-                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
                     "items": {
                         "$ref": "#/$defs/Attribute"
                     },
@@ -1186,10 +1218,10 @@
                         "null"
                     ]
                 },
-                "has_setting": {
-                    "description": "The slot to specify the setting of a hardware or software tool.",
+                "has_quantifiable_attribute": {
+                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "$ref": "#/$defs/SettingDatum"
+                        "$ref": "#/$defs/QuantifiableAttribute"
                     },
                     "type": [
                         "array",
@@ -1246,7 +1278,7 @@
                     ]
                 },
                 "has_attribute": {
-                    "description": "The slot to related an attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
                     "items": {
                         "$ref": "#/$defs/Attribute"
                     },
@@ -1265,10 +1297,10 @@
                         "null"
                     ]
                 },
-                "has_setting": {
-                    "description": "The slot to specify the setting of a hardware or software tool.",
+                "has_quantifiable_attribute": {
+                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "$ref": "#/$defs/SettingDatum"
+                        "$ref": "#/$defs/QuantifiableAttribute"
                     },
                     "type": [
                         "array",
@@ -1298,12 +1330,6 @@
                 }
             },
             "title": "Tool",
-            "type": "object"
-        },
-        "Unit": {
-            "additionalProperties": false,
-            "description": "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).",
-            "title": "Unit",
             "type": "object"
         }
     },

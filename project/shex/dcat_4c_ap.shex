@@ -5,10 +5,10 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX nfdi: <https://w3id.org/StroemPhi/dcat-4nfdi-ap/>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
-PREFIX RXNO: <http://example.org/UNKNOWN/RXNO/>
 
 
 linkml:String xsd:string
@@ -49,60 +49,72 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-<Attribute>  (
+nfdi:ActivitySpecification CLOSED {
+    (  $nfdi:ActivitySpecification_tes (  dcterms:title @linkml:String * ;
+          dcterms:description @linkml:String * ;
+          rdf:type @nfdi:DefinedTerm ?
+       ) ;
+       rdf:type [ prov:Entity ] ?
+    )
+}
+
+nfdi:Any CLOSED {
+    (  $nfdi:Any_tes rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
+nfdi:Attribute  (
     CLOSED {
-       (  $<Attribute_tes> (  dcterms:title @linkml:String * ;
+       (  $nfdi:Attribute_tes (  dcterms:title @linkml:String * ;
              dcterms:description @linkml:String * ;
              dcterms:identifier @linkml:Uriorcurie * ;
-             rdf:type @<DefinedTerm> ? ;
+             rdf:type @nfdi:DefinedTerm ? ;
              prov:value @linkml:String ?
           ) ;
           rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ?
        )
-    } OR @<IUPACName> OR @<InChIKey> OR @<InChi> OR @<QuantifiableAttribute> OR @<SettingDatum>
+    } OR @<IUPACName> OR @<InChIKey> OR @<InChi> OR @nfdi:QuantifiableAttribute
 )
 
-<AttributeKind> CLOSED {
-    (  $<AttributeKind_tes> rdf:type . * ;
-       rdf:type [ qudt:QuantityKind ] ?
+<ChemAnalysisDataset> CLOSED {
+    (  $<ChemAnalysisDataset_tes> rdf:type . * ;
+       rdf:type [ <ChemAnalysisDataset> ] ?
     )
 }
 
 <ChemicalReaction> CLOSED {
-    (  $<ChemicalReaction_tes> (  &<EntityOfInterest_tes> ;
+    (  $<ChemicalReaction_tes> (  &nfdi:EntityOfInterest_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
-       rdf:type [ RXNO:0000329 ]
+       rdf:type [ <http://semanticscience.org/resource/RXNO_0000329> ]
     )
 }
 
 <ChemicalSubstance> CLOSED {
-    (  $<ChemicalSubstance_tes> (  &<EntityOfInterest_tes> ;
-          rdf:type [ prov:Entity ] ? ;
-          <inchikey> @<InChIKey> ? ;
-          <inchi> @<InChi> ? ;
-          <iupac_name> @<IUPACName> ?
+    (  $<ChemicalSubstance_tes> (  &nfdi:EntityOfInterest_tes ;
+          rdf:type [ prov:Entity ] ?
        ) ;
        rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ]
     )
 }
 
-<Dataset>  (
+nfdi:Dataset  (
     CLOSED {
-       (  $<Dataset_tes> (  dcterms:title @linkml:String + ;
+       (  $nfdi:Dataset_tes (  dcterms:title @linkml:String + ;
              dcterms:description @linkml:String + ;
              dcterms:identifier @linkml:Uriorcurie * ;
-             <was_generated_by> @<ResearchActivity> ?
+             prov:wasGeneratedBy @nfdi:ResearchActivity ?
           ) ;
           rdf:type [ dcat:Dataset ]
        )
-    } OR @<DatasetCollection>
+    } OR @nfdi:DatasetCollection
 )
 
-<DatasetCollection> CLOSED {
-    (  $<DatasetCollection_tes> (  &<Dataset_tes> ;
+nfdi:DatasetCollection CLOSED {
+    (  $nfdi:DatasetCollection_tes (  &nfdi:Dataset_tes ;
           rdf:type [ dcat:Dataset ] ? ;
-          dcat:dataset @<Dataset> * ;
+          dcat:dataset @nfdi:Dataset * ;
           dcterms:title @linkml:String + ;
           dcterms:description @linkml:String +
        ) ;
@@ -110,8 +122,8 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<DefinedTerm> CLOSED {
-    (  $<DefinedTerm_tes> (  schema1:identifier @linkml:Uriorcurie * ;
+nfdi:DefinedTerm CLOSED {
+    (  $nfdi:DefinedTerm_tes (  schema1:identifier @linkml:Uriorcurie * ;
           schema1:name @linkml:String * ;
           schema1:inDefinedTermSet @linkml:String ?
        ) ;
@@ -119,13 +131,14 @@ linkml:Sparqlpath xsd:string
     )
 }
 
-<EntityOfInterest>  (
+nfdi:EntityOfInterest  (
     CLOSED {
-       (  $<EntityOfInterest_tes> (  dcterms:title @linkml:String * ;
+       (  $nfdi:EntityOfInterest_tes (  dcterms:title @linkml:String * ;
              dcterms:description @linkml:String * ;
              dcterms:identifier @linkml:Uriorcurie * ;
-             rdf:type @<DefinedTerm> ? ;
-             dcterms:relation @<Attribute> * ;
+             rdf:type @nfdi:DefinedTerm ? ;
+             dcterms:relation @nfdi:Attribute * ;
+             dcterms:relation @nfdi:QuantifiableAttribute * ;
              dcterms:hasPart @linkml:String ?
           ) ;
           rdf:type [ prov:Entity ]
@@ -133,13 +146,14 @@ linkml:Sparqlpath xsd:string
     } OR @<ChemicalReaction> OR @<ChemicalSubstance>
 )
 
-<Environment>  (
+nfdi:Environment  (
     CLOSED {
-       (  $<Environment_tes> (  dcterms:title @linkml:String * ;
+       (  $nfdi:Environment_tes (  dcterms:title @linkml:String * ;
              dcterms:description @linkml:String * ;
              dcterms:identifier @linkml:Uriorcurie * ;
-             rdf:type @<DefinedTerm> ? ;
-             dcterms:relation @<Attribute> *
+             rdf:type @nfdi:DefinedTerm ? ;
+             dcterms:relation @nfdi:Attribute * ;
+             dcterms:relation @nfdi:QuantifiableAttribute *
           ) ;
           rdf:type [ prov:Entity ] ?
        )
@@ -147,7 +161,7 @@ linkml:Sparqlpath xsd:string
 )
 
 <HardwareTool> CLOSED {
-    (  $<HardwareTool_tes> (  &<Tool_tes> ;
+    (  $<HardwareTool_tes> (  &nfdi:Tool_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
        rdf:type [ <HardwareTool> ] ?
@@ -155,7 +169,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <InChi> CLOSED {
-    (  $<InChi_tes> (  &<Attribute_tes> ;
+    (  $<InChi_tes> (  &nfdi:Attribute_tes ;
           rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ?
        ) ;
        rdf:type [ <http://semanticscience.org/resource/CHEMINF_000113> ] ?
@@ -163,7 +177,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <InChIKey> CLOSED {
-    (  $<InChIKey_tes> (  &<Attribute_tes> ;
+    (  $<InChIKey_tes> (  &nfdi:Attribute_tes ;
           rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ?
        ) ;
        rdf:type [ <http://semanticscience.org/resource/CHEMINF_000059> ] ?
@@ -171,7 +185,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <IUPACName> CLOSED {
-    (  $<IUPACName_tes> (  &<Attribute_tes> ;
+    (  $<IUPACName_tes> (  &nfdi:Attribute_tes ;
           rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ?
        ) ;
        rdf:type [ <http://semanticscience.org/resource/CHEMINF_000107> ] ?
@@ -179,7 +193,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <Laboratory> CLOSED {
-    (  $<Laboratory_tes> (  &<Environment_tes> ;
+    (  $<Laboratory_tes> (  &nfdi:Environment_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
        rdf:type [ prov:Entity ] ?
@@ -187,94 +201,63 @@ linkml:Sparqlpath xsd:string
 }
 
 <NMRSpectroscopy> CLOSED {
-    (  $<NMRSpectroscopy_tes> (  &<ResearchActivity_tes> ;
+    (  $<NMRSpectroscopy_tes> (  &nfdi:ResearchActivity_tes ;
           rdf:type [ prov:Activity ] ? ;
           prov:used @<ChemicalSubstance> ? ;
-          rdf:type @<DefinedTerm> ?
+          rdf:type @nfdi:DefinedTerm ?
        ) ;
        rdf:type [ <http://purl.obolibrary.org/obo/CHMO_0000613> ] ?
     )
 }
 
-<PlanSpecification>  (
-    CLOSED {
-       (  $<PlanSpecification_tes> (  dcterms:title @linkml:String * ;
-             dcterms:description @linkml:String * ;
-             rdf:type @<DefinedTerm> ?
-          ) ;
-          rdf:type [ prov:Entity ] ?
-       )
-    } OR @<ResearchActivitySpecification>
-)
-
-<QuantifiableAttribute> CLOSED {
-    (  $<QuantifiableAttribute_tes> (  &<Attribute_tes> ;
+nfdi:QuantifiableAttribute CLOSED {
+    (  $nfdi:QuantifiableAttribute_tes (  &nfdi:Attribute_tes ;
           rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ? ;
-          qudt:hasQuantityKind @linkml:String ? ;
-          qudt:applicableUnit @linkml:String ?
+          qudt:applicableUnit @nfdi:DefinedTerm ? ;
+          qudt:Quantity-isDeltaQuantity @linkml:Boolean ? ;
+          qudt:hasQuantityKind @nfdi:DefinedTerm ? ;
+          qudt:value @linkml:String ?
        ) ;
        rdf:type [ qudt:Quantity ] ?
     )
 }
 
-<ResearchActivity>  (
-    {
-       (  $<ResearchActivity_tes> (  dcterms:title @linkml:String * ;
+nfdi:ResearchActivity  (
+    CLOSED {
+       (  $nfdi:ResearchActivity_tes (  dcterms:title @linkml:String * ;
              dcterms:description @linkml:String * ;
              dcterms:identifier @linkml:Uriorcurie * ;
-             rdf:type @<DefinedTerm> ? ;
-             prov:used @<EntityOfInterest> ? ;
-             prov:used @<HardwareTool> * ;
-             prov:used @<SoftwareTool> * ;
-             dcterms:hasPart @linkml:String ?
+             rdf:type @nfdi:DefinedTerm ? ;
+             prov:used @nfdi:EntityOfInterest ? ;
+             prov:used @nfdi:Tool * ;
+             prov:used @nfdi:ActivitySpecification ? ;
+             dcterms:hasPart @nfdi:ResearchActivity ?
           ) ;
           rdf:type [ prov:Activity ] ?
        )
     } OR @<NMRSpectroscopy>
 )
 
-<ResearchActivitySpecification> CLOSED {
-    (  $<ResearchActivitySpecification_tes> (  &<PlanSpecification_tes> ;
-          rdf:type [ prov:Entity ] ?
-       ) ;
-       rdf:type [ prov:Entity ] ?
-    )
-}
-
-<SettingDatum> CLOSED {
-    (  $<SettingDatum_tes> (  &<Attribute_tes> ;
-          rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ?
-       ) ;
-       rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000140> ] ?
-    )
-}
-
 <SoftwareTool> CLOSED {
-    (  $<SoftwareTool_tes> (  &<Tool_tes> ;
+    (  $<SoftwareTool_tes> (  &nfdi:Tool_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
        rdf:type [ <SoftwareTool> ] ?
     )
 }
 
-<Tool>  (
+nfdi:Tool  (
     CLOSED {
-       (  $<Tool_tes> (  dcterms:title @linkml:String * ;
+       (  $nfdi:Tool_tes (  dcterms:title @linkml:String * ;
              dcterms:description @linkml:String * ;
              dcterms:identifier @linkml:Uriorcurie * ;
-             rdf:type @<DefinedTerm> ? ;
-             dcterms:hasPart @<Tool> * ;
-             dcterms:relation @<Attribute> * ;
-             <has_setting> @<SettingDatum> *
+             rdf:type @nfdi:DefinedTerm ? ;
+             dcterms:hasPart @nfdi:Tool * ;
+             dcterms:relation @nfdi:Attribute * ;
+             dcterms:relation @nfdi:QuantifiableAttribute *
           ) ;
           rdf:type [ prov:Entity ] ?
        )
     } OR @<HardwareTool> OR @<SoftwareTool>
 )
-
-<Unit> CLOSED {
-    (  $<Unit_tes> rdf:type . * ;
-       rdf:type [ qudt:Unit ] ?
-    )
-}
 

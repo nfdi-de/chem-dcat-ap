@@ -5,11 +5,13 @@
 @prefix NCIT: <http://purl.obolibrary.org/obo/NCIT_> .
 @prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
 @prefix RO: <http://purl.obolibrary.org/obo/RO_> .
+@prefix RXNO: <http://semanticscience.org/resource/RXNO_> .
 @prefix SIO: <http://semanticscience.org/resource/SIO_> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix linkml: <https://w3id.org/linkml/> .
-@prefix nfdi: <https://w3id.org/StroemPhi/dcat_4C_ap/> .
+@prefix nfdi: <https://w3id.org/StroemPhi/dcat-4nfdi-ap/> .
+@prefix nfdi4c: <https://w3id.org/StroemPhi/dcat_4C_ap/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
@@ -19,278 +21,61 @@
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-nfdi:AttributeKind a owl:Class,
+nfdi:Any a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "AttributeKind" ;
-    skos:exactMatch qudt:QuantityKind ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:ChemicalReaction a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "ChemicalReaction" ;
-    rdfs:subClassOf nfdi:EntityOfInterest ;
-    skos:definition "An experimental procedure with the aim of producing a portion of a given compound or mixture." ;
-    skos:exactMatch <RXNO:0000329> ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    rdfs:label "Any" ;
+    skos:exactMatch linkml:Any ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
 nfdi:DatasetCollection a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "DatasetCollection" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:has_dataset ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:Dataset ;
-            owl:onProperty nfdi:has_dataset ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:description ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nfdi:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty nfdi:has_dataset ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty nfdi:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:name ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nfdi:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:Dataset ;
+            owl:onProperty nfdi:has_dataset ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:description ],
         nfdi:Dataset ;
     skos:definition "A curated collection of metadata about data resources." ;
     skos:exactMatch dcat:Catalog ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
-nfdi:Laboratory a owl:Class,
+nfdi4c:ChemAnalysisDataset a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "Laboratory" ;
-    rdfs:subClassOf nfdi:Environment ;
-    skos:definition "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed." ;
-    skos:exactMatch prov:Entity ;
+    rdfs:label "ChemAnalysisDataset" ;
     skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
 
-nfdi:NMRSpectroscopy a owl:Class,
+nfdi4c:ChemicalReaction a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "NMRSpectroscopy" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:ChemicalSubstance ;
-            owl:onProperty nfdi:evaluated_entity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom owl:Thing ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:evaluated_entity ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:evaluated_entity ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:type ],
-        nfdi:ResearchActivity ;
-    skos:definition "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them." ;
-    skos:exactMatch CHMO:0000613 ;
+    rdfs:label "ChemicalReaction" ;
+    rdfs:subClassOf nfdi:EntityOfInterest ;
+    skos:definition "An experimental procedure with the aim of producing a portion of a given compound or mixture." ;
+    skos:exactMatch RXNO:0000329 ;
     skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
 
-nfdi:NMRSpectroscopyEnum a owl:Class,
-        linkml:EnumDefinition .
-
-nfdi:QuantifiableAttribute a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "QuantifiableAttribute" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:has_quantity_kind ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:applicable_unit ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:has_quantity_kind ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:has_quantity_kind ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:applicable_unit ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:applicable_unit ],
-        nfdi:Attribute ;
-    skos:exactMatch qudt:Quantity ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:ResearchActivitySpecification a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "ResearchActivitySpecification" ;
-    rdfs:subClassOf nfdi:PlanSpecification ;
-    skos:definition "A PlanSpecification that specifies a ResearchActivity." ;
-    skos:exactMatch prov:Entity ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:ResearchActivityTypeEnum a owl:Class,
-        linkml:EnumDefinition .
-
-nfdi:Unit a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Unit" ;
-    skos:definition "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension)." ;
-    skos:exactMatch qudt:Unit ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:has_unit a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_unit" ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:ChemicalSubstance a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "ChemicalSubstance" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:InChi ;
-            owl:onProperty nfdi:inchi ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:IUPACName ;
-            owl:onProperty nfdi:iupac_name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:InChIKey ;
-            owl:onProperty nfdi:inchikey ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:iupac_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:inchikey ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:inchikey ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:inchi ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:inchi ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:iupac_name ],
-        nfdi:EntityOfInterest ;
-    skos:definition "A chemical substance that is being evaluated in a scientific process." ;
-    skos:exactMatch CHEBI:59999 ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:Environment a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Environment" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:DefinedTerm ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:has_attribute ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:Attribute ;
-            owl:onProperty nfdi:has_attribute ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:description ] ;
-    skos:definition "The environment in which the dataset creating Observation took place (e.g. a lab)." ;
-    skos:exactMatch prov:Entity ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:IUPACName a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "IUPACName" ;
-    rdfs:subClassOf nfdi:Attribute ;
-    skos:definition "An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC)." ;
-    skos:exactMatch CHEMINF:000107 ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:InChIKey a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "InChIKey" ;
-    rdfs:subClassOf nfdi:Attribute ;
-    skos:exactMatch CHEMINF:000059 ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:InChi a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "InChi" ;
-    rdfs:subClassOf nfdi:Attribute ;
-    skos:definition "A structure descriptor which conforms to the InChI format specification." ;
-    skos:exactMatch CHEMINF:000113 ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:PlanSpecification a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "PlanSpecification" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:DefinedTerm ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:name ] ;
-    skos:definition """"A piece of information that specifies: 
-    a) how an activity has to be carried out by its agents and 
-    b) the attributes of the passive activity participants in terms of their presence and magnitude.""" ;
-    skos:exactMatch prov:Entity ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-CHEBI:59999 a owl:Class,
-        nfdi:EntityOfInterestTypeEnum ;
-    rdfs:label "Chemical Substance" ;
-    rdfs:subClassOf nfdi:EntityOfInterestTypeEnum .
-
-nfdi:EntityOfInterestTypeEnum a owl:Class,
-        linkml:EnumDefinition ;
-    linkml:permissible_values CHEBI:59999 .
-
-nfdi:HardwareTool a owl:Class,
+nfdi4c:HardwareTool a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "HardwareTool" ;
     rdfs:subClassOf nfdi:Tool ;
@@ -298,71 +83,191 @@ nfdi:HardwareTool a owl:Class,
     skos:definition "A hardware with a certain function." ;
     skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
 
-nfdi:SettingDatum a owl:Class,
+nfdi4c:IUPACName a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "SettingDatum" ;
+    rdfs:label "IUPACName" ;
     rdfs:subClassOf nfdi:Attribute ;
-    skos:definition "An attribute that specifies the configuration of a tool." ;
-    skos:exactMatch IAO:0000140 ;
+    skos:definition "An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC)." ;
+    skos:exactMatch CHEMINF:000107 ;
     skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
 
-nfdi:SoftwareTool a owl:Class,
+nfdi4c:InChIKey a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "InChIKey" ;
+    rdfs:subClassOf nfdi:Attribute ;
+    skos:exactMatch CHEMINF:000059 ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+nfdi4c:InChi a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "InChi" ;
+    rdfs:subClassOf nfdi:Attribute ;
+    skos:definition "A structure descriptor which conforms to the InChI format specification." ;
+    skos:exactMatch CHEMINF:000113 ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+nfdi4c:Laboratory a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Laboratory" ;
+    rdfs:subClassOf nfdi:Environment ;
+    skos:definition "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed." ;
+    skos:exactMatch prov:Entity ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+nfdi4c:NMRAssayEnum a owl:Class,
+        linkml:EnumDefinition .
+
+nfdi4c:NMRSpectroscopy a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "NMRSpectroscopy" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:evaluated_entity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:evaluated_entity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi4c:ChemicalSubstance ;
+            owl:onProperty nfdi:evaluated_entity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:DefinedTerm ;
+            owl:onProperty nfdi:type ],
+        nfdi:ResearchActivity ;
+    skos:definition "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them." ;
+    skos:exactMatch CHMO:0000613 ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+nfdi4c:QUDTQuantityKindEnum a owl:Class,
+        linkml:EnumDefinition .
+
+nfdi4c:QUDTUnitEnum a owl:Class,
+        linkml:EnumDefinition .
+
+nfdi4c:SoftwareTool a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SoftwareTool" ;
     rdfs:subClassOf nfdi:Tool ;
     skos:definition "A software with a certain function." ;
     skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
 
+nfdi:Environment a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Environment" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:QuantifiableAttribute ;
+            owl:onProperty nfdi:has_quantifiable_attribute ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:has_quantifiable_attribute ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:DefinedTerm ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:has_attribute ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:Attribute ;
+            owl:onProperty nfdi:has_attribute ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:name ] ;
+    skos:definition "The environment in which the dataset creating Observation took place (e.g. a lab)." ;
+    skos:exactMatch prov:Entity ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
+
+nfdi4c:ChemicalSubstance a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ChemicalSubstance" ;
+    rdfs:subClassOf nfdi:EntityOfInterest ;
+    skos:definition "A chemical substance that is being evaluated in a scientific process." ;
+    skos:exactMatch CHEBI:59999 ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+
+nfdi:ActivitySpecification a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ActivitySpecification" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:DefinedTerm ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:description ] ;
+    skos:altLabel "Method" ;
+    skos:definition "\"A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.\"" ;
+    skos:exactMatch prov:Entity ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
+
 nfdi:has_dataset a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "has_dataset" ;
     rdfs:range nfdi:Dataset ;
     skos:definition "The slot to list the datasets of a catalog." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
-nfdi:has_setting a owl:ObjectProperty,
+nfdi:used_tool a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "has_setting" ;
-    rdfs:range nfdi:SettingDatum ;
-    rdfs:subPropertyOf nfdi:has_attribute ;
-    skos:definition "The slot to specify the setting of a hardware or software tool." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:used_hardware a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "used_hardware" ;
-    rdfs:range nfdi:HardwareTool ;
-    skos:definition "The slot to specify the hardware that was used." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:used_software a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "used_software" ;
-    rdfs:range nfdi:SoftwareTool ;
-    skos:definition "The slot to specify the hardware that was used." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    rdfs:label "used_tool" ;
+    rdfs:range nfdi:Tool ;
+    skos:definition "The slot to specify the tool that was used." ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
 nfdi:Dataset a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Dataset" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:was_generated_by ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nfdi:alternative_id ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nfdi:description ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nfdi:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty nfdi:id ],
@@ -370,177 +275,50 @@ nfdi:Dataset a owl:Class,
             owl:allValuesFrom nfdi:ResearchActivity ;
             owl:onProperty nfdi:was_generated_by ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:name ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nfdi:was_generated_by ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nfdi:name ],
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty nfdi:alternative_id ] ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:was_generated_by ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nfdi:name ] ;
     skos:definition "A collection of data, published or curated by a single agent, and available for access or download in one or more representations." ;
     skos:exactMatch dcat:Dataset ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:ResearchActivity a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "ResearchActivity" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:EntityOfInterest ;
-            owl:onProperty nfdi:evaluated_entity ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:used_hardware ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:evaluated_entity ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:has_part ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:DefinedTerm ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:SoftwareTool ;
-            owl:onProperty nfdi:used_software ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:has_part ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:HardwareTool ;
-            owl:onProperty nfdi:used_hardware ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:evaluated_entity ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:used_software ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:has_part ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:description ] ;
-    skos:definition "An activity (process) that has the objective to produce information about an entity by evaluating it." ;
-    skos:exactMatch prov:Activity ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> ;
-    skos:narrowMatch NCIT:C25598,
-        OBI:0000070,
-        sosa:Observation .
-
-nfdi:Tool a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Tool" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:SettingDatum ;
-            owl:onProperty nfdi:has_setting ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:has_attribute ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:DefinedTerm ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:has_setting ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:has_part ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:Attribute ;
-            owl:onProperty nfdi:has_attribute ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nfdi:Tool ;
-            owl:onProperty nfdi:has_part ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:name ] ;
-    skos:broadMatch prov:Entity ;
-    skos:definition "A entity with a certain function used within a scientific activity." ;
-    skos:exactMatch prov:Entity ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:applicable_unit a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "applicable_unit" ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
 nfdi:from_CV a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "from_CV" ;
     skos:definition "The name of the controlled vocabulary." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
-nfdi:has_quantity_kind a owl:ObjectProperty,
+nfdi:is_delta_attribute a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "has_quantity_kind" ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    rdfs:label "is_delta_attribute" ;
+    skos:definition "This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets." ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
-nfdi:has_value a owl:ObjectProperty,
+nfdi:unit a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "has_value" ;
-    skos:definition "A slot to provide the value of an attribute." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    rdfs:label "unit" ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
-nfdi:inchi a owl:ObjectProperty,
+nfdi:used_plan a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "inchi" ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:inchikey a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "inchikey" ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:iupac_name a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "iupac_name" ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    rdfs:label "used_plan" ;
+    rdfs:range nfdi:ActivitySpecification ;
+    skos:definition "The slot to specify the PlanSpecification (Method) that was used in the ResearchActivity." ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
 nfdi:was_generated_by a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -549,14 +327,44 @@ nfdi:was_generated_by a owl:ObjectProperty,
     skos:closeMatch schema1:measurementTechnique ;
     skos:definition "The slot to provide the ResearchActivity that created a Dataset." ;
     skos:exactMatch prov:wasGeneratedBy ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
 nfdi:EntityOfInterest a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "EntityOfInterest" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:has_part ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nfdi:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:QuantifiableAttribute ;
+            owl:onProperty nfdi:has_quantifiable_attribute ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty nfdi:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:has_part ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nfdi:name ],
+            owl:onProperty nfdi:has_part ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:has_quantifiable_attribute ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:has_attribute ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nfdi:type ],
@@ -567,137 +375,233 @@ nfdi:EntityOfInterest a owl:Class,
             owl:allValuesFrom nfdi:DefinedTerm ;
             owl:onProperty nfdi:type ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:Attribute ;
+            owl:onProperty nfdi:has_attribute ] ;
+    skos:definition "Something that is being evaluated in a scientific process." ;
+    skos:exactMatch prov:Entity ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
+
+nfdi:QuantifiableAttribute a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "QuantifiableAttribute" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:unit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:is_delta_attribute ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:is_delta_attribute ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:DefinedTerm ;
+            owl:onProperty nfdi:unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Boolean ;
+            owl:onProperty nfdi:is_delta_attribute ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:DefinedTerm ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:unit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:value ],
+        nfdi:Attribute ;
+    skos:definition "An attribute that is quantifiable." ;
+    skos:exactMatch qudt:Quantity ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
+
+nfdi:ResearchActivity a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "ResearchActivity" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:Tool ;
+            owl:onProperty nfdi:used_tool ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:EntityOfInterest ;
+            owl:onProperty nfdi:evaluated_entity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:ActivitySpecification ;
+            owl:onProperty nfdi:used_plan ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nfdi:description ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nfdi:id ],
+            owl:onProperty nfdi:has_part ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:DefinedTerm ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:evaluated_entity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:used_plan ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:used_plan ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:evaluated_entity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:used_tool ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:has_part ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:ResearchActivity ;
+            owl:onProperty nfdi:has_part ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:name ] ;
+    skos:definition "An activity (process) that has the objective to produce information about an entity by evaluating it." ;
+    skos:exactMatch prov:Activity ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> ;
+    skos:narrowMatch NCIT:C25598,
+        OBI:0000070,
+        sosa:Observation .
+
+nfdi:Tool a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Tool" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:DefinedTerm ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:Tool ;
+            owl:onProperty nfdi:has_part ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:has_quantifiable_attribute ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:has_part ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom nfdi:Attribute ;
             owl:onProperty nfdi:has_attribute ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty nfdi:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:has_part ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:has_part ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nfdi:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nfdi:has_attribute ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:has_part ] ;
-    skos:definition "Something that is being evaluated in a scientific process." ;
-    skos:exactMatch prov:Entity ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:DefinedTerm a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "DefinedTerm" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:from_CV ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:from_CV ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty nfdi:name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:from_CV ],
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nfdi:QuantifiableAttribute ;
+            owl:onProperty nfdi:has_quantifiable_attribute ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty nfdi:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nfdi:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:name ] ;
-    skos:definition "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema." ;
-    skos:exactMatch schema1:DefinedTerm ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+            owl:onProperty nfdi:type ] ;
+    skos:broadMatch prov:Entity ;
+    skos:definition "A entity with a certain function used within a scientific activity." ;
+    skos:exactMatch prov:Entity ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
 nfdi:evaluated_entity a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "evaluated_entity" ;
     rdfs:range nfdi:EntityOfInterest ;
     skos:definition "The slot to specify the entity of interest that was evaluated." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
+
+nfdi:has_quantifiable_attribute a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has_quantifiable_attribute" ;
+    rdfs:range nfdi:QuantifiableAttribute ;
+    rdfs:subPropertyOf nfdi:has_attribute ;
+    skos:definition "The slot to relate a quantifiable attribute to an entity of interest, tool or environment." ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
+
+nfdi:value a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "value" ;
+    skos:definition "A slot to provide the value of an attribute." ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
 nfdi:has_attribute a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "has_attribute" ;
     rdfs:range nfdi:Attribute ;
-    skos:definition "The slot to related an attribute to an entity of interest, tool or environment." ;
+    skos:definition "The slot to relate an attribute to an entity of interest, tool or environment." ;
     skos:exactMatch RO:0000053,
         SIO:000223 ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:has_part a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_part" ;
-    skos:definition "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
 nfdi:Attribute a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Attribute" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:description ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty nfdi:alternative_id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:alternative_id ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty nfdi:has_value ],
+            owl:onProperty nfdi:value ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nfdi:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:has_value ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nfdi:type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nfdi:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nfdi:name ],
@@ -705,46 +609,72 @@ nfdi:Attribute a owl:Class,
             owl:allValuesFrom nfdi:DefinedTerm ;
             owl:onProperty nfdi:type ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:value ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty nfdi:has_value ] ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:value ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:description ] ;
     skos:definition "A piece of information that is attributed to an entity of interest, tool or environment." ;
     skos:exactMatch IAO:0000030 ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
-nfdi:id a owl:ObjectProperty,
+nfdi:has_part a owl:ObjectProperty,
         linkml:SlotDefinition ;
-    rdfs:label "id" ;
-    rdfs:range linkml:Uriorcurie ;
-    skos:definition "The slot to specify the canonical unique identifier of an entity." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+    rdfs:label "has_part" ;
+    skos:definition "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part." ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
-nfdi:alternative_id a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "alternative_id" ;
-    rdfs:range linkml:Uriorcurie ;
-    skos:definition "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:description a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "description" ;
-    skos:definition "The slot to provide a free-text account of a thing." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:name a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "name" ;
-    skos:definition "The slot to specify the label, name or title of a thing." ;
-    skos:exactMatch schema1:name,
-        rdfs:label,
-        skos:title ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
-
-nfdi:type a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "type" ;
-    skos:definition "The slot to specify the rdf:type of an entity according to a controlled vocabulary." ;
-    skos:inScheme <https://w3id.org/StroemPhi/dcat-4C-ap> .
+nfdi:DefinedTerm a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DefinedTerm" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:from_CV ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:from_CV ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty nfdi:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nfdi:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nfdi:from_CV ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty nfdi:alternative_id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nfdi:id ] ;
+    skos:definition "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema." ;
+    skos:exactMatch schema1:DefinedTerm ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
 <https://w3id.org/StroemPhi/dcat-4C-ap> a owl:Ontology ;
     rdfs:label "dcat-4C-ap" ;
@@ -754,4 +684,39 @@ nfdi:type a owl:ObjectProperty,
         <https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml>,
         <https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads> ;
     skos:definition "This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI 4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset." .
+
+nfdi:id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "id" ;
+    rdfs:range linkml:Uriorcurie ;
+    skos:definition "The slot to specify the canonical unique identifier of an entity." ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
+
+nfdi:alternative_id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "alternative_id" ;
+    rdfs:range linkml:Uriorcurie ;
+    skos:definition "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context." ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
+
+nfdi:description a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "description" ;
+    skos:definition "The slot to provide a free-text account of a thing." ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
+
+nfdi:name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "name" ;
+    skos:definition "The slot to specify the label, name or title of a thing." ;
+    skos:exactMatch schema1:name,
+        rdfs:label,
+        skos:title ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
+
+nfdi:type a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "type" ;
+    skos:definition "The slot to specify the rdf:type of an entity according to a controlled vocabulary." ;
+    skos:inScheme <https://w3id.org/StroemPhi/dcat-4nfdi-ap> .
 
