@@ -308,7 +308,7 @@ slots:
   evaluated_entity:
     slot_uri: prov:used
     description: The slot to specify the entity of interest that was evaluated.
-    recommended: true
+    required: true
     inlined: true
     range: EntityOfInterest
   used_tool:
