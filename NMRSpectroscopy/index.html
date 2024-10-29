@@ -217,7 +217,7 @@
 
 
 
-    NMRSpectroscopy --&gt; "0..1 _recommended_" ChemicalSubstance : evaluated_entity
+    NMRSpectroscopy --&gt; "1" ChemicalSubstance : evaluated_entity
     click ChemicalSubstance href "../ChemicalSubstance"
 
 
@@ -305,7 +305,7 @@
 </tr>
 <tr>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td>1 <br/> <a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
 <td>The slot to specify the entity of interest that was evaluated</td>
 <td><a href="../ResearchActivity/">ResearchActivity</a></td>
 </tr>
@@ -509,7 +509,7 @@ attributes:
     domain_of:
     - ResearchActivity
     range: ChemicalSubstance
-    recommended: true
+    required: true
     inlined: true
   used_tool:
     name: used_tool

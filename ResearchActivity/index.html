@@ -222,7 +222,7 @@
 
 
 
-    ResearchActivity --&gt; "0..1 _recommended_" EntityOfInterest : evaluated_entity
+    ResearchActivity --&gt; "1" EntityOfInterest : evaluated_entity
     click EntityOfInterest href "../EntityOfInterest"
 
 
@@ -310,7 +310,7 @@
 </tr>
 <tr>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../EntityOfInterest/">EntityOfInterest</a></td>
+<td>1 <br/> <a href="../EntityOfInterest/">EntityOfInterest</a></td>
 <td>The slot to specify the entity of interest that was evaluated</td>
 <td>direct</td>
 </tr>
@@ -557,7 +557,7 @@ attributes:
     domain_of:
     - ResearchActivity
     range: EntityOfInterest
-    recommended: true
+    required: true
     inlined: true
   used_tool:
     name: used_tool
