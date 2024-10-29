@@ -63,7 +63,7 @@ classes:
         required: true
       was_generated_by:
         ## the range will be changed with regard to the profile.
-        range: Observation
+        range: SOSAObservation
 
   SOSAObservation:
     is_a: ResearchActivity
