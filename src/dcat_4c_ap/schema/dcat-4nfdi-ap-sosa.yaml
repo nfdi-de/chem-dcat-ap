@@ -3,7 +3,9 @@ id: https://w3id.org/StroemPhi/dcat-4nfdi-ap-sosa
 name: dcat-nfdi-ap-sosa
 title: DCAT-NFDI-AP-SOSA
 description: |-
-  DCAT-AP core extension for NFDI mapped to SOSA so that the research activity becomes a SOSA:Observation.   
+  DCAT-NFDI-AP extension that declares the research activity which generated a Dataset to a SOSA:Observation. This 
+  allows us to use classes and relations from SOSA that are generally applicable for a broad range of Observations. 
+  This is just a first, as this profile could be using more terms from SOSA to describe an Observation. 
 license: CC-BY 4.0
 prefixes:
   nfdi: https://w3id.org/StroemPhi/dcat-4nfdi-ap/
@@ -46,7 +48,7 @@ imports:
 
 classes:
   
-  ObservationDataset:
+  SOSAObservationDataset:
     is_a: Dataset
     class_uri: dcat:Dataset
     description: >-
@@ -63,12 +65,14 @@ classes:
         ## the range will be changed with regard to the profile.
         range: Observation
 
-  Observation:
+  SOSAObservation:
     is_a: ResearchActivity
     class_uri: sosa:Observation
     aliases:
       - Observation
     description: Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with.
+    slots:
+      - made_by_sensor
     slot_usage:
       evaluated_entity:
         slot_uri: sosa:hasFeatureOfInterest
@@ -138,3 +142,8 @@ classes:
   ###################
 
 # Slots
+slots:
+  made_by_sensor:
+    slot_uri: sosa:madeBySensor
+    description: Relation between an Observation and the Sensor which made the Observation.
+    range: Sensor
