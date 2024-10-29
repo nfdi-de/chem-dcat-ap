@@ -1,17 +1,13 @@
 ---
 id: https://w3id.org/StroemPhi/dcat-4nfdi-ap-sosa
-name: dcat-4nfdi-ap-sosa
-title: DCAT-4NFDI-AP-SOSA
+name: dcat-nfdi-ap-sosa
+title: DCAT-NFDI-AP-SOSA
 description: |-
   DCAT-AP core extension for NFDI mapped to SOSA so that the research activity becomes a SOSA:Observation.   
 license: CC-BY 4.0
-see_also:
-  - https://StroemPhi.github.io/dcat-NFDI-ap
-  - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
-  - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
   nfdi: https://w3id.org/StroemPhi/dcat-4nfdi-ap/
-  nfdi_sosa: https://w3id.org/StroemPhi/dcat-4nfdi-ap-sosa/
+  nfdi-sosa: https://w3id.org/StroemPhi/dcat-4nfdi-ap-sosa/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -42,7 +38,7 @@ prefixes:
   SIO: http://semanticscience.org/resource/SIO_
   doi: https://doi.org/
   NMR: "http://nmrML.org/nmrCV#NMR:"
-default_prefix: nfdi_sosa
+default_prefix: nfdi-sosa
 default_range: string
 imports:
   - linkml:types
@@ -52,7 +48,6 @@ classes:
   
   ObservationDataset:
     is_a: Dataset
-    tree_root: true
     class_uri: dcat:Dataset
     description: >-
       A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
@@ -79,10 +74,6 @@ classes:
         slot_uri: sosa:hasFeatureOfInterest
         description: The relation between an Observation and the entity whose quality was observed, or between an   Actuation and the entity whose property was modified, or between an act of Sampling and the entity that was sampled.
         range: FeatureOfInterest
-      used_tool:
-        slot_uri: sosa:madeBySensor
-        range: Sensor
-        description: Thee relation between an Observation and the Sensor which made the Observation.
       used_plan:
         slot_uri: sosa:usedProcedure
         range: Procedure
@@ -115,11 +106,11 @@ classes:
     description: Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms.
     slot_usage:
       type:
-        description: The type of the Tool provided as a DefinedTerm.
+        description: The type of the Sensor provided as a DefinedTerm.
         range: DefinedTerm
         inlined: true
       has_part:
-        description: The slot to specify parts of a tool.
+        description: The slot to specify parts of a Sensor.
         range: Tool
         inlined: true
         multivalued: true

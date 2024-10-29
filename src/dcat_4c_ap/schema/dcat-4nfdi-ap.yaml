@@ -48,9 +48,6 @@ imports:
 
 classes:
   
-  Any:
-    class_uri: linkml:Any
-
   DefinedTerm:
     class_uri: schema:DefinedTerm
     description: A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.
@@ -58,6 +55,7 @@ classes:
       from_CV:
         slot_uri: schema:inDefinedTermSet
         description: The name of the controlled vocabulary.
+        range: uriorcurie
     slots:
       - id
       - alternative_id
@@ -321,7 +319,7 @@ slots:
     range: Tool
   used_plan:
     slot_uri: prov:used
-    description: The slot to specify the PlanSpecification (Method) that was used in the ResearchActivity.
+    description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
     recommended: true
     range: ActivitySpecification
   has_part:
