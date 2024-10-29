@@ -247,7 +247,7 @@
 </tr>
 <tr>
 <td><a href="../from_CV/">from_CV</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>The name of the controlled vocabulary</td>
 <td>direct</td>
 </tr>
@@ -264,12 +264,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
 <tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td><a href="../type/">type</a></td>
@@ -366,6 +360,30 @@
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
+<tr>
+<td><a href="../Observation/">Observation</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../FeatureOfInterest/">FeatureOfInterest</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../Sensor/">Sensor</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../Procedure/">Procedure</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -420,6 +438,7 @@ attributes:
     slot_uri: schema:inDefinedTermSet
     domain_of:
     - DefinedTerm
+    range: uriorcurie
 class_uri: schema:DefinedTerm
 
 </code></pre>
@@ -448,7 +467,7 @@ attributes:
     owner: DefinedTerm
     domain_of:
     - DefinedTerm
-    range: string
+    range: uriorcurie
   id:
     name: id
     description: The slot to specify the canonical unique identifier of an entity.

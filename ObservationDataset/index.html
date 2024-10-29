@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://StroemPhi.github.io/dcat-4C-ap/Any/" rel="canonical"/>
+<link href="https://StroemPhi.github.io/dcat-4C-ap/ObservationDataset/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: Any - dcat-4C-ap</title>
+<title>Class: ObservationDataset - dcat-4C-ap</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-any">
+<a class="md-skip" href="#class-observationdataset">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: Any
+              Class: ObservationDataset
             
           </span>
 </div>
@@ -142,6 +142,11 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+    Inheritance
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -191,17 +196,44 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/Any.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/ObservationDataset.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-any">Class: Any</h1>
-<p>URI: <a href="https://w3id.org/linkml/Any">linkml:Any</a></p>
+<h1 id="class-observationdataset">Class: ObservationDataset</h1>
+<p><em>A collection of data, published or curated by a single agent, and available for access or download in one or more representations.</em></p>
+<p>URI: <a href="http://www.w3.org/ns/dcat#Dataset">dcat:Dataset</a></p>
 <div class="mermaid"> classDiagram
-    class Any
-    click Any href "../Any"
+    class ObservationDataset
+    click ObservationDataset href "../ObservationDataset"
+      Dataset &lt;|-- ObservationDataset
+        click Dataset href "../Dataset"
+
+      ObservationDataset : alternative_id
+
+      ObservationDataset : description
+
+      ObservationDataset : id
+
+      ObservationDataset : name
+
+      ObservationDataset : was_generated_by
+
+
+
+
+    ObservationDataset --&gt; "1" Observation : was_generated_by
+    click Observation href "../Observation"
+
+
 
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Dataset/">Dataset</a><ul>
+<li><strong>ObservationDataset</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -214,10 +246,34 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The slot to specify the canonical unique identifier of an entity</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>1..* <br/> <a href="../String/">String</a></td>
+<td>The label, name or title of a Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>1..* <br/> <a href="../String/">String</a></td>
+<td>A free-text account of a Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../alternative_id/">alternative_id</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The slot to specify the unique identifier of an entity that is not considered...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
+<td>1 <br/> <a href="../Observation/">Observation</a></td>
+<td>The slot to provide the ResearchActivity that created a Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
 </tr>
 </tbody>
 </table>
@@ -237,11 +293,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>linkml:Any</td>
+<td>dcat:Dataset</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi4c:Any</td>
+<td>nfdi4c:ObservationDataset</td>
 </tr>
 </tbody>
 </table>
@@ -249,17 +305,147 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Any
+<pre><code class="language-yaml">name: ObservationDataset
+description: A collection of data, published or curated by a single agent, and available
+  for access or download in one or more representations.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-class_uri: linkml:Any
+is_a: Dataset
+slot_usage:
+  name:
+    name: name
+    description: The label, name or title of a Dataset.
+    required: true
+  description:
+    name: description
+    description: A free-text account of a Dataset.
+    required: true
+  was_generated_by:
+    name: was_generated_by
+    range: Observation
+class_uri: dcat:Dataset
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Any
+<pre><code class="language-yaml">name: ObservationDataset
+description: A collection of data, published or curated by a single agent, and available
+  for access or download in one or more representations.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-class_uri: linkml:Any
+is_a: Dataset
+slot_usage:
+  name:
+    name: name
+    description: The label, name or title of a Dataset.
+    required: true
+  description:
+    name: description
+    description: A free-text account of a Dataset.
+    required: true
+  was_generated_by:
+    name: was_generated_by
+    range: Observation
+attributes:
+  id:
+    name: id
+    description: The slot to specify the canonical unique identifier of an entity.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: ObservationDataset
+    domain_of:
+    - DefinedTerm
+    - Dataset
+    - EntityOfInterest
+    range: uriorcurie
+    required: true
+  name:
+    name: name
+    description: The label, name or title of a Dataset.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    exact_mappings:
+    - rdfs:label
+    - skos:title
+    - schema:name
+    rank: 1000
+    slot_uri: dcterms:title
+    alias: name
+    owner: ObservationDataset
+    domain_of:
+    - DefinedTerm
+    - Dataset
+    - ResearchActivity
+    - EntityOfInterest
+    - Tool
+    - Environment
+    - ActivitySpecification
+    - Attribute
+    range: string
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  description:
+    name: description
+    description: A free-text account of a Dataset.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: ObservationDataset
+    domain_of:
+    - Dataset
+    - ResearchActivity
+    - EntityOfInterest
+    - Tool
+    - Environment
+    - ActivitySpecification
+    - Attribute
+    range: string
+    required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  alternative_id:
+    name: alternative_id
+    description: The slot to specify the unique identifier of an entity that is not
+      considered the canonical identifier in the given context.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    slot_uri: dcterms:identifier
+    alias: alternative_id
+    owner: ObservationDataset
+    domain_of:
+    - DefinedTerm
+    - Dataset
+    - ResearchActivity
+    - EntityOfInterest
+    - Tool
+    - Environment
+    - Attribute
+    range: uriorcurie
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  was_generated_by:
+    name: was_generated_by
+    description: The slot to provide the ResearchActivity that created a Dataset.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    exact_mappings:
+    - prov:wasGeneratedBy
+    close_mappings:
+    - schema:measurementTechnique
+    rank: 1000
+    slot_uri: prov:wasGeneratedBy
+    alias: was_generated_by
+    owner: ObservationDataset
+    domain_of:
+    - Dataset
+    range: Observation
+    required: true
+    inlined: true
+class_uri: dcat:Dataset
 
 </code></pre>
 </details>

@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-used_plan">Slot: used_plan</h1>
-<p><em>The slot to specify the PlanSpecification (Method) that was used in the ResearchActivity.</em></p>
+<p><em>The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#used">prov:used</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -347,6 +347,11 @@
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
 <td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../Observation/">Observation</a></td>
+<td>Act of carrying out an (Observation) Procedure to estimate or calculate a val...</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -387,8 +392,7 @@
 <details>
 
 <pre><code class="language-yaml">name: used_plan
-description: The slot to specify the PlanSpecification (Method) that was used in the
-  ResearchActivity.
+description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
 rank: 1000
 slot_uri: prov:used

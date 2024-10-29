@@ -212,6 +212,8 @@
     click ResearchActivity href "../ResearchActivity"
       ResearchActivity &lt;|-- NMRSpectroscopy
         click NMRSpectroscopy href "../NMRSpectroscopy"
+      ResearchActivity &lt;|-- Observation
+        click Observation href "../Observation"
 
       ResearchActivity : alternative_id
 
@@ -270,6 +272,7 @@
 <ul>
 <li><strong>ResearchActivity</strong><ul>
 <li><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></li>
+<li><a href="../Observation/">Observation</a></li>
 </ul>
 </li>
 </ul>
@@ -323,7 +326,7 @@
 <tr>
 <td><a href="../used_plan/">used_plan</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../ActivitySpecification/">ActivitySpecification</a></td>
-<td>The slot to specify the PlanSpecification (Method) that was used in the Resea...</td>
+<td>The slot to specify the Method (aka Procedure) that was used in the ResearchA...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -576,8 +579,8 @@ attributes:
     inlined_as_list: true
   used_plan:
     name: used_plan
-    description: The slot to specify the PlanSpecification (Method) that was used
-      in the ResearchActivity.
+    description: The slot to specify the Method (aka Procedure) that was used in the
+      ResearchActivity.
     from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
     rank: 1000
     slot_uri: prov:used

@@ -214,6 +214,8 @@
         click HardwareTool href "../HardwareTool"
       Tool &lt;|-- SoftwareTool
         click SoftwareTool href "../SoftwareTool"
+      Tool &lt;|-- Sensor
+        click Sensor href "../Sensor"
 
       Tool : alternative_id
 
@@ -264,6 +266,7 @@
 <li><strong>Tool</strong><ul>
 <li><a href="../HardwareTool/">HardwareTool</a></li>
 <li><a href="../SoftwareTool/">SoftwareTool</a></li>
+<li><a href="../Sensor/">Sensor</a></li>
 </ul>
 </li>
 </ul>
@@ -359,6 +362,18 @@
 </tr>
 <tr>
 <td><a href="./">Tool</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Tool</a></td>
+</tr>
+<tr>
+<td><a href="../Observation/">Observation</a></td>
+<td><a href="../used_tool/">used_tool</a></td>
+<td>range</td>
+<td><a href="./">Tool</a></td>
+</tr>
+<tr>
+<td><a href="../Sensor/">Sensor</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">Tool</a></td>

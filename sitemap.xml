@@ -9,19 +9,11 @@
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/Any/</loc>
-         <lastmod>2024-10-29</lastmod>
-    </url>
-    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Attribute/</loc>
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Boolean/</loc>
-         <lastmod>2024-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/ChemAnalysisDataset/</loc>
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
@@ -77,6 +69,10 @@
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/FeatureOfInterest/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Float/</loc>
          <lastmod>2024-10-29</lastmod>
     </url>
@@ -117,6 +113,10 @@
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/NMRDataset/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/NMRSpectroscopy/</loc>
          <lastmod>2024-10-29</lastmod>
     </url>
@@ -133,6 +133,18 @@
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/Observation/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/ObservationDataset/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/Procedure/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/QUDTQuantityKindEnum/</loc>
          <lastmod>2024-10-29</lastmod>
     </url>
@@ -146,6 +158,10 @@
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/ResearchActivity/</loc>
+         <lastmod>2024-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/Sensor/</loc>
          <lastmod>2024-10-29</lastmod>
     </url>
     <url>

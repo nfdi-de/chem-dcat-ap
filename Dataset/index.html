@@ -210,8 +210,12 @@
 <div class="mermaid"> classDiagram
     class Dataset
     click Dataset href "../Dataset"
+      Dataset &lt;|-- NMRDataset
+        click NMRDataset href "../NMRDataset"
       Dataset &lt;|-- DatasetCollection
         click DatasetCollection href "../DatasetCollection"
+      Dataset &lt;|-- ObservationDataset
+        click ObservationDataset href "../ObservationDataset"
 
       Dataset : alternative_id
 
@@ -235,7 +239,9 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Dataset</strong><ul>
+<li><a href="../NMRDataset/">NMRDataset</a></li>
 <li><a href="../DatasetCollection/">DatasetCollection</a></li>
+<li><a href="../ObservationDataset/">ObservationDataset</a></li>
 </ul>
 </li>
 </ul>

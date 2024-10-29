@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://StroemPhi.github.io/dcat-4C-ap/ChemAnalysisDataset/" rel="canonical"/>
+<link href="https://StroemPhi.github.io/dcat-4C-ap/Observation/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: ChemAnalysisDataset - dcat-4C-ap</title>
+<title>Class: Observation - dcat-4C-ap</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-chemanalysisdataset">
+<a class="md-skip" href="#class-observation">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: ChemAnalysisDataset
+              Class: Observation
             
           </span>
 </div>
@@ -142,8 +142,23 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+    Inheritance
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+    Usages
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aliases">
+    Aliases
   </a>
 </li>
 <li class="md-nav__item">
@@ -191,17 +206,78 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/ChemAnalysisDataset.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/Observation.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-chemanalysisdataset">Class: ChemAnalysisDataset</h1>
-<p>URI: <a href="https://w3id.org/StroemPhi/dcat_4C_ap/ChemAnalysisDataset">nfdi4c:ChemAnalysisDataset</a></p>
+<h1 id="class-observation">Class: Observation</h1>
+<p><em>Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with.</em></p>
+<p>URI: <a href="http://www.w3.org/ns/sosa/Observation">sosa:Observation</a></p>
 <div class="mermaid"> classDiagram
-    class ChemAnalysisDataset
-    click ChemAnalysisDataset href "../ChemAnalysisDataset"
+    class Observation
+    click Observation href "../Observation"
+      ResearchActivity &lt;|-- Observation
+        click ResearchActivity href "../ResearchActivity"
+
+      Observation : alternative_id
+
+      Observation : description
+
+      Observation : evaluated_entity
+
+
+
+
+    Observation --&gt; "1" FeatureOfInterest : evaluated_entity
+    click FeatureOfInterest href "../FeatureOfInterest"
+
+
+      Observation : has_part
+
+
+
+
+    Observation --&gt; "0..1" Observation : has_part
+    click Observation href "../Observation"
+
+
+      Observation : name
+
+      Observation : type
+
+
+
+
+    Observation --&gt; "0..1 _recommended_" DefinedTerm : type
+    click DefinedTerm href "../DefinedTerm"
+
+
+      Observation : used_plan
+
+
+
+
+    Observation --&gt; "0..1 _recommended_" Procedure : used_plan
+    click Procedure href "../Procedure"
+
+
+      Observation : used_tool
+
+
+
+
+    Observation --&gt; "* _recommended_" Tool : used_tool
+    click Tool href "../Tool"
+
+
 
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../ResearchActivity/">ResearchActivity</a><ul>
+<li><strong>Observation</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -214,13 +290,84 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="../name/">name</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>The slot to specify the label, name or title of a thing</td>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>The slot to provide a free-text account of a thing</td>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+</tr>
+<tr>
+<td><a href="../alternative_id/">alternative_id</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The slot to specify the unique identifier of an entity that is not considered...</td>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>The slot to specify the type of the ResearchActivity provided as a DefinedTer...</td>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+</tr>
+<tr>
+<td><a href="../evaluated_entity/">evaluated_entity</a></td>
+<td>1 <br/> <a href="../FeatureOfInterest/">FeatureOfInterest</a></td>
+<td>The relation between an Observation and the entity whose quality was observed...</td>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+</tr>
+<tr>
+<td><a href="../used_tool/">used_tool</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Tool/">Tool</a></td>
+<td>The slot to specify the tool that was used</td>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+</tr>
+<tr>
+<td><a href="../used_plan/">used_plan</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Procedure/">Procedure</a></td>
+<td>The slot to specify the Method (aka Procedure) that was used in the ResearchA...</td>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+</tr>
+<tr>
+<td><a href="../has_part/">has_part</a></td>
+<td>0..1 <br/> <a href="./">Observation</a></td>
+<td>The slot to specify one or more parts of the ResearchActivity that are themse...</td>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
 </tr>
 </tbody>
 </table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../ObservationDataset/">ObservationDataset</a></td>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
+<td>range</td>
+<td><a href="./">Observation</a></td>
+</tr>
+<tr>
+<td><a href="./">Observation</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Observation</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>Observation</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -237,11 +384,15 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>nfdi4c:ChemAnalysisDataset</td>
+<td>sosa:Observation</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi4c:ChemAnalysisDataset</td>
+<td>nfdi4c:Observation</td>
+</tr>
+<tr>
+<td>narrow</td>
+<td>NCIT:C25598, sosa:Observation, OBI:0000070</td>
 </tr>
 </tbody>
 </table>
@@ -249,15 +400,233 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: ChemAnalysisDataset
+<pre><code class="language-yaml">name: Observation
+description: Act of carrying out an (Observation) Procedure to estimate or calculate
+  a value of a property of a FeatureOfInterest. Links to a Sensor to describe what
+  made the Observation and how; links to an ObservableProperty to describe what the
+  result is an estimate of, and to a FeatureOfInterest to detail what that property
+  was associated with.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+aliases:
+- Observation
+narrow_mappings:
+- NCIT:C25598
+- sosa:Observation
+- OBI:0000070
+is_a: ResearchActivity
+slot_usage:
+  evaluated_entity:
+    name: evaluated_entity
+    description: The relation between an Observation and the entity whose quality
+      was observed, or between an   Actuation and the entity whose property was modified,
+      or between an act of Sampling and the entity that was sampled.
+    slot_uri: sosa:hasFeatureOfInterest
+    range: FeatureOfInterest
+  used_plan:
+    name: used_plan
+    slot_uri: sosa:usedProcedure
+    range: Procedure
+  type:
+    name: type
+    description: The slot to specify the type of the ResearchActivity provided as
+      a DefinedTerm.
+    range: DefinedTerm
+    inlined: true
+  has_part:
+    name: has_part
+    description: The slot to specify one or more parts of the ResearchActivity that
+      are themselves also research activities.
+    range: Observation
+    inlined: true
+class_uri: sosa:Observation
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: ChemAnalysisDataset
+<pre><code class="language-yaml">name: Observation
+description: Act of carrying out an (Observation) Procedure to estimate or calculate
+  a value of a property of a FeatureOfInterest. Links to a Sensor to describe what
+  made the Observation and how; links to an ObservableProperty to describe what the
+  result is an estimate of, and to a FeatureOfInterest to detail what that property
+  was associated with.
 from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+aliases:
+- Observation
+narrow_mappings:
+- NCIT:C25598
+- sosa:Observation
+- OBI:0000070
+is_a: ResearchActivity
+slot_usage:
+  evaluated_entity:
+    name: evaluated_entity
+    description: The relation between an Observation and the entity whose quality
+      was observed, or between an   Actuation and the entity whose property was modified,
+      or between an act of Sampling and the entity that was sampled.
+    slot_uri: sosa:hasFeatureOfInterest
+    range: FeatureOfInterest
+  used_plan:
+    name: used_plan
+    slot_uri: sosa:usedProcedure
+    range: Procedure
+  type:
+    name: type
+    description: The slot to specify the type of the ResearchActivity provided as
+      a DefinedTerm.
+    range: DefinedTerm
+    inlined: true
+  has_part:
+    name: has_part
+    description: The slot to specify one or more parts of the ResearchActivity that
+      are themselves also research activities.
+    range: Observation
+    inlined: true
+attributes:
+  name:
+    name: name
+    description: The slot to specify the label, name or title of a thing.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    exact_mappings:
+    - rdfs:label
+    - skos:title
+    - schema:name
+    rank: 1000
+    slot_uri: dcterms:title
+    alias: name
+    owner: Observation
+    domain_of:
+    - DefinedTerm
+    - Dataset
+    - ResearchActivity
+    - EntityOfInterest
+    - Tool
+    - Environment
+    - ActivitySpecification
+    - Attribute
+    range: string
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  description:
+    name: description
+    description: The slot to provide a free-text account of a thing.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: Observation
+    domain_of:
+    - Dataset
+    - ResearchActivity
+    - EntityOfInterest
+    - Tool
+    - Environment
+    - ActivitySpecification
+    - Attribute
+    range: string
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  alternative_id:
+    name: alternative_id
+    description: The slot to specify the unique identifier of an entity that is not
+      considered the canonical identifier in the given context.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    slot_uri: dcterms:identifier
+    alias: alternative_id
+    owner: Observation
+    domain_of:
+    - DefinedTerm
+    - Dataset
+    - ResearchActivity
+    - EntityOfInterest
+    - Tool
+    - Environment
+    - Attribute
+    range: uriorcurie
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  type:
+    name: type
+    description: The slot to specify the type of the ResearchActivity provided as
+      a DefinedTerm.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    slot_uri: rdf:type
+    alias: type
+    owner: Observation
+    domain_of:
+    - ResearchActivity
+    - EntityOfInterest
+    - Tool
+    - Environment
+    - ActivitySpecification
+    - Attribute
+    range: DefinedTerm
+    recommended: true
+    inlined: true
+  evaluated_entity:
+    name: evaluated_entity
+    description: The relation between an Observation and the entity whose quality
+      was observed, or between an   Actuation and the entity whose property was modified,
+      or between an act of Sampling and the entity that was sampled.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    slot_uri: sosa:hasFeatureOfInterest
+    alias: evaluated_entity
+    owner: Observation
+    domain_of:
+    - ResearchActivity
+    range: FeatureOfInterest
+    required: true
+    inlined: true
+  used_tool:
+    name: used_tool
+    description: The slot to specify the tool that was used.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    slot_uri: prov:used
+    alias: used_tool
+    owner: Observation
+    domain_of:
+    - ResearchActivity
+    range: Tool
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  used_plan:
+    name: used_plan
+    description: The slot to specify the Method (aka Procedure) that was used in the
+      ResearchActivity.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    slot_uri: sosa:usedProcedure
+    alias: used_plan
+    owner: Observation
+    domain_of:
+    - ResearchActivity
+    range: Procedure
+    recommended: true
+  has_part:
+    name: has_part
+    description: The slot to specify one or more parts of the ResearchActivity that
+      are themselves also research activities.
+    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    rank: 1000
+    slot_uri: dcterms:hasPart
+    alias: has_part
+    owner: Observation
+    domain_of:
+    - ResearchActivity
+    - EntityOfInterest
+    - Tool
+    range: Observation
+    inlined: true
+class_uri: sosa:Observation
 
 </code></pre>
 </details>
