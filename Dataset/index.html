@@ -226,7 +226,7 @@
 
 
 
-    Dataset --&gt; "0..1 _recommended_" ResearchActivity : was_generated_by
+    Dataset --&gt; "1" ResearchActivity : was_generated_by
     click ResearchActivity href "../ResearchActivity"
 
 
@@ -276,7 +276,7 @@
 </tr>
 <tr>
 <td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../ResearchActivity/">ResearchActivity</a></td>
+<td>1 <br/> <a href="../ResearchActivity/">ResearchActivity</a></td>
 <td>The slot to provide the ResearchActivity that created a Dataset</td>
 <td>direct</td>
 </tr>
@@ -472,7 +472,7 @@ attributes:
     domain_of:
     - Dataset
     range: ResearchActivity
-    recommended: true
+    required: true
     inlined: true
 class_uri: dcat:Dataset
 tree_root: true
