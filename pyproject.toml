@@ -10,6 +10,7 @@ include = ["README.md", "src/dcat_4c_ap/schema", "project"]
 [tool.poetry.dependencies]
 python = "^3.9"
 linkml-runtime = "^1.1.24"
+oaklib = "^0.6.18"
 
 [tool.poetry-dynamic-versioning]
 enable = true
