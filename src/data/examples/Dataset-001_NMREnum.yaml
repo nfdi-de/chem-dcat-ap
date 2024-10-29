@@ -7,20 +7,20 @@ alternative_id:
 name: "13C nuclear magnetic resonance spectroscopy (13C NMR)"
 description: "Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)"
 was_generated_by:
-  type: CHMO:0000595 # 'inlined' must be 'false' when 'range' of 'type' is set to an Enum
+  #type: CHMO:0000595 # 'inlined' must be 'false' when 'range' of 'type' is set to an Enum
   evaluated_entity:
-    type:
-      id: CHEBI:59999
-      name: "Chemical Substance"
     id: doi:10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N.1
     name: "CRS-37013"
     alternative_id:
       - https://www.chemotion-repository.net/pid/37013
-    has_attribute:
-        type:
-          id: CHEMINF:000059
-          name: InChiKey
-        value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
+    inchikey:
+      value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
+    inchi:
+      value: " InChI=1S/2C18H15P.C12H8N3S.Cu/c2*1-4-10-16(11-5-1)19(17-12-6-2-7-13-17)18-14-8-3-9-15-18;1-2-6-11-10(5-1)15-12(16-11)14-8-9-4-3-7-13-9;/h2*1-15H;1-8H;/q;;-1;+1/b;;14-8+;"
+    smiles:
+      value: "c1ccc(cc1)P(c1ccccc1)c1ccccc1.c1ccc(cc1)P(c1ccccc1)c1ccccc1.[Cu]n1cccc1/C=N/c1nc2c(s1)cccc2"
+    iupac_formula:
+      value: "C48H38CuN3P2S"
   used_tool:
       type:
         id: OBI:0000566
