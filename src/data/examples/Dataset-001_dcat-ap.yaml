@@ -1,6 +1,6 @@
 # Example Dataset object
 ---
-identifier: 10-14272-kvoivnbynqxcny-bochjotcsa-n-chmo0000595
+id: 10-14272-kvoivnbynqxcny-bochjotcsa-n-chmo0000595
 other_identifier:
   - notation: https://doi.org/10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N/CHMO0000595
   - notation: https://www.chemotion-repository.net/pid/37012
@@ -10,3 +10,6 @@ description: "Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)"
 #  - prov:something
 #dataset_distribution:
 #  - byte_size: 666
+theme: 
+  - id: data-theme:TECH
+    preferred_label: Science and technology

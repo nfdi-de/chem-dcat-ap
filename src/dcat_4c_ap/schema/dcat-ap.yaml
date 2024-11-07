@@ -3,12 +3,17 @@ description: '|- This LinkML schema representation of DCAT-AP 3.0.0 was automati
   created from these [JSON-LD SHACL shapes](https://github.com/SEMICeu/DCAT-AP/blob/master/releases/3.0.0/shacl/dcat-ap-SHACL.jsonld)
   using this Python script: https://github.com/StroemPhi/dcat-4C-ap/tree/main/src/dcat-ap_shacl_2_linkml.py.
 
-  NOTE: The referenced JSON-LD SHACL release file within the main branch is different
-  from the one in the GitHub release with the same version tag. It was used, as the
-  former is missing the property dcatap:applicableLegislation and its range class
-  eli:LegalResource, which are an important update introduced in DCAT-AP 3.0.0 according
-  to the HTML specification.'
+  NOTE: The JSON-LD SHACL constraints published with the [Juli 3.0.0 GitHub release](https://github.com/SEMICeu/DCAT-AP/releases/tag/3.0.0)
+  and in the [3.0.0. release branch](https://github.com/SEMICeu/DCAT-AP/tree/3.0.0)
+  are different from the ones in https://github.com/SEMICeu/DCAT-AP/tree/master/releases/3.0.0.
+  Also the TTL shapes provided in the latter in the HTML folder differ from the ones
+  in the SHACL folder, in that they declare dcat:Resource and dcatap:TemporalLiteral
+  as unions of the dcat:Resource subclasses respectively different XML Schema datatypes
+  for date and time. We address this with ''helper code'' in the conversion script. '
 title: LinkML schema representation of DCAT-AP 3.0.0
+todos:
+- Think about how to add the enums and their permissible values to constrain the allowed
+  instances of classes such as "Concept", "MediaType", etc. as defined in https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs
 source: https://semiceu.github.io/DCAT-AP/releases/3.0.0
 id: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml
 imports:
@@ -36,6 +41,8 @@ prefixes:
   sh: http://www.w3.org/ns/shacl#
   skos: http://www.w3.org/2004/02/skos/core#
   vl: https://purl.eu/ns/shacl#
+  data-theme: http://publications.europa.eu/resource/authority/data-theme/
+  iana: https://www.iana.org/assignments/
 default_prefix: linkmldcatap
 default_range: string
 types:
@@ -49,7 +56,7 @@ types:
   hexBinary:
     name: hexBinary
     conforms_to: https://www.w3.org/TR/xmlschema11-2/#hexBinary
-    description: The datatype that represents arbitrary hex-encoded binary data
+    description: The datatype that represents arbitrary hex-encoded binary data.
     base: str
     uri: xsd:hexBinary
     pattern: ([0-9a-fA-F]{2})*
@@ -246,6 +253,10 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: foaf:homepage
+  id:
+    name: id
+    description: The URI of an instance of the class.
+    identifier: true
   identifier:
     name: identifier
     description: This slot is described in more detail within the class in which it
@@ -678,6 +689,7 @@ classes:
     - application_profile
     - change_type
     - description
+    - id
     - language
     - listing_date
     - modification_date
@@ -712,6 +724,10 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
+      id:
+        name: id
+        description: The URI of an instance of CatalogRecord.
+        identifier: true
       language:
         name: language
         description: A language used in the textual metadata describing titles, descriptions,
@@ -744,7 +760,7 @@ classes:
         description: A link to the Dataset, Data service or Catalog described in the
           record.
         slot_uri: foaf:primaryTopic
-        range: Resource
+        range: CataloguedResource
         required: true
         multivalued: false
         inlined_as_list: false
@@ -799,8 +815,13 @@ classes:
   Concept:
     name: Concept
     slots:
+    - id
     - preferred_label
     slot_usage:
+      id:
+        name: id
+        description: The URI of an instance of Concept.
+        identifier: true
       preferred_label:
         name: preferred_label
         description: A preferred label of the concept.
@@ -900,7 +921,7 @@ classes:
         name: endpoint_URL
         description: The root location or primary endpoint of the service (an IRI).
         slot_uri: dcat:endpointURL
-        range: CataloguedResource
+        range: Resource
         required: true
         multivalued: true
         inlined_as_list: true
@@ -909,7 +930,7 @@ classes:
         description: A description of the services available via the end-points, including
           their operations, parameters etc.
         slot_uri: dcat:endpointDescription
-        range: CataloguedResource
+        range: Resource
         required: false
         multivalued: true
         inlined_as_list: true
@@ -995,6 +1016,7 @@ classes:
     - frequency
     - geographical_coverage
     - has_version
+    - id
     - identifier
     - in_series
     - is_referenced_by
@@ -1113,6 +1135,10 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
+      id:
+        name: id
+        description: The URI of an instance of Dataset.
+        identifier: true
       identifier:
         name: identifier
         description: The main identifier for the Dataset, e.g. the URI or other unique
@@ -1135,7 +1161,7 @@ classes:
         description: A related resource, such as a publication, that references, cites,
           or otherwise points to the dataset.
         slot_uri: dcterms:isReferencedBy
-        range: CataloguedResource
+        range: Resource
         required: false
         multivalued: true
         inlined_as_list: true
@@ -1216,7 +1242,7 @@ classes:
         name: related_resource
         description: A related resource.
         slot_uri: dcterms:relation
-        range: CataloguedResource
+        range: Resource
         required: false
         multivalued: true
         inlined_as_list: true
@@ -1328,6 +1354,7 @@ classes:
     - description
     - frequency
     - geographical_coverage
+    - id
     - modification_date
     - publisher
     - release_date
@@ -1376,6 +1403,10 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
+      id:
+        name: id
+        description: The URI of an instance of DatasetSeries.
+        identifier: true
       modification_date:
         name: modification_date
         description: The most recent date on which the Dataset Series was changed
@@ -1452,7 +1483,7 @@ classes:
         name: access_URL
         description: A URL that gives access to a Distribution of the Dataset.
         slot_uri: dcat:accessURL
-        range: CataloguedResource
+        range: Resource
         required: true
         multivalued: true
         inlined_as_list: true
@@ -1529,7 +1560,7 @@ classes:
         description: A URL that is a direct link to a downloadable file in a given
           format.
         slot_uri: dcat:downloadURL
-        range: CataloguedResource
+        range: Resource
         required: false
         multivalued: true
         inlined_as_list: true
@@ -1803,7 +1834,7 @@ classes:
         name: relation
         description: A resource related to the source resource.
         slot_uri: dcterms:relation
-        range: CataloguedResource
+        range: Resource
         required: true
         multivalued: true
         inlined_as_list: true
@@ -1820,9 +1851,6 @@ classes:
   Standard:
     name: Standard
     class_uri: dcterms:Standard
-  TemporalLiteral:
-    name: TemporalLiteral
-    class_uri: rdfs:Literal
   TimeInstant:
     name: TimeInstant
     class_uri: time:Instant
