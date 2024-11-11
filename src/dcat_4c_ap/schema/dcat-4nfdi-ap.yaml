@@ -324,7 +324,7 @@ slots:
   occurred_in:
     slot_uri: BFO:0000066
     description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
-    range: ActivitySpecification
+    range: Environment
   has_part:
     slot_uri: dcterms:hasPart
     description: A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.
