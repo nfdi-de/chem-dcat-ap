@@ -1,5 +1,5 @@
 name: dcat-ap
-description: '|- This LinkML schema representation of DCAT-AP 3.0.0 was automatically
+description: 'This LinkML schema representation of DCAT-AP 3.0.0 was automatically
   created from these [JSON-LD SHACL shapes](https://github.com/SEMICeu/DCAT-AP/blob/master/releases/3.0.0/shacl/dcat-ap-SHACL.jsonld)
   using this Python script: https://github.com/StroemPhi/dcat-4C-ap/tree/main/src/dcat-ap_shacl_2_linkml.py.
 
@@ -12,8 +12,11 @@ description: '|- This LinkML schema representation of DCAT-AP 3.0.0 was automati
   for date and time. We address this with ''helper code'' in the conversion script. '
 title: LinkML schema representation of DCAT-AP 3.0.0
 todos:
-- Think about how to add the enums and their permissible values to constrain the allowed
-  instances of classes such as "Concept", "MediaType", etc. as defined in https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs
+- Think about how to add all the enums and their permissible values to constrain the
+  allowed instances of classes such as "Concept", "MediaType", etc. as defined in
+  https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs. Using EnumBindings
+  (https://linkml.io/linkml-model/latest/docs/bindings/) seems best, but does not
+  yet work.
 source: https://semiceu.github.io/DCAT-AP/releases/3.0.0
 id: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml
 imports:
@@ -41,7 +44,6 @@ prefixes:
   sh: http://www.w3.org/ns/shacl#
   skos: http://www.w3.org/2004/02/skos/core#
   vl: https://purl.eu/ns/shacl#
-  data-theme: http://publications.europa.eu/resource/authority/data-theme/
   iana: https://www.iana.org/assignments/
 default_prefix: linkmldcatap
 default_range: string
@@ -67,6 +69,81 @@ types:
     base: int
     uri: xsd:nonNegativeInteger
     pattern: ([\-+]?[0-9]+)
+enums:
+  DatasetThemes:
+    name: DatasetThemes
+    see_also:
+    - https://op.europa.eu/s/zXIN
+    enum_uri: http://publications.europa.eu/resource/authority/data-theme
+    permissible_values:
+      Agriculture, fisheries, forestry and food:
+        text: Agriculture, fisheries, forestry and food
+        meaning: http://publications.europa.eu/resource/authority/data-theme/AGRI
+      Economy and finance:
+        text: Economy and finance
+        meaning: http://publications.europa.eu/resource/authority/data-theme/ECON
+      Education, culture and sport:
+        text: Education, culture and sport
+        meaning: http://publications.europa.eu/resource/authority/data-theme/EDUC
+      Energy:
+        text: Energy
+        meaning: http://publications.europa.eu/resource/authority/data-theme/ENER
+      Environment:
+        text: Environment
+        meaning: http://publications.europa.eu/resource/authority/data-theme/ENVI
+      Government and public sector:
+        text: Government and public sector
+        meaning: http://publications.europa.eu/resource/authority/data-theme/GOVE
+      Health:
+        text: Health
+        meaning: http://publications.europa.eu/resource/authority/data-theme/HEAL
+      International issues:
+        text: International issues
+        meaning: http://publications.europa.eu/resource/authority/data-theme/INTR
+      Justice, legal system and public safety:
+        text: Justice, legal system and public safety
+        meaning: http://publications.europa.eu/resource/authority/data-theme/JUST
+      Provisional data:
+        text: Provisional data
+        meaning: http://publications.europa.eu/resource/authority/data-theme/OP_DATPRO
+      Regions and cities:
+        text: Regions and cities
+        meaning: http://publications.europa.eu/resource/authority/data-theme/REGI
+      Population and society:
+        text: Population and society
+        meaning: http://publications.europa.eu/resource/authority/data-theme/SOCI
+      Science and technology:
+        text: Science and technology
+        meaning: http://publications.europa.eu/resource/authority/data-theme/TECH
+      Transport:
+        text: Transport
+        meaning: http://publications.europa.eu/resource/authority/data-theme/TRAN
+  TopLevelMediaTypes:
+    name: TopLevelMediaTypes
+    enum_uri: iana:top-level-media-types
+    permissible_values:
+      application:
+        text: application
+      audio:
+        text: audio
+      example:
+        text: example
+      font:
+        text: font
+      haptics:
+        text: haptics
+      image:
+        text: image
+      message:
+        text: message
+      model:
+        text: model
+      multipart:
+        text: multipart
+      text:
+        text: text
+      video:
+        text: video
 slots:
   access_URL:
     name: access_URL
@@ -163,11 +240,6 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: dcterms:creator
-  dataset:
-    name: dataset
-    description: This slot is described in more detail within the class in which it
-      is used.
-    slot_uri: dcat:dataset
   dataset_distribution:
     name: dataset_distribution
     description: This slot is described in more detail within the class in which it
@@ -233,6 +305,11 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: dcat:hadRole
+  has_dataset:
+    name: has_dataset
+    description: This slot is described in more detail within the class in which it
+      is used.
+    slot_uri: dcat:dataset
   has_part:
     name: has_part
     description: This slot is described in more detail within the class in which it
@@ -253,10 +330,6 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: foaf:homepage
-  id:
-    name: id
-    description: The URI of an instance of the class.
-    identifier: true
   identifier:
     name: identifier
     description: This slot is described in more detail within the class in which it
@@ -496,8 +569,9 @@ classes:
         slot_uri: dcterms:type
         range: Concept
         required: false
+        recommended: true
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
     class_uri: foaf:Agent
   Attribution:
     name: Attribution
@@ -508,9 +582,9 @@ classes:
     - applicable_legislation
     - catalogue
     - creator
-    - dataset
     - description
     - geographical_coverage
+    - has_dataset
     - has_part
     - homepage
     - language
@@ -550,14 +624,6 @@ classes:
         range: Agent
         required: false
         multivalued: false
-        inlined_as_list: false
-      dataset:
-        name: dataset
-        description: A Dataset that is part of the Catalogue.
-        slot_uri: dcat:dataset
-        range: Dataset
-        required: false
-        multivalued: true
         inlined_as_list: true
       description:
         name: description
@@ -575,6 +641,14 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
+      has_dataset:
+        name: has_dataset
+        description: A Dataset that is part of the Catalogue.
+        slot_uri: dcat:dataset
+        range: Dataset
+        required: false
+        multivalued: true
+        inlined_as_list: true
       has_part:
         name: has_part
         description: A related Catalogue that is part of the described Catalogue.
@@ -589,8 +663,9 @@ classes:
         slot_uri: foaf:homepage
         range: Document
         required: false
+        recommended: true
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       language:
         name: language
         description: A language used in the textual metadata describing titles, descriptions,
@@ -598,6 +673,7 @@ classes:
         slot_uri: dcterms:language
         range: LinguisticSystem
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       licence:
@@ -607,13 +683,14 @@ classes:
         range: LicenseDocument
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       modification_date:
         name: modification_date
         description: The most recent date on which the Catalogue was modified.
         slot_uri: dcterms:modified
         range: string
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: false
       publisher:
@@ -624,7 +701,7 @@ classes:
         range: Agent
         required: true
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       record:
         name: record
         description: A Catalogue Record that is part of the Catalogue.
@@ -639,6 +716,7 @@ classes:
         slot_uri: dcterms:issued
         range: string
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: false
       rights:
@@ -648,7 +726,7 @@ classes:
         range: RightsStatement
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       service:
         name: service
         description: A site or end-point (Data Service) that is listed in the Catalogue.
@@ -672,6 +750,7 @@ classes:
         slot_uri: dcat:themeTaxonomy
         range: ConceptScheme
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       title:
@@ -689,7 +768,6 @@ classes:
     - application_profile
     - change_type
     - description
-    - id
     - language
     - listing_date
     - modification_date
@@ -704,6 +782,7 @@ classes:
         slot_uri: dcterms:conformsTo
         range: Standard
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       change_type:
@@ -713,8 +792,9 @@ classes:
         slot_uri: adms:status
         range: Concept
         required: false
+        recommended: true
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       description:
         name: description
         description: A free-text account of the record. This property can be repeated
@@ -724,10 +804,6 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
-      id:
-        name: id
-        description: The URI of an instance of CatalogRecord.
-        identifier: true
       language:
         name: language
         description: A language used in the textual metadata describing titles, descriptions,
@@ -744,8 +820,9 @@ classes:
         slot_uri: dcterms:issued
         range: string
         required: false
+        recommended: true
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       modification_date:
         name: modification_date
         description: The most recent date on which the Catalogue entry was changed
@@ -772,7 +849,7 @@ classes:
         range: CatalogRecord
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       title:
         name: title
         description: A name given to the Catalogue Record.
@@ -798,7 +875,7 @@ classes:
         range: ChecksumAlgorithm
         required: true
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       checksum_value:
         name: checksum_value
         description: A lower case hexadecimal encoded digest value produced using
@@ -807,7 +884,7 @@ classes:
         range: hexBinary
         required: true
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
     class_uri: spdx:Checksum
   ChecksumAlgorithm:
     name: ChecksumAlgorithm
@@ -815,13 +892,8 @@ classes:
   Concept:
     name: Concept
     slots:
-    - id
     - preferred_label
     slot_usage:
-      id:
-        name: id
-        description: The URI of an instance of Concept.
-        identifier: true
       preferred_label:
         name: preferred_label
         description: A preferred label of the concept.
@@ -873,7 +945,7 @@ classes:
         range: RightsStatement
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       applicable_legislation:
         name: applicable_legislation
         description: The legislation that mandates the creation or management of the
@@ -890,6 +962,7 @@ classes:
         slot_uri: dcterms:conformsTo
         range: Standard
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       contact_point:
@@ -899,6 +972,7 @@ classes:
         slot_uri: dcat:contactPoint
         range: Kind
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       description:
@@ -932,6 +1006,7 @@ classes:
         slot_uri: dcat:endpointDescription
         range: Resource
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       format:
@@ -948,6 +1023,7 @@ classes:
         slot_uri: dcat:keyword
         range: string
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       landing_page:
@@ -966,7 +1042,7 @@ classes:
         range: LicenseDocument
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       publisher:
         name: publisher
         description: An entity (organisation) responsible for making the Data Service
@@ -975,7 +1051,7 @@ classes:
         range: Agent
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       serves_dataset:
         name: serves_dataset
         description: This property refers to a collection of data that this data service
@@ -991,6 +1067,7 @@ classes:
         slot_uri: dcat:theme
         range: Concept
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       title:
@@ -1016,7 +1093,6 @@ classes:
     - frequency
     - geographical_coverage
     - has_version
-    - id
     - identifier
     - in_series
     - is_referenced_by
@@ -1051,7 +1127,7 @@ classes:
         range: RightsStatement
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       applicable_legislation:
         name: applicable_legislation
         description: The legislation that mandates the creation or management of the
@@ -1076,6 +1152,7 @@ classes:
         slot_uri: dcat:contactPoint
         range: Kind
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       creator:
@@ -1135,10 +1212,6 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
-      id:
-        name: id
-        description: The URI of an instance of Dataset.
-        identifier: true
       identifier:
         name: identifier
         description: The main identifier for the Dataset, e.g. the URI or other unique
@@ -1171,6 +1244,7 @@ classes:
         slot_uri: dcat:keyword
         range: string
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       landing_page:
@@ -1221,7 +1295,7 @@ classes:
         range: Agent
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       qualified_attribution:
         name: qualified_attribution
         description: An Agent having some form of responsibility for the resource.
@@ -1294,13 +1368,14 @@ classes:
         range: duration
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       theme:
         name: theme
         description: A category of the Dataset.
         slot_uri: dcat:theme
         range: Concept
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       title:
@@ -1326,7 +1401,7 @@ classes:
         range: string
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       version_notes:
         name: version_notes
         description: A description of the differences between this version and a previous
@@ -1354,7 +1429,6 @@ classes:
     - description
     - frequency
     - geographical_coverage
-    - id
     - modification_date
     - publisher
     - release_date
@@ -1403,10 +1477,6 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
-      id:
-        name: id
-        description: The URI of an instance of DatasetSeries.
-        identifier: true
       modification_date:
         name: modification_date
         description: The most recent date on which the Dataset Series was changed
@@ -1424,7 +1494,7 @@ classes:
         range: Agent
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       release_date:
         name: release_date
         description: The date of formal issuance (e.g., publication) of the Dataset
@@ -1511,6 +1581,7 @@ classes:
         slot_uri: dcatap:availability
         range: Concept
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: false
       byte_size:
@@ -1529,7 +1600,7 @@ classes:
         range: Checksum
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       compression_format:
         name: compression_format
         description: The format of the file in which the data is contained in a compressed
@@ -1538,13 +1609,14 @@ classes:
         range: MediaType
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       description:
         name: description
         description: A free-text account of the Distribution.
         slot_uri: dcterms:description
         range: string
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       documentation:
@@ -1570,8 +1642,9 @@ classes:
         slot_uri: dcterms:format
         range: MediaTypeOrExtent
         required: false
+        recommended: true
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       has_policy:
         name: has_policy
         description: The policy expressing the rights associated with the distribution
@@ -1580,7 +1653,7 @@ classes:
         range: Policy
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       language:
         name: language
         description: A language used in the Distribution.
@@ -1596,7 +1669,7 @@ classes:
         range: LicenseDocument
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       linked_schemas:
         name: linked_schemas
         description: An established schema to which the described Distribution conforms.
@@ -1631,7 +1704,7 @@ classes:
         range: MediaType
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       release_date:
         name: release_date
         description: The date of formal issuance (e.g., publication) of the Distribution.
@@ -1647,7 +1720,7 @@ classes:
         range: RightsStatement
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       spatial_resolution:
         name: spatial_resolution
         description: The minimum spatial separation resolvable in a dataset distribution,
@@ -1664,7 +1737,7 @@ classes:
         range: Concept
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       temporal_resolution:
         name: temporal_resolution
         description: The minimum time period resolvable in the dataset distribution.
@@ -1672,7 +1745,7 @@ classes:
         range: duration
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       title:
         name: title
         description: A name given to the Distribution.
@@ -1724,6 +1797,7 @@ classes:
         slot_uri: dcterms:type
         range: Concept
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
     class_uri: dcterms:LicenseDocument
@@ -1743,6 +1817,7 @@ classes:
         slot_uri: dcat:bbox
         range: string
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: false
       centroid:
@@ -1751,6 +1826,7 @@ classes:
         slot_uri: dcat:centroid
         range: string
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: false
       geometry:
@@ -1783,7 +1859,7 @@ classes:
         range: TimeInstant
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       end:
         name: end
         description: The end of a period or interval.
@@ -1791,21 +1867,23 @@ classes:
         range: TimeInstant
         required: false
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       end_date:
         name: end_date
         description: The end of the period.
         slot_uri: dcat:endDate
         range: string
         required: false
+        recommended: true
         multivalued: false
-        inlined_as_list: false
+        inlined_as_list: true
       start_date:
         name: start_date
         description: The start of the period.
         slot_uri: dcat:startDate
         range: string
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: false
     class_uri: dcterms:PeriodOfTime
