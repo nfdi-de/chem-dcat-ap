@@ -86,7 +86,7 @@ def get_curie(term_uri, prefixes=None):
     return term_curie
 
 
-def load_shacl_shapes(jsonld_file='dcat-ap-SHACL.jsonld'):
+def load_shacl_shapes(jsonld_file='src/dcat-ap-SHACL.jsonld'):
     """
     Load the JSON-LD file containing the DCAT-AP SHACL shapes.
     TODO: Use Requests to download directly from the script, maybe with cache option.
@@ -321,7 +321,7 @@ def build_schema():
     return builder.schema
 
 
-def dump_schema(schema, output_file='dcat_4c_ap/schema/dcat-ap.yaml'):
+def dump_schema(schema, output_file='src/dcat_4c_ap/schema/dcat-ap.yaml'):
     YAMLDumper().dump(schema, output_file)
 
 
