@@ -2,6 +2,7 @@
 # Author: https://orcid.org/0000-0002-1595-3213 | Date: 2024-11-01
 
 import json
+import os
 from linkml.utils.schema_builder import SchemaBuilder
 from linkml_runtime.dumpers import YAMLDumper
 from linkml_runtime.linkml_model import SlotDefinition, TypeDefinition, ClassDefinition, EnumDefinition
@@ -86,12 +87,14 @@ def get_curie(term_uri, prefixes=None):
     return term_curie
 
 
-def load_shacl_shapes(jsonld_file='src/dcat-ap-SHACL.jsonld'):
+def load_shacl_shapes(jsonld_file='dcat-ap-SHACL.jsonld'):
     """
     Load the JSON-LD file containing the DCAT-AP SHACL shapes.
     TODO: Use Requests to download directly from the script, maybe with cache option.
     """
-    with open(jsonld_file, 'r') as file:
+    filename = jsonld_file
+    filepath = os.path.join("src", filename)
+    with open(filepath, 'r') as file:
         return json.load(file)
 
 
@@ -321,8 +324,10 @@ def build_schema():
     return builder.schema
 
 
-def dump_schema(schema, output_file='src/dcat_4c_ap/schema/dcat-ap.yaml'):
-    YAMLDumper().dump(schema, output_file)
+def dump_schema(schema, output_file='dcat_4c_ap/schema/dcat-ap.yaml'):
+    filename = output_file
+    filepath = os.path.join("src", filename)
+    YAMLDumper().dump(schema, filepath)
 
 
 def main():
