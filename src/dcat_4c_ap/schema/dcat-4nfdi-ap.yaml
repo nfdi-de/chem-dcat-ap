@@ -45,20 +45,17 @@ default_prefix: nfdi
 default_range: string
 imports:
   - linkml:types
+  - dcat-ap
 
 classes:
   
   ClassifierMixin:
-    description: A mixin to provide the slots with which an entity of this schema can be classified either via an rdf:type or dcterms:type relation.
+    description: A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.
     mixin: true
     abstract: true
     slots:
-      - type
       - rdf_type
     slot_usage: 
-      type:
-        inlined: true
-        range: DefinedTerm
       rdf_type:
         inlined: true
         range: DefinedTerm
@@ -73,60 +70,44 @@ classes:
         range: uriorcurie
     slots:
       - id
-      - alternative_id
-      - name
+      - identifier
+      - title
     slot_usage:
-      name:
+      title:
         slot_uri: schema:name
-      alternative_id:
+      id:
         slot_uri: schema:identifier
   
-  Dataset:
+  NFDIDataset:
+    is_a: Dataset
     tree_root: true
     class_uri: dcat:Dataset
     description: >-
       A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
     slots:
       - id
-      - name
-      - description
-      - alternative_id
-      - was_generated_by
     slot_usage:
-      # required according to DCAT-AP specs
-      name:
-        description: The label, name or title of a Dataset.
-        required: true
-      description:
-        description: A free-text account of a Dataset.
-        required: true
       was_generated_by:
         ## the range will be changed with regard to the profile.
         range: ResearchActivity
   
   DatasetCollection:
+    is_a: Catalog
     class_uri: dcat:Catalog
-    is_a: Dataset
     description: A curated collection of metadata about data resources.
     slots:
-      - has_dataset
-    slot_usage:
-      id:
-        description: The unique identifier of a Catalog.
-      name:
-        description: The name of a DatasetCollection.
-      description:
-        description: A free-text account of a DatasetCollection.
+      - id
 
   ResearchActivity:
     mixins:
       - ClassifierMixin
+    is_a: Activity
     class_uri: prov:Activity
     description: An activity (process) that has the objective to produce information about an entity by evaluating it.
     slots:
-      - name
+      - title
       - description
-      - alternative_id
+      - identifier
       - evaluated_entity
       - used_tool
       - realized_plan
@@ -149,9 +130,10 @@ classes:
     description: Something that is being evaluated in a scientific process.
     slots:
       - id
-      - name
+      - title
       - description
-      - alternative_id
+      - identifier
+      - other_identifier
       - has_attribute
       - has_quantifiable_attribute
       - has_part
@@ -162,9 +144,9 @@ classes:
     class_uri: prov:Entity
     description: A entity with a certain function used within a scientific activity.
     slots:
-      - name
+      - title
       - description
-      - alternative_id
+      - identifier
       - has_part
       - has_attribute
       - has_quantifiable_attribute
@@ -184,9 +166,9 @@ classes:
     class_uri: prov:Entity
     description: The environment in which the dataset creating Observation took place (e.g. a lab).
     slots:
-      - name
+      - title
       - description
-      - alternative_id
+      - identifier
       - has_attribute
       - has_quantifiable_attribute
   
@@ -200,7 +182,7 @@ classes:
     description: |-
       A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.
     slots:
-      - name
+      - title
       - description
     examples:
       - description: "We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3)."
@@ -214,9 +196,9 @@ classes:
     class_uri: IAO:0000030
     description: A piece of information that is attributed to an entity of interest, tool or environment.
     slots:
-      - name
+      - title
       - description
-      - alternative_id
+      - identifier
       - value
         
   QuantifiableAttribute:
@@ -252,55 +234,13 @@ classes:
 
 # Slots
 slots:
+  id:
+    identifier: true
+    description: The slot to provide the URI of a resource.
+    required: true
   rdf_type:
     slot_uri: rdf:type
     description: The slot to specify the ontology class that is instantiated by an entity.
-    recommended: true
-  type:
-    slot_uri: dcterms:type
-    description: The slot to specify the dcterm:type of an entity according to a controlled vocabulary.
-    recommended: true
-  alternative_id:
-    slot_uri: dcterms:identifier
-    description: The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.
-    multivalued: true
-    inlined_as_list: true
-    range: uriorcurie
-  id:
-    range: uriorcurie
-    identifier: true
-    description: The slot to specify the canonical unique identifier of an entity.
-  description:
-    slot_uri: dcterms:description
-    description: The slot to provide a free-text account of a thing.
-    multivalued: true
-    inlined_as_list: true
-  name:
-    slot_uri: dcterms:title
-    description: The slot to specify the label, name or title of a thing.
-    multivalued: true
-    inlined_as_list: true
-    exact_mappings:
-      - rdfs:label
-      - skos:title
-      - schema:name
-  was_generated_by:
-    slot_uri: prov:wasGeneratedBy
-    description: The slot to provide the ResearchActivity that created a Dataset.
-    range: ResearchActivity
-    required: true
-    inlined: true
-    exact_mappings:
-      - prov:wasGeneratedBy
-    close_mappings:
-      - schema:measurementTechnique
-  has_dataset:
-    slot_uri: dcat:dataset
-    description: The slot to list the datasets of a catalog.
-    range: Dataset
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
     recommended: true
   evaluated_entity:
     slot_uri: prov:used
@@ -325,9 +265,6 @@ slots:
     slot_uri: BFO:0000066
     description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
     range: Environment
-  has_part:
-    slot_uri: dcterms:hasPart
-    description: A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.
   has_attribute:
     slot_uri: dcterms:relation
     description: The slot to relate an attribute to an entity of interest, tool or environment.
