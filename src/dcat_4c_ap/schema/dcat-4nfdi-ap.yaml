@@ -6,7 +6,7 @@ description: |-
   DCAT-AP core extension for NFDI.
 license: CC-BY 4.0
 see_also:
-  - https://StroemPhi.github.io/dcat-NFDI-ap
+  - https://github.com/StroemPhi/dcat-4C-ap
   - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
   - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
