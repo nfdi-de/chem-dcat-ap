@@ -548,9 +548,12 @@ slots:
 classes:
   Activity:
     name: Activity
+    description: 'retrievable from: [prov:Activity](node_curie)'
     class_uri: prov:Activity
   Agent:
     name: Agent
+    description: 'retrievable from: [foaf:Agent](node_curie)'
+    is_a: SupportiveEntity
     slots:
     - name
     - type
@@ -575,9 +578,12 @@ classes:
     class_uri: foaf:Agent
   Attribution:
     name: Attribution
+    description: 'retrievable from: [prov:Attribution](node_curie)'
+    is_a: SupportiveEntity
     class_uri: prov:Attribution
   Catalog:
     name: Catalog
+    description: 'retrievable from: [dcat:Catalog](node_curie)'
     slots:
     - applicable_legislation
     - catalogue
@@ -764,6 +770,8 @@ classes:
     class_uri: dcat:Catalog
   CatalogRecord:
     name: CatalogRecord
+    description: 'retrievable from: [dcat:CatalogRecord](node_curie)'
+    is_a: SupportiveEntity
     slots:
     - application_profile
     - change_type
@@ -861,9 +869,12 @@ classes:
     class_uri: dcat:CatalogRecord
   CataloguedResource:
     name: CataloguedResource
+    description: 'retrievable from: [dcat:Resource](node_curie)'
     class_uri: dcat:Resource
   Checksum:
     name: Checksum
+    description: 'retrievable from: [spdx:Checksum](node_curie)'
+    is_a: SupportiveEntity
     slots:
     - algorithm
     - checksum_value
@@ -888,9 +899,13 @@ classes:
     class_uri: spdx:Checksum
   ChecksumAlgorithm:
     name: ChecksumAlgorithm
+    description: 'retrievable from: [spdx:ChecksumAlgorithm](node_curie)'
+    is_a: SupportiveEntity
     class_uri: spdx:ChecksumAlgorithm
   Concept:
     name: Concept
+    description: 'retrievable from: [skos:Concept](node_curie)'
+    is_a: SupportiveEntity
     slots:
     - preferred_label
     slot_usage:
@@ -905,6 +920,8 @@ classes:
     class_uri: skos:Concept
   ConceptScheme:
     name: ConceptScheme
+    description: 'retrievable from: [skos:ConceptScheme](node_curie)'
+    is_a: SupportiveEntity
     slots:
     - title
     slot_usage:
@@ -919,6 +936,7 @@ classes:
     class_uri: skos:ConceptScheme
   DataService:
     name: DataService
+    description: 'retrievable from: [dcat:DataService](node_curie)'
     slots:
     - access_rights
     - applicable_legislation
@@ -1081,6 +1099,7 @@ classes:
     class_uri: dcat:DataService
   Dataset:
     name: Dataset
+    description: 'retrievable from: [dcat:Dataset](node_curie)'
     slots:
     - access_rights
     - applicable_legislation
@@ -1423,6 +1442,7 @@ classes:
     class_uri: dcat:Dataset
   DatasetSeries:
     name: DatasetSeries
+    description: 'retrievable from: [dcat:DatasetSeries](node_curie)'
     slots:
     - applicable_legislation
     - contact_point
@@ -1523,6 +1543,7 @@ classes:
     class_uri: dcat:DatasetSeries
   Distribution:
     name: Distribution
+    description: 'retrievable from: [dcat:Distribution](node_curie)'
     slots:
     - access_URL
     - access_service
@@ -1757,15 +1778,23 @@ classes:
     class_uri: dcat:Distribution
   Document:
     name: Document
+    description: 'retrievable from: [foaf:Document](node_curie)'
+    is_a: SupportiveEntity
     class_uri: foaf:Document
   Frequency:
     name: Frequency
+    description: 'retrievable from: [dcterms:Frequency](node_curie)'
+    is_a: SupportiveEntity
     class_uri: dcterms:Frequency
   Geometry:
     name: Geometry
+    description: 'retrievable from: [locn:Geometry](node_curie)'
+    is_a: SupportiveEntity
     class_uri: locn:Geometry
   Identifier:
     name: Identifier
+    description: 'retrievable from: [adms:Identifier](node_curie)'
+    is_a: SupportiveEntity
     slots:
     - notation
     slot_usage:
@@ -1781,12 +1810,18 @@ classes:
     class_uri: adms:Identifier
   Kind:
     name: Kind
+    description: 'retrievable from: [vcard:Kind](node_curie)'
+    is_a: SupportiveEntity
     class_uri: vcard:Kind
   LegalResource:
     name: LegalResource
+    description: 'retrievable from: [eli:LegalResource](node_curie)'
+    is_a: SupportiveEntity
     class_uri: eli:LegalResource
   LicenseDocument:
     name: LicenseDocument
+    description: 'retrievable from: [dcterms:LicenseDocument](node_curie)'
+    is_a: SupportiveEntity
     slots:
     - type
     slot_usage:
@@ -1803,9 +1838,13 @@ classes:
     class_uri: dcterms:LicenseDocument
   LinguisticSystem:
     name: LinguisticSystem
+    description: 'retrievable from: [dcterms:LinguisticSystem](node_curie)'
+    is_a: SupportiveEntity
     class_uri: dcterms:LinguisticSystem
   Location:
     name: Location
+    description: 'retrievable from: [dcterms:Location](node_curie)'
+    is_a: SupportiveEntity
     slots:
     - bbox
     - centroid
@@ -1840,12 +1879,18 @@ classes:
     class_uri: dcterms:Location
   MediaType:
     name: MediaType
+    description: 'retrievable from: [dcterms:MediaType](node_curie)'
+    is_a: SupportiveEntity
     class_uri: dcterms:MediaType
   MediaTypeOrExtent:
     name: MediaTypeOrExtent
+    description: 'retrievable from: [dcterms:MediaTypeOrExtent](node_curie)'
+    is_a: SupportiveEntity
     class_uri: dcterms:MediaTypeOrExtent
   PeriodOfTime:
     name: PeriodOfTime
+    description: 'retrievable from: [dcterms:PeriodOfTime](node_curie)'
+    is_a: SupportiveEntity
     slots:
     - beginning
     - end
@@ -1889,12 +1934,18 @@ classes:
     class_uri: dcterms:PeriodOfTime
   Policy:
     name: Policy
+    description: 'retrievable from: [odrl:Policy](node_curie)'
+    is_a: SupportiveEntity
     class_uri: odrl:Policy
   ProvenanceStatement:
     name: ProvenanceStatement
+    description: 'retrievable from: [dcterms:ProvenanceStatement](node_curie)'
+    is_a: SupportiveEntity
     class_uri: dcterms:ProvenanceStatement
   Relationship:
     name: Relationship
+    description: 'retrievable from: [dcat:Relationship](node_curie)'
+    is_a: SupportiveEntity
     slots:
     - had_role
     - relation
@@ -1919,16 +1970,31 @@ classes:
     class_uri: dcat:Relationship
   Resource:
     name: Resource
+    description: 'retrievable from: [rdfs:Resource](node_curie)'
+    is_a: SupportiveEntity
     class_uri: rdfs:Resource
   RightsStatement:
     name: RightsStatement
+    description: 'retrievable from: [dcterms:RightsStatement](node_curie)'
+    is_a: SupportiveEntity
     class_uri: dcterms:RightsStatement
   Role:
     name: Role
+    description: 'retrievable from: [dcat:Role](node_curie)'
+    is_a: SupportiveEntity
     class_uri: dcat:Role
   Standard:
     name: Standard
+    description: 'retrievable from: [dcterms:Standard](node_curie)'
+    is_a: SupportiveEntity
     class_uri: dcterms:Standard
+  SupportiveEntity:
+    name: SupportiveEntity
+    description: The supportive entities are supporting the main entities in the Application
+      Profile. They are included in the Application Profile because they form the
+      range of properties.
   TimeInstant:
     name: TimeInstant
+    description: 'retrievable from: [time:Instant](node_curie)'
+    is_a: SupportiveEntity
     class_uri: time:Instant

@@ -111,6 +111,7 @@ def parse_shacl_shapes(builder):
     # Iterate through each SHACL node shape within the loaded JSON-LD to derive the LinkML classes or types from them.
     for node_shape in dcat_ap_shapes['shapes']:
         node_curie = get_curie(node_shape['sh:targetClass'])
+        description = f'retrievable from: [{node_curie}](node_curie)'
         if node_curie == 'dcat:Resource':
             node_name = 'CataloguedResource'
         else:
@@ -118,9 +119,26 @@ def parse_shacl_shapes(builder):
 
         # Parse node shapes that are considered LinkML classes.
         if node_name not in ['dateTime', 'decimal', 'duration', 'hexBinary', 'nonNegativeInteger'] + IGNORED_NODES:
-            # Add LinkML classes
-            builder.add_class(ClassDefinition(name=node_name,
-                                              class_uri=node_curie))
+
+            # Add DCAT-AP Supportive Entity classes, this is done only to have an easier to read documentation.
+            # 'Activity' is considered a main entity here, since we use it to extend DCAT-AP.
+            if node_name not in ['Dataset', 'DatasetSeries', 'Distribution', 'Catalog', 'CataloguedResource',
+                                 'DataService', 'Activity']:
+                builder.add_class(ClassDefinition(name='SupportiveEntity',
+                                                  description='The supportive entities are supporting the main entities'
+                                                              ' in the Application Profile. They are included in the '
+                                                              'Application Profile because they form the range of '
+                                                              'properties.'))
+                builder.add_class(ClassDefinition(name=node_name,
+                                                  class_uri=node_curie,
+                                                  is_a='SupportiveEntity',
+                                                  description=description))
+            # Add DCAT-AP main classes
+            else:
+                builder.add_class(ClassDefinition(name=node_name,
+                                                  class_uri=node_curie,
+                                                  description=description))
+            
             # Dict to store parsed slots of a class
             class_slots = {}
 
