@@ -129,7 +129,7 @@ classes:
       - alternative_id
       - evaluated_entity
       - used_tool
-      - used_plan
+      - realized_plan
       - has_part
       - occurred_in
     slot_usage:
@@ -190,11 +190,12 @@ classes:
       - has_attribute
       - has_quantifiable_attribute
   
-  ActivitySpecification:
+  Plan:
     mixins:
       - ClassifierMixin
     class_uri: prov:Entity
     aliases:
+      - Plan Specification
       - Method
     description: |-
       A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.
@@ -315,11 +316,11 @@ slots:
     inlined: true
     inlined_as_list: true
     range: Tool
-  used_plan:
+  realized_plan:
     slot_uri: prov:used
-    description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
+    description: The slot to specify the Method (aka Procedure) that was realized by a ResearchActivity.
     recommended: true
-    range: ActivitySpecification
+    range: Plan
   occurred_in:
     slot_uri: BFO:0000066
     description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
