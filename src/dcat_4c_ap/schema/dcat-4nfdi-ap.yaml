@@ -1,5 +1,5 @@
 ---
-id: https://w3id.org/StroemPhi/dcat-4nfdi-ap
+id: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap
 name: dcat-4nfdi-ap
 title: DCAT-4NFDI-AP
 description: |-
@@ -10,7 +10,7 @@ see_also:
   - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
   - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
-  nfdi: https://w3id.org/StroemPhi/dcat-4nfdi-ap/
+  nfdi: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
