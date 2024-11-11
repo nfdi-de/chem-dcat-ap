@@ -1217,7 +1217,7 @@ classes:
         description: The main identifier for the Dataset, e.g. the URI or other unique
           identifier in the context of the Catalogue.
         slot_uri: dcterms:identifier
-        range: string
+        range: uri
         required: false
         multivalued: true
         inlined_as_list: true
@@ -1774,7 +1774,7 @@ classes:
         description: A string that is an identifier in the context of the identifier
           scheme referenced by its datatype.
         slot_uri: skos:notation
-        range: string
+        range: uri
         required: true
         multivalued: false
         inlined_as_list: false

@@ -137,7 +137,10 @@ def parse_shacl_shapes(builder):
                     inlined_as_list = False if multivalued == False else True
                     # Use the default LinkML slot range as substitute for 'rdfs:Literal'
                     slot_range = 'string'
-                    # Assign slot ranges
+                    # Use LinkML range 'uri' for xsd:anyURI ranges
+                    if slot_name in ['identifier', 'other_identifier', 'notation']:
+                        slot_range = 'uri'
+                    # Assign slot range classes
                     if 'sh:class' in slot_shape:
                         if get_curie(slot_shape['sh:class']) == 'dcat:Resource':
                             slot_range = 'CataloguedResource'
