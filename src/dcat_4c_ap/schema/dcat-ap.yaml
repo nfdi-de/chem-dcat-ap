@@ -548,11 +548,11 @@ slots:
 classes:
   Activity:
     name: Activity
-    description: 'retrievable from: [prov:Activity](node_curie)'
+    description: 'retrievable from: [prov:Activity](http://www.w3.org/ns/prov#Activity)'
     class_uri: prov:Activity
   Agent:
     name: Agent
-    description: 'retrievable from: [foaf:Agent](node_curie)'
+    description: 'retrievable from: [foaf:Agent](http://xmlns.com/foaf/0.1/Agent)'
     is_a: SupportiveEntity
     slots:
     - name
@@ -578,12 +578,12 @@ classes:
     class_uri: foaf:Agent
   Attribution:
     name: Attribution
-    description: 'retrievable from: [prov:Attribution](node_curie)'
+    description: 'retrievable from: [prov:Attribution](http://www.w3.org/ns/prov#Attribution)'
     is_a: SupportiveEntity
     class_uri: prov:Attribution
   Catalog:
     name: Catalog
-    description: 'retrievable from: [dcat:Catalog](node_curie)'
+    description: 'retrievable from: [dcat:Catalog](http://www.w3.org/ns/dcat#Catalog)'
     slots:
     - applicable_legislation
     - catalogue
@@ -770,7 +770,7 @@ classes:
     class_uri: dcat:Catalog
   CatalogRecord:
     name: CatalogRecord
-    description: 'retrievable from: [dcat:CatalogRecord](node_curie)'
+    description: 'retrievable from: [dcat:CatalogRecord](http://www.w3.org/ns/dcat#CatalogRecord)'
     is_a: SupportiveEntity
     slots:
     - application_profile
@@ -869,11 +869,11 @@ classes:
     class_uri: dcat:CatalogRecord
   CataloguedResource:
     name: CataloguedResource
-    description: 'retrievable from: [dcat:Resource](node_curie)'
+    description: 'retrievable from: [dcat:Resource](http://www.w3.org/ns/dcat#Resource)'
     class_uri: dcat:Resource
   Checksum:
     name: Checksum
-    description: 'retrievable from: [spdx:Checksum](node_curie)'
+    description: 'retrievable from: [spdx:Checksum](http://spdx.org/rdf/terms#Checksum)'
     is_a: SupportiveEntity
     slots:
     - algorithm
@@ -899,12 +899,12 @@ classes:
     class_uri: spdx:Checksum
   ChecksumAlgorithm:
     name: ChecksumAlgorithm
-    description: 'retrievable from: [spdx:ChecksumAlgorithm](node_curie)'
+    description: 'retrievable from: [spdx:ChecksumAlgorithm](http://spdx.org/rdf/terms#ChecksumAlgorithm)'
     is_a: SupportiveEntity
     class_uri: spdx:ChecksumAlgorithm
   Concept:
     name: Concept
-    description: 'retrievable from: [skos:Concept](node_curie)'
+    description: 'retrievable from: [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept)'
     is_a: SupportiveEntity
     slots:
     - preferred_label
@@ -920,7 +920,7 @@ classes:
     class_uri: skos:Concept
   ConceptScheme:
     name: ConceptScheme
-    description: 'retrievable from: [skos:ConceptScheme](node_curie)'
+    description: 'retrievable from: [skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme)'
     is_a: SupportiveEntity
     slots:
     - title
@@ -936,7 +936,7 @@ classes:
     class_uri: skos:ConceptScheme
   DataService:
     name: DataService
-    description: 'retrievable from: [dcat:DataService](node_curie)'
+    description: 'retrievable from: [dcat:DataService](http://www.w3.org/ns/dcat#DataService)'
     slots:
     - access_rights
     - applicable_legislation
@@ -1099,7 +1099,7 @@ classes:
     class_uri: dcat:DataService
   Dataset:
     name: Dataset
-    description: 'retrievable from: [dcat:Dataset](node_curie)'
+    description: 'retrievable from: [dcat:Dataset](http://www.w3.org/ns/dcat#Dataset)'
     slots:
     - access_rights
     - applicable_legislation
@@ -1442,7 +1442,7 @@ classes:
     class_uri: dcat:Dataset
   DatasetSeries:
     name: DatasetSeries
-    description: 'retrievable from: [dcat:DatasetSeries](node_curie)'
+    description: 'retrievable from: [dcat:DatasetSeries](http://www.w3.org/ns/dcat#DatasetSeries)'
     slots:
     - applicable_legislation
     - contact_point
@@ -1543,7 +1543,7 @@ classes:
     class_uri: dcat:DatasetSeries
   Distribution:
     name: Distribution
-    description: 'retrievable from: [dcat:Distribution](node_curie)'
+    description: 'retrievable from: [dcat:Distribution](http://www.w3.org/ns/dcat#Distribution)'
     slots:
     - access_URL
     - access_service
@@ -1778,22 +1778,22 @@ classes:
     class_uri: dcat:Distribution
   Document:
     name: Document
-    description: 'retrievable from: [foaf:Document](node_curie)'
+    description: 'retrievable from: [foaf:Document](http://xmlns.com/foaf/0.1/Document)'
     is_a: SupportiveEntity
     class_uri: foaf:Document
   Frequency:
     name: Frequency
-    description: 'retrievable from: [dcterms:Frequency](node_curie)'
+    description: 'retrievable from: [dcterms:Frequency](http://purl.org/dc/terms/Frequency)'
     is_a: SupportiveEntity
     class_uri: dcterms:Frequency
   Geometry:
     name: Geometry
-    description: 'retrievable from: [locn:Geometry](node_curie)'
+    description: 'retrievable from: [locn:Geometry](http://www.w3.org/ns/locn#Geometry)'
     is_a: SupportiveEntity
     class_uri: locn:Geometry
   Identifier:
     name: Identifier
-    description: 'retrievable from: [adms:Identifier](node_curie)'
+    description: 'retrievable from: [adms:Identifier](http://www.w3.org/ns/adms#Identifier)'
     is_a: SupportiveEntity
     slots:
     - notation
@@ -1810,17 +1810,17 @@ classes:
     class_uri: adms:Identifier
   Kind:
     name: Kind
-    description: 'retrievable from: [vcard:Kind](node_curie)'
+    description: 'retrievable from: [vcard:Kind](http://www.w3.org/2006/vcard/ns#Kind)'
     is_a: SupportiveEntity
     class_uri: vcard:Kind
   LegalResource:
     name: LegalResource
-    description: 'retrievable from: [eli:LegalResource](node_curie)'
+    description: 'retrievable from: [eli:LegalResource](http://data.europa.eu/eli/ontology#LegalResource)'
     is_a: SupportiveEntity
     class_uri: eli:LegalResource
   LicenseDocument:
     name: LicenseDocument
-    description: 'retrievable from: [dcterms:LicenseDocument](node_curie)'
+    description: 'retrievable from: [dcterms:LicenseDocument](http://purl.org/dc/terms/LicenseDocument)'
     is_a: SupportiveEntity
     slots:
     - type
@@ -1838,12 +1838,12 @@ classes:
     class_uri: dcterms:LicenseDocument
   LinguisticSystem:
     name: LinguisticSystem
-    description: 'retrievable from: [dcterms:LinguisticSystem](node_curie)'
+    description: 'retrievable from: [dcterms:LinguisticSystem](http://purl.org/dc/terms/LinguisticSystem)'
     is_a: SupportiveEntity
     class_uri: dcterms:LinguisticSystem
   Location:
     name: Location
-    description: 'retrievable from: [dcterms:Location](node_curie)'
+    description: 'retrievable from: [dcterms:Location](http://purl.org/dc/terms/Location)'
     is_a: SupportiveEntity
     slots:
     - bbox
@@ -1879,17 +1879,17 @@ classes:
     class_uri: dcterms:Location
   MediaType:
     name: MediaType
-    description: 'retrievable from: [dcterms:MediaType](node_curie)'
+    description: 'retrievable from: [dcterms:MediaType](http://purl.org/dc/terms/MediaType)'
     is_a: SupportiveEntity
     class_uri: dcterms:MediaType
   MediaTypeOrExtent:
     name: MediaTypeOrExtent
-    description: 'retrievable from: [dcterms:MediaTypeOrExtent](node_curie)'
+    description: 'retrievable from: [dcterms:MediaTypeOrExtent](http://purl.org/dc/terms/MediaTypeOrExtent)'
     is_a: SupportiveEntity
     class_uri: dcterms:MediaTypeOrExtent
   PeriodOfTime:
     name: PeriodOfTime
-    description: 'retrievable from: [dcterms:PeriodOfTime](node_curie)'
+    description: 'retrievable from: [dcterms:PeriodOfTime](http://purl.org/dc/terms/PeriodOfTime)'
     is_a: SupportiveEntity
     slots:
     - beginning
@@ -1934,17 +1934,17 @@ classes:
     class_uri: dcterms:PeriodOfTime
   Policy:
     name: Policy
-    description: 'retrievable from: [odrl:Policy](node_curie)'
+    description: 'retrievable from: [odrl:Policy](http://www.w3.org/ns/odrl/2/Policy)'
     is_a: SupportiveEntity
     class_uri: odrl:Policy
   ProvenanceStatement:
     name: ProvenanceStatement
-    description: 'retrievable from: [dcterms:ProvenanceStatement](node_curie)'
+    description: 'retrievable from: [dcterms:ProvenanceStatement](http://purl.org/dc/terms/ProvenanceStatement)'
     is_a: SupportiveEntity
     class_uri: dcterms:ProvenanceStatement
   Relationship:
     name: Relationship
-    description: 'retrievable from: [dcat:Relationship](node_curie)'
+    description: 'retrievable from: [dcat:Relationship](http://www.w3.org/ns/dcat#Relationship)'
     is_a: SupportiveEntity
     slots:
     - had_role
@@ -1970,22 +1970,22 @@ classes:
     class_uri: dcat:Relationship
   Resource:
     name: Resource
-    description: 'retrievable from: [rdfs:Resource](node_curie)'
+    description: 'retrievable from: [rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource)'
     is_a: SupportiveEntity
     class_uri: rdfs:Resource
   RightsStatement:
     name: RightsStatement
-    description: 'retrievable from: [dcterms:RightsStatement](node_curie)'
+    description: 'retrievable from: [dcterms:RightsStatement](http://purl.org/dc/terms/RightsStatement)'
     is_a: SupportiveEntity
     class_uri: dcterms:RightsStatement
   Role:
     name: Role
-    description: 'retrievable from: [dcat:Role](node_curie)'
+    description: 'retrievable from: [dcat:Role](http://www.w3.org/ns/dcat#Role)'
     is_a: SupportiveEntity
     class_uri: dcat:Role
   Standard:
     name: Standard
-    description: 'retrievable from: [dcterms:Standard](node_curie)'
+    description: 'retrievable from: [dcterms:Standard](http://purl.org/dc/terms/Standard)'
     is_a: SupportiveEntity
     class_uri: dcterms:Standard
   SupportiveEntity:
@@ -1995,6 +1995,6 @@ classes:
       range of properties.
   TimeInstant:
     name: TimeInstant
-    description: 'retrievable from: [time:Instant](node_curie)'
+    description: 'retrievable from: [time:Instant](http://www.w3.org/2006/time#Instant)'
     is_a: SupportiveEntity
     class_uri: time:Instant

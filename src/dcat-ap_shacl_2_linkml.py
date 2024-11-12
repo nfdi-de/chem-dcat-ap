@@ -111,7 +111,7 @@ def parse_shacl_shapes(builder):
     # Iterate through each SHACL node shape within the loaded JSON-LD to derive the LinkML classes or types from them.
     for node_shape in dcat_ap_shapes['shapes']:
         node_curie = get_curie(node_shape['sh:targetClass'])
-        description = f'retrievable from: [{node_curie}](node_curie)'
+        description = f'retrievable from: [{node_curie}]({node_shape['sh:targetClass']})'
         if node_curie == 'dcat:Resource':
             node_name = 'CataloguedResource'
         else:
