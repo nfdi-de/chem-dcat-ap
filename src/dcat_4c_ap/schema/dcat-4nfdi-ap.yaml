@@ -73,16 +73,11 @@ classes:
         description: The URL of the controlled vocabulary.
         range: uriorcurie
     slots:
-      - identifier
+      - id
       - title
     slot_usage:
       title:
         slot_uri: schema:name
-      identifier:
-        range: uriorcurie
-        description: The main identifier for the EntityOfInterest.
-        identifier: true
-        slot_uri: schema:identifier
         
   NFDIDataset:
     is_a: Dataset
@@ -90,11 +85,9 @@ classes:
     class_uri: dcat:Dataset
     description: >-
       A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
+    slots:
+      - id
     slot_usage:
-      identifier:
-        range: uriorcurie
-        description: The main identifier for the Dataset.
-        identifier: true
       was_generated_by:
         range: ResearchActivity
         required: true  
@@ -103,11 +96,9 @@ classes:
     is_a: Catalogue
     class_uri: dcat:Catalog
     description: A curated collection of metadata about data resources.
+    slots:
+      - id
     slot_usage:
-      identifier:
-        range: uriorcurie
-        description: The main identifier for the NFDICatalog.
-        identifier: true
       has_dataset:
         range: NFDIDataset
     
@@ -153,16 +144,12 @@ classes:
     slots:
       - title
       - description
-      - identifier
+      - id
       - other_identifier
       - has_qualitative_attribute
       - has_quantitative_attribute
       - has_part
     slot_usage:
-      identifier:
-        range: uriorcurie
-        description: The main identifier for the EntityOfInterest.
-        identifier: true
       other_identifier:
         name: other_identifier
         description: A secondary identifier of the EntityOfInterest
@@ -181,16 +168,12 @@ classes:
     slots:
       - title
       - description
-      - identifier
+      - id
       - other_identifier
       - has_qualitative_attribute
       - has_quantitative_attribute
       - has_part
     slot_usage:
-      identifier:
-        range: uriorcurie
-        description: The main identifier for the EntityOfInterest.
-        identifier: true
       other_identifier:
         name: other_identifier
         description: A secondary identifier of the ActivityOfInterest
@@ -311,6 +294,10 @@ classes:
 
 # Slots
 slots:
+  id:
+    slot_uri: dcterms:identifier
+    identifier: true
+    range: uriorcurie
   rdf_type:
     slot_uri: rdf:type
     description: The slot to specify the ontology class that is instantiated by an entity.
