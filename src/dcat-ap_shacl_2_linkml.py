@@ -111,7 +111,6 @@ def parse_shacl_shapes(builder):
     # Iterate through each SHACL node shape within the loaded JSON-LD to derive the LinkML classes or types from them.
     for node_shape in dcat_ap_shapes['shapes']:
         node_curie = get_curie(node_shape['sh:targetClass'])
-        description = f'retrievable from: [{node_curie}]({node_shape['sh:targetClass']})'
         
         # Account for the renaming of DCAT classes in DCAT-AP
         if node_curie == 'dcat:Resource':
@@ -122,6 +121,10 @@ def parse_shacl_shapes(builder):
             node_name = 'CatalogueRecord'
         else:
             node_name = node_shape['@id'].split('#')[-1].split(':')[-1].replace('Shape', '')
+        
+        # Link to the DCAT-AP specs for the description of the classes.
+        description = f'See [DCAT-AP specs:{node_name}](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#{node_name})'
+        
 
         # Parse node shapes that are considered LinkML classes.
         if node_name not in ['dateTime', 'decimal', 'duration', 'hexBinary', 'nonNegativeInteger'] + IGNORED_NODES:
