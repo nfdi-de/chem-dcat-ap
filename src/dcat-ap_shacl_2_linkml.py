@@ -125,6 +125,8 @@ def parse_shacl_shapes(builder):
         # Link to the DCAT-AP specs for the description of the classes.
         description = f'See [DCAT-AP specs:{node_name}](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#{node_name})'
         
+        # Account for dcat:Resource being defined as an abstract class in DCAT-AP.
+        abstract = True if node_curie == 'dcat:Resource' else False
 
         # Parse node shapes that are considered LinkML classes.
         if node_name not in ['dateTime', 'decimal', 'duration', 'hexBinary', 'nonNegativeInteger'] + IGNORED_NODES:
@@ -141,12 +143,14 @@ def parse_shacl_shapes(builder):
                 builder.add_class(ClassDefinition(name=node_name,
                                                   class_uri=node_curie,
                                                   is_a='SupportiveEntity',
-                                                  description=description))
+                                                  description=description,
+                                                  abstract=abstract))
             # Add DCAT-AP main classes
             else:
                 builder.add_class(ClassDefinition(name=node_name,
                                                   class_uri=node_curie,
-                                                  description=description))
+                                                  description=description,
+                                                  abstract=abstract))
             
             # Dict to store parsed slots of a class
             class_slots = {}
