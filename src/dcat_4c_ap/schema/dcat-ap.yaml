@@ -673,6 +673,7 @@ classes:
         slot_uri: foaf:homepage
         range: Document
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: true
       language:
@@ -682,6 +683,7 @@ classes:
         slot_uri: dcterms:language
         range: LinguisticSystem
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       licence:
@@ -698,6 +700,7 @@ classes:
         slot_uri: dcterms:modified
         range: string
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: false
       publisher:
@@ -723,6 +726,7 @@ classes:
         slot_uri: dcterms:issued
         range: string
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: false
       rights:
@@ -756,6 +760,7 @@ classes:
         slot_uri: dcat:themeTaxonomy
         range: ConceptScheme
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       title:
@@ -789,6 +794,7 @@ classes:
         slot_uri: dcterms:conformsTo
         range: Standard
         required: false
+        recommended: true
         multivalued: true
         inlined_as_list: true
       change_type:
@@ -798,6 +804,7 @@ classes:
         slot_uri: adms:status
         range: Concept
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: true
       description:
@@ -825,6 +832,7 @@ classes:
         slot_uri: dcterms:issued
         range: string
         required: false
+        recommended: true
         multivalued: false
         inlined_as_list: true
       modification_date:
