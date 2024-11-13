@@ -1,163 +1,43 @@
 {
     "$defs": {
-        "ActivitySpecification": {
+        "Activity": {
             "additionalProperties": false,
-            "description": "\"A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.\"",
-            "properties": {
-                "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The type of PlanSpecification provided as a DefinedTerm."
-                }
-            },
-            "title": "ActivitySpecification",
+            "description": "See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)",
+            "title": "Activity",
             "type": "object"
         },
-        "Any": {
-            "additionalProperties": true,
-            "description": "",
-            "title": "Any",
-            "type": [
-                "null",
-                "boolean",
-                "object",
-                "number",
-                "string"
-            ]
-        },
-        "Attribute": {
+        "ActivityOfInterest": {
             "additionalProperties": false,
-            "description": "A piece of information that is attributed to an entity of interest, tool or environment.",
+            "description": "An activity or process that is being evaluated in a ResearchActivity.",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
-                },
-                "value": {
-                    "description": "A slot to provide the value of an attribute.",
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                }
-            },
-            "title": "Attribute",
-            "type": "object"
-        },
-        "ChemAnalysisDataset": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "ChemAnalysisDataset",
-            "type": "object"
-        },
-        "ChemicalReaction": {
-            "additionalProperties": false,
-            "description": "An experimental procedure with the aim of producing a portion of a given compound or mixture.",
-            "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_attribute": {
-                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
-                    "items": {
-                        "$ref": "#/$defs/Attribute"
-                    },
-                    "type": [
-                        "array",
                         "null"
                     ]
                 },
                 "has_part": {
-                    "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "has_quantifiable_attribute": {
-                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "$ref": "#/$defs/QuantifiableAttribute"
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
                     },
                     "type": [
                         "array",
@@ -165,16 +45,33 @@
                     ]
                 },
                 "id": {
-                    "description": "The slot to specify the canonical unique identifier of an entity.",
                     "type": "string"
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
+                "other_identifier": {
+                    "description": "A secondary identifier of the ActivityOfInterest",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Identifier"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -187,173 +84,104 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The type of the EntityOfInterest provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
             "required": [
                 "id"
             ],
-            "title": "ChemicalReaction",
+            "title": "ActivityOfInterest",
             "type": "object"
         },
-        "ChemicalSubstance": {
+        "Agent": {
             "additionalProperties": false,
-            "description": "A chemical substance that is being evaluated in a scientific process.",
+            "description": "See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_attribute": {
-                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
-                    "items": {
-                        "$ref": "#/$defs/Attribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_part": {
-                    "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "has_quantifiable_attribute": {
-                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
-                    "items": {
-                        "$ref": "#/$defs/QuantifiableAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "The slot to specify the canonical unique identifier of an entity.",
-                    "type": "string"
-                },
                 "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
+                    "description": "A name of the agent.",
                     "items": {
                         "type": "string"
                     },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "type": "array"
                 },
                 "type": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/DefinedTerm"
+                            "$ref": "#/$defs/Concept"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The type of the EntityOfInterest provided as a DefinedTerm."
+                    "description": "The nature of the agent."
                 }
             },
             "required": [
-                "id"
+                "name"
             ],
-            "title": "ChemicalSubstance",
+            "title": "Agent",
             "type": "object"
         },
-        "Dataset": {
+        "Attribution": {
             "additionalProperties": false,
-            "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",
+            "description": "See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)",
+            "title": "Attribution",
+            "type": "object"
+        },
+        "Catalogue": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                "applicable_legislation": {
+                    "description": "The legislation that mandates the creation or management of the Catalog.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/LegalResource"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "description": {
-                    "description": "A free-text account of a Dataset.",
+                "catalogue": {
+                    "description": "A catalogue whose contents are of interest in the context of this catalogue.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Catalogue"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
-                "id": {
-                    "description": "The slot to specify the canonical unique identifier of an entity.",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "The label, name or title of a Dataset.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "was_generated_by": {
+                "creator": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/ResearchActivity"
+                            "$ref": "#/$defs/Agent"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to provide the ResearchActivity that created a Dataset."
-                }
-            },
-            "required": [
-                "id",
-                "name",
-                "description"
-            ],
-            "title": "Dataset",
-            "type": "object"
-        },
-        "DatasetCollection": {
-            "additionalProperties": false,
-            "description": "A curated collection of metadata about data resources.",
-            "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                    "description": "An entity responsible for the creation of the catalogue."
+                },
+                "description": {
+                    "description": "A free-text account of the Catalogue.",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "geographical_coverage": {
+                    "description": "A geographical area covered by the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/Location"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
-                },
-                "description": {
-                    "description": "A free-text account of a DatasetCollection.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "has_dataset": {
-                    "description": "The slot to list the datasets of a catalog.",
+                    "description": "A Dataset that is part of the Catalogue.",
                     "items": {
                         "$ref": "#/$defs/Dataset"
                     },
@@ -362,43 +190,160 @@
                         "null"
                     ]
                 },
-                "id": {
-                    "description": "The unique identifier of a Catalog.",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "The name of a DatasetCollection.",
+                "has_part": {
+                    "description": "A related Catalogue that is part of the described Catalogue.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Catalogue"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
-                "was_generated_by": {
+                "homepage": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/ResearchActivity"
+                            "$ref": "#/$defs/Document"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to provide the ResearchActivity that created a Dataset."
+                    "description": "A web page that acts as the main page for the Catalogue."
+                },
+                "language": {
+                    "description": "A language used in the textual metadata describing titles, descriptions, etc. of the Datasets in the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/LinguisticSystem"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "licence": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/LicenseDocument"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A licence under which the Catalogue can be used or reused."
+                },
+                "modification_date": {
+                    "description": "The most recent date on which the Catalogue was modified.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "publisher": {
+                    "$ref": "#/$defs/Agent",
+                    "description": "An entity (organisation) responsible for making the Catalogue available."
+                },
+                "record": {
+                    "description": "A Catalogue Record that is part of the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/CatalogueRecord"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "release_date": {
+                    "description": "The date of formal issuance (e.g., publication) of the Catalogue.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rights": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RightsStatement"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A statement that specifies rights associated with the Catalogue."
+                },
+                "service": {
+                    "description": "A site or end-point (Data Service) that is listed in the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/DataService"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "temporal_coverage": {
+                    "description": "A temporal period that the Catalogue covers.",
+                    "items": {
+                        "$ref": "#/$defs/PeriodOfTime"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "themes": {
+                    "description": "A knowledge organization system used to classify the Resources that are in the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/ConceptScheme"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A name given to the Catalogue.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
-                "id",
-                "name",
-                "description"
+                "description",
+                "publisher",
+                "title"
             ],
-            "title": "DatasetCollection",
+            "title": "Catalogue",
             "type": "object"
         },
-        "DefinedTerm": {
+        "CatalogueRecord": {
             "additionalProperties": false,
-            "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.",
+            "description": "See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                "application_profile": {
+                    "description": "An Application Profile that the Catalogued Resource&#39;s metadata conforms to.",
+                    "items": {
+                        "$ref": "#/$defs/Standard"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "change_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Concept"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The status of the catalogue record in the context of editorial flow of the dataset and data service descriptions."
+                },
+                "description": {
+                    "description": "A free-text account of the record. This property can be repeated for parallel language versions of the description.",
                     "items": {
                         "type": "string"
                     },
@@ -407,27 +352,1136 @@
                         "null"
                     ]
                 },
-                "from_CV": {
-                    "description": "The name of the controlled vocabulary.",
+                "language": {
+                    "description": "A language used in the textual metadata describing titles, descriptions, etc. of the Catalogued Resource.",
+                    "items": {
+                        "$ref": "#/$defs/LinguisticSystem"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "listing_date": {
+                    "description": "The date on which the description of the Resource was included in the Catalogue.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "modification_date": {
+                    "description": "The most recent date on which the Catalogue entry was changed or modified.",
+                    "type": "string"
+                },
+                "primary_topic": {
+                    "$ref": "#/$defs/CataloguedResource",
+                    "description": "A link to the Dataset, Data service or Catalog described in the record."
+                },
+                "source_metadata": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/CatalogueRecord"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The original metadata that was used in creating metadata for the Dataset, Data Service or Dataset Series."
+                },
+                "title": {
+                    "description": "A name given to the Catalogue Record.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "modification_date",
+                "primary_topic"
+            ],
+            "title": "CatalogueRecord",
+            "type": "object"
+        },
+        "Checksum": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)",
+            "properties": {
+                "algorithm": {
+                    "$ref": "#/$defs/ChecksumAlgorithm",
+                    "description": "The algorithm used to produce the subject Checksum."
+                },
+                "checksum_value": {
+                    "description": "A lower case hexadecimal encoded digest value produced using a specific algorithm.",
+                    "pattern": "([0-9a-fA-F]{2})*",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "algorithm",
+                "checksum_value"
+            ],
+            "title": "Checksum",
+            "type": "object"
+        },
+        "ChecksumAlgorithm": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)",
+            "title": "ChecksumAlgorithm",
+            "type": "object"
+        },
+        "ChemicalEntity": {
+            "additionalProperties": false,
+            "description": "Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.",
+            "properties": {
+                "inchi": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InChi"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to provide the InChi descriptor of a chemical substance."
+                },
+                "inchikey": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/InChIKey"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to provide the InChiKey of a chemical substance."
+                },
+                "iupac_formula": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/IUPACChemicalFormula"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to provide the IUPAC name of a chemical substance."
+                },
+                "smiles": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/SMILES"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to provide the canonical SMILES descriptor of a chemical substance."
+                }
+            },
+            "title": "ChemicalEntity",
+            "type": "object"
+        },
+        "ChemicalReaction": {
+            "additionalProperties": false,
+            "description": "An experimental procedure with the aim of producing a portion of a given compound or mixture.",
+            "properties": {
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the ActivityOfInterest",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "ChemicalReaction",
+            "type": "object"
+        },
+        "ChemicalSample": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "composed_of": {
+                    "description": "The slot to provide the chemical entities of which the chemical substance is composed of.",
+                    "items": {
+                        "$ref": "#/$defs/ChemicalEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_role": {
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "id": {
-                    "description": "The slot to specify the canonical unique identifier of an entity.",
+                    "type": "string"
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the EntityOfInterest",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "ChemicalSample",
+            "type": "object"
+        },
+        "ChemicalSubstance": {
+            "additionalProperties": false,
+            "description": "A portion of matter of constant composition, composed of molecular entities of the same type or of different types that is being evaluated in a scientific process.",
+            "properties": {
+                "composed_of": {
+                    "description": "The slot to provide the chemical entities of which the chemical substance is composed of.",
+                    "items": {
+                        "$ref": "#/$defs/ChemicalEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_role": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the EntityOfInterest",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "ChemicalSubstance",
+            "type": "object"
+        },
+        "Concept": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)",
+            "properties": {
+                "preferred_label": {
+                    "description": "A preferred label of the concept.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "preferred_label"
+            ],
+            "title": "Concept",
+            "type": "object"
+        },
+        "ConceptScheme": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:ConceptScheme](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme)",
+            "properties": {
+                "title": {
+                    "description": "A name of the concept scheme.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "title"
+            ],
+            "title": "ConceptScheme",
+            "type": "object"
+        },
+        "DataService": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)",
+            "properties": {
+                "access_rights": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RightsStatement"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Information regarding access or restrictions based on privacy, security, or other policies."
+                },
+                "applicable_legislation": {
+                    "description": "The legislation that mandates the creation or management of the Data Service.",
+                    "items": {
+                        "$ref": "#/$defs/LegalResource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "conforms_to": {
+                    "description": "An established (technical) standard to which the Data Service conforms.",
+                    "items": {
+                        "$ref": "#/$defs/Standard"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contact_point": {
+                    "description": "Contact information that can be used for sending comments about the Data Service.",
+                    "items": {
+                        "$ref": "#/$defs/Kind"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A free-text account of the Data Service.",
                     "items": {
                         "type": "string"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "documentation": {
+                    "description": "A page or document about this Data Service",
+                    "items": {
+                        "$ref": "#/$defs/Document"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "endpoint_URL": {
+                    "description": "The root location or primary endpoint of the service (an IRI).",
+                    "items": {
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": "array"
+                },
+                "endpoint_description": {
+                    "description": "A description of the services available via the end-points, including their operations, parameters etc.",
+                    "items": {
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "format": {
+                    "description": "The structure that can be returned by querying the endpointURL.",
+                    "items": {
+                        "$ref": "#/$defs/MediaTypeOrExtent"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "keyword": {
+                    "description": "A keyword or tag describing the Data Service.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "landing_page": {
+                    "description": "A web page that provides access to the Data Service and/or additional information.",
+                    "items": {
+                        "$ref": "#/$defs/Document"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "licence": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/LicenseDocument"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A licence under which the Data service is made available."
+                },
+                "publisher": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Agent"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An entity (organisation) responsible for making the Data Service available."
+                },
+                "serves_dataset": {
+                    "description": "This property refers to a collection of data that this data service can distribute.",
+                    "items": {
+                        "$ref": "#/$defs/Dataset"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "theme": {
+                    "description": "A category of the Data Service.",
+                    "items": {
+                        "$ref": "#/$defs/Concept"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A name given to the Data Service.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "endpoint_URL",
+                "title"
+            ],
+            "title": "DataService",
+            "type": "object"
+        },
+        "Dataset": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)",
+            "properties": {
+                "access_rights": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RightsStatement"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public."
+                },
+                "applicable_legislation": {
+                    "description": "The legislation that mandates the creation or management of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/LegalResource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "conforms_to": {
+                    "description": "An implementing rule or other specification.",
+                    "items": {
+                        "$ref": "#/$defs/Standard"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contact_point": {
+                    "description": "Contact information that can be used for sending comments about the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Kind"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "creator": {
+                    "description": "An entity responsible for producing the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Agent"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "dataset_distribution": {
+                    "description": "An available Distribution for the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Distribution"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A free-text account of the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "documentation": {
+                    "description": "A page or document about this Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Document"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "frequency": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Frequency"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The frequency at which the Dataset is updated."
+                },
+                "geographical_coverage": {
+                    "description": "A geographic region that is covered by the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Location"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_version": {
+                    "description": "A related Dataset that is a version, edition, or adaptation of the described Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Dataset"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "identifier": {
+                    "description": "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "in_series": {
+                    "description": "A dataset series of which the dataset is part.",
+                    "items": {
+                        "$ref": "#/$defs/DatasetSeries"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "is_referenced_by": {
+                    "description": "A related resource, such as a publication, that references, cites, or otherwise points to the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "keyword": {
+                    "description": "A keyword or tag describing the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "landing_page": {
+                    "description": "A web page that provides access to the Dataset, its Distributions and/or additional information.",
+                    "items": {
+                        "$ref": "#/$defs/Document"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "language": {
+                    "description": "A language of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/LinguisticSystem"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "modification_date": {
+                    "description": "The most recent date on which the Dataset was changed or modified.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the Dataset",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "provenance": {
+                    "description": "A statement about the lineage of a Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceStatement"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "publisher": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Agent"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An entity (organisation) responsible for making the Dataset available."
+                },
+                "qualified_attribution": {
+                    "description": "An Agent having some form of responsibility for the resource.",
+                    "items": {
+                        "$ref": "#/$defs/Attribution"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "qualified_relation": {
+                    "description": "A description of a relationship with another resource.",
+                    "items": {
+                        "$ref": "#/$defs/Relationship"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "related_resource": {
+                    "description": "A related resource.",
+                    "items": {
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "release_date": {
+                    "description": "The date of formal issuance (e.g., publication) of the Dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample": {
+                    "description": "A sample distribution of the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Distribution"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "description": "A related Dataset from which the described Dataset is derived.",
+                    "items": {
+                        "$ref": "#/$defs/Dataset"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "spatial_resolution": {
+                    "description": "The minimum spatial separation resolvable in a dataset, measured in meters.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "temporal_coverage": {
+                    "description": "A temporal period that the Dataset covers.",
+                    "items": {
+                        "$ref": "#/$defs/PeriodOfTime"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "temporal_resolution": {
+                    "description": "The minimum time period resolvable in the dataset.",
+                    "pattern": "-?P((([0-9]+Y([0-9]+M)?([0-9]+D)?|([0-9]+M)([0-9]+D)?|([0-9]+D))(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S)))?)|(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S))))",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "theme": {
+                    "description": "A category of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Concept"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A name given to the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "description": "A type of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Concept"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "version": {
+                    "description": "The version indicator (name or identifier) of a resource.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "version_notes": {
+                    "description": "A description of the differences between this version and a previous version of the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "was_generated_by": {
+                    "description": "An activity that generated, or provides the business context for, the creation of the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Activity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "description",
+                "title"
+            ],
+            "title": "Dataset",
+            "type": "object"
+        },
+        "DatasetSeries": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)",
+            "properties": {
+                "applicable_legislation": {
+                    "description": "The legislation that mandates the creation or management of the Dataset Series.",
+                    "items": {
+                        "$ref": "#/$defs/LegalResource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contact_point": {
+                    "description": "Contact information that can be used for sending comments about the Dataset Series.",
+                    "items": {
+                        "$ref": "#/$defs/Kind"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A free-text account of the Dataset Series.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "frequency": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Frequency"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The frequency at which the Dataset Series is updated."
+                },
+                "geographical_coverage": {
+                    "description": "A geographic region that is covered by the Dataset Series.",
+                    "items": {
+                        "$ref": "#/$defs/Location"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "modification_date": {
+                    "description": "The most recent date on which the Dataset Series was changed or modified.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "publisher": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Agent"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An entity (organisation) responsible for ensuring the coherency of the Dataset Series "
+                },
+                "release_date": {
+                    "description": "The date of formal issuance (e.g., publication) of the Dataset Series.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "temporal_coverage": {
+                    "description": "A temporal period that the Dataset Series covers.",
+                    "items": {
+                        "$ref": "#/$defs/PeriodOfTime"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A name given to the Dataset Series.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "description",
+                "title"
+            ],
+            "title": "DatasetSeries",
+            "type": "object"
+        },
+        "DatasetThemes": {
+            "description": "",
+            "enum": [
+                "Agriculture, fisheries, forestry and food",
+                "Economy and finance",
+                "Education, culture and sport",
+                "Energy",
+                "Environment",
+                "Government and public sector",
+                "Health",
+                "International issues",
+                "Justice, legal system and public safety",
+                "Provisional data",
+                "Regions and cities",
+                "Population and society",
+                "Science and technology",
+                "Transport"
+            ],
+            "title": "DatasetThemes",
+            "type": "string"
+        },
+        "DefinedTerm": {
+            "additionalProperties": false,
+            "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.",
+            "properties": {
+                "from_CV": {
+                    "description": "The URL of the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 }
@@ -438,22 +1492,80 @@
             "title": "DefinedTerm",
             "type": "object"
         },
-        "EntityOfInterest": {
+        "Distribution": {
             "additionalProperties": false,
-            "description": "Something that is being evaluated in a scientific process.",
+            "description": "See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                "access_URL": {
+                    "description": "A URL that gives access to a Distribution of the Dataset.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": "array"
+                },
+                "access_service": {
+                    "description": "A data service that gives access to the distribution of the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/DataService"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
+                },
+                "applicable_legislation": {
+                    "description": "The legislation that mandates the creation or management of the Distribution.",
+                    "items": {
+                        "$ref": "#/$defs/LegalResource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "availability": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Concept"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An indication how long it is planned to keep the Distribution of the Dataset available."
+                },
+                "byte_size": {
+                    "description": "The size of a Distribution in bytes.",
+                    "pattern": "([\\-+]?[0-9]+)",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "checksum": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Checksum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A mechanism that can be used to verify that the contents of a distribution have not changed."
+                },
+                "compression_format": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MediaType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The format of the file in which the data is contained in a compressed form, e.g. to reduce the size of the downloadable file."
                 },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
+                    "description": "A free-text account of the Distribution.",
                     "items": {
                         "type": "string"
                     },
@@ -462,27 +1574,207 @@
                         "null"
                     ]
                 },
-                "has_attribute": {
-                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
+                "documentation": {
+                    "description": "A page or document about this Distribution.",
                     "items": {
-                        "$ref": "#/$defs/Attribute"
+                        "$ref": "#/$defs/Document"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "has_part": {
-                    "description": "A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.",
+                "download_URL": {
+                    "description": "A URL that is a direct link to a downloadable file in a given format.",
+                    "items": {
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "format": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MediaTypeOrExtent"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The file format of the Distribution."
+                },
+                "has_policy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Policy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The policy expressing the rights associated with the distribution if using the [[ODRL]] vocabulary."
+                },
+                "language": {
+                    "description": "A language used in the Distribution.",
+                    "items": {
+                        "$ref": "#/$defs/LinguisticSystem"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "licence": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/LicenseDocument"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A licence under which the Distribution is made available."
+                },
+                "linked_schemas": {
+                    "description": "An established schema to which the described Distribution conforms.",
+                    "items": {
+                        "$ref": "#/$defs/Standard"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "media_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MediaType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The media type of the Distribution as defined in the official register of media types managed by IANA."
+                },
+                "modification_date": {
+                    "description": "The most recent date on which the Distribution was changed or modified.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "has_quantifiable_attribute": {
-                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                "packaging_format": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MediaType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together."
+                },
+                "release_date": {
+                    "description": "The date of formal issuance (e.g., publication) of the Distribution.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rights": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RightsStatement"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A statement that specifies rights associated with the Distribution."
+                },
+                "spatial_resolution": {
+                    "description": "The minimum spatial separation resolvable in a dataset distribution, measured in meters.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "status": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Concept"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The status of the distribution in the context of maturity lifecycle."
+                },
+                "temporal_resolution": {
+                    "description": "The minimum time period resolvable in the dataset distribution.",
+                    "pattern": "-?P((([0-9]+Y([0-9]+M)?([0-9]+D)?|([0-9]+M)([0-9]+D)?|([0-9]+D))(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S)))?)|(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S))))",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A name given to the Distribution.",
                     "items": {
-                        "$ref": "#/$defs/QuantifiableAttribute"
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "access_URL"
+            ],
+            "title": "Distribution",
+            "type": "object"
+        },
+        "Document": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)",
+            "title": "Document",
+            "type": "object"
+        },
+        "EntityOfInterest": {
+            "additionalProperties": false,
+            "description": "Something (not an activity or process) that is being evaluated in a ResearchActivity.",
+            "properties": {
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
                     },
                     "type": [
                         "array",
@@ -490,16 +1782,33 @@
                     ]
                 },
                 "id": {
-                    "description": "The slot to specify the canonical unique identifier of an entity.",
                     "type": "string"
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
+                "other_identifier": {
+                    "description": "A secondary identifier of the EntityOfInterest",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Identifier"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -512,7 +1821,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The type of the EntityOfInterest provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
             "required": [
@@ -525,53 +1834,58 @@
             "additionalProperties": false,
             "description": "The environment in which the dataset creating Observation took place (e.g. a lab).",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/QualitativeAttribute"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "has_attribute": {
-                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "$ref": "#/$defs/Attribute"
+                        "$ref": "#/$defs/QuantitativeAttribute"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "has_quantifiable_attribute": {
-                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                "other_identifier": {
+                    "description": "A secondary identifier of the Environment",
                     "items": {
-                        "$ref": "#/$defs/QuantifiableAttribute"
+                        "$ref": "#/$defs/Identifier"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
@@ -584,43 +1898,32 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The type of Environment provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
             "title": "Environment",
+            "type": "object"
+        },
+        "Frequency": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)",
+            "title": "Frequency",
+            "type": "object"
+        },
+        "Geometry": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Geometry](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry)",
+            "title": "Geometry",
             "type": "object"
         },
         "HardwareTool": {
             "additionalProperties": false,
             "description": "A hardware with a certain function.",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_attribute": {
-                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
-                    "items": {
-                        "$ref": "#/$defs/Attribute"
-                    },
-                    "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
@@ -634,23 +1937,51 @@
                         "null"
                     ]
                 },
-                "has_quantifiable_attribute": {
-                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "$ref": "#/$defs/QuantifiableAttribute"
+                        "$ref": "#/$defs/QualitativeAttribute"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/QuantitativeAttribute"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the ActivityOfInterest",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -663,43 +1994,38 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The type of the Tool provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
             "title": "HardwareTool",
             "type": "object"
         },
-        "IUPACName": {
+        "IUPACChemicalFormula": {
             "additionalProperties": false,
-            "description": "An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).",
+            "description": "A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
@@ -712,50 +2038,60 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "value": {
-                    "description": "A slot to provide the value of an attribute.",
+                    "description": "A slot to provide the literal value of an attribute.",
                     "type": [
                         "string",
                         "null"
                     ]
                 }
             },
-            "title": "IUPACName",
+            "title": "IUPACChemicalFormula",
+            "type": "object"
+        },
+        "Identifier": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)",
+            "properties": {
+                "notation": {
+                    "description": "A string that is an identifier in the context of the identifier scheme referenced by its datatype.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "notation"
+            ],
+            "title": "Identifier",
             "type": "object"
         },
         "InChIKey": {
             "additionalProperties": false,
             "description": "",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
@@ -768,10 +2104,10 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "value": {
-                    "description": "A slot to provide the value of an attribute.",
+                    "description": "A slot to provide the literal value of an attribute.",
                     "type": [
                         "string",
                         "null"
@@ -785,33 +2121,28 @@
             "additionalProperties": false,
             "description": "A structure descriptor which conforms to the InChI format specification.",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
@@ -824,10 +2155,10 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "value": {
-                    "description": "A slot to provide the value of an attribute.",
+                    "description": "A slot to provide the literal value of an attribute.",
                     "type": [
                         "string",
                         "null"
@@ -837,57 +2168,68 @@
             "title": "InChi",
             "type": "object"
         },
+        "Kind": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)",
+            "title": "Kind",
+            "type": "object"
+        },
         "Laboratory": {
             "additionalProperties": false,
             "description": "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/QualitativeAttribute"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "has_attribute": {
-                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "$ref": "#/$defs/Attribute"
+                        "$ref": "#/$defs/QuantitativeAttribute"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "has_quantifiable_attribute": {
-                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                "other_identifier": {
+                    "description": "A secondary identifier of the Environment",
                     "items": {
-                        "$ref": "#/$defs/QuantifiableAttribute"
+                        "$ref": "#/$defs/Identifier"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
@@ -900,25 +2242,339 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The type of Environment provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
             "title": "Laboratory",
             "type": "object"
         },
-        "NMRAssayEnum": {
-            "description": "NMR types from the Chemical Methods Ontology",
-            "title": "NMRAssayEnum",
-            "type": "string"
-        },
-        "NMRSpectroscopy": {
+        "LegalResource": {
             "additionalProperties": false,
-            "description": "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.",
+            "description": "See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)",
+            "title": "LegalResource",
+            "type": "object"
+        },
+        "LicenseDocument": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+                "type": {
+                    "description": "A type of licence, e.g. indicating 'public domain' or 'royalties required'.",
+                    "items": {
+                        "$ref": "#/$defs/Concept"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "LicenseDocument",
+            "type": "object"
+        },
+        "LinguisticSystem": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:LinguisticSystem](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem)",
+            "title": "LinguisticSystem",
+            "type": "object"
+        },
+        "Location": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)",
+            "properties": {
+                "bbox": {
+                    "description": "The geographic bounding box of a resource.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "centroid": {
+                    "description": "The geographic center (centroid) of a resource.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "geometry": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geometry"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The corresponding geometry for a resource."
+                }
+            },
+            "title": "Location",
+            "type": "object"
+        },
+        "MediaType": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)",
+            "title": "MediaType",
+            "type": "object"
+        },
+        "MediaTypeOrExtent": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:MediaTypeOrExtent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaTypeOrExtent)",
+            "title": "MediaTypeOrExtent",
+            "type": "object"
+        },
+        "NFDICatalog": {
+            "additionalProperties": false,
+            "description": "A curated collection of metadata about data resources.",
+            "properties": {
+                "applicable_legislation": {
+                    "description": "The legislation that mandates the creation or management of the Catalog.",
+                    "items": {
+                        "$ref": "#/$defs/LegalResource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "catalogue": {
+                    "description": "A catalogue whose contents are of interest in the context of this catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/Catalogue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "creator": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Agent"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An entity responsible for the creation of the catalogue."
+                },
+                "description": {
+                    "description": "A free-text account of the Catalogue.",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "geographical_coverage": {
+                    "description": "A geographical area covered by the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/Location"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_dataset": {
+                    "description": "A Dataset that is part of the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/NFDIDataset"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "A related Catalogue that is part of the described Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/Catalogue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "homepage": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Document"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A web page that acts as the main page for the Catalogue."
+                },
+                "id": {
+                    "type": "string"
+                },
+                "language": {
+                    "description": "A language used in the textual metadata describing titles, descriptions, etc. of the Datasets in the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/LinguisticSystem"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "licence": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/LicenseDocument"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A licence under which the Catalogue can be used or reused."
+                },
+                "modification_date": {
+                    "description": "The most recent date on which the Catalogue was modified.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "publisher": {
+                    "$ref": "#/$defs/Agent",
+                    "description": "An entity (organisation) responsible for making the Catalogue available."
+                },
+                "record": {
+                    "description": "A Catalogue Record that is part of the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/CatalogueRecord"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "release_date": {
+                    "description": "The date of formal issuance (e.g., publication) of the Catalogue.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rights": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RightsStatement"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A statement that specifies rights associated with the Catalogue."
+                },
+                "service": {
+                    "description": "A site or end-point (Data Service) that is listed in the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/DataService"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "temporal_coverage": {
+                    "description": "A temporal period that the Catalogue covers.",
+                    "items": {
+                        "$ref": "#/$defs/PeriodOfTime"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "themes": {
+                    "description": "A knowledge organization system used to classify the Resources that are in the Catalogue.",
+                    "items": {
+                        "$ref": "#/$defs/ConceptScheme"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A name given to the Catalogue.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "id",
+                "description",
+                "publisher",
+                "title"
+            ],
+            "title": "NFDICatalog",
+            "type": "object"
+        },
+        "NFDIDataset": {
+            "additionalProperties": false,
+            "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",
+            "properties": {
+                "access_rights": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RightsStatement"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public."
+                },
+                "applicable_legislation": {
+                    "description": "The legislation that mandates the creation or management of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/LegalResource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "conforms_to": {
+                    "description": "An implementing rule or other specification.",
+                    "items": {
+                        "$ref": "#/$defs/Standard"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contact_point": {
+                    "description": "Contact information that can be used for sending comments about the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Kind"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "creator": {
+                    "description": "An entity responsible for producing the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Agent"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "dataset_distribution": {
+                    "description": "An available Distribution for the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Distribution"
                     },
                     "type": [
                         "array",
@@ -926,7 +2582,58 @@
                     ]
                 },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
+                    "description": "A free-text account of the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "documentation": {
+                    "description": "A page or document about this Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Document"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "frequency": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Frequency"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The frequency at which the Dataset is updated."
+                },
+                "geographical_coverage": {
+                    "description": "A geographic region that is covered by the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Location"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_version": {
+                    "description": "A related Dataset that is a version, edition, or adaptation of the described Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Dataset"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "identifier": {
+                    "description": "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.",
                     "items": {
                         "type": "string"
                     },
@@ -935,10 +2642,628 @@
                         "null"
                     ]
                 },
+                "in_series": {
+                    "description": "A dataset series of which the dataset is part.",
+                    "items": {
+                        "$ref": "#/$defs/DatasetSeries"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "is_referenced_by": {
+                    "description": "A related resource, such as a publication, that references, cites, or otherwise points to the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "keyword": {
+                    "description": "A keyword or tag describing the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "landing_page": {
+                    "description": "A web page that provides access to the Dataset, its Distributions and/or additional information.",
+                    "items": {
+                        "$ref": "#/$defs/Document"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "language": {
+                    "description": "A language of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/LinguisticSystem"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "modification_date": {
+                    "description": "The most recent date on which the Dataset was changed or modified.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the Dataset",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "provenance": {
+                    "description": "A statement about the lineage of a Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceStatement"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "publisher": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Agent"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An entity (organisation) responsible for making the Dataset available."
+                },
+                "qualified_attribution": {
+                    "description": "An Agent having some form of responsibility for the resource.",
+                    "items": {
+                        "$ref": "#/$defs/Attribution"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "qualified_relation": {
+                    "description": "A description of a relationship with another resource.",
+                    "items": {
+                        "$ref": "#/$defs/Relationship"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "related_resource": {
+                    "description": "A related resource.",
+                    "items": {
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "release_date": {
+                    "description": "The date of formal issuance (e.g., publication) of the Dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample": {
+                    "description": "A sample distribution of the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Distribution"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "description": "A related Dataset from which the described Dataset is derived.",
+                    "items": {
+                        "$ref": "#/$defs/Dataset"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "spatial_resolution": {
+                    "description": "The minimum spatial separation resolvable in a dataset, measured in meters.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "temporal_coverage": {
+                    "description": "A temporal period that the Dataset covers.",
+                    "items": {
+                        "$ref": "#/$defs/PeriodOfTime"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "temporal_resolution": {
+                    "description": "The minimum time period resolvable in the dataset.",
+                    "pattern": "-?P((([0-9]+Y([0-9]+M)?([0-9]+D)?|([0-9]+M)([0-9]+D)?|([0-9]+D))(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S)))?)|(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S))))",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "theme": {
+                    "description": "A category of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Concept"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A name given to the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "description": "A type of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Concept"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "version": {
+                    "description": "The version indicator (name or identifier) of a resource.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "version_notes": {
+                    "description": "A description of the differences between this version and a previous version of the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "was_generated_by": {
+                    "description": "An activity that generated, or provides the business context for, the creation of the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/ResearchActivity"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "id",
+                "description",
+                "title",
+                "was_generated_by"
+            ],
+            "title": "NFDIDataset",
+            "type": "object"
+        },
+        "NMRAssayEnum": {
+            "description": "NMR types from the Chemical Methods Ontology",
+            "enum": [
+                "CHMO:0000595"
+            ],
+            "title": "NMRAssayEnum",
+            "type": "string"
+        },
+        "NMRDataset": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "access_rights": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RightsStatement"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public."
+                },
+                "applicable_legislation": {
+                    "description": "The legislation that mandates the creation or management of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/LegalResource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "conforms_to": {
+                    "description": "An implementing rule or other specification.",
+                    "items": {
+                        "$ref": "#/$defs/Standard"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contact_point": {
+                    "description": "Contact information that can be used for sending comments about the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Kind"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "creator": {
+                    "description": "An entity responsible for producing the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Agent"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "dataset_distribution": {
+                    "description": "An available Distribution for the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Distribution"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A free-text account of the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "documentation": {
+                    "description": "A page or document about this Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Document"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "frequency": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Frequency"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The frequency at which the Dataset is updated."
+                },
+                "geographical_coverage": {
+                    "description": "A geographic region that is covered by the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Location"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_version": {
+                    "description": "A related Dataset that is a version, edition, or adaptation of the described Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Dataset"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "identifier": {
+                    "description": "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "in_series": {
+                    "description": "A dataset series of which the dataset is part.",
+                    "items": {
+                        "$ref": "#/$defs/DatasetSeries"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "is_referenced_by": {
+                    "description": "A related resource, such as a publication, that references, cites, or otherwise points to the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "keyword": {
+                    "description": "A keyword or tag describing the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "landing_page": {
+                    "description": "A web page that provides access to the Dataset, its Distributions and/or additional information.",
+                    "items": {
+                        "$ref": "#/$defs/Document"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "language": {
+                    "description": "A language of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/LinguisticSystem"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "modification_date": {
+                    "description": "The most recent date on which the Dataset was changed or modified.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the Dataset",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "provenance": {
+                    "description": "A statement about the lineage of a Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/ProvenanceStatement"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "publisher": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Agent"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An entity (organisation) responsible for making the Dataset available."
+                },
+                "qualified_attribution": {
+                    "description": "An Agent having some form of responsibility for the resource.",
+                    "items": {
+                        "$ref": "#/$defs/Attribution"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "qualified_relation": {
+                    "description": "A description of a relationship with another resource.",
+                    "items": {
+                        "$ref": "#/$defs/Relationship"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "related_resource": {
+                    "description": "A related resource.",
+                    "items": {
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "release_date": {
+                    "description": "The date of formal issuance (e.g., publication) of the Dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample": {
+                    "description": "A sample distribution of the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Distribution"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "description": "A related Dataset from which the described Dataset is derived.",
+                    "items": {
+                        "$ref": "#/$defs/Dataset"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "spatial_resolution": {
+                    "description": "The minimum spatial separation resolvable in a dataset, measured in meters.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "temporal_coverage": {
+                    "description": "A temporal period that the Dataset covers.",
+                    "items": {
+                        "$ref": "#/$defs/PeriodOfTime"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "temporal_resolution": {
+                    "description": "The minimum time period resolvable in the dataset.",
+                    "pattern": "-?P((([0-9]+Y([0-9]+M)?([0-9]+D)?|([0-9]+M)([0-9]+D)?|([0-9]+D))(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S)))?)|(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S))))",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "theme": {
+                    "description": "A category of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Concept"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "title": {
+                    "description": "A name given to the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "description": "A type of the Dataset.",
+                    "items": {
+                        "$ref": "#/$defs/Concept"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "version": {
+                    "description": "The version indicator (name or identifier) of a resource.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "version_notes": {
+                    "description": "A description of the differences between this version and a previous version of the Dataset.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "was_generated_by": {
+                    "description": "An activity that generated, or provides the business context for, the creation of the dataset.",
+                    "items": {
+                        "$ref": "#/$defs/NMRSpectroscopy"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "id",
+                "description",
+                "title",
+                "was_generated_by"
+            ],
+            "title": "NMRDataset",
+            "type": "object"
+        },
+        "NMRSpectroscopy": {
+            "additionalProperties": false,
+            "description": "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.",
+            "properties": {
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evaluated_activity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ActivityOfInterest"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the activity of interest that was evaluated."
+                },
                 "evaluated_entity": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/ChemicalSubstance"
+                            "$ref": "#/$defs/ChemicalSample"
                         },
                         {
                             "type": "null"
@@ -949,7 +3274,7 @@
                 "has_part": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/ResearchActivity"
+                            "$ref": "#/$defs/Activity"
                         },
                         {
                             "type": "null"
@@ -957,13 +3282,53 @@
                     ],
                     "description": "The slot to specify one or more parts of the ResearchActivity that are themselves also research activities."
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
+                "occurred_in": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Environment"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the Method (aka Procedure) that was used in the ResearchActivity."
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the ActivityOfInterest",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Identifier"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The type of NMR Spectroscopy provided as CURIE of a subclass of CHMO:0000613."
+                },
+                "realized_plan": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Plan"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the Method (aka Procedure) that was realized by a ResearchActivity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -976,18 +3341,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The type of NMR Spectroscopy according provided as CURIE of a subclass of CHMO:0000613."
-                },
-                "used_plan": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ActivitySpecification"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the PlanSpecification (Method) that was used in the ResearchActivity."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "used_tool": {
                     "description": "The slot to specify the tool that was used.",
@@ -1003,54 +3357,76 @@
             "title": "NMRSpectroscopy",
             "type": "object"
         },
-        "QUDTQuantityKindEnum": {
-            "description": "Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.",
-            "title": "QUDTQuantityKindEnum",
-            "type": "string"
-        },
-        "QUDTUnitEnum": {
-            "description": "Possible kinds of QUDT unit instances.",
-            "title": "QUDTUnitEnum",
-            "type": "string"
-        },
-        "QuantifiableAttribute": {
+        "PeriodOfTime": {
             "additionalProperties": false,
-            "description": "An attribute that is quantifiable.",
+            "description": "See [DCAT-AP specs:PeriodOfTime](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime)",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
+                "beginning": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TimeInstant"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The beginning of a period or interval."
+                },
+                "end": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TimeInstant"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The end of a period or interval."
+                },
+                "end_date": {
+                    "description": "The end of the period.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
+                "start_date": {
+                    "description": "The start of the period.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "PeriodOfTime",
+            "type": "object"
+        },
+        "Plan": {
+            "additionalProperties": false,
+            "description": "A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.",
+            "properties": {
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
-                "is_delta_attribute": {
-                    "description": "This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets.",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
@@ -1063,7 +3439,117 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the type of Attribute provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
+                }
+            },
+            "title": "Plan",
+            "type": "object"
+        },
+        "Policy": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)",
+            "title": "Policy",
+            "type": "object"
+        },
+        "ProvenanceStatement": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)",
+            "title": "ProvenanceStatement",
+            "type": "object"
+        },
+        "QUDTQuantityKindEnum": {
+            "description": "Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.",
+            "title": "QUDTQuantityKindEnum",
+            "type": "string"
+        },
+        "QUDTUnitEnum": {
+            "description": "Possible kinds of QUDT unit instances.",
+            "title": "QUDTUnitEnum",
+            "type": "string"
+        },
+        "QualitativeAttribute": {
+            "additionalProperties": false,
+            "description": "A piece of information that is attributed to an entity of interest, tool or environment.",
+            "properties": {
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                },
+                "value": {
+                    "description": "A slot to provide the literal value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "QualitativeAttribute",
+            "type": "object"
+        },
+        "QuantitativeAttribute": {
+            "additionalProperties": false,
+            "description": "A quantifiable piece of information that is attributed to an entity of interest, tool or environment.",
+            "properties": {
+                "has_quantity_type": {
+                    "description": "The type of quality that is quantifiable according to the QUDT ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "unit": {
                     "type": [
@@ -1072,39 +3558,63 @@
                     ]
                 },
                 "value": {
-                    "description": "A data property to relate an observable thing with a value of any kind.",
+                    "description": "A slot to provide the literal value of an attribute.",
                     "type": [
                         "string",
                         "null"
                     ]
                 }
             },
-            "title": "QuantifiableAttribute",
+            "title": "QuantitativeAttribute",
+            "type": "object"
+        },
+        "Relationship": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)",
+            "properties": {
+                "had_role": {
+                    "description": "A function of an entity or agent with respect to another entity or resource.",
+                    "items": {
+                        "$ref": "#/$defs/Role"
+                    },
+                    "type": "array"
+                },
+                "relation": {
+                    "description": "A resource related to the source resource.",
+                    "items": {
+                        "$ref": "#/$defs/Resource"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "had_role",
+                "relation"
+            ],
+            "title": "Relationship",
             "type": "object"
         },
         "ResearchActivity": {
             "additionalProperties": false,
             "description": "An activity (process) that has the objective to produce information about an entity by evaluating it.",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
-                "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                "evaluated_activity": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ActivityOfInterest"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the activity of interest that was evaluated."
                 },
                 "evaluated_entity": {
                     "anyOf": [
@@ -1120,7 +3630,7 @@
                 "has_part": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/ResearchActivity"
+                            "$ref": "#/$defs/Activity"
                         },
                         {
                             "type": "null"
@@ -1128,13 +3638,53 @@
                     ],
                     "description": "The slot to specify one or more parts of the ResearchActivity that are themselves also research activities."
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
+                "occurred_in": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Environment"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the Method (aka Procedure) that was used in the ResearchActivity."
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the ActivityOfInterest",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/Identifier"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "realized_plan": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Plan"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the Method (aka Procedure) that was realized by a ResearchActivity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -1147,18 +3697,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the type of the ResearchActivity provided as a DefinedTerm."
-                },
-                "used_plan": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/ActivitySpecification"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the PlanSpecification (Method) that was used in the ResearchActivity."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "used_tool": {
                     "description": "The slot to specify the tool that was used.",
@@ -1174,37 +3713,83 @@
             "title": "ResearchActivity",
             "type": "object"
         },
+        "Resource": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)",
+            "title": "Resource",
+            "type": "object"
+        },
+        "RightsStatement": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)",
+            "title": "RightsStatement",
+            "type": "object"
+        },
+        "Role": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)",
+            "title": "Role",
+            "type": "object"
+        },
+        "SMILES": {
+            "additionalProperties": false,
+            "description": "A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.",
+            "properties": {
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                },
+                "value": {
+                    "description": "A slot to provide the literal value of an attribute.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "SMILES",
+            "type": "object"
+        },
         "SoftwareTool": {
             "additionalProperties": false,
             "description": "A software with a certain function.",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_attribute": {
-                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
-                    "items": {
-                        "$ref": "#/$defs/Attribute"
-                    },
-                    "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
@@ -1218,23 +3803,51 @@
                         "null"
                     ]
                 },
-                "has_quantifiable_attribute": {
-                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "$ref": "#/$defs/QuantifiableAttribute"
+                        "$ref": "#/$defs/QualitativeAttribute"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/QuantitativeAttribute"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the ActivityOfInterest",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -1247,43 +3860,38 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The type of the Tool provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
             "title": "SoftwareTool",
             "type": "object"
         },
+        "Standard": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)",
+            "title": "Standard",
+            "type": "object"
+        },
+        "SupportiveEntity": {
+            "additionalProperties": false,
+            "description": "The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.",
+            "title": "SupportiveEntity",
+            "type": "object"
+        },
+        "TimeInstant": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)",
+            "title": "TimeInstant",
+            "type": "object"
+        },
         "Tool": {
             "additionalProperties": false,
-            "description": "A entity with a certain function used within a scientific activity.",
+            "description": "A entity with a certain function used within a ResearchActivity.",
             "properties": {
-                "alternative_id": {
-                    "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
-                    "description": "The slot to provide a free-text account of a thing.",
-                    "items": {
-                        "type": "string"
-                    },
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_attribute": {
-                    "description": "The slot to relate an attribute to an entity of interest, tool or environment.",
-                    "items": {
-                        "$ref": "#/$defs/Attribute"
-                    },
-                    "type": [
-                        "array",
+                        "string",
                         "null"
                     ]
                 },
@@ -1297,23 +3905,51 @@
                         "null"
                     ]
                 },
-                "has_quantifiable_attribute": {
-                    "description": "The slot to relate a quantifiable attribute to an entity of interest, tool or environment.",
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "$ref": "#/$defs/QuantifiableAttribute"
+                        "$ref": "#/$defs/QualitativeAttribute"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "name": {
-                    "description": "The slot to specify the label, name or title of a thing.",
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/QuantitativeAttribute"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "other_identifier": {
+                    "description": "A secondary identifier of the ActivityOfInterest",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -1326,21 +3962,151 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The type of the Tool provided as a DefinedTerm."
+                    "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
             "title": "Tool",
             "type": "object"
+        },
+        "TopLevelMediaTypes": {
+            "description": "",
+            "enum": [
+                "application",
+                "audio",
+                "example",
+                "font",
+                "haptics",
+                "image",
+                "message",
+                "model",
+                "multipart",
+                "text",
+                "video"
+            ],
+            "title": "TopLevelMediaTypes",
+            "type": "string"
         }
     },
-    "$id": "https://w3id.org/StroemPhi/dcat-4C-ap",
+    "$id": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",
     "metamodel_version": "1.7.0",
     "properties": {
-        "alternative_id": {
-            "description": "The slot to specify the unique identifier of an entity that is not considered the canonical identifier in the given context.",
+        "access_rights": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/RightsStatement"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public."
+        },
+        "applicable_legislation": {
+            "description": "The legislation that mandates the creation or management of the Dataset.",
+            "items": {
+                "$ref": "#/$defs/LegalResource"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "conforms_to": {
+            "description": "An implementing rule or other specification.",
+            "items": {
+                "$ref": "#/$defs/Standard"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "contact_point": {
+            "description": "Contact information that can be used for sending comments about the Dataset.",
+            "items": {
+                "$ref": "#/$defs/Kind"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "creator": {
+            "description": "An entity responsible for producing the dataset.",
+            "items": {
+                "$ref": "#/$defs/Agent"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "dataset_distribution": {
+            "description": "An available Distribution for the Dataset.",
+            "items": {
+                "$ref": "#/$defs/Distribution"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "description": {
+            "description": "A free-text account of the Dataset.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "documentation": {
+            "description": "A page or document about this Dataset.",
+            "items": {
+                "$ref": "#/$defs/Document"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "frequency": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Frequency"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "description": "The frequency at which the Dataset is updated."
+        },
+        "geographical_coverage": {
+            "description": "A geographic region that is covered by the Dataset.",
+            "items": {
+                "$ref": "#/$defs/Location"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "has_version": {
+            "description": "A related Dataset that is a version, edition, or adaptation of the described Dataset.",
+            "items": {
+                "$ref": "#/$defs/Dataset"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "id": {
+            "type": "string"
+        },
+        "identifier": {
+            "description": "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.",
             "items": {
                 "type": "string"
             },
@@ -1349,40 +4115,233 @@
                 "null"
             ]
         },
-        "description": {
-            "description": "A free-text account of a Dataset.",
+        "in_series": {
+            "description": "A dataset series of which the dataset is part.",
+            "items": {
+                "$ref": "#/$defs/DatasetSeries"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "is_referenced_by": {
+            "description": "A related resource, such as a publication, that references, cites, or otherwise points to the dataset.",
+            "items": {
+                "$ref": "#/$defs/Resource"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "keyword": {
+            "description": "A keyword or tag describing the Dataset.",
             "items": {
                 "type": "string"
             },
-            "type": "array"
+            "type": [
+                "array",
+                "null"
+            ]
         },
-        "id": {
-            "description": "The slot to specify the canonical unique identifier of an entity.",
-            "type": "string"
-        },
-        "name": {
-            "description": "The label, name or title of a Dataset.",
+        "landing_page": {
+            "description": "A web page that provides access to the Dataset, its Distributions and/or additional information.",
             "items": {
-                "type": "string"
+                "$ref": "#/$defs/Document"
             },
-            "type": "array"
+            "type": [
+                "array",
+                "null"
+            ]
         },
-        "was_generated_by": {
+        "language": {
+            "description": "A language of the Dataset.",
+            "items": {
+                "$ref": "#/$defs/LinguisticSystem"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "modification_date": {
+            "description": "The most recent date on which the Dataset was changed or modified.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "other_identifier": {
+            "description": "A secondary identifier of the Dataset",
+            "items": {
+                "$ref": "#/$defs/Identifier"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "provenance": {
+            "description": "A statement about the lineage of a Dataset.",
+            "items": {
+                "$ref": "#/$defs/ProvenanceStatement"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "publisher": {
             "anyOf": [
                 {
-                    "$ref": "#/$defs/ResearchActivity"
+                    "$ref": "#/$defs/Agent"
                 },
                 {
                     "type": "null"
                 }
             ],
-            "description": "The slot to provide the ResearchActivity that created a Dataset."
+            "description": "An entity (organisation) responsible for making the Dataset available."
+        },
+        "qualified_attribution": {
+            "description": "An Agent having some form of responsibility for the resource.",
+            "items": {
+                "$ref": "#/$defs/Attribution"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "qualified_relation": {
+            "description": "A description of a relationship with another resource.",
+            "items": {
+                "$ref": "#/$defs/Relationship"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "related_resource": {
+            "description": "A related resource.",
+            "items": {
+                "$ref": "#/$defs/Resource"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "release_date": {
+            "description": "The date of formal issuance (e.g., publication) of the Dataset.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "sample": {
+            "description": "A sample distribution of the dataset.",
+            "items": {
+                "$ref": "#/$defs/Distribution"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "source": {
+            "description": "A related Dataset from which the described Dataset is derived.",
+            "items": {
+                "$ref": "#/$defs/Dataset"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "spatial_resolution": {
+            "description": "The minimum spatial separation resolvable in a dataset, measured in meters.",
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "temporal_coverage": {
+            "description": "A temporal period that the Dataset covers.",
+            "items": {
+                "$ref": "#/$defs/PeriodOfTime"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "temporal_resolution": {
+            "description": "The minimum time period resolvable in the dataset.",
+            "pattern": "-?P((([0-9]+Y([0-9]+M)?([0-9]+D)?|([0-9]+M)([0-9]+D)?|([0-9]+D))(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S)))?)|(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S))))",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "theme": {
+            "description": "A category of the Dataset.",
+            "items": {
+                "$ref": "#/$defs/Concept"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "title": {
+            "description": "A name given to the Dataset.",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "type": {
+            "description": "A type of the Dataset.",
+            "items": {
+                "$ref": "#/$defs/Concept"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "version": {
+            "description": "The version indicator (name or identifier) of a resource.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "version_notes": {
+            "description": "A description of the differences between this version and a previous version of the Dataset.",
+            "items": {
+                "type": "string"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "was_generated_by": {
+            "description": "An activity that generated, or provides the business context for, the creation of the dataset.",
+            "items": {
+                "$ref": "#/$defs/ResearchActivity"
+            },
+            "type": "array"
         }
     },
     "required": [
         "id",
-        "name",
-        "description"
+        "description",
+        "title",
+        "was_generated_by"
     ],
     "title": "dcat-4C-ap",
     "type": "object",

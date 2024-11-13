@@ -3,7 +3,9 @@ id: https://w3id.org/StroemPhi/dcat-4nfdi-ap-sosa
 name: dcat-nfdi-ap-sosa
 title: DCAT-NFDI-AP-SOSA
 description: |-
-  DCAT-AP core extension for NFDI mapped to SOSA so that the research activity becomes a SOSA:Observation.   
+  DCAT-NFDI-AP extension that declares the research activity which generated a Dataset to a SOSA:Observation. This 
+  allows us to use classes and relations from SOSA that are generally applicable for a broad range of Observations. 
+  This is just a first, as this profile could be using more terms from SOSA to describe an Observation. 
 license: CC-BY 4.0
 prefixes:
   nfdi: https://w3id.org/StroemPhi/dcat-4nfdi-ap/
@@ -46,7 +48,7 @@ imports:
 
 classes:
   
-  ObservationDataset:
+  SOSAObservationDataset:
     is_a: Dataset
     class_uri: dcat:Dataset
     description: >-
@@ -61,14 +63,16 @@ classes:
         required: true
       was_generated_by:
         ## the range will be changed with regard to the profile.
-        range: Observation
+        range: SOSAObservation
 
-  Observation:
+  SOSAObservation:
     is_a: ResearchActivity
     class_uri: sosa:Observation
     aliases:
       - Observation
     description: Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with.
+    slots:
+      - made_by_sensor
     slot_usage:
       evaluated_entity:
         slot_uri: sosa:hasFeatureOfInterest
@@ -77,10 +81,8 @@ classes:
       used_plan:
         slot_uri: sosa:usedProcedure
         range: Procedure
-      type:
+      rdf_type:
         description: The slot to specify the type of the ResearchActivity provided as a DefinedTerm.
-        range: DefinedTerm
-        inlined: true
       has_part:
         description: The slot to specify one or more parts of the ResearchActivity that are themselves also research activities.
         range: Observation
@@ -95,20 +97,16 @@ classes:
     class_uri: sosa:FeatureOfInterest
     description: The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling.
     slot_usage:
-      type:
+      rdf_type:
         description: The type of the EntityOfInterest provided as a DefinedTerm.
-        range: DefinedTerm
-        inlined: true
   
   Sensor:
     is_a: Tool
     class_uri: sosa:Sensor
     description: Device, agent (including humans), or software (simulation) involved in, or implementing, a Procedure. Sensors respond to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations, and generate a Result. Sensors can be hosted by Platforms.
     slot_usage:
-      type:
+      rdf_type:
         description: The type of the Sensor provided as a DefinedTerm.
-        range: DefinedTerm
-        inlined: true
       has_part:
         description: The slot to specify parts of a Sensor.
         range: Tool
@@ -124,12 +122,10 @@ classes:
     aliases:
       - Method
     description: |-
-      "A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results."
+      A workflow, protocol, plan, algorithm, or computational method specifying how to make an Observation, create a Sample, or make a change to the state of the world (via an Actuator). A Procedure is re-usable, and might be involved in many Observations, Samplings, or Actuations. It explains the steps to be carried out to arrive at reproducible results.
     slot_usage:
-      type:
+      rdf_type:
         description: The type of Procedure provided as a DefinedTerm.
-        range: DefinedTerm
-        inlined: true
     examples:
       - description: "We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3)."
   
@@ -138,3 +134,8 @@ classes:
   ###################
 
 # Slots
+slots:
+  made_by_sensor:
+    slot_uri: sosa:madeBySensor
+    description: Relation between an Observation and the Sensor which made the Observation.
+    range: Sensor
