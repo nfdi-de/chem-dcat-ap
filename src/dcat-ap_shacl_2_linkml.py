@@ -112,8 +112,14 @@ def parse_shacl_shapes(builder):
     for node_shape in dcat_ap_shapes['shapes']:
         node_curie = get_curie(node_shape['sh:targetClass'])
         description = f'retrievable from: [{node_curie}]({node_shape['sh:targetClass']})'
+        
+        # Account for the renaming of DCAT classes in DCAT-AP
         if node_curie == 'dcat:Resource':
             node_name = 'CataloguedResource'
+        elif node_curie == 'dcat:Catalog':
+            node_name = 'Catalogue'
+        elif node_curie == 'dcat:CatalogRecord':
+            node_name = 'CatalogueRecord'
         else:
             node_name = node_shape['@id'].split('#')[-1].split(':')[-1].replace('Shape', '')
 
@@ -122,8 +128,8 @@ def parse_shacl_shapes(builder):
 
             # Add DCAT-AP Supportive Entity classes, this is done only to have an easier to read documentation.
             # 'Activity' is considered a main entity here, since we use it to extend DCAT-AP.
-            if node_name not in ['Dataset', 'DatasetSeries', 'Distribution', 'Catalog', 'CataloguedResource',
-                                 'DataService', 'Activity']:
+            if node_name not in ['Dataset', 'DatasetSeries', 'Distribution', 'Catalogue', 'CataloguedResource',
+                                 'DataService', 'Activity', 'CatalogueRecord']:
                 builder.add_class(ClassDefinition(name='SupportiveEntity',
                                                   description='The supportive entities are supporting the main entities'
                                                               ' in the Application Profile. They are included in the '
@@ -160,8 +166,13 @@ def parse_shacl_shapes(builder):
                         slot_range = 'uri'
                     # Assign slot range classes
                     if 'sh:class' in slot_shape:
+                        # Account for the renaming of DCAT classes in DCAT-AP
                         if get_curie(slot_shape['sh:class']) == 'dcat:Resource':
                             slot_range = 'CataloguedResource'
+                        elif get_curie(slot_shape['sh:class']) == 'dcat:CatalogRecord':
+                            slot_range = 'CatalogueRecord'
+                        elif get_curie(slot_shape['sh:class']) == 'dcat:Catalog':
+                            slot_range = 'Catalogue'
                         elif get_curie(slot_shape['sh:class']) == 'time:Instant':
                             slot_range = 'TimeInstant'
                         else:
