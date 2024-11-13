@@ -205,13 +205,11 @@
 <div class="mermaid"> classDiagram
     class DefinedTerm
     click DefinedTerm href "../DefinedTerm"
-      DefinedTerm : alternative_id
-
       DefinedTerm : from_CV
 
       DefinedTerm : id
 
-      DefinedTerm : name
+      DefinedTerm : title
 
 
 </div>
@@ -230,25 +228,19 @@
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The slot to specify the canonical unique identifier of an entity</td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../alternative_id/">alternative_id</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The slot to specify the unique identifier of an entity that is not considered...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The slot to specify the label, name or title of a thing</td>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../from_CV/">from_CV</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The name of the controlled vocabulary</td>
+<td>The URL of the controlled vocabulary</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -265,8 +257,26 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
@@ -277,8 +287,32 @@
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalSample/">ChemicalSample</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalSample/">ChemicalSample</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
 <td><a href="../HardwareTool/">HardwareTool</a></td>
 <td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../HardwareTool/">HardwareTool</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
@@ -289,8 +323,20 @@
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
+<td><a href="../SoftwareTool/">SoftwareTool</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
 <td><a href="../Laboratory/">Laboratory</a></td>
 <td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../Laboratory/">Laboratory</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
@@ -301,8 +347,20 @@
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
+<td><a href="../InChIKey/">InChIKey</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
 <td><a href="../InChi/">InChi</a></td>
 <td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../InChi/">InChi</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
@@ -313,8 +371,32 @@
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
+<td><a href="../IUPACChemicalFormula/">IUPACChemicalFormula</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
 <td><a href="../SMILES/">SMILES</a></td>
 <td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../SMILES/">SMILES</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
@@ -325,8 +407,32 @@
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
 <td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
 <td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
@@ -337,56 +443,68 @@
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
+<td><a href="../Tool/">Tool</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
 <td><a href="../Environment/">Environment</a></td>
 <td><a href="../type/">type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
-<td><a href="../ActivitySpecification/">ActivitySpecification</a></td>
+<td><a href="../Environment/">Environment</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../Plan/">Plan</a></td>
 <td><a href="../type/">type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
-<td><a href="../Attribute/">Attribute</a></td>
+<td><a href="../Plan/">Plan</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 <td><a href="../type/">type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
-<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
+<td><a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td><a href="../has_quantity_type/">has_quantity_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
 <td><a href="../unit/">unit</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
-<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
+<td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
 <td><a href="../type/">type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
-<td><a href="../Observation/">Observation</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
-<td><a href="../FeatureOfInterest/">FeatureOfInterest</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
-<td><a href="../Sensor/">Sensor</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
-<td><a href="../Procedure/">Procedure</a></td>
-<td><a href="../type/">type</a></td>
+<td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
@@ -395,7 +513,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/StroemPhi/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -423,23 +541,19 @@
 <pre><code class="language-yaml">name: DefinedTerm
 description: A word, name, acronym, phrase that is defined in a controlled vocabulary
   (CV) and that is used to provide the rdf:type of an entity within this schema.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 slots:
 - id
-- alternative_id
-- name
+- title
 slot_usage:
-  name:
-    name: name
+  title:
+    name: title
     slot_uri: schema:name
-  alternative_id:
-    name: alternative_id
-    slot_uri: schema:identifier
 attributes:
   from_CV:
     name: from_CV
-    description: The name of the controlled vocabulary.
-    from_schema: https://w3id.org/StroemPhi/dcat-4nfdi-ap
+    description: The URL of the controlled vocabulary.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap
     rank: 1000
     slot_uri: schema:inDefinedTermSet
     domain_of:
@@ -454,19 +568,16 @@ class_uri: schema:DefinedTerm
 <pre><code class="language-yaml">name: DefinedTerm
 description: A word, name, acronym, phrase that is defined in a controlled vocabulary
   (CV) and that is used to provide the rdf:type of an entity within this schema.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 slot_usage:
-  name:
-    name: name
+  title:
+    name: title
     slot_uri: schema:name
-  alternative_id:
-    name: alternative_id
-    slot_uri: schema:identifier
 attributes:
   from_CV:
     name: from_CV
-    description: The name of the controlled vocabulary.
-    from_schema: https://w3id.org/StroemPhi/dcat-4nfdi-ap
+    description: The URL of the controlled vocabulary.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap
     rank: 1000
     slot_uri: schema:inDefinedTermSet
     alias: from_CV
@@ -476,64 +587,46 @@ attributes:
     range: uriorcurie
   id:
     name: id
-    description: The slot to specify the canonical unique identifier of an entity.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
+    slot_uri: dcterms:identifier
     identifier: true
     alias: id
     owner: DefinedTerm
     domain_of:
     - DefinedTerm
-    - Dataset
+    - NFDIDataset
+    - NFDICatalog
     - EntityOfInterest
+    - ActivityOfInterest
     range: uriorcurie
     required: true
-  alternative_id:
-    name: alternative_id
-    description: The slot to specify the unique identifier of an entity that is not
-      considered the canonical identifier in the given context.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    rank: 1000
-    slot_uri: schema:identifier
-    alias: alternative_id
-    owner: DefinedTerm
-    domain_of:
-    - DefinedTerm
-    - Dataset
-    - ResearchActivity
-    - EntityOfInterest
-    - Tool
-    - Environment
-    - Attribute
-    range: uriorcurie
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  name:
-    name: name
-    description: The slot to specify the label, name or title of a thing.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    exact_mappings:
-    - rdfs:label
-    - skos:title
-    - schema:name
+  title:
+    name: title
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: schema:name
-    alias: name
+    alias: title
     owner: DefinedTerm
     domain_of:
-    - DefinedTerm
+    - Catalogue
+    - CatalogueRecord
+    - ConceptScheme
+    - DataService
     - Dataset
+    - DatasetSeries
+    - Distribution
+    - DefinedTerm
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - ActivitySpecification
-    - Attribute
+    - Plan
+    - QualitativeAttribute
     range: string
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 class_uri: schema:DefinedTerm
 
 </code></pre>
@@ -563,7 +656,6 @@ class_uri: schema:DefinedTerm
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

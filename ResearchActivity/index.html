@@ -210,21 +210,33 @@
 <div class="mermaid"> classDiagram
     class ResearchActivity
     click ResearchActivity href "../ResearchActivity"
+      ClassifierMixin &lt;|-- ResearchActivity
+        click ClassifierMixin href "../ClassifierMixin"
+      Activity &lt;|-- ResearchActivity
+        click Activity href "../Activity"
+
+
       ResearchActivity &lt;|-- NMRSpectroscopy
         click NMRSpectroscopy href "../NMRSpectroscopy"
-      ResearchActivity &lt;|-- Observation
-        click Observation href "../Observation"
 
-      ResearchActivity : alternative_id
 
       ResearchActivity : description
+
+      ResearchActivity : evaluated_activity
+
+
+
+
+    ResearchActivity --&gt; "0..1" ActivityOfInterest : evaluated_activity
+    click ActivityOfInterest href "../ActivityOfInterest"
+
 
       ResearchActivity : evaluated_entity
 
 
 
 
-    ResearchActivity --&gt; "1" EntityOfInterest : evaluated_entity
+    ResearchActivity --&gt; "0..1" EntityOfInterest : evaluated_entity
     click EntityOfInterest href "../EntityOfInterest"
 
 
@@ -233,28 +245,55 @@
 
 
 
-    ResearchActivity --&gt; "0..1" ResearchActivity : has_part
-    click ResearchActivity href "../ResearchActivity"
+    ResearchActivity --&gt; "0..1" Activity : has_part
+    click Activity href "../Activity"
 
 
-      ResearchActivity : name
+      ResearchActivity : occurred_in
+
+
+
+
+    ResearchActivity --&gt; "0..1" Environment : occurred_in
+    click Environment href "../Environment"
+
+
+      ResearchActivity : other_identifier
+
+
+
+
+    ResearchActivity --&gt; "*" Identifier : other_identifier
+    click Identifier href "../Identifier"
+
+
+      ResearchActivity : rdf_type
+
+
+
+
+    ResearchActivity --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+    click DefinedTerm href "../DefinedTerm"
+
+
+      ResearchActivity : realized_plan
+
+
+
+
+    ResearchActivity --&gt; "0..1 _recommended_" Plan : realized_plan
+    click Plan href "../Plan"
+
+
+      ResearchActivity : title
 
       ResearchActivity : type
 
 
 
 
-    ResearchActivity --&gt; "0..1 _recommended_" DefinedTerm : type
+    ResearchActivity --&gt; "0..1" DefinedTerm : type
     click DefinedTerm href "../DefinedTerm"
-
-
-      ResearchActivity : used_plan
-
-
-
-
-    ResearchActivity --&gt; "0..1 _recommended_" ActivitySpecification : used_plan
-    click ActivitySpecification href "../ActivitySpecification"
 
 
       ResearchActivity : used_tool
@@ -270,9 +309,11 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>ResearchActivity</strong><ul>
+<li><a href="../Activity/">Activity</a><ul>
+<li><strong>ResearchActivity</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></li>
-<li><a href="../Observation/">Observation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -288,33 +329,33 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The slot to specify the label, name or title of a thing</td>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The slot to provide a free-text account of a thing</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../alternative_id/">alternative_id</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The slot to specify the unique identifier of an entity that is not considered...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
-<td>The slot to specify the type of the ResearchActivity provided as a DefinedTer...</td>
+<td><a href="../other_identifier/">other_identifier</a></td>
+<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>A secondary identifier of the ActivityOfInterest</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
-<td>1 <br/> <a href="../EntityOfInterest/">EntityOfInterest</a></td>
+<td>0..1 <br/> <a href="../EntityOfInterest/">EntityOfInterest</a></td>
 <td>The slot to specify the entity of interest that was evaluated</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../evaluated_activity/">evaluated_activity</a></td>
+<td>0..1 <br/> <a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
+<td>The slot to specify the activity of interest that was evaluated</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -324,16 +365,34 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../used_plan/">used_plan</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../ActivitySpecification/">ActivitySpecification</a></td>
-<td>The slot to specify the Method (aka Procedure) that was used in the ResearchA...</td>
+<td><a href="../realized_plan/">realized_plan</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Plan/">Plan</a></td>
+<td>The slot to specify the Method (aka Procedure) that was realized by a Researc...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>0..1 <br/> <a href="./">ResearchActivity</a></td>
+<td>0..1 <br/> <a href="../Activity/">Activity</a></td>
 <td>The slot to specify one or more parts of the ResearchActivity that are themse...</td>
 <td>direct</td>
+</tr>
+<tr>
+<td><a href="../occurred_in/">occurred_in</a></td>
+<td>0..1 <br/> <a href="../Environment/">Environment</a></td>
+<td>The slot to specify the Method (aka Procedure) that was used in the ResearchA...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>0..1 <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
+</tr>
+<tr>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>The slot to specify the ontology class that is instantiated by an entity</td>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
 </tr>
 </tbody>
 </table>
@@ -349,26 +408,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">ResearchActivity</a></td>
-</tr>
-<tr>
-<td><a href="../Dataset/">Dataset</a></td>
+<td><a href="../NFDIDataset/">NFDIDataset</a></td>
 <td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>range</td>
-<td><a href="./">ResearchActivity</a></td>
-</tr>
-<tr>
-<td><a href="../DatasetCollection/">DatasetCollection</a></td>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>range</td>
-<td><a href="./">ResearchActivity</a></td>
-</tr>
-<tr>
-<td><a href="./">ResearchActivity</a></td>
-<td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">ResearchActivity</a></td>
 </tr>
@@ -377,7 +418,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/StroemPhi/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -409,33 +450,39 @@
 <pre><code class="language-yaml">name: ResearchActivity
 description: An activity (process) that has the objective to produce information about
   an entity by evaluating it.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 narrow_mappings:
 - NCIT:C25598
 - sosa:Observation
 - OBI:0000070
+is_a: Activity
+mixins:
+- ClassifierMixin
 slots:
-- name
+- title
 - description
-- alternative_id
-- type
+- other_identifier
 - evaluated_entity
+- evaluated_activity
 - used_tool
-- used_plan
+- realized_plan
 - has_part
+- occurred_in
 slot_usage:
-  type:
-    name: type
-    description: The slot to specify the type of the ResearchActivity provided as
-      a DefinedTerm.
-    range: DefinedTerm
-    inlined: true
   has_part:
     name: has_part
     description: The slot to specify one or more parts of the ResearchActivity that
       are themselves also research activities.
-    range: ResearchActivity
+    range: Activity
     inlined: true
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the ActivityOfInterest
+    slot_uri: adms:identifier
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
 class_uri: prov:Activity
 
 </code></pre>
@@ -445,114 +492,103 @@ class_uri: prov:Activity
 <pre><code class="language-yaml">name: ResearchActivity
 description: An activity (process) that has the objective to produce information about
   an entity by evaluating it.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 narrow_mappings:
 - NCIT:C25598
 - sosa:Observation
 - OBI:0000070
+is_a: Activity
+mixins:
+- ClassifierMixin
 slot_usage:
-  type:
-    name: type
-    description: The slot to specify the type of the ResearchActivity provided as
-      a DefinedTerm.
-    range: DefinedTerm
-    inlined: true
   has_part:
     name: has_part
     description: The slot to specify one or more parts of the ResearchActivity that
       are themselves also research activities.
-    range: ResearchActivity
+    range: Activity
     inlined: true
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the ActivityOfInterest
+    slot_uri: adms:identifier
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
 attributes:
-  name:
-    name: name
-    description: The slot to specify the label, name or title of a thing.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    exact_mappings:
-    - rdfs:label
-    - skos:title
-    - schema:name
+  title:
+    name: title
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:title
-    alias: name
+    alias: title
     owner: ResearchActivity
     domain_of:
-    - DefinedTerm
+    - Catalogue
+    - CatalogueRecord
+    - ConceptScheme
+    - DataService
     - Dataset
+    - DatasetSeries
+    - Distribution
+    - DefinedTerm
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - ActivitySpecification
-    - Attribute
+    - Plan
+    - QualitativeAttribute
     range: string
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   description:
     name: description
-    description: The slot to provide a free-text account of a thing.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:description
     alias: description
     owner: ResearchActivity
     domain_of:
+    - Catalogue
+    - CatalogueRecord
+    - DataService
     - Dataset
+    - DatasetSeries
+    - Distribution
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - ActivitySpecification
-    - Attribute
+    - Plan
+    - QualitativeAttribute
     range: string
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  alternative_id:
-    name: alternative_id
-    description: The slot to specify the unique identifier of an entity that is not
-      considered the canonical identifier in the given context.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the ActivityOfInterest
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
-    slot_uri: dcterms:identifier
-    alias: alternative_id
+    slot_uri: adms:identifier
+    alias: other_identifier
     owner: ResearchActivity
     domain_of:
-    - DefinedTerm
     - Dataset
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - Attribute
-    range: uriorcurie
+    range: Identifier
+    required: false
     multivalued: true
-    inlined: true
     inlined_as_list: true
-  type:
-    name: type
-    description: The slot to specify the type of the ResearchActivity provided as
-      a DefinedTerm.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    rank: 1000
-    slot_uri: rdf:type
-    alias: type
-    owner: ResearchActivity
-    domain_of:
-    - ResearchActivity
-    - EntityOfInterest
-    - Tool
-    - Environment
-    - ActivitySpecification
-    - Attribute
-    range: DefinedTerm
-    recommended: true
-    inlined: true
   evaluated_entity:
     name: evaluated_entity
     description: The slot to specify the entity of interest that was evaluated.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: prov:used
     alias: evaluated_entity
@@ -560,12 +596,23 @@ attributes:
     domain_of:
     - ResearchActivity
     range: EntityOfInterest
-    required: true
+    inlined: true
+  evaluated_activity:
+    name: evaluated_activity
+    description: The slot to specify the activity of interest that was evaluated.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    rank: 1000
+    slot_uri: prov:wasInformedBy
+    alias: evaluated_activity
+    owner: ResearchActivity
+    domain_of:
+    - ResearchActivity
+    range: ActivityOfInterest
     inlined: true
   used_tool:
     name: used_tool
     description: The slot to specify the tool that was used.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: prov:used
     alias: used_tool
@@ -577,33 +624,77 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  used_plan:
-    name: used_plan
-    description: The slot to specify the Method (aka Procedure) that was used in the
-      ResearchActivity.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+  realized_plan:
+    name: realized_plan
+    description: The slot to specify the Method (aka Procedure) that was realized
+      by a ResearchActivity.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: prov:used
-    alias: used_plan
+    alias: realized_plan
     owner: ResearchActivity
     domain_of:
     - ResearchActivity
-    range: ActivitySpecification
+    range: Plan
     recommended: true
   has_part:
     name: has_part
     description: The slot to specify one or more parts of the ResearchActivity that
       are themselves also research activities.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:hasPart
     alias: has_part
     owner: ResearchActivity
     domain_of:
+    - Catalogue
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
-    range: ResearchActivity
+    range: Activity
+    inlined: true
+  occurred_in:
+    name: occurred_in
+    description: The slot to specify the Method (aka Procedure) that was used in the
+      ResearchActivity.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    rank: 1000
+    slot_uri: BFO:0000066
+    alias: occurred_in
+    owner: ResearchActivity
+    domain_of:
+    - ResearchActivity
+    range: Environment
+  type:
+    name: type
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    rank: 1000
+    slot_uri: dcterms:type
+    alias: type
+    owner: ResearchActivity
+    domain_of:
+    - Agent
+    - Dataset
+    - LicenseDocument
+    - ClassifierMixin
+    range: DefinedTerm
+    inlined: true
+  rdf_type:
+    name: rdf_type
+    description: The slot to specify the ontology class that is instantiated by an
+      entity.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    rank: 1000
+    slot_uri: rdf:type
+    alias: rdf_type
+    owner: ResearchActivity
+    domain_of:
+    - ClassifierMixin
+    range: DefinedTerm
+    recommended: true
     inlined: true
 class_uri: prov:Activity
 
@@ -634,7 +725,6 @@ class_uri: prov:Activity
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

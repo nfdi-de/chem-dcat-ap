@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-unit">Slot: unit</h1>
-<p>URI: <a href="http://qudt.org/schema/qudt/applicableUnit">qudt:applicableUnit</a></p>
+<p>URI: <a href="http://qudt.org/schema/qudt/unit">qudt:unit</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -338,8 +338,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
-<td>An attribute that is quantifiable</td>
+<td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>A quantifiable piece of information that is attributed to an entity of intere...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -351,7 +351,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/StroemPhi/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -364,7 +364,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>qudt:applicableUnit</td>
+<td>qudt:unit</td>
 </tr>
 <tr>
 <td>native</td>
@@ -376,13 +376,13 @@
 <details>
 
 <pre><code class="language-yaml">name: unit
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 rank: 1000
-slot_uri: qudt:applicableUnit
+slot_uri: qudt:unit
 alias: unit
-owner: QuantifiableAttribute
+owner: QuantitativeAttribute
 domain_of:
-- QuantifiableAttribute
+- QuantitativeAttribute
 range: DefinedTerm
 bindings:
 - range: QUDTUnitEnum

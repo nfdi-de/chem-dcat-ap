@@ -324,7 +324,7 @@
 
 
 <h1 id="slot-has_part">Slot: has_part</h1>
-<p><em>A transitive, reflexive and antisymmetric relation between a whole and itself or a whole and its part.</em></p>
+<p><em>This slot is described in more detail within the class in which it is used.</em></p>
 <p>URI: <a href="http://purl.org/dc/terms/hasPart">dcterms:hasPart</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -339,8 +339,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../FeatureOfInterest/">FeatureOfInterest</a></td>
-<td>The thing whose property is being estimated or calculated in the course of an...</td>
+<td><a href="../HardwareTool/">HardwareTool</a></td>
+<td>A hardware with a certain function</td>
 <td>no</td>
 </tr>
 <tr>
@@ -349,28 +349,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Observation/">Observation</a></td>
-<td>Act of carrying out an (Observation) Procedure to estimate or calculate a val...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Sensor/">Sensor</a></td>
-<td>Device, agent (including humans), or software (simulation) involved in, or im...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Tool/">Tool</a></td>
-<td>A entity with a certain function used within a scientific activity</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ResearchActivity/">ResearchActivity</a></td>
-<td>An activity (process) that has the objective to produce information about an ...</td>
+<td>A entity with a certain function used within a ResearchActivity</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -379,19 +359,44 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../NFDICatalog/">NFDICatalog</a></td>
+<td>A curated collection of metadata about data resources</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Catalogue/">Catalogue</a></td>
+<td>See [DCAT-AP specs:Catalogue](https://semiceu</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ChemicalSample/">ChemicalSample</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
+<td>Something (not an activity or process) that is being evaluated in a ResearchA...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td>An experimental procedure with the aim of producing a portion of a given comp...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../HardwareTool/">HardwareTool</a></td>
-<td>A hardware with a certain function</td>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
-<td>Something that is being evaluated in a scientific process</td>
+<td><a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
+<td>An activity or process that is being evaluated in a ResearchActivity</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+<td>An activity (process) that has the objective to produce information about an ...</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -402,7 +407,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/StroemPhi/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -427,15 +432,17 @@
 <details>
 
 <pre><code class="language-yaml">name: has_part
-description: A transitive, reflexive and antisymmetric relation between a whole and
-  itself or a whole and its part.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+description: This slot is described in more detail within the class in which it is
+  used.
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 rank: 1000
 slot_uri: dcterms:hasPart
 alias: has_part
 domain_of:
+- Catalogue
 - ResearchActivity
 - EntityOfInterest
+- ActivityOfInterest
 - Tool
 range: string
 

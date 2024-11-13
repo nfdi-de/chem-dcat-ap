@@ -152,6 +152,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+    Usages
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
     Identifier and Mapping Information
   </a>
@@ -205,21 +210,28 @@
 <div class="mermaid"> classDiagram
     class SMILES
     click SMILES href "../SMILES"
-      Attribute &lt;|-- SMILES
-        click Attribute href "../Attribute"
-
-      SMILES : alternative_id
+      QualitativeAttribute &lt;|-- SMILES
+        click QualitativeAttribute href "../QualitativeAttribute"
 
       SMILES : description
 
-      SMILES : name
+      SMILES : rdf_type
+
+
+
+
+    SMILES --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+    click DefinedTerm href "../DefinedTerm"
+
+
+      SMILES : title
 
       SMILES : type
 
 
 
 
-    SMILES --&gt; "0..1 _recommended_" DefinedTerm : type
+    SMILES --&gt; "0..1" DefinedTerm : type
     click DefinedTerm href "../DefinedTerm"
 
 
@@ -229,7 +241,7 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Attribute/">Attribute</a><ul>
+<li><a href="../QualitativeAttribute/">QualitativeAttribute</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><strong>SMILES</strong></li>
 </ul>
 </li>
@@ -246,41 +258,60 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The slot to specify the label, name or title of a thing</td>
-<td><a href="../Attribute/">Attribute</a></td>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td><a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The slot to provide a free-text account of a thing</td>
-<td><a href="../Attribute/">Attribute</a></td>
-</tr>
-<tr>
-<td><a href="../alternative_id/">alternative_id</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The slot to specify the unique identifier of an entity that is not considered...</td>
-<td><a href="../Attribute/">Attribute</a></td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
-<td>The slot to specify the type of Attribute provided as a DefinedTerm</td>
-<td><a href="../Attribute/">Attribute</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td><a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 </tr>
 <tr>
 <td><a href="../value/">value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A slot to provide the value of an attribute</td>
-<td><a href="../Attribute/">Attribute</a></td>
+<td>A slot to provide the literal value of an attribute</td>
+<td><a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>0..1 <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
+</tr>
+<tr>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>The slot to specify the ontology class that is instantiated by an entity</td>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
+<td><a href="../smiles/">smiles</a></td>
+<td>range</td>
+<td><a href="./">SMILES</a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/StroemPhi/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -308,8 +339,8 @@
 <pre><code class="language-yaml">name: SMILES
 description: A structure descriptor that denotes a molecular structure as a graph
   and conforms to the SMILES format specification.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-is_a: Attribute
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+is_a: QualitativeAttribute
 class_uri: CHEMINF:000018
 
 </code></pre>
@@ -319,104 +350,101 @@ class_uri: CHEMINF:000018
 <pre><code class="language-yaml">name: SMILES
 description: A structure descriptor that denotes a molecular structure as a graph
   and conforms to the SMILES format specification.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-is_a: Attribute
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+is_a: QualitativeAttribute
 attributes:
-  name:
-    name: name
-    description: The slot to specify the label, name or title of a thing.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    exact_mappings:
-    - rdfs:label
-    - skos:title
-    - schema:name
+  title:
+    name: title
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:title
-    alias: name
+    alias: title
     owner: SMILES
     domain_of:
-    - DefinedTerm
+    - Catalogue
+    - CatalogueRecord
+    - ConceptScheme
+    - DataService
     - Dataset
+    - DatasetSeries
+    - Distribution
+    - DefinedTerm
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - ActivitySpecification
-    - Attribute
+    - Plan
+    - QualitativeAttribute
     range: string
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   description:
     name: description
-    description: The slot to provide a free-text account of a thing.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:description
     alias: description
     owner: SMILES
     domain_of:
+    - Catalogue
+    - CatalogueRecord
+    - DataService
     - Dataset
+    - DatasetSeries
+    - Distribution
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - ActivitySpecification
-    - Attribute
+    - Plan
+    - QualitativeAttribute
     range: string
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  alternative_id:
-    name: alternative_id
-    description: The slot to specify the unique identifier of an entity that is not
-      considered the canonical identifier in the given context.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    rank: 1000
-    slot_uri: dcterms:identifier
-    alias: alternative_id
-    owner: SMILES
-    domain_of:
-    - DefinedTerm
-    - Dataset
-    - ResearchActivity
-    - EntityOfInterest
-    - Tool
-    - Environment
-    - Attribute
-    range: uriorcurie
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  type:
-    name: type
-    description: The slot to specify the type of Attribute provided as a DefinedTerm.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    rank: 1000
-    slot_uri: rdf:type
-    alias: type
-    owner: SMILES
-    domain_of:
-    - ResearchActivity
-    - EntityOfInterest
-    - Tool
-    - Environment
-    - ActivitySpecification
-    - Attribute
-    range: DefinedTerm
-    recommended: true
-    inlined: true
   value:
     name: value
-    description: A slot to provide the value of an attribute.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    description: A slot to provide the literal value of an attribute.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: prov:value
     alias: value
     owner: SMILES
     domain_of:
-    - Attribute
+    - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
+  type:
+    name: type
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    rank: 1000
+    slot_uri: dcterms:type
+    alias: type
+    owner: SMILES
+    domain_of:
+    - Agent
+    - Dataset
+    - LicenseDocument
+    - ClassifierMixin
+    range: DefinedTerm
+    inlined: true
+  rdf_type:
+    name: rdf_type
+    description: The slot to specify the ontology class that is instantiated by an
+      entity.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    rank: 1000
+    slot_uri: rdf:type
+    alias: rdf_type
+    owner: SMILES
+    domain_of:
+    - ClassifierMixin
+    range: DefinedTerm
+    recommended: true
+    inlined: true
 class_uri: CHEMINF:000018
 
 </code></pre>
@@ -446,7 +474,6 @@ class_uri: CHEMINF:000018
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

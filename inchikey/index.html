@@ -256,13 +256,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    Inheritance
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     Applicable Classes
   </a>
@@ -332,14 +325,9 @@
 
 <h1 id="slot-inchikey">Slot: inchikey</h1>
 <p><em>The slot to provide the InChiKey of a chemical substance.</em></p>
-<p>URI: <a href="http://semanticscience.org/resource/CHEMINF_000143">CHEMINF:000143</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../has_attribute/">has_attribute</a><ul>
-<li><strong>inchikey</strong></li>
-</ul>
-</li>
-</ul>
+<p>URI: <a href="https://w3id.org/StroemPhi/dcat_4C_ap/inchikey">nfdi4c:inchikey</a></p>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -351,25 +339,20 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A portion of matter of constant composition, composed of molecular entities o...</td>
+<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
+<td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, ...</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Attribute/">Attribute</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
+<li>Range: <a href="../InChIKey/">InChIKey</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/StroemPhi/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -382,7 +365,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>CHEMINF:000143</td>
+<td>nfdi4c:inchikey</td>
 </tr>
 <tr>
 <td>native</td>
@@ -395,18 +378,14 @@
 
 <pre><code class="language-yaml">name: inchikey
 description: The slot to provide the InChiKey of a chemical substance.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 rank: 1000
-is_a: has_attribute
-slot_uri: CHEMINF:000143
 alias: inchikey
-owner: ChemicalSubstance
+owner: ChemicalEntity
 domain_of:
-- ChemicalSubstance
-range: Attribute
-multivalued: true
+- ChemicalEntity
+range: InChIKey
 inlined: true
-inlined_as_list: true
 
 </code></pre>
 

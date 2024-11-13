@@ -208,36 +208,52 @@
       Environment &lt;|-- Laboratory
         click Environment href "../Environment"
 
-      Laboratory : alternative_id
-
       Laboratory : description
 
-      Laboratory : has_attribute
+      Laboratory : has_qualitative_attribute
 
 
 
 
-    Laboratory --&gt; "*" Attribute : has_attribute
-    click Attribute href "../Attribute"
+    Laboratory --&gt; "*" QualitativeAttribute : has_qualitative_attribute
+    click QualitativeAttribute href "../QualitativeAttribute"
 
 
-      Laboratory : has_quantifiable_attribute
+      Laboratory : has_quantitative_attribute
 
 
 
 
-    Laboratory --&gt; "*" QuantifiableAttribute : has_quantifiable_attribute
-    click QuantifiableAttribute href "../QuantifiableAttribute"
+    Laboratory --&gt; "*" QuantitativeAttribute : has_quantitative_attribute
+    click QuantitativeAttribute href "../QuantitativeAttribute"
 
 
-      Laboratory : name
+      Laboratory : other_identifier
+
+
+
+
+    Laboratory --&gt; "*" Identifier : other_identifier
+    click Identifier href "../Identifier"
+
+
+      Laboratory : rdf_type
+
+
+
+
+    Laboratory --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+    click DefinedTerm href "../DefinedTerm"
+
+
+      Laboratory : title
 
       Laboratory : type
 
 
 
 
-    Laboratory --&gt; "0..1 _recommended_" DefinedTerm : type
+    Laboratory --&gt; "0..1" DefinedTerm : type
     click DefinedTerm href "../DefinedTerm"
 
 
@@ -245,7 +261,7 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Environment/">Environment</a><ul>
+<li><a href="../Environment/">Environment</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><strong>Laboratory</strong></li>
 </ul>
 </li>
@@ -262,47 +278,53 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The slot to specify the label, name or title of a thing</td>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
 <td><a href="../Environment/">Environment</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The slot to provide a free-text account of a thing</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
 <td><a href="../Environment/">Environment</a></td>
 </tr>
 <tr>
-<td><a href="../alternative_id/">alternative_id</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The slot to specify the unique identifier of an entity that is not considered...</td>
+<td><a href="../other_identifier/">other_identifier</a></td>
+<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>A secondary identifier of the Environment</td>
+<td><a href="../Environment/">Environment</a></td>
+</tr>
+<tr>
+<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
+<td>* <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
+<td><a href="../Environment/">Environment</a></td>
+</tr>
+<tr>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>* <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>The slot to relate a quantitative  attribute to an entity of interest, tool o...</td>
 <td><a href="../Environment/">Environment</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
+<td>0..1 <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
+</tr>
+<tr>
+<td><a href="../rdf_type/">rdf_type</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
-<td>The type of Environment provided as a DefinedTerm</td>
-<td><a href="../Environment/">Environment</a></td>
-</tr>
-<tr>
-<td><a href="../has_attribute/">has_attribute</a></td>
-<td>* <br/> <a href="../Attribute/">Attribute</a></td>
-<td>The slot to relate an attribute to an entity of interest, tool or environment</td>
-<td><a href="../Environment/">Environment</a></td>
-</tr>
-<tr>
-<td><a href="../has_quantifiable_attribute/">has_quantifiable_attribute</a></td>
-<td>* <br/> <a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
-<td>The slot to relate a quantifiable attribute to an entity of interest, tool or...</td>
-<td><a href="../Environment/">Environment</a></td>
+<td>The slot to specify the ontology class that is instantiated by an entity</td>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/StroemPhi/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -330,7 +352,7 @@
 <pre><code class="language-yaml">name: Laboratory
 description: A facility that provides controlled conditions in which scientific or
   technological research, experiments, and measurement may be performed.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 is_a: Environment
 class_uri: prov:Entity
 
@@ -341,131 +363,142 @@ class_uri: prov:Entity
 <pre><code class="language-yaml">name: Laboratory
 description: A facility that provides controlled conditions in which scientific or
   technological research, experiments, and measurement may be performed.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 is_a: Environment
 attributes:
-  name:
-    name: name
-    description: The slot to specify the label, name or title of a thing.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    exact_mappings:
-    - rdfs:label
-    - skos:title
-    - schema:name
+  title:
+    name: title
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:title
-    alias: name
+    alias: title
     owner: Laboratory
     domain_of:
-    - DefinedTerm
+    - Catalogue
+    - CatalogueRecord
+    - ConceptScheme
+    - DataService
     - Dataset
+    - DatasetSeries
+    - Distribution
+    - DefinedTerm
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - ActivitySpecification
-    - Attribute
+    - Plan
+    - QualitativeAttribute
     range: string
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   description:
     name: description
-    description: The slot to provide a free-text account of a thing.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:description
     alias: description
     owner: Laboratory
     domain_of:
+    - Catalogue
+    - CatalogueRecord
+    - DataService
+    - Dataset
+    - DatasetSeries
+    - Distribution
+    - ResearchActivity
+    - EntityOfInterest
+    - ActivityOfInterest
+    - Tool
+    - Environment
+    - Plan
+    - QualitativeAttribute
+    range: string
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the Environment
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    rank: 1000
+    slot_uri: adms:identifier
+    alias: other_identifier
+    owner: Laboratory
+    domain_of:
     - Dataset
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - ActivitySpecification
-    - Attribute
-    range: string
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  has_qualitative_attribute:
+    name: has_qualitative_attribute
+    description: The slot to relate a qualitative attribute to an entity of interest,
+      tool or environment.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    rank: 1000
+    alias: has_qualitative_attribute
+    owner: Laboratory
+    domain_of:
+    - EntityOfInterest
+    - ActivityOfInterest
+    - Tool
+    - Environment
+    range: QualitativeAttribute
     multivalued: true
     inlined: true
     inlined_as_list: true
-  alternative_id:
-    name: alternative_id
-    description: The slot to specify the unique identifier of an entity that is not
-      considered the canonical identifier in the given context.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+  has_quantitative_attribute:
+    name: has_quantitative_attribute
+    description: The slot to relate a quantitative  attribute to an entity of interest,
+      tool or environment.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
-    slot_uri: dcterms:identifier
-    alias: alternative_id
+    alias: has_quantitative_attribute
     owner: Laboratory
     domain_of:
-    - DefinedTerm
-    - Dataset
-    - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - Attribute
-    range: uriorcurie
+    range: QuantitativeAttribute
     multivalued: true
     inlined: true
     inlined_as_list: true
   type:
     name: type
-    description: The type of Environment provided as a DefinedTerm.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
-    slot_uri: rdf:type
+    slot_uri: dcterms:type
     alias: type
     owner: Laboratory
     domain_of:
-    - ResearchActivity
-    - EntityOfInterest
-    - Tool
-    - Environment
-    - ActivitySpecification
-    - Attribute
+    - Agent
+    - Dataset
+    - LicenseDocument
+    - ClassifierMixin
+    range: DefinedTerm
+    inlined: true
+  rdf_type:
+    name: rdf_type
+    description: The slot to specify the ontology class that is instantiated by an
+      entity.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    rank: 1000
+    slot_uri: rdf:type
+    alias: rdf_type
+    owner: Laboratory
+    domain_of:
+    - ClassifierMixin
     range: DefinedTerm
     recommended: true
     inlined: true
-  has_attribute:
-    name: has_attribute
-    description: The slot to relate an attribute to an entity of interest, tool or
-      environment.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    exact_mappings:
-    - RO:0000053
-    - SIO:000223
-    rank: 1000
-    slot_uri: dcterms:relation
-    alias: has_attribute
-    owner: Laboratory
-    domain_of:
-    - EntityOfInterest
-    - Tool
-    - Environment
-    range: Attribute
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  has_quantifiable_attribute:
-    name: has_quantifiable_attribute
-    description: The slot to relate a quantifiable attribute to an entity of interest,
-      tool or environment.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    rank: 1000
-    is_a: has_attribute
-    slot_uri: dcterms:relation
-    alias: has_quantifiable_attribute
-    owner: Laboratory
-    domain_of:
-    - EntityOfInterest
-    - Tool
-    - Environment
-    range: QuantifiableAttribute
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 class_uri: prov:Entity
 
 </code></pre>
@@ -495,7 +528,6 @@ class_uri: prov:Entity
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

@@ -205,30 +205,22 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-tool">Class: Tool</h1>
-<p><em>A entity with a certain function used within a scientific activity.</em></p>
+<p><em>A entity with a certain function used within a ResearchActivity.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a></p>
 <div class="mermaid"> classDiagram
     class Tool
     click Tool href "../Tool"
+      ClassifierMixin &lt;|-- Tool
+        click ClassifierMixin href "../ClassifierMixin"
+
+
       Tool &lt;|-- HardwareTool
         click HardwareTool href "../HardwareTool"
       Tool &lt;|-- SoftwareTool
         click SoftwareTool href "../SoftwareTool"
-      Tool &lt;|-- Sensor
-        click Sensor href "../Sensor"
 
-      Tool : alternative_id
 
       Tool : description
-
-      Tool : has_attribute
-
-
-
-
-    Tool --&gt; "*" Attribute : has_attribute
-    click Attribute href "../Attribute"
-
 
       Tool : has_part
 
@@ -239,23 +231,50 @@
     click Tool href "../Tool"
 
 
-      Tool : has_quantifiable_attribute
+      Tool : has_qualitative_attribute
 
 
 
 
-    Tool --&gt; "*" QuantifiableAttribute : has_quantifiable_attribute
-    click QuantifiableAttribute href "../QuantifiableAttribute"
+    Tool --&gt; "*" QualitativeAttribute : has_qualitative_attribute
+    click QualitativeAttribute href "../QualitativeAttribute"
 
 
-      Tool : name
+      Tool : has_quantitative_attribute
+
+
+
+
+    Tool --&gt; "*" QuantitativeAttribute : has_quantitative_attribute
+    click QuantitativeAttribute href "../QuantitativeAttribute"
+
+
+      Tool : other_identifier
+
+
+
+
+    Tool --&gt; "*" Identifier : other_identifier
+    click Identifier href "../Identifier"
+
+
+      Tool : rdf_type
+
+
+
+
+    Tool --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+    click DefinedTerm href "../DefinedTerm"
+
+
+      Tool : title
 
       Tool : type
 
 
 
 
-    Tool --&gt; "0..1 _recommended_" DefinedTerm : type
+    Tool --&gt; "0..1" DefinedTerm : type
     click DefinedTerm href "../DefinedTerm"
 
 
@@ -263,10 +282,9 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>Tool</strong><ul>
+<li><strong>Tool</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><a href="../HardwareTool/">HardwareTool</a></li>
 <li><a href="../SoftwareTool/">SoftwareTool</a></li>
-<li><a href="../Sensor/">Sensor</a></li>
 </ul>
 </li>
 </ul>
@@ -282,27 +300,33 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The slot to specify the label, name or title of a thing</td>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The slot to provide a free-text account of a thing</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../alternative_id/">alternative_id</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The slot to specify the unique identifier of an entity that is not considered...</td>
+<td><a href="../other_identifier/">other_identifier</a></td>
+<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>A secondary identifier of the ActivityOfInterest</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../type/">type</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
-<td>The type of the Tool provided as a DefinedTerm</td>
+<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
+<td>* <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>* <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>The slot to relate a quantitative  attribute to an entity of interest, tool o...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -312,16 +336,16 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../has_attribute/">has_attribute</a></td>
-<td>* <br/> <a href="../Attribute/">Attribute</a></td>
-<td>The slot to relate an attribute to an entity of interest, tool or environment</td>
-<td>direct</td>
+<td><a href="../type/">type</a></td>
+<td>0..1 <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
 </tr>
 <tr>
-<td><a href="../has_quantifiable_attribute/">has_quantifiable_attribute</a></td>
-<td>* <br/> <a href="../QuantifiableAttribute/">QuantifiableAttribute</a></td>
-<td>The slot to relate a quantifiable attribute to an entity of interest, tool or...</td>
-<td>direct</td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>The slot to specify the ontology class that is instantiated by an entity</td>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
 </tr>
 </tbody>
 </table>
@@ -366,24 +390,12 @@
 <td>range</td>
 <td><a href="./">Tool</a></td>
 </tr>
-<tr>
-<td><a href="../Observation/">Observation</a></td>
-<td><a href="../used_tool/">used_tool</a></td>
-<td>range</td>
-<td><a href="./">Tool</a></td>
-</tr>
-<tr>
-<td><a href="../Sensor/">Sensor</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">Tool</a></td>
-</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/StroemPhi/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -413,30 +425,34 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Tool
-description: A entity with a certain function used within a scientific activity.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+description: A entity with a certain function used within a ResearchActivity.
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 broad_mappings:
 - prov:Entity
+mixins:
+- ClassifierMixin
 slots:
-- name
+- title
 - description
-- alternative_id
-- type
+- other_identifier
+- has_qualitative_attribute
+- has_quantitative_attribute
 - has_part
-- has_attribute
-- has_quantifiable_attribute
 slot_usage:
-  type:
-    name: type
-    description: The type of the Tool provided as a DefinedTerm.
-    range: DefinedTerm
-    inlined: true
   has_part:
     name: has_part
     description: The slot to specify parts of a tool.
     range: Tool
     multivalued: true
     inlined: true
+    inlined_as_list: true
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the ActivityOfInterest
+    slot_uri: adms:identifier
+    range: Identifier
+    required: false
+    multivalued: true
     inlined_as_list: true
 class_uri: prov:Entity
 
@@ -445,16 +461,13 @@ class_uri: prov:Entity
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Tool
-description: A entity with a certain function used within a scientific activity.
-from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+description: A entity with a certain function used within a ResearchActivity.
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 broad_mappings:
 - prov:Entity
+mixins:
+- ClassifierMixin
 slot_usage:
-  type:
-    name: type
-    description: The type of the Tool provided as a DefinedTerm.
-    range: DefinedTerm
-    inlined: true
   has_part:
     name: has_part
     description: The slot to specify parts of a tool.
@@ -462,145 +475,166 @@ slot_usage:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the ActivityOfInterest
+    slot_uri: adms:identifier
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
 attributes:
-  name:
-    name: name
-    description: The slot to specify the label, name or title of a thing.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    exact_mappings:
-    - rdfs:label
-    - skos:title
-    - schema:name
+  title:
+    name: title
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:title
-    alias: name
+    alias: title
     owner: Tool
     domain_of:
-    - DefinedTerm
+    - Catalogue
+    - CatalogueRecord
+    - ConceptScheme
+    - DataService
     - Dataset
+    - DatasetSeries
+    - Distribution
+    - DefinedTerm
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - ActivitySpecification
-    - Attribute
+    - Plan
+    - QualitativeAttribute
     range: string
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   description:
     name: description
-    description: The slot to provide a free-text account of a thing.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:description
     alias: description
     owner: Tool
     domain_of:
+    - Catalogue
+    - CatalogueRecord
+    - DataService
     - Dataset
+    - DatasetSeries
+    - Distribution
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - ActivitySpecification
-    - Attribute
+    - Plan
+    - QualitativeAttribute
     range: string
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  alternative_id:
-    name: alternative_id
-    description: The slot to specify the unique identifier of an entity that is not
-      considered the canonical identifier in the given context.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the ActivityOfInterest
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
-    slot_uri: dcterms:identifier
-    alias: alternative_id
+    slot_uri: adms:identifier
+    alias: other_identifier
     owner: Tool
     domain_of:
-    - DefinedTerm
     - Dataset
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - Attribute
-    range: uriorcurie
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  has_qualitative_attribute:
+    name: has_qualitative_attribute
+    description: The slot to relate a qualitative attribute to an entity of interest,
+      tool or environment.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    rank: 1000
+    alias: has_qualitative_attribute
+    owner: Tool
+    domain_of:
+    - EntityOfInterest
+    - ActivityOfInterest
+    - Tool
+    - Environment
+    range: QualitativeAttribute
     multivalued: true
     inlined: true
     inlined_as_list: true
-  type:
-    name: type
-    description: The type of the Tool provided as a DefinedTerm.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+  has_quantitative_attribute:
+    name: has_quantitative_attribute
+    description: The slot to relate a quantitative  attribute to an entity of interest,
+      tool or environment.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
-    slot_uri: rdf:type
-    alias: type
+    alias: has_quantitative_attribute
     owner: Tool
     domain_of:
-    - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     - Environment
-    - ActivitySpecification
-    - Attribute
-    range: DefinedTerm
-    recommended: true
+    range: QuantitativeAttribute
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   has_part:
     name: has_part
     description: The slot to specify parts of a tool.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: dcterms:hasPart
     alias: has_part
     owner: Tool
     domain_of:
+    - Catalogue
     - ResearchActivity
     - EntityOfInterest
+    - ActivityOfInterest
     - Tool
     range: Tool
     multivalued: true
     inlined: true
     inlined_as_list: true
-  has_attribute:
-    name: has_attribute
-    description: The slot to relate an attribute to an entity of interest, tool or
-      environment.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
-    exact_mappings:
-    - RO:0000053
-    - SIO:000223
+  type:
+    name: type
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
-    slot_uri: dcterms:relation
-    alias: has_attribute
+    slot_uri: dcterms:type
+    alias: type
     owner: Tool
     domain_of:
-    - EntityOfInterest
-    - Tool
-    - Environment
-    range: Attribute
-    multivalued: true
+    - Agent
+    - Dataset
+    - LicenseDocument
+    - ClassifierMixin
+    range: DefinedTerm
     inlined: true
-    inlined_as_list: true
-  has_quantifiable_attribute:
-    name: has_quantifiable_attribute
-    description: The slot to relate a quantifiable attribute to an entity of interest,
-      tool or environment.
-    from_schema: https://w3id.org/StroemPhi/dcat-4C-ap
+  rdf_type:
+    name: rdf_type
+    description: The slot to specify the ontology class that is instantiated by an
+      entity.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
-    is_a: has_attribute
-    slot_uri: dcterms:relation
-    alias: has_quantifiable_attribute
+    slot_uri: rdf:type
+    alias: rdf_type
     owner: Tool
     domain_of:
-    - EntityOfInterest
-    - Tool
-    - Environment
-    range: QuantifiableAttribute
-    multivalued: true
+    - ClassifierMixin
+    range: DefinedTerm
+    recommended: true
     inlined: true
-    inlined_as_list: true
 class_uri: prov:Entity
 
 </code></pre>
@@ -630,7 +664,6 @@ class_uri: prov:Entity
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>
