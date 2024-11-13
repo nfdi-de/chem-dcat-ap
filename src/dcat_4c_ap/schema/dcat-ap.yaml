@@ -548,12 +548,14 @@ slots:
 classes:
   Activity:
     name: Activity
-    description: 'retrievable from: [prov:Activity](http://www.w3.org/ns/prov#Activity)'
+    description: See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
+    abstract: false
     class_uri: prov:Activity
   Agent:
     name: Agent
-    description: 'retrievable from: [foaf:Agent](http://xmlns.com/foaf/0.1/Agent)'
+    description: See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)
     is_a: SupportiveEntity
+    abstract: false
     slots:
     - name
     - type
@@ -578,12 +580,14 @@ classes:
     class_uri: foaf:Agent
   Attribution:
     name: Attribution
-    description: 'retrievable from: [prov:Attribution](http://www.w3.org/ns/prov#Attribution)'
+    description: See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: prov:Attribution
-  Catalog:
-    name: Catalog
-    description: 'retrievable from: [dcat:Catalog](http://www.w3.org/ns/dcat#Catalog)'
+  Catalogue:
+    name: Catalogue
+    description: See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
+    abstract: false
     slots:
     - applicable_legislation
     - catalogue
@@ -619,7 +623,7 @@ classes:
         description: A catalogue whose contents are of interest in the context of
           this catalogue.
         slot_uri: dcat:catalog
-        range: Catalog
+        range: Catalogue
         required: false
         multivalued: true
         inlined_as_list: true
@@ -659,7 +663,7 @@ classes:
         name: has_part
         description: A related Catalogue that is part of the described Catalogue.
         slot_uri: dcterms:hasPart
-        range: Catalog
+        range: Catalogue
         required: false
         multivalued: true
         inlined_as_list: true
@@ -669,7 +673,6 @@ classes:
         slot_uri: foaf:homepage
         range: Document
         required: false
-        recommended: true
         multivalued: false
         inlined_as_list: true
       language:
@@ -679,7 +682,6 @@ classes:
         slot_uri: dcterms:language
         range: LinguisticSystem
         required: false
-        recommended: true
         multivalued: true
         inlined_as_list: true
       licence:
@@ -696,7 +698,6 @@ classes:
         slot_uri: dcterms:modified
         range: string
         required: false
-        recommended: true
         multivalued: false
         inlined_as_list: false
       publisher:
@@ -712,7 +713,7 @@ classes:
         name: record
         description: A Catalogue Record that is part of the Catalogue.
         slot_uri: dcat:record
-        range: CatalogRecord
+        range: CatalogueRecord
         required: false
         multivalued: true
         inlined_as_list: true
@@ -722,7 +723,6 @@ classes:
         slot_uri: dcterms:issued
         range: string
         required: false
-        recommended: true
         multivalued: false
         inlined_as_list: false
       rights:
@@ -756,7 +756,6 @@ classes:
         slot_uri: dcat:themeTaxonomy
         range: ConceptScheme
         required: false
-        recommended: true
         multivalued: true
         inlined_as_list: true
       title:
@@ -768,10 +767,10 @@ classes:
         multivalued: true
         inlined_as_list: true
     class_uri: dcat:Catalog
-  CatalogRecord:
-    name: CatalogRecord
-    description: 'retrievable from: [dcat:CatalogRecord](http://www.w3.org/ns/dcat#CatalogRecord)'
-    is_a: SupportiveEntity
+  CatalogueRecord:
+    name: CatalogueRecord
+    description: See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
+    abstract: false
     slots:
     - application_profile
     - change_type
@@ -790,7 +789,6 @@ classes:
         slot_uri: dcterms:conformsTo
         range: Standard
         required: false
-        recommended: true
         multivalued: true
         inlined_as_list: true
       change_type:
@@ -800,7 +798,6 @@ classes:
         slot_uri: adms:status
         range: Concept
         required: false
-        recommended: true
         multivalued: false
         inlined_as_list: true
       description:
@@ -828,7 +825,6 @@ classes:
         slot_uri: dcterms:issued
         range: string
         required: false
-        recommended: true
         multivalued: false
         inlined_as_list: true
       modification_date:
@@ -854,7 +850,7 @@ classes:
         description: The original metadata that was used in creating metadata for
           the Dataset, Data Service or Dataset Series.
         slot_uri: dcterms:source
-        range: CatalogRecord
+        range: CatalogueRecord
         required: false
         multivalued: false
         inlined_as_list: true
@@ -869,12 +865,14 @@ classes:
     class_uri: dcat:CatalogRecord
   CataloguedResource:
     name: CataloguedResource
-    description: 'retrievable from: [dcat:Resource](http://www.w3.org/ns/dcat#Resource)'
+    description: See [DCAT-AP specs:CataloguedResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CataloguedResource)
+    abstract: true
     class_uri: dcat:Resource
   Checksum:
     name: Checksum
-    description: 'retrievable from: [spdx:Checksum](http://spdx.org/rdf/terms#Checksum)'
+    description: See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
     is_a: SupportiveEntity
+    abstract: false
     slots:
     - algorithm
     - checksum_value
@@ -899,13 +897,15 @@ classes:
     class_uri: spdx:Checksum
   ChecksumAlgorithm:
     name: ChecksumAlgorithm
-    description: 'retrievable from: [spdx:ChecksumAlgorithm](http://spdx.org/rdf/terms#ChecksumAlgorithm)'
+    description: See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: spdx:ChecksumAlgorithm
   Concept:
     name: Concept
-    description: 'retrievable from: [skos:Concept](http://www.w3.org/2004/02/skos/core#Concept)'
+    description: See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)
     is_a: SupportiveEntity
+    abstract: false
     slots:
     - preferred_label
     slot_usage:
@@ -920,8 +920,9 @@ classes:
     class_uri: skos:Concept
   ConceptScheme:
     name: ConceptScheme
-    description: 'retrievable from: [skos:ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme)'
+    description: See [DCAT-AP specs:ConceptScheme](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme)
     is_a: SupportiveEntity
+    abstract: false
     slots:
     - title
     slot_usage:
@@ -936,7 +937,8 @@ classes:
     class_uri: skos:ConceptScheme
   DataService:
     name: DataService
-    description: 'retrievable from: [dcat:DataService](http://www.w3.org/ns/dcat#DataService)'
+    description: See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)
+    abstract: false
     slots:
     - access_rights
     - applicable_legislation
@@ -1099,7 +1101,8 @@ classes:
     class_uri: dcat:DataService
   Dataset:
     name: Dataset
-    description: 'retrievable from: [dcat:Dataset](http://www.w3.org/ns/dcat#Dataset)'
+    description: See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
+    abstract: false
     slots:
     - access_rights
     - applicable_legislation
@@ -1442,7 +1445,8 @@ classes:
     class_uri: dcat:Dataset
   DatasetSeries:
     name: DatasetSeries
-    description: 'retrievable from: [dcat:DatasetSeries](http://www.w3.org/ns/dcat#DatasetSeries)'
+    description: See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)
+    abstract: false
     slots:
     - applicable_legislation
     - contact_point
@@ -1543,7 +1547,8 @@ classes:
     class_uri: dcat:DatasetSeries
   Distribution:
     name: Distribution
-    description: 'retrievable from: [dcat:Distribution](http://www.w3.org/ns/dcat#Distribution)'
+    description: See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
+    abstract: false
     slots:
     - access_URL
     - access_service
@@ -1778,23 +1783,27 @@ classes:
     class_uri: dcat:Distribution
   Document:
     name: Document
-    description: 'retrievable from: [foaf:Document](http://xmlns.com/foaf/0.1/Document)'
+    description: See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: foaf:Document
   Frequency:
     name: Frequency
-    description: 'retrievable from: [dcterms:Frequency](http://purl.org/dc/terms/Frequency)'
+    description: See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: dcterms:Frequency
   Geometry:
     name: Geometry
-    description: 'retrievable from: [locn:Geometry](http://www.w3.org/ns/locn#Geometry)'
+    description: See [DCAT-AP specs:Geometry](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: locn:Geometry
   Identifier:
     name: Identifier
-    description: 'retrievable from: [adms:Identifier](http://www.w3.org/ns/adms#Identifier)'
+    description: See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)
     is_a: SupportiveEntity
+    abstract: false
     slots:
     - notation
     slot_usage:
@@ -1810,18 +1819,21 @@ classes:
     class_uri: adms:Identifier
   Kind:
     name: Kind
-    description: 'retrievable from: [vcard:Kind](http://www.w3.org/2006/vcard/ns#Kind)'
+    description: See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: vcard:Kind
   LegalResource:
     name: LegalResource
-    description: 'retrievable from: [eli:LegalResource](http://data.europa.eu/eli/ontology#LegalResource)'
+    description: See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: eli:LegalResource
   LicenseDocument:
     name: LicenseDocument
-    description: 'retrievable from: [dcterms:LicenseDocument](http://purl.org/dc/terms/LicenseDocument)'
+    description: See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)
     is_a: SupportiveEntity
+    abstract: false
     slots:
     - type
     slot_usage:
@@ -1838,13 +1850,15 @@ classes:
     class_uri: dcterms:LicenseDocument
   LinguisticSystem:
     name: LinguisticSystem
-    description: 'retrievable from: [dcterms:LinguisticSystem](http://purl.org/dc/terms/LinguisticSystem)'
+    description: See [DCAT-AP specs:LinguisticSystem](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: dcterms:LinguisticSystem
   Location:
     name: Location
-    description: 'retrievable from: [dcterms:Location](http://purl.org/dc/terms/Location)'
+    description: See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)
     is_a: SupportiveEntity
+    abstract: false
     slots:
     - bbox
     - centroid
@@ -1879,18 +1893,21 @@ classes:
     class_uri: dcterms:Location
   MediaType:
     name: MediaType
-    description: 'retrievable from: [dcterms:MediaType](http://purl.org/dc/terms/MediaType)'
+    description: See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: dcterms:MediaType
   MediaTypeOrExtent:
     name: MediaTypeOrExtent
-    description: 'retrievable from: [dcterms:MediaTypeOrExtent](http://purl.org/dc/terms/MediaTypeOrExtent)'
+    description: See [DCAT-AP specs:MediaTypeOrExtent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaTypeOrExtent)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: dcterms:MediaTypeOrExtent
   PeriodOfTime:
     name: PeriodOfTime
-    description: 'retrievable from: [dcterms:PeriodOfTime](http://purl.org/dc/terms/PeriodOfTime)'
+    description: See [DCAT-AP specs:PeriodOfTime](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime)
     is_a: SupportiveEntity
+    abstract: false
     slots:
     - beginning
     - end
@@ -1934,18 +1951,21 @@ classes:
     class_uri: dcterms:PeriodOfTime
   Policy:
     name: Policy
-    description: 'retrievable from: [odrl:Policy](http://www.w3.org/ns/odrl/2/Policy)'
+    description: See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: odrl:Policy
   ProvenanceStatement:
     name: ProvenanceStatement
-    description: 'retrievable from: [dcterms:ProvenanceStatement](http://purl.org/dc/terms/ProvenanceStatement)'
+    description: See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: dcterms:ProvenanceStatement
   Relationship:
     name: Relationship
-    description: 'retrievable from: [dcat:Relationship](http://www.w3.org/ns/dcat#Relationship)'
+    description: See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)
     is_a: SupportiveEntity
+    abstract: false
     slots:
     - had_role
     - relation
@@ -1970,23 +1990,27 @@ classes:
     class_uri: dcat:Relationship
   Resource:
     name: Resource
-    description: 'retrievable from: [rdfs:Resource](http://www.w3.org/2000/01/rdf-schema#Resource)'
+    description: See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: rdfs:Resource
   RightsStatement:
     name: RightsStatement
-    description: 'retrievable from: [dcterms:RightsStatement](http://purl.org/dc/terms/RightsStatement)'
+    description: See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: dcterms:RightsStatement
   Role:
     name: Role
-    description: 'retrievable from: [dcat:Role](http://www.w3.org/ns/dcat#Role)'
+    description: See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: dcat:Role
   Standard:
     name: Standard
-    description: 'retrievable from: [dcterms:Standard](http://purl.org/dc/terms/Standard)'
+    description: See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: dcterms:Standard
   SupportiveEntity:
     name: SupportiveEntity
@@ -1995,6 +2019,7 @@ classes:
       range of properties.
   TimeInstant:
     name: TimeInstant
-    description: 'retrievable from: [time:Instant](http://www.w3.org/2006/time#Instant)'
+    description: See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)
     is_a: SupportiveEntity
+    abstract: false
     class_uri: time:Instant
