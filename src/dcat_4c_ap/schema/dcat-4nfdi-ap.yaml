@@ -54,11 +54,15 @@ classes:
     mixin: true
     abstract: true
     slots:
+      - type
       - rdf_type
-    slot_usage: 
-      rdf_type:
+    slot_usage:
+      type:
         inlined: true
         range: DefinedTerm
+        #equals_expression: '{rdf_type}'
+      rdf_type:
+        #equals_expression: '{type}'
 
   DefinedTerm:
     class_uri: schema:DefinedTerm
@@ -66,38 +70,47 @@ classes:
     attributes:
       from_CV:
         slot_uri: schema:inDefinedTermSet
-        description: The name of the controlled vocabulary.
+        description: The URL of the controlled vocabulary.
         range: uriorcurie
     slots:
-      - id
       - identifier
       - title
     slot_usage:
       title:
         slot_uri: schema:name
-      id:
+      identifier:
+        range: uriorcurie
+        description: The main identifier for the EntityOfInterest.
+        identifier: true
         slot_uri: schema:identifier
-  
+        
   NFDIDataset:
     is_a: Dataset
     tree_root: true
     class_uri: dcat:Dataset
     description: >-
       A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
-    slots:
-      - id
     slot_usage:
+      identifier:
+        range: uriorcurie
+        description: The main identifier for the Dataset.
+        identifier: true
       was_generated_by:
-        ## the range will be changed with regard to the profile.
         range: ResearchActivity
-  
-  DatasetCollection:
-    is_a: Catalog
+        required: true  
+        
+  NFDICatalog:
+    is_a: Catalogue
     class_uri: dcat:Catalog
     description: A curated collection of metadata about data resources.
-    slots:
-      - id
-
+    slot_usage:
+      identifier:
+        range: uriorcurie
+        description: The main identifier for the NFDICatalog.
+        identifier: true
+      has_dataset:
+        range: NFDIDataset
+    
   ResearchActivity:
     mixins:
       - ClassifierMixin
@@ -107,8 +120,9 @@ classes:
     slots:
       - title
       - description
-      - identifier
+      - other_identifier
       - evaluated_entity
+      - evaluated_activity
       - used_tool
       - realized_plan
       - has_part
@@ -116,40 +130,88 @@ classes:
     slot_usage:
       has_part:
         description: The slot to specify one or more parts of the ResearchActivity that are themselves also research activities.
-        range: ResearchActivity
+        range: Activity
         inlined: true
+      other_identifier:
+        name: other_identifier
+        description: A secondary identifier of the ActivityOfInterest
+        slot_uri: adms:identifier
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
     narrow_mappings:
       - NCIT:C25598
       - sosa:Observation
       - OBI:0000070
-  
+    
   EntityOfInterest:
     mixins:
       - ClassifierMixin
     class_uri: prov:Entity
-    description: Something that is being evaluated in a scientific process.
+    description: Something (not an activity or process) that is being evaluated in a ResearchActivity.
     slots:
-      - id
       - title
       - description
       - identifier
       - other_identifier
-      - has_attribute
-      - has_quantifiable_attribute
+      - has_qualitative_attribute
+      - has_quantitative_attribute
       - has_part
-  
-  Tool:
+    slot_usage:
+      identifier:
+        range: uriorcurie
+        description: The main identifier for the EntityOfInterest.
+        identifier: true
+      other_identifier:
+        name: other_identifier
+        description: A secondary identifier of the EntityOfInterest
+        slot_uri: adms:identifier
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
+        
+  ActivityOfInterest:
     mixins:
       - ClassifierMixin
-    class_uri: prov:Entity
-    description: A entity with a certain function used within a scientific activity.
+    class_uri: prov:Activity
+    is_a: Activity
+    description: An activity or process that is being evaluated in a ResearchActivity.
     slots:
       - title
       - description
       - identifier
+      - other_identifier
+      - has_qualitative_attribute
+      - has_quantitative_attribute
       - has_part
-      - has_attribute
-      - has_quantifiable_attribute
+    slot_usage:
+      identifier:
+        range: uriorcurie
+        description: The main identifier for the EntityOfInterest.
+        identifier: true
+      other_identifier:
+        name: other_identifier
+        description: A secondary identifier of the ActivityOfInterest
+        slot_uri: adms:identifier
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
+    
+  Tool:
+    mixins:
+      - ClassifierMixin
+    class_uri: prov:Entity
+    description: A entity with a certain function used within a ResearchActivity.
+    slots:
+      - title
+      - description
+      - other_identifier
+      - has_qualitative_attribute
+      - has_quantitative_attribute
+      - has_part
     slot_usage:
       has_part:
         description: The slot to specify parts of a tool.
@@ -157,9 +219,17 @@ classes:
         inlined: true
         multivalued: true
         inlined_as_list: true
+      other_identifier:
+        name: other_identifier
+        description: A secondary identifier of the ActivityOfInterest
+        slot_uri: adms:identifier
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
     broad_mappings:
       - prov:Entity
-  
+      
   Environment:
     mixins:
       - ClassifierMixin
@@ -168,10 +238,19 @@ classes:
     slots:
       - title
       - description
-      - identifier
-      - has_attribute
-      - has_quantifiable_attribute
-  
+      - other_identifier
+      - has_qualitative_attribute
+      - has_quantitative_attribute
+    slot_usage:
+      other_identifier:
+        name: other_identifier
+        description: A secondary identifier of the Environment
+        slot_uri: adms:identifier
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
+    
   Plan:
     mixins:
       - ClassifierMixin
@@ -186,68 +265,68 @@ classes:
       - description
     examples:
       - description: "We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3)."
+
+           
   
   ###################
   # Attribute Types #
   ###################
-  Attribute:
+  QualitativeAttribute:
     mixins:
       - ClassifierMixin
-    class_uri: IAO:0000030
+    class_uri: prov:Entity
     description: A piece of information that is attributed to an entity of interest, tool or environment.
     slots:
       - title
       - description
-      - identifier
       - value
-        
-  QuantifiableAttribute:
-    is_a: Attribute
+          
+  QuantitativeAttribute:
+    mixins:
+      - ClassifierMixin
     class_uri: qudt:Quantity
-    description: An attribute that is quantifiable.
+    description: A quantifiable piece of information that is attributed to an entity of interest, tool or environment.
+    slots:
+      - value
     attributes:
+      has_quantity_type:
+        range: DefinedTerm
+        description: The type of quality that is quantifiable according to the QUDT ontology.
+        slot_uri: qudt:hasQuantityKind
+        bindings: ## new feature not yet implemented, see: https://github.com/linkml/linkml-model/releases/tag/v1.8.0
+          - binds_value_of: id
+            range: QUDTQuantityKindEnum
+            obligation_level: RECOMMENDED
+            description: Binds the type of a quantifiable attribute to a QUDT Quantity Kind instance from the QUDT Quantity Kind vocabulary.
       unit:
-        slot_uri: qudt:applicableUnit
+        slot_uri: qudt:unit
         range: DefinedTerm
         bindings: ## new feature not yet implemented, see: https://github.com/linkml/linkml-model/releases/tag/v1.8.0
           - binds_value_of: id
             range: QUDTUnitEnum
             obligation_level: RECOMMENDED
             description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
-      is_delta_attribute:
-        slot_uri: qudt:Quantity-isDeltaQuantity
-        description: This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets.
-        range: boolean
-      has_quantity_type:
-        range: DefinedTerm
-        description: The type of quality that is quantifiable according to the QUDT ontology.
-        slot_uri: qudt:hasQuantityKind
-        inlined: true
-        bindings: ## new feature not yet implemented, see: https://github.com/linkml/linkml-model/releases/tag/v1.8.0
-          - binds_value_of: id
-            range: QUDTQuantityKindEnum
-            obligation_level: RECOMMENDED
-            description: Binds the type of a quantifyable attribute to a QUDT Quantity Kind instance from the QUDT Quantity Kind vocabulary.
-      value:
-        slot_uri: qudt:value
-        description: A data property to relate an observable thing with a value of any kind.
+
+        
 
 # Slots
 slots:
-  id:
-    identifier: true
-    description: The slot to provide the URI of a resource.
-    required: true
   rdf_type:
     slot_uri: rdf:type
     description: The slot to specify the ontology class that is instantiated by an entity.
     recommended: true
+    inlined: true
+    range: DefinedTerm
   evaluated_entity:
     slot_uri: prov:used
     description: The slot to specify the entity of interest that was evaluated.
-    required: true
     inlined: true
     range: EntityOfInterest
+  evaluated_activity:
+    slot_uri: prov:wasInformedBy
+    description: The slot to specify the activity of interest that was evaluated.
+    inlined: true
+    range: ActivityOfInterest 
   used_tool:
     slot_uri: prov:used
     description: The slot to specify the tool that was used.
@@ -265,31 +344,28 @@ slots:
     slot_uri: BFO:0000066
     description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
     range: Environment
-  has_attribute:
-    slot_uri: dcterms:relation
-    description: The slot to relate an attribute to an entity of interest, tool or environment.
-    range: Attribute
+  has_qualitative_attribute:
+    #slot_uri: dcterms:relation
+    description: The slot to relate a qualitative attribute to an entity of interest, tool or environment.
+    range: QualitativeAttribute
     inlined: true
     multivalued: true
     inlined_as_list: true
-    exact_mappings:
-      - RO:0000053
-      - SIO:000223
-  has_quantifiable_attribute:
-    is_a: has_attribute
-    slot_uri: dcterms:relation
-    description: The slot to relate a quantifiable attribute to an entity of interest, tool or environment.
-    range: QuantifiableAttribute
+  has_quantitative_attribute:
+    #slot_uri: dcterms:relation
+    description: The slot to relate a quantitative  attribute to an entity of interest, tool or environment.
+    range: QuantitativeAttribute
     inlined: true
     multivalued: true
     inlined_as_list: true
   value:
     slot_uri: prov:value
-    description: A slot to provide the value of an attribute.
+    description: A slot to provide the literal value of an attribute.
+
 
 enums:
   ## Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should be used to constrain the range 
-  ## of the type of ResearchActivity instead of using the default DefinedTerm as range.
+  ## of the type slot instead of using the default DefinedTerm as range.
   ## This will be done in profiles of this schema where we define ResearchActivity subclasses, e.g. NMRSpectroscopy.
   ## seeAlso: https://github.com/linkml/linkml-model/blob/main/tests/input/examples/schema_definition-enum_bindings-1.yaml
   QUDTQuantityKindEnum:
@@ -303,6 +379,7 @@ enums:
       is_direct: true
       relationship_types:
         - rdf:type
+                 
   QUDTUnitEnum:
     description: Possible kinds of QUDT unit instances.
     implements:
@@ -318,3 +395,4 @@ enums:
 
 
     
+  
