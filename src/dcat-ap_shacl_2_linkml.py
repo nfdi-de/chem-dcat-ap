@@ -62,8 +62,8 @@ RECOMMENDED_SLOTS = [{'Agent': ['type']},
                      {'Dataset': ['contact_point','keyword', 'theme']},
                      {'Distribution': ['availability','format', 'description']},
                      {'DataSeries': ['contact_point']},
-                     {'CatalogRecord': ['application_profile', 'change_type', 'listing_date']},
-                     {'Catalog': ['homepage', 'themes', 'release_date', 'language', 'modification_date']},
+                     {'CatalogueRecord': ['application_profile', 'change_type', 'listing_date']},
+                     {'Catalogue': ['homepage', 'themes', 'release_date', 'language', 'modification_date']},
                      {'DataService': ['contact_point', 'endpoint_description', 'keyword', 'theme', 'conforms_to']},
                      ]
 
