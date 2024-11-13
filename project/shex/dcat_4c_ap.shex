@@ -2,13 +2,25 @@
 BASE <https://w3id.org/StroemPhi/dcat_4C_ap/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX nfdi: <https://w3id.org/StroemPhi/dcat-4nfdi-ap/>
+PREFIX nfdi: <https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX spdx: <http://spdx.org/rdf/terms#>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dcatap: <http://data.europa.eu/r5r/>
+PREFIX linkmldcatap: <https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/>
 
 
 linkml:String xsd:string
@@ -49,116 +61,366 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-nfdi:ActivitySpecification CLOSED {
-    (  $nfdi:ActivitySpecification_tes (  dcterms:title @linkml:String * ;
-          dcterms:description @linkml:String * ;
-          rdf:type @nfdi:DefinedTerm ?
-       ) ;
-       rdf:type [ prov:Entity ] ?
-    )
-}
+linkmldcatap:Duration xsd:duration
 
-nfdi:Any CLOSED {
-    (  $nfdi:Any_tes rdf:type . * ;
-       rdf:type [ linkml:Any ] ?
-    )
-}
+linkmldcatap:HexBinary xsd:hexBinary
 
-nfdi:Attribute  (
+linkmldcatap:NonNegativeInteger xsd:nonNegativeInteger
+
+linkmldcatap:Activity  (
     CLOSED {
-       (  $nfdi:Attribute_tes (  dcterms:title @linkml:String * ;
-             dcterms:description @linkml:String * ;
-             dcterms:identifier @linkml:Uriorcurie * ;
-             rdf:type @nfdi:DefinedTerm ? ;
-             prov:value @linkml:String ?
-          ) ;
-          rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ?
+       (  $linkmldcatap:Activity_tes rdf:type . * ;
+          rdf:type [ prov:Activity ] ?
        )
-    } OR @<IUPACName> OR @<InChIKey> OR @<InChi> OR @nfdi:QuantifiableAttribute
+    } OR @nfdi:ActivityOfInterest OR @nfdi:ResearchActivity
 )
 
-<ChemAnalysisDataset> CLOSED {
-    (  $<ChemAnalysisDataset_tes> rdf:type . * ;
-       rdf:type [ <ChemAnalysisDataset> ] ?
+nfdi:ActivityOfInterest  (
+    CLOSED {
+       (  $nfdi:ActivityOfInterest_tes (  &linkmldcatap:Activity_tes ;
+             rdf:type [ prov:Activity ] ? ;
+             &nfdi:ClassifierMixin_tes ;
+             rdf:type [ nfdi:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             adms:identifier @linkmldcatap:Identifier * ;
+             nfdi:has_qualitative_attribute @nfdi:QualitativeAttribute * ;
+             nfdi:has_quantitative_attribute @nfdi:QuantitativeAttribute * ;
+             dcterms:hasPart @linkml:String ? ;
+             dcterms:type @nfdi:DefinedTerm ? ;
+             rdf:type @nfdi:DefinedTerm ?
+          ) ;
+          rdf:type [ prov:Activity ]
+       )
+    } OR @<ChemicalReaction>
+)
+
+linkmldcatap:Agent CLOSED {
+    (  $linkmldcatap:Agent_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+          foaf:name @linkml:String + ;
+          dcterms:type @linkmldcatap:Concept ?
+       ) ;
+       rdf:type [ foaf:Agent ] ?
+    )
+}
+
+linkmldcatap:Attribution CLOSED {
+    (  $linkmldcatap:Attribution_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ prov:Attribution ] ?
+    )
+}
+
+linkmldcatap:Catalogue  (
+    CLOSED {
+       (  $linkmldcatap:Catalogue_tes (  dcatap:applicableLegislation @linkmldcatap:LegalResource * ;
+             dcat:catalog @linkmldcatap:Catalogue * ;
+             dcterms:creator @linkmldcatap:Agent ? ;
+             dcterms:description @linkml:String + ;
+             dcterms:spatial @linkmldcatap:Location * ;
+             dcat:dataset @linkmldcatap:Dataset * ;
+             dcterms:hasPart @linkmldcatap:Catalogue * ;
+             foaf:homepage @linkmldcatap:Document ? ;
+             dcterms:language @linkmldcatap:LinguisticSystem * ;
+             dcterms:license @linkmldcatap:LicenseDocument ? ;
+             dcterms:modified @linkml:String ? ;
+             dcterms:publisher @linkmldcatap:Agent ;
+             dcat:record @linkmldcatap:CatalogueRecord * ;
+             dcterms:issued @linkml:String ? ;
+             dcterms:rights @linkmldcatap:RightsStatement ? ;
+             dcat:service @linkmldcatap:DataService * ;
+             dcterms:temporal @linkmldcatap:PeriodOfTime * ;
+             dcat:themeTaxonomy @linkmldcatap:ConceptScheme * ;
+             dcterms:title @linkml:String +
+          ) ;
+          rdf:type [ dcat:Catalog ] ?
+       )
+    } OR @nfdi:NFDICatalog
+)
+
+linkmldcatap:CataloguedResource {
+    (  $linkmldcatap:CataloguedResource_tes rdf:type . * ;
+       rdf:type [ dcat:Resource ] ?
+    )
+}
+
+linkmldcatap:CatalogueRecord CLOSED {
+    (  $linkmldcatap:CatalogueRecord_tes (  dcterms:conformsTo @linkmldcatap:Standard * ;
+          adms:status @linkmldcatap:Concept ? ;
+          dcterms:description @linkml:String * ;
+          dcterms:language @linkmldcatap:LinguisticSystem * ;
+          dcterms:issued @linkml:String ? ;
+          dcterms:modified @linkml:String ;
+          foaf:primaryTopic @linkmldcatap:CataloguedResource ;
+          dcterms:source @linkmldcatap:CatalogueRecord ? ;
+          dcterms:title @linkml:String *
+       ) ;
+       rdf:type [ dcat:CatalogRecord ] ?
+    )
+}
+
+linkmldcatap:Checksum CLOSED {
+    (  $linkmldcatap:Checksum_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+          spdx:algorithm @linkmldcatap:ChecksumAlgorithm ;
+          spdx:checksumValue @linkmldcatap:HexBinary
+       ) ;
+       rdf:type [ spdx:Checksum ] ?
+    )
+}
+
+linkmldcatap:ChecksumAlgorithm CLOSED {
+    (  $linkmldcatap:ChecksumAlgorithm_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ spdx:ChecksumAlgorithm ] ?
+    )
+}
+
+<ChemicalEntity> CLOSED {
+    (  $<ChemicalEntity_tes> (  <inchi> @<InChi> ? ;
+          <inchikey> @<InChIKey> ? ;
+          <smiles> @<SMILES> ? ;
+          <iupac_formula> @<IUPACChemicalFormula> ?
+       ) ;
+       rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_23367> ] ?
     )
 }
 
 <ChemicalReaction> CLOSED {
-    (  $<ChemicalReaction_tes> (  &nfdi:EntityOfInterest_tes ;
-          rdf:type [ prov:Entity ] ?
+    (  $<ChemicalReaction_tes> (  &nfdi:ActivityOfInterest_tes ;
+          rdf:type [ prov:Activity ] ?
        ) ;
-       rdf:type [ <http://semanticscience.org/resource/RXNO_0000329> ]
+       rdf:type [ <http://purl.obolibrary.org/obo/RXNO_0000329> ]
     )
 }
 
-<ChemicalSubstance> CLOSED {
-    (  $<ChemicalSubstance_tes> (  &nfdi:EntityOfInterest_tes ;
+<ChemicalSample> CLOSED {
+    (  $<ChemicalSample_tes> (  &<ChemicalSubstance_tes> ;
           rdf:type [ prov:Entity ] ?
        ) ;
-       rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ]
+       rdf:type [ <ChemicalSample> ]
     )
 }
 
-nfdi:Dataset  (
+<ChemicalSubstance>  (
     CLOSED {
-       (  $nfdi:Dataset_tes (  dcterms:title @linkml:String + ;
-             dcterms:description @linkml:String + ;
-             dcterms:identifier @linkml:Uriorcurie * ;
-             prov:wasGeneratedBy @nfdi:ResearchActivity ?
+       (  $<ChemicalSubstance_tes> (  &nfdi:EntityOfInterest_tes ;
+             rdf:type [ prov:Entity ] ? ;
+             <has_role> @linkml:String ? ;
+             <composed_of> @<ChemicalEntity> *
           ) ;
-          rdf:type [ dcat:Dataset ]
+          rdf:type [ prov:Entity ]
        )
-    } OR @nfdi:DatasetCollection
+    } OR @<ChemicalSample>
 )
 
-nfdi:DatasetCollection CLOSED {
-    (  $nfdi:DatasetCollection_tes (  &nfdi:Dataset_tes ;
-          rdf:type [ dcat:Dataset ] ? ;
-          dcat:dataset @nfdi:Dataset * ;
-          dcterms:title @linkml:String + ;
-          dcterms:description @linkml:String +
+nfdi:ClassifierMixin {
+    (  $nfdi:ClassifierMixin_tes (  dcterms:type @nfdi:DefinedTerm ? ;
+          rdf:type @nfdi:DefinedTerm ?
        ) ;
-       rdf:type [ dcat:Catalog ]
+       rdf:type [ nfdi:ClassifierMixin ] ?
+    )
+}
+
+linkmldcatap:Concept CLOSED {
+    (  $linkmldcatap:Concept_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+          skos:prefLabel @linkml:String +
+       ) ;
+       rdf:type [ skos:Concept ] ?
+    )
+}
+
+linkmldcatap:ConceptScheme CLOSED {
+    (  $linkmldcatap:ConceptScheme_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+          dcterms:title @linkml:String +
+       ) ;
+       rdf:type [ skos:ConceptScheme ] ?
+    )
+}
+
+linkmldcatap:DataService CLOSED {
+    (  $linkmldcatap:DataService_tes (  dcterms:accessRights @linkmldcatap:RightsStatement ? ;
+          dcatap:applicableLegislation @linkmldcatap:LegalResource * ;
+          dcterms:conformsTo @linkmldcatap:Standard * ;
+          dcat:contactPoint @linkmldcatap:Kind * ;
+          dcterms:description @linkml:String * ;
+          foaf:page @linkmldcatap:Document * ;
+          dcat:endpointURL @linkmldcatap:Resource + ;
+          dcat:endpointDescription @linkmldcatap:Resource * ;
+          dcterms:format @linkmldcatap:MediaTypeOrExtent * ;
+          dcat:keyword @linkml:String * ;
+          dcat:landingPage @linkmldcatap:Document * ;
+          dcterms:license @linkmldcatap:LicenseDocument ? ;
+          dcterms:publisher @linkmldcatap:Agent ? ;
+          dcat:servesDataset @linkmldcatap:Dataset * ;
+          dcat:theme @linkmldcatap:Concept * ;
+          dcterms:title @linkml:String +
+       ) ;
+       rdf:type [ dcat:DataService ] ?
+    )
+}
+
+linkmldcatap:Dataset  (
+    CLOSED {
+       (  $linkmldcatap:Dataset_tes (  dcterms:accessRights @linkmldcatap:RightsStatement ? ;
+             dcatap:applicableLegislation @linkmldcatap:LegalResource * ;
+             dcterms:conformsTo @linkmldcatap:Standard * ;
+             dcat:contactPoint @linkmldcatap:Kind * ;
+             dcterms:creator @linkmldcatap:Agent * ;
+             dcat:distribution @linkmldcatap:Distribution * ;
+             dcterms:description @linkml:String + ;
+             foaf:page @linkmldcatap:Document * ;
+             dcterms:accrualPeriodicity @linkmldcatap:Frequency ? ;
+             dcterms:spatial @linkmldcatap:Location * ;
+             dcat:hasVersion @linkmldcatap:Dataset * ;
+             dcterms:identifier @linkml:Uri * ;
+             dcat:inSeries @linkmldcatap:DatasetSeries * ;
+             dcterms:isReferencedBy @linkmldcatap:Resource * ;
+             dcat:keyword @linkml:String * ;
+             dcat:landingPage @linkmldcatap:Document * ;
+             dcterms:language @linkmldcatap:LinguisticSystem * ;
+             dcterms:modified @linkml:String ? ;
+             adms:identifier @linkmldcatap:Identifier * ;
+             dcterms:provenance @linkmldcatap:ProvenanceStatement * ;
+             dcterms:publisher @linkmldcatap:Agent ? ;
+             prov:qualifiedAttribution @linkmldcatap:Attribution * ;
+             dcat:qualifiedRelation @linkmldcatap:Relationship * ;
+             dcterms:relation @linkmldcatap:Resource * ;
+             dcterms:issued @linkml:String ? ;
+             adms:sample @linkmldcatap:Distribution * ;
+             dcterms:source @linkmldcatap:Dataset * ;
+             dcat:spatialResolutionInMeters @linkml:Decimal ? ;
+             dcterms:temporal @linkmldcatap:PeriodOfTime * ;
+             dcat:temporalResolution @linkmldcatap:Duration ? ;
+             dcat:theme @linkmldcatap:Concept * ;
+             dcterms:title @linkml:String + ;
+             dcterms:type @linkmldcatap:Concept * ;
+             dcat:version @linkml:String ? ;
+             adms:versionNotes @linkml:String * ;
+             prov:wasGeneratedBy @linkmldcatap:Activity *
+          ) ;
+          rdf:type [ dcat:Dataset ] ?
+       )
+    } OR @nfdi:NFDIDataset
+)
+
+linkmldcatap:DatasetSeries CLOSED {
+    (  $linkmldcatap:DatasetSeries_tes (  dcatap:applicableLegislation @linkmldcatap:LegalResource * ;
+          dcat:contactPoint @linkmldcatap:Kind * ;
+          dcterms:description @linkml:String + ;
+          dcterms:accrualPeriodicity @linkmldcatap:Frequency ? ;
+          dcterms:spatial @linkmldcatap:Location * ;
+          dcterms:modified @linkml:String ? ;
+          dcterms:publisher @linkmldcatap:Agent ? ;
+          dcterms:issued @linkml:String ? ;
+          dcterms:temporal @linkmldcatap:PeriodOfTime * ;
+          dcterms:title @linkml:String +
+       ) ;
+       rdf:type [ dcat:DatasetSeries ] ?
     )
 }
 
 nfdi:DefinedTerm CLOSED {
-    (  $nfdi:DefinedTerm_tes (  schema1:identifier @linkml:Uriorcurie * ;
-          schema1:name @linkml:String * ;
-          schema1:inDefinedTermSet @linkml:String ?
+    (  $nfdi:DefinedTerm_tes (  schema1:name @linkml:String ? ;
+          schema1:inDefinedTermSet @linkml:Uriorcurie ?
        ) ;
        rdf:type [ schema1:DefinedTerm ]
     )
 }
 
+linkmldcatap:Distribution CLOSED {
+    (  $linkmldcatap:Distribution_tes (  dcat:accessURL @linkmldcatap:Resource + ;
+          dcat:accessService @linkmldcatap:DataService * ;
+          dcatap:applicableLegislation @linkmldcatap:LegalResource * ;
+          dcatap:availability @linkmldcatap:Concept ? ;
+          dcat:byteSize @linkmldcatap:NonNegativeInteger ? ;
+          spdx:checksum @linkmldcatap:Checksum ? ;
+          dcat:compressFormat @linkmldcatap:MediaType ? ;
+          dcterms:description @linkml:String * ;
+          foaf:page @linkmldcatap:Document * ;
+          dcat:downloadURL @linkmldcatap:Resource * ;
+          dcterms:format @linkmldcatap:MediaTypeOrExtent ? ;
+          odrl:hasPolicy @linkmldcatap:Policy ? ;
+          dcterms:language @linkmldcatap:LinguisticSystem * ;
+          dcterms:license @linkmldcatap:LicenseDocument ? ;
+          dcterms:conformsTo @linkmldcatap:Standard * ;
+          dcat:mediaType @linkmldcatap:MediaType ? ;
+          dcterms:modified @linkml:String ? ;
+          dcat:packageFormat @linkmldcatap:MediaType ? ;
+          dcterms:issued @linkml:String ? ;
+          dcterms:rights @linkmldcatap:RightsStatement ? ;
+          dcat:spatialResolutionInMeters @linkml:Decimal ? ;
+          adms:status @linkmldcatap:Concept ? ;
+          dcat:temporalResolution @linkmldcatap:Duration ? ;
+          dcterms:title @linkml:String *
+       ) ;
+       rdf:type [ dcat:Distribution ] ?
+    )
+}
+
+linkmldcatap:Document CLOSED {
+    (  $linkmldcatap:Document_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ foaf:Document ] ?
+    )
+}
+
 nfdi:EntityOfInterest  (
     CLOSED {
-       (  $nfdi:EntityOfInterest_tes (  dcterms:title @linkml:String * ;
-             dcterms:description @linkml:String * ;
-             dcterms:identifier @linkml:Uriorcurie * ;
-             rdf:type @nfdi:DefinedTerm ? ;
-             dcterms:relation @nfdi:Attribute * ;
-             dcterms:relation @nfdi:QuantifiableAttribute * ;
-             dcterms:hasPart @linkml:String ?
+       (  $nfdi:EntityOfInterest_tes (  &nfdi:ClassifierMixin_tes ;
+             rdf:type [ nfdi:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             adms:identifier @linkmldcatap:Identifier * ;
+             nfdi:has_qualitative_attribute @nfdi:QualitativeAttribute * ;
+             nfdi:has_quantitative_attribute @nfdi:QuantitativeAttribute * ;
+             dcterms:hasPart @linkml:String ? ;
+             dcterms:type @nfdi:DefinedTerm ? ;
+             rdf:type @nfdi:DefinedTerm ?
           ) ;
           rdf:type [ prov:Entity ]
        )
-    } OR @<ChemicalReaction> OR @<ChemicalSubstance>
+    } OR @<ChemicalSubstance>
 )
 
 nfdi:Environment  (
     CLOSED {
-       (  $nfdi:Environment_tes (  dcterms:title @linkml:String * ;
-             dcterms:description @linkml:String * ;
-             dcterms:identifier @linkml:Uriorcurie * ;
-             rdf:type @nfdi:DefinedTerm ? ;
-             dcterms:relation @nfdi:Attribute * ;
-             dcterms:relation @nfdi:QuantifiableAttribute *
+       (  $nfdi:Environment_tes (  &nfdi:ClassifierMixin_tes ;
+             rdf:type [ nfdi:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             adms:identifier @linkmldcatap:Identifier * ;
+             nfdi:has_qualitative_attribute @nfdi:QualitativeAttribute * ;
+             nfdi:has_quantitative_attribute @nfdi:QuantitativeAttribute * ;
+             dcterms:type @nfdi:DefinedTerm ? ;
+             rdf:type @nfdi:DefinedTerm ?
           ) ;
           rdf:type [ prov:Entity ] ?
        )
     } OR @<Laboratory>
 )
+
+linkmldcatap:Frequency CLOSED {
+    (  $linkmldcatap:Frequency_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ dcterms:Frequency ] ?
+    )
+}
+
+linkmldcatap:Geometry CLOSED {
+    (  $linkmldcatap:Geometry_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ locn:Geometry ] ?
+    )
+}
 
 <HardwareTool> CLOSED {
     (  $<HardwareTool_tes> (  &nfdi:Tool_tes ;
@@ -168,27 +430,44 @@ nfdi:Environment  (
     )
 }
 
+linkmldcatap:Identifier CLOSED {
+    (  $linkmldcatap:Identifier_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+          skos:notation @linkml:Uri
+       ) ;
+       rdf:type [ adms:Identifier ] ?
+    )
+}
+
 <InChi> CLOSED {
-    (  $<InChi_tes> (  &nfdi:Attribute_tes ;
-          rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ?
+    (  $<InChi_tes> (  &nfdi:QualitativeAttribute_tes ;
+          rdf:type [ prov:Entity ] ?
        ) ;
        rdf:type [ <http://semanticscience.org/resource/CHEMINF_000113> ] ?
     )
 }
 
 <InChIKey> CLOSED {
-    (  $<InChIKey_tes> (  &nfdi:Attribute_tes ;
-          rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ?
+    (  $<InChIKey_tes> (  &nfdi:QualitativeAttribute_tes ;
+          rdf:type [ prov:Entity ] ?
        ) ;
        rdf:type [ <http://semanticscience.org/resource/CHEMINF_000059> ] ?
     )
 }
 
-<IUPACName> CLOSED {
-    (  $<IUPACName_tes> (  &nfdi:Attribute_tes ;
-          rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ?
+<IUPACChemicalFormula> CLOSED {
+    (  $<IUPACChemicalFormula_tes> (  &nfdi:QualitativeAttribute_tes ;
+          rdf:type [ prov:Entity ] ?
        ) ;
-       rdf:type [ <http://semanticscience.org/resource/CHEMINF_000107> ] ?
+       rdf:type [ <http://semanticscience.org/resource/CHEMINF_000037> ] ?
+    )
+}
+
+linkmldcatap:Kind CLOSED {
+    (  $linkmldcatap:Kind_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ vcard:Kind ] ?
     )
 }
 
@@ -200,43 +479,229 @@ nfdi:Environment  (
     )
 }
 
-<NMRSpectroscopy> CLOSED {
-    (  $<NMRSpectroscopy_tes> (  &nfdi:ResearchActivity_tes ;
-          rdf:type [ prov:Activity ] ? ;
-          prov:used @<ChemicalSubstance> ? ;
-          rdf:type @nfdi:DefinedTerm ?
+linkmldcatap:LegalResource CLOSED {
+    (  $linkmldcatap:LegalResource_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
        ) ;
-       rdf:type [ <http://purl.obolibrary.org/obo/CHMO_0000613> ] ?
+       rdf:type [ eli:LegalResource ] ?
     )
 }
 
-nfdi:QuantifiableAttribute CLOSED {
-    (  $nfdi:QuantifiableAttribute_tes (  &nfdi:Attribute_tes ;
-          rdf:type [ <http://purl.obolibrary.org/obo/IAO_0000030> ] ? ;
-          qudt:applicableUnit @nfdi:DefinedTerm ? ;
-          qudt:Quantity-isDeltaQuantity @linkml:Boolean ? ;
+linkmldcatap:LicenseDocument CLOSED {
+    (  $linkmldcatap:LicenseDocument_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+          dcterms:type @linkmldcatap:Concept *
+       ) ;
+       rdf:type [ dcterms:LicenseDocument ] ?
+    )
+}
+
+linkmldcatap:LinguisticSystem CLOSED {
+    (  $linkmldcatap:LinguisticSystem_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ dcterms:LinguisticSystem ] ?
+    )
+}
+
+linkmldcatap:Location CLOSED {
+    (  $linkmldcatap:Location_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+          dcat:bbox @linkml:String ? ;
+          dcat:centroid @linkml:String ? ;
+          locn:geometry @linkmldcatap:Geometry ?
+       ) ;
+       rdf:type [ dcterms:Location ] ?
+    )
+}
+
+linkmldcatap:MediaType CLOSED {
+    (  $linkmldcatap:MediaType_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ dcterms:MediaType ] ?
+    )
+}
+
+linkmldcatap:MediaTypeOrExtent CLOSED {
+    (  $linkmldcatap:MediaTypeOrExtent_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ dcterms:MediaTypeOrExtent ] ?
+    )
+}
+
+nfdi:NFDICatalog CLOSED {
+    (  $nfdi:NFDICatalog_tes (  &linkmldcatap:Catalogue_tes ;
+          rdf:type [ dcat:Catalog ] ? ;
+          dcat:dataset @nfdi:NFDIDataset ?
+       ) ;
+       rdf:type [ dcat:Catalog ]
+    )
+}
+
+nfdi:NFDIDataset  (
+    CLOSED {
+       (  $nfdi:NFDIDataset_tes (  &linkmldcatap:Dataset_tes ;
+             rdf:type [ dcat:Dataset ] ? ;
+             prov:wasGeneratedBy @nfdi:ResearchActivity
+          ) ;
+          rdf:type [ dcat:Dataset ]
+       )
+    } OR @<NMRDataset>
+)
+
+<NMRDataset> CLOSED {
+    (  $<NMRDataset_tes> (  &nfdi:NFDIDataset_tes ;
+          rdf:type [ dcat:Dataset ] ? ;
+          prov:wasGeneratedBy @<NMRSpectroscopy> ?
+       ) ;
+       rdf:type [ dcat:Dataset ]
+    )
+}
+
+<NMRSpectroscopy> CLOSED {
+    (  $<NMRSpectroscopy_tes> (  &nfdi:ResearchActivity_tes ;
+          rdf:type [ prov:Activity ] ? ;
+          prov:used @<ChemicalSample> ? ;
+          rdf:type @nfdi:DefinedTerm ?
+       ) ;
+       rdf:type [ <NMRSpectroscopy> ] ?
+    )
+}
+
+linkmldcatap:PeriodOfTime CLOSED {
+    (  $linkmldcatap:PeriodOfTime_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+          time:hasBeginning @linkmldcatap:TimeInstant ? ;
+          time:hasEnd @linkmldcatap:TimeInstant ? ;
+          dcat:endDate @linkml:String ? ;
+          dcat:startDate @linkml:String ?
+       ) ;
+       rdf:type [ dcterms:PeriodOfTime ] ?
+    )
+}
+
+nfdi:Plan CLOSED {
+    (  $nfdi:Plan_tes (  &nfdi:ClassifierMixin_tes ;
+          rdf:type [ nfdi:ClassifierMixin ] ? ;
+          dcterms:title @linkml:String ? ;
+          dcterms:description @linkml:String ? ;
+          dcterms:type @nfdi:DefinedTerm ? ;
+          rdf:type @nfdi:DefinedTerm ?
+       ) ;
+       rdf:type [ prov:Entity ] ?
+    )
+}
+
+linkmldcatap:Policy CLOSED {
+    (  $linkmldcatap:Policy_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ odrl:Policy ] ?
+    )
+}
+
+linkmldcatap:ProvenanceStatement CLOSED {
+    (  $linkmldcatap:ProvenanceStatement_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ dcterms:ProvenanceStatement ] ?
+    )
+}
+
+nfdi:QualitativeAttribute  (
+    CLOSED {
+       (  $nfdi:QualitativeAttribute_tes (  &nfdi:ClassifierMixin_tes ;
+             rdf:type [ nfdi:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             prov:value @linkml:String ? ;
+             dcterms:type @nfdi:DefinedTerm ? ;
+             rdf:type @nfdi:DefinedTerm ?
+          ) ;
+          rdf:type [ prov:Entity ] ?
+       )
+    } OR @<IUPACChemicalFormula> OR @<InChIKey> OR @<InChi> OR @<SMILES>
+)
+
+nfdi:QuantitativeAttribute CLOSED {
+    (  $nfdi:QuantitativeAttribute_tes (  &nfdi:ClassifierMixin_tes ;
+          rdf:type [ nfdi:ClassifierMixin ] ? ;
+          prov:value @linkml:String ? ;
           qudt:hasQuantityKind @nfdi:DefinedTerm ? ;
-          qudt:value @linkml:String ?
+          qudt:unit @nfdi:DefinedTerm ? ;
+          dcterms:type @nfdi:DefinedTerm ? ;
+          rdf:type @nfdi:DefinedTerm ?
        ) ;
        rdf:type [ qudt:Quantity ] ?
     )
 }
 
+linkmldcatap:Relationship CLOSED {
+    (  $linkmldcatap:Relationship_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+          dcat:hadRole @linkmldcatap:Role + ;
+          dcterms:relation @linkmldcatap:Resource +
+       ) ;
+       rdf:type [ dcat:Relationship ] ?
+    )
+}
+
 nfdi:ResearchActivity  (
     CLOSED {
-       (  $nfdi:ResearchActivity_tes (  dcterms:title @linkml:String * ;
-             dcterms:description @linkml:String * ;
-             dcterms:identifier @linkml:Uriorcurie * ;
-             rdf:type @nfdi:DefinedTerm ? ;
+       (  $nfdi:ResearchActivity_tes (  &linkmldcatap:Activity_tes ;
+             rdf:type [ prov:Activity ] ? ;
+             &nfdi:ClassifierMixin_tes ;
+             rdf:type [ nfdi:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             adms:identifier @linkmldcatap:Identifier * ;
              prov:used @nfdi:EntityOfInterest ? ;
+             prov:wasInformedBy @nfdi:ActivityOfInterest ? ;
              prov:used @nfdi:Tool * ;
-             prov:used @nfdi:ActivitySpecification ? ;
-             dcterms:hasPart @nfdi:ResearchActivity ?
+             prov:used @nfdi:Plan ? ;
+             dcterms:hasPart @linkmldcatap:Activity ? ;
+             <http://purl.obolibrary.org/obo/BFO_0000066> @nfdi:Environment ? ;
+             dcterms:type @nfdi:DefinedTerm ? ;
+             rdf:type @nfdi:DefinedTerm ?
           ) ;
           rdf:type [ prov:Activity ] ?
        )
     } OR @<NMRSpectroscopy>
 )
+
+linkmldcatap:Resource CLOSED {
+    (  $linkmldcatap:Resource_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ rdfs:Resource ] ?
+    )
+}
+
+linkmldcatap:RightsStatement CLOSED {
+    (  $linkmldcatap:RightsStatement_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ dcterms:RightsStatement ] ?
+    )
+}
+
+linkmldcatap:Role CLOSED {
+    (  $linkmldcatap:Role_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ dcat:Role ] ?
+    )
+}
+
+<SMILES> CLOSED {
+    (  $<SMILES_tes> (  &nfdi:QualitativeAttribute_tes ;
+          rdf:type [ prov:Entity ] ?
+       ) ;
+       rdf:type [ <http://semanticscience.org/resource/CHEMINF_000018> ] ?
+    )
+}
 
 <SoftwareTool> CLOSED {
     (  $<SoftwareTool_tes> (  &nfdi:Tool_tes ;
@@ -246,15 +711,48 @@ nfdi:ResearchActivity  (
     )
 }
 
+linkmldcatap:Standard CLOSED {
+    (  $linkmldcatap:Standard_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ dcterms:Standard ] ?
+    )
+}
+
+linkmldcatap:SupportiveEntity  (
+    CLOSED {
+       (  $linkmldcatap:SupportiveEntity_tes rdf:type . * ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       )
+    } OR @linkmldcatap:Agent OR @linkmldcatap:Attribution OR @linkmldcatap:Checksum OR @linkmldcatap:ChecksumAlgorithm OR
+    @linkmldcatap:Concept OR @linkmldcatap:ConceptScheme OR @linkmldcatap:Document OR @linkmldcatap:Frequency OR
+    @linkmldcatap:Geometry OR @linkmldcatap:Identifier OR @linkmldcatap:Kind OR @linkmldcatap:LegalResource OR
+    @linkmldcatap:LicenseDocument OR @linkmldcatap:LinguisticSystem OR @linkmldcatap:Location OR @linkmldcatap:MediaType OR
+    @linkmldcatap:MediaTypeOrExtent OR @linkmldcatap:PeriodOfTime OR @linkmldcatap:Policy OR @linkmldcatap:ProvenanceStatement OR
+    @linkmldcatap:Relationship OR @linkmldcatap:Resource OR @linkmldcatap:RightsStatement OR @linkmldcatap:Role OR
+    @linkmldcatap:Standard OR @linkmldcatap:TimeInstant
+)
+
+linkmldcatap:TimeInstant CLOSED {
+    (  $linkmldcatap:TimeInstant_tes (  &linkmldcatap:SupportiveEntity_tes ;
+          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       ) ;
+       rdf:type [ time:Instant ] ?
+    )
+}
+
 nfdi:Tool  (
     CLOSED {
-       (  $nfdi:Tool_tes (  dcterms:title @linkml:String * ;
-             dcterms:description @linkml:String * ;
-             dcterms:identifier @linkml:Uriorcurie * ;
-             rdf:type @nfdi:DefinedTerm ? ;
+       (  $nfdi:Tool_tes (  &nfdi:ClassifierMixin_tes ;
+             rdf:type [ nfdi:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             adms:identifier @linkmldcatap:Identifier * ;
+             nfdi:has_qualitative_attribute @nfdi:QualitativeAttribute * ;
+             nfdi:has_quantitative_attribute @nfdi:QuantitativeAttribute * ;
              dcterms:hasPart @nfdi:Tool * ;
-             dcterms:relation @nfdi:Attribute * ;
-             dcterms:relation @nfdi:QuantifiableAttribute *
+             dcterms:type @nfdi:DefinedTerm ? ;
+             rdf:type @nfdi:DefinedTerm ?
           ) ;
           rdf:type [ prov:Entity ] ?
        )

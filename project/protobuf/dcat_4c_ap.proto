@@ -1,196 +1,531 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// "A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude."
-message ActivitySpecification
+// An activity or process that is being evaluated in a ResearchActivity.
+message ActivityOfInterest
  {
- repeated  string name = 0
- repeated  string description = 0
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  string hasPart = 0
   definedTerm type = 0
+  definedTerm rdfType = 0
  }
-// A piece of information that is attributed to an entity of interest, tool or environment.
-message Attribute
+// See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)
+message Agent
  {
  repeated  string name = 0
+  concept type = 0
+ }
+// See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
+message Catalogue
+ {
+ repeated  legalResource applicableLegislation = 0
+ repeated  catalogue catalogue = 0
+  agent creator = 0
  repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
-  string value = 0
+ repeated  location geographicalCoverage = 0
+ repeated  dataset hasDataset = 0
+ repeated  catalogue hasPart = 0
+  document homepage = 0
+ repeated  linguisticSystem language = 0
+  licenseDocument licence = 0
+  string modificationDate = 0
+  agent publisher = 0
+ repeated  catalogueRecord record = 0
+  string releaseDate = 0
+  rightsStatement rights = 0
+ repeated  dataService service = 0
+ repeated  periodOfTime temporalCoverage = 0
+ repeated  conceptScheme themes = 0
+ repeated  string title = 0
+ }
+// See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
+message CatalogueRecord
+ {
+ repeated  standard applicationProfile = 0
+  concept changeType = 0
+ repeated  string description = 0
+ repeated  linguisticSystem language = 0
+  string listingDate = 0
+  string modificationDate = 0
+  cataloguedResource primaryTopic = 0
+  catalogueRecord sourceMetadata = 0
+ repeated  string title = 0
+ }
+// See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
+message Checksum
+ {
+  checksumAlgorithm algorithm = 0
+  hexBinary checksumValue = 0
+ }
+// Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.
+message ChemicalEntity
+ {
+  inChi inchi = 0
+  inChIKey inchikey = 0
+  sMILES smiles = 0
+  iUPACChemicalFormula iupacFormula = 0
  }
 // An experimental procedure with the aim of producing a portion of a given compound or mixture.
 message ChemicalReaction
  {
+  string title = 0
+  string description = 0
   uriorcurie id = 0
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
- repeated  attribute hasAttribute = 0
- repeated  quantifiableAttribute hasQuantifiableAttribute = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
   string hasPart = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  }
-// A chemical substance that is being evaluated in a scientific process.
+message ChemicalSample
+ {
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  string hasPart = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+  string hasRole = 0
+ repeated  chemicalEntity composedOf = 0
+ }
+// A portion of matter of constant composition, composed of molecular entities of the same type or of different types that is being evaluated in a scientific process.
 message ChemicalSubstance
  {
+  string title = 0
+  string description = 0
   uriorcurie id = 0
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
- repeated  attribute hasAttribute = 0
- repeated  quantifiableAttribute hasQuantifiableAttribute = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
   string hasPart = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+  string hasRole = 0
+ repeated  chemicalEntity composedOf = 0
  }
-// A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
+// See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)
+message Concept
+ {
+ repeated  string preferredLabel = 0
+ }
+// See [DCAT-AP specs:ConceptScheme](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme)
+message ConceptScheme
+ {
+ repeated  string title = 0
+ }
+// See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)
+message DataService
+ {
+  rightsStatement accessRights = 0
+ repeated  legalResource applicableLegislation = 0
+ repeated  standard conformsTo = 0
+ repeated  kind contactPoint = 0
+ repeated  string description = 0
+ repeated  document documentation = 0
+ repeated  resource endpointURL = 0
+ repeated  resource endpointDescription = 0
+ repeated  mediaTypeOrExtent format = 0
+ repeated  string keyword = 0
+ repeated  document landingPage = 0
+  licenseDocument licence = 0
+  agent publisher = 0
+ repeated  dataset servesDataset = 0
+ repeated  concept theme = 0
+ repeated  string title = 0
+ }
+// See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
 message Dataset
  {
-  uriorcurie id = 0
- repeated  string name = 0
+  rightsStatement accessRights = 0
+ repeated  legalResource applicableLegislation = 0
+ repeated  standard conformsTo = 0
+ repeated  kind contactPoint = 0
+ repeated  agent creator = 0
+ repeated  distribution datasetDistribution = 0
  repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  researchActivity wasGeneratedBy = 0
+ repeated  document documentation = 0
+  frequency frequency = 0
+ repeated  location geographicalCoverage = 0
+ repeated  dataset hasVersion = 0
+ repeated  uri identifier = 0
+ repeated  datasetSeries inSeries = 0
+ repeated  resource isReferencedBy = 0
+ repeated  string keyword = 0
+ repeated  document landingPage = 0
+ repeated  linguisticSystem language = 0
+  string modificationDate = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  provenanceStatement provenance = 0
+  agent publisher = 0
+ repeated  attribution qualifiedAttribution = 0
+ repeated  relationship qualifiedRelation = 0
+ repeated  resource relatedResource = 0
+  string releaseDate = 0
+ repeated  distribution sample = 0
+ repeated  dataset source = 0
+  decimal spatialResolution = 0
+ repeated  periodOfTime temporalCoverage = 0
+  duration temporalResolution = 0
+ repeated  concept theme = 0
+ repeated  string title = 0
+ repeated  concept type = 0
+  string version = 0
+ repeated  string versionNotes = 0
+ repeated  activity wasGeneratedBy = 0
  }
-// A curated collection of metadata about data resources.
-message DatasetCollection
+// See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)
+message DatasetSeries
  {
- repeated  uriorcurie alternativeId = 0
-  researchActivity wasGeneratedBy = 0
- repeated  dataset hasDataset = 0
-  uriorcurie id = 0
- repeated  string name = 0
+ repeated  legalResource applicableLegislation = 0
+ repeated  kind contactPoint = 0
  repeated  string description = 0
+  frequency frequency = 0
+ repeated  location geographicalCoverage = 0
+  string modificationDate = 0
+  agent publisher = 0
+  string releaseDate = 0
+ repeated  periodOfTime temporalCoverage = 0
+ repeated  string title = 0
  }
 // A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.
 message DefinedTerm
  {
   uriorcurie id = 0
- repeated  uriorcurie alternativeId = 0
- repeated  string name = 0
-  string fromCV = 0
+  string title = 0
+  uriorcurie fromCV = 0
  }
-// Something that is being evaluated in a scientific process.
+// See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
+message Distribution
+ {
+ repeated  resource accessURL = 0
+ repeated  dataService accessService = 0
+ repeated  legalResource applicableLegislation = 0
+  concept availability = 0
+  nonNegativeInteger byteSize = 0
+  checksum checksum = 0
+  mediaType compressionFormat = 0
+ repeated  string description = 0
+ repeated  document documentation = 0
+ repeated  resource downloadURL = 0
+  mediaTypeOrExtent format = 0
+  policy hasPolicy = 0
+ repeated  linguisticSystem language = 0
+  licenseDocument licence = 0
+ repeated  standard linkedSchemas = 0
+  mediaType mediaType = 0
+  string modificationDate = 0
+  mediaType packagingFormat = 0
+  string releaseDate = 0
+  rightsStatement rights = 0
+  decimal spatialResolution = 0
+  concept status = 0
+  duration temporalResolution = 0
+ repeated  string title = 0
+ }
+// Something (not an activity or process) that is being evaluated in a ResearchActivity.
 message EntityOfInterest
  {
+  string title = 0
+  string description = 0
   uriorcurie id = 0
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
- repeated  attribute hasAttribute = 0
- repeated  quantifiableAttribute hasQuantifiableAttribute = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
   string hasPart = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  }
 // The environment in which the dataset creating Observation took place (e.g. a lab).
 message Environment
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
   definedTerm type = 0
- repeated  attribute hasAttribute = 0
- repeated  quantifiableAttribute hasQuantifiableAttribute = 0
+  definedTerm rdfType = 0
  }
 // A hardware with a certain function.
 message HardwareTool
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
  repeated  tool hasPart = 0
- repeated  attribute hasAttribute = 0
- repeated  quantifiableAttribute hasQuantifiableAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)
+message Identifier
+ {
+  uri notation = 0
  }
 // A structure descriptor which conforms to the InChI format specification.
 message InChi
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
+  string title = 0
+  string description = 0
   string value = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  }
 message InChIKey
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
+  string title = 0
+  string description = 0
   string value = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  }
-// An IUPAC name is a systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).
-message IUPACName
+// A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).
+message IUPACChemicalFormula
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
+  string title = 0
+  string description = 0
   string value = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  }
 // A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
 message Laboratory
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
   definedTerm type = 0
- repeated  attribute hasAttribute = 0
- repeated  quantifiableAttribute hasQuantifiableAttribute = 0
+  definedTerm rdfType = 0
+ }
+// See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)
+message LicenseDocument
+ {
+ repeated  concept type = 0
+ }
+// See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)
+message Location
+ {
+  string bbox = 0
+  string centroid = 0
+  geometry geometry = 0
+ }
+// A curated collection of metadata about data resources.
+message NFDICatalog
+ {
+ repeated  legalResource applicableLegislation = 0
+ repeated  catalogue catalogue = 0
+  agent creator = 0
+ repeated  string description = 0
+ repeated  location geographicalCoverage = 0
+ repeated  catalogue hasPart = 0
+  document homepage = 0
+ repeated  linguisticSystem language = 0
+  licenseDocument licence = 0
+  string modificationDate = 0
+  agent publisher = 0
+ repeated  catalogueRecord record = 0
+  string releaseDate = 0
+  rightsStatement rights = 0
+ repeated  dataService service = 0
+ repeated  periodOfTime temporalCoverage = 0
+ repeated  conceptScheme themes = 0
+ repeated  string title = 0
+  uriorcurie id = 0
+  nFDIDataset hasDataset = 0
+ }
+// A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
+message NFDIDataset
+ {
+  rightsStatement accessRights = 0
+ repeated  legalResource applicableLegislation = 0
+ repeated  standard conformsTo = 0
+ repeated  kind contactPoint = 0
+ repeated  agent creator = 0
+ repeated  distribution datasetDistribution = 0
+ repeated  string description = 0
+ repeated  document documentation = 0
+  frequency frequency = 0
+ repeated  location geographicalCoverage = 0
+ repeated  dataset hasVersion = 0
+ repeated  uri identifier = 0
+ repeated  datasetSeries inSeries = 0
+ repeated  resource isReferencedBy = 0
+ repeated  string keyword = 0
+ repeated  document landingPage = 0
+ repeated  linguisticSystem language = 0
+  string modificationDate = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  provenanceStatement provenance = 0
+  agent publisher = 0
+ repeated  attribution qualifiedAttribution = 0
+ repeated  relationship qualifiedRelation = 0
+ repeated  resource relatedResource = 0
+  string releaseDate = 0
+ repeated  distribution sample = 0
+ repeated  dataset source = 0
+  decimal spatialResolution = 0
+ repeated  periodOfTime temporalCoverage = 0
+  duration temporalResolution = 0
+ repeated  concept theme = 0
+ repeated  string title = 0
+ repeated  concept type = 0
+  string version = 0
+ repeated  string versionNotes = 0
+  uriorcurie id = 0
+  researchActivity wasGeneratedBy = 0
+ }
+message NMRDataset
+ {
+  rightsStatement accessRights = 0
+ repeated  legalResource applicableLegislation = 0
+ repeated  standard conformsTo = 0
+ repeated  kind contactPoint = 0
+ repeated  agent creator = 0
+ repeated  distribution datasetDistribution = 0
+ repeated  string description = 0
+ repeated  document documentation = 0
+  frequency frequency = 0
+ repeated  location geographicalCoverage = 0
+ repeated  dataset hasVersion = 0
+ repeated  uri identifier = 0
+ repeated  datasetSeries inSeries = 0
+ repeated  resource isReferencedBy = 0
+ repeated  string keyword = 0
+ repeated  document landingPage = 0
+ repeated  linguisticSystem language = 0
+  string modificationDate = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  provenanceStatement provenance = 0
+  agent publisher = 0
+ repeated  attribution qualifiedAttribution = 0
+ repeated  relationship qualifiedRelation = 0
+ repeated  resource relatedResource = 0
+  string releaseDate = 0
+ repeated  distribution sample = 0
+ repeated  dataset source = 0
+  decimal spatialResolution = 0
+ repeated  periodOfTime temporalCoverage = 0
+  duration temporalResolution = 0
+ repeated  concept theme = 0
+ repeated  string title = 0
+ repeated  concept type = 0
+  string version = 0
+ repeated  string versionNotes = 0
+  uriorcurie id = 0
+  nMRSpectroscopy wasGeneratedBy = 0
  }
 // Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.
 message NMRSpectroscopy
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+  activityOfInterest evaluatedActivity = 0
  repeated  tool usedTool = 0
-  activitySpecification usedPlan = 0
-  researchActivity hasPart = 0
-  chemicalSubstance evaluatedEntity = 0
+  plan realizedPlan = 0
+  activity hasPart = 0
+  environment occurredIn = 0
   definedTerm type = 0
+  chemicalSample evaluatedEntity = 0
+  definedTerm rdfType = 0
  }
-// An attribute that is quantifiable.
-message QuantifiableAttribute
+// See [DCAT-AP specs:PeriodOfTime](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime)
+message PeriodOfTime
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm unit = 0
-  boolean isDeltaAttribute = 0
+  timeInstant beginning = 0
+  timeInstant end = 0
+  string endDate = 0
+  string startDate = 0
+ }
+// A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.
+message Plan
+ {
+  string title = 0
+  string description = 0
   definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// A piece of information that is attributed to an entity of interest, tool or environment.
+message QualitativeAttribute
+ {
+  string title = 0
+  string description = 0
   string value = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// A quantifiable piece of information that is attributed to an entity of interest, tool or environment.
+message QuantitativeAttribute
+ {
+  string value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)
+message Relationship
+ {
+ repeated  role hadRole = 0
+ repeated  resource relation = 0
  }
 // An activity (process) that has the objective to produce information about an entity by evaluating it.
 message ResearchActivity
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
   entityOfInterest evaluatedEntity = 0
+  activityOfInterest evaluatedActivity = 0
  repeated  tool usedTool = 0
-  activitySpecification usedPlan = 0
-  researchActivity hasPart = 0
+  plan realizedPlan = 0
+  activity hasPart = 0
+  environment occurredIn = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
+message SMILES
+ {
+  string title = 0
+  string description = 0
+  string value = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  }
 // A software with a certain function.
 message SoftwareTool
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
  repeated  tool hasPart = 0
- repeated  attribute hasAttribute = 0
- repeated  quantifiableAttribute hasQuantifiableAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  }
-// A entity with a certain function used within a scientific activity.
+// A entity with a certain function used within a ResearchActivity.
 message Tool
  {
- repeated  string name = 0
- repeated  string description = 0
- repeated  uriorcurie alternativeId = 0
-  definedTerm type = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
  repeated  tool hasPart = 0
- repeated  attribute hasAttribute = 0
- repeated  quantifiableAttribute hasQuantifiableAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  }

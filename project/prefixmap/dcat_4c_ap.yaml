@@ -10,18 +10,24 @@
    "OBI": "http://purl.obolibrary.org/obo/OBI_",
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
    "RO": "http://purl.obolibrary.org/obo/RO_",
-   "RXNO": "http://semanticscience.org/resource/RXNO_",
+   "RXNO": "http://purl.obolibrary.org/obo/RXNO_",
    "SIO": "http://semanticscience.org/resource/SIO_",
    "T4FS": "http://purl.obolibrary.org/obo/T4FS_",
+   "adms": "http://www.w3.org/ns/adms#",
    "biolink": "https://w3id.org/biolink/vocab/",
    "dcat": "http://www.w3.org/ns/dcat#",
+   "dcatap": "http://data.europa.eu/r5r/",
    "dcterms": "http://purl.org/dc/terms/",
    "doi": "https://doi.org/",
+   "eli": "http://data.europa.eu/eli/ontology#",
    "ex": "http://example.org/",
    "foaf": "http://xmlns.com/foaf/0.1/",
    "linkml": "https://w3id.org/linkml/",
-   "nfdi": "https://w3id.org/StroemPhi/dcat-4nfdi-ap/",
+   "linkmldcatap": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/",
+   "locn": "http://www.w3.org/ns/locn#",
+   "nfdi": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/",
    "nfdi4c": "https://w3id.org/StroemPhi/dcat_4C_ap/",
+   "odrl": "http://www.w3.org/ns/odrl/2/",
    "owl": "http://www.w3.org/2002/07/owl#",
    "prov": "http://www.w3.org/ns/prov#",
    "qudt": "http://qudt.org/schema/qudt/",
@@ -30,30 +36,71 @@
    "schema": "http://schema.org/",
    "skos": "http://www.w3.org/2004/02/skos/core#",
    "sosa": "http://www.w3.org/ns/sosa/",
+   "spdx": "http://spdx.org/rdf/terms#",
+   "time": "http://www.w3.org/2006/time#",
    "vcard": "http://www.w3.org/2006/vcard/ns#",
-   "ActivitySpecification": {
-      "@id": "prov:Entity"
+   "Activity": {
+      "@id": "prov:Activity"
    },
-   "Any": {
-      "@id": "linkml:Any"
+   "ActivityOfInterest": {
+      "@id": "prov:Activity"
    },
-   "Attribute": {
-      "@id": "IAO:0000030"
+   "Agent": {
+      "@id": "foaf:Agent"
+   },
+   "Attribution": {
+      "@id": "prov:Attribution"
+   },
+   "Catalogue": {
+      "@id": "dcat:Catalog"
+   },
+   "CataloguedResource": {
+      "@id": "dcat:Resource"
+   },
+   "CatalogueRecord": {
+      "@id": "dcat:CatalogRecord"
+   },
+   "Checksum": {
+      "@id": "spdx:Checksum"
+   },
+   "ChecksumAlgorithm": {
+      "@id": "spdx:ChecksumAlgorithm"
+   },
+   "ChemicalEntity": {
+      "@id": "CHEBI:23367"
    },
    "ChemicalReaction": {
       "@id": "RXNO:0000329"
    },
    "ChemicalSubstance": {
-      "@id": "CHEBI:59999"
+      "@id": "prov:Entity"
+   },
+   "ClassifierMixin": {
+      "@id": "nfdi:ClassifierMixin"
+   },
+   "Concept": {
+      "@id": "skos:Concept"
+   },
+   "ConceptScheme": {
+      "@id": "skos:ConceptScheme"
+   },
+   "DataService": {
+      "@id": "dcat:DataService"
    },
    "Dataset": {
       "@id": "dcat:Dataset"
    },
-   "DatasetCollection": {
-      "@id": "dcat:Catalog"
+   "DatasetSeries": {
+      "@id": "dcat:DatasetSeries"
    },
    "DefinedTerm": {
       "@id": "schema:DefinedTerm"
+   },
+   "Distribution": {
+      "@id": "dcat:Distribution"
+   },
+   "Document": {
+      "@id": "foaf:Document"
    },
    "EntityOfInterest": {
       "@id": "prov:Entity"
@@ -61,26 +108,101 @@
    "Environment": {
       "@id": "prov:Entity"
    },
+   "Frequency": {
+      "@id": "dcterms:Frequency"
+   },
+   "Geometry": {
+      "@id": "locn:Geometry"
+   },
+   "Identifier": {
+      "@id": "adms:Identifier"
+   },
    "InChi": {
       "@id": "CHEMINF:000113"
    },
    "InChIKey": {
       "@id": "CHEMINF:000059"
    },
-   "IUPACName": {
-      "@id": "CHEMINF:000107"
+   "IUPACChemicalFormula": {
+      "@id": "CHEMINF:000037"
+   },
+   "Kind": {
+      "@id": "vcard:Kind"
    },
    "Laboratory": {
       "@id": "prov:Entity"
    },
-   "NMRSpectroscopy": {
-      "@id": "CHMO:0000613"
+   "LegalResource": {
+      "@id": "eli:LegalResource"
    },
-   "QuantifiableAttribute": {
+   "LicenseDocument": {
+      "@id": "dcterms:LicenseDocument"
+   },
+   "LinguisticSystem": {
+      "@id": "dcterms:LinguisticSystem"
+   },
+   "Location": {
+      "@id": "dcterms:Location"
+   },
+   "MediaType": {
+      "@id": "dcterms:MediaType"
+   },
+   "MediaTypeOrExtent": {
+      "@id": "dcterms:MediaTypeOrExtent"
+   },
+   "NFDICatalog": {
+      "@id": "dcat:Catalog"
+   },
+   "NFDIDataset": {
+      "@id": "dcat:Dataset"
+   },
+   "NMRDataset": {
+      "@id": "dcat:Dataset"
+   },
+   "PeriodOfTime": {
+      "@id": "dcterms:PeriodOfTime"
+   },
+   "Plan": {
+      "@id": "prov:Entity"
+   },
+   "Policy": {
+      "@id": "odrl:Policy"
+   },
+   "ProvenanceStatement": {
+      "@id": "dcterms:ProvenanceStatement"
+   },
+   "QualitativeAttribute": {
+      "@id": "prov:Entity"
+   },
+   "QuantitativeAttribute": {
       "@id": "qudt:Quantity"
+   },
+   "Relationship": {
+      "@id": "dcat:Relationship"
    },
    "ResearchActivity": {
       "@id": "prov:Activity"
+   },
+   "Resource": {
+      "@id": "rdfs:Resource"
+   },
+   "RightsStatement": {
+      "@id": "dcterms:RightsStatement"
+   },
+   "Role": {
+      "@id": "dcat:Role"
+   },
+   "SMILES": {
+      "@id": "CHEMINF:000018"
+   },
+   "Standard": {
+      "@id": "dcterms:Standard"
+   },
+   "SupportiveEntity": {
+      "@id": "linkmldcatap:SupportiveEntity"
+   },
+   "TimeInstant": {
+      "@id": "time:Instant"
    },
    "Tool": {
       "@id": "prov:Entity"
