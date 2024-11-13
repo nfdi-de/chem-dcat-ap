@@ -36,7 +36,7 @@ prefixes:
   T4FS: http://purl.obolibrary.org/obo/T4FS_
   FOODON: http://purl.obolibrary.org/obo/FOODON_
   CHEMINF: http://semanticscience.org/resource/CHEMINF_
-  RXNO: http://semanticscience.org/resource/RXNO_
+  RXNO: http://purl.obolibrary.org/obo/RXNO_
   ex: http://example.org/
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   SIO: http://semanticscience.org/resource/SIO_
