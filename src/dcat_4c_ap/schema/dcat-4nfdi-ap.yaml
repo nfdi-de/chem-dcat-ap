@@ -263,7 +263,11 @@ classes:
       - title
       - description
       - value
-          
+    slot_usage:
+      value:
+        description: The slot to provide the literal value of the QualitativeAttribute.
+        required: true
+  
   QuantitativeAttribute:
     mixins:
       - ClassifierMixin
@@ -289,6 +293,10 @@ classes:
             range: QUDTUnitEnum
             obligation_level: RECOMMENDED
             description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
+    slot_usage:
+      value:
+        description: The slot to provide the literal value of the QuantitativeAttribute.
+        required: true
 
         
 
