@@ -289,6 +289,7 @@ classes:
       unit:
         slot_uri: qudt:unit
         range: DefinedTerm
+        recommended: true
         bindings: ## new feature not yet implemented, see: https://github.com/linkml/linkml-model/releases/tag/v1.8.0
           - binds_value_of: id
             range: QUDTUnitEnum
