@@ -280,6 +280,7 @@ classes:
         range: DefinedTerm
         description: The type of quality that is quantifiable according to the QUDT ontology.
         slot_uri: qudt:hasQuantityKind
+        required: true
         bindings: ## new feature not yet implemented, see: https://github.com/linkml/linkml-model/releases/tag/v1.8.0
           - binds_value_of: id
             range: QUDTQuantityKindEnum
