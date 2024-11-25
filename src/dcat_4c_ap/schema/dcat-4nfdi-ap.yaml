@@ -263,7 +263,11 @@ classes:
       - title
       - description
       - value
-          
+    slot_usage:
+      value:
+        description: The slot to provide the literal value of the QualitativeAttribute.
+        required: true
+  
   QuantitativeAttribute:
     mixins:
       - ClassifierMixin
@@ -276,6 +280,7 @@ classes:
         range: DefinedTerm
         description: The type of quality that is quantifiable according to the QUDT ontology.
         slot_uri: qudt:hasQuantityKind
+        required: true
         bindings: ## new feature not yet implemented, see: https://github.com/linkml/linkml-model/releases/tag/v1.8.0
           - binds_value_of: id
             range: QUDTQuantityKindEnum
@@ -284,11 +289,16 @@ classes:
       unit:
         slot_uri: qudt:unit
         range: DefinedTerm
+        recommended: true
         bindings: ## new feature not yet implemented, see: https://github.com/linkml/linkml-model/releases/tag/v1.8.0
           - binds_value_of: id
             range: QUDTUnitEnum
             obligation_level: RECOMMENDED
             description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
+    slot_usage:
+      value:
+        description: The slot to provide the literal value of the QuantitativeAttribute.
+        required: true
 
         
 
@@ -332,14 +342,14 @@ slots:
     description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
     range: Environment
   has_qualitative_attribute:
-    #slot_uri: dcterms:relation
+    slot_uri: dcterms:relation
     description: The slot to relate a qualitative attribute to an entity of interest, tool or environment.
     range: QualitativeAttribute
     inlined: true
     multivalued: true
     inlined_as_list: true
   has_quantitative_attribute:
-    #slot_uri: dcterms:relation
+    slot_uri: dcterms:relation
     description: The slot to relate a quantitative  attribute to an entity of interest, tool or environment.
     range: QuantitativeAttribute
     inlined: true
