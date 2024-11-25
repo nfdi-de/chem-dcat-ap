@@ -342,14 +342,14 @@ slots:
     description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
     range: Environment
   has_qualitative_attribute:
-    #slot_uri: dcterms:relation
+    slot_uri: dcterms:relation
     description: The slot to relate a qualitative attribute to an entity of interest, tool or environment.
     range: QualitativeAttribute
     inlined: true
     multivalued: true
     inlined_as_list: true
   has_quantitative_attribute:
-    #slot_uri: dcterms:relation
+    slot_uri: dcterms:relation
     description: The slot to relate a quantitative  attribute to an entity of interest, tool or environment.
     range: QuantitativeAttribute
     inlined: true
