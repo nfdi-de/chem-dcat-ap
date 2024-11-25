@@ -285,8 +285,8 @@
 </tr>
 <tr>
 <td><a href="../value/">value</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A slot to provide the literal value of an attribute</td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The slot to provide the literal value of the QualitativeAttribute</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -414,6 +414,11 @@ slots:
 - title
 - description
 - value
+slot_usage:
+  value:
+    name: value
+    description: The slot to provide the literal value of the QualitativeAttribute.
+    required: true
 class_uri: prov:Entity
 
 </code></pre>
@@ -426,6 +431,11 @@ description: A piece of information that is attributed to an entity of interest,
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 mixins:
 - ClassifierMixin
+slot_usage:
+  value:
+    name: value
+    description: The slot to provide the literal value of the QualitativeAttribute.
+    required: true
 attributes:
   title:
     name: title
@@ -479,7 +489,7 @@ attributes:
     range: string
   value:
     name: value
-    description: A slot to provide the literal value of an attribute.
+    description: The slot to provide the literal value of the QualitativeAttribute.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: prov:value
@@ -489,6 +499,7 @@ attributes:
     - QualitativeAttribute
     - QuantitativeAttribute
     range: string
+    required: true
   type:
     name: type
     description: This slot is described in more detail within the class in which it

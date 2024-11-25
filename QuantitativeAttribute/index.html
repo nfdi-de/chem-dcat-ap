@@ -218,7 +218,7 @@
 
 
 
-    QuantitativeAttribute --&gt; "0..1" DefinedTerm : has_quantity_type
+    QuantitativeAttribute --&gt; "1" DefinedTerm : has_quantity_type
     click DefinedTerm href "../DefinedTerm"
 
 
@@ -245,7 +245,7 @@
 
 
 
-    QuantitativeAttribute --&gt; "0..1" DefinedTerm : unit
+    QuantitativeAttribute --&gt; "0..1 _recommended_" DefinedTerm : unit
     click DefinedTerm href "../DefinedTerm"
 
 
@@ -270,19 +270,19 @@
 <tbody>
 <tr>
 <td><a href="../value/">value</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A slot to provide the literal value of an attribute</td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The slot to provide the literal value of the QuantitativeAttribute</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_quantity_type/">has_quantity_type</a></td>
-<td>0..1 <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>1 <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
 <td>The type of quality that is quantifiable according to the QUDT ontology</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -409,6 +409,11 @@ mixins:
 - ClassifierMixin
 slots:
 - value
+slot_usage:
+  value:
+    name: value
+    description: The slot to provide the literal value of the QuantitativeAttribute.
+    required: true
 attributes:
   has_quantity_type:
     name: has_quantity_type
@@ -425,6 +430,7 @@ attributes:
       binds_value_of: id
       description: Binds the type of a quantifiable attribute to a QUDT Quantity Kind
         instance from the QUDT Quantity Kind vocabulary.
+    required: true
   unit:
     name: unit
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap
@@ -438,6 +444,7 @@ attributes:
       obligation_level: RECOMMENDED
       binds_value_of: id
       description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
+    recommended: true
 class_uri: qudt:Quantity
 
 </code></pre>
@@ -450,6 +457,11 @@ description: A quantifiable piece of information that is attributed to an entity
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
 mixins:
 - ClassifierMixin
+slot_usage:
+  value:
+    name: value
+    description: The slot to provide the literal value of the QuantitativeAttribute.
+    required: true
 attributes:
   has_quantity_type:
     name: has_quantity_type
@@ -468,6 +480,7 @@ attributes:
       binds_value_of: id
       description: Binds the type of a quantifiable attribute to a QUDT Quantity Kind
         instance from the QUDT Quantity Kind vocabulary.
+    required: true
   unit:
     name: unit
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap
@@ -483,9 +496,10 @@ attributes:
       obligation_level: RECOMMENDED
       binds_value_of: id
       description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
+    recommended: true
   value:
     name: value
-    description: A slot to provide the literal value of an attribute.
+    description: The slot to provide the literal value of the QuantitativeAttribute.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
     rank: 1000
     slot_uri: prov:value
@@ -495,6 +509,7 @@ attributes:
     - QualitativeAttribute
     - QuantitativeAttribute
     range: string
+    required: true
   type:
     name: type
     description: This slot is described in more detail within the class in which it
