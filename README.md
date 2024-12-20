@@ -24,11 +24,12 @@ Requirements:
 *  Poetry must be installed
    * `pipx install poetry`
 *  `make setup` to install Poetry env
-*  If you want you could run `poetry run python src/dcat-ap_shacl_2_linkml.py` to recreate the [dcat-ap.yaml](src%2Fdcat_4c_ap%2Fschema%2Fdcat-ap.yaml) from the [dcat-ap-SHACL.jsonld](src%2Fdcat-ap-SHACL.jsonld)
 * To build the docs locally run: 
   ` poetry run gen-doc  -d docs "src/dcat_4C_ap/schema/dcat-ap.yaml" --template-directory "src/docgen/" && poetry run mkdocs serve`
   * Use another LinkML YAML in `src` if you want to build the docs of a profile.
-* To validate the test dataset against the model you can use: `poetry run linkml-convert -t ttl src/data/examples/Dataset-001_dcat-ap.yaml -s src/dcat_4C_ap/schema/dcat-ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C Dataset`
+* To validate the test dataset against the model you can use: `poetry run linkml-convert -t ttl 
+src/data/examples/Dataset-001.yaml -s src/dcat_4C_ap/schema/dcat-ap.yaml -P "_base=https://search.nfdi4chem.
+de/dataset/" -C NFDIDataset`
 
 <details>
 Use the `make` command to generate project artefacts:

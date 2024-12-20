@@ -11,6 +11,7 @@ see_also:
   - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
   nfdi: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/
+  dcataplinkml: https://stroemphi.github.io/dcat-ap-linkml/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -45,7 +46,7 @@ default_prefix: nfdi
 default_range: string
 imports:
   - linkml:types
-  - dcat-ap
+  - dcataplinkml:dcat_ap_linkml
 
 classes:
   
