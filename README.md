@@ -27,9 +27,7 @@ Requirements:
 * To build the docs locally run: 
   ` poetry run gen-doc  -d docs "src/dcat_4C_ap/schema/dcat-ap.yaml" --template-directory "src/docgen/" && poetry run mkdocs serve`
   * Use another LinkML YAML in `src` if you want to build the docs of a profile.
-* To validate the test dataset against the model you can use: `poetry run linkml-convert -t ttl 
-src/data/examples/Dataset-001.yaml -s src/dcat_4C_ap/schema/dcat-ap.yaml -P "_base=https://search.nfdi4chem.
-de/dataset/" -C NFDIDataset`
+* To validate the test dataset against the model you can use: `poetry run inkml-convert -t ttl src/data/examples/Dataset-001.yaml -s src/dcat_4c_ap/schema/dcat-ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NFDIDataset`
 
 <details>
 Use the `make` command to generate project artefacts:
