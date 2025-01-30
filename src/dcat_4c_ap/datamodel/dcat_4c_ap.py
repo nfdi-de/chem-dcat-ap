@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-30T20:44:51
+# Generation date: 2025-01-30T21:26:12
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -1387,7 +1387,7 @@ class NFDIDataset(Dataset):
     id: Union[str, NFDIDatasetId] = None
     description: Union[str, List[str]] = None
     title: Union[str, List[str]] = None
-    was_generated_by: Union[dict, ResearchActivity] = None
+    was_generated_by: Union[Union[dict, ResearchActivity], List[Union[dict, ResearchActivity]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1397,8 +1397,9 @@ class NFDIDataset(Dataset):
 
         if self._is_empty(self.was_generated_by):
             self.MissingRequiredField("was_generated_by")
-        if not isinstance(self.was_generated_by, ResearchActivity):
-            self.was_generated_by = ResearchActivity(**as_dict(self.was_generated_by))
+        if not isinstance(self.was_generated_by, list):
+            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
+        self.was_generated_by = [v if isinstance(v, ResearchActivity) else ResearchActivity(**as_dict(v)) for v in self.was_generated_by]
 
         super().__post_init__(**kwargs)
 
@@ -1415,7 +1416,7 @@ class NMRDataset(NFDIDataset):
     id: Union[str, NMRDatasetId] = None
     description: Union[str, List[str]] = None
     title: Union[str, List[str]] = None
-    was_generated_by: Optional[Union[dict, NMRSpectroscopy]] = None
+    was_generated_by: Optional[Union[Union[dict, NMRSpectroscopy], List[Union[dict, NMRSpectroscopy]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1423,8 +1424,9 @@ class NMRDataset(NFDIDataset):
         if not isinstance(self.id, NMRDatasetId):
             self.id = NMRDatasetId(self.id)
 
-        if self.was_generated_by is not None and not isinstance(self.was_generated_by, NMRSpectroscopy):
-            self.was_generated_by = NMRSpectroscopy(**as_dict(self.was_generated_by))
+        if not isinstance(self.was_generated_by, list):
+            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
+        self.was_generated_by = [v if isinstance(v, NMRSpectroscopy) else NMRSpectroscopy(**as_dict(v)) for v in self.was_generated_by]
 
         super().__post_init__(**kwargs)
 
@@ -2498,7 +2500,7 @@ slots.quantitativeAttribute__unit = Slot(uri=QUDT.unit, name="quantitativeAttrib
                    model_uri=NFDI4C.quantitativeAttribute__unit, domain=None, range=Optional[Union[str, DefinedTermId]])
 
 slots.NMRDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="NMRDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.NMRDataset_was_generated_by, domain=NMRDataset, range=Optional[Union[dict, NMRSpectroscopy]])
+                   model_uri=NFDI4C.NMRDataset_was_generated_by, domain=NMRDataset, range=Optional[Union[Union[dict, NMRSpectroscopy], List[Union[dict, NMRSpectroscopy]]]])
 
 slots.NMRSpectroscopy_evaluated_entity = Slot(uri=PROV.used, name="NMRSpectroscopy_evaluated_entity", curie=PROV.curie('used'),
                    model_uri=NFDI4C.NMRSpectroscopy_evaluated_entity, domain=NMRSpectroscopy, range=Optional[Union[dict, ChemicalSample]])
@@ -2516,7 +2518,7 @@ slots.DefinedTerm_title = Slot(uri=SCHEMA.name, name="DefinedTerm_title", curie=
                    model_uri=NFDI4C.DefinedTerm_title, domain=DefinedTerm, range=Optional[str])
 
 slots.NFDIDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="NFDIDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.NFDIDataset_was_generated_by, domain=NFDIDataset, range=Union[dict, ResearchActivity])
+                   model_uri=NFDI4C.NFDIDataset_was_generated_by, domain=NFDIDataset, range=Union[Union[dict, ResearchActivity], List[Union[dict, ResearchActivity]]])
 
 slots.NFDICatalog_has_dataset = Slot(uri=DCAT.dataset, name="NFDICatalog_has_dataset", curie=DCAT.curie('dataset'),
                    model_uri=NFDI4C.NFDICatalog_has_dataset, domain=NFDICatalog, range=Optional[Union[str, NFDIDatasetId]])

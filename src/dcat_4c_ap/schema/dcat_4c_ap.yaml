@@ -60,6 +60,8 @@ classes:
     slot_usage: 
       was_generated_by:
         range: NMRSpectroscopy
+        multivalued: true
+        inlined_as_list: true
 
 ###########################
 # Research Activity Types #

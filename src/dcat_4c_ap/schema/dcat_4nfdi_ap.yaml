@@ -91,8 +91,10 @@ classes:
     slot_usage:
       was_generated_by:
         range: ResearchActivity
-        required: true  
-        
+        required: true
+        multivalued: true
+        inlined_as_list: true
+  
   NFDICatalog:
     is_a: Catalogue
     class_uri: dcat:Catalog
