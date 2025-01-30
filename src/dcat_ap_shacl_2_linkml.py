@@ -39,7 +39,7 @@ PREFIX_MAP = {
     'vcard': 'http://www.w3.org/2006/vcard/ns#',
     'adms': 'http://www.w3.org/ns/adms#',
     'dcatap': 'http://data.europa.eu/r5r/',
-    'linkmldcatap': 'https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/',
+    'linkmldcatap': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
     'qb': 'http://purl.org/linked-data/cube#',
     'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
     'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
@@ -51,7 +51,7 @@ PREFIX_MAP = {
 # The shapes for rdfs:Literal and dcterms:mediaType [sic] are ignored, 
 # since we use LinkML's 'string' as default datatype for unspecified literal slot ranges 
 # and dcterms:MediaType was used twice, once with this typo in the SHACL and a similar one in the HTML.
-# seeAlso: L251-L258 in 'dcat-ap-SHACL.jsonld' and https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Mediatype
+# seeAlso: L251-L258 in 'dcat_ap_SHACL.jsonld' and https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Mediatype
 IGNORED_NODES = ['Literal', 'mediaType', 'TemporalLiteral']
 
 # Manually curated dict with recommended slots for each class, as this info cannot be parsed from the used shapes.
@@ -87,7 +87,7 @@ def get_curie(term_uri, prefixes=None):
     return term_curie
 
 
-def load_shacl_shapes(jsonld_file='dcat-ap-SHACL.jsonld'):
+def load_shacl_shapes(jsonld_file='dcat_ap_SHACL.jsonld'):
     """
     Load the JSON-LD file containing the DCAT-AP SHACL shapes.
     TODO: Use Requests to download directly from the script, maybe with cache option.
@@ -111,7 +111,7 @@ def parse_shacl_shapes(builder):
     # Iterate through each SHACL node shape within the loaded JSON-LD to derive the LinkML classes or types from them.
     for node_shape in dcat_ap_shapes['shapes']:
         node_curie = get_curie(node_shape['sh:targetClass'])
-        
+
         # Account for the renaming of DCAT classes in DCAT-AP
         if node_curie == 'dcat:Resource':
             node_name = 'CataloguedResource'
@@ -121,10 +121,10 @@ def parse_shacl_shapes(builder):
             node_name = 'CatalogueRecord'
         else:
             node_name = node_shape['@id'].split('#')[-1].split(':')[-1].replace('Shape', '')
-        
+
         # Link to the DCAT-AP specs for the description of the classes.
         description = f'See [DCAT-AP specs:{node_name}](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#{node_name})'
-        
+
         # Account for dcat:Resource being defined as an abstract class in DCAT-AP.
         abstract = True if node_curie == 'dcat:Resource' else False
 
@@ -151,7 +151,7 @@ def parse_shacl_shapes(builder):
                                                   class_uri=node_curie,
                                                   description=description,
                                                   abstract=abstract))
-            
+
             # Dict to store parsed slots of a class
             class_slots = {}
 
@@ -239,13 +239,13 @@ def parse_shacl_shapes(builder):
                                 for recommended_slot in recommended_slots:
                                     if recommended_slot in class_slots:
                                         class_slots[recommended_slot].recommended = True
-                    
+
 
                     builder.schema.classes[node_name].slots = sorted(list(class_slots.keys()))
                     builder.schema.classes[node_name].slot_usage = {key: class_slots[key] for key in
-                                                                    sorted(class_slots)}                 
-                    
-                    
+                                                                    sorted(class_slots)}
+
+
         elif node_name in ['duration', 'hexBinary', 'nonNegativeInteger']:
             pattern, base, description = '', '', ''
             if 'nonNegativeInteger' in node_name:
@@ -282,8 +282,8 @@ def parse_shacl_shapes(builder):
                                             conforms_to=f'https://www.w3.org/TR/xmlschema11-2/#{node_name}',
                                             base=base,
                                             description=description,
-                                            pattern=pattern)) 
-                                
+                                            pattern=pattern))
+
     return builder
 
 
@@ -334,7 +334,7 @@ def build_schema():
     Create a LinkML schema representation
     """
     builder = SchemaBuilder(name="dcat-ap")
-    builder.schema.id = 'https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml'
+    builder.schema.id = 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'
     builder.schema.description = DESCRIPTION + '\nNOTE:' + NOTE
     builder.schema.default_prefix = 'linkmldcatap'
     builder.schema.prefixes = PREFIX_MAP
@@ -343,7 +343,7 @@ def build_schema():
     builder.schema.default_range = 'string'
     builder.schema.imports = ['linkml:types']
     builder.schema.source = 'https://semiceu.github.io/DCAT-AP/releases/3.0.0'
-    
+
     builder = parse_shacl_shapes(builder)
     builder = add_enums(builder)
 
@@ -363,7 +363,7 @@ def build_schema():
     return builder.schema
 
 
-def dump_schema(schema, output_file='dcat_4c_ap/schema/dcat-ap.yaml'):
+def dump_schema(schema, output_file='dcat_4c_ap/schema/dcat_ap_linkml.yaml'):
     filename = output_file
     filepath = os.path.join("src", filename)
     YAMLDumper().dump(schema, filepath)
