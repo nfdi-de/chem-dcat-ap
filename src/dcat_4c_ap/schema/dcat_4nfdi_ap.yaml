@@ -300,8 +300,7 @@ classes:
       value:
         description: The slot to provide the literal value of the QuantitativeAttribute.
         required: true
-
-        
+        range: float
 
 # Slots
 slots:

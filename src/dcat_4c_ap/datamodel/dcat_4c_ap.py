@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-30T18:43:07
+# Generation date: 2025-01-30T20:29:31
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -57,7 +57,7 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Decimal, String, Uri, Uriorcurie
+from linkml_runtime.linkml_model.types import Decimal, Float, String, Uri, Uriorcurie
 from linkml_runtime.utils.metamodelcore import Decimal, URI, URIorCURIE
 
 metamodel_version = "1.7.0"
@@ -654,7 +654,7 @@ class QuantitativeAttribute(YAMLRoot):
     class_name: ClassVar[str] = "QuantitativeAttribute"
     class_model_uri: ClassVar[URIRef] = NFDI4C.QuantitativeAttribute
 
-    value: str = None
+    value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
     unit: Optional[Union[str, DefinedTermId]] = None
     type: Optional[Union[dict, DefinedTerm]] = None
@@ -663,8 +663,8 @@ class QuantitativeAttribute(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.value):
             self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
+        if not isinstance(self.value, float):
+            self.value = float(self.value)
 
         if self._is_empty(self.has_quantity_type):
             self.MissingRequiredField("has_quantity_type")
@@ -2546,7 +2546,7 @@ slots.QualitativeAttribute_value = Slot(uri=PROV.value, name="QualitativeAttribu
                    model_uri=NFDI4C.QualitativeAttribute_value, domain=QualitativeAttribute, range=str)
 
 slots.QuantitativeAttribute_value = Slot(uri=PROV.value, name="QuantitativeAttribute_value", curie=PROV.curie('value'),
-                   model_uri=NFDI4C.QuantitativeAttribute_value, domain=QuantitativeAttribute, range=str)
+                   model_uri=NFDI4C.QuantitativeAttribute_value, domain=QuantitativeAttribute, range=float)
 
 slots.Agent_name = Slot(uri=FOAF.name, name="Agent_name", curie=FOAF.curie('name'),
                    model_uri=NFDI4C.Agent_name, domain=Agent, range=Union[str, List[str]])
