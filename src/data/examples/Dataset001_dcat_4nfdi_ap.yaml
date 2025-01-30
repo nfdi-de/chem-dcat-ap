@@ -3,44 +3,43 @@
 id: https://doi.org/10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N/CHMO0000595
 other_identifier:
   - notation: https://www.chemotion-repository.net/pid/37012
-title: "13C nuclear magnetic resonance spectroscopy (13C NMR)"
-description: "Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)"
+title: 
+  - "13C nuclear magnetic resonance spectroscopy (13C NMR)"
+description: 
+  - "Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)"
 theme:
-  - preferred_label: Science and technology
+  - preferred_label: 
+    - "Science and technology"
 was_generated_by:
-  rdf_type:
-    id: CHMO:0000595
-    title: "13C nuclear magnetic resonance spectroscopy"
-  evaluated_entity:
-    rdf_type:
-      id: CHEBI:59999
-      title: "Chemical Substance"
-    id: https://doi.org/10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N.1
-    title: "CRS-37013"
-    other_identifier:
-      - notation: https://www.chemotion-repository.net/pid/37013
-    has_qualitative_attribute:
-      - rdf_type:
-          id: CHEMINF:000059
-          title: InChiKey
-        value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
-  used_tool:
-    - rdf_type:
-        id: OBI:0000566
-        title: "NMR instrument"
+  - rdf_type:
+      id: CHMO:0000595
+      title: "13C nuclear magnetic resonance spectroscopy"
+    evaluated_entity:
+      rdf_type:
+        id: CHEBI:59999
+        title: "Chemical Substance"
+      id: https://doi.org/10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N.1
+      title: "CRS-37013"
+      other_identifier:
+        - notation: https://www.chemotion-repository.net/pid/37013
       has_qualitative_attribute:
         - rdf_type:
-            id: NMR:1400037
-            title: "NMR pulse sequence"
-          value: zgpg30
-      has_quantitative_attribute:
-        - rdf_type:
-            id: IAO:0000140
-            title: "setting datum"
-          has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
-          unit: https://qudt.org/vocab/unit/K
-          value: 298.0
-
-
-            
-                      
+            id: CHEMINF:000059
+            title: InChiKey
+          value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
+    used_tool:
+      - rdf_type:
+          id: OBI:0000566
+          title: "NMR instrument"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: NMR:1400037
+              title: "NMR pulse sequence"
+            value: zgpg30
+        has_quantitative_attribute:
+          - rdf_type:
+              id: IAO:0000140
+              title: "setting datum"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.0
