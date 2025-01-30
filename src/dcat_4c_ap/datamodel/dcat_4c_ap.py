@@ -1,8 +1,8 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-11-13T22:54:20
+# Generation date: 2025-01-30T18:43:07
 # Schema: dcat-4C-ap
 #
-# id: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+# id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 # description: This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI 4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.
 # license: CC-BY 4.0
 
@@ -91,10 +91,10 @@ ELI = CurieNamespace('eli', 'http://data.europa.eu/eli/ontology#')
 EX = CurieNamespace('ex', 'http://example.org/')
 FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-LINKMLDCATAP = CurieNamespace('linkmldcatap', 'https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/')
+LINKMLDCATAP = CurieNamespace('linkmldcatap', 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/')
 LOCN = CurieNamespace('locn', 'http://www.w3.org/ns/locn#')
-NFDI = CurieNamespace('nfdi', 'https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/')
-NFDI4C = CurieNamespace('nfdi4c', 'https://w3id.org/StroemPhi/dcat_4C_ap/')
+NFDI = CurieNamespace('nfdi', 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/')
+NFDI4C = CurieNamespace('nfdi4c', 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/')
 ODRL = CurieNamespace('odrl', 'http://www.w3.org/ns/odrl/2/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
@@ -560,21 +560,23 @@ class QualitativeAttribute(YAMLRoot):
     class_name: ClassVar[str] = "QualitativeAttribute"
     class_model_uri: ClassVar[URIRef] = NFDI4C.QualitativeAttribute
 
+    value: str = None
     title: Optional[str] = None
     description: Optional[str] = None
-    value: Optional[str] = None
     type: Optional[Union[dict, DefinedTerm]] = None
     rdf_type: Optional[Union[dict, DefinedTerm]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
+
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if self.value is not None and not isinstance(self.value, str):
-            self.value = str(self.value)
 
         if self.type is not None and not isinstance(self.type, DefinedTerm):
             self.type = DefinedTerm(**as_dict(self.type))
@@ -585,6 +587,7 @@ class QualitativeAttribute(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class InChIKey(QualitativeAttribute):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -593,7 +596,9 @@ class InChIKey(QualitativeAttribute):
     class_name: ClassVar[str] = "InChIKey"
     class_model_uri: ClassVar[URIRef] = NFDI4C.InChIKey
 
+    value: str = None
 
+@dataclass(repr=False)
 class InChi(QualitativeAttribute):
     """
     A structure descriptor which conforms to the InChI format specification.
@@ -605,7 +610,9 @@ class InChi(QualitativeAttribute):
     class_name: ClassVar[str] = "InChi"
     class_model_uri: ClassVar[URIRef] = NFDI4C.InChi
 
+    value: str = None
 
+@dataclass(repr=False)
 class IUPACChemicalFormula(QualitativeAttribute):
     """
     A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out
@@ -618,7 +625,9 @@ class IUPACChemicalFormula(QualitativeAttribute):
     class_name: ClassVar[str] = "IUPACChemicalFormula"
     class_model_uri: ClassVar[URIRef] = NFDI4C.IUPACChemicalFormula
 
+    value: str = None
 
+@dataclass(repr=False)
 class SMILES(QualitativeAttribute):
     """
     A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format
@@ -631,6 +640,7 @@ class SMILES(QualitativeAttribute):
     class_name: ClassVar[str] = "SMILES"
     class_model_uri: ClassVar[URIRef] = NFDI4C.SMILES
 
+    value: str = None
 
 @dataclass(repr=False)
 class QuantitativeAttribute(YAMLRoot):
@@ -644,17 +654,21 @@ class QuantitativeAttribute(YAMLRoot):
     class_name: ClassVar[str] = "QuantitativeAttribute"
     class_model_uri: ClassVar[URIRef] = NFDI4C.QuantitativeAttribute
 
-    value: Optional[str] = None
-    has_quantity_type: Optional[Union[str, DefinedTermId]] = None
+    value: str = None
+    has_quantity_type: Union[str, DefinedTermId] = None
     unit: Optional[Union[str, DefinedTermId]] = None
     type: Optional[Union[dict, DefinedTerm]] = None
     rdf_type: Optional[Union[dict, DefinedTerm]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.value is not None and not isinstance(self.value, str):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
             self.value = str(self.value)
 
-        if self.has_quantity_type is not None and not isinstance(self.has_quantity_type, DefinedTermId):
+        if self._is_empty(self.has_quantity_type):
+            self.MissingRequiredField("has_quantity_type")
+        if not isinstance(self.has_quantity_type, DefinedTermId):
             self.has_quantity_type = DefinedTermId(self.has_quantity_type)
 
         if self.unit is not None and not isinstance(self.unit, DefinedTermId):
@@ -2210,10 +2224,10 @@ slots.realized_plan = Slot(uri=PROV.used, name="realized_plan", curie=PROV.curie
 slots.occurred_in = Slot(uri=BFO['0000066'], name="occurred_in", curie=BFO.curie('0000066'),
                    model_uri=NFDI4C.occurred_in, domain=None, range=Optional[Union[dict, Environment]])
 
-slots.has_qualitative_attribute = Slot(uri=NFDI.has_qualitative_attribute, name="has_qualitative_attribute", curie=NFDI.curie('has_qualitative_attribute'),
+slots.has_qualitative_attribute = Slot(uri=DCTERMS.relation, name="has_qualitative_attribute", curie=DCTERMS.curie('relation'),
                    model_uri=NFDI4C.has_qualitative_attribute, domain=None, range=Optional[Union[Union[dict, QualitativeAttribute], List[Union[dict, QualitativeAttribute]]]])
 
-slots.has_quantitative_attribute = Slot(uri=NFDI.has_quantitative_attribute, name="has_quantitative_attribute", curie=NFDI.curie('has_quantitative_attribute'),
+slots.has_quantitative_attribute = Slot(uri=DCTERMS.relation, name="has_quantitative_attribute", curie=DCTERMS.curie('relation'),
                    model_uri=NFDI4C.has_quantitative_attribute, domain=None, range=Optional[Union[Union[dict, QuantitativeAttribute], List[Union[dict, QuantitativeAttribute]]]])
 
 slots.value = Slot(uri=PROV.value, name="value", curie=PROV.curie('value'),
@@ -2478,7 +2492,7 @@ slots.definedTerm__from_CV = Slot(uri=SCHEMA.inDefinedTermSet, name="definedTerm
                    model_uri=NFDI4C.definedTerm__from_CV, domain=None, range=Optional[Union[str, URIorCURIE]])
 
 slots.quantitativeAttribute__has_quantity_type = Slot(uri=QUDT.hasQuantityKind, name="quantitativeAttribute__has_quantity_type", curie=QUDT.curie('hasQuantityKind'),
-                   model_uri=NFDI4C.quantitativeAttribute__has_quantity_type, domain=None, range=Optional[Union[str, DefinedTermId]])
+                   model_uri=NFDI4C.quantitativeAttribute__has_quantity_type, domain=None, range=Union[str, DefinedTermId])
 
 slots.quantitativeAttribute__unit = Slot(uri=QUDT.unit, name="quantitativeAttribute__unit", curie=QUDT.curie('unit'),
                    model_uri=NFDI4C.quantitativeAttribute__unit, domain=None, range=Optional[Union[str, DefinedTermId]])
@@ -2527,6 +2541,12 @@ slots.Tool_other_identifier = Slot(uri=ADMS.identifier, name="Tool_other_identif
 
 slots.Environment_other_identifier = Slot(uri=ADMS.identifier, name="Environment_other_identifier", curie=ADMS.curie('identifier'),
                    model_uri=NFDI4C.Environment_other_identifier, domain=Environment, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
+
+slots.QualitativeAttribute_value = Slot(uri=PROV.value, name="QualitativeAttribute_value", curie=PROV.curie('value'),
+                   model_uri=NFDI4C.QualitativeAttribute_value, domain=QualitativeAttribute, range=str)
+
+slots.QuantitativeAttribute_value = Slot(uri=PROV.value, name="QuantitativeAttribute_value", curie=PROV.curie('value'),
+                   model_uri=NFDI4C.QuantitativeAttribute_value, domain=QuantitativeAttribute, range=str)
 
 slots.Agent_name = Slot(uri=FOAF.name, name="Agent_name", curie=FOAF.curie('name'),
                    model_uri=NFDI4C.Agent_name, domain=Agent, range=Union[str, List[str]])
