@@ -19,12 +19,12 @@ class TestData(unittest.TestCase):
     def test_data(self):
         """Data test."""
         for path in EXAMPLE_FILES:
-            if path == 'Dataset001_dcat_ap.yaml':
+            if 'Dataset001_dcat_ap.yaml' in path:
                 obj = yaml_loader.load(path, target_class=Dataset)
                 assert obj
-            elif path == 'Dataset001_dcat_4nfdi_ap.yaml':
+            elif 'Dataset001_dcat_4nfdi_ap.yaml' in path:
                 obj = yaml_loader.load(path, target_class=NFDIDataset)
                 assert obj
-            elif path == 'Dataset001_dcat_4c_ap_NMRDataset.yaml':
+            elif 'Dataset001_dcat_4c_ap_NMRDataset.yaml' in path:
                 obj = yaml_loader.load(path, target_class=NMRDataset)
                 assert obj
