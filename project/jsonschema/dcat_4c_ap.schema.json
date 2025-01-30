@@ -2041,13 +2041,13 @@
                     "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "value": {
-                    "description": "A slot to provide the literal value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "The slot to provide the literal value of the QualitativeAttribute.",
+                    "type": "string"
                 }
             },
+            "required": [
+                "value"
+            ],
             "title": "IUPACChemicalFormula",
             "type": "object"
         },
@@ -2107,13 +2107,13 @@
                     "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "value": {
-                    "description": "A slot to provide the literal value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "The slot to provide the literal value of the QualitativeAttribute.",
+                    "type": "string"
                 }
             },
+            "required": [
+                "value"
+            ],
             "title": "InChIKey",
             "type": "object"
         },
@@ -2158,13 +2158,13 @@
                     "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "value": {
-                    "description": "A slot to provide the literal value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "The slot to provide the literal value of the QualitativeAttribute.",
+                    "type": "string"
                 }
             },
+            "required": [
+                "value"
+            ],
             "title": "InChi",
             "type": "object"
         },
@@ -3508,13 +3508,13 @@
                     "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "value": {
-                    "description": "A slot to provide the literal value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "The slot to provide the literal value of the QualitativeAttribute.",
+                    "type": "string"
                 }
             },
+            "required": [
+                "value"
+            ],
             "title": "QualitativeAttribute",
             "type": "object"
         },
@@ -3524,10 +3524,7 @@
             "properties": {
                 "has_quantity_type": {
                     "description": "The type of quality that is quantifiable according to the QUDT ontology.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "rdf_type": {
                     "anyOf": [
@@ -3558,13 +3555,14 @@
                     ]
                 },
                 "value": {
-                    "description": "A slot to provide the literal value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "The slot to provide the literal value of the QuantitativeAttribute.",
+                    "type": "number"
                 }
             },
+            "required": [
+                "value",
+                "has_quantity_type"
+            ],
             "title": "QuantitativeAttribute",
             "type": "object"
         },
@@ -3772,13 +3770,13 @@
                     "description": "This slot is described in more detail within the class in which it is used."
                 },
                 "value": {
-                    "description": "A slot to provide the literal value of an attribute.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "The slot to provide the literal value of the QualitativeAttribute.",
+                    "type": "string"
                 }
             },
+            "required": [
+                "value"
+            ],
             "title": "SMILES",
             "type": "object"
         },
@@ -3987,7 +3985,7 @@
             "type": "string"
         }
     },
-    "$id": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+    "$id": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",

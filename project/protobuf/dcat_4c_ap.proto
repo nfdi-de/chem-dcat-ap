@@ -469,7 +469,7 @@ message QualitativeAttribute
 // A quantifiable piece of information that is attributed to an entity of interest, tool or environment.
 message QuantitativeAttribute
  {
-  string value = 0
+  float value = 0
   definedTerm hasQuantityType = 0
   definedTerm unit = 0
   definedTerm type = 0

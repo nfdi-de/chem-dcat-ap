@@ -73,28 +73,28 @@
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: value Description: A slot to provide the literal value of an attribute.
+--     * Slot: value Description: The slot to provide the literal value of the QualitativeAttribute.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "InChi" Description: "A structure descriptor which conforms to the InChI format specification."
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: value Description: A slot to provide the literal value of an attribute.
+--     * Slot: value Description: The slot to provide the literal value of the QualitativeAttribute.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "IUPACChemicalFormula" Description: "A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC)."
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: value Description: A slot to provide the literal value of an attribute.
+--     * Slot: value Description: The slot to provide the literal value of the QualitativeAttribute.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "SMILES" Description: "A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification."
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: value Description: A slot to provide the literal value of an attribute.
+--     * Slot: value Description: The slot to provide the literal value of the QualitativeAttribute.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "Activity" Description: "See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)"
@@ -405,7 +405,7 @@
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: value Description: A slot to provide the literal value of an attribute.
+--     * Slot: value Description: The slot to provide the literal value of the QualitativeAttribute.
 --     * Slot: ChemicalReaction_id Description: Autocreated FK slot
 --     * Slot: ChemicalSubstance_id Description: Autocreated FK slot
 --     * Slot: ChemicalSample_id Description: Autocreated FK slot
@@ -420,7 +420,7 @@
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "QuantitativeAttribute" Description: "A quantifiable piece of information that is attributed to an entity of interest, tool or environment."
 --     * Slot: id Description: 
---     * Slot: value Description: A slot to provide the literal value of an attribute.
+--     * Slot: value Description: The slot to provide the literal value of the QuantitativeAttribute.
 --     * Slot: has_quantity_type Description: The type of quality that is quantifiable according to the QUDT ontology.
 --     * Slot: unit Description: 
 --     * Slot: ChemicalReaction_id Description: Autocreated FK slot
@@ -834,7 +834,7 @@ CREATE TABLE "InChIKey" (
 	id INTEGER NOT NULL, 
 	title TEXT, 
 	description TEXT, 
-	value TEXT, 
+	value TEXT NOT NULL, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
@@ -845,7 +845,7 @@ CREATE TABLE "InChi" (
 	id INTEGER NOT NULL, 
 	title TEXT, 
 	description TEXT, 
-	value TEXT, 
+	value TEXT NOT NULL, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
@@ -856,7 +856,7 @@ CREATE TABLE "IUPACChemicalFormula" (
 	id INTEGER NOT NULL, 
 	title TEXT, 
 	description TEXT, 
-	value TEXT, 
+	value TEXT NOT NULL, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
@@ -867,7 +867,7 @@ CREATE TABLE "SMILES" (
 	id INTEGER NOT NULL, 
 	title TEXT, 
 	description TEXT, 
-	value TEXT, 
+	value TEXT NOT NULL, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
@@ -1444,7 +1444,7 @@ CREATE TABLE "QualitativeAttribute" (
 	id INTEGER NOT NULL, 
 	title TEXT, 
 	description TEXT, 
-	value TEXT, 
+	value TEXT NOT NULL, 
 	"ChemicalReaction_id" TEXT, 
 	"ChemicalSubstance_id" TEXT, 
 	"ChemicalSample_id" TEXT, 
@@ -1473,8 +1473,8 @@ CREATE TABLE "QualitativeAttribute" (
 );
 CREATE TABLE "QuantitativeAttribute" (
 	id INTEGER NOT NULL, 
-	value TEXT, 
-	has_quantity_type TEXT, 
+	value FLOAT NOT NULL, 
+	has_quantity_type TEXT NOT NULL, 
 	unit TEXT, 
 	"ChemicalReaction_id" TEXT, 
 	"ChemicalSubstance_id" TEXT, 
