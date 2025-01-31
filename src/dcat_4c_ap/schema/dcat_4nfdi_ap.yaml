@@ -1,5 +1,5 @@
 ---
-id: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap
+id: https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/
 name: dcat-4nfdi-ap
 title: DCAT-4NFDI-AP
 description: |-
@@ -10,7 +10,8 @@ see_also:
   - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
   - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
-  nfdi: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/
+  nfdi: https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/
+  linkmldcatap: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -45,7 +46,7 @@ default_prefix: nfdi
 default_range: string
 imports:
   - linkml:types
-  - dcat-ap
+  - dcat_ap_linkml
 
 classes:
   
@@ -90,8 +91,10 @@ classes:
     slot_usage:
       was_generated_by:
         range: ResearchActivity
-        required: true  
-        
+        required: true
+        multivalued: true
+        inlined_as_list: true
+  
   NFDICatalog:
     is_a: Catalogue
     class_uri: dcat:Catalog
@@ -299,8 +302,7 @@ classes:
       value:
         description: The slot to provide the literal value of the QuantitativeAttribute.
         required: true
-
-        
+        range: float
 
 # Slots
 slots:

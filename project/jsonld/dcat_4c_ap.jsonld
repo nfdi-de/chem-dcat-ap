@@ -7,21 +7,21 @@
     "https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml",
     "https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads"
   ],
-  "id": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+  "id": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
   "imports": [
     "linkml:types",
-    "dcat-4nfdi-ap",
-    "dcat-ap"
+    "dcat_4nfdi_ap",
+    "dcat_ap_linkml"
   ],
   "license": "CC-BY 4.0",
   "prefixes": [
     {
       "prefix_prefix": "nfdi4c",
-      "prefix_reference": "https://w3id.org/StroemPhi/dcat_4C_ap/"
+      "prefix_reference": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/"
     },
     {
       "prefix_prefix": "nfdi",
-      "prefix_reference": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/"
+      "prefix_reference": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/"
     },
     {
       "prefix_prefix": "linkml",
@@ -457,10 +457,10 @@
     },
     {
       "name": "duration",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Duration",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Duration",
       "conforms_to": "https://www.w3.org/TR/xmlschema11-2/#duration",
       "description": "The datatype that represents durations of time.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#duration",
       "pattern": "-?P((([0-9]+Y([0-9]+M)?([0-9]+D)?|([0-9]+M)([0-9]+D)?|([0-9]+D))(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S)))?)|(T(([0-9]+H)([0-9]+M)?([0-9]+(\\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\\.[0-9]+)?S)?|([0-9]+(\\.[0-9]+)?S))))",
@@ -468,10 +468,10 @@
     },
     {
       "name": "hexBinary",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/HexBinary",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/HexBinary",
       "conforms_to": "https://www.w3.org/TR/xmlschema11-2/#hexBinary",
       "description": "The datatype that represents arbitrary hex-encoded binary data.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#hexBinary",
       "pattern": "([0-9a-fA-F]{2})*",
@@ -479,10 +479,10 @@
     },
     {
       "name": "nonNegativeInteger",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/NonNegativeInteger",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/NonNegativeInteger",
       "conforms_to": "https://www.w3.org/TR/xmlschema11-2/#nonNegativeInteger",
       "description": "The datatype that represents non-negative integers.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "base": "int",
       "uri": "http://www.w3.org/2001/XMLSchema#nonNegativeInteger",
       "pattern": "([\\-+]?[0-9]+)",
@@ -492,9 +492,9 @@
   "enums": [
     {
       "name": "NMRAssayEnum",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/NMRAssayEnum",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/NMRAssayEnum",
       "description": "NMR types from the Chemical Methods Ontology",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "permissible_values": [
         {
           "text": "CHMO:0000595",
@@ -515,12 +515,12 @@
     },
     {
       "name": "QUDTQuantityKindEnum",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/QUDTQuantityKindEnum",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/QUDTQuantityKindEnum",
       "implements": [
         "owl:NamedIndividual"
       ],
       "description": "Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "reachable_from": {
         "source_ontology": "http://qudt.org/2.1/vocab/quantitykind",
         "source_nodes": [
@@ -534,12 +534,12 @@
     },
     {
       "name": "QUDTUnitEnum",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/QUDTUnitEnum",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/QUDTUnitEnum",
       "implements": [
         "owl:NamedIndividual"
       ],
       "description": "Possible kinds of QUDT unit instances.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "reachable_from": {
         "source_ontology": "https://qudt.org/vocab/unit/",
         "source_nodes": [
@@ -553,8 +553,8 @@
     },
     {
       "name": "DatasetThemes",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/DatasetThemes",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/DatasetThemes",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "see_also": [
         "https://op.europa.eu/s/zXIN"
       ],
@@ -620,8 +620,8 @@
     },
     {
       "name": "TopLevelMediaTypes",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/TopLevelMediaTypes",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/TopLevelMediaTypes",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "enum_uri": "iana:top-level-media-types",
       "permissible_values": [
         {
@@ -663,9 +663,9 @@
   "slots": [
     {
       "name": "has_role",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_role",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/has_role",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/has_role",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
+      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/has_role",
       "owner": "ChemicalSubstance",
       "domain_of": [
         "ChemicalSubstance"
@@ -675,8 +675,8 @@
     },
     {
       "name": "id",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/id",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/id",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://purl.org/dc/terms/identifier"
       ],
@@ -696,9 +696,9 @@
     },
     {
       "name": "rdf_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/rdf_type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/rdf_type",
       "description": "The slot to specify the ontology class that is instantiated by an entity.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
@@ -714,9 +714,9 @@
     },
     {
       "name": "evaluated_entity",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/evaluated_entity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/evaluated_entity",
       "description": "The slot to specify the entity of interest that was evaluated.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
       ],
@@ -731,9 +731,9 @@
     },
     {
       "name": "evaluated_activity",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/evaluated_activity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/evaluated_activity",
       "description": "The slot to specify the activity of interest that was evaluated.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#wasInformedBy"
       ],
@@ -748,9 +748,9 @@
     },
     {
       "name": "used_tool",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/used_tool",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/used_tool",
       "description": "The slot to specify the tool that was used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
       ],
@@ -768,9 +768,9 @@
     },
     {
       "name": "realized_plan",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/realized_plan",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/realized_plan",
       "description": "The slot to specify the Method (aka Procedure) that was realized by a ResearchActivity.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
       ],
@@ -786,9 +786,9 @@
     },
     {
       "name": "occurred_in",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/occurred_in",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/occurred_in",
       "description": "The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://purl.obolibrary.org/obo/BFO_0000066"
       ],
@@ -803,10 +803,13 @@
     },
     {
       "name": "has_qualitative_attribute",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/has_qualitative_attribute",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/has_qualitative_attribute",
       "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
-      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/has_qualitative_attribute",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "http://purl.org/dc/terms/relation"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/relation",
       "owner": "Environment",
       "domain_of": [
         "EntityOfInterest",
@@ -822,10 +825,13 @@
     },
     {
       "name": "has_quantitative_attribute",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/has_quantitative_attribute",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/has_quantitative_attribute",
       "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
-      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/has_quantitative_attribute",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "http://purl.org/dc/terms/relation"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/relation",
       "owner": "Environment",
       "domain_of": [
         "EntityOfInterest",
@@ -841,9 +847,9 @@
     },
     {
       "name": "value",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/value",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/value",
       "description": "A slot to provide the literal value of an attribute.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#value"
       ],
@@ -858,9 +864,9 @@
     },
     {
       "name": "access_URL",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/access_URL",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/access_URL",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#accessURL"
       ],
@@ -874,9 +880,9 @@
     },
     {
       "name": "access_rights",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/access_rights",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/access_rights",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/accessRights"
       ],
@@ -891,9 +897,9 @@
     },
     {
       "name": "access_service",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/access_service",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/access_service",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#accessService"
       ],
@@ -907,9 +913,9 @@
     },
     {
       "name": "algorithm",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/algorithm",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/algorithm",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://spdx.org/rdf/terms#algorithm"
       ],
@@ -923,9 +929,9 @@
     },
     {
       "name": "applicable_legislation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/applicable_legislation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/applicable_legislation",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://data.europa.eu/r5r/applicableLegislation"
       ],
@@ -943,9 +949,9 @@
     },
     {
       "name": "application_profile",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/application_profile",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/application_profile",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
       ],
@@ -959,9 +965,9 @@
     },
     {
       "name": "availability",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/availability",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/availability",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://data.europa.eu/r5r/availability"
       ],
@@ -975,9 +981,9 @@
     },
     {
       "name": "bbox",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/bbox",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/bbox",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#bbox"
       ],
@@ -991,9 +997,9 @@
     },
     {
       "name": "beginning",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/beginning",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/beginning",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/2006/time#hasBeginning"
       ],
@@ -1007,9 +1013,9 @@
     },
     {
       "name": "byte_size",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/byte_size",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/byte_size",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#byteSize"
       ],
@@ -1023,9 +1029,9 @@
     },
     {
       "name": "catalogue",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/catalogue",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/catalogue",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#catalog"
       ],
@@ -1039,9 +1045,9 @@
     },
     {
       "name": "centroid",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/centroid",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/centroid",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#centroid"
       ],
@@ -1055,9 +1061,9 @@
     },
     {
       "name": "change_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/change_type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/change_type",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#status"
       ],
@@ -1071,9 +1077,9 @@
     },
     {
       "name": "checksum",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/checksum",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/checksum",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://spdx.org/rdf/terms#checksum"
       ],
@@ -1087,9 +1093,9 @@
     },
     {
       "name": "checksum_value",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/checksum_value",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/checksum_value",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://spdx.org/rdf/terms#checksumValue"
       ],
@@ -1103,9 +1109,9 @@
     },
     {
       "name": "compression_format",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/compression_format",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/compression_format",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#compressFormat"
       ],
@@ -1119,9 +1125,9 @@
     },
     {
       "name": "conforms_to",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/conforms_to",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/conforms_to",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
       ],
@@ -1136,9 +1142,9 @@
     },
     {
       "name": "contact_point",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/contact_point",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/contact_point",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#contactPoint"
       ],
@@ -1154,9 +1160,9 @@
     },
     {
       "name": "creator",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/creator",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/creator",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/creator"
       ],
@@ -1171,9 +1177,9 @@
     },
     {
       "name": "dataset_distribution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/dataset_distribution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/dataset_distribution",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#distribution"
       ],
@@ -1187,9 +1193,9 @@
     },
     {
       "name": "description",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/description",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/description",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/description"
       ],
@@ -1215,9 +1221,9 @@
     },
     {
       "name": "documentation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/documentation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/documentation",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://xmlns.com/foaf/0.1/page"
       ],
@@ -1233,9 +1239,9 @@
     },
     {
       "name": "download_URL",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/download_URL",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/download_URL",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#downloadURL"
       ],
@@ -1249,9 +1255,9 @@
     },
     {
       "name": "end",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/end",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/end",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/2006/time#hasEnd"
       ],
@@ -1265,9 +1271,9 @@
     },
     {
       "name": "end_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/end_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/end_date",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#endDate"
       ],
@@ -1281,9 +1287,9 @@
     },
     {
       "name": "endpoint_URL",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/endpoint_URL",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/endpoint_URL",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#endpointURL"
       ],
@@ -1297,9 +1303,9 @@
     },
     {
       "name": "endpoint_description",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/endpoint_description",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/endpoint_description",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#endpointDescription"
       ],
@@ -1313,9 +1319,9 @@
     },
     {
       "name": "format",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/format",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/format",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/format"
       ],
@@ -1330,9 +1336,9 @@
     },
     {
       "name": "frequency",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/frequency",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/frequency",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/accrualPeriodicity"
       ],
@@ -1347,9 +1353,9 @@
     },
     {
       "name": "geographical_coverage",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/geographical_coverage",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/geographical_coverage",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/spatial"
       ],
@@ -1365,9 +1371,9 @@
     },
     {
       "name": "geometry",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/geometry",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/geometry",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/locn#geometry"
       ],
@@ -1381,9 +1387,9 @@
     },
     {
       "name": "had_role",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/had_role",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/had_role",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#hadRole"
       ],
@@ -1397,9 +1403,9 @@
     },
     {
       "name": "has_dataset",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_dataset",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_dataset",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#dataset"
       ],
@@ -1413,9 +1419,9 @@
     },
     {
       "name": "has_part",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_part",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_part",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
       ],
@@ -1433,9 +1439,9 @@
     },
     {
       "name": "has_policy",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_policy",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_policy",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/odrl/2/hasPolicy"
       ],
@@ -1449,9 +1455,9 @@
     },
     {
       "name": "has_version",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_version",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_version",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#hasVersion"
       ],
@@ -1465,9 +1471,9 @@
     },
     {
       "name": "homepage",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/homepage",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/homepage",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://xmlns.com/foaf/0.1/homepage"
       ],
@@ -1481,9 +1487,9 @@
     },
     {
       "name": "identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/identifier",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/identifier"
       ],
@@ -1497,9 +1503,9 @@
     },
     {
       "name": "in_series",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/in_series",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/in_series",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#inSeries"
       ],
@@ -1513,9 +1519,9 @@
     },
     {
       "name": "is_referenced_by",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/is_referenced_by",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/is_referenced_by",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/isReferencedBy"
       ],
@@ -1529,9 +1535,9 @@
     },
     {
       "name": "keyword",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/keyword",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/keyword",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#keyword"
       ],
@@ -1546,9 +1552,9 @@
     },
     {
       "name": "landing_page",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/landing_page",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/landing_page",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#landingPage"
       ],
@@ -1563,9 +1569,9 @@
     },
     {
       "name": "language",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/language",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/language",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/language"
       ],
@@ -1582,9 +1588,9 @@
     },
     {
       "name": "licence",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/licence",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/licence",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/license"
       ],
@@ -1600,9 +1606,9 @@
     },
     {
       "name": "linked_schemas",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/linked_schemas",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/linked_schemas",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
       ],
@@ -1616,9 +1622,9 @@
     },
     {
       "name": "listing_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/listing_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/listing_date",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/issued"
       ],
@@ -1632,9 +1638,9 @@
     },
     {
       "name": "media_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/media_type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/media_type",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#mediaType"
       ],
@@ -1648,9 +1654,9 @@
     },
     {
       "name": "modification_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/modification_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/modification_date",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/modified"
       ],
@@ -1668,9 +1674,9 @@
     },
     {
       "name": "name",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/name",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/name",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://xmlns.com/foaf/0.1/name"
       ],
@@ -1684,9 +1690,9 @@
     },
     {
       "name": "notation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/notation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/notation",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/2004/02/skos/core#notation"
       ],
@@ -1700,9 +1706,9 @@
     },
     {
       "name": "other_identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/other_identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
@@ -1721,9 +1727,9 @@
     },
     {
       "name": "packaging_format",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/packaging_format",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/packaging_format",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#packageFormat"
       ],
@@ -1737,9 +1743,9 @@
     },
     {
       "name": "preferred_label",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/preferred_label",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/preferred_label",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ],
@@ -1753,9 +1759,9 @@
     },
     {
       "name": "primary_topic",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/primary_topic",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/primary_topic",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://xmlns.com/foaf/0.1/primaryTopic"
       ],
@@ -1769,9 +1775,9 @@
     },
     {
       "name": "provenance",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/provenance",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/provenance",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/provenance"
       ],
@@ -1785,9 +1791,9 @@
     },
     {
       "name": "publisher",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/publisher",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/publisher",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/publisher"
       ],
@@ -1804,9 +1810,9 @@
     },
     {
       "name": "qualified_attribution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/qualified_attribution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/qualified_attribution",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/prov#qualifiedAttribution"
       ],
@@ -1820,9 +1826,9 @@
     },
     {
       "name": "qualified_relation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/qualified_relation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/qualified_relation",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#qualifiedRelation"
       ],
@@ -1836,9 +1842,9 @@
     },
     {
       "name": "record",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/record",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/record",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#record"
       ],
@@ -1852,9 +1858,9 @@
     },
     {
       "name": "related_resource",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/related_resource",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/related_resource",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/relation"
       ],
@@ -1868,9 +1874,9 @@
     },
     {
       "name": "relation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/relation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/relation",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/relation"
       ],
@@ -1884,9 +1890,9 @@
     },
     {
       "name": "release_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/release_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/release_date",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/issued"
       ],
@@ -1903,9 +1909,9 @@
     },
     {
       "name": "rights",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/rights",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/rights",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/rights"
       ],
@@ -1920,9 +1926,9 @@
     },
     {
       "name": "sample",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/sample",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/sample",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#sample"
       ],
@@ -1936,9 +1942,9 @@
     },
     {
       "name": "serves_dataset",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/serves_dataset",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/serves_dataset",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#servesDataset"
       ],
@@ -1952,9 +1958,9 @@
     },
     {
       "name": "service",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/service",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/service",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#service"
       ],
@@ -1968,9 +1974,9 @@
     },
     {
       "name": "source",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/source",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/source",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/source"
       ],
@@ -1984,9 +1990,9 @@
     },
     {
       "name": "source_metadata",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/source_metadata",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/source_metadata",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/source"
       ],
@@ -2000,9 +2006,9 @@
     },
     {
       "name": "spatial_resolution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/spatial_resolution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/spatial_resolution",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#spatialResolutionInMeters"
       ],
@@ -2017,9 +2023,9 @@
     },
     {
       "name": "start_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/start_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/start_date",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#startDate"
       ],
@@ -2033,9 +2039,9 @@
     },
     {
       "name": "status",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/status",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/status",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#status"
       ],
@@ -2049,9 +2055,9 @@
     },
     {
       "name": "temporal_coverage",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/temporal_coverage",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/temporal_coverage",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/temporal"
       ],
@@ -2067,9 +2073,9 @@
     },
     {
       "name": "temporal_resolution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/temporal_resolution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/temporal_resolution",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#temporalResolution"
       ],
@@ -2084,9 +2090,9 @@
     },
     {
       "name": "theme",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/theme",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/theme",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#theme"
       ],
@@ -2101,9 +2107,9 @@
     },
     {
       "name": "themes",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/themes",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/themes",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#themeTaxonomy"
       ],
@@ -2117,9 +2123,9 @@
     },
     {
       "name": "title",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/title",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/title",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -2147,9 +2153,9 @@
     },
     {
       "name": "type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/type",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/type"
       ],
@@ -2166,9 +2172,9 @@
     },
     {
       "name": "version",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/version",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/version",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#version"
       ],
@@ -2182,9 +2188,9 @@
     },
     {
       "name": "version_notes",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/version_notes",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/version_notes",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#versionNotes"
       ],
@@ -2198,9 +2204,9 @@
     },
     {
       "name": "was_generated_by",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/was_generated_by",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/prov#wasGeneratedBy"
       ],
@@ -2215,11 +2221,11 @@
     {
       "name": "chemicalSubstance__composed_of",
       "description": "The slot to provide the chemical entities of which the chemical substance is composed of.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "exact_mappings": [
         "http://purl.obolibrary.org/obo/BFO_0000051"
       ],
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/composed_of",
+      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/composed_of",
       "alias": "composed_of",
       "owner": "ChemicalSubstance",
       "domain_of": [
@@ -2235,8 +2241,8 @@
     {
       "name": "chemicalEntity__inchi",
       "description": "The slot to provide the InChi descriptor of a chemical substance.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/inchi",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
+      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/inchi",
       "alias": "inchi",
       "owner": "ChemicalEntity",
       "domain_of": [
@@ -2249,8 +2255,8 @@
     {
       "name": "chemicalEntity__inchikey",
       "description": "The slot to provide the InChiKey of a chemical substance.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/inchikey",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
+      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/inchikey",
       "alias": "inchikey",
       "owner": "ChemicalEntity",
       "domain_of": [
@@ -2263,8 +2269,8 @@
     {
       "name": "chemicalEntity__smiles",
       "description": "The slot to provide the canonical SMILES descriptor of a chemical substance.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/smiles",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
+      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/smiles",
       "alias": "smiles",
       "owner": "ChemicalEntity",
       "domain_of": [
@@ -2277,8 +2283,8 @@
     {
       "name": "chemicalEntity__iupac_formula",
       "description": "The slot to provide the IUPAC name of a chemical substance.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
-      "slot_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/iupac_formula",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
+      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/iupac_formula",
       "alias": "iupac_formula",
       "owner": "ChemicalEntity",
       "domain_of": [
@@ -2291,7 +2297,7 @@
     {
       "name": "definedTerm__from_CV",
       "description": "The URL of the controlled vocabulary.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://schema.org/inDefinedTermSet"
       ],
@@ -2307,7 +2313,7 @@
     {
       "name": "quantitativeAttribute__has_quantity_type",
       "description": "The type of quality that is quantifiable according to the QUDT ontology.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://qudt.org/schema/qudt/hasQuantityKind"
       ],
@@ -2331,11 +2337,12 @@
           "@type": "EnumBinding"
         }
       ],
+      "required": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "quantitativeAttribute__unit",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://qudt.org/schema/qudt/unit"
       ],
@@ -2359,13 +2366,14 @@
           "@type": "EnumBinding"
         }
       ],
+      "recommended": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "NMRDataset_was_generated_by",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/was_generated_by",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/prov#wasGeneratedBy"
       ],
@@ -2385,9 +2393,9 @@
     },
     {
       "name": "NMRSpectroscopy_evaluated_entity",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/evaluated_entity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/evaluated_entity",
       "description": "The slot to specify the entity of interest that was evaluated.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
       ],
@@ -2407,9 +2415,9 @@
     },
     {
       "name": "NMRSpectroscopy_rdf_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/rdf_type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/rdf_type",
       "description": "The type of NMR Spectroscopy provided as CURIE of a subclass of CHMO:0000613.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
@@ -2443,9 +2451,9 @@
     },
     {
       "name": "ClassifierMixin_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/type",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/type"
       ],
@@ -2465,9 +2473,9 @@
     },
     {
       "name": "ClassifierMixin_rdf_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/rdf_type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/rdf_type",
       "description": "The slot to specify the ontology class that is instantiated by an entity.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
       ],
@@ -2488,9 +2496,9 @@
     },
     {
       "name": "DefinedTerm_title",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/title",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/title",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://schema.org/name"
       ],
@@ -2509,9 +2517,9 @@
     },
     {
       "name": "NFDIDataset_was_generated_by",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/was_generated_by",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/prov#wasGeneratedBy"
       ],
@@ -2532,9 +2540,9 @@
     },
     {
       "name": "NFDICatalog_has_dataset",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_dataset",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_dataset",
       "description": "This slot is described in more detail within the class in which it is used.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#dataset"
       ],
@@ -2553,9 +2561,9 @@
     },
     {
       "name": "ResearchActivity_has_part",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_part",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_part",
       "description": "The slot to specify one or more parts of the ResearchActivity that are themselves also research activities.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
       ],
@@ -2575,9 +2583,9 @@
     },
     {
       "name": "ResearchActivity_other_identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/other_identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
       "description": "A secondary identifier of the ActivityOfInterest",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
@@ -2599,9 +2607,9 @@
     },
     {
       "name": "EntityOfInterest_other_identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/other_identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
       "description": "A secondary identifier of the EntityOfInterest",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
@@ -2623,9 +2631,9 @@
     },
     {
       "name": "ActivityOfInterest_other_identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/other_identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
       "description": "A secondary identifier of the ActivityOfInterest",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
@@ -2647,9 +2655,9 @@
     },
     {
       "name": "Tool_has_part",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_part",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_part",
       "description": "The slot to specify parts of a tool.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
       ],
@@ -2671,9 +2679,9 @@
     },
     {
       "name": "Tool_other_identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/other_identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
       "description": "A secondary identifier of the ActivityOfInterest",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
@@ -2695,9 +2703,9 @@
     },
     {
       "name": "Environment_other_identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/other_identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
       "description": "A secondary identifier of the Environment",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
@@ -2718,10 +2726,54 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "QualitativeAttribute_value",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/value",
+      "description": "The slot to provide the literal value of the QualitativeAttribute.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "http://www.w3.org/ns/prov#value"
+      ],
+      "is_a": "value",
+      "domain": "QualitativeAttribute",
+      "slot_uri": "http://www.w3.org/ns/prov#value",
+      "alias": "value",
+      "owner": "QualitativeAttribute",
+      "domain_of": [
+        "QualitativeAttribute"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "value",
+      "range": "string",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "QuantitativeAttribute_value",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/value",
+      "description": "The slot to provide the literal value of the QuantitativeAttribute.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "http://www.w3.org/ns/prov#value"
+      ],
+      "is_a": "value",
+      "domain": "QuantitativeAttribute",
+      "slot_uri": "http://www.w3.org/ns/prov#value",
+      "alias": "value",
+      "owner": "QuantitativeAttribute",
+      "domain_of": [
+        "QuantitativeAttribute"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "value",
+      "range": "float",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "Agent_name",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/name",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/name",
       "description": "A name of the agent.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://xmlns.com/foaf/0.1/name"
       ],
@@ -2743,9 +2795,9 @@
     },
     {
       "name": "Agent_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/type",
       "description": "The nature of the agent.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/type"
       ],
@@ -2767,9 +2819,9 @@
     },
     {
       "name": "Catalogue_applicable_legislation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/applicable_legislation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/applicable_legislation",
       "description": "The legislation that mandates the creation or management of the Catalog.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://data.europa.eu/r5r/applicableLegislation"
       ],
@@ -2791,9 +2843,9 @@
     },
     {
       "name": "Catalogue_catalogue",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/catalogue",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/catalogue",
       "description": "A catalogue whose contents are of interest in the context of this catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#catalog"
       ],
@@ -2815,9 +2867,9 @@
     },
     {
       "name": "Catalogue_creator",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/creator",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/creator",
       "description": "An entity responsible for the creation of the catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/creator"
       ],
@@ -2838,9 +2890,9 @@
     },
     {
       "name": "Catalogue_description",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/description",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/description",
       "description": "A free-text account of the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/description"
       ],
@@ -2862,9 +2914,9 @@
     },
     {
       "name": "Catalogue_geographical_coverage",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/geographical_coverage",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/geographical_coverage",
       "description": "A geographical area covered by the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/spatial"
       ],
@@ -2886,9 +2938,9 @@
     },
     {
       "name": "Catalogue_has_dataset",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_dataset",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_dataset",
       "description": "A Dataset that is part of the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#dataset"
       ],
@@ -2910,9 +2962,9 @@
     },
     {
       "name": "Catalogue_has_part",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_part",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_part",
       "description": "A related Catalogue that is part of the described Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
       ],
@@ -2934,9 +2986,9 @@
     },
     {
       "name": "Catalogue_homepage",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/homepage",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/homepage",
       "description": "A web page that acts as the main page for the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://xmlns.com/foaf/0.1/homepage"
       ],
@@ -2958,9 +3010,9 @@
     },
     {
       "name": "Catalogue_language",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/language",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/language",
       "description": "A language used in the textual metadata describing titles, descriptions, etc. of the Datasets in the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/language"
       ],
@@ -2983,9 +3035,9 @@
     },
     {
       "name": "Catalogue_licence",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/licence",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/licence",
       "description": "A licence under which the Catalogue can be used or reused.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/license"
       ],
@@ -3006,9 +3058,9 @@
     },
     {
       "name": "Catalogue_modification_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/modification_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/modification_date",
       "description": "The most recent date on which the Catalogue was modified.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/modified"
       ],
@@ -3028,9 +3080,9 @@
     },
     {
       "name": "Catalogue_publisher",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/publisher",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/publisher",
       "description": "An entity (organisation) responsible for making the Catalogue available.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/publisher"
       ],
@@ -3052,9 +3104,9 @@
     },
     {
       "name": "Catalogue_record",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/record",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/record",
       "description": "A Catalogue Record that is part of the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#record"
       ],
@@ -3076,9 +3128,9 @@
     },
     {
       "name": "Catalogue_release_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/release_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/release_date",
       "description": "The date of formal issuance (e.g., publication) of the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/issued"
       ],
@@ -3098,9 +3150,9 @@
     },
     {
       "name": "Catalogue_rights",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/rights",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/rights",
       "description": "A statement that specifies rights associated with the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/rights"
       ],
@@ -3121,9 +3173,9 @@
     },
     {
       "name": "Catalogue_service",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/service",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/service",
       "description": "A site or end-point (Data Service) that is listed in the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#service"
       ],
@@ -3145,9 +3197,9 @@
     },
     {
       "name": "Catalogue_temporal_coverage",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/temporal_coverage",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/temporal_coverage",
       "description": "A temporal period that the Catalogue covers.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/temporal"
       ],
@@ -3169,9 +3221,9 @@
     },
     {
       "name": "Catalogue_themes",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/themes",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/themes",
       "description": "A knowledge organization system used to classify the Resources that are in the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#themeTaxonomy"
       ],
@@ -3194,9 +3246,9 @@
     },
     {
       "name": "Catalogue_title",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/title",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/title",
       "description": "A name given to the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -3218,9 +3270,9 @@
     },
     {
       "name": "CatalogueRecord_application_profile",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/application_profile",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/application_profile",
       "description": "An Application Profile that the Catalogued Resource&#39;s metadata conforms to.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
       ],
@@ -3243,9 +3295,9 @@
     },
     {
       "name": "CatalogueRecord_change_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/change_type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/change_type",
       "description": "The status of the catalogue record in the context of editorial flow of the dataset and data service descriptions.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#status"
       ],
@@ -3267,9 +3319,9 @@
     },
     {
       "name": "CatalogueRecord_description",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/description",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/description",
       "description": "A free-text account of the record. This property can be repeated for parallel language versions of the description.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/description"
       ],
@@ -3290,9 +3342,9 @@
     },
     {
       "name": "CatalogueRecord_language",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/language",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/language",
       "description": "A language used in the textual metadata describing titles, descriptions, etc. of the Catalogued Resource.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/language"
       ],
@@ -3314,9 +3366,9 @@
     },
     {
       "name": "CatalogueRecord_listing_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/listing_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/listing_date",
       "description": "The date on which the description of the Resource was included in the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/issued"
       ],
@@ -3337,9 +3389,9 @@
     },
     {
       "name": "CatalogueRecord_modification_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/modification_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/modification_date",
       "description": "The most recent date on which the Catalogue entry was changed or modified.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/modified"
       ],
@@ -3359,9 +3411,9 @@
     },
     {
       "name": "CatalogueRecord_primary_topic",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/primary_topic",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/primary_topic",
       "description": "A link to the Dataset, Data service or Catalog described in the record.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://xmlns.com/foaf/0.1/primaryTopic"
       ],
@@ -3382,9 +3434,9 @@
     },
     {
       "name": "CatalogueRecord_source_metadata",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/source_metadata",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/source_metadata",
       "description": "The original metadata that was used in creating metadata for the Dataset, Data Service or Dataset Series.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/source"
       ],
@@ -3405,9 +3457,9 @@
     },
     {
       "name": "CatalogueRecord_title",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/title",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/title",
       "description": "A name given to the Catalogue Record.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -3428,9 +3480,9 @@
     },
     {
       "name": "Checksum_algorithm",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/algorithm",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/algorithm",
       "description": "The algorithm used to produce the subject Checksum.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://spdx.org/rdf/terms#algorithm"
       ],
@@ -3452,9 +3504,9 @@
     },
     {
       "name": "Checksum_checksum_value",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/checksum_value",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/checksum_value",
       "description": "A lower case hexadecimal encoded digest value produced using a specific algorithm.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://spdx.org/rdf/terms#checksumValue"
       ],
@@ -3475,9 +3527,9 @@
     },
     {
       "name": "Concept_preferred_label",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/preferred_label",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/preferred_label",
       "description": "A preferred label of the concept.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ],
@@ -3499,9 +3551,9 @@
     },
     {
       "name": "ConceptScheme_title",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/title",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/title",
       "description": "A name of the concept scheme.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -3523,9 +3575,9 @@
     },
     {
       "name": "DataService_access_rights",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/access_rights",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/access_rights",
       "description": "Information regarding access or restrictions based on privacy, security, or other policies.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/accessRights"
       ],
@@ -3546,9 +3598,9 @@
     },
     {
       "name": "DataService_applicable_legislation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/applicable_legislation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/applicable_legislation",
       "description": "The legislation that mandates the creation or management of the Data Service.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://data.europa.eu/r5r/applicableLegislation"
       ],
@@ -3570,9 +3622,9 @@
     },
     {
       "name": "DataService_conforms_to",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/conforms_to",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/conforms_to",
       "description": "An established (technical) standard to which the Data Service conforms.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
       ],
@@ -3595,9 +3647,9 @@
     },
     {
       "name": "DataService_contact_point",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/contact_point",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/contact_point",
       "description": "Contact information that can be used for sending comments about the Data Service.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#contactPoint"
       ],
@@ -3620,9 +3672,9 @@
     },
     {
       "name": "DataService_description",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/description",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/description",
       "description": "A free-text account of the Data Service.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/description"
       ],
@@ -3643,9 +3695,9 @@
     },
     {
       "name": "DataService_documentation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/documentation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/documentation",
       "description": "A page or document about this Data Service",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://xmlns.com/foaf/0.1/page"
       ],
@@ -3667,9 +3719,9 @@
     },
     {
       "name": "DataService_endpoint_URL",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/endpoint_URL",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/endpoint_URL",
       "description": "The root location or primary endpoint of the service (an IRI).",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#endpointURL"
       ],
@@ -3692,9 +3744,9 @@
     },
     {
       "name": "DataService_endpoint_description",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/endpoint_description",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/endpoint_description",
       "description": "A description of the services available via the end-points, including their operations, parameters etc.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#endpointDescription"
       ],
@@ -3717,9 +3769,9 @@
     },
     {
       "name": "DataService_format",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/format",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/format",
       "description": "The structure that can be returned by querying the endpointURL.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/format"
       ],
@@ -3741,9 +3793,9 @@
     },
     {
       "name": "DataService_keyword",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/keyword",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/keyword",
       "description": "A keyword or tag describing the Data Service.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#keyword"
       ],
@@ -3765,9 +3817,9 @@
     },
     {
       "name": "DataService_landing_page",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/landing_page",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/landing_page",
       "description": "A web page that provides access to the Data Service and/or additional information.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#landingPage"
       ],
@@ -3789,9 +3841,9 @@
     },
     {
       "name": "DataService_licence",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/licence",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/licence",
       "description": "A licence under which the Data service is made available.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/license"
       ],
@@ -3812,9 +3864,9 @@
     },
     {
       "name": "DataService_publisher",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/publisher",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/publisher",
       "description": "An entity (organisation) responsible for making the Data Service available.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/publisher"
       ],
@@ -3835,9 +3887,9 @@
     },
     {
       "name": "DataService_serves_dataset",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/serves_dataset",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/serves_dataset",
       "description": "This property refers to a collection of data that this data service can distribute.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#servesDataset"
       ],
@@ -3859,9 +3911,9 @@
     },
     {
       "name": "DataService_theme",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/theme",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/theme",
       "description": "A category of the Data Service.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#theme"
       ],
@@ -3884,9 +3936,9 @@
     },
     {
       "name": "DataService_title",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/title",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/title",
       "description": "A name given to the Data Service.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -3908,9 +3960,9 @@
     },
     {
       "name": "Dataset_access_rights",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/access_rights",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/access_rights",
       "description": "Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/accessRights"
       ],
@@ -3931,9 +3983,9 @@
     },
     {
       "name": "Dataset_applicable_legislation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/applicable_legislation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/applicable_legislation",
       "description": "The legislation that mandates the creation or management of the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://data.europa.eu/r5r/applicableLegislation"
       ],
@@ -3955,9 +4007,9 @@
     },
     {
       "name": "Dataset_conforms_to",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/conforms_to",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/conforms_to",
       "description": "An implementing rule or other specification.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
       ],
@@ -3979,9 +4031,9 @@
     },
     {
       "name": "Dataset_contact_point",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/contact_point",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/contact_point",
       "description": "Contact information that can be used for sending comments about the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#contactPoint"
       ],
@@ -4004,9 +4056,9 @@
     },
     {
       "name": "Dataset_creator",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/creator",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/creator",
       "description": "An entity responsible for producing the dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/creator"
       ],
@@ -4028,9 +4080,9 @@
     },
     {
       "name": "Dataset_dataset_distribution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/dataset_distribution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/dataset_distribution",
       "description": "An available Distribution for the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#distribution"
       ],
@@ -4052,9 +4104,9 @@
     },
     {
       "name": "Dataset_description",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/description",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/description",
       "description": "A free-text account of the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/description"
       ],
@@ -4076,9 +4128,9 @@
     },
     {
       "name": "Dataset_documentation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/documentation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/documentation",
       "description": "A page or document about this Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://xmlns.com/foaf/0.1/page"
       ],
@@ -4100,9 +4152,9 @@
     },
     {
       "name": "Dataset_frequency",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/frequency",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/frequency",
       "description": "The frequency at which the Dataset is updated.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/accrualPeriodicity"
       ],
@@ -4122,9 +4174,9 @@
     },
     {
       "name": "Dataset_geographical_coverage",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/geographical_coverage",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/geographical_coverage",
       "description": "A geographic region that is covered by the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/spatial"
       ],
@@ -4146,9 +4198,9 @@
     },
     {
       "name": "Dataset_has_version",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_version",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_version",
       "description": "A related Dataset that is a version, edition, or adaptation of the described Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#hasVersion"
       ],
@@ -4170,9 +4222,9 @@
     },
     {
       "name": "Dataset_identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/identifier",
       "description": "The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/identifier"
       ],
@@ -4193,9 +4245,9 @@
     },
     {
       "name": "Dataset_in_series",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/in_series",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/in_series",
       "description": "A dataset series of which the dataset is part.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#inSeries"
       ],
@@ -4217,9 +4269,9 @@
     },
     {
       "name": "Dataset_is_referenced_by",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/is_referenced_by",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/is_referenced_by",
       "description": "A related resource, such as a publication, that references, cites, or otherwise points to the dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/isReferencedBy"
       ],
@@ -4241,9 +4293,9 @@
     },
     {
       "name": "Dataset_keyword",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/keyword",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/keyword",
       "description": "A keyword or tag describing the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#keyword"
       ],
@@ -4265,9 +4317,9 @@
     },
     {
       "name": "Dataset_landing_page",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/landing_page",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/landing_page",
       "description": "A web page that provides access to the Dataset, its Distributions and/or additional information.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#landingPage"
       ],
@@ -4289,9 +4341,9 @@
     },
     {
       "name": "Dataset_language",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/language",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/language",
       "description": "A language of the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/language"
       ],
@@ -4313,9 +4365,9 @@
     },
     {
       "name": "Dataset_modification_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/modification_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/modification_date",
       "description": "The most recent date on which the Dataset was changed or modified.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/modified"
       ],
@@ -4334,9 +4386,9 @@
     },
     {
       "name": "Dataset_other_identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/other_identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
       "description": "A secondary identifier of the Dataset",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
@@ -4358,9 +4410,9 @@
     },
     {
       "name": "Dataset_provenance",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/provenance",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/provenance",
       "description": "A statement about the lineage of a Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/provenance"
       ],
@@ -4382,9 +4434,9 @@
     },
     {
       "name": "Dataset_publisher",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/publisher",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/publisher",
       "description": "An entity (organisation) responsible for making the Dataset available.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/publisher"
       ],
@@ -4405,9 +4457,9 @@
     },
     {
       "name": "Dataset_qualified_attribution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/qualified_attribution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/qualified_attribution",
       "description": "An Agent having some form of responsibility for the resource.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/prov#qualifiedAttribution"
       ],
@@ -4429,9 +4481,9 @@
     },
     {
       "name": "Dataset_qualified_relation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/qualified_relation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/qualified_relation",
       "description": "A description of a relationship with another resource.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#qualifiedRelation"
       ],
@@ -4453,9 +4505,9 @@
     },
     {
       "name": "Dataset_related_resource",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/related_resource",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/related_resource",
       "description": "A related resource.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/relation"
       ],
@@ -4477,9 +4529,9 @@
     },
     {
       "name": "Dataset_release_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/release_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/release_date",
       "description": "The date of formal issuance (e.g., publication) of the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/issued"
       ],
@@ -4498,9 +4550,9 @@
     },
     {
       "name": "Dataset_sample",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/sample",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/sample",
       "description": "A sample distribution of the dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#sample"
       ],
@@ -4522,9 +4574,9 @@
     },
     {
       "name": "Dataset_source",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/source",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/source",
       "description": "A related Dataset from which the described Dataset is derived.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/source"
       ],
@@ -4546,9 +4598,9 @@
     },
     {
       "name": "Dataset_spatial_resolution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/spatial_resolution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/spatial_resolution",
       "description": "The minimum spatial separation resolvable in a dataset, measured in meters.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#spatialResolutionInMeters"
       ],
@@ -4567,9 +4619,9 @@
     },
     {
       "name": "Dataset_temporal_coverage",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/temporal_coverage",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/temporal_coverage",
       "description": "A temporal period that the Dataset covers.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/temporal"
       ],
@@ -4591,9 +4643,9 @@
     },
     {
       "name": "Dataset_temporal_resolution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/temporal_resolution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/temporal_resolution",
       "description": "The minimum time period resolvable in the dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#temporalResolution"
       ],
@@ -4613,9 +4665,9 @@
     },
     {
       "name": "Dataset_theme",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/theme",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/theme",
       "description": "A category of the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#theme"
       ],
@@ -4638,9 +4690,9 @@
     },
     {
       "name": "Dataset_title",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/title",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/title",
       "description": "A name given to the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -4662,9 +4714,9 @@
     },
     {
       "name": "Dataset_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/type",
       "description": "A type of the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/type"
       ],
@@ -4686,9 +4738,9 @@
     },
     {
       "name": "Dataset_version",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/version",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/version",
       "description": "The version indicator (name or identifier) of a resource.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#version"
       ],
@@ -4708,9 +4760,9 @@
     },
     {
       "name": "Dataset_version_notes",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/version_notes",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/version_notes",
       "description": "A description of the differences between this version and a previous version of the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#versionNotes"
       ],
@@ -4731,9 +4783,9 @@
     },
     {
       "name": "Dataset_was_generated_by",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/was_generated_by",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
       "description": "An activity that generated, or provides the business context for, the creation of the dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/prov#wasGeneratedBy"
       ],
@@ -4755,9 +4807,9 @@
     },
     {
       "name": "DatasetSeries_applicable_legislation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/applicable_legislation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/applicable_legislation",
       "description": "The legislation that mandates the creation or management of the Dataset Series.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://data.europa.eu/r5r/applicableLegislation"
       ],
@@ -4779,9 +4831,9 @@
     },
     {
       "name": "DatasetSeries_contact_point",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/contact_point",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/contact_point",
       "description": "Contact information that can be used for sending comments about the Dataset Series.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#contactPoint"
       ],
@@ -4803,9 +4855,9 @@
     },
     {
       "name": "DatasetSeries_description",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/description",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/description",
       "description": "A free-text account of the Dataset Series.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/description"
       ],
@@ -4827,9 +4879,9 @@
     },
     {
       "name": "DatasetSeries_frequency",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/frequency",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/frequency",
       "description": "The frequency at which the Dataset Series is updated.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/accrualPeriodicity"
       ],
@@ -4849,9 +4901,9 @@
     },
     {
       "name": "DatasetSeries_geographical_coverage",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/geographical_coverage",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/geographical_coverage",
       "description": "A geographic region that is covered by the Dataset Series.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/spatial"
       ],
@@ -4873,9 +4925,9 @@
     },
     {
       "name": "DatasetSeries_modification_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/modification_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/modification_date",
       "description": "The most recent date on which the Dataset Series was changed or modified.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/modified"
       ],
@@ -4894,9 +4946,9 @@
     },
     {
       "name": "DatasetSeries_publisher",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/publisher",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/publisher",
       "description": "An entity (organisation) responsible for ensuring the coherency of the Dataset Series ",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/publisher"
       ],
@@ -4917,9 +4969,9 @@
     },
     {
       "name": "DatasetSeries_release_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/release_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/release_date",
       "description": "The date of formal issuance (e.g., publication) of the Dataset Series.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/issued"
       ],
@@ -4938,9 +4990,9 @@
     },
     {
       "name": "DatasetSeries_temporal_coverage",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/temporal_coverage",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/temporal_coverage",
       "description": "A temporal period that the Dataset Series covers.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/temporal"
       ],
@@ -4962,9 +5014,9 @@
     },
     {
       "name": "DatasetSeries_title",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/title",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/title",
       "description": "A name given to the Dataset Series.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -4986,9 +5038,9 @@
     },
     {
       "name": "Distribution_access_URL",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/access_URL",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/access_URL",
       "description": "A URL that gives access to a Distribution of the Dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#accessURL"
       ],
@@ -5011,9 +5063,9 @@
     },
     {
       "name": "Distribution_access_service",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/access_service",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/access_service",
       "description": "A data service that gives access to the distribution of the dataset.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#accessService"
       ],
@@ -5035,9 +5087,9 @@
     },
     {
       "name": "Distribution_applicable_legislation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/applicable_legislation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/applicable_legislation",
       "description": "The legislation that mandates the creation or management of the Distribution.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://data.europa.eu/r5r/applicableLegislation"
       ],
@@ -5059,9 +5111,9 @@
     },
     {
       "name": "Distribution_availability",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/availability",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/availability",
       "description": "An indication how long it is planned to keep the Distribution of the Dataset available.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://data.europa.eu/r5r/availability"
       ],
@@ -5082,9 +5134,9 @@
     },
     {
       "name": "Distribution_byte_size",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/byte_size",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/byte_size",
       "description": "The size of a Distribution in bytes.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#byteSize"
       ],
@@ -5103,9 +5155,9 @@
     },
     {
       "name": "Distribution_checksum",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/checksum",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/checksum",
       "description": "A mechanism that can be used to verify that the contents of a distribution have not changed.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://spdx.org/rdf/terms#checksum"
       ],
@@ -5126,9 +5178,9 @@
     },
     {
       "name": "Distribution_compression_format",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/compression_format",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/compression_format",
       "description": "The format of the file in which the data is contained in a compressed form, e.g. to reduce the size of the downloadable file.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#compressFormat"
       ],
@@ -5149,9 +5201,9 @@
     },
     {
       "name": "Distribution_description",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/description",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/description",
       "description": "A free-text account of the Distribution.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/description"
       ],
@@ -5173,9 +5225,9 @@
     },
     {
       "name": "Distribution_documentation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/documentation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/documentation",
       "description": "A page or document about this Distribution.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://xmlns.com/foaf/0.1/page"
       ],
@@ -5197,9 +5249,9 @@
     },
     {
       "name": "Distribution_download_URL",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/download_URL",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/download_URL",
       "description": "A URL that is a direct link to a downloadable file in a given format.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#downloadURL"
       ],
@@ -5221,9 +5273,9 @@
     },
     {
       "name": "Distribution_format",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/format",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/format",
       "description": "The file format of the Distribution.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/format"
       ],
@@ -5245,9 +5297,9 @@
     },
     {
       "name": "Distribution_has_policy",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/has_policy",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_policy",
       "description": "The policy expressing the rights associated with the distribution if using the [[ODRL]] vocabulary.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/odrl/2/hasPolicy"
       ],
@@ -5268,9 +5320,9 @@
     },
     {
       "name": "Distribution_language",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/language",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/language",
       "description": "A language used in the Distribution.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/language"
       ],
@@ -5292,9 +5344,9 @@
     },
     {
       "name": "Distribution_licence",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/licence",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/licence",
       "description": "A licence under which the Distribution is made available.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/license"
       ],
@@ -5315,9 +5367,9 @@
     },
     {
       "name": "Distribution_linked_schemas",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/linked_schemas",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/linked_schemas",
       "description": "An established schema to which the described Distribution conforms.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/conformsTo"
       ],
@@ -5339,9 +5391,9 @@
     },
     {
       "name": "Distribution_media_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/media_type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/media_type",
       "description": "The media type of the Distribution as defined in the official register of media types managed by IANA.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#mediaType"
       ],
@@ -5361,9 +5413,9 @@
     },
     {
       "name": "Distribution_modification_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/modification_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/modification_date",
       "description": "The most recent date on which the Distribution was changed or modified.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/modified"
       ],
@@ -5382,9 +5434,9 @@
     },
     {
       "name": "Distribution_packaging_format",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/packaging_format",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/packaging_format",
       "description": "The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#packageFormat"
       ],
@@ -5405,9 +5457,9 @@
     },
     {
       "name": "Distribution_release_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/release_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/release_date",
       "description": "The date of formal issuance (e.g., publication) of the Distribution.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/issued"
       ],
@@ -5426,9 +5478,9 @@
     },
     {
       "name": "Distribution_rights",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/rights",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/rights",
       "description": "A statement that specifies rights associated with the Distribution.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/rights"
       ],
@@ -5449,9 +5501,9 @@
     },
     {
       "name": "Distribution_spatial_resolution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/spatial_resolution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/spatial_resolution",
       "description": "The minimum spatial separation resolvable in a dataset distribution, measured in meters.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#spatialResolutionInMeters"
       ],
@@ -5470,9 +5522,9 @@
     },
     {
       "name": "Distribution_status",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/status",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/status",
       "description": "The status of the distribution in the context of maturity lifecycle.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#status"
       ],
@@ -5493,9 +5545,9 @@
     },
     {
       "name": "Distribution_temporal_resolution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/temporal_resolution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/temporal_resolution",
       "description": "The minimum time period resolvable in the dataset distribution.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#temporalResolution"
       ],
@@ -5515,9 +5567,9 @@
     },
     {
       "name": "Distribution_title",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/title",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/title",
       "description": "A name given to the Distribution.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/title"
       ],
@@ -5538,9 +5590,9 @@
     },
     {
       "name": "Identifier_notation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/notation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/notation",
       "description": "A string that is an identifier in the context of the identifier scheme referenced by its datatype.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/2004/02/skos/core#notation"
       ],
@@ -5560,9 +5612,9 @@
     },
     {
       "name": "LicenseDocument_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/type",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/type",
       "description": "A type of licence, e.g. indicating 'public domain' or 'royalties required'.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/type"
       ],
@@ -5585,9 +5637,9 @@
     },
     {
       "name": "Location_bbox",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/bbox",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/bbox",
       "description": "The geographic bounding box of a resource.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#bbox"
       ],
@@ -5607,9 +5659,9 @@
     },
     {
       "name": "Location_centroid",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/centroid",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/centroid",
       "description": "The geographic center (centroid) of a resource.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#centroid"
       ],
@@ -5629,9 +5681,9 @@
     },
     {
       "name": "Location_geometry",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/geometry",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/geometry",
       "description": "The corresponding geometry for a resource.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/locn#geometry"
       ],
@@ -5651,9 +5703,9 @@
     },
     {
       "name": "PeriodOfTime_beginning",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/beginning",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/beginning",
       "description": "The beginning of a period or interval.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/2006/time#hasBeginning"
       ],
@@ -5674,9 +5726,9 @@
     },
     {
       "name": "PeriodOfTime_end",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/end",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/end",
       "description": "The end of a period or interval.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/2006/time#hasEnd"
       ],
@@ -5697,9 +5749,9 @@
     },
     {
       "name": "PeriodOfTime_end_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/end_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/end_date",
       "description": "The end of the period.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#endDate"
       ],
@@ -5720,9 +5772,9 @@
     },
     {
       "name": "PeriodOfTime_start_date",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/start_date",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/start_date",
       "description": "The start of the period.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#startDate"
       ],
@@ -5742,9 +5794,9 @@
     },
     {
       "name": "Relationship_had_role",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/had_role",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/had_role",
       "description": "A function of an entity or agent with respect to another entity or resource.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/dcat#hadRole"
       ],
@@ -5767,9 +5819,9 @@
     },
     {
       "name": "Relationship_relation",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/relation",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/relation",
       "description": "A resource related to the source resource.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/relation"
       ],
@@ -5794,8 +5846,8 @@
   "classes": [
     {
       "name": "NMRDataset",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/NMRDataset",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/NMRDataset",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
         "dcat:Dataset"
       ],
@@ -5845,9 +5897,9 @@
     },
     {
       "name": "NMRSpectroscopy",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/NMRSpectroscopy",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/NMRSpectroscopy",
       "description": "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "is_a": "ResearchActivity",
       "slots": [
         "title",
@@ -5863,14 +5915,14 @@
         "NMRSpectroscopy_rdf_type"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/NMRSpectroscopy",
+      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/NMRSpectroscopy",
       "@type": "ClassDefinition"
     },
     {
       "name": "ChemicalReaction",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalReaction",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/ChemicalReaction",
       "description": "An experimental procedure with the aim of producing a portion of a given compound or mixture.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
         "RXNO:0000329"
       ],
@@ -5892,9 +5944,9 @@
     },
     {
       "name": "ChemicalSubstance",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalSubstance",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/ChemicalSubstance",
       "description": "A portion of matter of constant composition, composed of molecular entities of the same type or of different types that is being evaluated in a scientific process.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
         "prov:Entity"
       ],
@@ -5932,9 +5984,9 @@
     },
     {
       "name": "ChemicalEntity",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalEntity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/ChemicalEntity",
       "description": "Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
         "CHEBI:23367"
       ],
@@ -5980,8 +6032,8 @@
     },
     {
       "name": "ChemicalSample",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalSample",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/ChemicalSample",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "is_a": "ChemicalSubstance",
       "slots": [
         "title",
@@ -5997,14 +6049,14 @@
         "chemicalSubstance__composed_of"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/ChemicalSample",
+      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/ChemicalSample",
       "@type": "ClassDefinition"
     },
     {
       "name": "HardwareTool",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/HardwareTool",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/HardwareTool",
       "description": "A hardware with a certain function.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "aliases": [
         "Device"
       ],
@@ -6020,14 +6072,14 @@
         "ClassifierMixin_rdf_type"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/HardwareTool",
+      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/HardwareTool",
       "@type": "ClassDefinition"
     },
     {
       "name": "SoftwareTool",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SoftwareTool",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/SoftwareTool",
       "description": "A software with a certain function.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "is_a": "Tool",
       "slots": [
         "title",
@@ -6040,14 +6092,14 @@
         "ClassifierMixin_rdf_type"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SoftwareTool",
+      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/SoftwareTool",
       "@type": "ClassDefinition"
     },
     {
       "name": "Laboratory",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/Laboratory",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/Laboratory",
       "description": "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
         "prov:Entity"
       ],
@@ -6067,8 +6119,8 @@
     },
     {
       "name": "InChIKey",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/InChIKey",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/InChIKey",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
         "CHEMINF:000059"
       ],
@@ -6076,7 +6128,7 @@
       "slots": [
         "title",
         "description",
-        "value",
+        "QualitativeAttribute_value",
         "ClassifierMixin_type",
         "ClassifierMixin_rdf_type"
       ],
@@ -6086,9 +6138,9 @@
     },
     {
       "name": "InChi",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/InChi",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/InChi",
       "description": "A structure descriptor which conforms to the InChI format specification.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
         "CHEMINF:000113"
       ],
@@ -6096,7 +6148,7 @@
       "slots": [
         "title",
         "description",
-        "value",
+        "QualitativeAttribute_value",
         "ClassifierMixin_type",
         "ClassifierMixin_rdf_type"
       ],
@@ -6106,9 +6158,9 @@
     },
     {
       "name": "IUPACChemicalFormula",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/IUPACChemicalFormula",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/IUPACChemicalFormula",
       "description": "A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
         "CHEMINF:000037"
       ],
@@ -6116,7 +6168,7 @@
       "slots": [
         "title",
         "description",
-        "value",
+        "QualitativeAttribute_value",
         "ClassifierMixin_type",
         "ClassifierMixin_rdf_type"
       ],
@@ -6126,9 +6178,9 @@
     },
     {
       "name": "SMILES",
-      "definition_uri": "https://w3id.org/StroemPhi/dcat_4C_ap/SMILES",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/SMILES",
       "description": "A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
         "CHEMINF:000018"
       ],
@@ -6136,7 +6188,7 @@
       "slots": [
         "title",
         "description",
-        "value",
+        "QualitativeAttribute_value",
         "ClassifierMixin_type",
         "ClassifierMixin_rdf_type"
       ],
@@ -6146,9 +6198,9 @@
     },
     {
       "name": "ClassifierMixin",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/ClassifierMixin",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ClassifierMixin",
       "description": "A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "abstract": true,
       "mixin": true,
       "slots": [
@@ -6156,14 +6208,14 @@
         "ClassifierMixin_rdf_type"
       ],
       "slot_usage": {},
-      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/ClassifierMixin",
+      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ClassifierMixin",
       "@type": "ClassDefinition"
     },
     {
       "name": "DefinedTerm",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/DefinedTerm",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/DefinedTerm",
       "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "schema:DefinedTerm"
       ],
@@ -6187,9 +6239,9 @@
     },
     {
       "name": "NFDIDataset",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/NFDIDataset",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/NFDIDataset",
       "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "dcat:Dataset"
       ],
@@ -6240,9 +6292,9 @@
     },
     {
       "name": "NFDICatalog",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/NFDICatalog",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/NFDICatalog",
       "description": "A curated collection of metadata about data resources.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "dcat:Catalog"
       ],
@@ -6275,9 +6327,9 @@
     },
     {
       "name": "ResearchActivity",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/ResearchActivity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ResearchActivity",
       "description": "An activity (process) that has the objective to produce information about an entity by evaluating it.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Activity"
       ],
@@ -6309,9 +6361,9 @@
     },
     {
       "name": "EntityOfInterest",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/EntityOfInterest",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/EntityOfInterest",
       "description": "Something (not an activity or process) that is being evaluated in a ResearchActivity.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
       ],
@@ -6335,9 +6387,9 @@
     },
     {
       "name": "ActivityOfInterest",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/ActivityOfInterest",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ActivityOfInterest",
       "description": "An activity or process that is being evaluated in a ResearchActivity.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Activity"
       ],
@@ -6362,9 +6414,9 @@
     },
     {
       "name": "Tool",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/Tool",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/Tool",
       "description": "A entity with a certain function used within a ResearchActivity.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
       ],
@@ -6390,9 +6442,9 @@
     },
     {
       "name": "Environment",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/Environment",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/Environment",
       "description": "The environment in which the dataset creating Observation took place (e.g. a lab).",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
       ],
@@ -6414,7 +6466,7 @@
     },
     {
       "name": "Plan",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/Plan",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/Plan",
       "description": "A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.",
       "examples": [
         {
@@ -6422,7 +6474,7 @@
           "@type": "Example"
         }
       ],
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "aliases": [
         "Plan Specification",
         "Method"
@@ -6445,9 +6497,9 @@
     },
     {
       "name": "QualitativeAttribute",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/QualitativeAttribute",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/QualitativeAttribute",
       "description": "A piece of information that is attributed to an entity of interest, tool or environment.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
       ],
@@ -6457,7 +6509,7 @@
       "slots": [
         "title",
         "description",
-        "value",
+        "QualitativeAttribute_value",
         "ClassifierMixin_type",
         "ClassifierMixin_rdf_type"
       ],
@@ -6467,9 +6519,9 @@
     },
     {
       "name": "QuantitativeAttribute",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/QuantitativeAttribute",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/QuantitativeAttribute",
       "description": "A quantifiable piece of information that is attributed to an entity of interest, tool or environment.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "qudt:Quantity"
       ],
@@ -6477,7 +6529,7 @@
         "ClassifierMixin"
       ],
       "slots": [
-        "value",
+        "QuantitativeAttribute_value",
         "quantitativeAttribute__has_quantity_type",
         "quantitativeAttribute__unit",
         "ClassifierMixin_type",
@@ -6503,6 +6555,7 @@
               "@type": "EnumBinding"
             }
           ],
+          "required": true,
           "@type": "SlotDefinition"
         },
         {
@@ -6522,6 +6575,7 @@
               "@type": "EnumBinding"
             }
           ],
+          "recommended": true,
           "@type": "SlotDefinition"
         }
       ],
@@ -6530,9 +6584,9 @@
     },
     {
       "name": "Activity",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Activity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Activity",
       "description": "See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "prov:Activity"
       ],
@@ -6542,9 +6596,9 @@
     },
     {
       "name": "Agent",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Agent",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Agent",
       "description": "See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "foaf:Agent"
       ],
@@ -6559,9 +6613,9 @@
     },
     {
       "name": "Attribution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Attribution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Attribution",
       "description": "See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "prov:Attribution"
       ],
@@ -6572,9 +6626,9 @@
     },
     {
       "name": "Catalogue",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Catalogue",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Catalogue",
       "description": "See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcat:Catalog"
       ],
@@ -6605,9 +6659,9 @@
     },
     {
       "name": "CatalogueRecord",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/CatalogueRecord",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/CatalogueRecord",
       "description": "See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcat:CatalogRecord"
       ],
@@ -6628,9 +6682,9 @@
     },
     {
       "name": "CataloguedResource",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/CataloguedResource",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/CataloguedResource",
       "description": "See [DCAT-AP specs:CataloguedResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CataloguedResource)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcat:Resource"
       ],
@@ -6641,9 +6695,9 @@
     },
     {
       "name": "Checksum",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Checksum",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Checksum",
       "description": "See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "spdx:Checksum"
       ],
@@ -6658,9 +6712,9 @@
     },
     {
       "name": "ChecksumAlgorithm",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/ChecksumAlgorithm",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/ChecksumAlgorithm",
       "description": "See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "spdx:ChecksumAlgorithm"
       ],
@@ -6671,9 +6725,9 @@
     },
     {
       "name": "Concept",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Concept",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Concept",
       "description": "See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "skos:Concept"
       ],
@@ -6687,9 +6741,9 @@
     },
     {
       "name": "ConceptScheme",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/ConceptScheme",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/ConceptScheme",
       "description": "See [DCAT-AP specs:ConceptScheme](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "skos:ConceptScheme"
       ],
@@ -6703,9 +6757,9 @@
     },
     {
       "name": "DataService",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/DataService",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/DataService",
       "description": "See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcat:DataService"
       ],
@@ -6733,9 +6787,9 @@
     },
     {
       "name": "Dataset",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Dataset",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Dataset",
       "description": "See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcat:Dataset"
       ],
@@ -6783,9 +6837,9 @@
     },
     {
       "name": "DatasetSeries",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/DatasetSeries",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/DatasetSeries",
       "description": "See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcat:DatasetSeries"
       ],
@@ -6807,9 +6861,9 @@
     },
     {
       "name": "Distribution",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Distribution",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Distribution",
       "description": "See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcat:Distribution"
       ],
@@ -6845,9 +6899,9 @@
     },
     {
       "name": "Document",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Document",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Document",
       "description": "See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "foaf:Document"
       ],
@@ -6858,9 +6912,9 @@
     },
     {
       "name": "Frequency",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Frequency",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Frequency",
       "description": "See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcterms:Frequency"
       ],
@@ -6871,9 +6925,9 @@
     },
     {
       "name": "Geometry",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Geometry",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Geometry",
       "description": "See [DCAT-AP specs:Geometry](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "locn:Geometry"
       ],
@@ -6884,9 +6938,9 @@
     },
     {
       "name": "Identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Identifier",
       "description": "See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "adms:Identifier"
       ],
@@ -6900,9 +6954,9 @@
     },
     {
       "name": "Kind",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Kind",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Kind",
       "description": "See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "vcard:Kind"
       ],
@@ -6913,9 +6967,9 @@
     },
     {
       "name": "LegalResource",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/LegalResource",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/LegalResource",
       "description": "See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "eli:LegalResource"
       ],
@@ -6926,9 +6980,9 @@
     },
     {
       "name": "LicenseDocument",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/LicenseDocument",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/LicenseDocument",
       "description": "See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcterms:LicenseDocument"
       ],
@@ -6942,9 +6996,9 @@
     },
     {
       "name": "LinguisticSystem",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/LinguisticSystem",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/LinguisticSystem",
       "description": "See [DCAT-AP specs:LinguisticSystem](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcterms:LinguisticSystem"
       ],
@@ -6955,9 +7009,9 @@
     },
     {
       "name": "Location",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Location",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Location",
       "description": "See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcterms:Location"
       ],
@@ -6973,9 +7027,9 @@
     },
     {
       "name": "MediaType",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/MediaType",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/MediaType",
       "description": "See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcterms:MediaType"
       ],
@@ -6986,9 +7040,9 @@
     },
     {
       "name": "MediaTypeOrExtent",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/MediaTypeOrExtent",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/MediaTypeOrExtent",
       "description": "See [DCAT-AP specs:MediaTypeOrExtent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaTypeOrExtent)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcterms:MediaTypeOrExtent"
       ],
@@ -6999,9 +7053,9 @@
     },
     {
       "name": "PeriodOfTime",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/PeriodOfTime",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/PeriodOfTime",
       "description": "See [DCAT-AP specs:PeriodOfTime](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcterms:PeriodOfTime"
       ],
@@ -7018,9 +7072,9 @@
     },
     {
       "name": "Policy",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Policy",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Policy",
       "description": "See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "odrl:Policy"
       ],
@@ -7031,9 +7085,9 @@
     },
     {
       "name": "ProvenanceStatement",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/ProvenanceStatement",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/ProvenanceStatement",
       "description": "See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcterms:ProvenanceStatement"
       ],
@@ -7044,9 +7098,9 @@
     },
     {
       "name": "Relationship",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Relationship",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Relationship",
       "description": "See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcat:Relationship"
       ],
@@ -7061,9 +7115,9 @@
     },
     {
       "name": "Resource",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Resource",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Resource",
       "description": "See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "rdfs:Resource"
       ],
@@ -7074,9 +7128,9 @@
     },
     {
       "name": "RightsStatement",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/RightsStatement",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/RightsStatement",
       "description": "See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcterms:RightsStatement"
       ],
@@ -7087,9 +7141,9 @@
     },
     {
       "name": "Role",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Role",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Role",
       "description": "See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcat:Role"
       ],
@@ -7100,9 +7154,9 @@
     },
     {
       "name": "Standard",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/Standard",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/Standard",
       "description": "See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "dcterms:Standard"
       ],
@@ -7113,18 +7167,18 @@
     },
     {
       "name": "SupportiveEntity",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/SupportiveEntity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/SupportiveEntity",
       "description": "The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "slot_usage": {},
-      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/SupportiveEntity",
+      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/SupportiveEntity",
       "@type": "ClassDefinition"
     },
     {
       "name": "TimeInstant",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/TimeInstant",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/TimeInstant",
       "description": "See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "time:Instant"
       ],
@@ -7136,17 +7190,17 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcat_4c_ap.yaml",
-  "source_file_date": "2024-11-13T22:47:20",
-  "source_file_size": 8250,
-  "generation_date": "2024-11-13T22:54:11",
+  "source_file_date": "2025-01-30T17:03:19",
+  "source_file_size": 8262,
+  "generation_date": "2025-01-30T20:44:44",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
-    "dcat-4nfdi-ap.context.jsonld",
-    "dcat-ap.context.jsonld",
+    "dcat_4nfdi_ap.context.jsonld",
+    "dcat_ap_linkml.context.jsonld",
     {
-      "@base": "https://w3id.org/StroemPhi/dcat_4C_ap/"
+      "@base": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/linkml/linkml-project-cookiecutter",
-  "commit": "21dc84dd378e7aade7affaa329956ce93d38202d",
+  "commit": "1094cf2ce542028ab0017eaa059dd49cdde81fb5",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -13,13 +13,17 @@
       "email": "philip.stroemert@tib.eu",
       "__author": "Philip Strömert <philip.stroemert@tib.eu>",
       "license": "MIT",
-      "main_schema_class": "Dataset",
+      "main_schema_class": "NFDIDataset",
       "create_python_classes": "Yes",
       "use_schemasheets": "No",
       "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
       "google_sheet_tabs": "personinfo enums",
       "__google_sheet_module": "personinfo_enums",
       "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_copy_without_render": [
+        "src/docs/js/*",
+        "src/docs/javascript/*"
+      ],
       "_template": "https://github.com/linkml/linkml-project-cookiecutter"
     }
   },

@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-BASE <https://w3id.org/StroemPhi/dcat_4C_ap/>
+BASE <https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -10,17 +10,17 @@ PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX nfdi: <https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/>
+PREFIX nfdi: <https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX linkmldcatap: <https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/>
 PREFIX spdx: <http://spdx.org/rdf/terms#>
 PREFIX eli: <http://data.europa.eu/eli/ontology#>
 PREFIX locn: <http://www.w3.org/ns/locn#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dcatap: <http://data.europa.eu/r5r/>
-PREFIX linkmldcatap: <https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/>
 
 
 linkml:String xsd:string
@@ -84,8 +84,8 @@ nfdi:ActivityOfInterest  (
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
              adms:identifier @linkmldcatap:Identifier * ;
-             nfdi:has_qualitative_attribute @nfdi:QualitativeAttribute * ;
-             nfdi:has_quantitative_attribute @nfdi:QuantitativeAttribute * ;
+             dcterms:relation @nfdi:QualitativeAttribute * ;
+             dcterms:relation @nfdi:QuantitativeAttribute * ;
              dcterms:hasPart @linkml:String ? ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
@@ -378,8 +378,8 @@ nfdi:EntityOfInterest  (
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
              adms:identifier @linkmldcatap:Identifier * ;
-             nfdi:has_qualitative_attribute @nfdi:QualitativeAttribute * ;
-             nfdi:has_quantitative_attribute @nfdi:QuantitativeAttribute * ;
+             dcterms:relation @nfdi:QualitativeAttribute * ;
+             dcterms:relation @nfdi:QuantitativeAttribute * ;
              dcterms:hasPart @linkml:String ? ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
@@ -396,8 +396,8 @@ nfdi:Environment  (
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
              adms:identifier @linkmldcatap:Identifier * ;
-             nfdi:has_qualitative_attribute @nfdi:QualitativeAttribute * ;
-             nfdi:has_quantitative_attribute @nfdi:QuantitativeAttribute * ;
+             dcterms:relation @nfdi:QualitativeAttribute * ;
+             dcterms:relation @nfdi:QuantitativeAttribute * ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
           ) ;
@@ -616,7 +616,7 @@ nfdi:QualitativeAttribute  (
              rdf:type [ nfdi:ClassifierMixin ] ? ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
-             prov:value @linkml:String ? ;
+             prov:value @linkml:String ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
           ) ;
@@ -628,8 +628,8 @@ nfdi:QualitativeAttribute  (
 nfdi:QuantitativeAttribute CLOSED {
     (  $nfdi:QuantitativeAttribute_tes (  &nfdi:ClassifierMixin_tes ;
           rdf:type [ nfdi:ClassifierMixin ] ? ;
-          prov:value @linkml:String ? ;
-          qudt:hasQuantityKind @nfdi:DefinedTerm ? ;
+          prov:value @linkml:Float ;
+          qudt:hasQuantityKind @nfdi:DefinedTerm ;
           qudt:unit @nfdi:DefinedTerm ? ;
           dcterms:type @nfdi:DefinedTerm ? ;
           rdf:type @nfdi:DefinedTerm ?
@@ -748,8 +748,8 @@ nfdi:Tool  (
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
              adms:identifier @linkmldcatap:Identifier * ;
-             nfdi:has_qualitative_attribute @nfdi:QualitativeAttribute * ;
-             nfdi:has_quantitative_attribute @nfdi:QuantitativeAttribute * ;
+             dcterms:relation @nfdi:QualitativeAttribute * ;
+             dcterms:relation @nfdi:QuantitativeAttribute * ;
              dcterms:hasPart @nfdi:Tool * ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?

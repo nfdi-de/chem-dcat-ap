@@ -18,7 +18,7 @@ todos:
   (https://linkml.io/linkml-model/latest/docs/bindings/) seems best, but does not
   yet work.
 source: https://semiceu.github.io/DCAT-AP/releases/3.0.0
-id: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap.yaml
+id: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml
 imports:
 - linkml:types
 license: CC-BY 4.0
@@ -37,7 +37,6 @@ prefixes:
   vcard: http://www.w3.org/2006/vcard/ns#
   adms: http://www.w3.org/ns/adms#
   dcatap: http://data.europa.eu/r5r/
-  linkmldcatap: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/dcat-ap/
   qb: http://purl.org/linked-data/cube#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#

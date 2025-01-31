@@ -347,7 +347,7 @@ type InChi
   {
     title: String
     description: String
-    value: String
+    value: String!
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -356,7 +356,7 @@ type InChIKey
   {
     title: String
     description: String
-    value: String
+    value: String!
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -365,7 +365,7 @@ type IUPACChemicalFormula
   {
     title: String
     description: String
-    value: String
+    value: String!
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -562,15 +562,15 @@ type QualitativeAttribute implements ClassifierMixin
   {
     title: String
     description: String
-    value: String
+    value: String!
     type: DefinedTerm
     rdfType: DefinedTerm
   }
 
 type QuantitativeAttribute implements ClassifierMixin
   {
-    value: String
-    hasQuantityType: DefinedTerm
+    value: Float!
+    hasQuantityType: DefinedTerm!
     unit: DefinedTerm
     type: DefinedTerm
     rdfType: DefinedTerm
@@ -613,7 +613,7 @@ type SMILES
   {
     title: String
     description: String
-    value: String
+    value: String!
     type: DefinedTerm
     rdfType: DefinedTerm
   }

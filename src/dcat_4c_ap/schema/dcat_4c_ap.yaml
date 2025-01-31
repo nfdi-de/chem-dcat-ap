@@ -1,5 +1,5 @@
 ---
-id: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 name: dcat-4C-ap
 title: DCAT-4C-AP
 description: |-
@@ -10,8 +10,8 @@ see_also:
   - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
   - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
-  nfdi4c: https://w3id.org/StroemPhi/dcat_4C_ap/
-  nfdi: https://stroemphi.github.io/dcat-4C-ap/dcat-4nfdi-ap/
+  nfdi4c: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/
+  nfdi: https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -46,7 +46,7 @@ default_prefix: nfdi4c
 default_range: string
 imports:
   - linkml:types
-  - dcat-4nfdi-ap
+  - dcat_4nfdi_ap
 
 classes:
 
@@ -60,6 +60,8 @@ classes:
     slot_usage: 
       was_generated_by:
         range: NMRSpectroscopy
+        multivalued: true
+        inlined_as_list: true
 
 ###########################
 # Research Activity Types #
