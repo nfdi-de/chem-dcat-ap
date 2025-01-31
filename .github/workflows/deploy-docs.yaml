@@ -36,5 +36,5 @@ jobs:
           mkdir -p docs
           touch docs/.nojekyll
           make gendoc
-          ([ ! -f docs/about.md ] && cp src/docs/about.md docs/ && cp src/schema/* docs/) || true
+          ([ ! -f docs/about.md ] && cp src/docs/about.md docs/ && cp src/dcat_4c_ap/schema/* docs/) || true
           make mkd-gh-deploy
