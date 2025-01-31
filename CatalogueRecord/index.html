@@ -14,6 +14,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
@@ -362,7 +365,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -389,7 +392,7 @@
 <details>
 <pre><code class="language-yaml">name: CatalogueRecord
 description: See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
-from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 abstract: false
 slots:
 - application_profile
@@ -492,7 +495,7 @@ class_uri: dcat:CatalogRecord
 <details>
 <pre><code class="language-yaml">name: CatalogueRecord
 description: See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
-from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 abstract: false
 slot_usage:
   application_profile:
@@ -582,7 +585,7 @@ attributes:
     name: application_profile
     description: An Application Profile that the Catalogued Resource&amp;#39;s metadata
       conforms to.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:conformsTo
     alias: application_profile
@@ -598,7 +601,7 @@ attributes:
     name: change_type
     description: The status of the catalogue record in the context of editorial flow
       of the dataset and data service descriptions.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: adms:status
     alias: change_type
@@ -614,7 +617,7 @@ attributes:
     name: description
     description: A free-text account of the record. This property can be repeated
       for parallel language versions of the description.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:description
     alias: description
@@ -641,7 +644,7 @@ attributes:
     name: language
     description: A language used in the textual metadata describing titles, descriptions,
       etc. of the Catalogued Resource.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:language
     alias: language
@@ -659,7 +662,7 @@ attributes:
     name: listing_date
     description: The date on which the description of the Resource was included in
       the Catalogue.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:issued
     alias: listing_date
@@ -675,7 +678,7 @@ attributes:
     name: modification_date
     description: The most recent date on which the Catalogue entry was changed or
       modified.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:modified
     alias: modification_date
@@ -693,7 +696,7 @@ attributes:
   primary_topic:
     name: primary_topic
     description: A link to the Dataset, Data service or Catalog described in the record.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: foaf:primaryTopic
     alias: primary_topic
@@ -708,7 +711,7 @@ attributes:
     name: source_metadata
     description: The original metadata that was used in creating metadata for the
       Dataset, Data Service or Dataset Series.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:source
     alias: source_metadata
@@ -722,7 +725,7 @@ attributes:
   title:
     name: title
     description: A name given to the Catalogue Record.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -776,6 +779,7 @@ class_uri: dcat:CatalogRecord
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

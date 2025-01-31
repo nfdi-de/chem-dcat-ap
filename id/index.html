@@ -39,6 +39,12 @@
       
     
     
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -338,8 +344,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NFDIDataset/">NFDIDataset</a></td>
-<td>A collection of data, published or curated by a single agent, and available f...</td>
+<td><a href="../NFDICatalog/">NFDICatalog</a></td>
+<td>A curated collection of metadata about data resources</td>
 <td>no</td>
 </tr>
 <tr>
@@ -348,8 +354,23 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NFDICatalog/">NFDICatalog</a></td>
-<td>A curated collection of metadata about data resources</td>
+<td><a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>A word, name, acronym, phrase that is defined in a controlled vocabulary (CV)...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NFDIDataset/">NFDIDataset</a></td>
+<td>A collection of data, published or curated by a single agent, and available f...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
+<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
+<td>An activity or process that is being evaluated in a ResearchActivity</td>
 <td>no</td>
 </tr>
 <tr>
@@ -363,23 +384,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
-<td>An activity or process that is being evaluated in a ResearchActivity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DefinedTerm/">DefinedTerm</a></td>
-<td>A word, name, acronym, phrase that is defined in a controlled vocabulary (CV)...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../NMRDataset/">NMRDataset</a></td>
 <td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
-<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -396,7 +402,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -421,7 +427,7 @@
 <details>
 
 <pre><code class="language-yaml">name: id
-from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 rank: 1000
 slot_uri: dcterms:identifier
 identifier: true

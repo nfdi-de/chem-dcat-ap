@@ -14,6 +14,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../css/pandas-dataframe.css" rel="stylesheet"/>
 <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
@@ -371,7 +374,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap</li>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -399,7 +402,7 @@
 <pre><code class="language-yaml">name: ChemicalSubstance
 description: A portion of matter of constant composition, composed of molecular entities
   of the same type or of different types that is being evaluated in a scientific process.
-from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 is_a: EntityOfInterest
 slots:
 - has_role
@@ -408,7 +411,7 @@ attributes:
     name: composed_of
     description: The slot to provide the chemical entities of which the chemical substance
       is composed of.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     exact_mappings:
     - BFO:0000051
     rank: 1000
@@ -428,14 +431,14 @@ class_uri: prov:Entity
 <pre><code class="language-yaml">name: ChemicalSubstance
 description: A portion of matter of constant composition, composed of molecular entities
   of the same type or of different types that is being evaluated in a scientific process.
-from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 is_a: EntityOfInterest
 attributes:
   composed_of:
     name: composed_of
     description: The slot to provide the chemical entities of which the chemical substance
       is composed of.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     exact_mappings:
     - BFO:0000051
     rank: 1000
@@ -450,7 +453,7 @@ attributes:
     inlined_as_list: true
   has_role:
     name: has_role
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     alias: has_role
     owner: ChemicalSubstance
@@ -461,7 +464,7 @@ attributes:
     name: title
     description: This slot is described in more detail within the class in which it
       is used.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -487,7 +490,7 @@ attributes:
     name: description
     description: This slot is described in more detail within the class in which it
       is used.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:description
     alias: description
@@ -509,7 +512,7 @@ attributes:
     range: string
   id:
     name: id
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:identifier
     identifier: true
@@ -526,7 +529,7 @@ attributes:
   other_identifier:
     name: other_identifier
     description: A secondary identifier of the EntityOfInterest
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: adms:identifier
     alias: other_identifier
@@ -546,7 +549,7 @@ attributes:
     name: has_qualitative_attribute
     description: The slot to relate a qualitative attribute to an entity of interest,
       tool or environment.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:relation
     alias: has_qualitative_attribute
@@ -564,7 +567,7 @@ attributes:
     name: has_quantitative_attribute
     description: The slot to relate a quantitative  attribute to an entity of interest,
       tool or environment.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:relation
     alias: has_quantitative_attribute
@@ -582,7 +585,7 @@ attributes:
     name: has_part
     description: This slot is described in more detail within the class in which it
       is used.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:hasPart
     alias: has_part
@@ -598,7 +601,7 @@ attributes:
     name: type
     description: This slot is described in more detail within the class in which it
       is used.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:type
     alias: type
@@ -614,7 +617,7 @@ attributes:
     name: rdf_type
     description: The slot to specify the ontology class that is instantiated by an
       entity.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat-4C-ap
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: rdf:type
     alias: rdf_type
@@ -653,6 +656,7 @@ class_uri: prov:Entity
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>
