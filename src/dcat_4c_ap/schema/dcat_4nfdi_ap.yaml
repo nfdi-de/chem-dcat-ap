@@ -139,7 +139,7 @@ classes:
       - sosa:Observation
       - OBI:0000070
     
-  EntityOfInterest:
+  EvaluatedEntity:
     mixins:
       - ClassifierMixin
     class_uri: prov:Entity
@@ -162,7 +162,7 @@ classes:
         multivalued: true
         inlined_as_list: true
         
-  ActivityOfInterest:
+  EvaluatedActivity:
     mixins:
       - ClassifierMixin
     class_uri: prov:Activity
@@ -320,12 +320,12 @@ slots:
     slot_uri: prov:used
     description: The slot to specify the entity of interest that was evaluated.
     inlined: true
-    range: EntityOfInterest
+    range: EvaluatedEntity
   evaluated_activity:
     slot_uri: prov:wasInformedBy
     description: The slot to specify the activity of interest that was evaluated.
     inlined: true
-    range: ActivityOfInterest 
+    range: EvaluatedActivity 
   used_tool:
     slot_uri: prov:used
     description: The slot to specify the tool that was used.

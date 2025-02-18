@@ -89,12 +89,12 @@ classes:
 ##############################
 
   ChemicalReaction:
-    is_a: ActivityOfInterest
+    is_a: EvaluatedActivity
     class_uri: RXNO:0000329
     description: An experimental procedure with the aim of producing a portion of a given compound or mixture.
   
   ChemicalSubstance:
-    is_a: EntityOfInterest
+    is_a: EvaluatedEntity
     class_uri: prov:Entity
     description: A portion of matter of constant composition, composed of molecular entities of the same type or of different types that is being evaluated in a scientific process.
     slots:
