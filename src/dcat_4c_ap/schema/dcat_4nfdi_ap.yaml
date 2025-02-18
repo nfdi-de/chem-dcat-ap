@@ -92,7 +92,7 @@ classes:
       - describes_activity
     slot_usage:
       was_generated_by:
-        range: ResearchActivity
+        range: DataCreatingActivity
         required: true
         multivalued: true
         inlined_as_list: true
@@ -107,7 +107,7 @@ classes:
       has_dataset:
         range: NFDIDataset
     
-  ResearchActivity:
+  DataCreatingActivity:
     mixins:
       - ClassifierMixin
     is_a: Activity
