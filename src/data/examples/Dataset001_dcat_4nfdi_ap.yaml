@@ -10,6 +10,8 @@ description:
 theme:
   - preferred_label: 
     - "Science and technology"
+describes_entity:
+  - https://doi.org/10.14272/KVOIVNBYNQXCNY-BOCHJOTCSA-N.1
 was_generated_by:
   - rdf_type:
       id: CHMO:0000595

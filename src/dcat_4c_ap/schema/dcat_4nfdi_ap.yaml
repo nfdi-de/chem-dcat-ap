@@ -88,6 +88,8 @@ classes:
       A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
     slots:
       - id
+      - describes_entity
+      - describes_activity
     slot_usage:
       was_generated_by:
         range: ResearchActivity
@@ -360,7 +362,18 @@ slots:
   value:
     slot_uri: prov:value
     description: A slot to provide the literal value of an attribute.
-
+  describes_entity:
+    slot_uri: dcterms:relation
+    range: EvaluatedEntity
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+  describes_activity:
+    slot_uri: dcterms:relation
+    range: EvaluatedActivity
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
 
 enums:
   ## Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should be used to constrain the range 
