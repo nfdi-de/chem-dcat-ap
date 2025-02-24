@@ -56,7 +56,7 @@ classes:
   
   NMRDataset:
     class_uri: dcat:Dataset
-    is_a: NFDIDataset
+    is_a: ResearchDataset
     slot_usage: 
       was_generated_by:
         range: NMRSpectroscopy
