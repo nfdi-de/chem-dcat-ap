@@ -56,7 +56,7 @@ Requirements:
       ```
     * Validate domain agnostic DCAT-AP extension conform example
       ```
-      poetry run linkml validate src/data/examples/Dataset001_dcat_4nfdi_ap.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml  -C NFDIDataset
+      poetry run linkml validate src/data/examples/Dataset001_dcat_4nfdi_ap.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml  -C ResearchDataset
       ```
     * Validate a NMR spectroscopy-specific DCAT-AP extension conform example
       ```
@@ -71,7 +71,7 @@ Requirements:
   * Convert domain agnostic DCAT-AP extension conform example
     ```
     poetry run linkml-convert -t ttl src/data/examples/Dataset001_dcat_4nfdi_ap.yaml -s 
-    src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NFDIDataset
+    src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ResearchDataset
     ```
   * Convert a NMR spectroscopy-specific DCAT-AP extension conform example
     ```
