@@ -129,12 +129,12 @@ classes:
       - occurred_in
     slot_usage:
       has_part:
-        description: The slot to specify one or more parts of the ResearchActivity that are themselves also research activities.
+        description: The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities.
         range: Activity
         inlined: true
       other_identifier:
         name: other_identifier
-        description: A secondary identifier of the ActivityOfInterest
+        description: A secondary identifier of the DataCreatingActivity
         slot_uri: adms:identifier
         range: Identifier
         required: false
@@ -149,7 +149,7 @@ classes:
     mixins:
       - ClassifierMixin
     class_uri: prov:Entity
-    description: Something (not an activity or process) that is being evaluated in a ResearchActivity.
+    description: Something (not an activity or process) that is being evaluated in a DataCreatingActivity.
     slots:
       - title
       - description
@@ -161,7 +161,7 @@ classes:
     slot_usage:
       other_identifier:
         name: other_identifier
-        description: A secondary identifier of the EntityOfInterest
+        description: A secondary identifier of the EvaluatedEntity
         slot_uri: adms:identifier
         range: Identifier
         required: false
@@ -173,7 +173,7 @@ classes:
       - ClassifierMixin
     class_uri: prov:Activity
     is_a: Activity
-    description: An activity or process that is being evaluated in a ResearchActivity.
+    description: An activity or process that is being evaluated in a DataCreatingActivity.
     slots:
       - title
       - description
@@ -185,7 +185,7 @@ classes:
     slot_usage:
       other_identifier:
         name: other_identifier
-        description: A secondary identifier of the ActivityOfInterest
+        description: A secondary identifier of the EvaluatedActivity
         slot_uri: adms:identifier
         range: Identifier
         required: false
@@ -196,7 +196,7 @@ classes:
     mixins:
       - ClassifierMixin
     class_uri: prov:Entity
-    description: A entity with a certain function used within a ResearchActivity.
+    description: A entity with a certain function used within a DataCreatingActivity.
     slots:
       - title
       - description
@@ -213,7 +213,7 @@ classes:
         inlined_as_list: true
       other_identifier:
         name: other_identifier
-        description: A secondary identifier of the ActivityOfInterest
+        description: A secondary identifier of the EvaluatedActivity
         slot_uri: adms:identifier
         range: Identifier
         required: false
@@ -342,12 +342,12 @@ slots:
     range: Tool
   realized_plan:
     slot_uri: prov:used
-    description: The slot to specify the Method (aka Procedure) that was realized by a ResearchActivity.
+    description: The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.
     recommended: true
     range: Plan
   occurred_in:
     slot_uri: BFO:0000066
-    description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
+    description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
     range: Environment
   has_qualitative_attribute:
     slot_uri: dcterms:relation
@@ -382,7 +382,7 @@ slots:
 enums:
   ## Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should be used to constrain the range 
   ## of the type slot instead of using the default DefinedTerm as range.
-  ## This will be done in profiles of this schema where we define ResearchActivity subclasses, e.g. NMRSpectroscopy.
+  ## This will be done in profiles of this schema where we define DataCreatingActivity subclasses, e.g. NMRSpectroscopy.
   ## seeAlso: https://github.com/linkml/linkml-model/blob/main/tests/input/examples/schema_definition-enum_bindings-1.yaml
   QUDTQuantityKindEnum:
     description: Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.
