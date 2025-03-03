@@ -61,9 +61,6 @@ classes:
       type:
         inlined: true
         range: DefinedTerm
-        #equals_expression: '{rdf_type}'
-      rdf_type:
-        #equals_expression: '{type}'
 
   DefinedTerm:
     class_uri: schema:DefinedTerm
