@@ -357,12 +357,16 @@ slots:
   evaluated_entity:
     slot_uri: prov:used
     description: The slot to specify the entity of interest that was evaluated.
-    inlined: true
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
     range: EvaluatedEntity
   evaluated_activity:
     slot_uri: prov:wasInformedBy
     description: The slot to specify the activity of interest that was evaluated.
-    inlined: true
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
     range: EvaluatedActivity 
   used_tool:
     slot_uri: prov:used
