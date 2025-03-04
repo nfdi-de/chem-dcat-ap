@@ -96,6 +96,13 @@ classes:
         multivalued: true
         inlined_as_list: true
   
+  AnalysisDataset:
+    class_uri: dcat:Dataset
+    is_a: ResearchDataset
+    slot_usage:
+      was_generated_by:
+        range: DataAnalysis
+        
   ResearchCatalog:
     is_a: Catalogue
     class_uri: dcat:Catalog
@@ -142,6 +149,18 @@ classes:
       - sosa:Observation
       - OBI:0000070
     
+  DataAnalysis:
+    is_a: DataCreatingActivity
+    class_uri: prov:Activity
+    description: A DataCreatingActivity that evaluates the data produced by another DataCreatingActivity.
+    slot_usage:
+      evaluated_entity:
+        range: AnalysedData
+    close_mappings:
+      - http://purl.obolibrary.org/obo/NCIT_C25391
+    exact_mappings:
+      - OBI:0200000 # data transformation aka data analysis
+
   EvaluatedEntity:
     mixins:
       - ClassifierMixin
@@ -155,6 +174,7 @@ classes:
       - has_qualitative_attribute
       - has_quantitative_attribute
       - has_part
+      - was_generated_by
     slot_usage:
       other_identifier:
         name: other_identifier
@@ -164,7 +184,20 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
+      was_generated_by:
+        range: Activity
+        description: A slot to provide the Activity which created the EvaluatedEntity.
+        multivalued: true
+        inlined_as_list: true
         
+  AnalysedData:
+    is_a: EvaluatedEntity
+    class_uri: prov:Entity
+    description: Information that was evaluated within an Analysis.
+    slot_usage:
+      was_generated_by:
+        range: DataCreatingActivity
+  
   EvaluatedActivity:
     mixins:
       - ClassifierMixin
