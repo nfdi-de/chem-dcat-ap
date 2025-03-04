@@ -313,6 +313,8 @@ classes:
     class_uri: qudt:Quantity
     description: A quantifiable piece of information that is attributed to an entity of interest, tool or environment.
     slots:
+      - title
+      - description
       - value
     attributes:
       has_quantity_type:
