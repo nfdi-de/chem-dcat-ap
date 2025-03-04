@@ -25,10 +25,11 @@
             skos:prefLabel "Science and technology" ] ;
     prov:wasGeneratedBy [ a NMR:1000259,
                 prov:Activity ;
-            prov:used <CDCl3_NMR_Spectrum> ],
-        [ a NMR:1000259,
-                prov:Activity ;
-            prov:used <CDCl3_NMR_Spectrum> ] .
+            prov:used <CDCl3_13C_NMR_Spectrum>,
+                <DMSO_13C_NMR_Spectrum> ] .
+
+NMR:1000259 a schema1:DefinedTerm ;
+    schema1:name "peak assignment" .
 
 CHEBI:59999 a schema1:DefinedTerm ;
     schema1:name "Chemical Substance" .
@@ -36,8 +37,65 @@ CHEBI:59999 a schema1:DefinedTerm ;
 CHEMINF:000059 a schema1:DefinedTerm ;
     schema1:name "InChiKey" .
 
-NMR:1000259 a schema1:DefinedTerm ;
-    schema1:name "peak assignment" .
+<CDCl3_13C_NMR_Spectrum> a prov:Entity ;
+    prov:wasGeneratedBy [ a CHMO:0000595,
+                prov:Activity ;
+            prov:used [ a OBI:0000566,
+                        prov:Entity ;
+                    dcterms:relation [ a NMR:1400037,
+                                prov:Entity ;
+                            dcterms:title "Puls programme" ;
+                            prov:value "zgpg30" ],
+                        [ a IAO:0000140,
+                                qudt:Quantity ;
+                            dcterms:title "Temperature" ;
+                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+                            qudt:unit <https://qudt.org/vocab/unit/K> ;
+                            prov:value "300.0"^^xsd:float ],
+                        [ a NMR:1400087,
+                                qudt:Quantity ;
+                            dcterms:title "Number of scans" ;
+                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
+                            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+                            prov:value "1024.0"^^xsd:float ] ;
+                    dcterms:title "Bruker 400 MHz" ],
+                [ a CHEBI:85365,
+                        prov:Entity ;
+                    dcterms:relation [ a OBI:0302732,
+                                prov:Entity ;
+                            prov:value "solvent role" ] ;
+                    dcterms:title "chloroform-D1 (CDCl3)" ],
+                <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> ] .
+
+<DMSO_13C_NMR_Spectrum> a prov:Entity ;
+    prov:wasGeneratedBy [ a CHMO:0000595,
+                prov:Activity ;
+            prov:used [ a OBI:0000566,
+                        prov:Entity ;
+                    dcterms:relation [ a NMR:1400087,
+                                qudt:Quantity ;
+                            dcterms:title "Number of scans" ;
+                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
+                            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+                            prov:value "1024.0"^^xsd:float ],
+                        [ a NMR:1400037,
+                                prov:Entity ;
+                            dcterms:title "Puls programme" ;
+                            prov:value "zgpg30" ],
+                        [ a IAO:0000140,
+                                qudt:Quantity ;
+                            dcterms:title "Temperature" ;
+                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+                            qudt:unit <https://qudt.org/vocab/unit/K> ;
+                            prov:value "300.0"^^xsd:float ] ;
+                    dcterms:title "Bruker 400 MHz" ],
+                [ a CHEBI:85365,
+                        prov:Entity ;
+                    dcterms:relation [ a OBI:0302732,
+                                prov:Entity ;
+                            prov:value "solvent role" ] ;
+                    dcterms:title "DMSO" ],
+                <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> ] .
 
 NMR:1400037 a schema1:DefinedTerm ;
     schema1:name "NMR pulse sequence" .
@@ -59,64 +117,6 @@ OBI:0000566 a schema1:DefinedTerm ;
 
 OBI:0302732 a schema1:DefinedTerm ;
     schema1:name "solvent role" .
-
-<CDCl3_NMR_Spectrum> a prov:Entity ;
-    prov:wasGeneratedBy [ a CHMO:0000595,
-                prov:Activity ;
-            prov:used [ a CHEBI:85365,
-                        prov:Entity ;
-                    dcterms:relation [ a OBI:0302732,
-                                prov:Entity ;
-                            prov:value "solvent role" ] ;
-                    dcterms:title "DMSO" ],
-                [ a OBI:0000566,
-                        prov:Entity ;
-                    dcterms:relation [ a NMR:1400037,
-                                prov:Entity ;
-                            dcterms:title "Puls programme" ;
-                            prov:value "zgpg30" ],
-                        [ a IAO:0000140,
-                                qudt:Quantity ;
-                            dcterms:title "Temperature" ;
-                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
-                            qudt:unit <https://qudt.org/vocab/unit/K> ;
-                            prov:value "300.0"^^xsd:float ],
-                        [ a NMR:1400087,
-                                qudt:Quantity ;
-                            dcterms:title "Number of scans" ;
-                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
-                            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
-                            prov:value "1024.0"^^xsd:float ] ;
-                    dcterms:title "Bruker 400 MHz" ],
-                <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> ],
-        [ a CHMO:0000595,
-                prov:Activity ;
-            prov:used [ a CHEBI:85365,
-                        prov:Entity ;
-                    dcterms:relation [ a OBI:0302732,
-                                prov:Entity ;
-                            prov:value "solvent role" ] ;
-                    dcterms:title "chloroform-D1 (CDCl3)" ],
-                [ a OBI:0000566,
-                        prov:Entity ;
-                    dcterms:relation [ a NMR:1400087,
-                                qudt:Quantity ;
-                            dcterms:title "Number of scans" ;
-                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
-                            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
-                            prov:value "1024.0"^^xsd:float ],
-                        [ a NMR:1400037,
-                                prov:Entity ;
-                            dcterms:title "Puls programme" ;
-                            prov:value "zgpg30" ],
-                        [ a IAO:0000140,
-                                qudt:Quantity ;
-                            dcterms:title "Temperature" ;
-                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
-                            qudt:unit <https://qudt.org/vocab/unit/K> ;
-                            prov:value "300.0"^^xsd:float ] ;
-                    dcterms:title "Bruker 400 MHz" ],
-                <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> ] .
 
 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> a CHEBI:59999,
         prov:Entity ;
