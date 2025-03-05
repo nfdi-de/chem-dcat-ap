@@ -65,6 +65,8 @@ classes:
         inlined_as_list: true
       describes_entity:
         range: ChemicalSample
+    comments:
+      - This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.
   
 ################################
 # Data Creating Activity Types #
@@ -77,6 +79,8 @@ classes:
     slot_usage:
       evaluated_entity:
         range: NMRSpectrum
+    comments:
+      - This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.
   
   NMRSpectroscopy:
     is_a: DataCreatingActivity
@@ -94,7 +98,9 @@ classes:
             range: NMRAssayEnum
             obligation_level: RECOMMENDED
             description: NMR types from the Chemical Methods Ontology
-
+    comments:
+      - This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.
+  
 ##############################
 # Entities of Interest Types #
 ##############################
