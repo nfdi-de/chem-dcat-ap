@@ -4,7 +4,7 @@ import glob
 import unittest
 
 from linkml_runtime.loaders import yaml_loader
-from src.dcat_4c_ap.datamodel.dcat_4c_ap import NMRDataset, Dataset, ResearchDataset
+from src.dcat_4c_ap.datamodel.dcat_4c_ap import NMRAnalysisDataset, Dataset, ResearchDataset
 
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
@@ -25,6 +25,6 @@ class TestData(unittest.TestCase):
             elif 'Dataset001_dcat_4nfdi_ap.yaml' in path:
                 obj = yaml_loader.load(path, target_class=ResearchDataset)
                 assert obj
-            elif 'Dataset001_dcat_4c_ap_NMRDataset.yaml' in path:
-                obj = yaml_loader.load(path, target_class=NMRDataset)
+            elif 'Dataset001_dcat_4c_ap_NMRAnalysisDataset.yaml' in path:
+                obj = yaml_loader.load(path, target_class=NMRAnalysisDataset)
                 assert obj
