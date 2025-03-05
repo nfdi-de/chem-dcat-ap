@@ -42,11 +42,14 @@
    "Activity": {
       "@id": "prov:Activity"
    },
-   "ActivityOfInterest": {
-      "@id": "prov:Activity"
-   },
    "Agent": {
       "@id": "foaf:Agent"
+   },
+   "AnalysedData": {
+      "@id": "prov:Entity"
+   },
+   "AnalysisDataset": {
+      "@id": "dcat:Dataset"
    },
    "Attribution": {
       "@id": "prov:Attribution"
@@ -84,6 +87,12 @@
    "ConceptScheme": {
       "@id": "skos:ConceptScheme"
    },
+   "DataAnalysis": {
+      "@id": "prov:Activity"
+   },
+   "DataCreatingActivity": {
+      "@id": "prov:Activity"
+   },
    "DataService": {
       "@id": "dcat:DataService"
    },
@@ -102,10 +111,13 @@
    "Document": {
       "@id": "foaf:Document"
    },
-   "EntityOfInterest": {
+   "Environment": {
       "@id": "prov:Entity"
    },
-   "Environment": {
+   "EvaluatedActivity": {
+      "@id": "prov:Activity"
+   },
+   "EvaluatedEntity": {
       "@id": "prov:Entity"
    },
    "Frequency": {
@@ -113,6 +125,9 @@
    },
    "Geometry": {
       "@id": "locn:Geometry"
+   },
+   "HardwareTool": {
+      "@id": "nfdi:HardwareTool"
    },
    "Identifier": {
       "@id": "adms:Identifier"
@@ -150,14 +165,14 @@
    "MediaTypeOrExtent": {
       "@id": "dcterms:MediaTypeOrExtent"
    },
-   "NFDICatalog": {
-      "@id": "dcat:Catalog"
-   },
-   "NFDIDataset": {
+   "NMRAnalysisDataset": {
       "@id": "dcat:Dataset"
    },
-   "NMRDataset": {
-      "@id": "dcat:Dataset"
+   "NMRSpectralAnalysis": {
+      "@id": "NMR:1000259"
+   },
+   "NMRSpectrum": {
+      "@id": "NMR:1002007"
    },
    "PeriodOfTime": {
       "@id": "dcterms:PeriodOfTime"
@@ -180,8 +195,11 @@
    "Relationship": {
       "@id": "dcat:Relationship"
    },
-   "ResearchActivity": {
-      "@id": "prov:Activity"
+   "ResearchCatalog": {
+      "@id": "dcat:Catalog"
+   },
+   "ResearchDataset": {
+      "@id": "dcat:Dataset"
    },
    "Resource": {
       "@id": "rdfs:Resource"
@@ -194,6 +212,9 @@
    },
    "SMILES": {
       "@id": "CHEMINF:000018"
+   },
+   "SoftwareTool": {
+      "@id": "nfdi:SoftwareTool"
    },
    "Standard": {
       "@id": "dcterms:Standard"
