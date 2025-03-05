@@ -144,16 +144,6 @@ classes:
   # Tool Types #
   ##############
 
-  HardwareTool:
-    is_a: Tool
-    aliases:
-      - Device
-    description: A hardware with a certain function.
-  
-  SoftwareTool:
-    is_a: Tool
-    description: A software with a certain function.
-
   #####################
   # Environment Types #
   #####################
