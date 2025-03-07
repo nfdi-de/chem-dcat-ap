@@ -76,6 +76,8 @@ classes:
     slot_usage:
       title:
         slot_uri: schema:name
+    in_subset:
+      - domain-agnostic core
         
   ResearchDataset:
     is_a: Dataset
@@ -96,12 +98,16 @@ classes:
         multivalued: true
         inlined_as_list: true
   
+    in_subset:
+      - domain-agnostic core
   AnalysisDataset:
     class_uri: dcat:Dataset
     is_a: ResearchDataset
     slot_usage:
       was_generated_by:
         range: DataAnalysis
+    in_subset:
+      - domain-agnostic core
         
   ResearchCatalog:
     is_a: Catalogue
@@ -114,6 +120,8 @@ classes:
     slot_usage:
       has_dataset:
         range: ResearchDataset
+    in_subset:
+      - domain-agnostic core
     
   DataCreatingActivity:
     mixins:
@@ -148,6 +156,8 @@ classes:
       - NCIT:C25598
       - sosa:Observation
       - OBI:0000070
+    in_subset:
+      - domain-agnostic core
     
   DataAnalysis:
     is_a: DataCreatingActivity
@@ -160,6 +170,8 @@ classes:
       - http://purl.obolibrary.org/obo/NCIT_C25391
     exact_mappings:
       - OBI:0200000 # data transformation aka data analysis
+    in_subset:
+      - domain-agnostic core
 
   EvaluatedEntity:
     mixins:
@@ -189,6 +201,8 @@ classes:
         description: A slot to provide the Activity which created the EvaluatedEntity.
         multivalued: true
         inlined_as_list: true
+    in_subset:
+      - domain-agnostic core
         
   AnalysedData:
     is_a: EvaluatedEntity
@@ -197,6 +211,8 @@ classes:
     slot_usage:
       was_generated_by:
         range: DataCreatingActivity
+    in_subset:
+      - domain-agnostic core
   
   EvaluatedActivity:
     mixins:
@@ -221,6 +237,8 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
+    in_subset:
+      - domain-agnostic core
     
   Tool:
     mixins:
@@ -251,14 +269,20 @@ classes:
         inlined_as_list: true
     broad_mappings:
       - prov:Entity
+    in_subset:
+      - domain-agnostic core
   HardwareTool:
     is_a: Tool
     aliases:
       - Device
     description: A hardware device with a certain function that was used within a DataCreatingActivity.
+    in_subset:
+      - domain-agnostic core
   SoftwareTool:
     is_a: Tool
     description: A software device with a certain function that was used within a DataCreatingActivity.
+    in_subset:
+      - domain-agnostic core
       
   Environment:
     mixins:
@@ -278,6 +302,8 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
+    in_subset:
+      - domain-agnostic core
     
   Plan:
     mixins:
@@ -295,6 +321,8 @@ classes:
       - description
     examples:
       - description: "We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3)."
+    in_subset:
+      - domain-agnostic core
 
            
   
@@ -314,6 +342,8 @@ classes:
       value:
         description: The slot to provide the literal value of the QualitativeAttribute.
         required: true
+  in_subset:
+    - domain-agnostic core
   
   QuantitativeAttribute:
     mixins:
@@ -349,6 +379,8 @@ classes:
         description: The slot to provide the literal value of the QuantitativeAttribute.
         required: true
         range: float
+    in_subset:
+      - domain-agnostic core
 
 # Slots
 slots:
@@ -356,12 +388,16 @@ slots:
     slot_uri: dcterms:identifier
     identifier: true
     range: uriorcurie
+    in_subset:
+      - domain-agnostic core
   rdf_type:
     slot_uri: rdf:type
     description: The slot to specify the ontology class that is instantiated by an entity.
     recommended: true
     inlined: true
     range: DefinedTerm
+    in_subset:
+      - domain-agnostic core
   evaluated_entity:
     slot_uri: prov:used
     description: The slot to specify the entity of interest that was evaluated.
@@ -369,6 +405,8 @@ slots:
     inlined_as_list: true
     recommended: true
     range: EvaluatedEntity
+    in_subset:
+      - domain-agnostic core
   evaluated_activity:
     slot_uri: prov:wasInformedBy
     description: The slot to specify the activity of interest that was evaluated.
@@ -376,6 +414,8 @@ slots:
     inlined_as_list: true
     recommended: true
     range: EvaluatedActivity 
+    in_subset:
+      - domain-agnostic core
   used_tool:
     slot_uri: prov:used
     description: The slot to specify the tool that was used.
@@ -384,15 +424,21 @@ slots:
     inlined: true
     inlined_as_list: true
     range: Tool
+    in_subset:
+      - domain-agnostic core
   realized_plan:
     slot_uri: prov:used
     description: The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.
     recommended: true
     range: Plan
+    in_subset:
+      - domain-agnostic core
   occurred_in:
     slot_uri: BFO:0000066
     description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
     range: Environment
+    in_subset:
+      - domain-agnostic core
   has_qualitative_attribute:
     slot_uri: dcterms:relation
     description: The slot to relate a qualitative attribute to an entity of interest, tool or environment.
@@ -400,6 +446,8 @@ slots:
     inlined: true
     multivalued: true
     inlined_as_list: true
+    in_subset:
+      - domain-agnostic core
   has_quantitative_attribute:
     slot_uri: dcterms:relation
     description: The slot to relate a quantitative  attribute to an entity of interest, tool or environment.
@@ -407,9 +455,13 @@ slots:
     inlined: true
     multivalued: true
     inlined_as_list: true
+    in_subset:
+      - domain-agnostic core
   value:
     slot_uri: prov:value
     description: A slot to provide the literal value of an attribute.
+    in_subset:
+      - domain-agnostic core
   describes_entity:
     slot_uri: dcterms:relation
     range: EvaluatedEntity
@@ -417,6 +469,8 @@ slots:
     multivalued: true
     inlined_as_list: true
     recommended: true
+    in_subset:
+      - domain-agnostic core
   describes_activity:
     slot_uri: dcterms:relation
     range: EvaluatedActivity
@@ -424,6 +478,8 @@ slots:
     multivalued: true
     inlined_as_list: true
     recommended: true
+    in_subset:
+      - domain-agnostic core
 
 enums:
   ## Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should be used to constrain the range 
@@ -441,6 +497,8 @@ enums:
       is_direct: true
       relationship_types:
         - rdf:type
+    in_subset:
+      - domain-agnostic core
                  
   QUDTUnitEnum:
     description: Possible kinds of QUDT unit instances.
@@ -453,6 +511,8 @@ enums:
       is_direct: true
       relationship_types:
         - rdf:type
+    in_subset:
+      - domain-agnostic core
     
 
 
