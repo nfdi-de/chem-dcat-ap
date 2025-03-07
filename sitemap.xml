@@ -2,758 +2,786 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Activity/</loc>
-         <lastmod>2025-01-31</lastmod>
-    </url>
-    <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/ActivityOfInterest/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Agent/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/AnalysedData/</loc>
+         <lastmod>2025-03-07</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/AnalysisDataset/</loc>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Attribution/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Boolean/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Catalogue/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/CatalogueRecord/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/CataloguedResource/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Checksum/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/ChecksumAlgorithm/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/ChemicalEntity/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/ChemicalReaction/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/ChemicalSample/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/ChemicalSubstance/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/ClassifierMixin/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Concept/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/ConceptScheme/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Curie/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/DataAnalysis/</loc>
+         <lastmod>2025-03-07</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/DataCreatingActivity/</loc>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/DataService/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Dataset/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/DatasetSeries/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/DatasetThemes/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Date/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/DateOrDatetime/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Datetime/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Decimal/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/DefinedTerm/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Distribution/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Document/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Double/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Duration/</loc>
-         <lastmod>2025-01-31</lastmod>
-    </url>
-    <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/EntityOfInterest/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Environment/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/EvaluatedActivity/</loc>
+         <lastmod>2025-03-07</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/EvaluatedEntity/</loc>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Float/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Frequency/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Geometry/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/HardwareTool/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/HexBinary/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/IUPACChemicalFormula/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Identifier/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/InChIKey/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/InChi/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Integer/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Jsonpath/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Jsonpointer/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Kind/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Laboratory/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/LegalResource/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/LicenseDocument/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/LinguisticSystem/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Location/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/MediaType/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/MediaTypeOrExtent/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/NFDICatalog/</loc>
-         <lastmod>2025-01-31</lastmod>
-    </url>
-    <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/NFDIDataset/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/NMRAnalysisDataset/</loc>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/NMRAssayEnum/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/NMRDataset/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/NMRSpectralAnalysis/</loc>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/NMRSpectroscopy/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/NMRSpectrum/</loc>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Ncname/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Nodeidentifier/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/NonNegativeInteger/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Objectidentifier/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/PeriodOfTime/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Plan/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Policy/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/ProvenanceStatement/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/QUDTQuantityKindEnum/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/QUDTUnitEnum/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/QualitativeAttribute/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/QuantitativeAttribute/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Relationship/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/ResearchActivity/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/ResearchCatalog/</loc>
+         <lastmod>2025-03-07</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/ResearchDataset/</loc>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Resource/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/RightsStatement/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Role/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/SMILES/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/SoftwareTool/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Sparqlpath/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Standard/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/String/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/SupportiveEntity/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Time/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/TimeInstant/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Tool/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/TopLevelMediaTypes/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Uri/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/Uriorcurie/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/about/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/access_URL/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/access_rights/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/access_service/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/algorithm/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/applicable_legislation/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/application_profile/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/availability/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/bbox/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/beginning/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/byte_size/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/catalogue/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/centroid/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/change_type/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/checksum/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/checksum_value/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/composed_of/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/compression_format/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/conforms_to/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/contact_point/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/creator/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/dataset_distribution/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/dcat-4C-ap/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/describes_activity/</loc>
+         <lastmod>2025-03-07</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/describes_entity/</loc>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/description/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/documentation/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/download_URL/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/end/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/end_date/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/endpoint_URL/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/endpoint_description/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/evaluated_activity/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/evaluated_entity/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/format/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/frequency/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/from_CV/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/geographical_coverage/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/geometry/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/had_role/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/has_dataset/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/has_part/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/has_policy/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/has_qualitative_attribute/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/has_quantitative_attribute/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/has_quantity_type/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/has_role/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/has_version/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/homepage/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/id/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/identifier/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/in_series/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/inchi/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/inchikey/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/is_referenced_by/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/iupac_formula/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/keyword/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/landing_page/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/language/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/licence/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/linked_schemas/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/listing_date/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/media_type/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/modification_date/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/name/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/notation/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/occurred_in/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/other_identifier/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/packaging_format/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/preferred_label/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/primary_topic/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/provenance/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/publisher/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/qualified_attribution/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/qualified_relation/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/rdf_type/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/realized_plan/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/record/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/related_resource/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/relation/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/release_date/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/rights/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/sample/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/serves_dataset/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/service/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/smiles/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/source/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/source_metadata/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/spatial_resolution/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/start_date/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/status/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/temporal_coverage/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/temporal_resolution/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/theme/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/themes/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/title/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/type/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/unit/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/used_tool/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/value/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/version/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/version_notes/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/was_generated_by/</loc>
-         <lastmod>2025-01-31</lastmod>
+         <lastmod>2025-03-07</lastmod>
     </url>
 </urlset>

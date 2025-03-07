@@ -344,18 +344,28 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
-<td>Something (not an activity or process) that is being evaluated in a ResearchA...</td>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td>A portion of matter of constant composition, composed of molecular entities o...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
-<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
+<td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
+<td>A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
-<td>An activity or process that is being evaluated in a ResearchActivity</td>
+<td><a href="../ResearchCatalog/">ResearchCatalog</a></td>
+<td>A curated collection of metadata about data resources</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ResearchDataset/">ResearchDataset</a></td>
+<td>A collection of data, published or curated by a single agent, and available f...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -364,18 +374,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NMRDataset/">NMRDataset</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A portion of matter of constant composition, composed of molecular entities o...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NFDIDataset/">NFDIDataset</a></td>
-<td>A collection of data, published or curated by a single agent, and available f...</td>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td>A set of chemical shifts obtained via NMR spectroscopy</td>
 <td>no</td>
 </tr>
 <tr>
@@ -384,8 +384,23 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NFDICatalog/">NFDICatalog</a></td>
-<td>A curated collection of metadata about data resources</td>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or process that is being evaluated in a DataCreatingActivity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnalysedData/">AnalysedData</a></td>
+<td>Information that was evaluated within an Analysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>Something (not an activity or process) that is being evaluated in a DataCreat...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
+<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -434,10 +449,10 @@ identifier: true
 alias: id
 domain_of:
 - DefinedTerm
-- NFDIDataset
-- NFDICatalog
-- EntityOfInterest
-- ActivityOfInterest
+- ResearchDataset
+- ResearchCatalog
+- EvaluatedEntity
+- EvaluatedActivity
 range: uriorcurie
 required: true
 

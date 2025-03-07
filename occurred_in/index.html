@@ -330,7 +330,7 @@
 
 
 <h1 id="slot-occurred_in">Slot: occurred_in</h1>
-<p><em>The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.</em></p>
+<p><em>The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.</em></p>
 <p>URI: <a href="http://purl.obolibrary.org/obo/BFO_0000066">BFO:0000066</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -345,13 +345,23 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td>A DataCreatingActivity that evaluates the data produced by another DataCreati...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
 <td>An activity (process) that has the objective to produce information about an ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -388,13 +398,13 @@
 <details>
 
 <pre><code class="language-yaml">name: occurred_in
-description: The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.
+description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 rank: 1000
 slot_uri: BFO:0000066
 alias: occurred_in
 domain_of:
-- ResearchActivity
+- DataCreatingActivity
 range: Environment
 
 </code></pre>

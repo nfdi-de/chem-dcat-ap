@@ -216,6 +216,8 @@
       ClassifierMixin &lt;|-- QuantitativeAttribute
         click ClassifierMixin href "../ClassifierMixin"
 
+      QuantitativeAttribute : description
+
       QuantitativeAttribute : has_quantity_type
 
 
@@ -233,6 +235,8 @@
     QuantitativeAttribute --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
     click DefinedTerm href "../DefinedTerm"
 
+
+      QuantitativeAttribute : title
 
       QuantitativeAttribute : type
 
@@ -271,6 +275,18 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../value/">value</a></td>
 <td>1 <br/> <a href="../Float/">Float</a></td>
@@ -333,31 +349,25 @@
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../HardwareTool/">HardwareTool</a></td>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../SoftwareTool/">SoftwareTool</a></td>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../Laboratory/">Laboratory</a></td>
+<td><a href="../AnalysedData/">AnalysedData</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
@@ -369,7 +379,13 @@
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../Environment/">Environment</a></td>
+<td><a href="../HardwareTool/">HardwareTool</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../SoftwareTool/">SoftwareTool</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
@@ -411,6 +427,8 @@ from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 mixins:
 - ClassifierMixin
 slots:
+- title
+- description
 - value
 slot_usage:
   value:
@@ -502,6 +520,58 @@ attributes:
       binds_value_of: id
       description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
     recommended: true
+  title:
+    name: title
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:title
+    alias: title
+    owner: QuantitativeAttribute
+    domain_of:
+    - Catalogue
+    - CatalogueRecord
+    - ConceptScheme
+    - DataService
+    - Dataset
+    - DatasetSeries
+    - Distribution
+    - DefinedTerm
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
+    - Tool
+    - Environment
+    - Plan
+    - QualitativeAttribute
+    - QuantitativeAttribute
+    range: string
+  description:
+    name: description
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: QuantitativeAttribute
+    domain_of:
+    - Catalogue
+    - CatalogueRecord
+    - DataService
+    - Dataset
+    - DatasetSeries
+    - Distribution
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
+    - Tool
+    - Environment
+    - Plan
+    - QualitativeAttribute
+    - QuantitativeAttribute
+    range: string
   value:
     name: value
     description: The slot to provide the literal value of the QuantitativeAttribute.

@@ -208,7 +208,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-hardwaretool">Class: HardwareTool</h1>
-<p><em>A hardware with a certain function.</em></p>
+<p><em>A hardware device with a certain function that was used within a DataCreatingActivity.</em></p>
 <p>URI: <a href="https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/HardwareTool">nfdi4c:HardwareTool</a></p>
 <div class="mermaid"> classDiagram
     class HardwareTool
@@ -309,7 +309,7 @@
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A secondary identifier of the ActivityOfInterest</td>
+<td>A secondary identifier of the EvaluatedActivity</td>
 <td><a href="../Tool/">Tool</a></td>
 </tr>
 <tr>
@@ -377,7 +377,7 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: HardwareTool
-description: A hardware with a certain function.
+description: A hardware device with a certain function that was used within a DataCreatingActivity.
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 aliases:
 - Device
@@ -388,7 +388,7 @@ is_a: Tool
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: HardwareTool
-description: A hardware with a certain function.
+description: A hardware device with a certain function that was used within a DataCreatingActivity.
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 aliases:
 - Device
@@ -412,13 +412,14 @@ attributes:
     - DatasetSeries
     - Distribution
     - DefinedTerm
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
   description:
     name: description
@@ -436,17 +437,18 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
   other_identifier:
     name: other_identifier
-    description: A secondary identifier of the ActivityOfInterest
+    description: A secondary identifier of the EvaluatedActivity
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: adms:identifier
@@ -454,9 +456,9 @@ attributes:
     owner: HardwareTool
     domain_of:
     - Dataset
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     range: Identifier
@@ -473,10 +475,9 @@ attributes:
     alias: has_qualitative_attribute
     owner: HardwareTool
     domain_of:
-    - EntityOfInterest
-    - ActivityOfInterest
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
-    - Environment
     range: QualitativeAttribute
     multivalued: true
     inlined: true
@@ -491,10 +492,9 @@ attributes:
     alias: has_quantitative_attribute
     owner: HardwareTool
     domain_of:
-    - EntityOfInterest
-    - ActivityOfInterest
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
-    - Environment
     range: QuantitativeAttribute
     multivalued: true
     inlined: true
@@ -509,9 +509,9 @@ attributes:
     owner: HardwareTool
     domain_of:
     - Catalogue
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     range: Tool
     multivalued: true

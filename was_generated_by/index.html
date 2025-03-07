@@ -350,13 +350,43 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../NMRDataset/">NMRDataset</a></td>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td>A portion of matter of constant composition, composed of molecular entities o...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
+<td>A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
 <td></td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../NFDIDataset/">NFDIDataset</a></td>
+<td><a href="../ResearchDataset/">ResearchDataset</a></td>
 <td>A collection of data, published or curated by a single agent, and available f...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td>A set of chemical shifts obtained via NMR spectroscopy</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ChemicalSample/">ChemicalSample</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnalysedData/">AnalysedData</a></td>
+<td>Information that was evaluated within an Analysis</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>Something (not an activity or process) that is being evaluated in a DataCreat...</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -401,6 +431,7 @@ slot_uri: prov:wasGeneratedBy
 alias: was_generated_by
 domain_of:
 - Dataset
+- EvaluatedEntity
 range: string
 
 </code></pre>

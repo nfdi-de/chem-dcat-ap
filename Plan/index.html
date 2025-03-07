@@ -218,7 +218,8 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-plan">Class: Plan</h1>
-<p><em>A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.</em></p>
+<p>_A piece of information that specifies: a) how an activity has to be carried out by its agents including what _</p>
+<p><em>kind of steps have to be taken and what kind of parameters have to be met/set.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a></p>
 <div class="mermaid"> classDiagram
     class Plan
@@ -303,13 +304,25 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td><a href="../realized_plan/">realized_plan</a></td>
+<td>range</td>
+<td><a href="./">Plan</a></td>
+</tr>
+<tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
 <td><a href="../realized_plan/">realized_plan</a></td>
 <td>range</td>
 <td><a href="./">Plan</a></td>
 </tr>
 <tr>
-<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td><a href="../realized_plan/">realized_plan</a></td>
+<td>range</td>
+<td><a href="./">Plan</a></td>
+</tr>
+<tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
 <td><a href="../realized_plan/">realized_plan</a></td>
 <td>range</td>
 <td><a href="./">Plan</a></td>
@@ -320,6 +333,7 @@
 <ul>
 <li>Plan Specification</li>
 <li>Method</li>
+<li>Procedure</li>
 </ul>
 <h2 id="examples">Examples</h2>
 <table>
@@ -363,9 +377,9 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Plan
-description: 'A piece of information that specifies: a) how an activity has to be
-  carried out by its agents and b) the attributes of the passive activity participants
-  that are used by the agents in terms of their presence and magnitude.'
+description: "A piece of information that specifies: a) how an activity has to be\
+  \ carried out by its agents including what \nkind of steps have to be taken and\
+  \ what kind of parameters have to be met/set."
 examples:
 - description: 'We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595)
     and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans:
@@ -374,6 +388,7 @@ from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 aliases:
 - Plan Specification
 - Method
+- Procedure
 mixins:
 - ClassifierMixin
 slots:
@@ -386,9 +401,9 @@ class_uri: prov:Entity
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Plan
-description: 'A piece of information that specifies: a) how an activity has to be
-  carried out by its agents and b) the attributes of the passive activity participants
-  that are used by the agents in terms of their presence and magnitude.'
+description: "A piece of information that specifies: a) how an activity has to be\
+  \ carried out by its agents including what \nkind of steps have to be taken and\
+  \ what kind of parameters have to be met/set."
 examples:
 - description: 'We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595)
     and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans:
@@ -397,6 +412,7 @@ from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 aliases:
 - Plan Specification
 - Method
+- Procedure
 mixins:
 - ClassifierMixin
 attributes:
@@ -418,13 +434,14 @@ attributes:
     - DatasetSeries
     - Distribution
     - DefinedTerm
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
   description:
     name: description
@@ -442,13 +459,14 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
   type:
     name: type

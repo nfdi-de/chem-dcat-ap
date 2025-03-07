@@ -211,12 +211,12 @@
 <div class="mermaid"> classDiagram
     class ClassifierMixin
     click ClassifierMixin href "../ClassifierMixin"
-      ClassifierMixin &lt;|-- ResearchActivity
-        click ResearchActivity href "../ResearchActivity"
-      ClassifierMixin &lt;|-- EntityOfInterest
-        click EntityOfInterest href "../EntityOfInterest"
-      ClassifierMixin &lt;|-- ActivityOfInterest
-        click ActivityOfInterest href "../ActivityOfInterest"
+      ClassifierMixin &lt;|-- DataCreatingActivity
+        click DataCreatingActivity href "../DataCreatingActivity"
+      ClassifierMixin &lt;|-- EvaluatedEntity
+        click EvaluatedEntity href "../EvaluatedEntity"
+      ClassifierMixin &lt;|-- EvaluatedActivity
+        click EvaluatedActivity href "../EvaluatedActivity"
       ClassifierMixin &lt;|-- Tool
         click Tool href "../Tool"
       ClassifierMixin &lt;|-- Environment
@@ -284,24 +284,24 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
 <td>An activity (process) that has the objective to produce information about an ...</td>
 </tr>
 <tr>
-<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
-<td>Something (not an activity or process) that is being evaluated in a ResearchA...</td>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>Something (not an activity or process) that is being evaluated in a DataCreat...</td>
 </tr>
 <tr>
-<td><a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
-<td>An activity or process that is being evaluated in a ResearchActivity</td>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or process that is being evaluated in a DataCreatingActivity</td>
 </tr>
 <tr>
 <td><a href="../Tool/">Tool</a></td>
-<td>A entity with a certain function used within a ResearchActivity</td>
+<td>A entity with a certain function used within a DataCreatingActivity</td>
 </tr>
 <tr>
 <td><a href="../Environment/">Environment</a></td>
-<td>The environment in which the dataset creating Observation took place (e</td>
+<td>The surrounding in which the dataset creating activity took place (e</td>
 </tr>
 <tr>
 <td><a href="../Plan/">Plan</a></td>
@@ -359,8 +359,6 @@ slot_usage:
     name: type
     range: DefinedTerm
     inlined: true
-  rdf_type:
-    name: rdf_type
 
 </code></pre>
 </details>
@@ -377,8 +375,6 @@ slot_usage:
     name: type
     range: DefinedTerm
     inlined: true
-  rdf_type:
-    name: rdf_type
 attributes:
   type:
     name: type

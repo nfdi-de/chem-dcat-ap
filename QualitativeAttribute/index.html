@@ -336,31 +336,25 @@
 <td><a href="./">QualitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../HardwareTool/">HardwareTool</a></td>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../SoftwareTool/">SoftwareTool</a></td>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../Laboratory/">Laboratory</a></td>
+<td><a href="../AnalysedData/">AnalysedData</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
-<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QualitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>
@@ -372,7 +366,13 @@
 <td><a href="./">QualitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../Environment/">Environment</a></td>
+<td><a href="../HardwareTool/">HardwareTool</a></td>
+<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QualitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../SoftwareTool/">SoftwareTool</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>
@@ -458,13 +458,14 @@ attributes:
     - DatasetSeries
     - Distribution
     - DefinedTerm
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
   description:
     name: description
@@ -482,13 +483,14 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
   value:
     name: value

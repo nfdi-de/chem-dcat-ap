@@ -345,18 +345,43 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td>A portion of matter of constant composition, composed of molecular entities o...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EntityOfInterest/">EntityOfInterest</a></td>
-<td>Something (not an activity or process) that is being evaluated in a ResearchA...</td>
+<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td>An activity (process) that has the objective to produce information about an ...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
-<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td>A set of chemical shifts obtained via NMR spectroscopy</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HardwareTool/">HardwareTool</a></td>
+<td>A hardware device with a certain function that was used within a DataCreating...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnalysedData/">AnalysedData</a></td>
+<td>Information that was evaluated within an Analysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>Something (not an activity or process) that is being evaluated in a DataCreat...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -365,13 +390,8 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ActivityOfInterest/">ActivityOfInterest</a></td>
-<td>An activity or process that is being evaluated in a ResearchActivity</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../NMRDataset/">NMRDataset</a></td>
-<td></td>
+<td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
+<td>A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample</td>
 <td>no</td>
 </tr>
 <tr>
@@ -380,34 +400,14 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td>A DataCreatingActivity that evaluates the data produced by another DataCreati...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Tool/">Tool</a></td>
-<td>A entity with a certain function used within a ResearchActivity</td>
+<td>A entity with a certain function used within a DataCreatingActivity</td>
 <td>yes</td>
-</tr>
-<tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A portion of matter of constant composition, composed of molecular entities o...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SoftwareTool/">SoftwareTool</a></td>
-<td>A software with a certain function</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NFDIDataset/">NFDIDataset</a></td>
-<td>A collection of data, published or curated by a single agent, and available f...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Environment/">Environment</a></td>
-<td>The environment in which the dataset creating Observation took place (e</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../HardwareTool/">HardwareTool</a></td>
-<td>A hardware with a certain function</td>
-<td>no</td>
 </tr>
 <tr>
 <td><a href="../ChemicalSample/">ChemicalSample</a></td>
@@ -415,9 +415,34 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ResearchActivity/">ResearchActivity</a></td>
-<td>An activity (process) that has the objective to produce information about an ...</td>
+<td><a href="../SoftwareTool/">SoftwareTool</a></td>
+<td>A software device with a certain function that was used within a DataCreating...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or process that is being evaluated in a DataCreatingActivity</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Environment/">Environment</a></td>
+<td>The surrounding in which the dataset creating activity took place (e</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ResearchDataset/">ResearchDataset</a></td>
+<td>A collection of data, published or curated by a single agent, and available f...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
+<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -461,9 +486,9 @@ slot_uri: adms:identifier
 alias: other_identifier
 domain_of:
 - Dataset
-- ResearchActivity
-- EntityOfInterest
-- ActivityOfInterest
+- DataCreatingActivity
+- EvaluatedEntity
+- EvaluatedActivity
 - Tool
 - Environment
 range: string

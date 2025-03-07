@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/conforms_to/">
+        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/describes_entity/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: conforms_to - dcat-4C-ap</title>
+        <title>Slot: describes_entity - dcat-4C-ap</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-conforms_to" class="md-skip">
+        <a href="#slot-describes_entity" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: conforms_to
+              Slot: describes_entity
             
           </span>
         </div>
@@ -323,15 +323,15 @@
                 
                   
 
-  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/conforms_to.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/describes_entity.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-conforms_to">Slot: conforms_to</h1>
-<p><em>This slot is described in more detail within the class in which it is used.</em></p>
-<p>URI: <a href="http://purl.org/dc/terms/conformsTo">dcterms:conformsTo</a></p>
+<h1 id="slot-describes_entity">Slot: describes_entity</h1>
+<p><em>A slot to provide the EvaluatedEntity that is described by a Dataset.</em></p>
+<p>URI: <a href="http://purl.org/dc/terms/relation">dcterms:relation</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -345,24 +345,14 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Dataset/">Dataset</a></td>
-<td>See [DCAT-AP specs:Dataset](https://semiceu</td>
-<td>yes</td>
+<td><a href="../ResearchDataset/">ResearchDataset</a></td>
+<td>A collection of data, published or curated by a single agent, and available f...</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
 <td>A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataService/">DataService</a></td>
-<td>See [DCAT-AP specs:DataService](https://semiceu</td>
 <td>yes</td>
-</tr>
-<tr>
-<td><a href="../ResearchDataset/">ResearchDataset</a></td>
-<td>A collection of data, published or curated by a single agent, and available f...</td>
-<td>no</td>
 </tr>
 <tr>
 <td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
@@ -373,7 +363,15 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../EvaluatedEntity/">EvaluatedEntity</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
+</li>
+<li>
+<p>Recommended: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -391,28 +389,30 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>dcterms:conformsTo</td>
+<td>dcterms:relation</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi4c:conforms_to</td>
+<td>nfdi4c:describes_entity</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: conforms_to
-description: This slot is described in more detail within the class in which it is
-  used.
+<pre><code class="language-yaml">name: describes_entity
+description: A slot to provide the EvaluatedEntity that is described by a Dataset.
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 rank: 1000
-slot_uri: dcterms:conformsTo
-alias: conforms_to
+slot_uri: dcterms:relation
+alias: describes_entity
 domain_of:
-- DataService
-- Dataset
-range: string
+- ResearchDataset
+range: EvaluatedEntity
+recommended: true
+multivalued: true
+inlined: true
+inlined_as_list: true
 
 </code></pre>
 

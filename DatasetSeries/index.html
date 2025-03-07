@@ -358,7 +358,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NMRDataset/">NMRDataset</a></td>
+<td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
 <td><a href="../in_series/">in_series</a></td>
 <td>range</td>
 <td><a href="./">DatasetSeries</a></td>
@@ -370,7 +370,13 @@
 <td><a href="./">DatasetSeries</a></td>
 </tr>
 <tr>
-<td><a href="../NFDIDataset/">NFDIDataset</a></td>
+<td><a href="../ResearchDataset/">ResearchDataset</a></td>
+<td><a href="../in_series/">in_series</a></td>
+<td>range</td>
+<td><a href="./">DatasetSeries</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
 <td><a href="../in_series/">in_series</a></td>
 <td>range</td>
 <td><a href="./">DatasetSeries</a></td>
@@ -650,13 +656,14 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
     required: true
     multivalued: true
@@ -778,13 +785,14 @@ attributes:
     - DatasetSeries
     - Distribution
     - DefinedTerm
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
     required: true
     multivalued: true

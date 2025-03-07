@@ -213,8 +213,8 @@
 <div class="mermaid"> classDiagram
     class Dataset
     click Dataset href "../Dataset"
-      Dataset &lt;|-- NFDIDataset
-        click NFDIDataset href "../NFDIDataset"
+      Dataset &lt;|-- ResearchDataset
+        click ResearchDataset href "../ResearchDataset"
 
       Dataset : access_rights
 
@@ -475,7 +475,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Dataset</strong><ul>
-<li><a href="../NFDIDataset/">NFDIDataset</a></li>
+<li><a href="../ResearchDataset/">ResearchDataset</a></li>
 </ul>
 </li>
 </ul>
@@ -720,13 +720,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NMRDataset/">NMRDataset</a></td>
+<td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
 <td><a href="../has_version/">has_version</a></td>
 <td>range</td>
 <td><a href="./">Dataset</a></td>
 </tr>
 <tr>
-<td><a href="../NMRDataset/">NMRDataset</a></td>
+<td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
 <td><a href="../source/">source</a></td>
 <td>range</td>
 <td><a href="./">Dataset</a></td>
@@ -756,13 +756,25 @@
 <td><a href="./">Dataset</a></td>
 </tr>
 <tr>
-<td><a href="../NFDIDataset/">NFDIDataset</a></td>
+<td><a href="../ResearchDataset/">ResearchDataset</a></td>
 <td><a href="../has_version/">has_version</a></td>
 <td>range</td>
 <td><a href="./">Dataset</a></td>
 </tr>
 <tr>
-<td><a href="../NFDIDataset/">NFDIDataset</a></td>
+<td><a href="../ResearchDataset/">ResearchDataset</a></td>
+<td><a href="../source/">source</a></td>
+<td>range</td>
+<td><a href="./">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
+<td><a href="../has_version/">has_version</a></td>
+<td>range</td>
+<td><a href="./">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
 <td><a href="../source/">source</a></td>
 <td>range</td>
 <td><a href="./">Dataset</a></td>
@@ -1562,13 +1574,14 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
     required: true
     multivalued: true
@@ -1756,9 +1769,9 @@ attributes:
     owner: Dataset
     domain_of:
     - Dataset
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     range: Identifier
@@ -1963,13 +1976,14 @@ attributes:
     - DatasetSeries
     - Distribution
     - DefinedTerm
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
     required: true
     multivalued: true
@@ -2031,6 +2045,7 @@ attributes:
     owner: Dataset
     domain_of:
     - Dataset
+    - EvaluatedEntity
     range: Activity
     required: false
     multivalued: true

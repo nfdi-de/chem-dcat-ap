@@ -213,18 +213,18 @@
 <div class="mermaid"> classDiagram
     class Activity
     click Activity href "../Activity"
-      Activity &lt;|-- ResearchActivity
-        click ResearchActivity href "../ResearchActivity"
-      Activity &lt;|-- ActivityOfInterest
-        click ActivityOfInterest href "../ActivityOfInterest"
+      Activity &lt;|-- DataCreatingActivity
+        click DataCreatingActivity href "../DataCreatingActivity"
+      Activity &lt;|-- EvaluatedActivity
+        click EvaluatedActivity href "../EvaluatedActivity"
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Activity</strong><ul>
-<li><a href="../ResearchActivity/">ResearchActivity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]</li>
-<li><a href="../ActivityOfInterest/">ActivityOfInterest</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]</li>
+<li><a href="../DataCreatingActivity/">DataCreatingActivity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]</li>
+<li><a href="../EvaluatedActivity/">EvaluatedActivity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]</li>
 </ul>
 </li>
 </ul>
@@ -259,8 +259,26 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
 <td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalSample/">ChemicalSample</a></td>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
 <td>range</td>
 <td><a href="./">Activity</a></td>
 </tr>
@@ -271,8 +289,20 @@
 <td><a href="./">Activity</a></td>
 </tr>
 <tr>
-<td><a href="../ResearchActivity/">ResearchActivity</a></td>
+<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
 <td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
 <td>range</td>
 <td><a href="./">Activity</a></td>
 </tr>

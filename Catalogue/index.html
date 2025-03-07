@@ -213,8 +213,8 @@
 <div class="mermaid"> classDiagram
     class Catalogue
     click Catalogue href "../Catalogue"
-      Catalogue &lt;|-- NFDICatalog
-        click NFDICatalog href "../NFDICatalog"
+      Catalogue &lt;|-- ResearchCatalog
+        click ResearchCatalog href "../ResearchCatalog"
 
       Catalogue : applicable_legislation
 
@@ -364,7 +364,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Catalogue</strong><ul>
-<li><a href="../NFDICatalog/">NFDICatalog</a></li>
+<li><a href="../ResearchCatalog/">ResearchCatalog</a></li>
 </ul>
 </li>
 </ul>
@@ -519,13 +519,13 @@
 <td><a href="./">Catalogue</a></td>
 </tr>
 <tr>
-<td><a href="../NFDICatalog/">NFDICatalog</a></td>
+<td><a href="../ResearchCatalog/">ResearchCatalog</a></td>
 <td><a href="../catalogue/">catalogue</a></td>
 <td>range</td>
 <td><a href="./">Catalogue</a></td>
 </tr>
 <tr>
-<td><a href="../NFDICatalog/">NFDICatalog</a></td>
+<td><a href="../ResearchCatalog/">ResearchCatalog</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">Catalogue</a></td>
@@ -980,13 +980,14 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
     required: true
     multivalued: true
@@ -1031,9 +1032,9 @@ attributes:
     owner: Catalogue
     domain_of:
     - Catalogue
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     range: Catalogue
     required: false
@@ -1235,13 +1236,14 @@ attributes:
     - DatasetSeries
     - Distribution
     - DefinedTerm
-    - ResearchActivity
-    - EntityOfInterest
-    - ActivityOfInterest
+    - DataCreatingActivity
+    - EvaluatedEntity
+    - EvaluatedActivity
     - Tool
     - Environment
     - Plan
     - QualitativeAttribute
+    - QuantitativeAttribute
     range: string
     required: true
     multivalued: true
