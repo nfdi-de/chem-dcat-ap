@@ -1,0 +1,130 @@
+@base <https://search.nfdi4chem.de/dataset/> .
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix CHEMINF: <http://semanticscience.org/resource/CHEMINF_> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix NMR: <http://nmrML.org/nmrCV#NMR:> .
+@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ns1: <adms:> .
+@prefix p_base: <https://search.nfdi4chem.de/dataset/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1> a dcat:Dataset ;
+    ns1:identifier [ a ns1:Identifier ;
+            skos:notation "https://www.chemotion-repository.net/pid/50434"^^xsd:anyURI ] ;
+    dcterms:description "Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)" ;
+    dcterms:relation <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> ;
+    dcterms:title "13C nuclear magnetic resonance spectroscopy (13C NMR)" ;
+    dcat:theme [ a skos:Concept ;
+            skos:prefLabel "Science and technology" ] ;
+    prov:wasGeneratedBy [ a NMR:1000259,
+                prov:Activity ;
+            prov:used <CDCl3_13C_NMR_Spectrum>,
+                <DMSO_13C_NMR_Spectrum> ] .
+
+NMR:1000259 a schema1:DefinedTerm ;
+    schema1:name "peak assignment" .
+
+CHEBI:59999 a schema1:DefinedTerm ;
+    schema1:name "Chemical Substance" .
+
+CHEMINF:000059 a schema1:DefinedTerm ;
+    schema1:name "InChiKey" .
+
+<CDCl3_13C_NMR_Spectrum> a prov:Entity ;
+    prov:wasGeneratedBy [ a CHMO:0000595,
+                prov:Activity ;
+            prov:used [ a OBI:0000566,
+                        prov:Entity ;
+                    dcterms:relation [ a NMR:1400037,
+                                prov:Entity ;
+                            dcterms:title "Puls programme" ;
+                            prov:value "zgpg30" ],
+                        [ a IAO:0000140,
+                                qudt:Quantity ;
+                            dcterms:title "Temperature" ;
+                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+                            qudt:unit <https://qudt.org/vocab/unit/K> ;
+                            prov:value "300.0"^^xsd:float ],
+                        [ a NMR:1400087,
+                                qudt:Quantity ;
+                            dcterms:title "Number of scans" ;
+                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
+                            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+                            prov:value "1024.0"^^xsd:float ] ;
+                    dcterms:title "Bruker 400 MHz" ],
+                [ a CHEBI:85365,
+                        prov:Entity ;
+                    dcterms:relation [ a OBI:0302732,
+                                prov:Entity ;
+                            prov:value "solvent role" ] ;
+                    dcterms:title "chloroform-D1 (CDCl3)" ],
+                <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> ] .
+
+<DMSO_13C_NMR_Spectrum> a prov:Entity ;
+    prov:wasGeneratedBy [ a CHMO:0000595,
+                prov:Activity ;
+            prov:used [ a OBI:0000566,
+                        prov:Entity ;
+                    dcterms:relation [ a NMR:1400087,
+                                qudt:Quantity ;
+                            dcterms:title "Number of scans" ;
+                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
+                            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+                            prov:value "1024.0"^^xsd:float ],
+                        [ a NMR:1400037,
+                                prov:Entity ;
+                            dcterms:title "Puls programme" ;
+                            prov:value "zgpg30" ],
+                        [ a IAO:0000140,
+                                qudt:Quantity ;
+                            dcterms:title "Temperature" ;
+                            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+                            qudt:unit <https://qudt.org/vocab/unit/K> ;
+                            prov:value "300.0"^^xsd:float ] ;
+                    dcterms:title "Bruker 400 MHz" ],
+                [ a CHEBI:85365,
+                        prov:Entity ;
+                    dcterms:relation [ a OBI:0302732,
+                                prov:Entity ;
+                            prov:value "solvent role" ] ;
+                    dcterms:title "DMSO" ],
+                <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> ] .
+
+NMR:1400037 a schema1:DefinedTerm ;
+    schema1:name "NMR pulse sequence" .
+
+NMR:1400087 a schema1:DefinedTerm ;
+    schema1:name "number of scans" .
+
+CHEBI:85365 a schema1:DefinedTerm ;
+    schema1:name "deuterated chloroform" .
+
+CHMO:0000595 a schema1:DefinedTerm ;
+    schema1:name "13C nuclear magnetic resonance spectroscopy" .
+
+IAO:0000140 a schema1:DefinedTerm ;
+    schema1:name "setting datum" .
+
+OBI:0000566 a schema1:DefinedTerm ;
+    schema1:name "NMR instrument" .
+
+OBI:0302732 a schema1:DefinedTerm ;
+    schema1:name "solvent role" .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> a CHEBI:59999,
+        prov:Entity ;
+    ns1:identifier [ a ns1:Identifier ;
+            skos:notation "https://www.chemotion-repository.net/pid/50440"^^xsd:anyURI ] ;
+    dcterms:relation [ a CHEMINF:000059,
+                prov:Entity ;
+            dcterms:title "assigned InChiKey" ;
+            prov:value "KVOIVNBYNQXCNY-BOCHJOTCSA-N" ] ;
+    dcterms:title "CRS-50440" .
+

@@ -682,13 +682,13 @@
       ],
       "slot_uri": "http://purl.org/dc/terms/identifier",
       "identifier": true,
-      "owner": "ActivityOfInterest",
+      "owner": "EvaluatedActivity",
       "domain_of": [
         "DefinedTerm",
-        "NFDIDataset",
-        "NFDICatalog",
-        "EntityOfInterest",
-        "ActivityOfInterest"
+        "ResearchDataset",
+        "ResearchCatalog",
+        "EvaluatedEntity",
+        "EvaluatedActivity"
       ],
       "range": "uriorcurie",
       "required": true,
@@ -721,12 +721,15 @@
         "http://www.w3.org/ns/prov#used"
       ],
       "slot_uri": "http://www.w3.org/ns/prov#used",
-      "owner": "ResearchActivity",
+      "owner": "DataCreatingActivity",
       "domain_of": [
-        "ResearchActivity"
+        "DataCreatingActivity"
       ],
-      "range": "EntityOfInterest",
+      "range": "EvaluatedEntity",
+      "recommended": true,
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -738,12 +741,15 @@
         "http://www.w3.org/ns/prov#wasInformedBy"
       ],
       "slot_uri": "http://www.w3.org/ns/prov#wasInformedBy",
-      "owner": "ResearchActivity",
+      "owner": "DataCreatingActivity",
       "domain_of": [
-        "ResearchActivity"
+        "DataCreatingActivity"
       ],
-      "range": "ActivityOfInterest",
+      "range": "EvaluatedActivity",
+      "recommended": true,
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -755,9 +761,9 @@
         "http://www.w3.org/ns/prov#used"
       ],
       "slot_uri": "http://www.w3.org/ns/prov#used",
-      "owner": "ResearchActivity",
+      "owner": "DataCreatingActivity",
       "domain_of": [
-        "ResearchActivity"
+        "DataCreatingActivity"
       ],
       "range": "Tool",
       "recommended": true,
@@ -769,15 +775,15 @@
     {
       "name": "realized_plan",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/realized_plan",
-      "description": "The slot to specify the Method (aka Procedure) that was realized by a ResearchActivity.",
+      "description": "The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
       ],
       "slot_uri": "http://www.w3.org/ns/prov#used",
-      "owner": "ResearchActivity",
+      "owner": "DataCreatingActivity",
       "domain_of": [
-        "ResearchActivity"
+        "DataCreatingActivity"
       ],
       "range": "Plan",
       "recommended": true,
@@ -787,15 +793,15 @@
     {
       "name": "occurred_in",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/occurred_in",
-      "description": "The slot to specify the Method (aka Procedure) that was used in the ResearchActivity.",
+      "description": "The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://purl.obolibrary.org/obo/BFO_0000066"
       ],
       "slot_uri": "http://purl.obolibrary.org/obo/BFO_0000066",
-      "owner": "ResearchActivity",
+      "owner": "DataCreatingActivity",
       "domain_of": [
-        "ResearchActivity"
+        "DataCreatingActivity"
       ],
       "range": "Environment",
       "inlined": true,
@@ -810,12 +816,11 @@
         "http://purl.org/dc/terms/relation"
       ],
       "slot_uri": "http://purl.org/dc/terms/relation",
-      "owner": "Environment",
+      "owner": "Tool",
       "domain_of": [
-        "EntityOfInterest",
-        "ActivityOfInterest",
-        "Tool",
-        "Environment"
+        "EvaluatedEntity",
+        "EvaluatedActivity",
+        "Tool"
       ],
       "range": "QualitativeAttribute",
       "multivalued": true,
@@ -832,12 +837,11 @@
         "http://purl.org/dc/terms/relation"
       ],
       "slot_uri": "http://purl.org/dc/terms/relation",
-      "owner": "Environment",
+      "owner": "Tool",
       "domain_of": [
-        "EntityOfInterest",
-        "ActivityOfInterest",
-        "Tool",
-        "Environment"
+        "EvaluatedEntity",
+        "EvaluatedActivity",
+        "Tool"
       ],
       "range": "QuantitativeAttribute",
       "multivalued": true,
@@ -860,6 +864,46 @@
         "QuantitativeAttribute"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "describes_entity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/describes_entity",
+      "description": "A slot to provide the EvaluatedEntity that is described by a Dataset.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "http://purl.org/dc/terms/relation"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/relation",
+      "owner": "ResearchDataset",
+      "domain_of": [
+        "ResearchDataset"
+      ],
+      "range": "EvaluatedEntity",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "describes_activity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/describes_activity",
+      "description": "A slot to provide the EvaluatedActivity that is described by a Dataset.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "http://purl.org/dc/terms/relation"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/relation",
+      "owner": "ResearchDataset",
+      "domain_of": [
+        "ResearchDataset"
+      ],
+      "range": "EvaluatedActivity",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1202,13 +1246,14 @@
       "slot_uri": "http://purl.org/dc/terms/description",
       "owner": "Distribution",
       "domain_of": [
-        "ResearchActivity",
-        "EntityOfInterest",
-        "ActivityOfInterest",
+        "DataCreatingActivity",
+        "EvaluatedEntity",
+        "EvaluatedActivity",
         "Tool",
         "Environment",
         "Plan",
         "QualitativeAttribute",
+        "QuantitativeAttribute",
         "Catalogue",
         "CatalogueRecord",
         "DataService",
@@ -1428,9 +1473,9 @@
       "slot_uri": "http://purl.org/dc/terms/hasPart",
       "owner": "Catalogue",
       "domain_of": [
-        "ResearchActivity",
-        "EntityOfInterest",
-        "ActivityOfInterest",
+        "DataCreatingActivity",
+        "EvaluatedEntity",
+        "EvaluatedActivity",
         "Tool",
         "Catalogue"
       ],
@@ -1715,9 +1760,9 @@
       "slot_uri": "http://www.w3.org/ns/adms#identifier",
       "owner": "Dataset",
       "domain_of": [
-        "ResearchActivity",
-        "EntityOfInterest",
-        "ActivityOfInterest",
+        "DataCreatingActivity",
+        "EvaluatedEntity",
+        "EvaluatedActivity",
         "Tool",
         "Environment",
         "Dataset"
@@ -2133,13 +2178,14 @@
       "owner": "Distribution",
       "domain_of": [
         "DefinedTerm",
-        "ResearchActivity",
-        "EntityOfInterest",
-        "ActivityOfInterest",
+        "DataCreatingActivity",
+        "EvaluatedEntity",
+        "EvaluatedActivity",
         "Tool",
         "Environment",
         "Plan",
         "QualitativeAttribute",
+        "QuantitativeAttribute",
         "Catalogue",
         "CatalogueRecord",
         "ConceptScheme",
@@ -2213,6 +2259,7 @@
       "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
       "owner": "Dataset",
       "domain_of": [
+        "EvaluatedEntity",
         "Dataset"
       ],
       "range": "string",
@@ -2370,7 +2417,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "NMRDataset_was_generated_by",
+      "name": "NMRAnalysisDataset_was_generated_by",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
       "description": "This slot is described in more detail within the class in which it is used.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
@@ -2378,17 +2425,69 @@
         "http://www.w3.org/ns/prov#wasGeneratedBy"
       ],
       "is_a": "was_generated_by",
-      "domain": "NMRDataset",
+      "domain": "NMRAnalysisDataset",
       "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
       "alias": "was_generated_by",
-      "owner": "NMRDataset",
+      "owner": "NMRAnalysisDataset",
       "domain_of": [
-        "NMRDataset"
+        "NMRAnalysisDataset"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "was_generated_by",
-      "range": "NMRSpectroscopy",
+      "range": "NMRSpectralAnalysis",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "NMRAnalysisDataset_describes_entity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/describes_entity",
+      "description": "A slot to provide the EvaluatedEntity that is described by a Dataset.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "http://purl.org/dc/terms/relation"
+      ],
+      "is_a": "describes_entity",
+      "domain": "NMRAnalysisDataset",
+      "slot_uri": "http://purl.org/dc/terms/relation",
+      "alias": "describes_entity",
+      "owner": "NMRAnalysisDataset",
+      "domain_of": [
+        "NMRAnalysisDataset"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "describes_entity",
+      "range": "ChemicalSample",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "NMRSpectralAnalysis_evaluated_entity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/evaluated_entity",
+      "description": "The slot to specify the entity of interest that was evaluated.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "http://www.w3.org/ns/prov#used"
+      ],
+      "is_a": "evaluated_entity",
+      "domain": "NMRSpectralAnalysis",
+      "slot_uri": "http://www.w3.org/ns/prov#used",
+      "alias": "evaluated_entity",
+      "owner": "NMRSpectralAnalysis",
+      "domain_of": [
+        "NMRSpectralAnalysis"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "evaluated_entity",
+      "range": "NMRSpectrum",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2410,7 +2509,10 @@
       "is_usage_slot": true,
       "usage_slot_name": "evaluated_entity",
       "range": "ChemicalSample",
+      "recommended": true,
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -2450,6 +2552,30 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "NMRSpectrum_was_generated_by",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
+      "description": "This slot is described in more detail within the class in which it is used.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
+      "mappings": [
+        "http://www.w3.org/ns/prov#wasGeneratedBy"
+      ],
+      "is_a": "was_generated_by",
+      "domain": "NMRSpectrum",
+      "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
+      "alias": "was_generated_by",
+      "owner": "NMRSpectrum",
+      "domain_of": [
+        "NMRSpectrum"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "was_generated_by",
+      "range": "NMRSpectroscopy",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "ClassifierMixin_type",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/type",
       "description": "This slot is described in more detail within the class in which it is used.",
@@ -2468,29 +2594,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "type",
       "range": "DefinedTerm",
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "ClassifierMixin_rdf_type",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/rdf_type",
-      "description": "The slot to specify the ontology class that is instantiated by an entity.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
-      "mappings": [
-        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-      ],
-      "is_a": "rdf_type",
-      "domain": "ClassifierMixin",
-      "slot_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-      "alias": "rdf_type",
-      "owner": "ClassifierMixin",
-      "domain_of": [
-        "ClassifierMixin"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "rdf_type",
-      "range": "DefinedTerm",
-      "recommended": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -2516,7 +2619,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "NFDIDataset_was_generated_by",
+      "name": "ResearchDataset_was_generated_by",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
       "description": "This slot is described in more detail within the class in which it is used.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
@@ -2524,22 +2627,49 @@
         "http://www.w3.org/ns/prov#wasGeneratedBy"
       ],
       "is_a": "was_generated_by",
-      "domain": "NFDIDataset",
+      "domain": "ResearchDataset",
       "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
       "alias": "was_generated_by",
-      "owner": "NFDIDataset",
+      "owner": "ResearchDataset",
       "domain_of": [
-        "NFDIDataset"
+        "ResearchDataset"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "was_generated_by",
-      "range": "ResearchActivity",
+      "range": "DataCreatingActivity",
       "required": true,
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "NFDICatalog_has_dataset",
+      "name": "AnalysisDataset_was_generated_by",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
+      "description": "This slot is described in more detail within the class in which it is used.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
+      "mappings": [
+        "http://www.w3.org/ns/prov#wasGeneratedBy"
+      ],
+      "is_a": "ResearchDataset_was_generated_by",
+      "domain": "AnalysisDataset",
+      "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
+      "alias": "was_generated_by",
+      "owner": "AnalysisDataset",
+      "domain_of": [
+        "AnalysisDataset"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "was_generated_by",
+      "range": "DataAnalysis",
+      "required": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "ResearchCatalog_has_dataset",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_dataset",
       "description": "This slot is described in more detail within the class in which it is used.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
@@ -2547,33 +2677,33 @@
         "http://www.w3.org/ns/dcat#dataset"
       ],
       "is_a": "has_dataset",
-      "domain": "NFDICatalog",
+      "domain": "ResearchCatalog",
       "slot_uri": "http://www.w3.org/ns/dcat#dataset",
       "alias": "has_dataset",
-      "owner": "NFDICatalog",
+      "owner": "ResearchCatalog",
       "domain_of": [
-        "NFDICatalog"
+        "ResearchCatalog"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "has_dataset",
-      "range": "NFDIDataset",
+      "range": "ResearchDataset",
       "@type": "SlotDefinition"
     },
     {
-      "name": "ResearchActivity_has_part",
+      "name": "DataCreatingActivity_has_part",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_part",
-      "description": "The slot to specify one or more parts of the ResearchActivity that are themselves also research activities.",
+      "description": "The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
       ],
       "is_a": "has_part",
-      "domain": "ResearchActivity",
+      "domain": "DataCreatingActivity",
       "slot_uri": "http://purl.org/dc/terms/hasPart",
       "alias": "has_part",
-      "owner": "ResearchActivity",
+      "owner": "DataCreatingActivity",
       "domain_of": [
-        "ResearchActivity"
+        "DataCreatingActivity"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "has_part",
@@ -2582,20 +2712,20 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "ResearchActivity_other_identifier",
+      "name": "DataCreatingActivity_other_identifier",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
-      "description": "A secondary identifier of the ActivityOfInterest",
+      "description": "A secondary identifier of the DataCreatingActivity",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
       "is_a": "other_identifier",
-      "domain": "ResearchActivity",
+      "domain": "DataCreatingActivity",
       "slot_uri": "http://www.w3.org/ns/adms#identifier",
       "alias": "other_identifier",
-      "owner": "ResearchActivity",
+      "owner": "DataCreatingActivity",
       "domain_of": [
-        "ResearchActivity"
+        "DataCreatingActivity"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "other_identifier",
@@ -2606,20 +2736,45 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "EntityOfInterest_other_identifier",
+      "name": "DataAnalysis_evaluated_entity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/evaluated_entity",
+      "description": "The slot to specify the entity of interest that was evaluated.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "http://www.w3.org/ns/prov#used"
+      ],
+      "is_a": "evaluated_entity",
+      "domain": "DataAnalysis",
+      "slot_uri": "http://www.w3.org/ns/prov#used",
+      "alias": "evaluated_entity",
+      "owner": "DataAnalysis",
+      "domain_of": [
+        "DataAnalysis"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "evaluated_entity",
+      "range": "AnalysedData",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EvaluatedEntity_other_identifier",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
-      "description": "A secondary identifier of the EntityOfInterest",
+      "description": "A secondary identifier of the EvaluatedEntity",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
       "is_a": "other_identifier",
-      "domain": "EntityOfInterest",
+      "domain": "EvaluatedEntity",
       "slot_uri": "http://www.w3.org/ns/adms#identifier",
       "alias": "other_identifier",
-      "owner": "EntityOfInterest",
+      "owner": "EvaluatedEntity",
       "domain_of": [
-        "EntityOfInterest"
+        "EvaluatedEntity"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "other_identifier",
@@ -2630,20 +2785,68 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "ActivityOfInterest_other_identifier",
+      "name": "EvaluatedEntity_was_generated_by",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
+      "description": "A slot to provide the Activity which created the EvaluatedEntity.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
+      "mappings": [
+        "http://www.w3.org/ns/prov#wasGeneratedBy"
+      ],
+      "is_a": "was_generated_by",
+      "domain": "EvaluatedEntity",
+      "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
+      "alias": "was_generated_by",
+      "owner": "EvaluatedEntity",
+      "domain_of": [
+        "EvaluatedEntity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "was_generated_by",
+      "range": "Activity",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AnalysedData_was_generated_by",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
+      "description": "This slot is described in more detail within the class in which it is used.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
+      "mappings": [
+        "http://www.w3.org/ns/prov#wasGeneratedBy"
+      ],
+      "is_a": "EvaluatedEntity_was_generated_by",
+      "domain": "AnalysedData",
+      "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
+      "alias": "was_generated_by",
+      "owner": "AnalysedData",
+      "domain_of": [
+        "AnalysedData"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "was_generated_by",
+      "range": "DataCreatingActivity",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EvaluatedActivity_other_identifier",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
-      "description": "A secondary identifier of the ActivityOfInterest",
+      "description": "A secondary identifier of the EvaluatedActivity",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
       "is_a": "other_identifier",
-      "domain": "ActivityOfInterest",
+      "domain": "EvaluatedActivity",
       "slot_uri": "http://www.w3.org/ns/adms#identifier",
       "alias": "other_identifier",
-      "owner": "ActivityOfInterest",
+      "owner": "EvaluatedActivity",
       "domain_of": [
-        "ActivityOfInterest"
+        "EvaluatedActivity"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "other_identifier",
@@ -2680,7 +2883,7 @@
     {
       "name": "Tool_other_identifier",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
-      "description": "A secondary identifier of the ActivityOfInterest",
+      "description": "A secondary identifier of the EvaluatedActivity",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
@@ -5845,13 +6048,17 @@
   ],
   "classes": [
     {
-      "name": "NMRDataset",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/NMRDataset",
+      "name": "NMRAnalysisDataset",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/NMRAnalysisDataset",
+      "description": "A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample.",
+      "comments": [
+        "This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future."
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
         "dcat:Dataset"
       ],
-      "is_a": "NFDIDataset",
+      "is_a": "AnalysisDataset",
       "slots": [
         "Dataset_access_rights",
         "Dataset_applicable_legislation",
@@ -5889,26 +6096,60 @@
         "Dataset_version",
         "Dataset_version_notes",
         "id",
-        "NMRDataset_was_generated_by"
+        "describes_activity",
+        "NMRAnalysisDataset_was_generated_by",
+        "NMRAnalysisDataset_describes_entity"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/dcat#Dataset",
       "@type": "ClassDefinition"
     },
     {
-      "name": "NMRSpectroscopy",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/NMRSpectroscopy",
-      "description": "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.",
+      "name": "NMRSpectralAnalysis",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/NMRSpectralAnalysis",
+      "description": "A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectrum generated by a NMRSpectroscopy",
+      "comments": [
+        "This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future."
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
-      "is_a": "ResearchActivity",
+      "mappings": [
+        "NMR:1000259"
+      ],
+      "is_a": "DataAnalysis",
       "slots": [
         "title",
         "description",
-        "ResearchActivity_other_identifier",
+        "DataCreatingActivity_other_identifier",
         "evaluated_activity",
         "used_tool",
         "realized_plan",
-        "ResearchActivity_has_part",
+        "DataCreatingActivity_has_part",
+        "occurred_in",
+        "ClassifierMixin_type",
+        "rdf_type",
+        "NMRSpectralAnalysis_evaluated_entity"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://nmrML.org/nmrCV#NMR:1000259",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "NMRSpectroscopy",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/NMRSpectroscopy",
+      "description": "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.",
+      "comments": [
+        "This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future."
+      ],
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
+      "is_a": "DataCreatingActivity",
+      "slots": [
+        "title",
+        "description",
+        "DataCreatingActivity_other_identifier",
+        "evaluated_activity",
+        "used_tool",
+        "realized_plan",
+        "DataCreatingActivity_has_part",
         "occurred_in",
         "ClassifierMixin_type",
         "NMRSpectroscopy_evaluated_entity",
@@ -5926,17 +6167,17 @@
       "mappings": [
         "RXNO:0000329"
       ],
-      "is_a": "ActivityOfInterest",
+      "is_a": "EvaluatedActivity",
       "slots": [
         "title",
         "description",
         "id",
-        "ActivityOfInterest_other_identifier",
+        "EvaluatedActivity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "has_part",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/RXNO_0000329",
@@ -5950,17 +6191,18 @@
       "mappings": [
         "prov:Entity"
       ],
-      "is_a": "EntityOfInterest",
+      "is_a": "EvaluatedEntity",
       "slots": [
         "title",
         "description",
         "id",
-        "EntityOfInterest_other_identifier",
+        "EvaluatedEntity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "has_part",
+        "EvaluatedEntity_was_generated_by",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type",
+        "rdf_type",
         "has_role",
         "chemicalSubstance__composed_of"
       ],
@@ -6039,12 +6281,13 @@
         "title",
         "description",
         "id",
-        "EntityOfInterest_other_identifier",
+        "EvaluatedEntity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "has_part",
+        "EvaluatedEntity_was_generated_by",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type",
+        "rdf_type",
         "has_role",
         "chemicalSubstance__composed_of"
       ],
@@ -6053,46 +6296,31 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "HardwareTool",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/HardwareTool",
-      "description": "A hardware with a certain function.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
-      "aliases": [
-        "Device"
+      "name": "NMRSpectrum",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/NMRSpectrum",
+      "description": "A set of chemical shifts obtained via NMR spectroscopy.",
+      "comments": [
+        "This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future."
       ],
-      "is_a": "Tool",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
+      "mappings": [
+        "NMR:1002007"
+      ],
+      "is_a": "AnalysedData",
       "slots": [
         "title",
         "description",
-        "Tool_other_identifier",
+        "id",
+        "EvaluatedEntity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "Tool_has_part",
+        "has_part",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type",
+        "NMRSpectrum_was_generated_by"
       ],
       "slot_usage": {},
-      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/HardwareTool",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "SoftwareTool",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/SoftwareTool",
-      "description": "A software with a certain function.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
-      "is_a": "Tool",
-      "slots": [
-        "title",
-        "description",
-        "Tool_other_identifier",
-        "has_qualitative_attribute",
-        "has_quantitative_attribute",
-        "Tool_has_part",
-        "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/SoftwareTool",
+      "class_uri": "http://nmrML.org/nmrCV#NMR:1002007",
       "@type": "ClassDefinition"
     },
     {
@@ -6108,10 +6336,8 @@
         "title",
         "description",
         "Environment_other_identifier",
-        "has_qualitative_attribute",
-        "has_quantitative_attribute",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Entity",
@@ -6130,7 +6356,7 @@
         "description",
         "QualitativeAttribute_value",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/CHEMINF_000059",
@@ -6150,7 +6376,7 @@
         "description",
         "QualitativeAttribute_value",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/CHEMINF_000113",
@@ -6170,7 +6396,7 @@
         "description",
         "QualitativeAttribute_value",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/CHEMINF_000037",
@@ -6190,7 +6416,7 @@
         "description",
         "QualitativeAttribute_value",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/CHEMINF_000018",
@@ -6205,7 +6431,7 @@
       "mixin": true,
       "slots": [
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ClassifierMixin",
@@ -6238,9 +6464,12 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "NFDIDataset",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/NFDIDataset",
+      "name": "ResearchDataset",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ResearchDataset",
       "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",
+      "comments": [
+        "The name of this class is only deviating from its parent as this is needed according to the sublcassing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "dcat:Dataset"
@@ -6283,7 +6512,9 @@
         "Dataset_version",
         "Dataset_version_notes",
         "id",
-        "NFDIDataset_was_generated_by"
+        "describes_entity",
+        "describes_activity",
+        "ResearchDataset_was_generated_by"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/dcat#Dataset",
@@ -6291,9 +6522,65 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "NFDICatalog",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/NFDICatalog",
+      "name": "AnalysisDataset",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/AnalysisDataset",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "dcat:Dataset"
+      ],
+      "is_a": "ResearchDataset",
+      "slots": [
+        "Dataset_access_rights",
+        "Dataset_applicable_legislation",
+        "Dataset_conforms_to",
+        "Dataset_contact_point",
+        "Dataset_creator",
+        "Dataset_dataset_distribution",
+        "Dataset_description",
+        "Dataset_documentation",
+        "Dataset_frequency",
+        "Dataset_geographical_coverage",
+        "Dataset_has_version",
+        "Dataset_identifier",
+        "Dataset_in_series",
+        "Dataset_is_referenced_by",
+        "Dataset_keyword",
+        "Dataset_landing_page",
+        "Dataset_language",
+        "Dataset_modification_date",
+        "Dataset_other_identifier",
+        "Dataset_provenance",
+        "Dataset_publisher",
+        "Dataset_qualified_attribution",
+        "Dataset_qualified_relation",
+        "Dataset_related_resource",
+        "Dataset_release_date",
+        "Dataset_sample",
+        "Dataset_source",
+        "Dataset_spatial_resolution",
+        "Dataset_temporal_coverage",
+        "Dataset_temporal_resolution",
+        "Dataset_theme",
+        "Dataset_title",
+        "Dataset_type",
+        "Dataset_version",
+        "Dataset_version_notes",
+        "id",
+        "describes_entity",
+        "describes_activity",
+        "AnalysisDataset_was_generated_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Dataset",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "ResearchCatalog",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ResearchCatalog",
       "description": "A curated collection of metadata about data resources.",
+      "comments": [
+        "The name of this class is only deviating from its parent as this is needed according to the sublcassing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "dcat:Catalog"
@@ -6319,15 +6606,15 @@
         "Catalogue_themes",
         "Catalogue_title",
         "id",
-        "NFDICatalog_has_dataset"
+        "ResearchCatalog_has_dataset"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/dcat#Catalog",
       "@type": "ClassDefinition"
     },
     {
-      "name": "ResearchActivity",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ResearchActivity",
+      "name": "DataCreatingActivity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/DataCreatingActivity",
       "description": "An activity (process) that has the objective to produce information about an entity by evaluating it.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
@@ -6345,24 +6632,56 @@
       "slots": [
         "title",
         "description",
-        "ResearchActivity_other_identifier",
+        "DataCreatingActivity_other_identifier",
         "evaluated_entity",
         "evaluated_activity",
         "used_tool",
         "realized_plan",
-        "ResearchActivity_has_part",
+        "DataCreatingActivity_has_part",
         "occurred_in",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Activity",
       "@type": "ClassDefinition"
     },
     {
-      "name": "EntityOfInterest",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/EntityOfInterest",
-      "description": "Something (not an activity or process) that is being evaluated in a ResearchActivity.",
+      "name": "DataAnalysis",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/DataAnalysis",
+      "description": "A DataCreatingActivity that evaluates the data produced by another DataCreatingActivity.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "prov:Activity"
+      ],
+      "exact_mappings": [
+        "OBI:0200000"
+      ],
+      "close_mappings": [
+        "http://purl.obolibrary.org/obo/NCIT_C25391"
+      ],
+      "is_a": "DataCreatingActivity",
+      "slots": [
+        "title",
+        "description",
+        "DataCreatingActivity_other_identifier",
+        "evaluated_activity",
+        "used_tool",
+        "realized_plan",
+        "DataCreatingActivity_has_part",
+        "occurred_in",
+        "ClassifierMixin_type",
+        "rdf_type",
+        "DataAnalysis_evaluated_entity"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Activity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "EvaluatedEntity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/EvaluatedEntity",
+      "description": "Something (not an activity or process) that is being evaluated in a DataCreatingActivity.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
@@ -6374,21 +6693,47 @@
         "title",
         "description",
         "id",
-        "EntityOfInterest_other_identifier",
+        "EvaluatedEntity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "has_part",
+        "EvaluatedEntity_was_generated_by",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Entity",
       "@type": "ClassDefinition"
     },
     {
-      "name": "ActivityOfInterest",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ActivityOfInterest",
-      "description": "An activity or process that is being evaluated in a ResearchActivity.",
+      "name": "AnalysedData",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/AnalysedData",
+      "description": "Information that was evaluated within an Analysis.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "mappings": [
+        "prov:Entity"
+      ],
+      "is_a": "EvaluatedEntity",
+      "slots": [
+        "title",
+        "description",
+        "id",
+        "EvaluatedEntity_other_identifier",
+        "has_qualitative_attribute",
+        "has_quantitative_attribute",
+        "has_part",
+        "ClassifierMixin_type",
+        "rdf_type",
+        "AnalysedData_was_generated_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "EvaluatedActivity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/EvaluatedActivity",
+      "description": "An activity or process that is being evaluated in a DataCreatingActivity.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Activity"
@@ -6401,12 +6746,12 @@
         "title",
         "description",
         "id",
-        "ActivityOfInterest_other_identifier",
+        "EvaluatedActivity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "has_part",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Activity",
@@ -6415,7 +6760,7 @@
     {
       "name": "Tool",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/Tool",
-      "description": "A entity with a certain function used within a ResearchActivity.",
+      "description": "A entity with a certain function used within a DataCreatingActivity.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
@@ -6434,16 +6779,59 @@
         "has_quantitative_attribute",
         "Tool_has_part",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Entity",
       "@type": "ClassDefinition"
     },
     {
+      "name": "HardwareTool",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/HardwareTool",
+      "description": "A hardware device with a certain function that was used within a DataCreatingActivity.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "aliases": [
+        "Device"
+      ],
+      "is_a": "Tool",
+      "slots": [
+        "title",
+        "description",
+        "Tool_other_identifier",
+        "has_qualitative_attribute",
+        "has_quantitative_attribute",
+        "Tool_has_part",
+        "ClassifierMixin_type",
+        "rdf_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/HardwareTool",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SoftwareTool",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/SoftwareTool",
+      "description": "A software device with a certain function that was used within a DataCreatingActivity.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "is_a": "Tool",
+      "slots": [
+        "title",
+        "description",
+        "Tool_other_identifier",
+        "has_qualitative_attribute",
+        "has_quantitative_attribute",
+        "Tool_has_part",
+        "ClassifierMixin_type",
+        "rdf_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/SoftwareTool",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "Environment",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/Environment",
-      "description": "The environment in which the dataset creating Observation took place (e.g. a lab).",
+      "description": "The surrounding in which the dataset creating activity took place (e.g. a lab).",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
@@ -6455,10 +6843,8 @@
         "title",
         "description",
         "Environment_other_identifier",
-        "has_qualitative_attribute",
-        "has_quantitative_attribute",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Entity",
@@ -6467,7 +6853,7 @@
     {
       "name": "Plan",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/Plan",
-      "description": "A piece of information that specifies: a) how an activity has to be carried out by its agents and b) the attributes of the passive activity participants that are used by the agents in terms of their presence and magnitude.",
+      "description": "A piece of information that specifies: a) how an activity has to be carried out by its agents including what \nkind of steps have to be taken and what kind of parameters have to be met/set.",
       "examples": [
         {
           "description": "We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3).",
@@ -6477,7 +6863,8 @@
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "aliases": [
         "Plan Specification",
-        "Method"
+        "Method",
+        "Procedure"
       ],
       "mappings": [
         "prov:Entity"
@@ -6489,7 +6876,7 @@
         "title",
         "description",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Entity",
@@ -6511,7 +6898,7 @@
         "description",
         "QualitativeAttribute_value",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Entity",
@@ -6529,11 +6916,13 @@
         "ClassifierMixin"
       ],
       "slots": [
+        "title",
+        "description",
         "QuantitativeAttribute_value",
         "quantitativeAttribute__has_quantity_type",
         "quantitativeAttribute__unit",
         "ClassifierMixin_type",
-        "ClassifierMixin_rdf_type"
+        "rdf_type"
       ],
       "slot_usage": {},
       "attributes": [
@@ -7190,9 +7579,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcat_4c_ap.yaml",
-  "source_file_date": "2025-01-30T17:03:19",
-  "source_file_size": 8262,
-  "generation_date": "2025-01-30T20:44:44",
+  "source_file_date": "2025-03-05T13:28:00",
+  "source_file_size": 9756,
+  "generation_date": "2025-03-05T13:33:52",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

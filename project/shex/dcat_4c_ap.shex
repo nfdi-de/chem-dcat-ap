@@ -15,6 +15,7 @@ PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX NMR: <http://nmrML.org/nmrCV#NMR:>
 PREFIX linkmldcatap: <https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/>
 PREFIX spdx: <http://spdx.org/rdf/terms#>
 PREFIX eli: <http://data.europa.eu/eli/ontology#>
@@ -72,27 +73,7 @@ linkmldcatap:Activity  (
        (  $linkmldcatap:Activity_tes rdf:type . * ;
           rdf:type [ prov:Activity ] ?
        )
-    } OR @nfdi:ActivityOfInterest OR @nfdi:ResearchActivity
-)
-
-nfdi:ActivityOfInterest  (
-    CLOSED {
-       (  $nfdi:ActivityOfInterest_tes (  &linkmldcatap:Activity_tes ;
-             rdf:type [ prov:Activity ] ? ;
-             &nfdi:ClassifierMixin_tes ;
-             rdf:type [ nfdi:ClassifierMixin ] ? ;
-             dcterms:title @linkml:String ? ;
-             dcterms:description @linkml:String ? ;
-             adms:identifier @linkmldcatap:Identifier * ;
-             dcterms:relation @nfdi:QualitativeAttribute * ;
-             dcterms:relation @nfdi:QuantitativeAttribute * ;
-             dcterms:hasPart @linkml:String ? ;
-             dcterms:type @nfdi:DefinedTerm ? ;
-             rdf:type @nfdi:DefinedTerm ?
-          ) ;
-          rdf:type [ prov:Activity ]
-       )
-    } OR @<ChemicalReaction>
+    } OR @nfdi:DataCreatingActivity OR @nfdi:EvaluatedActivity
 )
 
 linkmldcatap:Agent CLOSED {
@@ -104,6 +85,28 @@ linkmldcatap:Agent CLOSED {
        rdf:type [ foaf:Agent ] ?
     )
 }
+
+nfdi:AnalysedData  (
+    CLOSED {
+       (  $nfdi:AnalysedData_tes (  &nfdi:EvaluatedEntity_tes ;
+             rdf:type [ prov:Entity ] ? ;
+             prov:wasGeneratedBy @nfdi:DataCreatingActivity *
+          ) ;
+          rdf:type [ prov:Entity ]
+       )
+    } OR @<NMRSpectrum>
+)
+
+nfdi:AnalysisDataset  (
+    CLOSED {
+       (  $nfdi:AnalysisDataset_tes (  &nfdi:ResearchDataset_tes ;
+             rdf:type [ dcat:Dataset ] ? ;
+             prov:wasGeneratedBy @nfdi:DataAnalysis +
+          ) ;
+          rdf:type [ dcat:Dataset ]
+       )
+    } OR @<NMRAnalysisDataset>
+)
 
 linkmldcatap:Attribution CLOSED {
     (  $linkmldcatap:Attribution_tes (  &linkmldcatap:SupportiveEntity_tes ;
@@ -137,7 +140,7 @@ linkmldcatap:Catalogue  (
           ) ;
           rdf:type [ dcat:Catalog ] ?
        )
-    } OR @nfdi:NFDICatalog
+    } OR @nfdi:ResearchCatalog
 )
 
 linkmldcatap:CataloguedResource {
@@ -190,7 +193,7 @@ linkmldcatap:ChecksumAlgorithm CLOSED {
 }
 
 <ChemicalReaction> CLOSED {
-    (  $<ChemicalReaction_tes> (  &nfdi:ActivityOfInterest_tes ;
+    (  $<ChemicalReaction_tes> (  &nfdi:EvaluatedActivity_tes ;
           rdf:type [ prov:Activity ] ?
        ) ;
        rdf:type [ <http://purl.obolibrary.org/obo/RXNO_0000329> ]
@@ -207,7 +210,7 @@ linkmldcatap:ChecksumAlgorithm CLOSED {
 
 <ChemicalSubstance>  (
     CLOSED {
-       (  $<ChemicalSubstance_tes> (  &nfdi:EntityOfInterest_tes ;
+       (  $<ChemicalSubstance_tes> (  &nfdi:EvaluatedEntity_tes ;
              rdf:type [ prov:Entity ] ? ;
              <has_role> @linkml:String ? ;
              <composed_of> @<ChemicalEntity> *
@@ -242,6 +245,40 @@ linkmldcatap:ConceptScheme CLOSED {
        rdf:type [ skos:ConceptScheme ] ?
     )
 }
+
+nfdi:DataAnalysis  (
+    CLOSED {
+       (  $nfdi:DataAnalysis_tes (  &nfdi:DataCreatingActivity_tes ;
+             rdf:type [ prov:Activity ] ? ;
+             prov:used @nfdi:AnalysedData *
+          ) ;
+          rdf:type [ prov:Activity ] ?
+       )
+    } OR @<NMRSpectralAnalysis>
+)
+
+nfdi:DataCreatingActivity  (
+    CLOSED {
+       (  $nfdi:DataCreatingActivity_tes (  &linkmldcatap:Activity_tes ;
+             rdf:type [ prov:Activity ] ? ;
+             &nfdi:ClassifierMixin_tes ;
+             rdf:type [ nfdi:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             adms:identifier @linkmldcatap:Identifier * ;
+             prov:used @nfdi:EvaluatedEntity * ;
+             prov:wasInformedBy @nfdi:EvaluatedActivity * ;
+             prov:used @nfdi:Tool * ;
+             prov:used @nfdi:Plan ? ;
+             dcterms:hasPart @linkmldcatap:Activity ? ;
+             <http://purl.obolibrary.org/obo/BFO_0000066> @nfdi:Environment ? ;
+             dcterms:type @nfdi:DefinedTerm ? ;
+             rdf:type @nfdi:DefinedTerm ?
+          ) ;
+          rdf:type [ prov:Activity ] ?
+       )
+    } OR @nfdi:DataAnalysis OR @<NMRSpectroscopy>
+)
 
 linkmldcatap:DataService CLOSED {
     (  $linkmldcatap:DataService_tes (  dcterms:accessRights @linkmldcatap:RightsStatement ? ;
@@ -306,7 +343,7 @@ linkmldcatap:Dataset  (
           ) ;
           rdf:type [ dcat:Dataset ] ?
        )
-    } OR @nfdi:NFDIDataset
+    } OR @nfdi:ResearchDataset
 )
 
 linkmldcatap:DatasetSeries CLOSED {
@@ -371,9 +408,26 @@ linkmldcatap:Document CLOSED {
     )
 }
 
-nfdi:EntityOfInterest  (
+nfdi:Environment  (
     CLOSED {
-       (  $nfdi:EntityOfInterest_tes (  &nfdi:ClassifierMixin_tes ;
+       (  $nfdi:Environment_tes (  &nfdi:ClassifierMixin_tes ;
+             rdf:type [ nfdi:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             adms:identifier @linkmldcatap:Identifier * ;
+             dcterms:type @nfdi:DefinedTerm ? ;
+             rdf:type @nfdi:DefinedTerm ?
+          ) ;
+          rdf:type [ prov:Entity ] ?
+       )
+    } OR @<Laboratory>
+)
+
+nfdi:EvaluatedActivity  (
+    CLOSED {
+       (  $nfdi:EvaluatedActivity_tes (  &linkmldcatap:Activity_tes ;
+             rdf:type [ prov:Activity ] ? ;
+             &nfdi:ClassifierMixin_tes ;
              rdf:type [ nfdi:ClassifierMixin ] ? ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
@@ -384,26 +438,28 @@ nfdi:EntityOfInterest  (
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
           ) ;
-          rdf:type [ prov:Entity ]
+          rdf:type [ prov:Activity ]
        )
-    } OR @<ChemicalSubstance>
+    } OR @<ChemicalReaction>
 )
 
-nfdi:Environment  (
+nfdi:EvaluatedEntity  (
     CLOSED {
-       (  $nfdi:Environment_tes (  &nfdi:ClassifierMixin_tes ;
+       (  $nfdi:EvaluatedEntity_tes (  &nfdi:ClassifierMixin_tes ;
              rdf:type [ nfdi:ClassifierMixin ] ? ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
              adms:identifier @linkmldcatap:Identifier * ;
              dcterms:relation @nfdi:QualitativeAttribute * ;
              dcterms:relation @nfdi:QuantitativeAttribute * ;
+             dcterms:hasPart @linkml:String ? ;
+             prov:wasGeneratedBy @linkmldcatap:Activity * ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
           ) ;
-          rdf:type [ prov:Entity ] ?
+          rdf:type [ prov:Entity ]
        )
-    } OR @<Laboratory>
+    } OR @nfdi:AnalysedData OR @<ChemicalSubstance>
 )
 
 linkmldcatap:Frequency CLOSED {
@@ -422,11 +478,11 @@ linkmldcatap:Geometry CLOSED {
     )
 }
 
-<HardwareTool> CLOSED {
-    (  $<HardwareTool_tes> (  &nfdi:Tool_tes ;
+nfdi:HardwareTool CLOSED {
+    (  $nfdi:HardwareTool_tes (  &nfdi:Tool_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
-       rdf:type [ <HardwareTool> ] ?
+       rdf:type [ nfdi:HardwareTool ] ?
     )
 }
 
@@ -531,42 +587,41 @@ linkmldcatap:MediaTypeOrExtent CLOSED {
     )
 }
 
-nfdi:NFDICatalog CLOSED {
-    (  $nfdi:NFDICatalog_tes (  &linkmldcatap:Catalogue_tes ;
-          rdf:type [ dcat:Catalog ] ? ;
-          dcat:dataset @nfdi:NFDIDataset ?
-       ) ;
-       rdf:type [ dcat:Catalog ]
-    )
-}
-
-nfdi:NFDIDataset  (
-    CLOSED {
-       (  $nfdi:NFDIDataset_tes (  &linkmldcatap:Dataset_tes ;
-             rdf:type [ dcat:Dataset ] ? ;
-             prov:wasGeneratedBy @nfdi:ResearchActivity
-          ) ;
-          rdf:type [ dcat:Dataset ]
-       )
-    } OR @<NMRDataset>
-)
-
-<NMRDataset> CLOSED {
-    (  $<NMRDataset_tes> (  &nfdi:NFDIDataset_tes ;
+<NMRAnalysisDataset> CLOSED {
+    (  $<NMRAnalysisDataset_tes> (  &nfdi:AnalysisDataset_tes ;
           rdf:type [ dcat:Dataset ] ? ;
-          prov:wasGeneratedBy @<NMRSpectroscopy> ?
+          prov:wasGeneratedBy @<NMRSpectralAnalysis> * ;
+          dcterms:relation @<ChemicalSample> *
        ) ;
        rdf:type [ dcat:Dataset ]
     )
 }
 
-<NMRSpectroscopy> CLOSED {
-    (  $<NMRSpectroscopy_tes> (  &nfdi:ResearchActivity_tes ;
+<NMRSpectralAnalysis> CLOSED {
+    (  $<NMRSpectralAnalysis_tes> (  &nfdi:DataAnalysis_tes ;
           rdf:type [ prov:Activity ] ? ;
-          prov:used @<ChemicalSample> ? ;
+          prov:used @<NMRSpectrum> *
+       ) ;
+       rdf:type [ NMR:1000259 ] ?
+    )
+}
+
+<NMRSpectroscopy> CLOSED {
+    (  $<NMRSpectroscopy_tes> (  &nfdi:DataCreatingActivity_tes ;
+          rdf:type [ prov:Activity ] ? ;
+          prov:used @<ChemicalSample> * ;
           rdf:type @nfdi:DefinedTerm ?
        ) ;
        rdf:type [ <NMRSpectroscopy> ] ?
+    )
+}
+
+<NMRSpectrum> CLOSED {
+    (  $<NMRSpectrum_tes> (  &nfdi:AnalysedData_tes ;
+          rdf:type [ prov:Entity ] ? ;
+          prov:wasGeneratedBy @<NMRSpectroscopy> *
+       ) ;
+       rdf:type [ NMR:1002007 ]
     )
 }
 
@@ -628,6 +683,8 @@ nfdi:QualitativeAttribute  (
 nfdi:QuantitativeAttribute CLOSED {
     (  $nfdi:QuantitativeAttribute_tes (  &nfdi:ClassifierMixin_tes ;
           rdf:type [ nfdi:ClassifierMixin ] ? ;
+          dcterms:title @linkml:String ? ;
+          dcterms:description @linkml:String ? ;
           prov:value @linkml:Float ;
           qudt:hasQuantityKind @nfdi:DefinedTerm ;
           qudt:unit @nfdi:DefinedTerm ? ;
@@ -648,27 +705,26 @@ linkmldcatap:Relationship CLOSED {
     )
 }
 
-nfdi:ResearchActivity  (
+nfdi:ResearchCatalog CLOSED {
+    (  $nfdi:ResearchCatalog_tes (  &linkmldcatap:Catalogue_tes ;
+          rdf:type [ dcat:Catalog ] ? ;
+          dcat:dataset @nfdi:ResearchDataset ?
+       ) ;
+       rdf:type [ dcat:Catalog ]
+    )
+}
+
+nfdi:ResearchDataset  (
     CLOSED {
-       (  $nfdi:ResearchActivity_tes (  &linkmldcatap:Activity_tes ;
-             rdf:type [ prov:Activity ] ? ;
-             &nfdi:ClassifierMixin_tes ;
-             rdf:type [ nfdi:ClassifierMixin ] ? ;
-             dcterms:title @linkml:String ? ;
-             dcterms:description @linkml:String ? ;
-             adms:identifier @linkmldcatap:Identifier * ;
-             prov:used @nfdi:EntityOfInterest ? ;
-             prov:wasInformedBy @nfdi:ActivityOfInterest ? ;
-             prov:used @nfdi:Tool * ;
-             prov:used @nfdi:Plan ? ;
-             dcterms:hasPart @linkmldcatap:Activity ? ;
-             <http://purl.obolibrary.org/obo/BFO_0000066> @nfdi:Environment ? ;
-             dcterms:type @nfdi:DefinedTerm ? ;
-             rdf:type @nfdi:DefinedTerm ?
+       (  $nfdi:ResearchDataset_tes (  &linkmldcatap:Dataset_tes ;
+             rdf:type [ dcat:Dataset ] ? ;
+             dcterms:relation @nfdi:EvaluatedEntity * ;
+             dcterms:relation @nfdi:EvaluatedActivity * ;
+             prov:wasGeneratedBy @nfdi:DataCreatingActivity +
           ) ;
-          rdf:type [ prov:Activity ] ?
+          rdf:type [ dcat:Dataset ]
        )
-    } OR @<NMRSpectroscopy>
+    } OR @nfdi:AnalysisDataset
 )
 
 linkmldcatap:Resource CLOSED {
@@ -703,11 +759,11 @@ linkmldcatap:Role CLOSED {
     )
 }
 
-<SoftwareTool> CLOSED {
-    (  $<SoftwareTool_tes> (  &nfdi:Tool_tes ;
+nfdi:SoftwareTool CLOSED {
+    (  $nfdi:SoftwareTool_tes (  &nfdi:Tool_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
-       rdf:type [ <SoftwareTool> ] ?
+       rdf:type [ nfdi:SoftwareTool ] ?
     )
 }
 
@@ -756,6 +812,6 @@ nfdi:Tool  (
           ) ;
           rdf:type [ prov:Entity ] ?
        )
-    } OR @<HardwareTool> OR @<SoftwareTool>
+    } OR @nfdi:HardwareTool OR @nfdi:SoftwareTool
 )
 
