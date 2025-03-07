@@ -1,0 +1,116 @@
+description:
+- Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)
+title:
+- 13C nuclear magnetic resonance spectroscopy (13C NMR)
+other_identifier:
+- notation: https://www.chemotion-repository.net/pid/50434
+theme:
+- preferred_label:
+  - Science and technology
+was_generated_by:
+- evaluated_entity:
+  - id: CDCl3_13C_NMR_Spectrum
+    was_generated_by:
+    - evaluated_entity:
+      - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+        title: CRS-50440
+      used_tool:
+      - title: Bruker 400 MHz
+        has_qualitative_attribute:
+        - value: zgpg30
+          title: Puls programme
+          rdf_type:
+            id: NMR:1400037
+            title: NMR pulse sequence
+        has_quantitative_attribute:
+        - value: 300.0
+          has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+          title: Temperature
+          unit: https://qudt.org/vocab/unit/K
+          rdf_type:
+            id: IAO:0000140
+            title: setting datum
+        - value: 1024.0
+          has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+          title: Number of scans
+          unit: http://qudt.org/vocab/unit/NUM
+          rdf_type:
+            id: NMR:1400087
+            title: number of scans
+        rdf_type:
+          id: OBI:0000566
+          title: NMR instrument
+      - title: chloroform-D1 (CDCl3)
+        has_qualitative_attribute:
+        - value: solvent role
+          rdf_type:
+            id: OBI:0302732
+            title: solvent role
+        rdf_type:
+          id: CHEBI:85365
+          title: deuterated chloroform
+      rdf_type:
+        id: CHMO:0000595
+        title: 13C nuclear magnetic resonance spectroscopy
+  - id: DMSO_13C_NMR_Spectrum
+    was_generated_by:
+    - evaluated_entity:
+      - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+        title: CRS-50440
+      used_tool:
+      - title: Bruker 400 MHz
+        has_qualitative_attribute:
+        - value: zgpg30
+          title: Puls programme
+          rdf_type:
+            id: NMR:1400037
+            title: NMR pulse sequence
+        has_quantitative_attribute:
+        - value: 300.0
+          has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+          title: Temperature
+          unit: https://qudt.org/vocab/unit/K
+          rdf_type:
+            id: IAO:0000140
+            title: setting datum
+        - value: 1024.0
+          has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+          title: Number of scans
+          unit: http://qudt.org/vocab/unit/NUM
+          rdf_type:
+            id: NMR:1400087
+            title: number of scans
+        rdf_type:
+          id: OBI:0000566
+          title: NMR instrument
+      - title: DMSO
+        has_qualitative_attribute:
+        - value: solvent role
+          rdf_type:
+            id: OBI:0302732
+            title: solvent role
+        rdf_type:
+          id: CHEBI:85365
+          title: deuterated chloroform
+      rdf_type:
+        id: CHMO:0000595
+        title: 13C nuclear magnetic resonance spectroscopy
+id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
+describes_entity:
+- id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+  title: CRS-50440
+  other_identifier:
+  - notation: https://www.chemotion-repository.net/pid/50440
+  composed_of:
+  - inchi:
+      value: InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3
+      title: assigned InChi
+    inchikey:
+      value: UGRXAOUDHZOHPF-UHFFFAOYSA-N
+      title: assigned InChiKey
+    smiles:
+      value: c1ccc(cc1)P(c1ccccc1)c1ccccc1.c1ccc(cc1)P(c1ccccc1)c1ccccc1.[Cu]n1cccc1/C=N/c1nc2c(s1)cccc2
+      title: assigned SMILES
+    iupac_formula:
+      value: CNCc1csc(n1)c1ccccc1
+      title: assigned IUPAC formula
