@@ -175,12 +175,7 @@ classes:
     in_subset:
       - domain_agnostic_core
 
-  Entity:
-    class_uri: prov:Entity
-    abstract: true
-    description: An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.
   EvaluatedEntity:
-    is_a: Entity
     mixins:
       - ClassifierMixin
     class_uri: prov:Entity
