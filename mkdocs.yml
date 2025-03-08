@@ -9,11 +9,10 @@ theme:
     - content.tabs.link
 plugins:
   - search
-  - mermaid2
   - mknotebooks:
       execute: false
   - mermaid2:
-      version: 10.9.0
+      version: 11.4.1
 nav:
   # - Home: home.md
   - Index: index.md
