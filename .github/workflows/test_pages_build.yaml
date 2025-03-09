@@ -1,13 +1,13 @@
 name: Preview documentation build
 
-on:
+on:  # yamllint disable-line rule:truthy
   pull_request:
     types:
       - opened
       - reopened
       - synchronize
 
-concurrency: preview-${{ github.ref }}
+concurrency:  preview-${{ github.ref }} 
 
 permissions: {}
 
@@ -27,9 +27,10 @@ jobs:
           python-version: 3.9
 
       - name: Install just & Poetry incl. plugins
-        # We install poetry-dynamic-versioning into pipx because the automatic installallation
-        # by poetry 2.x triggers a Windows issue https://github.com/pypa/installer/issues/260
-        # and also does not work on Ubuntu in gh-actions.        
+        # We install poetry-dynamic-versioning into pipx because the automatic
+        # install by poetry 2.x triggers a Windows issue
+        # https://github.com/pypa/installer/issues/260
+        # and also does not work on Ubuntu in gh-actions.
         run: |
           pipx install rust-just
           pipx install poetry
@@ -40,14 +41,11 @@ jobs:
 
       - name: Build documentation
         run: |
-          mkdir -p site
-          touch site/.nojekyll
-          just gendoc
-          ([ ! -f docs/about.md ] && cp src/docs/about.md docs/) || true
-          poetry run mkdocs build -d site
+          just gen-doc
+          poetry run mkdocs build
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@df22037db54ab6ee34d3c1e2b8810ac040a530c6
         with:
-          source-dir: site/
+          source-dir: docs/
           preview-branch: gh-pages

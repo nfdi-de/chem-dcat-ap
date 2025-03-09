@@ -1,6 +1,11 @@
-/docs/
-/project/docs/
-/tmp/
+# generated part of documentation
+/docs/elements/*.md
+# linkml-run-examples output (not useful to have in git in its current form)
+/examples/output/
+
+# Derived schemas, generated from the schema.yaml
+tmp/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -132,6 +137,6 @@ dmypy.json
 .pyre/
 
 # pycharm
-.idea/
+.idea
 # Local vscode editor config
 .vscode

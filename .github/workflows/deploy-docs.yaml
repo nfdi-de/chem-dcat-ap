@@ -1,6 +1,6 @@
 ---
 name: Deploy docs
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     branches: [main]
   workflow_dispatch:
@@ -11,17 +11,17 @@ jobs:
   build-docs:
     runs-on: ubuntu-latest
 
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    # Grant GITHUB_TOKEN the permissions required to make a gh-pages deployment
     permissions:
       contents: write  # to let mkdocs write the new docs
       pages: write     # to deploy to Pages
-      id-token: write  # to verify the deployment originates from an appropriate source
+      id-token: write  # allow to generate an OpenID Connect (OIDC) token
 
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
-          fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
+          fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
 
       - name: Configure git for the bot
         # Gives the bot that commits to gh-pages a name & email address
@@ -35,22 +35,21 @@ jobs:
         with:
           python-version: 3.12
 
-      - name: Install Poetry incl. plugins
-        # We install poetry-dynamic-versioning into pipx because the automatic installallation
-        # by poetry 2.x triggers a Windows issue https://github.com/pypa/installer/issues/260
-        # and also does not work on Ubuntu in gh-actions.        
+      - name: Install poetry incl. plugins and just
+        # We install poetry-dynamic-versioning into pipx because the automatic
+        # install by poetry 2.x triggers a Windows issue
+        # https://github.com/pypa/installer/issues/260
+        # and also does not work on Ubuntu in gh-actions.
         run: |
           pipx install poetry
           pipx inject poetry poetry-dynamic-versioning
+          pipx install rust-just
 
       - name: Install dependencies
         run: poetry install
 
-      - name: Build documentation
+      - name: Build and deploy documentation
         run: |
-          mkdir -p docs
-          touch docs/.nojekyll
-          make gendoc
-          ([ ! -f docs/about.md ] && cp src/docs/about.md docs/) || true
           cp src/dcat_4c_ap/schema/*.yaml docs/
-          make mkd-gh-deploy
+          just gen-doc
+          poetry run gh-deploy

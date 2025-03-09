@@ -8,7 +8,8 @@ description = "This is an extension of the DCAT Application Profile in LinkML. I
 authors = [
   {name = "Philip Strömert", email = "philip.stroemert@tib.eu"},
 ]
-license = {text = "MIT"}
+license = "MIT"
+license-files = ["LICENSE"]
 readme = "README.md"
 include = ["README.md", "src/dcat_4c_ap/schema", "project"]
 
@@ -21,6 +22,8 @@ dependencies = [
   "linkml-runtime >=1.8.0",
 ]
 
+# Ref.: https://python-poetry.org/docs/
+# Ref.: https://github.com/mtkennerly/poetry-dynamic-versioning
 [tool.poetry]
 requires-poetry = ">=2.0"
 version = "0.0.0"
@@ -37,6 +40,33 @@ style = "pep440"
 linkml = ">=1.3.5"
 mkdocs-material = ">=8.2.8"
 mkdocs-mermaid2-plugin = ">=1.1.1"
-schemasheets = ">=0.1.14"
 jupyter = ">=1.0.0"
 mknotebooks = ">= 0.8.0"
+
+# Ref.: https://github.com/codespell-project/codespell
+[tool.codespell]
+skip = [
+  "LICENSE",
+  "pyproject.toml",
+  "poetry.lock",
+  "project/*",
+  "src/dcat_4c_ap/datamodel/dcat_4c_ap_pydantic.py",
+  "src/dcat_4c_ap/datamodel/dcat_4c_ap.py",
+]
+
+# Reminder: words have to be lowercased for the ignore-words-list
+ignore-words-list = "linke"
+quiet-level = 3
+
+# Ref.: https://github.com/crate-ci/typos (spell checker)
+[tool.typos.default.extend-words]
+linke = "linke"
+[tool.typos.files]
+extend-exclude = [
+  "LICENSE",
+  "poetry.lock",
+  "pyproject.toml",
+  "project/*",
+  "src/dcat_4c_ap/datamodel/dcat_4c_ap_pydantic.py",
+  "src/dcat_4c_ap/datamodel/dcat_4c_ap.py",
+]
