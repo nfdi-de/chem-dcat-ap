@@ -293,7 +293,7 @@ classes:
       - domain_agnostic_core
   SoftwareTool:
     is_a: Tool
-    description: A software device with a certain function that was used within a DataCreatingActivity.
+    description: A software program with a certain function that was used within a DataCreatingActivity.
     in_subset:
       - domain_agnostic_core
       
