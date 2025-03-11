@@ -45,5 +45,5 @@ jobs:
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@df22037db54ab6ee34d3c1e2b8810ac040a530c6
         with:
-          source-dir: docs/
+          source-dir: site/
           preview-branch: gh-pages
