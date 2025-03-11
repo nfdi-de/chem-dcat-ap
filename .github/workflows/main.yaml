@@ -1,9 +1,14 @@
 # Built from:
 # https://docs.github.com/en/actions/guides/building-and-testing-python
 ---
-name: Build and test dcat_4c_ap
+name: Build and test
 
-on: [pull_request]
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches: [main]
+  pull_request:
+
+permissions: {}
 
 jobs:
   test:
@@ -11,20 +16,29 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10"]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
 
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Poetry
-        run: pipx install poetry
+      - name: Install just & Poetry incl. plugins
+        # We install poetry-dynamic-versioning into pipx because the automatic
+        # install by poetry 2.x triggers a Windows issue
+        # https://github.com/pypa/installer/issues/260
+        # and also does not work on Ubuntu in gh-actions.
+        run: |
+          pipx install rust-just
+          pipx install poetry
+          pipx inject poetry poetry-dynamic-versioning
 
       - name: Install dependencies
         run: poetry install --no-interaction --no-root
@@ -33,4 +47,4 @@ jobs:
         run: poetry install --no-interaction
 
       - name: Run test suite
-        run: make test
+        run: just test

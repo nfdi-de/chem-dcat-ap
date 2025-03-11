@@ -1,36 +1,92 @@
 ---
 name: Publish Python Package
 
-on:
+# Publishes with trusted publishing to
+# - PyPI on releases created in GitHub UI if status is published.
+#   For draft status, nothing happens.
+# - TestPyPI on new tags "v1.2.3" or "v1.2.3.something" on main branch
+#
+# More on trusted publishing: https://docs.pypi.org/trusted-publishers/
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    tags:
+      # GitHub glob matching is limited [1]. So we can't define a pattern matching
+      # pep 440 version definition [N!]N(.N)*[{a|b|rc}N][.postN][.devN]
+      - 'v[0-9]+.[0-9]+.[0-9]+.?*'
   release:
-    types: [created]
+    types: [published]
+
+permissions: {}
 
 jobs:
-  build-n-publish:
-    name: Build and publish Python 🐍 distributions 📦 to PyPI
+  build:
+    name: Build Python 🐍 distributions 📦 for publishing
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
         with:
           python-version: 3.9
 
-      - name: Install Poetry
+      - name: Install just & poetry incl. plugins
+        # We install poetry-dynamic-versioning into pipx because the automatic
+        # install by poetry 2.x triggers a Windows issue
+        # https://github.com/pypa/installer/issues/260
+        # and also does not work on Ubuntu in gh-actions.
         run: |
+          pipx install rust-just
           pipx install poetry
-          poetry self add "poetry-dynamic-versioning[plugin]"
-
-      # - name: Install dependencies
-      #   run: poetry install --no-interaction
+          pipx inject poetry poetry-dynamic-versioning
 
       - name: Build source and wheel archives
         run: poetry build
 
-      - name: Publish distribution 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.2.2
+      - name: Store built distribution
+        uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b
         with:
-          user: __token__
-          password: ${{ secrets.PYPI_PASSWORD }}
+          name: distribution-files
+          path: dist/
+
+  pypi-publish:
+    name: Build and publish Python 🐍 package 📦 to PyPI and TestPyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi-release
+      url: https://pypi.org/p/dcat_4c_ap
+    permissions:
+      id-token: write  # this permission is mandatory for trusted publishing
+    steps:
+      - name: Download built distribution
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16
+        with:
+          name: distribution-files
+          path: dist
+
+      - name: Publish package 📦 to Test PyPI
+        if: github.event_name == 'push'
+        uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          verbose: true
+
+      - name: Publish package 📦 to PyPI
+        if: github.event_name == 'release'
+        uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc
+        with:
+          verbose: true
+
+# [1] https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+# Used actions: (updates managed by dependabot)
+# - https://github.com/actions/checkout
+# - https://github.com/actions/setup-python
+# - https://github.com/actions/upload-artifact
+# - https://github.com/actions/download-artifact
+# - https://github.com/pypa/gh-action-pypi-publish/
