@@ -7,11 +7,6 @@ from pathlib import Path
 import src.dcat_4c_ap.datamodel.dcat_4c_ap
 from linkml_runtime.loaders import yaml_loader
 
-ROOT = os.path.join(os.path.dirname(__file__), '..')
-DATA_DIR = os.path.join(ROOT, "src", "data", "examples")
-
-EXAMPLE_FILES = glob.glob(os.path.join(DATA_DIR, '*.yaml'))
-
 DATA_DIR_VALID = Path(__file__).parent / "data" / "valid"
 DATA_DIR_INVALID = Path(__file__).parent / "data" / "invalid"
 
