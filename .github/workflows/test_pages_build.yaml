@@ -9,16 +9,9 @@ on:  # yamllint disable-line rule:truthy
 
 concurrency:  preview-${{ github.ref }}
 
-permissions: {}
-
 jobs:
   run:
     runs-on: ubuntu-latest
-    # Grant GITHUB_TOKEN the permissions required to make a gh-pages deployment
-    permissions:
-      contents: write  # to let mkdocs write the new docs
-      pages: write     # to deploy to Pages
-      id-token: write  # allow to generate an OpenID Connect (OIDC) token
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -52,5 +45,5 @@ jobs:
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@df22037db54ab6ee34d3c1e2b8810ac040a530c6
         with:
-          source-dir: docs/elements/
+          source-dir: docs/
           preview-branch: gh-pages
