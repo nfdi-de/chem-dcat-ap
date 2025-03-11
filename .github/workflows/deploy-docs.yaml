@@ -52,4 +52,4 @@ jobs:
         run: |
           cp src/dcat_4c_ap/schema/*.yaml docs/
           just gen-doc
-          poetry run gh-deploy
+          just site
