@@ -7,17 +7,31 @@ theme:
   #  primary: cyan
   features:
     - content.tabs.link
+
+# for adding extra css/js see https://www.mkdocs.org/user-guide/customizing-your-theme/
+
 plugins:
   - search
-  - mermaid2
   - mknotebooks:
       execute: false
   - mermaid2:
-      version: 10.9.0
+      version: 11.4.1
+  # TODO rebuild docs on schema change (https://github.com/dalito/linkml-project-copier/issues/39)
+  # - gen-files:
+  #     scripts:
+  #       - gen_pages.py  # or any other name or path
+
+watch:
+  - src/dcat_4c_ap/schema
+
 nav:
-  # - Home: home.md
-  - Index: index.md
+  - Home: index.md
+  - Schema: elements/index.md
   - About: about.md
+
+exclude_docs: |
+  /templates-linkml/
+
 site_url: https://StroemPhi.github.io/dcat-4C-ap
 repo_url: https://github.com/StroemPhi/dcat-4C-ap
 

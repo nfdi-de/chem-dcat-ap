@@ -1,0 +1,17 @@
+# Configuration for https://github.com/adrienverge/yamllint
+
+extends: default
+
+ignore:
+  # Ignore file with unicode chars to avoid Windows failure due a yamllint bug
+  # Remove after PR https://github.com/adrienverge/yamllint/pull/696 is merged
+  - /.github/workflows/pypi-publish.yaml
+
+rules:
+  document-start: disable  # Don't check if document has a start marker (---).
+  line-length:
+    max: 80
+    level: warning
+    allow-non-breakable-words: true
+    allow-non-breakable-inline-mappings: true
+  new-lines: disable  # Don't check for type of new line characters.

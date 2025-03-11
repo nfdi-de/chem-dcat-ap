@@ -3,7 +3,7 @@
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-# description: This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI 4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.
+# description: This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.
 # license: CC-BY 4.0
 
 import dataclasses
