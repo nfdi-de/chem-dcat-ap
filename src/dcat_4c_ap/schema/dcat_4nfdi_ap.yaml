@@ -89,7 +89,7 @@ classes:
     description: >-
       A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
     comments:
-      - "The name of this class is only deviating from its parent as this is needed according to the sublcassing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
+      - "The name of this class is only deviating from its parent as this is needed according to the sub-classing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
     slots:
       - id
       - describes_entity
@@ -116,7 +116,7 @@ classes:
     class_uri: dcat:Catalog
     description: A curated collection of metadata about data resources.
     comments:
-      - "The name of this class is only deviating from its parent as this is needed according to the sublcassing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
+      - "The name of this class is only deviating from its parent as this is needed according to the sub-classing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
     slots:
       - id
     slot_usage:
