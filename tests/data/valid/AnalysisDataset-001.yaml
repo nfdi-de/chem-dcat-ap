@@ -3,12 +3,12 @@
 id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
 other_identifier:
   - notation: https://www.chemotion-repository.net/pid/50434
-title: 
+title:
   - "13C nuclear magnetic resonance spectroscopy (13C NMR)"
-description: 
+description:
   - "Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)"
 theme:
-  - preferred_label: 
+  - preferred_label:
     - "Science and technology"
 describes_entity:
   - rdf_type:
