@@ -130,7 +130,7 @@ classes:
       - ClassifierMixin
     is_a: Activity
     class_uri: prov:Activity
-    description: An activity (process) that has the objective to produce information about an entity or activity by somehow evaluating it.
+    description: An activity (process) that has the objective to produce information about an entity or activity.
     slots:
       - title
       - description
