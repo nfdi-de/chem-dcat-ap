@@ -291,8 +291,8 @@
 
 
 
-    AnalysedData --&gt; "*" DataAnalysis : was_generated_by
-    click DataAnalysis href "../DataAnalysis"
+    AnalysedData --&gt; "*" DataCreatingActivity : was_generated_by
+    click DataCreatingActivity href "../DataCreatingActivity"
 
 
 
@@ -365,7 +365,7 @@
 </tr>
 <tr>
 <td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>* <br/> <a href="../DataAnalysis/">DataAnalysis</a></td>
+<td>* <br/> <a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
 <td>A slot to provide the Activity which created the EvaluatedEntity</td>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 </tr>
@@ -439,7 +439,7 @@ is_a: EvaluatedEntity
 slot_usage:
   was_generated_by:
     name: was_generated_by
-    range: DataAnalysis
+    range: DataCreatingActivity
 class_uri: prov:Entity
 
 </code></pre>
@@ -455,7 +455,7 @@ is_a: EvaluatedEntity
 slot_usage:
   was_generated_by:
     name: was_generated_by
-    range: DataAnalysis
+    range: DataCreatingActivity
 attributes:
   title:
     name: title
@@ -611,7 +611,7 @@ attributes:
     domain_of:
     - Dataset
     - EvaluatedEntity
-    range: DataAnalysis
+    range: DataCreatingActivity
     multivalued: true
     inlined_as_list: true
   type:
