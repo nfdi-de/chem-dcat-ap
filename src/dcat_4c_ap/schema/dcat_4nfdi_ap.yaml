@@ -220,7 +220,7 @@ classes:
     description: Information that was evaluated within a DataAnalysis.
     slot_usage:
       was_generated_by:
-        range: DataAnalysis
+        range: DataCreatingActivity
     in_subset:
       - domain_agnostic_core
   
