@@ -189,6 +189,9 @@ classes:
         description: A slot to provide the Activity which created the EvaluatedEntity.
         multivalued: true
         inlined_as_list: true
+      has_part:
+        description: A slot to provide a part of the EvaluatedEntity.
+        range: EvaluatedEntity
 
   AnalysisSourceData:
     is_a: EvaluatedEntity
@@ -221,7 +224,9 @@ classes:
         required: false
         multivalued: true
         inlined_as_list: true
-    
+      has_part:
+        description: A slot to provide a part of the EvaluatedActivity.
+        range: EvaluatedActivity
   Tool:
     mixins:
       - ClassifierMixin
