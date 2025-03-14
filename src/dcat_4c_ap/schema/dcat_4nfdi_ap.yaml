@@ -64,7 +64,7 @@ classes:
 
   DefinedTerm:
     class_uri: schema:DefinedTerm
-    description: A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.
+    description: A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.
     attributes:
       from_CV:
         slot_uri: schema:inDefinedTermSet
@@ -84,7 +84,7 @@ classes:
     description: >-
       A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
     comments:
-      - "The name of this class is only deviating from its parent as this is needed according to the sublcassing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
+      - "The name of this class is only deviating from its parent as this is needed according to the sub-classing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
     slots:
       - id
       - describes_entity
@@ -108,7 +108,7 @@ classes:
     class_uri: dcat:Catalog
     description: A curated collection of metadata about data resources.
     comments:
-      - "The name of this class is only deviating from its parent as this is needed according to the sublcassing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
+      - "The name of this class is only deviating from its parent as this is needed according to the sub-classing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
     slots:
       - id
     slot_usage:
@@ -120,7 +120,7 @@ classes:
       - ClassifierMixin
     is_a: Activity
     class_uri: prov:Activity
-    description: An activity (process) that has the objective to produce information about an entity by evaluating it.
+    description: An activity (process) that has the objective to produce information about an entity or activity.
     slots:
       - title
       - description
@@ -133,7 +133,7 @@ classes:
       - occurred_in
     slot_usage:
       has_part:
-        description: The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities.
+        description: A slot to provide an Activity that is part of the DataCreatingActivity.
         range: Activity
         inlined: true
       other_identifier:
@@ -165,7 +165,7 @@ classes:
     mixins:
       - ClassifierMixin
     class_uri: prov:Entity
-    description: Something (not an activity or process) that is being evaluated in a DataCreatingActivity.
+    description: A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a DataCreatingActivity.
     slots:
       - title
       - description
@@ -178,7 +178,7 @@ classes:
     slot_usage:
       other_identifier:
         name: other_identifier
-        description: A secondary identifier of the EvaluatedEntity
+        description: A slot to provide a secondary identifier of the EvaluatedEntity.
         slot_uri: adms:identifier
         range: Identifier
         required: false
@@ -193,7 +193,7 @@ classes:
   AnalysedData:
     is_a: EvaluatedEntity
     class_uri: prov:Entity
-    description: Information that was evaluated within an Analysis.
+    description: Information that was evaluated within a DataAnalysis.
     slot_usage:
       was_generated_by:
         range: DataCreatingActivity
@@ -258,8 +258,7 @@ classes:
     description: A hardware device with a certain function that was used within a DataCreatingActivity.
   SoftwareTool:
     is_a: Tool
-    description: A software device with a certain function that was used within a DataCreatingActivity.
-      
+    description: A software program with a certain function that was used within a DataCreatingActivity.
   Environment:
     mixins:
       - ClassifierMixin
@@ -287,9 +286,7 @@ classes:
       - Plan Specification
       - Method
       - Procedure
-    description: |-
-      A piece of information that specifies: a) how an activity has to be carried out by its agents including what 
-      kind of steps have to be taken and what kind of parameters have to be met/set.
+    description: "A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set."
     slots:
       - title
       - description
@@ -356,6 +353,7 @@ slots:
     slot_uri: dcterms:identifier
     identifier: true
     range: uriorcurie
+    description: A slot to provide an URI for an entity within this schema.
   rdf_type:
     slot_uri: rdf:type
     description: The slot to specify the ontology class that is instantiated by an entity.
@@ -426,7 +424,7 @@ slots:
     recommended: true
 
 enums:
-  ## Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should be used to constrain the range 
+  ## Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should be used to constrain the range
   ## of the type slot instead of using the default DefinedTerm as range.
   ## This will be done in profiles of this schema where we define DataCreatingActivity subclasses, e.g. NMRSpectroscopy.
   ## seeAlso: https://github.com/linkml/linkml-model/blob/main/tests/input/examples/schema_definition-enum_bindings-1.yaml
