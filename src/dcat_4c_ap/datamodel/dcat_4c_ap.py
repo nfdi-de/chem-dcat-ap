@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-03-07T09:45:51
+# Generation date: 2025-03-14T11:57:57
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -153,11 +153,11 @@ class ChemicalSampleId(ChemicalSubstanceId):
     pass
 
 
-class AnalysedDataId(EvaluatedEntityId):
+class AnalysisSourceDataId(EvaluatedEntityId):
     pass
 
 
-class NMRSpectrumId(AnalysedDataId):
+class NMRSpectrumId(AnalysisSourceDataId):
     pass
 
 
@@ -247,8 +247,8 @@ class ClassifierMixin(YAMLRoot):
 @dataclass(repr=False)
 class DefinedTerm(YAMLRoot):
     """
-    A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the
-    rdf:type of an entity within this schema.
+    A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an
+    additional rdf:type or dcterms:type of a class within this schema.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -279,7 +279,8 @@ class DefinedTerm(YAMLRoot):
 @dataclass(repr=False)
 class EvaluatedEntity(YAMLRoot):
     """
-    Something (not an activity or process) that is being evaluated in a DataCreatingActivity.
+    A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process
+    and that is being evaluated in a DataCreatingActivity.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -294,7 +295,7 @@ class EvaluatedEntity(YAMLRoot):
     other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
     has_qualitative_attribute: Optional[Union[Union[dict, "QualitativeAttribute"], List[Union[dict, "QualitativeAttribute"]]]] = empty_list()
     has_quantitative_attribute: Optional[Union[Union[dict, "QuantitativeAttribute"], List[Union[dict, "QuantitativeAttribute"]]]] = empty_list()
-    has_part: Optional[str] = None
+    has_part: Optional[Union[str, EvaluatedEntityId]] = None
     was_generated_by: Optional[Union[Union[dict, "Activity"], List[Union[dict, "Activity"]]]] = empty_list()
     type: Optional[Union[dict, DefinedTerm]] = None
     rdf_type: Optional[Union[dict, DefinedTerm]] = None
@@ -323,8 +324,8 @@ class EvaluatedEntity(YAMLRoot):
             self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
         self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
 
-        if self.has_part is not None and not isinstance(self.has_part, str):
-            self.has_part = str(self.has_part)
+        if self.has_part is not None and not isinstance(self.has_part, EvaluatedEntityId):
+            self.has_part = EvaluatedEntityId(self.has_part)
 
         if not isinstance(self.was_generated_by, list):
             self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
@@ -393,25 +394,25 @@ class ChemicalSample(ChemicalSubstance):
 
 
 @dataclass(repr=False)
-class AnalysedData(EvaluatedEntity):
+class AnalysisSourceData(EvaluatedEntity):
     """
-    Information that was evaluated within an Analysis.
+    Information that was evaluated within a DataAnalysis.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = PROV["Entity"]
     class_class_curie: ClassVar[str] = "prov:Entity"
-    class_name: ClassVar[str] = "AnalysedData"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.AnalysedData
+    class_name: ClassVar[str] = "AnalysisSourceData"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.AnalysisSourceData
 
-    id: Union[str, AnalysedDataId] = None
+    id: Union[str, AnalysisSourceDataId] = None
     was_generated_by: Optional[Union[Union[dict, "DataCreatingActivity"], List[Union[dict, "DataCreatingActivity"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, AnalysedDataId):
-            self.id = AnalysedDataId(self.id)
+        if not isinstance(self.id, AnalysisSourceDataId):
+            self.id = AnalysisSourceDataId(self.id)
 
         if not isinstance(self.was_generated_by, list):
             self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
@@ -421,7 +422,7 @@ class AnalysedData(EvaluatedEntity):
 
 
 @dataclass(repr=False)
-class NMRSpectrum(AnalysedData):
+class NMRSpectrum(AnalysisSourceData):
     """
     A set of chemical shifts obtained via NMR spectroscopy.
     """
@@ -515,7 +516,7 @@ class HardwareTool(Tool):
 
 class SoftwareTool(Tool):
     """
-    A software device with a certain function that was used within a DataCreatingActivity.
+    A software program with a certain function that was used within a DataCreatingActivity.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -579,8 +580,8 @@ class Laboratory(Environment):
 @dataclass(repr=False)
 class Plan(YAMLRoot):
     """
-    A piece of information that specifies: a) how an activity has to be carried out by its agents including what
-    kind of steps have to be taken and what kind of parameters have to be met/set.
+    A piece of information that specifies how an activity has to be carried out by its agents including what kind of
+    steps have to be taken and what kind of parameters have to be met/set.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -768,7 +769,7 @@ class Activity(YAMLRoot):
 @dataclass(repr=False)
 class DataCreatingActivity(Activity):
     """
-    An activity (process) that has the objective to produce information about an entity by evaluating it.
+    An activity (process) that has the objective to produce information about an entity or activity.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -864,10 +865,10 @@ class DataAnalysis(DataCreatingActivity):
     class_name: ClassVar[str] = "DataAnalysis"
     class_model_uri: ClassVar[URIRef] = NFDI4C.DataAnalysis
 
-    evaluated_entity: Optional[Union[Dict[Union[str, AnalysedDataId], Union[dict, AnalysedData]], List[Union[dict, AnalysedData]]]] = empty_dict()
+    evaluated_entity: Optional[Union[Dict[Union[str, AnalysisSourceDataId], Union[dict, AnalysisSourceData]], List[Union[dict, AnalysisSourceData]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=AnalysedData, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=AnalysisSourceData, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -910,7 +911,7 @@ class EvaluatedActivity(Activity):
     other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
     has_qualitative_attribute: Optional[Union[Union[dict, QualitativeAttribute], List[Union[dict, QualitativeAttribute]]]] = empty_list()
     has_quantitative_attribute: Optional[Union[Union[dict, QuantitativeAttribute], List[Union[dict, QuantitativeAttribute]]]] = empty_list()
-    has_part: Optional[str] = None
+    has_part: Optional[Union[str, EvaluatedActivityId]] = None
     type: Optional[Union[dict, DefinedTerm]] = None
     rdf_type: Optional[Union[dict, DefinedTerm]] = None
 
@@ -938,8 +939,8 @@ class EvaluatedActivity(Activity):
             self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
         self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
 
-        if self.has_part is not None and not isinstance(self.has_part, str):
-            self.has_part = str(self.has_part)
+        if self.has_part is not None and not isinstance(self.has_part, EvaluatedActivityId):
+            self.has_part = EvaluatedActivityId(self.has_part)
 
         if self.type is not None and not isinstance(self.type, DefinedTerm):
             self.type = DefinedTerm(**as_dict(self.type))
@@ -2693,7 +2694,7 @@ slots.DataCreatingActivity_other_identifier = Slot(uri=ADMS.identifier, name="Da
                    model_uri=NFDI4C.DataCreatingActivity_other_identifier, domain=DataCreatingActivity, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
 
 slots.DataAnalysis_evaluated_entity = Slot(uri=PROV.used, name="DataAnalysis_evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=NFDI4C.DataAnalysis_evaluated_entity, domain=DataAnalysis, range=Optional[Union[Dict[Union[str, AnalysedDataId], Union[dict, AnalysedData]], List[Union[dict, AnalysedData]]]])
+                   model_uri=NFDI4C.DataAnalysis_evaluated_entity, domain=DataAnalysis, range=Optional[Union[Dict[Union[str, AnalysisSourceDataId], Union[dict, AnalysisSourceData]], List[Union[dict, AnalysisSourceData]]]])
 
 slots.EvaluatedEntity_other_identifier = Slot(uri=ADMS.identifier, name="EvaluatedEntity_other_identifier", curie=ADMS.curie('identifier'),
                    model_uri=NFDI4C.EvaluatedEntity_other_identifier, domain=EvaluatedEntity, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
@@ -2701,11 +2702,17 @@ slots.EvaluatedEntity_other_identifier = Slot(uri=ADMS.identifier, name="Evaluat
 slots.EvaluatedEntity_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="EvaluatedEntity_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
                    model_uri=NFDI4C.EvaluatedEntity_was_generated_by, domain=EvaluatedEntity, range=Optional[Union[Union[dict, "Activity"], List[Union[dict, "Activity"]]]])
 
-slots.AnalysedData_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="AnalysedData_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.AnalysedData_was_generated_by, domain=AnalysedData, range=Optional[Union[Union[dict, "DataCreatingActivity"], List[Union[dict, "DataCreatingActivity"]]]])
+slots.EvaluatedEntity_has_part = Slot(uri=DCTERMS.hasPart, name="EvaluatedEntity_has_part", curie=DCTERMS.curie('hasPart'),
+                   model_uri=NFDI4C.EvaluatedEntity_has_part, domain=EvaluatedEntity, range=Optional[Union[str, EvaluatedEntityId]])
+
+slots.AnalysisSourceData_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="AnalysisSourceData_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
+                   model_uri=NFDI4C.AnalysisSourceData_was_generated_by, domain=AnalysisSourceData, range=Optional[Union[Union[dict, "DataCreatingActivity"], List[Union[dict, "DataCreatingActivity"]]]])
 
 slots.EvaluatedActivity_other_identifier = Slot(uri=ADMS.identifier, name="EvaluatedActivity_other_identifier", curie=ADMS.curie('identifier'),
                    model_uri=NFDI4C.EvaluatedActivity_other_identifier, domain=EvaluatedActivity, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
+
+slots.EvaluatedActivity_has_part = Slot(uri=DCTERMS.hasPart, name="EvaluatedActivity_has_part", curie=DCTERMS.curie('hasPart'),
+                   model_uri=NFDI4C.EvaluatedActivity_has_part, domain=EvaluatedActivity, range=Optional[Union[str, EvaluatedActivityId]])
 
 slots.Tool_has_part = Slot(uri=DCTERMS.hasPart, name="Tool_has_part", curie=DCTERMS.curie('hasPart'),
                    model_uri=NFDI4C.Tool_has_part, domain=Tool, range=Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]])

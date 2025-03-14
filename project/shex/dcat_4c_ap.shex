@@ -86,17 +86,6 @@ linkmldcatap:Agent CLOSED {
     )
 }
 
-nfdi:AnalysedData  (
-    CLOSED {
-       (  $nfdi:AnalysedData_tes (  &nfdi:EvaluatedEntity_tes ;
-             rdf:type [ prov:Entity ] ? ;
-             prov:wasGeneratedBy @nfdi:DataCreatingActivity *
-          ) ;
-          rdf:type [ prov:Entity ]
-       )
-    } OR @<NMRSpectrum>
-)
-
 nfdi:AnalysisDataset  (
     CLOSED {
        (  $nfdi:AnalysisDataset_tes (  &nfdi:ResearchDataset_tes ;
@@ -106,6 +95,17 @@ nfdi:AnalysisDataset  (
           rdf:type [ dcat:Dataset ]
        )
     } OR @<NMRAnalysisDataset>
+)
+
+nfdi:AnalysisSourceData  (
+    CLOSED {
+       (  $nfdi:AnalysisSourceData_tes (  &nfdi:EvaluatedEntity_tes ;
+             rdf:type [ prov:Entity ] ? ;
+             prov:wasGeneratedBy @nfdi:DataCreatingActivity *
+          ) ;
+          rdf:type [ prov:Entity ]
+       )
+    } OR @<NMRSpectrum>
 )
 
 linkmldcatap:Attribution CLOSED {
@@ -250,7 +250,7 @@ nfdi:DataAnalysis  (
     CLOSED {
        (  $nfdi:DataAnalysis_tes (  &nfdi:DataCreatingActivity_tes ;
              rdf:type [ prov:Activity ] ? ;
-             prov:used @nfdi:AnalysedData *
+             prov:used @nfdi:AnalysisSourceData *
           ) ;
           rdf:type [ prov:Activity ] ?
        )
@@ -434,7 +434,7 @@ nfdi:EvaluatedActivity  (
              adms:identifier @linkmldcatap:Identifier * ;
              dcterms:relation @nfdi:QualitativeAttribute * ;
              dcterms:relation @nfdi:QuantitativeAttribute * ;
-             dcterms:hasPart @linkml:String ? ;
+             dcterms:hasPart @nfdi:EvaluatedActivity ? ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
           ) ;
@@ -452,14 +452,14 @@ nfdi:EvaluatedEntity  (
              adms:identifier @linkmldcatap:Identifier * ;
              dcterms:relation @nfdi:QualitativeAttribute * ;
              dcterms:relation @nfdi:QuantitativeAttribute * ;
-             dcterms:hasPart @linkml:String ? ;
+             dcterms:hasPart @nfdi:EvaluatedEntity ? ;
              prov:wasGeneratedBy @linkmldcatap:Activity * ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
           ) ;
           rdf:type [ prov:Entity ]
        )
-    } OR @nfdi:AnalysedData OR @<ChemicalSubstance>
+    } OR @nfdi:AnalysisSourceData OR @<ChemicalSubstance>
 )
 
 linkmldcatap:Frequency CLOSED {
@@ -617,7 +617,7 @@ linkmldcatap:MediaTypeOrExtent CLOSED {
 }
 
 <NMRSpectrum> CLOSED {
-    (  $<NMRSpectrum_tes> (  &nfdi:AnalysedData_tes ;
+    (  $<NMRSpectrum_tes> (  &nfdi:AnalysisSourceData_tes ;
           rdf:type [ prov:Entity ] ? ;
           prov:wasGeneratedBy @<NMRSpectroscopy> *
        ) ;

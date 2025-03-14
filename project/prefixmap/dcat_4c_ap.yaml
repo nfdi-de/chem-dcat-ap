@@ -45,11 +45,11 @@
    "Agent": {
       "@id": "foaf:Agent"
    },
-   "AnalysedData": {
-      "@id": "prov:Entity"
-   },
    "AnalysisDataset": {
       "@id": "dcat:Dataset"
+   },
+   "AnalysisSourceData": {
+      "@id": "prov:Entity"
    },
    "Attribution": {
       "@id": "prov:Attribution"
