@@ -51,5 +51,4 @@ jobs:
       - name: Build and deploy documentation
         run: |
           cp src/dcat_4c_ap/schema/*.yaml docs/
-          just gen-doc
-          just site
+          just deploy
