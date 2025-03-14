@@ -1,5 +1,5 @@
 -- # Class: "NMRAnalysisDataset" Description: "A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample."
---     * Slot: id Description: 
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: modification_date Description: The most recent date on which the Dataset was changed or modified.
 --     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Dataset.
 --     * Slot: spatial_resolution Description: The minimum spatial separation resolvable in a dataset, measured in meters.
@@ -14,7 +14,7 @@
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: realized_plan_id Description: The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.
---     * Slot: has_part_id Description: The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities.
+--     * Slot: has_part_id Description: A slot to provide an Activity that is part of the DataCreatingActivity.
 --     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
@@ -24,23 +24,23 @@
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
 --     * Slot: realized_plan_id Description: The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.
---     * Slot: has_part_id Description: The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities.
+--     * Slot: has_part_id Description: A slot to provide an Activity that is part of the DataCreatingActivity.
 --     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The type of NMR Spectroscopy provided as CURIE of a subclass of CHMO:0000613.
 -- # Class: "ChemicalReaction" Description: "An experimental procedure with the aim of producing a portion of a given compound or mixture."
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: id Description: 
---     * Slot: has_part Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: has_part Description: A slot to provide a part of the EvaluatedActivity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "ChemicalSubstance" Description: "A portion of matter of constant composition, composed of molecular entities of the same type or of different types that is being evaluated in a scientific process."
 --     * Slot: has_role Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: id Description: 
---     * Slot: has_part Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: has_part Description: A slot to provide a part of the EvaluatedEntity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "ChemicalEntity" Description: "Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity."
@@ -55,8 +55,8 @@
 --     * Slot: has_role Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: id Description: 
---     * Slot: has_part Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: has_part Description: A slot to provide a part of the EvaluatedEntity.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
@@ -64,8 +64,8 @@
 -- # Class: "NMRSpectrum" Description: "A set of chemical shifts obtained via NMR spectroscopy."
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: id Description: 
---     * Slot: has_part Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: has_part Description: A slot to provide a part of the EvaluatedEntity.
 --     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
@@ -246,7 +246,7 @@
 --     * Slot: DataCreatingActivity_id Description: Autocreated FK slot
 --     * Slot: DataAnalysis_id Description: Autocreated FK slot
 --     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
---     * Slot: AnalysedData_id Description: Autocreated FK slot
+--     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
 --     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
 --     * Slot: Tool_id Description: Autocreated FK slot
 --     * Slot: HardwareTool_id Description: Autocreated FK slot
@@ -358,12 +358,12 @@
 --     * Slot: id Description: 
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "DefinedTerm" Description: "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema."
---     * Slot: id Description: 
+-- # Class: "DefinedTerm" Description: "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema."
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: from_CV Description: The URL of the controlled vocabulary.
 -- # Class: "ResearchDataset" Description: "A collection of data, published or curated by a single agent, and available for access or download in one or more representations."
---     * Slot: id Description: 
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: modification_date Description: The most recent date on which the Dataset was changed or modified.
 --     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Dataset.
 --     * Slot: spatial_resolution Description: The minimum spatial separation resolvable in a dataset, measured in meters.
@@ -374,7 +374,7 @@
 --     * Slot: frequency_id Description: The frequency at which the Dataset is updated.
 --     * Slot: publisher_id Description: An entity (organisation) responsible for making the Dataset available.
 -- # Class: "AnalysisDataset" Description: ""
---     * Slot: id Description: 
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: modification_date Description: The most recent date on which the Dataset was changed or modified.
 --     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Dataset.
 --     * Slot: spatial_resolution Description: The minimum spatial separation resolvable in a dataset, measured in meters.
@@ -384,7 +384,7 @@
 --     * Slot: frequency_id Description: The frequency at which the Dataset is updated.
 --     * Slot: publisher_id Description: An entity (organisation) responsible for making the Dataset available.
 -- # Class: "ResearchCatalog" Description: "A curated collection of metadata about data resources."
---     * Slot: id Description: 
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: modification_date Description: The most recent date on which the Catalogue was modified.
 --     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Catalogue.
 --     * Slot: creator_id Description: An entity responsible for the creation of the catalogue.
@@ -392,14 +392,14 @@
 --     * Slot: licence_id Description: A licence under which the Catalogue can be used or reused.
 --     * Slot: publisher_id Description: An entity (organisation) responsible for making the Catalogue available.
 --     * Slot: rights_id Description: A statement that specifies rights associated with the Catalogue.
--- # Class: "DataCreatingActivity" Description: "An activity (process) that has the objective to produce information about an entity by evaluating it."
+-- # Class: "DataCreatingActivity" Description: "An activity (process) that has the objective to produce information about an entity or activity."
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysedData_id Description: Autocreated FK slot
+--     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
 --     * Slot: realized_plan_id Description: The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.
---     * Slot: has_part_id Description: The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities.
+--     * Slot: has_part_id Description: A slot to provide an Activity that is part of the DataCreatingActivity.
 --     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
@@ -409,33 +409,33 @@
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: realized_plan_id Description: The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.
---     * Slot: has_part_id Description: The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities.
+--     * Slot: has_part_id Description: A slot to provide an Activity that is part of the DataCreatingActivity.
 --     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "EvaluatedEntity" Description: "Something (not an activity or process) that is being evaluated in a DataCreatingActivity."
+-- # Class: "EvaluatedEntity" Description: "A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a DataCreatingActivity."
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: id Description: 
---     * Slot: has_part Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: has_part Description: A slot to provide a part of the EvaluatedEntity.
 --     * Slot: ResearchDataset_id Description: Autocreated FK slot
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: DataCreatingActivity_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "AnalysedData" Description: "Information that was evaluated within an Analysis."
+-- # Class: "AnalysisSourceData" Description: "Information that was evaluated within a DataAnalysis."
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: id Description: 
---     * Slot: has_part Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: has_part Description: A slot to provide a part of the EvaluatedEntity.
 --     * Slot: DataAnalysis_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "EvaluatedActivity" Description: "An activity or process that is being evaluated in a DataCreatingActivity."
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: id Description: 
---     * Slot: has_part Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: has_part Description: A slot to provide a part of the EvaluatedActivity.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
 --     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
@@ -464,7 +464,7 @@
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "SoftwareTool" Description: "A software device with a certain function that was used within a DataCreatingActivity."
+-- # Class: "SoftwareTool" Description: "A software program with a certain function that was used within a DataCreatingActivity."
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
@@ -476,7 +476,7 @@
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "Plan" Description: "A piece of information that specifies: a) how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set."
+-- # Class: "Plan" Description: "A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set."
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
@@ -492,7 +492,7 @@
 --     * Slot: ChemicalSample_id Description: Autocreated FK slot
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
 --     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
---     * Slot: AnalysedData_id Description: Autocreated FK slot
+--     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
 --     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
 --     * Slot: Tool_id Description: Autocreated FK slot
 --     * Slot: HardwareTool_id Description: Autocreated FK slot
@@ -511,7 +511,7 @@
 --     * Slot: ChemicalSample_id Description: Autocreated FK slot
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
 --     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
---     * Slot: AnalysedData_id Description: Autocreated FK slot
+--     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
 --     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
 --     * Slot: Tool_id Description: Autocreated FK slot
 --     * Slot: HardwareTool_id Description: Autocreated FK slot
@@ -678,6 +678,19 @@ CREATE TABLE "NMRSpectroscopy" (
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
+CREATE TABLE "ChemicalSubstance" (
+	has_role TEXT, 
+	title TEXT, 
+	description TEXT, 
+	id TEXT NOT NULL, 
+	has_part TEXT, 
+	type_id TEXT, 
+	rdf_type_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_part) REFERENCES "EvaluatedEntity" (id), 
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);
 CREATE TABLE "ChemicalSample" (
 	has_role TEXT, 
 	title TEXT, 
@@ -689,6 +702,7 @@ CREATE TABLE "ChemicalSample" (
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(has_part) REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
 	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
@@ -703,6 +717,7 @@ CREATE TABLE "NMRSpectrum" (
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(has_part) REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
@@ -970,7 +985,7 @@ CREATE TABLE "DataCreatingActivity" (
 	title TEXT, 
 	description TEXT, 
 	"ResearchDataset_id" TEXT, 
-	"AnalysedData_id" TEXT, 
+	"AnalysisSourceData_id" TEXT, 
 	realized_plan_id INTEGER, 
 	has_part_id INTEGER, 
 	occurred_in_id INTEGER, 
@@ -978,7 +993,7 @@ CREATE TABLE "DataCreatingActivity" (
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysedData_id") REFERENCES "AnalysedData" (id), 
+	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
 	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id), 
 	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
 	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
@@ -1014,13 +1029,14 @@ CREATE TABLE "EvaluatedEntity" (
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(has_part) REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
 	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("DataCreatingActivity_id") REFERENCES "DataCreatingActivity" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
-CREATE TABLE "AnalysedData" (
+CREATE TABLE "AnalysisSourceData" (
 	title TEXT, 
 	description TEXT, 
 	id TEXT NOT NULL, 
@@ -1029,30 +1045,8 @@ CREATE TABLE "AnalysedData" (
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(has_part) REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);
-CREATE TABLE "ChemicalReaction" (
-	title TEXT, 
-	description TEXT, 
-	id TEXT NOT NULL, 
-	has_part TEXT, 
-	type_id TEXT, 
-	rdf_type_id TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);
-CREATE TABLE "ChemicalSubstance" (
-	has_role TEXT, 
-	title TEXT, 
-	description TEXT, 
-	id TEXT NOT NULL, 
-	has_part TEXT, 
-	type_id TEXT, 
-	rdf_type_id TEXT, 
-	PRIMARY KEY (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
@@ -1218,6 +1212,7 @@ CREATE TABLE "EvaluatedActivity" (
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(has_part) REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
 	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id), 
 	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id), 
@@ -1454,6 +1449,18 @@ CREATE TABLE "ResearchCatalog_title" (
 	PRIMARY KEY ("ResearchCatalog_id", title), 
 	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id)
 );
+CREATE TABLE "ChemicalReaction" (
+	title TEXT, 
+	description TEXT, 
+	id TEXT NOT NULL, 
+	has_part TEXT, 
+	type_id TEXT, 
+	rdf_type_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(has_part) REFERENCES "EvaluatedActivity" (id), 
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);
 CREATE TABLE "ChemicalEntity" (
 	id INTEGER NOT NULL, 
 	"ChemicalSubstance_id" TEXT, 
@@ -1687,7 +1694,7 @@ CREATE TABLE "Identifier" (
 	"DataCreatingActivity_id" INTEGER, 
 	"DataAnalysis_id" INTEGER, 
 	"EvaluatedEntity_id" TEXT, 
-	"AnalysedData_id" TEXT, 
+	"AnalysisSourceData_id" TEXT, 
 	"EvaluatedActivity_id" TEXT, 
 	"Tool_id" INTEGER, 
 	"HardwareTool_id" INTEGER, 
@@ -1708,7 +1715,7 @@ CREATE TABLE "Identifier" (
 	FOREIGN KEY("DataCreatingActivity_id") REFERENCES "DataCreatingActivity" (id), 
 	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
 	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
-	FOREIGN KEY("AnalysedData_id") REFERENCES "AnalysedData" (id), 
+	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
 	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("Tool_id") REFERENCES "Tool" (id), 
 	FOREIGN KEY("HardwareTool_id") REFERENCES "HardwareTool" (id), 
@@ -1725,7 +1732,7 @@ CREATE TABLE "QualitativeAttribute" (
 	"ChemicalSample_id" TEXT, 
 	"NMRSpectrum_id" TEXT, 
 	"EvaluatedEntity_id" TEXT, 
-	"AnalysedData_id" TEXT, 
+	"AnalysisSourceData_id" TEXT, 
 	"EvaluatedActivity_id" TEXT, 
 	"Tool_id" INTEGER, 
 	"HardwareTool_id" INTEGER, 
@@ -1738,7 +1745,7 @@ CREATE TABLE "QualitativeAttribute" (
 	FOREIGN KEY("ChemicalSample_id") REFERENCES "ChemicalSample" (id), 
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id), 
 	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
-	FOREIGN KEY("AnalysedData_id") REFERENCES "AnalysedData" (id), 
+	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
 	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("Tool_id") REFERENCES "Tool" (id), 
 	FOREIGN KEY("HardwareTool_id") REFERENCES "HardwareTool" (id), 
@@ -1758,7 +1765,7 @@ CREATE TABLE "QuantitativeAttribute" (
 	"ChemicalSample_id" TEXT, 
 	"NMRSpectrum_id" TEXT, 
 	"EvaluatedEntity_id" TEXT, 
-	"AnalysedData_id" TEXT, 
+	"AnalysisSourceData_id" TEXT, 
 	"EvaluatedActivity_id" TEXT, 
 	"Tool_id" INTEGER, 
 	"HardwareTool_id" INTEGER, 
@@ -1773,7 +1780,7 @@ CREATE TABLE "QuantitativeAttribute" (
 	FOREIGN KEY("ChemicalSample_id") REFERENCES "ChemicalSample" (id), 
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id), 
 	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
-	FOREIGN KEY("AnalysedData_id") REFERENCES "AnalysedData" (id), 
+	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
 	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("Tool_id") REFERENCES "Tool" (id), 
 	FOREIGN KEY("HardwareTool_id") REFERENCES "HardwareTool" (id), 

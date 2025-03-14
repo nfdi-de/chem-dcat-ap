@@ -107,8 +107,9 @@ Requirements (see also https://github.com/dalito/linkml-project-copier?tab=readm
     ````
 
 * Use the `just` command to generate project artefacts:
-  * `just all`: make everything
+  * `just gen-project`: generates all other representations
   * `just deploy`: deploys site
+  * `just testdoc`: locally builds docs and runs test server
 
 
 ## Credits

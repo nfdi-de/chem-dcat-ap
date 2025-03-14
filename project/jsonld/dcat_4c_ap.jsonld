@@ -1,6 +1,6 @@
 {
   "name": "dcat-4C-ap",
-  "description": "This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI 4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.",
+  "description": "This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.",
   "title": "DCAT-4C-AP",
   "see_also": [
     "https://StroemPhi.github.io/dcat-NFDI-ap",
@@ -146,6 +146,15 @@
   ],
   "default_prefix": "nfdi4c",
   "default_range": "string",
+  "subsets": [
+    {
+      "name": "domain_agnostic_core",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/DomainAgnosticCore",
+      "description": "The elements of this subset are considered the core layer of our DCAT-AP extension.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
+      "@type": "SubsetDefinition"
+    }
+  ],
   "types": [
     {
       "name": "string",
@@ -520,6 +529,9 @@
         "owl:NamedIndividual"
       ],
       "description": "Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "reachable_from": {
         "source_ontology": "http://qudt.org/2.1/vocab/quantitykind",
@@ -539,6 +551,9 @@
         "owl:NamedIndividual"
       ],
       "description": "Possible kinds of QUDT unit instances.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "reachable_from": {
         "source_ontology": "https://qudt.org/vocab/unit/",
@@ -676,6 +691,10 @@
     {
       "name": "id",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/id",
+      "description": "A slot to provide an URI for an entity within this schema.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://purl.org/dc/terms/identifier"
@@ -698,6 +717,9 @@
       "name": "rdf_type",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/rdf_type",
       "description": "The slot to specify the ontology class that is instantiated by an entity.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
@@ -716,6 +738,9 @@
       "name": "evaluated_entity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/evaluated_entity",
       "description": "The slot to specify the entity of interest that was evaluated.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
@@ -736,6 +761,9 @@
       "name": "evaluated_activity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/evaluated_activity",
       "description": "The slot to specify the activity of interest that was evaluated.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#wasInformedBy"
@@ -756,6 +784,9 @@
       "name": "used_tool",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/used_tool",
       "description": "The slot to specify the tool that was used.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
@@ -776,6 +807,9 @@
       "name": "realized_plan",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/realized_plan",
       "description": "The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
@@ -794,6 +828,9 @@
       "name": "occurred_in",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/occurred_in",
       "description": "The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://purl.obolibrary.org/obo/BFO_0000066"
@@ -811,6 +848,9 @@
       "name": "has_qualitative_attribute",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/has_qualitative_attribute",
       "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://purl.org/dc/terms/relation"
@@ -832,6 +872,9 @@
       "name": "has_quantitative_attribute",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/has_quantitative_attribute",
       "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://purl.org/dc/terms/relation"
@@ -853,6 +896,9 @@
       "name": "value",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/value",
       "description": "A slot to provide the literal value of an attribute.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#value"
@@ -870,6 +916,9 @@
       "name": "describes_entity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/describes_entity",
       "description": "A slot to provide the EvaluatedEntity that is described by a Dataset.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://purl.org/dc/terms/relation"
@@ -890,6 +939,9 @@
       "name": "describes_activity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/describes_activity",
       "description": "A slot to provide the EvaluatedActivity that is described by a Dataset.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://purl.org/dc/terms/relation"
@@ -2444,6 +2496,9 @@
       "name": "NMRAnalysisDataset_describes_entity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/describes_entity",
       "description": "A slot to provide the EvaluatedEntity that is described by a Dataset.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://purl.org/dc/terms/relation"
@@ -2469,6 +2524,9 @@
       "name": "NMRSpectralAnalysis_evaluated_entity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/evaluated_entity",
       "description": "The slot to specify the entity of interest that was evaluated.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
@@ -2494,6 +2552,9 @@
       "name": "NMRSpectroscopy_evaluated_entity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/evaluated_entity",
       "description": "The slot to specify the entity of interest that was evaluated.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
@@ -2519,6 +2580,9 @@
       "name": "NMRSpectroscopy_rdf_type",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/rdf_type",
       "description": "The type of NMR Spectroscopy provided as CURIE of a subclass of CHMO:0000613.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
@@ -2692,7 +2756,7 @@
     {
       "name": "DataCreatingActivity_has_part",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_part",
-      "description": "The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities.",
+      "description": "A slot to provide an Activity that is part of the DataCreatingActivity.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
@@ -2739,6 +2803,9 @@
       "name": "DataAnalysis_evaluated_entity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/evaluated_entity",
       "description": "The slot to specify the entity of interest that was evaluated.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#used"
@@ -2753,7 +2820,7 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "evaluated_entity",
-      "range": "AnalysedData",
+      "range": "AnalysisSourceData",
       "recommended": true,
       "multivalued": true,
       "inlined": true,
@@ -2763,7 +2830,7 @@
     {
       "name": "EvaluatedEntity_other_identifier",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/other_identifier",
-      "description": "A secondary identifier of the EvaluatedEntity",
+      "description": "A slot to provide a secondary identifier of the EvaluatedEntity.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
@@ -2809,7 +2876,28 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "AnalysedData_was_generated_by",
+      "name": "EvaluatedEntity_has_part",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_part",
+      "description": "A slot to provide a part of the EvaluatedEntity.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
+      "mappings": [
+        "http://purl.org/dc/terms/hasPart"
+      ],
+      "is_a": "has_part",
+      "domain": "EvaluatedEntity",
+      "slot_uri": "http://purl.org/dc/terms/hasPart",
+      "alias": "has_part",
+      "owner": "EvaluatedEntity",
+      "domain_of": [
+        "EvaluatedEntity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_part",
+      "range": "EvaluatedEntity",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AnalysisSourceData_was_generated_by",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/was_generated_by",
       "description": "This slot is described in more detail within the class in which it is used.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
@@ -2817,12 +2905,12 @@
         "http://www.w3.org/ns/prov#wasGeneratedBy"
       ],
       "is_a": "EvaluatedEntity_was_generated_by",
-      "domain": "AnalysedData",
+      "domain": "AnalysisSourceData",
       "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
       "alias": "was_generated_by",
-      "owner": "AnalysedData",
+      "owner": "AnalysisSourceData",
       "domain_of": [
-        "AnalysedData"
+        "AnalysisSourceData"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "was_generated_by",
@@ -2854,6 +2942,27 @@
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "EvaluatedActivity_has_part",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/has_part",
+      "description": "A slot to provide a part of the EvaluatedActivity.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml",
+      "mappings": [
+        "http://purl.org/dc/terms/hasPart"
+      ],
+      "is_a": "has_part",
+      "domain": "EvaluatedActivity",
+      "slot_uri": "http://purl.org/dc/terms/hasPart",
+      "alias": "has_part",
+      "owner": "EvaluatedActivity",
+      "domain_of": [
+        "EvaluatedActivity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_part",
+      "range": "EvaluatedActivity",
       "@type": "SlotDefinition"
     },
     {
@@ -2932,6 +3041,9 @@
       "name": "QualitativeAttribute_value",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/value",
       "description": "The slot to provide the literal value of the QualitativeAttribute.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#value"
@@ -2954,6 +3066,9 @@
       "name": "QuantitativeAttribute_value",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/value",
       "description": "The slot to provide the literal value of the QuantitativeAttribute.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "http://www.w3.org/ns/prov#value"
@@ -6175,7 +6290,7 @@
         "EvaluatedActivity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "has_part",
+        "EvaluatedActivity_has_part",
         "ClassifierMixin_type",
         "rdf_type"
       ],
@@ -6199,7 +6314,7 @@
         "EvaluatedEntity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "has_part",
+        "EvaluatedEntity_has_part",
         "EvaluatedEntity_was_generated_by",
         "ClassifierMixin_type",
         "rdf_type",
@@ -6284,7 +6399,7 @@
         "EvaluatedEntity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "has_part",
+        "EvaluatedEntity_has_part",
         "EvaluatedEntity_was_generated_by",
         "ClassifierMixin_type",
         "rdf_type",
@@ -6306,7 +6421,7 @@
       "mappings": [
         "NMR:1002007"
       ],
-      "is_a": "AnalysedData",
+      "is_a": "AnalysisSourceData",
       "slots": [
         "title",
         "description",
@@ -6314,7 +6429,7 @@
         "EvaluatedEntity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "has_part",
+        "EvaluatedEntity_has_part",
         "ClassifierMixin_type",
         "rdf_type",
         "NMRSpectrum_was_generated_by"
@@ -6440,7 +6555,10 @@
     {
       "name": "DefinedTerm",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/DefinedTerm",
-      "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.",
+      "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "schema:DefinedTerm"
@@ -6468,7 +6586,10 @@
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ResearchDataset",
       "description": "A collection of data, published or curated by a single agent, and available for access or download in one or more representations.",
       "comments": [
-        "The name of this class is only deviating from its parent as this is needed according to the sublcassing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
+        "The name of this class is only deviating from its parent as this is needed according to the sub-classing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
+      ],
+      "in_subset": [
+        "domain_agnostic_core"
       ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
@@ -6524,6 +6645,9 @@
     {
       "name": "AnalysisDataset",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/AnalysisDataset",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "dcat:Dataset"
@@ -6579,7 +6703,10 @@
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/ResearchCatalog",
       "description": "A curated collection of metadata about data resources.",
       "comments": [
-        "The name of this class is only deviating from its parent as this is needed according to the sublcassing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
+        "The name of this class is only deviating from its parent as this is needed according to the sub-classing strategy chosen here in this LinkML model to further constrain the slots of existing (imported) classes."
+      ],
+      "in_subset": [
+        "domain_agnostic_core"
       ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
@@ -6615,7 +6742,10 @@
     {
       "name": "DataCreatingActivity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/DataCreatingActivity",
-      "description": "An activity (process) that has the objective to produce information about an entity by evaluating it.",
+      "description": "An activity (process) that has the objective to produce information about an entity or activity.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Activity"
@@ -6650,6 +6780,9 @@
       "name": "DataAnalysis",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/DataAnalysis",
       "description": "A DataCreatingActivity that evaluates the data produced by another DataCreatingActivity.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Activity"
@@ -6681,7 +6814,10 @@
     {
       "name": "EvaluatedEntity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/EvaluatedEntity",
-      "description": "Something (not an activity or process) that is being evaluated in a DataCreatingActivity.",
+      "description": "A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a DataCreatingActivity.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
@@ -6696,7 +6832,7 @@
         "EvaluatedEntity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "has_part",
+        "EvaluatedEntity_has_part",
         "EvaluatedEntity_was_generated_by",
         "ClassifierMixin_type",
         "rdf_type"
@@ -6706,9 +6842,12 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "AnalysedData",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/AnalysedData",
-      "description": "Information that was evaluated within an Analysis.",
+      "name": "AnalysisSourceData",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/AnalysisSourceData",
+      "description": "Information that was evaluated within a DataAnalysis.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
@@ -6721,10 +6860,10 @@
         "EvaluatedEntity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "has_part",
+        "EvaluatedEntity_has_part",
         "ClassifierMixin_type",
         "rdf_type",
-        "AnalysedData_was_generated_by"
+        "AnalysisSourceData_was_generated_by"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Entity",
@@ -6734,6 +6873,9 @@
       "name": "EvaluatedActivity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/EvaluatedActivity",
       "description": "An activity or process that is being evaluated in a DataCreatingActivity.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Activity"
@@ -6749,7 +6891,7 @@
         "EvaluatedActivity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "has_part",
+        "EvaluatedActivity_has_part",
         "ClassifierMixin_type",
         "rdf_type"
       ],
@@ -6761,6 +6903,9 @@
       "name": "Tool",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/Tool",
       "description": "A entity with a certain function used within a DataCreatingActivity.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
@@ -6789,6 +6934,9 @@
       "name": "HardwareTool",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/HardwareTool",
       "description": "A hardware device with a certain function that was used within a DataCreatingActivity.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "aliases": [
         "Device"
@@ -6811,7 +6959,10 @@
     {
       "name": "SoftwareTool",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/SoftwareTool",
-      "description": "A software device with a certain function that was used within a DataCreatingActivity.",
+      "description": "A software program with a certain function that was used within a DataCreatingActivity.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "is_a": "Tool",
       "slots": [
@@ -6832,6 +6983,9 @@
       "name": "Environment",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/Environment",
       "description": "The surrounding in which the dataset creating activity took place (e.g. a lab).",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
@@ -6853,12 +7007,15 @@
     {
       "name": "Plan",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/Plan",
-      "description": "A piece of information that specifies: a) how an activity has to be carried out by its agents including what \nkind of steps have to be taken and what kind of parameters have to be met/set.",
+      "description": "A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.",
       "examples": [
         {
           "description": "We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3).",
           "@type": "Example"
         }
+      ],
+      "in_subset": [
+        "domain_agnostic_core"
       ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "aliases": [
@@ -6886,6 +7043,9 @@
       "name": "QualitativeAttribute",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/QualitativeAttribute",
       "description": "A piece of information that is attributed to an entity of interest, tool or environment.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "prov:Entity"
@@ -6908,6 +7068,9 @@
       "name": "QuantitativeAttribute",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/QuantitativeAttribute",
       "description": "A quantifiable piece of information that is attributed to an entity of interest, tool or environment.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
       "mappings": [
         "qudt:Quantity"
@@ -7579,9 +7742,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcat_4c_ap.yaml",
-  "source_file_date": "2025-03-05T13:28:00",
-  "source_file_size": 9756,
-  "generation_date": "2025-03-05T13:33:52",
+  "source_file_date": "2025-03-14T09:56:43",
+  "source_file_size": 9731,
+  "generation_date": "2025-03-14T11:57:48",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

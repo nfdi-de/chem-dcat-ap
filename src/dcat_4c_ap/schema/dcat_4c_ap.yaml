@@ -158,7 +158,7 @@ classes:
     #class_uri: CHEBI:59999
 
   NMRSpectrum:
-    is_a: AnalysedData
+    is_a: AnalysisSourceData
     class_uri: NMR:1002007
     description: A set of chemical shifts obtained via NMR spectroscopy.
     slot_usage:

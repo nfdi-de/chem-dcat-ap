@@ -35,103 +35,6 @@
             "title": "Agent",
             "type": "object"
         },
-        "AnalysedData": {
-            "additionalProperties": false,
-            "description": "Information that was evaluated within an Analysis.",
-            "properties": {
-                "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "has_part": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
-                    "items": {
-                        "$ref": "#/$defs/QualitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
-                    "items": {
-                        "$ref": "#/$defs/QuantitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "other_identifier": {
-                    "description": "A secondary identifier of the EvaluatedEntity",
-                    "items": {
-                        "$ref": "#/$defs/Identifier"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "rdf_type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the ontology class that is instantiated by an entity."
-                },
-                "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "This slot is described in more detail within the class in which it is used."
-                },
-                "was_generated_by": {
-                    "description": "A slot to provide the Activity which created the EvaluatedEntity.",
-                    "items": {
-                        "$ref": "#/$defs/DataCreatingActivity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "AnalysedData",
-            "type": "object"
-        },
         "AnalysisDataset": {
             "additionalProperties": false,
             "description": "",
@@ -266,6 +169,7 @@
                     ]
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
                 "identifier": {
@@ -507,6 +411,104 @@
                 "was_generated_by"
             ],
             "title": "AnalysisDataset",
+            "type": "object"
+        },
+        "AnalysisSourceData": {
+            "additionalProperties": false,
+            "description": "Information that was evaluated within a DataAnalysis.",
+            "properties": {
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "A slot to provide a part of the EvaluatedEntity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative  attribute to an entity of interest, tool or environment.",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
+                "other_identifier": {
+                    "description": "A slot to provide a secondary identifier of the EvaluatedEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                },
+                "was_generated_by": {
+                    "description": "A slot to provide the Activity which created the EvaluatedEntity.",
+                    "items": {
+                        "$ref": "#/$defs/DataCreatingActivity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "AnalysisSourceData",
             "type": "object"
         },
         "Attribution": {
@@ -884,7 +886,7 @@
                     ]
                 },
                 "has_part": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "A slot to provide a part of the EvaluatedActivity.",
                     "type": [
                         "string",
                         "null"
@@ -911,6 +913,7 @@
                     ]
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
                 "other_identifier": {
@@ -981,7 +984,7 @@
                     ]
                 },
                 "has_part": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "A slot to provide a part of the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -1014,10 +1017,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
                 "other_identifier": {
-                    "description": "A secondary identifier of the EvaluatedEntity",
+                    "description": "A slot to provide a secondary identifier of the EvaluatedEntity.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },
@@ -1094,7 +1098,7 @@
                     ]
                 },
                 "has_part": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "A slot to provide a part of the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -1127,10 +1131,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
                 "other_identifier": {
-                    "description": "A secondary identifier of the EvaluatedEntity",
+                    "description": "A slot to provide a secondary identifier of the EvaluatedEntity.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },
@@ -1245,7 +1250,7 @@
                 "evaluated_entity": {
                     "description": "The slot to specify the entity of interest that was evaluated.",
                     "items": {
-                        "$ref": "#/$defs/AnalysedData"
+                        "$ref": "#/$defs/AnalysisSourceData"
                     },
                     "type": [
                         "array",
@@ -1261,7 +1266,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities."
+                    "description": "A slot to provide an Activity that is part of the DataCreatingActivity."
                 },
                 "occurred_in": {
                     "anyOf": [
@@ -1340,7 +1345,7 @@
         },
         "DataCreatingActivity": {
             "additionalProperties": false,
-            "description": "An activity (process) that has the objective to produce information about an entity by evaluating it.",
+            "description": "An activity (process) that has the objective to produce information about an entity or activity.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -1378,7 +1383,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities."
+                    "description": "A slot to provide an Activity that is part of the DataCreatingActivity."
                 },
                 "occurred_in": {
                     "anyOf": [
@@ -2104,7 +2109,7 @@
         },
         "DefinedTerm": {
             "additionalProperties": false,
-            "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.",
+            "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.",
             "properties": {
                 "from_CV": {
                     "description": "The URL of the controlled vocabulary.",
@@ -2114,6 +2119,7 @@
                     ]
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": [
                         "string",
                         "null"
@@ -2450,7 +2456,7 @@
                     ]
                 },
                 "has_part": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "A slot to provide a part of the EvaluatedActivity.",
                     "type": [
                         "string",
                         "null"
@@ -2477,6 +2483,7 @@
                     ]
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
                 "other_identifier": {
@@ -2527,7 +2534,7 @@
         },
         "EvaluatedEntity": {
             "additionalProperties": false,
-            "description": "Something (not an activity or process) that is being evaluated in a DataCreatingActivity.",
+            "description": "A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a DataCreatingActivity.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -2537,7 +2544,7 @@
                     ]
                 },
                 "has_part": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "A slot to provide a part of the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -2564,10 +2571,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
                 "other_identifier": {
-                    "description": "A secondary identifier of the EvaluatedEntity",
+                    "description": "A slot to provide a secondary identifier of the EvaluatedEntity.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },
@@ -3155,6 +3163,7 @@
                     ]
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
                 "identifier": {
@@ -3446,7 +3455,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities."
+                    "description": "A slot to provide an Activity that is part of the DataCreatingActivity."
                 },
                 "occurred_in": {
                     "anyOf": [
@@ -3563,7 +3572,7 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify one or more parts of the DataCreatingActivity that are themselves also data generating activities."
+                    "description": "A slot to provide an Activity that is part of the DataCreatingActivity."
                 },
                 "occurred_in": {
                     "anyOf": [
@@ -3652,7 +3661,7 @@
                     ]
                 },
                 "has_part": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "A slot to provide a part of the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -3679,10 +3688,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
                 "other_identifier": {
-                    "description": "A secondary identifier of the EvaluatedEntity",
+                    "description": "A slot to provide a secondary identifier of the EvaluatedEntity.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },
@@ -3783,7 +3793,7 @@
         },
         "Plan": {
             "additionalProperties": false,
-            "description": "A piece of information that specifies: a) how an activity has to be carried out by its agents including what \nkind of steps have to be taken and what kind of parameters have to be met/set.",
+            "description": "A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -4070,6 +4080,7 @@
                     "description": "A web page that acts as the main page for the Catalogue."
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
                 "language": {
@@ -4313,6 +4324,7 @@
                     ]
                 },
                 "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
                 "identifier": {
@@ -4627,7 +4639,7 @@
         },
         "SoftwareTool": {
             "additionalProperties": false,
-            "description": "A software device with a certain function that was used within a DataCreatingActivity.",
+            "description": "A software program with a certain function that was used within a DataCreatingActivity.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -4966,6 +4978,7 @@
             ]
         },
         "id": {
+            "description": "A slot to provide an URI for an entity within this schema.",
             "type": "string"
         },
         "identifier": {

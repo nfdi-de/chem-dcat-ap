@@ -7,20 +7,6 @@ message Agent
  repeated  string name = 0
   concept type = 0
  }
-// Information that was evaluated within an Analysis.
-message AnalysedData
- {
-  string title = 0
-  string description = 0
-  uriorcurie id = 0
- repeated  identifier otherIdentifier = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
-  string hasPart = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- repeated  dataCreatingActivity wasGeneratedBy = 0
- }
 message AnalysisDataset
  {
   rightsStatement accessRights = 0
@@ -62,6 +48,20 @@ message AnalysisDataset
  repeated  evaluatedEntity describesEntity = 0
  repeated  evaluatedActivity describesActivity = 0
  repeated  dataAnalysis wasGeneratedBy = 0
+ }
+// Information that was evaluated within a DataAnalysis.
+message AnalysisSourceData
+ {
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  evaluatedEntity hasPart = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  dataCreatingActivity wasGeneratedBy = 0
  }
 // See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
 message Catalogue
@@ -122,7 +122,7 @@ message ChemicalReaction
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
-  string hasPart = 0
+  evaluatedActivity hasPart = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -134,7 +134,7 @@ message ChemicalSample
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
-  string hasPart = 0
+  evaluatedEntity hasPart = 0
  repeated  activity wasGeneratedBy = 0
   definedTerm type = 0
   definedTerm rdfType = 0
@@ -150,7 +150,7 @@ message ChemicalSubstance
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
-  string hasPart = 0
+  evaluatedEntity hasPart = 0
  repeated  activity wasGeneratedBy = 0
   definedTerm type = 0
   definedTerm rdfType = 0
@@ -180,9 +180,9 @@ message DataAnalysis
   environment occurredIn = 0
   definedTerm type = 0
   definedTerm rdfType = 0
- repeated  analysedData evaluatedEntity = 0
+ repeated  analysisSourceData evaluatedEntity = 0
  }
-// An activity (process) that has the objective to produce information about an entity by evaluating it.
+// An activity (process) that has the objective to produce information about an entity or activity.
 message DataCreatingActivity
  {
   string title = 0
@@ -271,7 +271,7 @@ message DatasetSeries
  repeated  periodOfTime temporalCoverage = 0
  repeated  string title = 0
  }
-// A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide the rdf:type of an entity within this schema.
+// A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.
 message DefinedTerm
  {
   uriorcurie id = 0
@@ -324,11 +324,11 @@ message EvaluatedActivity
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
-  string hasPart = 0
+  evaluatedActivity hasPart = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
-// Something (not an activity or process) that is being evaluated in a DataCreatingActivity.
+// A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a DataCreatingActivity.
 message EvaluatedEntity
  {
   string title = 0
@@ -337,7 +337,7 @@ message EvaluatedEntity
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
-  string hasPart = 0
+  evaluatedEntity hasPart = 0
  repeated  activity wasGeneratedBy = 0
   definedTerm type = 0
   definedTerm rdfType = 0
@@ -488,7 +488,7 @@ message NMRSpectrum
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
-  string hasPart = 0
+  evaluatedEntity hasPart = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  nMRSpectroscopy wasGeneratedBy = 0
@@ -501,8 +501,7 @@ message PeriodOfTime
   string endDate = 0
   string startDate = 0
  }
-// A piece of information that specifies: a) how an activity has to be carried out by its agents including what 
-// kind of steps have to be taken and what kind of parameters have to be met/set.
+// A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.
 message Plan
  {
   string title = 0
@@ -612,7 +611,7 @@ message SMILES
   definedTerm type = 0
   definedTerm rdfType = 0
  }
-// A software device with a certain function that was used within a DataCreatingActivity.
+// A software program with a certain function that was used within a DataCreatingActivity.
 message SoftwareTool
  {
   string title = 0
