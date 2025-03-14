@@ -167,7 +167,7 @@ classes:
     description: A DataCreatingActivity that evaluates the data produced by another DataCreatingActivity.
     slot_usage:
       evaluated_entity:
-        range: AnalysedData
+        range: AnalysisSourceData
     close_mappings:
       - http://purl.obolibrary.org/obo/NCIT_C25391
     exact_mappings:
