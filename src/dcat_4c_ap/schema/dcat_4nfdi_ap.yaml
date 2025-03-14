@@ -49,7 +49,7 @@ imports:
   - dcat_ap_linkml
 
 classes:
-  
+
   ClassifierMixin:
     description: A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.
     mixin: true
@@ -189,8 +189,8 @@ classes:
         description: A slot to provide the Activity which created the EvaluatedEntity.
         multivalued: true
         inlined_as_list: true
-        
-  AnalysedData:
+
+  AnalysisSourceData:
     is_a: EvaluatedEntity
     class_uri: prov:Entity
     description: Information that was evaluated within a DataAnalysis.
