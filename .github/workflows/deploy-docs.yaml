@@ -51,4 +51,5 @@ jobs:
       - name: Build and deploy documentation
         run: |
           cp src/dcat_4c_ap/schema/*.yaml docs/
-          just deploy
+          just gen-doc
+          poetry run mkdocs gh-deploy
