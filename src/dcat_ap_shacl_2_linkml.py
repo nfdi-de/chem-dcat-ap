@@ -9,19 +9,11 @@ from linkml_runtime.linkml_model import SlotDefinition, TypeDefinition, ClassDef
 
 # Constants
 DESCRIPTION = """
-This LinkML schema representation of DCAT-AP 3.0.0 was automatically created from these 
-[JSON-LD SHACL shapes](https://github.com/SEMICeu/DCAT-AP/blob/master/releases/3.0.0/shacl/dcat-ap-SHACL.jsonld) 
-using this Python script: https://github.com/StroemPhi/dcat-4C-ap/tree/main/src/dcat-ap_shacl_2_linkml.py.
+This LinkML schema representation of DCAT-AP 3.0.0 was automatically created from these [JSON-LD SHACL shapes](https://github.com/SEMICeu/DCAT-AP/blob/master/releases/3.0.0/shacl/dcat-ap-SHACL.jsonld) using this Python script: https://github.com/StroemPhi/dcat-4C-ap/tree/main/src/dcat-ap_shacl_2_linkml.py.
 """.replace('\n', '')
 
-NOTE = """ 
-The JSON-LD SHACL constraints published with the [Juli 3.0.0 GitHub release](
-https://github.com/SEMICeu/DCAT-AP/releases/tag/3.0.0) and in the [3.0.0. release branch](
-https://github.com/SEMICeu/DCAT-AP/tree/3.0.0) are different from the ones in 
-https://github.com/SEMICeu/DCAT-AP/tree/master/releases/3.0.0. Also the TTL shapes provided in the latter in the 
-HTML folder differ from the ones in the SHACL folder, in that they declare dcat:Resource and dcatap:TemporalLiteral 
-as unions of the dcat:Resource subclasses respectively different XML Schema datatypes for date and time. 
-We address this with 'helper code' in the conversion script. 
+NOTE = """
+The JSON-LD SHACL constraints published with the [Juli 3.0.0 GitHub release](https://github.com/SEMICeu/DCAT-AP/releases/tag/3.0.0) and in the [3.0.0. release branch](https://github.com/SEMICeu/DCAT-AP/tree/3.0.0) are different from the ones in https://github.com/SEMICeu/DCAT-AP/tree/master/releases/3.0.0. Also the TTL shapes provided in the latter in the HTML folder differ from the ones in the SHACL folder, in that they declare dcat:Resource and dcatap:TemporalLiteral as unions of the dcat:Resource subclasses respectively different XML Schema datatypes for date and time. We address this with "helper code" in the conversion script.
 """.replace('\n', '')
 
 PREFIX_MAP = {
@@ -48,8 +40,8 @@ PREFIX_MAP = {
     'vl': 'https://purl.eu/ns/shacl#',
     'iana': 'https://www.iana.org/assignments/'}
 
-# The shapes for rdfs:Literal and dcterms:mediaType [sic] are ignored, 
-# since we use LinkML's 'string' as default datatype for unspecified literal slot ranges 
+# The shapes for rdfs:Literal and dcterms:mediaType [sic] are ignored,
+# since we use LinkML's 'string' as default datatype for unspecified literal slot ranges
 # and dcterms:MediaType was used twice, once with this typo in the SHACL and a similar one in the HTML.
 # seeAlso: L251-L258 in 'dcat_ap_SHACL.jsonld' and https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Mediatype
 IGNORED_NODES = ['Literal', 'mediaType', 'TemporalLiteral']
@@ -73,9 +65,9 @@ def get_curie(term_uri, prefixes=None):
         Args:
             - term_uri (str): The URI of a term.
             - prefixes (dict): The prefixes defined in PREFIX_MAP.
-        Returns: 
+        Returns:
             - term_curie (str): The CURIE (compact URI) of a term.
-    TODO: 
+    TODO:
         - Overkill to use [CURIEs](https://curies.readthedocs.io/en/stable/index.html) library instead?
     """
     term_curie = None
@@ -99,12 +91,12 @@ def load_shacl_shapes(jsonld_file='dcat_ap_SHACL.jsonld'):
 
 
 def parse_shacl_shapes(builder):
-    """ 
-    Parse DACAT-AP SHACL shapes to create Link ML classes or datatypes from node shapes and slots from property shapes. 
+    """
+    Parse DACAT-AP SHACL shapes to create Link ML classes or datatypes from node shapes and slots from property shapes.
     Args:
         - builder (SchemaBuilder): The LinkML model builder to which to add the classes
         - dcat_ap_shapes (dict):
-    Returns: 
+    Returns:
         - builder (SchemaBuilder): The builder with added classes
     """
     dcat_ap_shapes = load_shacl_shapes()
