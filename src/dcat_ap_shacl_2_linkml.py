@@ -350,9 +350,9 @@ def build_schema():
     return builder.schema
 
 
-def dump_schema(schema, output_file='dcat_4c_ap/schema/dcat_ap_linkml.yaml'):
+def dump_schema(schema, output_file='dcat_ap_linkml.yaml'):
     filename = output_file
-    filepath = os.path.join("src", filename)
+    filepath = os.path.join('dcat_4c_ap', 'schema', filename)
     YAMLDumper().dump(schema, filepath)
 
 
