@@ -145,6 +145,7 @@ def parse_shacl_shapes(builder):
                     slot_curie = get_curie(slot_shape['sh:path'])
                     # Use LinkML snake_case naming convention default for slots
                     slot_name = slot_shape['sh:name']['en'].replace(' ', '_')
+                    # Rename 'dataset' slot to 'has_dataset' to avoid clashes with Dataset class
                     slot_name = 'has_dataset' if slot_name == 'dataset' else slot_name
                     # Check cardinality constraints of a slot
                     required = True if 'sh:minCount' in slot_shape and int(slot_shape['sh:minCount']) == 1 else False
@@ -168,6 +169,7 @@ def parse_shacl_shapes(builder):
                             slot_range = 'TimeInstant'
                         else:
                             slot_range = get_curie(slot_shape['sh:class']).split(':')[-1]
+                    # Assign slot range datatypes
                     elif 'sh:datatype' in slot_shape:
                         datatype = get_curie(slot_shape['sh:datatype'])
                         if datatype.split(':')[-1] == 'dateTime':
@@ -182,7 +184,7 @@ def parse_shacl_shapes(builder):
                                                         slot_uri=slot_curie,
                                                         description=general_description))
 
-                    # Add the class slot
+                    # Update the class slot attributes if multiple shapes exist for it.
                     if slot_name in class_slots.keys():
                         if slot_range != 'string':
                             class_slots[slot_name].range = slot_range
@@ -192,7 +194,7 @@ def parse_shacl_shapes(builder):
                             class_slots[slot_name].multivalued = multivalued
                         class_slots[slot_name].inlined_as_list = inlined_as_list
 
-                    # Update the class slot attributes if multiple shapes exist for it.
+                    # Add the class slot
                     else:
                         description = slot_shape.get('sh:description', {}).get('en', '')
                         class_slots[slot_name] = SlotDefinition(name=slot_name,
@@ -225,6 +227,7 @@ def parse_shacl_shapes(builder):
                                         class_slots[recommended_slot].recommended = True
 
 
+                    # Add alphabetically sorted slots and their slot_usage properties to each class
                     builder.schema.classes[node_name].slots = sorted(list(class_slots.keys()))
                     builder.schema.classes[node_name].slot_usage = {key: class_slots[key] for key in
                                                                     sorted(class_slots)}
