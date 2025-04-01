@@ -31,7 +31,6 @@ PREFIX_MAP = {
     'vcard': 'http://www.w3.org/2006/vcard/ns#',
     'adms': 'http://www.w3.org/ns/adms#',
     'dcatap': 'http://data.europa.eu/r5r/',
-    'linkmldcatap': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
     'qb': 'http://purl.org/linked-data/cube#',
     'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
     'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
