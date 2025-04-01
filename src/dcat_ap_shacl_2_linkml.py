@@ -78,14 +78,12 @@ def get_curie(term_uri, prefixes=None):
     return term_curie
 
 
-def load_shacl_shapes(jsonld_file='dcat_ap_SHACL.jsonld'):
+def load_shacl_shapes(jsonld_file='dcat_ap_shacl.jsonld'):
     """
     Load the JSON-LD file containing the DCAT-AP SHACL shapes.
     TODO: Use Requests to download directly from the script, maybe with cache option.
     """
-    filename = jsonld_file
-    filepath = os.path.join("src", filename)
-    with open(filepath, 'r') as file:
+    with open(jsonld_file, 'r') as file:
         return json.load(file)
 
 
