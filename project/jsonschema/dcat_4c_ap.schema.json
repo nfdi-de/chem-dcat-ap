@@ -234,6 +234,7 @@
                 },
                 "modification_date": {
                     "description": "The most recent date on which the Dataset was changed or modified.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -302,6 +303,7 @@
                 },
                 "release_date": {
                     "description": "The date of formal issuance (e.g., publication) of the Dataset.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -623,6 +625,7 @@
                 },
                 "modification_date": {
                     "description": "The most recent date on which the Catalogue was modified.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -644,6 +647,7 @@
                 },
                 "release_date": {
                     "description": "The date of formal issuance (e.g., publication) of the Catalogue.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -753,6 +757,7 @@
                 },
                 "listing_date": {
                     "description": "The date on which the description of the Resource was included in the Catalogue.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -760,10 +765,25 @@
                 },
                 "modification_date": {
                     "description": "The most recent date on which the Catalogue entry was changed or modified.",
+                    "format": "date",
                     "type": "string"
                 },
                 "primary_topic": {
-                    "$ref": "#/$defs/CataloguedResource",
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Catalogue"
+                        },
+                        {
+                            "$ref": "#/$defs/Dataset"
+                        },
+                        {
+                            "$ref": "#/$defs/DatasetSeries"
+                        },
+                        {
+                            "$ref": "#/$defs/DataService"
+                        }
+                    ],
                     "description": "A link to the Dataset, Data service or Catalog described in the record."
                 },
                 "source_metadata": {
@@ -1804,6 +1824,7 @@
                 },
                 "modification_date": {
                     "description": "The most recent date on which the Dataset was changed or modified.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -1872,6 +1893,7 @@
                 },
                 "release_date": {
                     "description": "The date of formal issuance (e.g., publication) of the Dataset.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -2038,6 +2060,7 @@
                 },
                 "modification_date": {
                     "description": "The most recent date on which the Dataset Series was changed or modified.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -2056,6 +2079,7 @@
                 },
                 "release_date": {
                     "description": "The date of formal issuance (e.g., publication) of the Dataset Series.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -2307,6 +2331,7 @@
                 },
                 "modification_date": {
                     "description": "The most recent date on which the Distribution was changed or modified.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -2325,6 +2350,7 @@
                 },
                 "release_date": {
                     "description": "The date of formal issuance (e.g., publication) of the Distribution.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -3228,6 +3254,7 @@
                 },
                 "modification_date": {
                     "description": "The most recent date on which the Dataset was changed or modified.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -3296,6 +3323,7 @@
                 },
                 "release_date": {
                     "description": "The date of formal issuance (e.g., publication) of the Dataset.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -4106,6 +4134,7 @@
                 },
                 "modification_date": {
                     "description": "The most recent date on which the Catalogue was modified.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -4127,6 +4156,7 @@
                 },
                 "release_date": {
                     "description": "The date of formal issuance (e.g., publication) of the Catalogue.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -4389,6 +4419,7 @@
                 },
                 "modification_date": {
                     "description": "The most recent date on which the Dataset was changed or modified.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -4457,6 +4488,7 @@
                 },
                 "release_date": {
                     "description": "The date of formal issuance (e.g., publication) of the Dataset.",
+                    "format": "date",
                     "type": [
                         "string",
                         "null"
@@ -5043,6 +5075,7 @@
         },
         "modification_date": {
             "description": "The most recent date on which the Dataset was changed or modified.",
+            "format": "date",
             "type": [
                 "string",
                 "null"
@@ -5111,6 +5144,7 @@
         },
         "release_date": {
             "description": "The date of formal issuance (e.g., publication) of the Dataset.",
+            "format": "date",
             "type": [
                 "string",
                 "null"

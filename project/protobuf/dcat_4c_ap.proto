@@ -20,20 +20,20 @@ message AnalysisDataset
   frequency frequency = 0
  repeated  location geographicalCoverage = 0
  repeated  dataset hasVersion = 0
- repeated  uri identifier = 0
+ repeated  string identifier = 0
  repeated  datasetSeries inSeries = 0
  repeated  resource isReferencedBy = 0
  repeated  string keyword = 0
  repeated  document landingPage = 0
  repeated  linguisticSystem language = 0
-  string modificationDate = 0
+  date modificationDate = 0
  repeated  identifier otherIdentifier = 0
  repeated  provenanceStatement provenance = 0
   agent publisher = 0
  repeated  attribution qualifiedAttribution = 0
  repeated  relationship qualifiedRelation = 0
  repeated  resource relatedResource = 0
-  string releaseDate = 0
+  date releaseDate = 0
  repeated  distribution sample = 0
  repeated  dataset source = 0
   decimal spatialResolution = 0
@@ -76,10 +76,10 @@ message Catalogue
   document homepage = 0
  repeated  linguisticSystem language = 0
   licenseDocument licence = 0
-  string modificationDate = 0
+  date modificationDate = 0
   agent publisher = 0
  repeated  catalogueRecord record = 0
-  string releaseDate = 0
+  date releaseDate = 0
   rightsStatement rights = 0
  repeated  dataService service = 0
  repeated  periodOfTime temporalCoverage = 0
@@ -93,9 +93,9 @@ message CatalogueRecord
   concept changeType = 0
  repeated  string description = 0
  repeated  linguisticSystem language = 0
-  string listingDate = 0
-  string modificationDate = 0
-  cataloguedResource primaryTopic = 0
+  date listingDate = 0
+  date modificationDate = 0
+  any primaryTopic = 0
   catalogueRecord sourceMetadata = 0
  repeated  string title = 0
  }
@@ -231,20 +231,20 @@ message Dataset
   frequency frequency = 0
  repeated  location geographicalCoverage = 0
  repeated  dataset hasVersion = 0
- repeated  uri identifier = 0
+ repeated  string identifier = 0
  repeated  datasetSeries inSeries = 0
  repeated  resource isReferencedBy = 0
  repeated  string keyword = 0
  repeated  document landingPage = 0
  repeated  linguisticSystem language = 0
-  string modificationDate = 0
+  date modificationDate = 0
  repeated  identifier otherIdentifier = 0
  repeated  provenanceStatement provenance = 0
   agent publisher = 0
  repeated  attribution qualifiedAttribution = 0
  repeated  relationship qualifiedRelation = 0
  repeated  resource relatedResource = 0
-  string releaseDate = 0
+  date releaseDate = 0
  repeated  distribution sample = 0
  repeated  dataset source = 0
   decimal spatialResolution = 0
@@ -265,9 +265,9 @@ message DatasetSeries
  repeated  string description = 0
   frequency frequency = 0
  repeated  location geographicalCoverage = 0
-  string modificationDate = 0
+  date modificationDate = 0
   agent publisher = 0
-  string releaseDate = 0
+  date releaseDate = 0
  repeated  periodOfTime temporalCoverage = 0
  repeated  string title = 0
  }
@@ -297,9 +297,9 @@ message Distribution
   licenseDocument licence = 0
  repeated  standard linkedSchemas = 0
   mediaType mediaType = 0
-  string modificationDate = 0
+  date modificationDate = 0
   mediaType packagingFormat = 0
-  string releaseDate = 0
+  date releaseDate = 0
   rightsStatement rights = 0
   decimal spatialResolution = 0
   concept status = 0
@@ -357,7 +357,7 @@ message HardwareTool
 // See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)
 message Identifier
  {
-  uri notation = 0
+  string notation = 0
  }
 // A structure descriptor which conforms to the InChI format specification.
 message InChi
@@ -420,20 +420,20 @@ message NMRAnalysisDataset
   frequency frequency = 0
  repeated  location geographicalCoverage = 0
  repeated  dataset hasVersion = 0
- repeated  uri identifier = 0
+ repeated  string identifier = 0
  repeated  datasetSeries inSeries = 0
  repeated  resource isReferencedBy = 0
  repeated  string keyword = 0
  repeated  document landingPage = 0
  repeated  linguisticSystem language = 0
-  string modificationDate = 0
+  date modificationDate = 0
  repeated  identifier otherIdentifier = 0
  repeated  provenanceStatement provenance = 0
   agent publisher = 0
  repeated  attribution qualifiedAttribution = 0
  repeated  relationship qualifiedRelation = 0
  repeated  resource relatedResource = 0
-  string releaseDate = 0
+  date releaseDate = 0
  repeated  distribution sample = 0
  repeated  dataset source = 0
   decimal spatialResolution = 0
@@ -547,10 +547,10 @@ message ResearchCatalog
   document homepage = 0
  repeated  linguisticSystem language = 0
   licenseDocument licence = 0
-  string modificationDate = 0
+  date modificationDate = 0
   agent publisher = 0
  repeated  catalogueRecord record = 0
-  string releaseDate = 0
+  date releaseDate = 0
   rightsStatement rights = 0
  repeated  dataService service = 0
  repeated  periodOfTime temporalCoverage = 0
@@ -573,20 +573,20 @@ message ResearchDataset
   frequency frequency = 0
  repeated  location geographicalCoverage = 0
  repeated  dataset hasVersion = 0
- repeated  uri identifier = 0
+ repeated  string identifier = 0
  repeated  datasetSeries inSeries = 0
  repeated  resource isReferencedBy = 0
  repeated  string keyword = 0
  repeated  document landingPage = 0
  repeated  linguisticSystem language = 0
-  string modificationDate = 0
+  date modificationDate = 0
  repeated  identifier otherIdentifier = 0
  repeated  provenanceStatement provenance = 0
   agent publisher = 0
  repeated  attribution qualifiedAttribution = 0
  repeated  relationship qualifiedRelation = 0
  repeated  resource relatedResource = 0
-  string releaseDate = 0
+  date releaseDate = 0
  repeated  distribution sample = 0
  repeated  dataset source = 0
   decimal spatialResolution = 0

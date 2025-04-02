@@ -51,14 +51,14 @@
    "AnalysisSourceData": {
       "@id": "prov:Entity"
    },
+   "Any": {
+      "@id": "linkml:Any"
+   },
    "Attribution": {
       "@id": "prov:Attribution"
    },
    "Catalogue": {
       "@id": "dcat:Catalog"
-   },
-   "CataloguedResource": {
-      "@id": "dcat:Resource"
    },
    "CatalogueRecord": {
       "@id": "dcat:CatalogRecord"

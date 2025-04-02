@@ -108,6 +108,12 @@ nfdi:AnalysisSourceData  (
     } OR @<NMRSpectrum>
 )
 
+linkmldcatap:Any {
+    (  $linkmldcatap:Any_tes rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
 linkmldcatap:Attribution CLOSED {
     (  $linkmldcatap:Attribution_tes (  &linkmldcatap:SupportiveEntity_tes ;
           rdf:type [ linkmldcatap:SupportiveEntity ] ?
@@ -128,10 +134,10 @@ linkmldcatap:Catalogue  (
              foaf:homepage @linkmldcatap:Document ? ;
              dcterms:language @linkmldcatap:LinguisticSystem * ;
              dcterms:license @linkmldcatap:LicenseDocument ? ;
-             dcterms:modified @linkml:String ? ;
+             dcterms:modified @linkml:Date ? ;
              dcterms:publisher @linkmldcatap:Agent ;
              dcat:record @linkmldcatap:CatalogueRecord * ;
-             dcterms:issued @linkml:String ? ;
+             dcterms:issued @linkml:Date ? ;
              dcterms:rights @linkmldcatap:RightsStatement ? ;
              dcat:service @linkmldcatap:DataService * ;
              dcterms:temporal @linkmldcatap:PeriodOfTime * ;
@@ -143,20 +149,14 @@ linkmldcatap:Catalogue  (
     } OR @nfdi:ResearchCatalog
 )
 
-linkmldcatap:CataloguedResource {
-    (  $linkmldcatap:CataloguedResource_tes rdf:type . * ;
-       rdf:type [ dcat:Resource ] ?
-    )
-}
-
 linkmldcatap:CatalogueRecord CLOSED {
     (  $linkmldcatap:CatalogueRecord_tes (  dcterms:conformsTo @linkmldcatap:Standard * ;
           adms:status @linkmldcatap:Concept ? ;
           dcterms:description @linkml:String * ;
           dcterms:language @linkmldcatap:LinguisticSystem * ;
-          dcterms:issued @linkml:String ? ;
-          dcterms:modified @linkml:String ;
-          foaf:primaryTopic @linkmldcatap:CataloguedResource ;
+          dcterms:issued @linkml:Date ? ;
+          dcterms:modified @linkml:Date ;
+          foaf:primaryTopic @linkmldcatap:Any ;
           dcterms:source @linkmldcatap:CatalogueRecord ? ;
           dcterms:title @linkml:String *
        ) ;
@@ -315,20 +315,20 @@ linkmldcatap:Dataset  (
              dcterms:accrualPeriodicity @linkmldcatap:Frequency ? ;
              dcterms:spatial @linkmldcatap:Location * ;
              dcat:hasVersion @linkmldcatap:Dataset * ;
-             dcterms:identifier @linkml:Uri * ;
+             dcterms:identifier @linkml:String * ;
              dcat:inSeries @linkmldcatap:DatasetSeries * ;
              dcterms:isReferencedBy @linkmldcatap:Resource * ;
              dcat:keyword @linkml:String * ;
              dcat:landingPage @linkmldcatap:Document * ;
              dcterms:language @linkmldcatap:LinguisticSystem * ;
-             dcterms:modified @linkml:String ? ;
+             dcterms:modified @linkml:Date ? ;
              adms:identifier @linkmldcatap:Identifier * ;
              dcterms:provenance @linkmldcatap:ProvenanceStatement * ;
              dcterms:publisher @linkmldcatap:Agent ? ;
              prov:qualifiedAttribution @linkmldcatap:Attribution * ;
              dcat:qualifiedRelation @linkmldcatap:Relationship * ;
              dcterms:relation @linkmldcatap:Resource * ;
-             dcterms:issued @linkml:String ? ;
+             dcterms:issued @linkml:Date ? ;
              adms:sample @linkmldcatap:Distribution * ;
              dcterms:source @linkmldcatap:Dataset * ;
              dcat:spatialResolutionInMeters @linkml:Decimal ? ;
@@ -352,9 +352,9 @@ linkmldcatap:DatasetSeries CLOSED {
           dcterms:description @linkml:String + ;
           dcterms:accrualPeriodicity @linkmldcatap:Frequency ? ;
           dcterms:spatial @linkmldcatap:Location * ;
-          dcterms:modified @linkml:String ? ;
+          dcterms:modified @linkml:Date ? ;
           dcterms:publisher @linkmldcatap:Agent ? ;
-          dcterms:issued @linkml:String ? ;
+          dcterms:issued @linkml:Date ? ;
           dcterms:temporal @linkmldcatap:PeriodOfTime * ;
           dcterms:title @linkml:String +
        ) ;
@@ -387,9 +387,9 @@ linkmldcatap:Distribution CLOSED {
           dcterms:license @linkmldcatap:LicenseDocument ? ;
           dcterms:conformsTo @linkmldcatap:Standard * ;
           dcat:mediaType @linkmldcatap:MediaType ? ;
-          dcterms:modified @linkml:String ? ;
+          dcterms:modified @linkml:Date ? ;
           dcat:packageFormat @linkmldcatap:MediaType ? ;
-          dcterms:issued @linkml:String ? ;
+          dcterms:issued @linkml:Date ? ;
           dcterms:rights @linkmldcatap:RightsStatement ? ;
           dcat:spatialResolutionInMeters @linkml:Decimal ? ;
           adms:status @linkmldcatap:Concept ? ;
@@ -489,7 +489,7 @@ nfdi:HardwareTool CLOSED {
 linkmldcatap:Identifier CLOSED {
     (  $linkmldcatap:Identifier_tes (  &linkmldcatap:SupportiveEntity_tes ;
           rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
-          skos:notation @linkml:Uri
+          skos:notation @linkml:String
        ) ;
        rdf:type [ adms:Identifier ] ?
     )

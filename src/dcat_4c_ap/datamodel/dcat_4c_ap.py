@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-03-14T11:57:57
+# Generation date: 2025-04-02T20:00:44
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -57,8 +57,8 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Decimal, Float, String, Uri, Uriorcurie
-from linkml_runtime.utils.metamodelcore import Decimal, URI, URIorCURIE
+from linkml_runtime.linkml_model.types import Date, Decimal, Float, String, Uriorcurie
+from linkml_runtime.utils.metamodelcore import Decimal, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
 version = None
@@ -974,6 +974,8 @@ class ChemicalReaction(EvaluatedActivity):
         super().__post_init__(**kwargs)
 
 
+Any = Any
+
 @dataclass(repr=False)
 class Catalogue(YAMLRoot):
     """
@@ -998,9 +1000,9 @@ class Catalogue(YAMLRoot):
     homepage: Optional[Union[dict, "Document"]] = None
     language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
     licence: Optional[Union[dict, "LicenseDocument"]] = None
-    modification_date: Optional[str] = None
+    modification_date: Optional[Union[str, XSDDate]] = None
     record: Optional[Union[Union[dict, "CatalogueRecord"], List[Union[dict, "CatalogueRecord"]]]] = empty_list()
-    release_date: Optional[str] = None
+    release_date: Optional[Union[str, XSDDate]] = None
     rights: Optional[Union[dict, "RightsStatement"]] = None
     service: Optional[Union[Union[dict, "DataService"], List[Union[dict, "DataService"]]]] = empty_list()
     temporal_coverage: Optional[Union[Union[dict, "PeriodOfTime"], List[Union[dict, "PeriodOfTime"]]]] = empty_list()
@@ -1057,15 +1059,15 @@ class Catalogue(YAMLRoot):
         if self.licence is not None and not isinstance(self.licence, LicenseDocument):
             self.licence = LicenseDocument(**as_dict(self.licence))
 
-        if self.modification_date is not None and not isinstance(self.modification_date, str):
-            self.modification_date = str(self.modification_date)
+        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
+            self.modification_date = XSDDate(self.modification_date)
 
         if not isinstance(self.record, list):
             self.record = [self.record] if self.record is not None else []
         self.record = [v if isinstance(v, CatalogueRecord) else CatalogueRecord(**as_dict(v)) for v in self.record]
 
-        if self.release_date is not None and not isinstance(self.release_date, str):
-            self.release_date = str(self.release_date)
+        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
+            self.release_date = XSDDate(self.release_date)
 
         if self.rights is not None and not isinstance(self.rights, RightsStatement):
             self.rights = RightsStatement()
@@ -1127,26 +1129,21 @@ class CatalogueRecord(YAMLRoot):
     class_name: ClassVar[str] = "CatalogueRecord"
     class_model_uri: ClassVar[URIRef] = NFDI4C.CatalogueRecord
 
-    modification_date: str = None
-    primary_topic: Union[dict, "CataloguedResource"] = None
+    modification_date: Union[str, XSDDate] = None
+    primary_topic: Union[dict, Any] = None
     application_profile: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
     change_type: Optional[Union[dict, "Concept"]] = None
     description: Optional[Union[str, List[str]]] = empty_list()
     language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
-    listing_date: Optional[str] = None
+    listing_date: Optional[Union[str, XSDDate]] = None
     source_metadata: Optional[Union[dict, "CatalogueRecord"]] = None
     title: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.modification_date):
             self.MissingRequiredField("modification_date")
-        if not isinstance(self.modification_date, str):
-            self.modification_date = str(self.modification_date)
-
-        if self._is_empty(self.primary_topic):
-            self.MissingRequiredField("primary_topic")
-        if not isinstance(self.primary_topic, CataloguedResource):
-            self.primary_topic = CataloguedResource()
+        if not isinstance(self.modification_date, XSDDate):
+            self.modification_date = XSDDate(self.modification_date)
 
         if not isinstance(self.application_profile, list):
             self.application_profile = [self.application_profile] if self.application_profile is not None else []
@@ -1163,8 +1160,8 @@ class CatalogueRecord(YAMLRoot):
             self.language = [self.language] if self.language is not None else []
         self.language = [v if isinstance(v, LinguisticSystem) else LinguisticSystem(**as_dict(v)) for v in self.language]
 
-        if self.listing_date is not None and not isinstance(self.listing_date, str):
-            self.listing_date = str(self.listing_date)
+        if self.listing_date is not None and not isinstance(self.listing_date, XSDDate):
+            self.listing_date = XSDDate(self.listing_date)
 
         if self.source_metadata is not None and not isinstance(self.source_metadata, CatalogueRecord):
             self.source_metadata = CatalogueRecord(**as_dict(self.source_metadata))
@@ -1174,18 +1171,6 @@ class CatalogueRecord(YAMLRoot):
         self.title = [v if isinstance(v, str) else str(v) for v in self.title]
 
         super().__post_init__(**kwargs)
-
-
-class CataloguedResource(YAMLRoot):
-    """
-    See [DCAT-AP specs:CataloguedResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CataloguedResource)
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["Resource"]
-    class_class_curie: ClassVar[str] = "dcat:Resource"
-    class_name: ClassVar[str] = "CataloguedResource"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.CataloguedResource
 
 
 @dataclass(repr=False)
@@ -1310,20 +1295,20 @@ class Dataset(YAMLRoot):
     frequency: Optional[Union[dict, "Frequency"]] = None
     geographical_coverage: Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]] = empty_list()
     has_version: Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]] = empty_list()
-    identifier: Optional[Union[Union[str, URI], List[Union[str, URI]]]] = empty_list()
+    identifier: Optional[Union[str, List[str]]] = empty_list()
     in_series: Optional[Union[Union[dict, "DatasetSeries"], List[Union[dict, "DatasetSeries"]]]] = empty_list()
     is_referenced_by: Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]] = empty_list()
     keyword: Optional[Union[str, List[str]]] = empty_list()
     landing_page: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
     language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
-    modification_date: Optional[str] = None
+    modification_date: Optional[Union[str, XSDDate]] = None
     other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
     provenance: Optional[Union[Union[dict, "ProvenanceStatement"], List[Union[dict, "ProvenanceStatement"]]]] = empty_list()
     publisher: Optional[Union[dict, "Agent"]] = None
     qualified_attribution: Optional[Union[Union[dict, "Attribution"], List[Union[dict, "Attribution"]]]] = empty_list()
     qualified_relation: Optional[Union[Union[dict, "Relationship"], List[Union[dict, "Relationship"]]]] = empty_list()
     related_resource: Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]] = empty_list()
-    release_date: Optional[str] = None
+    release_date: Optional[Union[str, XSDDate]] = None
     sample: Optional[Union[Union[dict, "Distribution"], List[Union[dict, "Distribution"]]]] = empty_list()
     source: Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]] = empty_list()
     spatial_resolution: Optional[Decimal] = None
@@ -1388,7 +1373,7 @@ class Dataset(YAMLRoot):
 
         if not isinstance(self.identifier, list):
             self.identifier = [self.identifier] if self.identifier is not None else []
-        self.identifier = [v if isinstance(v, URI) else URI(v) for v in self.identifier]
+        self.identifier = [v if isinstance(v, str) else str(v) for v in self.identifier]
 
         if not isinstance(self.in_series, list):
             self.in_series = [self.in_series] if self.in_series is not None else []
@@ -1410,8 +1395,8 @@ class Dataset(YAMLRoot):
             self.language = [self.language] if self.language is not None else []
         self.language = [v if isinstance(v, LinguisticSystem) else LinguisticSystem(**as_dict(v)) for v in self.language]
 
-        if self.modification_date is not None and not isinstance(self.modification_date, str):
-            self.modification_date = str(self.modification_date)
+        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
+            self.modification_date = XSDDate(self.modification_date)
 
         if not isinstance(self.other_identifier, list):
             self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
@@ -1436,8 +1421,8 @@ class Dataset(YAMLRoot):
             self.related_resource = [self.related_resource] if self.related_resource is not None else []
         self.related_resource = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.related_resource]
 
-        if self.release_date is not None and not isinstance(self.release_date, str):
-            self.release_date = str(self.release_date)
+        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
+            self.release_date = XSDDate(self.release_date)
 
         if not isinstance(self.sample, list):
             self.sample = [self.sample] if self.sample is not None else []
@@ -1598,9 +1583,9 @@ class DatasetSeries(YAMLRoot):
     contact_point: Optional[Union[Union[dict, "Kind"], List[Union[dict, "Kind"]]]] = empty_list()
     frequency: Optional[Union[dict, "Frequency"]] = None
     geographical_coverage: Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]] = empty_list()
-    modification_date: Optional[str] = None
+    modification_date: Optional[Union[str, XSDDate]] = None
     publisher: Optional[Union[dict, "Agent"]] = None
-    release_date: Optional[str] = None
+    release_date: Optional[Union[str, XSDDate]] = None
     temporal_coverage: Optional[Union[Union[dict, "PeriodOfTime"], List[Union[dict, "PeriodOfTime"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1631,14 +1616,14 @@ class DatasetSeries(YAMLRoot):
             self.geographical_coverage = [self.geographical_coverage] if self.geographical_coverage is not None else []
         self.geographical_coverage = [v if isinstance(v, Location) else Location(**as_dict(v)) for v in self.geographical_coverage]
 
-        if self.modification_date is not None and not isinstance(self.modification_date, str):
-            self.modification_date = str(self.modification_date)
+        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
+            self.modification_date = XSDDate(self.modification_date)
 
         if self.publisher is not None and not isinstance(self.publisher, Agent):
             self.publisher = Agent(**as_dict(self.publisher))
 
-        if self.release_date is not None and not isinstance(self.release_date, str):
-            self.release_date = str(self.release_date)
+        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
+            self.release_date = XSDDate(self.release_date)
 
         if not isinstance(self.temporal_coverage, list):
             self.temporal_coverage = [self.temporal_coverage] if self.temporal_coverage is not None else []
@@ -1675,9 +1660,9 @@ class Distribution(YAMLRoot):
     licence: Optional[Union[dict, "LicenseDocument"]] = None
     linked_schemas: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
     media_type: Optional[Union[dict, "MediaType"]] = None
-    modification_date: Optional[str] = None
+    modification_date: Optional[Union[str, XSDDate]] = None
     packaging_format: Optional[Union[dict, "MediaType"]] = None
-    release_date: Optional[str] = None
+    release_date: Optional[Union[str, XSDDate]] = None
     rights: Optional[Union[dict, "RightsStatement"]] = None
     spatial_resolution: Optional[Decimal] = None
     status: Optional[Union[dict, "Concept"]] = None
@@ -1743,14 +1728,14 @@ class Distribution(YAMLRoot):
         if self.media_type is not None and not isinstance(self.media_type, MediaType):
             self.media_type = MediaType()
 
-        if self.modification_date is not None and not isinstance(self.modification_date, str):
-            self.modification_date = str(self.modification_date)
+        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
+            self.modification_date = XSDDate(self.modification_date)
 
         if self.packaging_format is not None and not isinstance(self.packaging_format, MediaType):
             self.packaging_format = MediaType()
 
-        if self.release_date is not None and not isinstance(self.release_date, str):
-            self.release_date = str(self.release_date)
+        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
+            self.release_date = XSDDate(self.release_date)
 
         if self.rights is not None and not isinstance(self.rights, RightsStatement):
             self.rights = RightsStatement()
@@ -1961,13 +1946,13 @@ class Identifier(SupportiveEntity):
     class_name: ClassVar[str] = "Identifier"
     class_model_uri: ClassVar[URIRef] = NFDI4C.Identifier
 
-    notation: Union[str, URI] = None
+    notation: str = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.notation):
             self.MissingRequiredField("notation")
-        if not isinstance(self.notation, URI):
-            self.notation = URI(self.notation)
+        if not isinstance(self.notation, str):
+            self.notation = str(self.notation)
 
         super().__post_init__(**kwargs)
 
@@ -2766,7 +2751,7 @@ slots.Catalogue_licence = Slot(uri=DCTERMS.license, name="Catalogue_licence", cu
                    model_uri=NFDI4C.Catalogue_licence, domain=Catalogue, range=Optional[Union[dict, "LicenseDocument"]])
 
 slots.Catalogue_modification_date = Slot(uri=DCTERMS.modified, name="Catalogue_modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=NFDI4C.Catalogue_modification_date, domain=Catalogue, range=Optional[str])
+                   model_uri=NFDI4C.Catalogue_modification_date, domain=Catalogue, range=Optional[Union[str, XSDDate]])
 
 slots.Catalogue_publisher = Slot(uri=DCTERMS.publisher, name="Catalogue_publisher", curie=DCTERMS.curie('publisher'),
                    model_uri=NFDI4C.Catalogue_publisher, domain=Catalogue, range=Union[dict, "Agent"])
@@ -2775,7 +2760,7 @@ slots.Catalogue_record = Slot(uri=DCAT.record, name="Catalogue_record", curie=DC
                    model_uri=NFDI4C.Catalogue_record, domain=Catalogue, range=Optional[Union[Union[dict, "CatalogueRecord"], List[Union[dict, "CatalogueRecord"]]]])
 
 slots.Catalogue_release_date = Slot(uri=DCTERMS.issued, name="Catalogue_release_date", curie=DCTERMS.curie('issued'),
-                   model_uri=NFDI4C.Catalogue_release_date, domain=Catalogue, range=Optional[str])
+                   model_uri=NFDI4C.Catalogue_release_date, domain=Catalogue, range=Optional[Union[str, XSDDate]])
 
 slots.Catalogue_rights = Slot(uri=DCTERMS.rights, name="Catalogue_rights", curie=DCTERMS.curie('rights'),
                    model_uri=NFDI4C.Catalogue_rights, domain=Catalogue, range=Optional[Union[dict, "RightsStatement"]])
@@ -2805,13 +2790,13 @@ slots.CatalogueRecord_language = Slot(uri=DCTERMS.language, name="CatalogueRecor
                    model_uri=NFDI4C.CatalogueRecord_language, domain=CatalogueRecord, range=Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]])
 
 slots.CatalogueRecord_listing_date = Slot(uri=DCTERMS.issued, name="CatalogueRecord_listing_date", curie=DCTERMS.curie('issued'),
-                   model_uri=NFDI4C.CatalogueRecord_listing_date, domain=CatalogueRecord, range=Optional[str])
+                   model_uri=NFDI4C.CatalogueRecord_listing_date, domain=CatalogueRecord, range=Optional[Union[str, XSDDate]])
 
 slots.CatalogueRecord_modification_date = Slot(uri=DCTERMS.modified, name="CatalogueRecord_modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=NFDI4C.CatalogueRecord_modification_date, domain=CatalogueRecord, range=str)
+                   model_uri=NFDI4C.CatalogueRecord_modification_date, domain=CatalogueRecord, range=Union[str, XSDDate])
 
 slots.CatalogueRecord_primary_topic = Slot(uri=FOAF.primaryTopic, name="CatalogueRecord_primary_topic", curie=FOAF.curie('primaryTopic'),
-                   model_uri=NFDI4C.CatalogueRecord_primary_topic, domain=CatalogueRecord, range=Union[dict, "CataloguedResource"])
+                   model_uri=NFDI4C.CatalogueRecord_primary_topic, domain=CatalogueRecord, range=Union[dict, Any])
 
 slots.CatalogueRecord_source_metadata = Slot(uri=DCTERMS.source, name="CatalogueRecord_source_metadata", curie=DCTERMS.curie('source'),
                    model_uri=NFDI4C.CatalogueRecord_source_metadata, domain=CatalogueRecord, range=Optional[Union[dict, "CatalogueRecord"]])
@@ -2913,7 +2898,7 @@ slots.Dataset_has_version = Slot(uri=DCAT.hasVersion, name="Dataset_has_version"
                    model_uri=NFDI4C.Dataset_has_version, domain=Dataset, range=Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]])
 
 slots.Dataset_identifier = Slot(uri=DCTERMS.identifier, name="Dataset_identifier", curie=DCTERMS.curie('identifier'),
-                   model_uri=NFDI4C.Dataset_identifier, domain=Dataset, range=Optional[Union[Union[str, URI], List[Union[str, URI]]]])
+                   model_uri=NFDI4C.Dataset_identifier, domain=Dataset, range=Optional[Union[str, List[str]]])
 
 slots.Dataset_in_series = Slot(uri=DCAT.inSeries, name="Dataset_in_series", curie=DCAT.curie('inSeries'),
                    model_uri=NFDI4C.Dataset_in_series, domain=Dataset, range=Optional[Union[Union[dict, "DatasetSeries"], List[Union[dict, "DatasetSeries"]]]])
@@ -2931,7 +2916,7 @@ slots.Dataset_language = Slot(uri=DCTERMS.language, name="Dataset_language", cur
                    model_uri=NFDI4C.Dataset_language, domain=Dataset, range=Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]])
 
 slots.Dataset_modification_date = Slot(uri=DCTERMS.modified, name="Dataset_modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=NFDI4C.Dataset_modification_date, domain=Dataset, range=Optional[str])
+                   model_uri=NFDI4C.Dataset_modification_date, domain=Dataset, range=Optional[Union[str, XSDDate]])
 
 slots.Dataset_other_identifier = Slot(uri=ADMS.identifier, name="Dataset_other_identifier", curie=ADMS.curie('identifier'),
                    model_uri=NFDI4C.Dataset_other_identifier, domain=Dataset, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
@@ -2952,7 +2937,7 @@ slots.Dataset_related_resource = Slot(uri=DCTERMS.relation, name="Dataset_relate
                    model_uri=NFDI4C.Dataset_related_resource, domain=Dataset, range=Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]])
 
 slots.Dataset_release_date = Slot(uri=DCTERMS.issued, name="Dataset_release_date", curie=DCTERMS.curie('issued'),
-                   model_uri=NFDI4C.Dataset_release_date, domain=Dataset, range=Optional[str])
+                   model_uri=NFDI4C.Dataset_release_date, domain=Dataset, range=Optional[Union[str, XSDDate]])
 
 slots.Dataset_sample = Slot(uri=ADMS.sample, name="Dataset_sample", curie=ADMS.curie('sample'),
                    model_uri=NFDI4C.Dataset_sample, domain=Dataset, range=Optional[Union[Union[dict, "Distribution"], List[Union[dict, "Distribution"]]]])
@@ -3003,13 +2988,13 @@ slots.DatasetSeries_geographical_coverage = Slot(uri=DCTERMS.spatial, name="Data
                    model_uri=NFDI4C.DatasetSeries_geographical_coverage, domain=DatasetSeries, range=Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]])
 
 slots.DatasetSeries_modification_date = Slot(uri=DCTERMS.modified, name="DatasetSeries_modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=NFDI4C.DatasetSeries_modification_date, domain=DatasetSeries, range=Optional[str])
+                   model_uri=NFDI4C.DatasetSeries_modification_date, domain=DatasetSeries, range=Optional[Union[str, XSDDate]])
 
 slots.DatasetSeries_publisher = Slot(uri=DCTERMS.publisher, name="DatasetSeries_publisher", curie=DCTERMS.curie('publisher'),
                    model_uri=NFDI4C.DatasetSeries_publisher, domain=DatasetSeries, range=Optional[Union[dict, "Agent"]])
 
 slots.DatasetSeries_release_date = Slot(uri=DCTERMS.issued, name="DatasetSeries_release_date", curie=DCTERMS.curie('issued'),
-                   model_uri=NFDI4C.DatasetSeries_release_date, domain=DatasetSeries, range=Optional[str])
+                   model_uri=NFDI4C.DatasetSeries_release_date, domain=DatasetSeries, range=Optional[Union[str, XSDDate]])
 
 slots.DatasetSeries_temporal_coverage = Slot(uri=DCTERMS.temporal, name="DatasetSeries_temporal_coverage", curie=DCTERMS.curie('temporal'),
                    model_uri=NFDI4C.DatasetSeries_temporal_coverage, domain=DatasetSeries, range=Optional[Union[Union[dict, "PeriodOfTime"], List[Union[dict, "PeriodOfTime"]]]])
@@ -3066,13 +3051,13 @@ slots.Distribution_media_type = Slot(uri=DCAT.mediaType, name="Distribution_medi
                    model_uri=NFDI4C.Distribution_media_type, domain=Distribution, range=Optional[Union[dict, "MediaType"]])
 
 slots.Distribution_modification_date = Slot(uri=DCTERMS.modified, name="Distribution_modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=NFDI4C.Distribution_modification_date, domain=Distribution, range=Optional[str])
+                   model_uri=NFDI4C.Distribution_modification_date, domain=Distribution, range=Optional[Union[str, XSDDate]])
 
 slots.Distribution_packaging_format = Slot(uri=DCAT.packageFormat, name="Distribution_packaging_format", curie=DCAT.curie('packageFormat'),
                    model_uri=NFDI4C.Distribution_packaging_format, domain=Distribution, range=Optional[Union[dict, "MediaType"]])
 
 slots.Distribution_release_date = Slot(uri=DCTERMS.issued, name="Distribution_release_date", curie=DCTERMS.curie('issued'),
-                   model_uri=NFDI4C.Distribution_release_date, domain=Distribution, range=Optional[str])
+                   model_uri=NFDI4C.Distribution_release_date, domain=Distribution, range=Optional[Union[str, XSDDate]])
 
 slots.Distribution_rights = Slot(uri=DCTERMS.rights, name="Distribution_rights", curie=DCTERMS.curie('rights'),
                    model_uri=NFDI4C.Distribution_rights, domain=Distribution, range=Optional[Union[dict, "RightsStatement"]])
@@ -3090,7 +3075,7 @@ slots.Distribution_title = Slot(uri=DCTERMS.title, name="Distribution_title", cu
                    model_uri=NFDI4C.Distribution_title, domain=Distribution, range=Optional[Union[str, List[str]]])
 
 slots.Identifier_notation = Slot(uri=SKOS.notation, name="Identifier_notation", curie=SKOS.curie('notation'),
-                   model_uri=NFDI4C.Identifier_notation, domain=Identifier, range=Union[str, URI])
+                   model_uri=NFDI4C.Identifier_notation, domain=Identifier, range=str)
 
 slots.LicenseDocument_type = Slot(uri=DCTERMS.type, name="LicenseDocument_type", curie=DCTERMS.curie('type'),
                    model_uri=NFDI4C.LicenseDocument_type, domain=LicenseDocument, range=Optional[Union[Union[dict, Concept], List[Union[dict, Concept]]]])

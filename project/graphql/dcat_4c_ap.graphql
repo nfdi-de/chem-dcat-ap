@@ -60,20 +60,20 @@ type AnalysisDataset
     frequency: Frequency
     geographicalCoverage: [Location]
     hasVersion: [Dataset]
-    identifier: [Uri]
+    identifier: [String]
     inSeries: [DatasetSeries]
     isReferencedBy: [Resource]
     keyword: [String]
     landingPage: [Document]
     language: [LinguisticSystem]
-    modificationDate: String
+    modificationDate: Date
     otherIdentifier: [Identifier]
     provenance: [ProvenanceStatement]
     publisher: Agent
     qualifiedAttribution: [Attribution]
     qualifiedRelation: [Relationship]
     relatedResource: [Resource]
-    releaseDate: String
+    releaseDate: Date
     sample: [Distribution]
     source: [Dataset]
     spatialResolution: Decimal
@@ -104,6 +104,10 @@ type AnalysisSourceData
     wasGeneratedBy: [DataCreatingActivity]
   }
 
+interface Any
+  {
+  }
+
 type Attribution
   {
   }
@@ -120,19 +124,15 @@ type Catalogue
     homepage: Document
     language: [LinguisticSystem]
     licence: LicenseDocument
-    modificationDate: String
+    modificationDate: Date
     publisher: Agent!
     record: [CatalogueRecord]
-    releaseDate: String
+    releaseDate: Date
     rights: RightsStatement
     service: [DataService]
     temporalCoverage: [PeriodOfTime]
     themes: [ConceptScheme]
     title: [String]!
-  }
-
-interface CataloguedResource
-  {
   }
 
 type CatalogueRecord
@@ -141,9 +141,9 @@ type CatalogueRecord
     changeType: Concept
     description: [String]
     language: [LinguisticSystem]
-    listingDate: String
-    modificationDate: String!
-    primaryTopic: CataloguedResource!
+    listingDate: Date
+    modificationDate: Date!
+    primaryTopic: Any!
     sourceMetadata: CatalogueRecord
     title: [String]
   }
@@ -290,20 +290,20 @@ type Dataset
     frequency: Frequency
     geographicalCoverage: [Location]
     hasVersion: [Dataset]
-    identifier: [Uri]
+    identifier: [String]
     inSeries: [DatasetSeries]
     isReferencedBy: [Resource]
     keyword: [String]
     landingPage: [Document]
     language: [LinguisticSystem]
-    modificationDate: String
+    modificationDate: Date
     otherIdentifier: [Identifier]
     provenance: [ProvenanceStatement]
     publisher: Agent
     qualifiedAttribution: [Attribution]
     qualifiedRelation: [Relationship]
     relatedResource: [Resource]
-    releaseDate: String
+    releaseDate: Date
     sample: [Distribution]
     source: [Dataset]
     spatialResolution: Decimal
@@ -324,9 +324,9 @@ type DatasetSeries
     description: [String]!
     frequency: Frequency
     geographicalCoverage: [Location]
-    modificationDate: String
+    modificationDate: Date
     publisher: Agent
-    releaseDate: String
+    releaseDate: Date
     temporalCoverage: [PeriodOfTime]
     title: [String]!
   }
@@ -356,9 +356,9 @@ type Distribution
     licence: LicenseDocument
     linkedSchemas: [Standard]
     mediaType: MediaType
-    modificationDate: String
+    modificationDate: Date
     packagingFormat: MediaType
-    releaseDate: String
+    releaseDate: Date
     rights: RightsStatement
     spatialResolution: Decimal
     status: Concept
@@ -428,7 +428,7 @@ type HardwareTool
 
 type Identifier
   {
-    notation: Uri!
+    notation: String!
   }
 
 type InChi
@@ -512,20 +512,20 @@ type NMRAnalysisDataset
     frequency: Frequency
     geographicalCoverage: [Location]
     hasVersion: [Dataset]
-    identifier: [Uri]
+    identifier: [String]
     inSeries: [DatasetSeries]
     isReferencedBy: [Resource]
     keyword: [String]
     landingPage: [Document]
     language: [LinguisticSystem]
-    modificationDate: String
+    modificationDate: Date
     otherIdentifier: [Identifier]
     provenance: [ProvenanceStatement]
     publisher: Agent
     qualifiedAttribution: [Attribution]
     qualifiedRelation: [Relationship]
     relatedResource: [Resource]
-    releaseDate: String
+    releaseDate: Date
     sample: [Distribution]
     source: [Dataset]
     spatialResolution: Decimal
@@ -647,10 +647,10 @@ type ResearchCatalog
     homepage: Document
     language: [LinguisticSystem]
     licence: LicenseDocument
-    modificationDate: String
+    modificationDate: Date
     publisher: Agent!
     record: [CatalogueRecord]
-    releaseDate: String
+    releaseDate: Date
     rights: RightsStatement
     service: [DataService]
     temporalCoverage: [PeriodOfTime]
@@ -673,20 +673,20 @@ type ResearchDataset
     frequency: Frequency
     geographicalCoverage: [Location]
     hasVersion: [Dataset]
-    identifier: [Uri]
+    identifier: [String]
     inSeries: [DatasetSeries]
     isReferencedBy: [Resource]
     keyword: [String]
     landingPage: [Document]
     language: [LinguisticSystem]
-    modificationDate: String
+    modificationDate: Date
     otherIdentifier: [Identifier]
     provenance: [ProvenanceStatement]
     publisher: Agent
     qualifiedAttribution: [Attribution]
     qualifiedRelation: [Relationship]
     relatedResource: [Resource]
-    releaseDate: String
+    releaseDate: Date
     sample: [Distribution]
     source: [Dataset]
     spatialResolution: Decimal
