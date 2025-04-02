@@ -13,7 +13,7 @@ This LinkML schema representation of DCAT-AP 3.0.0 was automatically created fro
 """.replace('\n', '')
 
 NOTE = """
-The JSON-LD SHACL constraints published with the [Juli 3.0.0 GitHub release](https://github.com/SEMICeu/DCAT-AP/releases/tag/3.0.0) and in the [3.0.0. release branch](https://github.com/SEMICeu/DCAT-AP/tree/3.0.0) are different from the ones in https://github.com/SEMICeu/DCAT-AP/tree/master/releases/3.0.0. Also the TTL shapes provided in the latter in the HTML folder differ from the ones in the SHACL folder, in that they declare dcat:Resource and dcatap:TemporalLiteral as unions of the dcat:Resource subclasses respectively different XML Schema datatypes for date and time. We address this with "helper code" in the conversion script.
+The JSON-LD SHACL constraints published with the [Juli 3.0.0 GitHub release](https://github.com/SEMICeu/DCAT-AP/releases/tag/3.0.0) and in the [3.0.0. release branch](https://github.com/SEMICeu/DCAT-AP/tree/3.0.0) are different from the ones in https://github.com/SEMICeu/DCAT-AP/tree/master/releases/3.0.0. Also the TTL shapes provided in the latter in the HTML folder differ from the ones in the SHACL folder, in that they declare 'dcat:ResourceShape/DcatResource_Shape' and TemporalLiteralShape/DateOrDateTimeDataType_Shape'(shacl/html folder) as unions of the dcat:Dataset, dcat:Catalog, dcat:DataService and dcat:DatasetSeries respectively the datatypes xsd:date, xsd:dateTime, xsd:gYear & xsd:gYearMonth. We currently address this in the conversion script by only allowing xsd:date as a [Temporal Literal](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TemporalLiteral), which means that this LinkML representation of DCAT-AP is stricter and values in xsd:dateTime format will automatically be typecast to xsd:date. Regarding the 'dcat:ResourceShape/DcatResource_Shape' we use LinkML's ['union as ranges'](https://linkml.io/linkml/schemas/advanced.html#unions-as-ranges) approach to provide the expected union of dcat:Resource subclasses. However, this is not fully implemented in LinkML yet, so that any kind of object/class could be used, until https://github.com/linkml/linkml/issues/1813 is fixed.
 """.replace('\n', '')
 
 PREFIX_MAP = {
@@ -39,11 +39,17 @@ PREFIX_MAP = {
     'vl': 'https://purl.eu/ns/shacl#',
     'iana': 'https://www.iana.org/assignments/'}
 
-# The shapes for rdfs:Literal and dcterms:mediaType [sic] are ignored,
-# since we use LinkML's 'string' as default datatype for unspecified literal slot ranges
-# and dcterms:MediaType was used twice, once with this typo in the SHACL and a similar one in the HTML.
-# seeAlso: L251-L258 in 'dcat_ap_SHACL.jsonld' and https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Mediatype
-IGNORED_NODES = ['Literal', 'mediaType', 'TemporalLiteral']
+# The shape for rdfs:Literal is ignored, since we use LinkML's 'string' as default datatype for unspecified literal
+# slot ranges.
+# There shape 'mediaType' is ignored, as it is a duplication/spelling error, seeAlso: L251-L258 in
+# 'dcat_ap_SHACL.jsonld' and https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Mediatype.
+# The shapes for 'TemporalLiteral' and 'CataloguedResource' are ignored, because the union of XSD date and time related
+# datatypes respectively dcat:Resource subclasses that these shapes represent is implemented differently in LinkML,
+# using the linkml:Any class as range and the "any_of" metamodel slot to build such range union.
+# TODO: This "any_of" approach is not fully implemented in LinkML yet, see also:
+#  https://github.com/linkml/linkml/issues/1813
+# The shape for 'CataloguedResource' is
+IGNORED_NODES = ['Literal', 'mediaType', 'TemporalLiteral', 'CataloguedResource']
 
 # Manually curated dict with recommended slots for each class, as this info cannot be parsed from the used shapes.
 RECOMMENDED_SLOTS = [{'Agent': ['type']},
@@ -97,6 +103,13 @@ def parse_shacl_shapes(builder):
         - builder (SchemaBuilder): The builder with added classes
     """
     dcat_ap_shapes = load_shacl_shapes()
+
+    # Add LinkML Any class to allow range unions,
+    # see also https://linkml.io/linkml/schemas/advanced.html#unions-as-ranges
+    builder.add_class(ClassDefinition(name='Any',
+                                      class_uri='linkml:Any',
+                                      abstract=True,
+                                      description='This abstract class is needed to allow a union of classes from this schema as ranges in slots like: *primary_topic* or *modification_date*'))
     # Iterate through each SHACL node shape within the loaded JSON-LD to derive the LinkML classes or types from them.
     for node_shape in dcat_ap_shapes['shapes']:
         node_curie = get_curie(node_shape['sh:targetClass'])
@@ -148,13 +161,25 @@ def parse_shacl_shapes(builder):
                     required = True if 'sh:minCount' in slot_shape and int(slot_shape['sh:minCount']) == 1 else False
                     multivalued = False if 'sh:maxCount' in slot_shape and int(slot_shape['sh:maxCount']) == 1 else True
                     inlined_as_list = False if multivalued == False else True
-                    # Use the default LinkML slot range as substitute for 'rdfs:Literal'
-                    slot_range = 'string'
+                    # Use default slot range 'string' as substitute for 'rdfs:Literal' and 'xsd:date' for
+                    # https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TemporalLiteral, except for
+                    # https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CataloguedResource, which uses linkml:Any.
+                    any_of = None
+                    if slot_name == 'primary_topic':
+                        slot_range = 'Any'
+                        any_of = [{'range':'Catalogue'},
+                                  {'range':'Dataset'},
+                                  {'range':'DatasetSeries'},
+                                  {'range':'DataService'}]
+                    elif slot_name in ['modification_date', 'listing_date', 'release_date']:
+                        slot_range = 'date'
+                    else:
+                        slot_range = 'string'
                     # Assign slot range classes
                     if 'sh:class' in slot_shape:
                         # Account for the renaming of DCAT classes in DCAT-AP
                         if get_curie(slot_shape['sh:class']) == 'dcat:Resource':
-                            slot_range = 'CataloguedResource'
+                            slot_range = 'Any'
                         elif get_curie(slot_shape['sh:class']) == 'dcat:CatalogRecord':
                             slot_range = 'CatalogueRecord'
                         elif get_curie(slot_shape['sh:class']) == 'dcat:Catalog':
@@ -196,6 +221,7 @@ def parse_shacl_shapes(builder):
                                                                 description=description,
                                                                 required=required,
                                                                 range=slot_range,
+                                                                any_of=any_of,
                                                                 multivalued=multivalued,
                                                                 inlined_as_list=inlined_as_list)
 
