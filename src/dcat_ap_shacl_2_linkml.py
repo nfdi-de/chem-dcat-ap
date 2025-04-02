@@ -253,6 +253,7 @@ def parse_shacl_shapes(builder):
                                                                     sorted(class_slots)}
 
 
+        # Parse and add datatypes
         elif node_name in ['duration', 'hexBinary', 'nonNegativeInteger']:
             pattern, base, description = '', '', ''
             if 'nonNegativeInteger' in node_name:
