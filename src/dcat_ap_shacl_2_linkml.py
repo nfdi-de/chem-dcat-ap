@@ -137,7 +137,7 @@ def parse_shacl_shapes(builder):
             class_slots = {}
 
             # Iterate through each property shape within a node shape to derive the LinkML slots from them.
-            if 'sh:property' in node_shape:
+            if node_shape['sh:property']:
                 for slot_shape in node_shape['sh:property']:
                     slot_curie = get_curie(slot_shape['sh:path'])
                     # Use LinkML snake_case naming convention default for slots
