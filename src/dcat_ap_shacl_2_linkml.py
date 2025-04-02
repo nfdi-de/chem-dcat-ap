@@ -122,10 +122,7 @@ def parse_shacl_shapes(builder):
             if node_name not in ['Dataset', 'DatasetSeries', 'Distribution', 'Catalogue', 'CataloguedResource',
                                  'DataService', 'Activity', 'CatalogueRecord']:
                 builder.add_class(ClassDefinition(name='SupportiveEntity',
-                                                  description='The supportive entities are supporting the main entities'
-                                                              ' in the Application Profile. They are included in the '
-                                                              'Application Profile because they form the range of '
-                                                              'properties.'))
+                                                  description='The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.'))
                 builder.add_class(ClassDefinition(name=node_name,
                                                   class_uri=node_curie,
                                                   is_a='SupportiveEntity',
@@ -341,11 +338,7 @@ def build_schema():
     builder.schema.types = {key: builder.schema.types[key] for key in sorted(builder.schema.types)}
 
     # TODO list
-    builder.schema.todos = ['Think about how to add all the enums and their permissible values to constrain the '
-                            'allowed instances of classes such as "Concept", "MediaType", etc. as defined in '
-                            'https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs. '
-                            'Using EnumBindings (https://linkml.io/linkml-model/latest/docs/bindings/) seems best, '
-                            'but does not yet work.']
+    builder.schema.todos = ['Think about how to add all the enums and their permissible values to constrain the allowed instances of classes such as "Concept", "MediaType", etc. as defined in https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs. Using EnumBindings (https://linkml.io/linkml-model/latest/docs/bindings/) seems best, but does not yet work.', 'Check if https://github.com/linkml/linkml/issues/1813 is closed and range unions are validatable']
 
     return builder.schema
 
