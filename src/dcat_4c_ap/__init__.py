@@ -3,3 +3,5 @@ try:
 except ImportError:  # pragma: no cover
     __version__ = "0.0.0"
     __version_tuple__ = (0, 0, 0)
+
+from .datamodel.dcat_4c_ap import *
