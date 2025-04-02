@@ -321,7 +321,7 @@ def build_schema():
     Create a LinkML schema representation
     """
     builder = SchemaBuilder(name="dcat-ap")
-    builder.schema.id = 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'
+    builder.schema.id = 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'
     builder.schema.description = DESCRIPTION + '\nNOTE:' + NOTE
     builder.schema.default_prefix = 'linkmldcatap'
     builder.schema.prefixes = PREFIX_MAP
