@@ -513,6 +513,18 @@
             "title": "AnalysisSourceData",
             "type": "object"
         },
+        "Any": {
+            "additionalProperties": true,
+            "description": "This abstract class is needed to allow a union of classes from this schema as ranges in slots like: *primary_topic* or *modification_date*",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
         "Attribution": {
             "additionalProperties": false,
             "description": "See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)",

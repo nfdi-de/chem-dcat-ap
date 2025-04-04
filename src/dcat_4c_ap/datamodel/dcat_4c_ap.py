@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-04-02T20:00:44
+# Generation date: 2025-04-04T15:45:48
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -85,13 +85,13 @@ ADMS = CurieNamespace('adms', 'http://www.w3.org/ns/adms#')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCAT = CurieNamespace('dcat', 'http://www.w3.org/ns/dcat#')
 DCATAP = CurieNamespace('dcatap', 'http://data.europa.eu/r5r/')
+DCATAP_LINKML = CurieNamespace('dcatap_linkml', 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml#')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://doi.org/')
 ELI = CurieNamespace('eli', 'http://data.europa.eu/eli/ontology#')
 EX = CurieNamespace('ex', 'http://example.org/')
 FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-LINKMLDCATAP = CurieNamespace('linkmldcatap', 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/')
 LOCN = CurieNamespace('locn', 'http://www.w3.org/ns/locn#')
 NFDI = CurieNamespace('nfdi', 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/')
 NFDI4C = CurieNamespace('nfdi4c', 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/')
@@ -1763,8 +1763,8 @@ class SupportiveEntity(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LINKMLDCATAP["SupportiveEntity"]
-    class_class_curie: ClassVar[str] = "linkmldcatap:SupportiveEntity"
+    class_class_uri: ClassVar[URIRef] = DCATAP_LINKML["SupportiveEntity"]
+    class_class_curie: ClassVar[str] = "dcatap_linkml:SupportiveEntity"
     class_name: ClassVar[str] = "SupportiveEntity"
     class_model_uri: ClassVar[URIRef] = NFDI4C.SupportiveEntity
 
