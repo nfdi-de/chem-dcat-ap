@@ -115,9 +115,7 @@ def parse_shacl_shapes(builder):
         node_curie = get_curie(node_shape['sh:targetClass'])
 
         # Account for the renaming of DCAT classes in DCAT-AP
-        if node_curie == 'dcat:Resource':
-            node_name = 'CataloguedResource'
-        elif node_curie == 'dcat:Catalog':
+        if node_curie == 'dcat:Catalog':
             node_name = 'Catalogue'
         elif node_curie == 'dcat:CatalogRecord':
             node_name = 'CatalogueRecord'
