@@ -7,14 +7,14 @@ description: 'This LinkML schema representation of DCAT-AP 3.0.0 was automatical
   and in the [3.0.0. release branch](https://github.com/SEMICeu/DCAT-AP/tree/3.0.0)
   are different from the ones in https://github.com/SEMICeu/DCAT-AP/tree/master/releases/3.0.0.
   Also the TTL shapes provided in the latter in the HTML folder differ from the ones
-  in the SHACL folder, in that they declare ''dcat:ResourceShape/DcatResource_Shape''
-  and TemporalLiteralShape/DateOrDateTimeDataType_Shape''(shacl/html folder) as unions
+  in the SHACL folder, in that they declare "dcat:ResourceShape/DcatResource_Shape"
+  and "TemporalLiteralShape/DateOrDateTimeDataType_Shape"(shacl/html folder) as unions
   of the dcat:Dataset, dcat:Catalog, dcat:DataService and dcat:DatasetSeries respectively
   the datatypes xsd:date, xsd:dateTime, xsd:gYear & xsd:gYearMonth. We currently address
   this in the conversion script by only allowing xsd:date as a [Temporal Literal](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TemporalLiteral),
   which means that this LinkML representation of DCAT-AP is stricter and values in
   xsd:dateTime format will automatically be typecast to xsd:date. Regarding the ''dcat:ResourceShape/DcatResource_Shape''
-  we use LinkML''s [''union as ranges''](https://linkml.io/linkml/schemas/advanced.html#unions-as-ranges)
+  we use the LinkML [union as ranges](https://linkml.io/linkml/schemas/advanced.html#unions-as-ranges)
   approach to provide the expected union of dcat:Resource subclasses. However, this
   is not fully implemented in LinkML yet, so that any kind of object/class could be
   used, until https://github.com/linkml/linkml/issues/1813 is fixed.'
@@ -33,6 +33,7 @@ imports:
 - linkml:types
 license: CC-BY 4.0
 prefixes:
+  dcatap_linkml: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml#
   linkml: https://w3id.org/linkml/
   foaf: http://xmlns.com/foaf/0.1/
   prov: http://www.w3.org/ns/prov#
@@ -54,7 +55,7 @@ prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   vl: https://purl.eu/ns/shacl#
   iana: https://www.iana.org/assignments/
-default_prefix: linkmldcatap
+default_prefix: dcatap_linkml
 default_range: string
 types:
   duration:
