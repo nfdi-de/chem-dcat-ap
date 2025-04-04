@@ -360,73 +360,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Environment/">Environment</a></td>
-<td>The surrounding in which the dataset creating activity took place (e</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
-<td>An activity (process) that has the objective to produce information about an ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
-<td>Information that was evaluated within a DataAnalysis</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>An activity or process that is being evaluated in a DataCreatingActivity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SMILES/">SMILES</a></td>
-<td>A structure descriptor that denotes a molecular structure as a graph and conf...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td>An experimental procedure with the aim of producing a portion of a given comp...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
-<td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../InChIKey/">InChIKey</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Plan/">Plan</a></td>
-<td>A piece of information that specifies how an activity has to be carried out b...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>A piece of information that is attributed to an entity of interest, tool or e...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>A quantifiable piece of information that is attributed to an entity of intere...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
-<td>A set of chemical shifts obtained via NMR spectroscopy</td>
 <td>no</td>
 </tr>
 <tr>
@@ -435,18 +370,28 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SoftwareTool/">SoftwareTool</a></td>
-<td>A software program with a certain function that was used within a DataCreatin...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ChemicalSample/">ChemicalSample</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A portion of matter of constant composition, composed of molecular entities o...</td>
+<td><a href="../InChIKey/">InChIKey</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td>An activity (process) that has the objective to produce information about an ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
+<td>A mixin with which an entity of this schema can be classified via an addition...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>Information that was evaluated within a DataAnalysis</td>
 <td>no</td>
 </tr>
 <tr>
@@ -455,8 +400,48 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
-<td>A mixin with which an entity of this schema can be classified via an addition...</td>
+<td><a href="../Laboratory/">Laboratory</a></td>
+<td>A facility that provides controlled conditions in which scientific or technol...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SMILES/">SMILES</a></td>
+<td>A structure descriptor that denotes a molecular structure as a graph and conf...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or process that is being evaluated in a DataCreatingActivity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Environment/">Environment</a></td>
+<td>The surrounding in which the dataset creating activity took place (e</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Tool/">Tool</a></td>
+<td>A entity with a certain function used within a DataCreatingActivity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SoftwareTool/">SoftwareTool</a></td>
+<td>A software program with a certain function that was used within a DataCreatin...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>A piece of information that is attributed to an entity of interest, tool or e...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -470,13 +455,28 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Laboratory/">Laboratory</a></td>
-<td>A facility that provides controlled conditions in which scientific or technol...</td>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td>A portion of matter of constant composition, composed of molecular entities o...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Tool/">Tool</a></td>
-<td>A entity with a certain function used within a DataCreatingActivity</td>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Plan/">Plan</a></td>
+<td>A piece of information that specifies how an activity has to be carried out b...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>A quantifiable piece of information that is attributed to an entity of intere...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td>A set of chemical shifts obtained via NMR spectroscopy</td>
 <td>no</td>
 </tr>
 </tbody>
