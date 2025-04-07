@@ -109,7 +109,7 @@ def parse_shacl_shapes(builder):
     # see also https://linkml.io/linkml/schemas/advanced.html#unions-as-ranges
     builder.add_class(ClassDefinition(name='Any',
                                       class_uri='linkml:Any',
-                                      description='This abstract class is needed to allow a union of classes from this schema as ranges in slots like: *primary_topic* or *modification_date*'))
+                                      description='This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/)'))
     # Iterate through each SHACL node shape within the loaded JSON-LD to derive the LinkML classes or types from them.
     for node_shape in dcat_ap_shapes['shapes']:
         node_curie = get_curie(node_shape['sh:targetClass'])
