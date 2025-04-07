@@ -116,6 +116,8 @@
 --     * Slot: ResearchDataset_id Description: Autocreated FK slot
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: type_id Description: The nature of the agent.
+-- # Class: "Any" Description: "This abstract class is needed to allow a union of classes from this schema as ranges in slots like: *primary_topic* or *modification_date*"
+--     * Slot: id Description: 
 -- # Class: "Attribution" Description: "See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)"
 --     * Slot: id Description: 
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
@@ -142,8 +144,6 @@
 --     * Slot: change_type_id Description: The status of the catalogue record in the context of editorial flow of the dataset and data service descriptions.
 --     * Slot: primary_topic_id Description: A link to the Dataset, Data service or Catalog described in the record.
 --     * Slot: source_metadata_id Description: The original metadata that was used in creating metadata for the Dataset, Data Service or Dataset Series.
--- # Class: "CataloguedResource" Description: "See [DCAT-AP specs:CataloguedResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CataloguedResource)"
---     * Slot: id Description: 
 -- # Class: "Checksum" Description: "See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)"
 --     * Slot: id Description: 
 --     * Slot: checksum_value Description: A lower case hexadecimal encoded digest value produced using a specific algorithm.
@@ -629,8 +629,8 @@
 
 CREATE TABLE "NMRAnalysisDataset" (
 	id TEXT NOT NULL, 
-	modification_date TEXT, 
-	release_date TEXT, 
+	modification_date DATE, 
+	release_date DATE, 
 	spatial_resolution INTEGER, 
 	temporal_resolution TEXT, 
 	version TEXT, 
@@ -748,10 +748,14 @@ CREATE TABLE "Agent" (
 	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY(type_id) REFERENCES "Concept" (id)
 );
+CREATE TABLE "Any" (
+	id INTEGER NOT NULL, 
+	PRIMARY KEY (id)
+);
 CREATE TABLE "Catalogue" (
 	id INTEGER NOT NULL, 
-	modification_date TEXT, 
-	release_date TEXT, 
+	modification_date DATE, 
+	release_date DATE, 
 	"Catalogue_id" INTEGER, 
 	"ResearchCatalog_id" TEXT, 
 	creator_id INTEGER, 
@@ -767,10 +771,6 @@ CREATE TABLE "Catalogue" (
 	FOREIGN KEY(licence_id) REFERENCES "LicenseDocument" (id), 
 	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id), 
 	FOREIGN KEY(rights_id) REFERENCES "RightsStatement" (id)
-);
-CREATE TABLE "CataloguedResource" (
-	id INTEGER NOT NULL, 
-	PRIMARY KEY (id)
 );
 CREATE TABLE "ChecksumAlgorithm" (
 	id INTEGER NOT NULL, 
@@ -810,8 +810,8 @@ CREATE TABLE "DataService" (
 );
 CREATE TABLE "Dataset" (
 	id INTEGER NOT NULL, 
-	modification_date TEXT, 
-	release_date TEXT, 
+	modification_date DATE, 
+	release_date DATE, 
 	spatial_resolution INTEGER, 
 	temporal_resolution TEXT, 
 	version TEXT, 
@@ -838,8 +838,8 @@ CREATE TABLE "Dataset" (
 CREATE TABLE "Distribution" (
 	id INTEGER NOT NULL, 
 	byte_size INTEGER, 
-	modification_date TEXT, 
-	release_date TEXT, 
+	modification_date DATE, 
+	release_date DATE, 
 	spatial_resolution INTEGER, 
 	temporal_resolution TEXT, 
 	"NMRAnalysisDataset_id" TEXT, 
@@ -934,8 +934,8 @@ CREATE TABLE "DefinedTerm" (
 );
 CREATE TABLE "ResearchDataset" (
 	id TEXT NOT NULL, 
-	modification_date TEXT, 
-	release_date TEXT, 
+	modification_date DATE, 
+	release_date DATE, 
 	spatial_resolution INTEGER, 
 	temporal_resolution TEXT, 
 	version TEXT, 
@@ -951,8 +951,8 @@ CREATE TABLE "ResearchDataset" (
 );
 CREATE TABLE "AnalysisDataset" (
 	id TEXT NOT NULL, 
-	modification_date TEXT, 
-	release_date TEXT, 
+	modification_date DATE, 
+	release_date DATE, 
 	spatial_resolution INTEGER, 
 	temporal_resolution TEXT, 
 	version TEXT, 
@@ -966,8 +966,8 @@ CREATE TABLE "AnalysisDataset" (
 );
 CREATE TABLE "ResearchCatalog" (
 	id TEXT NOT NULL, 
-	modification_date TEXT, 
-	release_date TEXT, 
+	modification_date DATE, 
+	release_date DATE, 
 	creator_id INTEGER, 
 	homepage_id INTEGER, 
 	licence_id INTEGER, 
@@ -1118,8 +1118,8 @@ CREATE TABLE "Attribution" (
 );
 CREATE TABLE "CatalogueRecord" (
 	id INTEGER NOT NULL, 
-	listing_date TEXT, 
-	modification_date TEXT NOT NULL, 
+	listing_date DATE, 
+	modification_date DATE NOT NULL, 
 	"Catalogue_id" INTEGER, 
 	"ResearchCatalog_id" TEXT, 
 	change_type_id INTEGER, 
@@ -1129,7 +1129,7 @@ CREATE TABLE "CatalogueRecord" (
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id), 
 	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id), 
 	FOREIGN KEY(change_type_id) REFERENCES "Concept" (id), 
-	FOREIGN KEY(primary_topic_id) REFERENCES "CataloguedResource" (id), 
+	FOREIGN KEY(primary_topic_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(source_metadata_id) REFERENCES "CatalogueRecord" (id)
 );
 CREATE TABLE "Checksum" (
@@ -1149,8 +1149,8 @@ CREATE TABLE "ConceptScheme" (
 );
 CREATE TABLE "DatasetSeries" (
 	id INTEGER NOT NULL, 
-	modification_date TEXT, 
-	release_date TEXT, 
+	modification_date DATE, 
+	release_date DATE, 
 	"NMRAnalysisDataset_id" TEXT, 
 	"Dataset_id" INTEGER, 
 	"ResearchDataset_id" TEXT, 

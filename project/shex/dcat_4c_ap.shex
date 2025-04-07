@@ -16,7 +16,7 @@ PREFIX schema1: <http://schema.org/>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX NMR: <http://nmrML.org/nmrCV#NMR:>
-PREFIX linkmldcatap: <https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml/>
+PREFIX dcatap_linkml: <https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml#>
 PREFIX spdx: <http://spdx.org/rdf/terms#>
 PREFIX eli: <http://data.europa.eu/eli/ontology#>
 PREFIX locn: <http://www.w3.org/ns/locn#>
@@ -62,25 +62,25 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-linkmldcatap:Duration xsd:duration
+dcatap_linkml:Duration xsd:duration
 
-linkmldcatap:HexBinary xsd:hexBinary
+dcatap_linkml:HexBinary xsd:hexBinary
 
-linkmldcatap:NonNegativeInteger xsd:nonNegativeInteger
+dcatap_linkml:NonNegativeInteger xsd:nonNegativeInteger
 
-linkmldcatap:Activity  (
+dcatap_linkml:Activity  (
     CLOSED {
-       (  $linkmldcatap:Activity_tes rdf:type . * ;
+       (  $dcatap_linkml:Activity_tes rdf:type . * ;
           rdf:type [ prov:Activity ] ?
        )
     } OR @nfdi:DataCreatingActivity OR @nfdi:EvaluatedActivity
 )
 
-linkmldcatap:Agent CLOSED {
-    (  $linkmldcatap:Agent_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+dcatap_linkml:Agent CLOSED {
+    (  $dcatap_linkml:Agent_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ? ;
           foaf:name @linkml:String + ;
-          dcterms:type @linkmldcatap:Concept ?
+          dcterms:type @dcatap_linkml:Concept ?
        ) ;
        rdf:type [ foaf:Agent ] ?
     )
@@ -108,34 +108,40 @@ nfdi:AnalysisSourceData  (
     } OR @<NMRSpectrum>
 )
 
-linkmldcatap:Attribution CLOSED {
-    (  $linkmldcatap:Attribution_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:Any CLOSED {
+    (  $dcatap_linkml:Any_tes rdf:type . * ;
+       rdf:type [ linkml:Any ] ?
+    )
+}
+
+dcatap_linkml:Attribution CLOSED {
+    (  $dcatap_linkml:Attribution_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ prov:Attribution ] ?
     )
 }
 
-linkmldcatap:Catalogue  (
+dcatap_linkml:Catalogue  (
     CLOSED {
-       (  $linkmldcatap:Catalogue_tes (  dcatap:applicableLegislation @linkmldcatap:LegalResource * ;
-             dcat:catalog @linkmldcatap:Catalogue * ;
-             dcterms:creator @linkmldcatap:Agent ? ;
+       (  $dcatap_linkml:Catalogue_tes (  dcatap:applicableLegislation @dcatap_linkml:LegalResource * ;
+             dcat:catalog @dcatap_linkml:Catalogue * ;
+             dcterms:creator @dcatap_linkml:Agent ? ;
              dcterms:description @linkml:String + ;
-             dcterms:spatial @linkmldcatap:Location * ;
-             dcat:dataset @linkmldcatap:Dataset * ;
-             dcterms:hasPart @linkmldcatap:Catalogue * ;
-             foaf:homepage @linkmldcatap:Document ? ;
-             dcterms:language @linkmldcatap:LinguisticSystem * ;
-             dcterms:license @linkmldcatap:LicenseDocument ? ;
-             dcterms:modified @linkml:String ? ;
-             dcterms:publisher @linkmldcatap:Agent ;
-             dcat:record @linkmldcatap:CatalogueRecord * ;
-             dcterms:issued @linkml:String ? ;
-             dcterms:rights @linkmldcatap:RightsStatement ? ;
-             dcat:service @linkmldcatap:DataService * ;
-             dcterms:temporal @linkmldcatap:PeriodOfTime * ;
-             dcat:themeTaxonomy @linkmldcatap:ConceptScheme * ;
+             dcterms:spatial @dcatap_linkml:Location * ;
+             dcat:dataset @dcatap_linkml:Dataset * ;
+             dcterms:hasPart @dcatap_linkml:Catalogue * ;
+             foaf:homepage @dcatap_linkml:Document ? ;
+             dcterms:language @dcatap_linkml:LinguisticSystem * ;
+             dcterms:license @dcatap_linkml:LicenseDocument ? ;
+             dcterms:modified @linkml:Date ? ;
+             dcterms:publisher @dcatap_linkml:Agent ;
+             dcat:record @dcatap_linkml:CatalogueRecord * ;
+             dcterms:issued @linkml:Date ? ;
+             dcterms:rights @dcatap_linkml:RightsStatement ? ;
+             dcat:service @dcatap_linkml:DataService * ;
+             dcterms:temporal @dcatap_linkml:PeriodOfTime * ;
+             dcat:themeTaxonomy @dcatap_linkml:ConceptScheme * ;
              dcterms:title @linkml:String +
           ) ;
           rdf:type [ dcat:Catalog ] ?
@@ -143,40 +149,34 @@ linkmldcatap:Catalogue  (
     } OR @nfdi:ResearchCatalog
 )
 
-linkmldcatap:CataloguedResource {
-    (  $linkmldcatap:CataloguedResource_tes rdf:type . * ;
-       rdf:type [ dcat:Resource ] ?
-    )
-}
-
-linkmldcatap:CatalogueRecord CLOSED {
-    (  $linkmldcatap:CatalogueRecord_tes (  dcterms:conformsTo @linkmldcatap:Standard * ;
-          adms:status @linkmldcatap:Concept ? ;
+dcatap_linkml:CatalogueRecord CLOSED {
+    (  $dcatap_linkml:CatalogueRecord_tes (  dcterms:conformsTo @dcatap_linkml:Standard * ;
+          adms:status @dcatap_linkml:Concept ? ;
           dcterms:description @linkml:String * ;
-          dcterms:language @linkmldcatap:LinguisticSystem * ;
-          dcterms:issued @linkml:String ? ;
-          dcterms:modified @linkml:String ;
-          foaf:primaryTopic @linkmldcatap:CataloguedResource ;
-          dcterms:source @linkmldcatap:CatalogueRecord ? ;
+          dcterms:language @dcatap_linkml:LinguisticSystem * ;
+          dcterms:issued @linkml:Date ? ;
+          dcterms:modified @linkml:Date ;
+          foaf:primaryTopic @dcatap_linkml:Any ;
+          dcterms:source @dcatap_linkml:CatalogueRecord ? ;
           dcterms:title @linkml:String *
        ) ;
        rdf:type [ dcat:CatalogRecord ] ?
     )
 }
 
-linkmldcatap:Checksum CLOSED {
-    (  $linkmldcatap:Checksum_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
-          spdx:algorithm @linkmldcatap:ChecksumAlgorithm ;
-          spdx:checksumValue @linkmldcatap:HexBinary
+dcatap_linkml:Checksum CLOSED {
+    (  $dcatap_linkml:Checksum_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ? ;
+          spdx:algorithm @dcatap_linkml:ChecksumAlgorithm ;
+          spdx:checksumValue @dcatap_linkml:HexBinary
        ) ;
        rdf:type [ spdx:Checksum ] ?
     )
 }
 
-linkmldcatap:ChecksumAlgorithm CLOSED {
-    (  $linkmldcatap:ChecksumAlgorithm_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:ChecksumAlgorithm CLOSED {
+    (  $dcatap_linkml:ChecksumAlgorithm_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ spdx:ChecksumAlgorithm ] ?
     )
@@ -228,18 +228,18 @@ nfdi:ClassifierMixin {
     )
 }
 
-linkmldcatap:Concept CLOSED {
-    (  $linkmldcatap:Concept_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+dcatap_linkml:Concept CLOSED {
+    (  $dcatap_linkml:Concept_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ? ;
           skos:prefLabel @linkml:String +
        ) ;
        rdf:type [ skos:Concept ] ?
     )
 }
 
-linkmldcatap:ConceptScheme CLOSED {
-    (  $linkmldcatap:ConceptScheme_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+dcatap_linkml:ConceptScheme CLOSED {
+    (  $dcatap_linkml:ConceptScheme_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ? ;
           dcterms:title @linkml:String +
        ) ;
        rdf:type [ skos:ConceptScheme ] ?
@@ -259,18 +259,18 @@ nfdi:DataAnalysis  (
 
 nfdi:DataCreatingActivity  (
     CLOSED {
-       (  $nfdi:DataCreatingActivity_tes (  &linkmldcatap:Activity_tes ;
+       (  $nfdi:DataCreatingActivity_tes (  &dcatap_linkml:Activity_tes ;
              rdf:type [ prov:Activity ] ? ;
              &nfdi:ClassifierMixin_tes ;
              rdf:type [ nfdi:ClassifierMixin ] ? ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
-             adms:identifier @linkmldcatap:Identifier * ;
+             adms:identifier @dcatap_linkml:Identifier * ;
              prov:used @nfdi:EvaluatedEntity * ;
              prov:wasInformedBy @nfdi:EvaluatedActivity * ;
              prov:used @nfdi:Tool * ;
              prov:used @nfdi:Plan ? ;
-             dcterms:hasPart @linkmldcatap:Activity ? ;
+             dcterms:hasPart @dcatap_linkml:Activity ? ;
              <http://purl.obolibrary.org/obo/BFO_0000066> @nfdi:Environment ? ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
@@ -280,82 +280,82 @@ nfdi:DataCreatingActivity  (
     } OR @nfdi:DataAnalysis OR @<NMRSpectroscopy>
 )
 
-linkmldcatap:DataService CLOSED {
-    (  $linkmldcatap:DataService_tes (  dcterms:accessRights @linkmldcatap:RightsStatement ? ;
-          dcatap:applicableLegislation @linkmldcatap:LegalResource * ;
-          dcterms:conformsTo @linkmldcatap:Standard * ;
-          dcat:contactPoint @linkmldcatap:Kind * ;
+dcatap_linkml:DataService CLOSED {
+    (  $dcatap_linkml:DataService_tes (  dcterms:accessRights @dcatap_linkml:RightsStatement ? ;
+          dcatap:applicableLegislation @dcatap_linkml:LegalResource * ;
+          dcterms:conformsTo @dcatap_linkml:Standard * ;
+          dcat:contactPoint @dcatap_linkml:Kind * ;
           dcterms:description @linkml:String * ;
-          foaf:page @linkmldcatap:Document * ;
-          dcat:endpointURL @linkmldcatap:Resource + ;
-          dcat:endpointDescription @linkmldcatap:Resource * ;
-          dcterms:format @linkmldcatap:MediaTypeOrExtent * ;
+          foaf:page @dcatap_linkml:Document * ;
+          dcat:endpointURL @dcatap_linkml:Resource + ;
+          dcat:endpointDescription @dcatap_linkml:Resource * ;
+          dcterms:format @dcatap_linkml:MediaTypeOrExtent * ;
           dcat:keyword @linkml:String * ;
-          dcat:landingPage @linkmldcatap:Document * ;
-          dcterms:license @linkmldcatap:LicenseDocument ? ;
-          dcterms:publisher @linkmldcatap:Agent ? ;
-          dcat:servesDataset @linkmldcatap:Dataset * ;
-          dcat:theme @linkmldcatap:Concept * ;
+          dcat:landingPage @dcatap_linkml:Document * ;
+          dcterms:license @dcatap_linkml:LicenseDocument ? ;
+          dcterms:publisher @dcatap_linkml:Agent ? ;
+          dcat:servesDataset @dcatap_linkml:Dataset * ;
+          dcat:theme @dcatap_linkml:Concept * ;
           dcterms:title @linkml:String +
        ) ;
        rdf:type [ dcat:DataService ] ?
     )
 }
 
-linkmldcatap:Dataset  (
+dcatap_linkml:Dataset  (
     CLOSED {
-       (  $linkmldcatap:Dataset_tes (  dcterms:accessRights @linkmldcatap:RightsStatement ? ;
-             dcatap:applicableLegislation @linkmldcatap:LegalResource * ;
-             dcterms:conformsTo @linkmldcatap:Standard * ;
-             dcat:contactPoint @linkmldcatap:Kind * ;
-             dcterms:creator @linkmldcatap:Agent * ;
-             dcat:distribution @linkmldcatap:Distribution * ;
+       (  $dcatap_linkml:Dataset_tes (  dcterms:accessRights @dcatap_linkml:RightsStatement ? ;
+             dcatap:applicableLegislation @dcatap_linkml:LegalResource * ;
+             dcterms:conformsTo @dcatap_linkml:Standard * ;
+             dcat:contactPoint @dcatap_linkml:Kind * ;
+             dcterms:creator @dcatap_linkml:Agent * ;
+             dcat:distribution @dcatap_linkml:Distribution * ;
              dcterms:description @linkml:String + ;
-             foaf:page @linkmldcatap:Document * ;
-             dcterms:accrualPeriodicity @linkmldcatap:Frequency ? ;
-             dcterms:spatial @linkmldcatap:Location * ;
-             dcat:hasVersion @linkmldcatap:Dataset * ;
-             dcterms:identifier @linkml:Uri * ;
-             dcat:inSeries @linkmldcatap:DatasetSeries * ;
-             dcterms:isReferencedBy @linkmldcatap:Resource * ;
+             foaf:page @dcatap_linkml:Document * ;
+             dcterms:accrualPeriodicity @dcatap_linkml:Frequency ? ;
+             dcterms:spatial @dcatap_linkml:Location * ;
+             dcat:hasVersion @dcatap_linkml:Dataset * ;
+             dcterms:identifier @linkml:String * ;
+             dcat:inSeries @dcatap_linkml:DatasetSeries * ;
+             dcterms:isReferencedBy @dcatap_linkml:Resource * ;
              dcat:keyword @linkml:String * ;
-             dcat:landingPage @linkmldcatap:Document * ;
-             dcterms:language @linkmldcatap:LinguisticSystem * ;
-             dcterms:modified @linkml:String ? ;
-             adms:identifier @linkmldcatap:Identifier * ;
-             dcterms:provenance @linkmldcatap:ProvenanceStatement * ;
-             dcterms:publisher @linkmldcatap:Agent ? ;
-             prov:qualifiedAttribution @linkmldcatap:Attribution * ;
-             dcat:qualifiedRelation @linkmldcatap:Relationship * ;
-             dcterms:relation @linkmldcatap:Resource * ;
-             dcterms:issued @linkml:String ? ;
-             adms:sample @linkmldcatap:Distribution * ;
-             dcterms:source @linkmldcatap:Dataset * ;
+             dcat:landingPage @dcatap_linkml:Document * ;
+             dcterms:language @dcatap_linkml:LinguisticSystem * ;
+             dcterms:modified @linkml:Date ? ;
+             adms:identifier @dcatap_linkml:Identifier * ;
+             dcterms:provenance @dcatap_linkml:ProvenanceStatement * ;
+             dcterms:publisher @dcatap_linkml:Agent ? ;
+             prov:qualifiedAttribution @dcatap_linkml:Attribution * ;
+             dcat:qualifiedRelation @dcatap_linkml:Relationship * ;
+             dcterms:relation @dcatap_linkml:Resource * ;
+             dcterms:issued @linkml:Date ? ;
+             adms:sample @dcatap_linkml:Distribution * ;
+             dcterms:source @dcatap_linkml:Dataset * ;
              dcat:spatialResolutionInMeters @linkml:Decimal ? ;
-             dcterms:temporal @linkmldcatap:PeriodOfTime * ;
-             dcat:temporalResolution @linkmldcatap:Duration ? ;
-             dcat:theme @linkmldcatap:Concept * ;
+             dcterms:temporal @dcatap_linkml:PeriodOfTime * ;
+             dcat:temporalResolution @dcatap_linkml:Duration ? ;
+             dcat:theme @dcatap_linkml:Concept * ;
              dcterms:title @linkml:String + ;
-             dcterms:type @linkmldcatap:Concept * ;
+             dcterms:type @dcatap_linkml:Concept * ;
              dcat:version @linkml:String ? ;
              adms:versionNotes @linkml:String * ;
-             prov:wasGeneratedBy @linkmldcatap:Activity *
+             prov:wasGeneratedBy @dcatap_linkml:Activity *
           ) ;
           rdf:type [ dcat:Dataset ] ?
        )
     } OR @nfdi:ResearchDataset
 )
 
-linkmldcatap:DatasetSeries CLOSED {
-    (  $linkmldcatap:DatasetSeries_tes (  dcatap:applicableLegislation @linkmldcatap:LegalResource * ;
-          dcat:contactPoint @linkmldcatap:Kind * ;
+dcatap_linkml:DatasetSeries CLOSED {
+    (  $dcatap_linkml:DatasetSeries_tes (  dcatap:applicableLegislation @dcatap_linkml:LegalResource * ;
+          dcat:contactPoint @dcatap_linkml:Kind * ;
           dcterms:description @linkml:String + ;
-          dcterms:accrualPeriodicity @linkmldcatap:Frequency ? ;
-          dcterms:spatial @linkmldcatap:Location * ;
-          dcterms:modified @linkml:String ? ;
-          dcterms:publisher @linkmldcatap:Agent ? ;
-          dcterms:issued @linkml:String ? ;
-          dcterms:temporal @linkmldcatap:PeriodOfTime * ;
+          dcterms:accrualPeriodicity @dcatap_linkml:Frequency ? ;
+          dcterms:spatial @dcatap_linkml:Location * ;
+          dcterms:modified @linkml:Date ? ;
+          dcterms:publisher @dcatap_linkml:Agent ? ;
+          dcterms:issued @linkml:Date ? ;
+          dcterms:temporal @dcatap_linkml:PeriodOfTime * ;
           dcterms:title @linkml:String +
        ) ;
        rdf:type [ dcat:DatasetSeries ] ?
@@ -370,39 +370,39 @@ nfdi:DefinedTerm CLOSED {
     )
 }
 
-linkmldcatap:Distribution CLOSED {
-    (  $linkmldcatap:Distribution_tes (  dcat:accessURL @linkmldcatap:Resource + ;
-          dcat:accessService @linkmldcatap:DataService * ;
-          dcatap:applicableLegislation @linkmldcatap:LegalResource * ;
-          dcatap:availability @linkmldcatap:Concept ? ;
-          dcat:byteSize @linkmldcatap:NonNegativeInteger ? ;
-          spdx:checksum @linkmldcatap:Checksum ? ;
-          dcat:compressFormat @linkmldcatap:MediaType ? ;
+dcatap_linkml:Distribution CLOSED {
+    (  $dcatap_linkml:Distribution_tes (  dcat:accessURL @dcatap_linkml:Resource + ;
+          dcat:accessService @dcatap_linkml:DataService * ;
+          dcatap:applicableLegislation @dcatap_linkml:LegalResource * ;
+          dcatap:availability @dcatap_linkml:Concept ? ;
+          dcat:byteSize @dcatap_linkml:NonNegativeInteger ? ;
+          spdx:checksum @dcatap_linkml:Checksum ? ;
+          dcat:compressFormat @dcatap_linkml:MediaType ? ;
           dcterms:description @linkml:String * ;
-          foaf:page @linkmldcatap:Document * ;
-          dcat:downloadURL @linkmldcatap:Resource * ;
-          dcterms:format @linkmldcatap:MediaTypeOrExtent ? ;
-          odrl:hasPolicy @linkmldcatap:Policy ? ;
-          dcterms:language @linkmldcatap:LinguisticSystem * ;
-          dcterms:license @linkmldcatap:LicenseDocument ? ;
-          dcterms:conformsTo @linkmldcatap:Standard * ;
-          dcat:mediaType @linkmldcatap:MediaType ? ;
-          dcterms:modified @linkml:String ? ;
-          dcat:packageFormat @linkmldcatap:MediaType ? ;
-          dcterms:issued @linkml:String ? ;
-          dcterms:rights @linkmldcatap:RightsStatement ? ;
+          foaf:page @dcatap_linkml:Document * ;
+          dcat:downloadURL @dcatap_linkml:Resource * ;
+          dcterms:format @dcatap_linkml:MediaTypeOrExtent ? ;
+          odrl:hasPolicy @dcatap_linkml:Policy ? ;
+          dcterms:language @dcatap_linkml:LinguisticSystem * ;
+          dcterms:license @dcatap_linkml:LicenseDocument ? ;
+          dcterms:conformsTo @dcatap_linkml:Standard * ;
+          dcat:mediaType @dcatap_linkml:MediaType ? ;
+          dcterms:modified @linkml:Date ? ;
+          dcat:packageFormat @dcatap_linkml:MediaType ? ;
+          dcterms:issued @linkml:Date ? ;
+          dcterms:rights @dcatap_linkml:RightsStatement ? ;
           dcat:spatialResolutionInMeters @linkml:Decimal ? ;
-          adms:status @linkmldcatap:Concept ? ;
-          dcat:temporalResolution @linkmldcatap:Duration ? ;
+          adms:status @dcatap_linkml:Concept ? ;
+          dcat:temporalResolution @dcatap_linkml:Duration ? ;
           dcterms:title @linkml:String *
        ) ;
        rdf:type [ dcat:Distribution ] ?
     )
 }
 
-linkmldcatap:Document CLOSED {
-    (  $linkmldcatap:Document_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:Document CLOSED {
+    (  $dcatap_linkml:Document_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ foaf:Document ] ?
     )
@@ -414,7 +414,7 @@ nfdi:Environment  (
              rdf:type [ nfdi:ClassifierMixin ] ? ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
-             adms:identifier @linkmldcatap:Identifier * ;
+             adms:identifier @dcatap_linkml:Identifier * ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
           ) ;
@@ -425,13 +425,13 @@ nfdi:Environment  (
 
 nfdi:EvaluatedActivity  (
     CLOSED {
-       (  $nfdi:EvaluatedActivity_tes (  &linkmldcatap:Activity_tes ;
+       (  $nfdi:EvaluatedActivity_tes (  &dcatap_linkml:Activity_tes ;
              rdf:type [ prov:Activity ] ? ;
              &nfdi:ClassifierMixin_tes ;
              rdf:type [ nfdi:ClassifierMixin ] ? ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
-             adms:identifier @linkmldcatap:Identifier * ;
+             adms:identifier @dcatap_linkml:Identifier * ;
              dcterms:relation @nfdi:QualitativeAttribute * ;
              dcterms:relation @nfdi:QuantitativeAttribute * ;
              dcterms:hasPart @nfdi:EvaluatedActivity ? ;
@@ -449,11 +449,11 @@ nfdi:EvaluatedEntity  (
              rdf:type [ nfdi:ClassifierMixin ] ? ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
-             adms:identifier @linkmldcatap:Identifier * ;
+             adms:identifier @dcatap_linkml:Identifier * ;
              dcterms:relation @nfdi:QualitativeAttribute * ;
              dcterms:relation @nfdi:QuantitativeAttribute * ;
              dcterms:hasPart @nfdi:EvaluatedEntity ? ;
-             prov:wasGeneratedBy @linkmldcatap:Activity * ;
+             prov:wasGeneratedBy @dcatap_linkml:Activity * ;
              dcterms:type @nfdi:DefinedTerm ? ;
              rdf:type @nfdi:DefinedTerm ?
           ) ;
@@ -462,17 +462,17 @@ nfdi:EvaluatedEntity  (
     } OR @nfdi:AnalysisSourceData OR @<ChemicalSubstance>
 )
 
-linkmldcatap:Frequency CLOSED {
-    (  $linkmldcatap:Frequency_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:Frequency CLOSED {
+    (  $dcatap_linkml:Frequency_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ dcterms:Frequency ] ?
     )
 }
 
-linkmldcatap:Geometry CLOSED {
-    (  $linkmldcatap:Geometry_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:Geometry CLOSED {
+    (  $dcatap_linkml:Geometry_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ locn:Geometry ] ?
     )
@@ -486,10 +486,10 @@ nfdi:HardwareTool CLOSED {
     )
 }
 
-linkmldcatap:Identifier CLOSED {
-    (  $linkmldcatap:Identifier_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
-          skos:notation @linkml:Uri
+dcatap_linkml:Identifier CLOSED {
+    (  $dcatap_linkml:Identifier_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ? ;
+          skos:notation @linkml:String
        ) ;
        rdf:type [ adms:Identifier ] ?
     )
@@ -519,9 +519,9 @@ linkmldcatap:Identifier CLOSED {
     )
 }
 
-linkmldcatap:Kind CLOSED {
-    (  $linkmldcatap:Kind_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:Kind CLOSED {
+    (  $dcatap_linkml:Kind_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ vcard:Kind ] ?
     )
@@ -535,53 +535,53 @@ linkmldcatap:Kind CLOSED {
     )
 }
 
-linkmldcatap:LegalResource CLOSED {
-    (  $linkmldcatap:LegalResource_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:LegalResource CLOSED {
+    (  $dcatap_linkml:LegalResource_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ eli:LegalResource ] ?
     )
 }
 
-linkmldcatap:LicenseDocument CLOSED {
-    (  $linkmldcatap:LicenseDocument_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
-          dcterms:type @linkmldcatap:Concept *
+dcatap_linkml:LicenseDocument CLOSED {
+    (  $dcatap_linkml:LicenseDocument_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ? ;
+          dcterms:type @dcatap_linkml:Concept *
        ) ;
        rdf:type [ dcterms:LicenseDocument ] ?
     )
 }
 
-linkmldcatap:LinguisticSystem CLOSED {
-    (  $linkmldcatap:LinguisticSystem_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:LinguisticSystem CLOSED {
+    (  $dcatap_linkml:LinguisticSystem_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ dcterms:LinguisticSystem ] ?
     )
 }
 
-linkmldcatap:Location CLOSED {
-    (  $linkmldcatap:Location_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
+dcatap_linkml:Location CLOSED {
+    (  $dcatap_linkml:Location_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ? ;
           dcat:bbox @linkml:String ? ;
           dcat:centroid @linkml:String ? ;
-          locn:geometry @linkmldcatap:Geometry ?
+          locn:geometry @dcatap_linkml:Geometry ?
        ) ;
        rdf:type [ dcterms:Location ] ?
     )
 }
 
-linkmldcatap:MediaType CLOSED {
-    (  $linkmldcatap:MediaType_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:MediaType CLOSED {
+    (  $dcatap_linkml:MediaType_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ dcterms:MediaType ] ?
     )
 }
 
-linkmldcatap:MediaTypeOrExtent CLOSED {
-    (  $linkmldcatap:MediaTypeOrExtent_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:MediaTypeOrExtent CLOSED {
+    (  $dcatap_linkml:MediaTypeOrExtent_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ dcterms:MediaTypeOrExtent ] ?
     )
@@ -625,11 +625,11 @@ linkmldcatap:MediaTypeOrExtent CLOSED {
     )
 }
 
-linkmldcatap:PeriodOfTime CLOSED {
-    (  $linkmldcatap:PeriodOfTime_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
-          time:hasBeginning @linkmldcatap:TimeInstant ? ;
-          time:hasEnd @linkmldcatap:TimeInstant ? ;
+dcatap_linkml:PeriodOfTime CLOSED {
+    (  $dcatap_linkml:PeriodOfTime_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ? ;
+          time:hasBeginning @dcatap_linkml:TimeInstant ? ;
+          time:hasEnd @dcatap_linkml:TimeInstant ? ;
           dcat:endDate @linkml:String ? ;
           dcat:startDate @linkml:String ?
        ) ;
@@ -649,17 +649,17 @@ nfdi:Plan CLOSED {
     )
 }
 
-linkmldcatap:Policy CLOSED {
-    (  $linkmldcatap:Policy_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:Policy CLOSED {
+    (  $dcatap_linkml:Policy_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ odrl:Policy ] ?
     )
 }
 
-linkmldcatap:ProvenanceStatement CLOSED {
-    (  $linkmldcatap:ProvenanceStatement_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:ProvenanceStatement CLOSED {
+    (  $dcatap_linkml:ProvenanceStatement_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ dcterms:ProvenanceStatement ] ?
     )
@@ -695,18 +695,18 @@ nfdi:QuantitativeAttribute CLOSED {
     )
 }
 
-linkmldcatap:Relationship CLOSED {
-    (  $linkmldcatap:Relationship_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ? ;
-          dcat:hadRole @linkmldcatap:Role + ;
-          dcterms:relation @linkmldcatap:Resource +
+dcatap_linkml:Relationship CLOSED {
+    (  $dcatap_linkml:Relationship_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ? ;
+          dcat:hadRole @dcatap_linkml:Role + ;
+          dcterms:relation @dcatap_linkml:Resource +
        ) ;
        rdf:type [ dcat:Relationship ] ?
     )
 }
 
 nfdi:ResearchCatalog CLOSED {
-    (  $nfdi:ResearchCatalog_tes (  &linkmldcatap:Catalogue_tes ;
+    (  $nfdi:ResearchCatalog_tes (  &dcatap_linkml:Catalogue_tes ;
           rdf:type [ dcat:Catalog ] ? ;
           dcat:dataset @nfdi:ResearchDataset ?
        ) ;
@@ -716,7 +716,7 @@ nfdi:ResearchCatalog CLOSED {
 
 nfdi:ResearchDataset  (
     CLOSED {
-       (  $nfdi:ResearchDataset_tes (  &linkmldcatap:Dataset_tes ;
+       (  $nfdi:ResearchDataset_tes (  &dcatap_linkml:Dataset_tes ;
              rdf:type [ dcat:Dataset ] ? ;
              dcterms:relation @nfdi:EvaluatedEntity * ;
              dcterms:relation @nfdi:EvaluatedActivity * ;
@@ -727,25 +727,25 @@ nfdi:ResearchDataset  (
     } OR @nfdi:AnalysisDataset
 )
 
-linkmldcatap:Resource CLOSED {
-    (  $linkmldcatap:Resource_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:Resource CLOSED {
+    (  $dcatap_linkml:Resource_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ rdfs:Resource ] ?
     )
 }
 
-linkmldcatap:RightsStatement CLOSED {
-    (  $linkmldcatap:RightsStatement_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:RightsStatement CLOSED {
+    (  $dcatap_linkml:RightsStatement_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ dcterms:RightsStatement ] ?
     )
 }
 
-linkmldcatap:Role CLOSED {
-    (  $linkmldcatap:Role_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:Role CLOSED {
+    (  $dcatap_linkml:Role_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ dcat:Role ] ?
     )
@@ -767,31 +767,31 @@ nfdi:SoftwareTool CLOSED {
     )
 }
 
-linkmldcatap:Standard CLOSED {
-    (  $linkmldcatap:Standard_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:Standard CLOSED {
+    (  $dcatap_linkml:Standard_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ dcterms:Standard ] ?
     )
 }
 
-linkmldcatap:SupportiveEntity  (
+dcatap_linkml:SupportiveEntity  (
     CLOSED {
-       (  $linkmldcatap:SupportiveEntity_tes rdf:type . * ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+       (  $dcatap_linkml:SupportiveEntity_tes rdf:type . * ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        )
-    } OR @linkmldcatap:Agent OR @linkmldcatap:Attribution OR @linkmldcatap:Checksum OR @linkmldcatap:ChecksumAlgorithm OR
-    @linkmldcatap:Concept OR @linkmldcatap:ConceptScheme OR @linkmldcatap:Document OR @linkmldcatap:Frequency OR
-    @linkmldcatap:Geometry OR @linkmldcatap:Identifier OR @linkmldcatap:Kind OR @linkmldcatap:LegalResource OR
-    @linkmldcatap:LicenseDocument OR @linkmldcatap:LinguisticSystem OR @linkmldcatap:Location OR @linkmldcatap:MediaType OR
-    @linkmldcatap:MediaTypeOrExtent OR @linkmldcatap:PeriodOfTime OR @linkmldcatap:Policy OR @linkmldcatap:ProvenanceStatement OR
-    @linkmldcatap:Relationship OR @linkmldcatap:Resource OR @linkmldcatap:RightsStatement OR @linkmldcatap:Role OR
-    @linkmldcatap:Standard OR @linkmldcatap:TimeInstant
+    } OR @dcatap_linkml:Agent OR @dcatap_linkml:Attribution OR @dcatap_linkml:Checksum OR @dcatap_linkml:ChecksumAlgorithm OR
+    @dcatap_linkml:Concept OR @dcatap_linkml:ConceptScheme OR @dcatap_linkml:Document OR @dcatap_linkml:Frequency OR
+    @dcatap_linkml:Geometry OR @dcatap_linkml:Identifier OR @dcatap_linkml:Kind OR @dcatap_linkml:LegalResource OR
+    @dcatap_linkml:LicenseDocument OR @dcatap_linkml:LinguisticSystem OR @dcatap_linkml:Location OR @dcatap_linkml:MediaType OR
+    @dcatap_linkml:MediaTypeOrExtent OR @dcatap_linkml:PeriodOfTime OR @dcatap_linkml:Policy OR @dcatap_linkml:ProvenanceStatement
+    OR @dcatap_linkml:Relationship OR @dcatap_linkml:Resource OR @dcatap_linkml:RightsStatement OR @dcatap_linkml:Role OR
+    @dcatap_linkml:Standard OR @dcatap_linkml:TimeInstant
 )
 
-linkmldcatap:TimeInstant CLOSED {
-    (  $linkmldcatap:TimeInstant_tes (  &linkmldcatap:SupportiveEntity_tes ;
-          rdf:type [ linkmldcatap:SupportiveEntity ] ?
+dcatap_linkml:TimeInstant CLOSED {
+    (  $dcatap_linkml:TimeInstant_tes (  &dcatap_linkml:SupportiveEntity_tes ;
+          rdf:type [ dcatap_linkml:SupportiveEntity ] ?
        ) ;
        rdf:type [ time:Instant ] ?
     )
@@ -803,7 +803,7 @@ nfdi:Tool  (
              rdf:type [ nfdi:ClassifierMixin ] ? ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
-             adms:identifier @linkmldcatap:Identifier * ;
+             adms:identifier @dcatap_linkml:Identifier * ;
              dcterms:relation @nfdi:QualitativeAttribute * ;
              dcterms:relation @nfdi:QuantitativeAttribute * ;
              dcterms:hasPart @nfdi:Tool * ;

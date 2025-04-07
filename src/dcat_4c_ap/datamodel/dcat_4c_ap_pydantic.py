@@ -201,9 +201,8 @@ class Activity(ConfiguredBaseModel):
     """
     See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'prov:Activity',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Activity',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -212,9 +211,8 @@ class Catalogue(ConfiguredBaseModel):
     """
     See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcat:Catalog',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Catalog',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'applicable_legislation': {'description': 'The legislation '
                                                                   'that mandates the '
                                                                   'creation or '
@@ -310,7 +308,7 @@ class Catalogue(ConfiguredBaseModel):
                                               'inlined_as_list': False,
                                               'multivalued': False,
                                               'name': 'modification_date',
-                                              'range': 'string',
+                                              'range': 'date',
                                               'recommended': True,
                                               'required': False,
                                               'slot_uri': 'dcterms:modified'},
@@ -337,7 +335,7 @@ class Catalogue(ConfiguredBaseModel):
                                          'inlined_as_list': False,
                                          'multivalued': False,
                                          'name': 'release_date',
-                                         'range': 'string',
+                                         'range': 'date',
                                          'recommended': True,
                                          'required': False,
                                          'slot_uri': 'dcterms:issued'},
@@ -432,7 +430,7 @@ class Catalogue(ConfiguredBaseModel):
     licence: Optional[LicenseDocument] = Field(default=None, description="""A licence under which the Catalogue can be used or reused.""", json_schema_extra = { "linkml_meta": {'alias': 'licence',
          'domain_of': ['Catalogue', 'DataService', 'Distribution'],
          'slot_uri': 'dcterms:license'} })
-    modification_date: Optional[str] = Field(default=None, description="""The most recent date on which the Catalogue was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
+    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Catalogue was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
          'domain_of': ['Catalogue',
                        'CatalogueRecord',
                        'Dataset',
@@ -444,7 +442,7 @@ class Catalogue(ConfiguredBaseModel):
          'domain_of': ['Catalogue', 'DataService', 'Dataset', 'DatasetSeries'],
          'slot_uri': 'dcterms:publisher'} })
     record: Optional[List[CatalogueRecord]] = Field(default=None, description="""A Catalogue Record that is part of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'record', 'domain_of': ['Catalogue'], 'slot_uri': 'dcat:record'} })
-    release_date: Optional[str] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
+    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
          'recommended': True,
          'slot_uri': 'dcterms:issued'} })
@@ -483,9 +481,8 @@ class CatalogueRecord(ConfiguredBaseModel):
     """
     See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcat:CatalogRecord',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:CatalogRecord',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'application_profile': {'description': 'An Application Profile '
                                                                'that the Catalogued '
                                                                'Resource&#39;s '
@@ -535,7 +532,7 @@ class CatalogueRecord(ConfiguredBaseModel):
                                          'inlined_as_list': True,
                                          'multivalued': False,
                                          'name': 'listing_date',
-                                         'range': 'string',
+                                         'range': 'date',
                                          'recommended': True,
                                          'required': False,
                                          'slot_uri': 'dcterms:issued'},
@@ -546,16 +543,20 @@ class CatalogueRecord(ConfiguredBaseModel):
                                               'inlined_as_list': False,
                                               'multivalued': False,
                                               'name': 'modification_date',
-                                              'range': 'string',
+                                              'range': 'date',
                                               'required': True,
                                               'slot_uri': 'dcterms:modified'},
-                        'primary_topic': {'description': 'A link to the Dataset, Data '
+                        'primary_topic': {'any_of': [{'range': 'Catalogue'},
+                                                     {'range': 'Dataset'},
+                                                     {'range': 'DatasetSeries'},
+                                                     {'range': 'DataService'}],
+                                          'description': 'A link to the Dataset, Data '
                                                          'service or Catalog described '
                                                          'in the record.',
                                           'inlined_as_list': False,
                                           'multivalued': False,
                                           'name': 'primary_topic',
-                                          'range': 'CataloguedResource',
+                                          'range': 'Any',
                                           'required': True,
                                           'slot_uri': 'foaf:primaryTopic'},
                         'source_metadata': {'description': 'The original metadata that '
@@ -605,18 +606,22 @@ class CatalogueRecord(ConfiguredBaseModel):
     language: Optional[List[LinguisticSystem]] = Field(default=None, description="""A language used in the textual metadata describing titles, descriptions, etc. of the Catalogued Resource.""", json_schema_extra = { "linkml_meta": {'alias': 'language',
          'domain_of': ['Catalogue', 'CatalogueRecord', 'Dataset', 'Distribution'],
          'slot_uri': 'dcterms:language'} })
-    listing_date: Optional[str] = Field(default=None, description="""The date on which the description of the Resource was included in the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'listing_date',
+    listing_date: Optional[date] = Field(default=None, description="""The date on which the description of the Resource was included in the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'listing_date',
          'domain_of': ['CatalogueRecord'],
          'recommended': True,
          'slot_uri': 'dcterms:issued'} })
-    modification_date: str = Field(default=..., description="""The most recent date on which the Catalogue entry was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
+    modification_date: date = Field(default=..., description="""The most recent date on which the Catalogue entry was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
          'domain_of': ['Catalogue',
                        'CatalogueRecord',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution'],
          'slot_uri': 'dcterms:modified'} })
-    primary_topic: CataloguedResource = Field(default=..., description="""A link to the Dataset, Data service or Catalog described in the record.""", json_schema_extra = { "linkml_meta": {'alias': 'primary_topic',
+    primary_topic: Union[Catalogue, DataService, Dataset, DatasetSeries] = Field(default=..., description="""A link to the Dataset, Data service or Catalog described in the record.""", json_schema_extra = { "linkml_meta": {'alias': 'primary_topic',
+         'any_of': [{'range': 'Catalogue'},
+                    {'range': 'Dataset'},
+                    {'range': 'DatasetSeries'},
+                    {'range': 'DataService'}],
          'domain_of': ['CatalogueRecord'],
          'slot_uri': 'foaf:primaryTopic'} })
     source_metadata: Optional[CatalogueRecord] = Field(default=None, description="""The original metadata that was used in creating metadata for the Dataset, Data Service or Dataset Series.""", json_schema_extra = { "linkml_meta": {'alias': 'source_metadata',
@@ -642,24 +647,12 @@ class CatalogueRecord(ConfiguredBaseModel):
          'slot_uri': 'dcterms:title'} })
 
 
-class CataloguedResource(ConfiguredBaseModel):
-    """
-    See [DCAT-AP specs:CataloguedResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CataloguedResource)
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'class_uri': 'dcat:Resource',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
-
-    pass
-
-
 class DataService(ConfiguredBaseModel):
     """
     See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcat:DataService',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:DataService',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'access_rights': {'description': 'Information regarding access '
                                                          'or restrictions based on '
                                                          'privacy, security, or other '
@@ -900,9 +893,8 @@ class Dataset(ConfiguredBaseModel):
     """
     See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcat:Dataset',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Dataset',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'access_rights': {'description': 'Information that indicates '
                                                          'whether the Dataset is '
                                                          'publicly accessible, has '
@@ -1010,7 +1002,7 @@ class Dataset(ConfiguredBaseModel):
                                        'inlined_as_list': True,
                                        'multivalued': True,
                                        'name': 'identifier',
-                                       'range': 'uri',
+                                       'range': 'string',
                                        'required': False,
                                        'slot_uri': 'dcterms:identifier'},
                         'in_series': {'description': 'A dataset series of which the '
@@ -1064,7 +1056,7 @@ class Dataset(ConfiguredBaseModel):
                                               'inlined_as_list': False,
                                               'multivalued': False,
                                               'name': 'modification_date',
-                                              'range': 'string',
+                                              'range': 'date',
                                               'required': False,
                                               'slot_uri': 'dcterms:modified'},
                         'other_identifier': {'description': 'A secondary identifier of '
@@ -1124,7 +1116,7 @@ class Dataset(ConfiguredBaseModel):
                                          'inlined_as_list': False,
                                          'multivalued': False,
                                          'name': 'release_date',
-                                         'range': 'string',
+                                         'range': 'date',
                                          'required': False,
                                          'slot_uri': 'dcterms:issued'},
                         'sample': {'description': 'A sample distribution of the '
@@ -1290,7 +1282,7 @@ class Dataset(ConfiguredBaseModel):
     language: Optional[List[LinguisticSystem]] = Field(default=None, description="""A language of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'language',
          'domain_of': ['Catalogue', 'CatalogueRecord', 'Dataset', 'Distribution'],
          'slot_uri': 'dcterms:language'} })
-    modification_date: Optional[str] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
+    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
          'domain_of': ['Catalogue',
                        'CatalogueRecord',
                        'Dataset',
@@ -1320,7 +1312,7 @@ class Dataset(ConfiguredBaseModel):
     related_resource: Optional[List[Resource]] = Field(default=None, description="""A related resource.""", json_schema_extra = { "linkml_meta": {'alias': 'related_resource',
          'domain_of': ['Dataset'],
          'slot_uri': 'dcterms:relation'} })
-    release_date: Optional[str] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
+    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
          'slot_uri': 'dcterms:issued'} })
     sample: Optional[List[Distribution]] = Field(default=None, description="""A sample distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'sample', 'domain_of': ['Dataset'], 'slot_uri': 'adms:sample'} })
@@ -1372,9 +1364,8 @@ class DatasetSeries(ConfiguredBaseModel):
     """
     See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcat:DatasetSeries',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:DatasetSeries',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'applicable_legislation': {'description': 'The legislation '
                                                                   'that mandates the '
                                                                   'creation or '
@@ -1426,7 +1417,7 @@ class DatasetSeries(ConfiguredBaseModel):
                                               'inlined_as_list': False,
                                               'multivalued': False,
                                               'name': 'modification_date',
-                                              'range': 'string',
+                                              'range': 'date',
                                               'required': False,
                                               'slot_uri': 'dcterms:modified'},
                         'publisher': {'description': 'An entity (organisation) '
@@ -1444,7 +1435,7 @@ class DatasetSeries(ConfiguredBaseModel):
                                          'inlined_as_list': False,
                                          'multivalued': False,
                                          'name': 'release_date',
-                                         'range': 'string',
+                                         'range': 'date',
                                          'required': False,
                                          'slot_uri': 'dcterms:issued'},
                         'temporal_coverage': {'description': 'A temporal period that '
@@ -1496,7 +1487,7 @@ class DatasetSeries(ConfiguredBaseModel):
     geographical_coverage: Optional[List[Location]] = Field(default=None, description="""A geographic region that is covered by the Dataset Series.""", json_schema_extra = { "linkml_meta": {'alias': 'geographical_coverage',
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
          'slot_uri': 'dcterms:spatial'} })
-    modification_date: Optional[str] = Field(default=None, description="""The most recent date on which the Dataset Series was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
+    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Dataset Series was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
          'domain_of': ['Catalogue',
                        'CatalogueRecord',
                        'Dataset',
@@ -1506,7 +1497,7 @@ class DatasetSeries(ConfiguredBaseModel):
     publisher: Optional[Agent] = Field(default=None, description="""An entity (organisation) responsible for ensuring the coherency of the Dataset Series """, json_schema_extra = { "linkml_meta": {'alias': 'publisher',
          'domain_of': ['Catalogue', 'DataService', 'Dataset', 'DatasetSeries'],
          'slot_uri': 'dcterms:publisher'} })
-    release_date: Optional[str] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset Series.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
+    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset Series.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
          'slot_uri': 'dcterms:issued'} })
     temporal_coverage: Optional[List[PeriodOfTime]] = Field(default=None, description="""A temporal period that the Dataset Series covers.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal_coverage',
@@ -1536,9 +1527,8 @@ class Distribution(ConfiguredBaseModel):
     """
     See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcat:Distribution',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Distribution',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'access_URL': {'description': 'A URL that gives access to a '
                                                       'Distribution of the Dataset.',
                                        'inlined_as_list': True,
@@ -1693,7 +1683,7 @@ class Distribution(ConfiguredBaseModel):
                                               'inlined_as_list': False,
                                               'multivalued': False,
                                               'name': 'modification_date',
-                                              'range': 'string',
+                                              'range': 'date',
                                               'required': False,
                                               'slot_uri': 'dcterms:modified'},
                         'packaging_format': {'description': 'The format of the file in '
@@ -1714,7 +1704,7 @@ class Distribution(ConfiguredBaseModel):
                                          'inlined_as_list': False,
                                          'multivalued': False,
                                          'name': 'release_date',
-                                         'range': 'string',
+                                         'range': 'date',
                                          'required': False,
                                          'slot_uri': 'dcterms:issued'},
                         'rights': {'description': 'A statement that specifies rights '
@@ -1830,7 +1820,7 @@ class Distribution(ConfiguredBaseModel):
     media_type: Optional[MediaType] = Field(default=None, description="""The media type of the Distribution as defined in the official register of media types managed by IANA.""", json_schema_extra = { "linkml_meta": {'alias': 'media_type',
          'domain_of': ['Distribution'],
          'slot_uri': 'dcat:mediaType'} })
-    modification_date: Optional[str] = Field(default=None, description="""The most recent date on which the Distribution was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
+    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Distribution was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
          'domain_of': ['Catalogue',
                        'CatalogueRecord',
                        'Dataset',
@@ -1840,7 +1830,7 @@ class Distribution(ConfiguredBaseModel):
     packaging_format: Optional[MediaType] = Field(default=None, description="""The format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together.""", json_schema_extra = { "linkml_meta": {'alias': 'packaging_format',
          'domain_of': ['Distribution'],
          'slot_uri': 'dcat:packageFormat'} })
-    release_date: Optional[str] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Distribution.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
+    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Distribution.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
          'slot_uri': 'dcterms:issued'} })
     rights: Optional[RightsStatement] = Field(default=None, description="""A statement that specifies rights associated with the Distribution.""", json_schema_extra = { "linkml_meta": {'alias': 'rights',
@@ -1877,7 +1867,7 @@ class SupportiveEntity(ConfiguredBaseModel):
     """
     The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -1886,9 +1876,8 @@ class Agent(SupportiveEntity):
     """
     See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'foaf:Agent',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'foaf:Agent',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'name': {'description': 'A name of the agent.',
                                  'inlined_as_list': True,
                                  'multivalued': True,
@@ -1916,9 +1905,8 @@ class Attribution(SupportiveEntity):
     """
     See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'prov:Attribution',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Attribution',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -1927,9 +1915,8 @@ class Checksum(SupportiveEntity):
     """
     See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'spdx:Checksum',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'spdx:Checksum',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'algorithm': {'description': 'The algorithm used to produce '
                                                      'the subject Checksum.',
                                       'inlined_as_list': True,
@@ -1959,9 +1946,8 @@ class ChecksumAlgorithm(SupportiveEntity):
     """
     See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'spdx:ChecksumAlgorithm',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'spdx:ChecksumAlgorithm',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -1970,9 +1956,8 @@ class Concept(SupportiveEntity):
     """
     See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'skos:Concept',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'skos:Concept',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'preferred_label': {'description': 'A preferred label of the '
                                                            'concept.',
                                             'inlined_as_list': True,
@@ -1991,9 +1976,8 @@ class ConceptScheme(SupportiveEntity):
     """
     See [DCAT-AP specs:ConceptScheme](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'skos:ConceptScheme',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'skos:ConceptScheme',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'title': {'description': 'A name of the concept scheme.',
                                   'inlined_as_list': True,
                                   'multivalued': True,
@@ -2026,9 +2010,8 @@ class Document(SupportiveEntity):
     """
     See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'foaf:Document',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'foaf:Document',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2037,9 +2020,8 @@ class Frequency(SupportiveEntity):
     """
     See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcterms:Frequency',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:Frequency',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2048,9 +2030,8 @@ class Geometry(SupportiveEntity):
     """
     See [DCAT-AP specs:Geometry](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'locn:Geometry',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'locn:Geometry',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2059,9 +2040,8 @@ class Identifier(SupportiveEntity):
     """
     See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'adms:Identifier',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'adms:Identifier',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'notation': {'description': 'A string that is an identifier in '
                                                     'the context of the identifier '
                                                     'scheme referenced by its '
@@ -2069,7 +2049,7 @@ class Identifier(SupportiveEntity):
                                      'inlined_as_list': False,
                                      'multivalued': False,
                                      'name': 'notation',
-                                     'range': 'uri',
+                                     'range': 'string',
                                      'required': True,
                                      'slot_uri': 'skos:notation'}}})
 
@@ -2080,9 +2060,8 @@ class Kind(SupportiveEntity):
     """
     See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'vcard:Kind',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'vcard:Kind',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2091,9 +2070,8 @@ class LegalResource(SupportiveEntity):
     """
     See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'eli:LegalResource',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'eli:LegalResource',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2102,9 +2080,8 @@ class LicenseDocument(SupportiveEntity):
     """
     See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcterms:LicenseDocument',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:LicenseDocument',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'type': {'description': 'A type of licence, e.g. indicating '
                                                 "'public domain' or 'royalties "
                                                 "required'.",
@@ -2126,9 +2103,8 @@ class LinguisticSystem(SupportiveEntity):
     """
     See [DCAT-AP specs:LinguisticSystem](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcterms:LinguisticSystem',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:LinguisticSystem',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2137,9 +2113,8 @@ class Location(SupportiveEntity):
     """
     See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcterms:Location',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:Location',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'bbox': {'description': 'The geographic bounding box of a '
                                                 'resource.',
                                  'inlined_as_list': False,
@@ -2182,9 +2157,8 @@ class MediaType(SupportiveEntity):
     """
     See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcterms:MediaType',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:MediaType',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2193,9 +2167,8 @@ class MediaTypeOrExtent(SupportiveEntity):
     """
     See [DCAT-AP specs:MediaTypeOrExtent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaTypeOrExtent)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcterms:MediaTypeOrExtent',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:MediaTypeOrExtent',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2204,9 +2177,8 @@ class PeriodOfTime(SupportiveEntity):
     """
     See [DCAT-AP specs:PeriodOfTime](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcterms:PeriodOfTime',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:PeriodOfTime',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'beginning': {'description': 'The beginning of a period or '
                                                      'interval.',
                                       'inlined_as_list': True,
@@ -2257,9 +2229,8 @@ class Policy(SupportiveEntity):
     """
     See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'odrl:Policy',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'odrl:Policy',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2268,9 +2239,8 @@ class ProvenanceStatement(SupportiveEntity):
     """
     See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcterms:ProvenanceStatement',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:ProvenanceStatement',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2279,9 +2249,8 @@ class Relationship(SupportiveEntity):
     """
     See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcat:Relationship',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Relationship',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
          'slot_usage': {'had_role': {'description': 'A function of an entity or agent '
                                                     'with respect to another entity or '
                                                     'resource.',
@@ -2310,9 +2279,8 @@ class Resource(SupportiveEntity):
     """
     See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'rdfs:Resource',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'rdfs:Resource',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2321,9 +2289,8 @@ class RightsStatement(SupportiveEntity):
     """
     See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcterms:RightsStatement',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:RightsStatement',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2332,9 +2299,8 @@ class Role(SupportiveEntity):
     """
     See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcat:Role',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Role',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2343,9 +2309,8 @@ class Standard(SupportiveEntity):
     """
     See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'dcterms:Standard',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:Standard',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2354,9 +2319,8 @@ class TimeInstant(SupportiveEntity):
     """
     See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': False,
-         'class_uri': 'time:Instant',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'time:Instant',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
 
     pass
 
@@ -2526,7 +2490,7 @@ class ResearchDataset(Dataset):
     language: Optional[List[LinguisticSystem]] = Field(default=None, description="""A language of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'language',
          'domain_of': ['Catalogue', 'CatalogueRecord', 'Dataset', 'Distribution'],
          'slot_uri': 'dcterms:language'} })
-    modification_date: Optional[str] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
+    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
          'domain_of': ['Catalogue',
                        'CatalogueRecord',
                        'Dataset',
@@ -2556,7 +2520,7 @@ class ResearchDataset(Dataset):
     related_resource: Optional[List[Resource]] = Field(default=None, description="""A related resource.""", json_schema_extra = { "linkml_meta": {'alias': 'related_resource',
          'domain_of': ['Dataset'],
          'slot_uri': 'dcterms:relation'} })
-    release_date: Optional[str] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
+    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
          'slot_uri': 'dcterms:issued'} })
     sample: Optional[List[Distribution]] = Field(default=None, description="""A sample distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'sample', 'domain_of': ['Dataset'], 'slot_uri': 'adms:sample'} })
@@ -2697,7 +2661,7 @@ class AnalysisDataset(ResearchDataset):
     language: Optional[List[LinguisticSystem]] = Field(default=None, description="""A language of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'language',
          'domain_of': ['Catalogue', 'CatalogueRecord', 'Dataset', 'Distribution'],
          'slot_uri': 'dcterms:language'} })
-    modification_date: Optional[str] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
+    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
          'domain_of': ['Catalogue',
                        'CatalogueRecord',
                        'Dataset',
@@ -2727,7 +2691,7 @@ class AnalysisDataset(ResearchDataset):
     related_resource: Optional[List[Resource]] = Field(default=None, description="""A related resource.""", json_schema_extra = { "linkml_meta": {'alias': 'related_resource',
          'domain_of': ['Dataset'],
          'slot_uri': 'dcterms:relation'} })
-    release_date: Optional[str] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
+    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
          'slot_uri': 'dcterms:issued'} })
     sample: Optional[List[Distribution]] = Field(default=None, description="""A sample distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'sample', 'domain_of': ['Dataset'], 'slot_uri': 'adms:sample'} })
@@ -2846,7 +2810,7 @@ class ResearchCatalog(Catalogue):
     licence: Optional[LicenseDocument] = Field(default=None, description="""A licence under which the Catalogue can be used or reused.""", json_schema_extra = { "linkml_meta": {'alias': 'licence',
          'domain_of': ['Catalogue', 'DataService', 'Distribution'],
          'slot_uri': 'dcterms:license'} })
-    modification_date: Optional[str] = Field(default=None, description="""The most recent date on which the Catalogue was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
+    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Catalogue was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
          'domain_of': ['Catalogue',
                        'CatalogueRecord',
                        'Dataset',
@@ -2858,7 +2822,7 @@ class ResearchCatalog(Catalogue):
          'domain_of': ['Catalogue', 'DataService', 'Dataset', 'DatasetSeries'],
          'slot_uri': 'dcterms:publisher'} })
     record: Optional[List[CatalogueRecord]] = Field(default=None, description="""A Catalogue Record that is part of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'record', 'domain_of': ['Catalogue'], 'slot_uri': 'dcat:record'} })
-    release_date: Optional[str] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
+    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
          'recommended': True,
          'slot_uri': 'dcterms:issued'} })
@@ -3998,7 +3962,7 @@ class NMRAnalysisDataset(AnalysisDataset):
     language: Optional[List[LinguisticSystem]] = Field(default=None, description="""A language of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'language',
          'domain_of': ['Catalogue', 'CatalogueRecord', 'Dataset', 'Distribution'],
          'slot_uri': 'dcterms:language'} })
-    modification_date: Optional[str] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
+    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
          'domain_of': ['Catalogue',
                        'CatalogueRecord',
                        'Dataset',
@@ -4028,7 +3992,7 @@ class NMRAnalysisDataset(AnalysisDataset):
     related_resource: Optional[List[Resource]] = Field(default=None, description="""A related resource.""", json_schema_extra = { "linkml_meta": {'alias': 'related_resource',
          'domain_of': ['Dataset'],
          'slot_uri': 'dcterms:relation'} })
-    release_date: Optional[str] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
+    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
          'slot_uri': 'dcterms:issued'} })
     sample: Optional[List[Distribution]] = Field(default=None, description="""A sample distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'sample', 'domain_of': ['Dataset'], 'slot_uri': 'adms:sample'} })
@@ -4923,7 +4887,6 @@ class SMILES(QualitativeAttribute):
 Activity.model_rebuild()
 Catalogue.model_rebuild()
 CatalogueRecord.model_rebuild()
-CataloguedResource.model_rebuild()
 DataService.model_rebuild()
 Dataset.model_rebuild()
 DatasetSeries.model_rebuild()
