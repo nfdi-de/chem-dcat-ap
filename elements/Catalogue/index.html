@@ -446,7 +446,7 @@
 </tr>
 <tr>
 <td><a href="../modification_date/">modification_date</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Date/">Date</a></td>
 <td>The most recent date on which the Catalogue was modified</td>
 <td>direct</td>
 </tr>
@@ -464,7 +464,7 @@
 </tr>
 <tr>
 <td><a href="../release_date/">release_date</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Date/">Date</a></td>
 <td>The date of formal issuance (e</td>
 <td>direct</td>
 </tr>
@@ -524,6 +524,12 @@
 <td><a href="./">Catalogue</a></td>
 </tr>
 <tr>
+<td><a href="../CatalogueRecord/">CatalogueRecord</a></td>
+<td><a href="../primary_topic/">primary_topic</a></td>
+<td>any_of[range]</td>
+<td><a href="./">Catalogue</a></td>
+</tr>
+<tr>
 <td><a href="../ResearchCatalog/">ResearchCatalog</a></td>
 <td><a href="../catalogue/">catalogue</a></td>
 <td>range</td>
@@ -568,7 +574,6 @@
 <pre><code class="language-yaml">name: Catalogue
 description: See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-abstract: false
 slots:
 - applicable_legislation
 - catalogue
@@ -678,7 +683,7 @@ slot_usage:
     name: modification_date
     description: The most recent date on which the Catalogue was modified.
     slot_uri: dcterms:modified
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -703,7 +708,7 @@ slot_usage:
     name: release_date
     description: The date of formal issuance (e.g., publication) of the Catalogue.
     slot_uri: dcterms:issued
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -759,7 +764,6 @@ class_uri: dcat:Catalog
 <pre><code class="language-yaml">name: Catalogue
 description: See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-abstract: false
 slot_usage:
   applicable_legislation:
     name: applicable_legislation
@@ -849,7 +853,7 @@ slot_usage:
     name: modification_date
     description: The most recent date on which the Catalogue was modified.
     slot_uri: dcterms:modified
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -874,7 +878,7 @@ slot_usage:
     name: release_date
     description: The date of formal issuance (e.g., publication) of the Catalogue.
     slot_uri: dcterms:issued
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -1109,7 +1113,7 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -1158,7 +1162,7 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false

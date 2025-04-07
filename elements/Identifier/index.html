@@ -245,7 +245,7 @@
 <tbody>
 <tr>
 <td><a href="../notation/">notation</a></td>
-<td>1 <br/> <a href="../Uri/">Uri</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>A string that is an identifier in the context of the identifier scheme refere...</td>
 <td>direct</td>
 </tr>
@@ -416,7 +416,6 @@
 description: See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 is_a: SupportiveEntity
-abstract: false
 slots:
 - notation
 slot_usage:
@@ -425,7 +424,7 @@ slot_usage:
     description: A string that is an identifier in the context of the identifier scheme
       referenced by its datatype.
     slot_uri: skos:notation
-    range: uri
+    range: string
     required: true
     multivalued: false
     inlined_as_list: false
@@ -439,14 +438,13 @@ class_uri: adms:Identifier
 description: See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 is_a: SupportiveEntity
-abstract: false
 slot_usage:
   notation:
     name: notation
     description: A string that is an identifier in the context of the identifier scheme
       referenced by its datatype.
     slot_uri: skos:notation
-    range: uri
+    range: string
     required: true
     multivalued: false
     inlined_as_list: false
@@ -462,7 +460,7 @@ attributes:
     owner: Identifier
     domain_of:
     - Identifier
-    range: uri
+    range: string
     required: true
     multivalued: false
     inlined_as_list: false

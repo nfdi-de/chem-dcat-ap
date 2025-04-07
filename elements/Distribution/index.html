@@ -492,7 +492,7 @@
 </tr>
 <tr>
 <td><a href="../modification_date/">modification_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Date/">Date</a></td>
 <td>The most recent date on which the Distribution was changed or modified</td>
 <td>direct</td>
 </tr>
@@ -504,7 +504,7 @@
 </tr>
 <tr>
 <td><a href="../release_date/">release_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Date/">Date</a></td>
 <td>The date of formal issuance (e</td>
 <td>direct</td>
 </tr>
@@ -632,7 +632,6 @@
 <pre><code class="language-yaml">name: Distribution
 description: See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-abstract: false
 slots:
 - access_URL
 - access_service
@@ -799,7 +798,7 @@ slot_usage:
     name: modification_date
     description: The most recent date on which the Distribution was changed or modified.
     slot_uri: dcterms:modified
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -816,7 +815,7 @@ slot_usage:
     name: release_date
     description: The date of formal issuance (e.g., publication) of the Distribution.
     slot_uri: dcterms:issued
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -870,7 +869,6 @@ class_uri: dcat:Distribution
 <pre><code class="language-yaml">name: Distribution
 description: See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-abstract: false
 slot_usage:
   access_URL:
     name: access_URL
@@ -1012,7 +1010,7 @@ slot_usage:
     name: modification_date
     description: The most recent date on which the Distribution was changed or modified.
     slot_uri: dcterms:modified
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -1029,7 +1027,7 @@ slot_usage:
     name: release_date
     description: The date of formal issuance (e.g., publication) of the Distribution.
     slot_uri: dcterms:issued
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -1346,7 +1344,7 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -1378,7 +1376,7 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false

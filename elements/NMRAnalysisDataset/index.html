@@ -607,7 +607,7 @@
 </tr>
 <tr>
 <td><a href="../identifier/">identifier</a></td>
-<td>* <br/> <a href="../Uri/">Uri</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>The main identifier for the Dataset, e</td>
 <td><a href="../Dataset/">Dataset</a></td>
 </tr>
@@ -643,7 +643,7 @@
 </tr>
 <tr>
 <td><a href="../modification_date/">modification_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Date/">Date</a></td>
 <td>The most recent date on which the Dataset was changed or modified</td>
 <td><a href="../Dataset/">Dataset</a></td>
 </tr>
@@ -685,7 +685,7 @@
 </tr>
 <tr>
 <td><a href="../release_date/">release_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Date/">Date</a></td>
 <td>The date of formal issuance (e</td>
 <td><a href="../Dataset/">Dataset</a></td>
 </tr>
@@ -1074,7 +1074,7 @@ attributes:
     owner: NMRAnalysisDataset
     domain_of:
     - Dataset
-    range: uri
+    range: string
     required: false
     multivalued: true
     inlined_as_list: true
@@ -1170,7 +1170,7 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -1279,7 +1279,7 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false

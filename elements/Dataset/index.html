@@ -563,7 +563,7 @@
 </tr>
 <tr>
 <td><a href="../identifier/">identifier</a></td>
-<td>* <br/> <a href="../Uri/">Uri</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>The main identifier for the Dataset, e</td>
 <td>direct</td>
 </tr>
@@ -599,7 +599,7 @@
 </tr>
 <tr>
 <td><a href="../modification_date/">modification_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Date/">Date</a></td>
 <td>The most recent date on which the Dataset was changed or modified</td>
 <td>direct</td>
 </tr>
@@ -641,7 +641,7 @@
 </tr>
 <tr>
 <td><a href="../release_date/">release_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Date/">Date</a></td>
 <td>The date of formal issuance (e</td>
 <td>direct</td>
 </tr>
@@ -743,6 +743,12 @@
 <td><a href="./">Dataset</a></td>
 </tr>
 <tr>
+<td><a href="../CatalogueRecord/">CatalogueRecord</a></td>
+<td><a href="../primary_topic/">primary_topic</a></td>
+<td>any_of[range]</td>
+<td><a href="./">Dataset</a></td>
+</tr>
+<tr>
 <td><a href="../DataService/">DataService</a></td>
 <td><a href="../serves_dataset/">serves_dataset</a></td>
 <td>range</td>
@@ -817,7 +823,6 @@
 <pre><code class="language-yaml">name: Dataset
 description: See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-abstract: false
 slots:
 - access_rights
 - applicable_legislation
@@ -953,7 +958,7 @@ slot_usage:
     description: The main identifier for the Dataset, e.g. the URI or other unique
       identifier in the context of the Catalogue.
     slot_uri: dcterms:identifier
-    range: uri
+    range: string
     required: false
     multivalued: true
     inlined_as_list: true
@@ -1004,7 +1009,7 @@ slot_usage:
     name: modification_date
     description: The most recent date on which the Dataset was changed or modified.
     slot_uri: dcterms:modified
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -1060,7 +1065,7 @@ slot_usage:
     name: release_date
     description: The date of formal issuance (e.g., publication) of the Dataset.
     slot_uri: dcterms:issued
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -1165,7 +1170,6 @@ class_uri: dcat:Dataset
 <pre><code class="language-yaml">name: Dataset
 description: See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-abstract: false
 slot_usage:
   access_rights:
     name: access_rights
@@ -1264,7 +1268,7 @@ slot_usage:
     description: The main identifier for the Dataset, e.g. the URI or other unique
       identifier in the context of the Catalogue.
     slot_uri: dcterms:identifier
-    range: uri
+    range: string
     required: false
     multivalued: true
     inlined_as_list: true
@@ -1315,7 +1319,7 @@ slot_usage:
     name: modification_date
     description: The most recent date on which the Dataset was changed or modified.
     slot_uri: dcterms:modified
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -1371,7 +1375,7 @@ slot_usage:
     name: release_date
     description: The date of formal issuance (e.g., publication) of the Dataset.
     slot_uri: dcterms:issued
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -1664,7 +1668,7 @@ attributes:
     owner: Dataset
     domain_of:
     - Dataset
-    range: uri
+    range: string
     required: false
     multivalued: true
     inlined_as_list: true
@@ -1760,7 +1764,7 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false
@@ -1869,7 +1873,7 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    range: string
+    range: date
     required: false
     multivalued: false
     inlined_as_list: false

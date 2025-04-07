@@ -3,13 +3,21 @@ description: 'This LinkML schema representation of DCAT-AP 3.0.0 was automatical
   created from these [JSON-LD SHACL shapes](https://github.com/SEMICeu/DCAT-AP/blob/master/releases/3.0.0/shacl/dcat-ap-SHACL.jsonld)
   using this Python script: https://github.com/StroemPhi/dcat-4C-ap/tree/main/src/dcat-ap_shacl_2_linkml.py.
 
-  NOTE: The JSON-LD SHACL constraints published with the [Juli 3.0.0 GitHub release](https://github.com/SEMICeu/DCAT-AP/releases/tag/3.0.0)
+  NOTE:The JSON-LD SHACL constraints published with the [Juli 3.0.0 GitHub release](https://github.com/SEMICeu/DCAT-AP/releases/tag/3.0.0)
   and in the [3.0.0. release branch](https://github.com/SEMICeu/DCAT-AP/tree/3.0.0)
   are different from the ones in https://github.com/SEMICeu/DCAT-AP/tree/master/releases/3.0.0.
   Also the TTL shapes provided in the latter in the HTML folder differ from the ones
-  in the SHACL folder, in that they declare dcat:Resource and dcatap:TemporalLiteral
-  as unions of the dcat:Resource subclasses respectively different XML Schema datatypes
-  for date and time. We address this with ''helper code'' in the conversion script. '
+  in the SHACL folder, in that they declare "dcat:ResourceShape/DcatResource_Shape"
+  and "TemporalLiteralShape/DateOrDateTimeDataType_Shape"(shacl/html folder) as unions
+  of the dcat:Dataset, dcat:Catalog, dcat:DataService and dcat:DatasetSeries respectively
+  the datatypes xsd:date, xsd:dateTime, xsd:gYear & xsd:gYearMonth. We currently address
+  this in the conversion script by only allowing xsd:date as a [Temporal Literal](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TemporalLiteral),
+  which means that this LinkML representation of DCAT-AP is stricter and values in
+  xsd:dateTime format will automatically be typecast to xsd:date. Regarding the ''dcat:ResourceShape/DcatResource_Shape''
+  we use the LinkML [union as ranges](https://linkml.io/linkml/schemas/advanced.html#unions-as-ranges)
+  approach to provide the expected union of dcat:Resource subclasses. However, this
+  is not fully implemented in LinkML yet, so that any kind of object/class could be
+  used, until https://github.com/linkml/linkml/issues/1813 is fixed.'
 title: LinkML schema representation of DCAT-AP 3.0.0
 todos:
 - Think about how to add all the enums and their permissible values to constrain the
@@ -17,12 +25,15 @@ todos:
   https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs. Using EnumBindings
   (https://linkml.io/linkml-model/latest/docs/bindings/) seems best, but does not
   yet work.
+- Check if https://github.com/linkml/linkml/issues/1813 is closed and range unions
+  are validatable
 source: https://semiceu.github.io/DCAT-AP/releases/3.0.0
-id: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml
+id: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml
 imports:
 - linkml:types
 license: CC-BY 4.0
 prefixes:
+  dcatap_linkml: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml#
   linkml: https://w3id.org/linkml/
   foaf: http://xmlns.com/foaf/0.1/
   prov: http://www.w3.org/ns/prov#
@@ -44,7 +55,7 @@ prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   vl: https://purl.eu/ns/shacl#
   iana: https://www.iana.org/assignments/
-default_prefix: linkmldcatap
+default_prefix: dcatap_linkml
 default_range: string
 types:
   duration:
@@ -548,13 +559,11 @@ classes:
   Activity:
     name: Activity
     description: See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
-    abstract: false
     class_uri: prov:Activity
   Agent:
     name: Agent
     description: See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)
     is_a: SupportiveEntity
-    abstract: false
     slots:
     - name
     - type
@@ -577,16 +586,19 @@ classes:
         multivalued: false
         inlined_as_list: true
     class_uri: foaf:Agent
+  Any:
+    name: Any
+    description: This abstract class is needed to create the union of Dataset, DatasetSeries,
+      Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/)
+    class_uri: linkml:Any
   Attribution:
     name: Attribution
     description: See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: prov:Attribution
   Catalogue:
     name: Catalogue
     description: See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
-    abstract: false
     slots:
     - applicable_legislation
     - catalogue
@@ -697,7 +709,7 @@ classes:
         name: modification_date
         description: The most recent date on which the Catalogue was modified.
         slot_uri: dcterms:modified
-        range: string
+        range: date
         required: false
         recommended: true
         multivalued: false
@@ -723,7 +735,7 @@ classes:
         name: release_date
         description: The date of formal issuance (e.g., publication) of the Catalogue.
         slot_uri: dcterms:issued
-        range: string
+        range: date
         required: false
         recommended: true
         multivalued: false
@@ -774,7 +786,6 @@ classes:
   CatalogueRecord:
     name: CatalogueRecord
     description: See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
-    abstract: false
     slots:
     - application_profile
     - change_type
@@ -829,7 +840,7 @@ classes:
         description: The date on which the description of the Resource was included
           in the Catalogue.
         slot_uri: dcterms:issued
-        range: string
+        range: date
         required: false
         recommended: true
         multivalued: false
@@ -839,7 +850,7 @@ classes:
         description: The most recent date on which the Catalogue entry was changed
           or modified.
         slot_uri: dcterms:modified
-        range: string
+        range: date
         required: true
         multivalued: false
         inlined_as_list: false
@@ -848,10 +859,15 @@ classes:
         description: A link to the Dataset, Data service or Catalog described in the
           record.
         slot_uri: foaf:primaryTopic
-        range: CataloguedResource
+        range: Any
         required: true
         multivalued: false
         inlined_as_list: false
+        any_of:
+        - range: Catalogue
+        - range: Dataset
+        - range: DatasetSeries
+        - range: DataService
       source_metadata:
         name: source_metadata
         description: The original metadata that was used in creating metadata for
@@ -870,16 +886,10 @@ classes:
         multivalued: true
         inlined_as_list: true
     class_uri: dcat:CatalogRecord
-  CataloguedResource:
-    name: CataloguedResource
-    description: See [DCAT-AP specs:CataloguedResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CataloguedResource)
-    abstract: true
-    class_uri: dcat:Resource
   Checksum:
     name: Checksum
     description: See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
     is_a: SupportiveEntity
-    abstract: false
     slots:
     - algorithm
     - checksum_value
@@ -906,13 +916,11 @@ classes:
     name: ChecksumAlgorithm
     description: See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: spdx:ChecksumAlgorithm
   Concept:
     name: Concept
     description: See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)
     is_a: SupportiveEntity
-    abstract: false
     slots:
     - preferred_label
     slot_usage:
@@ -929,7 +937,6 @@ classes:
     name: ConceptScheme
     description: See [DCAT-AP specs:ConceptScheme](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme)
     is_a: SupportiveEntity
-    abstract: false
     slots:
     - title
     slot_usage:
@@ -945,7 +952,6 @@ classes:
   DataService:
     name: DataService
     description: See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)
-    abstract: false
     slots:
     - access_rights
     - applicable_legislation
@@ -1109,7 +1115,6 @@ classes:
   Dataset:
     name: Dataset
     description: See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
-    abstract: false
     slots:
     - access_rights
     - applicable_legislation
@@ -1246,7 +1251,7 @@ classes:
         description: The main identifier for the Dataset, e.g. the URI or other unique
           identifier in the context of the Catalogue.
         slot_uri: dcterms:identifier
-        range: uri
+        range: string
         required: false
         multivalued: true
         inlined_as_list: true
@@ -1297,7 +1302,7 @@ classes:
         name: modification_date
         description: The most recent date on which the Dataset was changed or modified.
         slot_uri: dcterms:modified
-        range: string
+        range: date
         required: false
         multivalued: false
         inlined_as_list: false
@@ -1353,7 +1358,7 @@ classes:
         name: release_date
         description: The date of formal issuance (e.g., publication) of the Dataset.
         slot_uri: dcterms:issued
-        range: string
+        range: date
         required: false
         multivalued: false
         inlined_as_list: false
@@ -1453,7 +1458,6 @@ classes:
   DatasetSeries:
     name: DatasetSeries
     description: See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)
-    abstract: false
     slots:
     - applicable_legislation
     - contact_point
@@ -1513,7 +1517,7 @@ classes:
         description: The most recent date on which the Dataset Series was changed
           or modified.
         slot_uri: dcterms:modified
-        range: string
+        range: date
         required: false
         multivalued: false
         inlined_as_list: false
@@ -1531,7 +1535,7 @@ classes:
         description: The date of formal issuance (e.g., publication) of the Dataset
           Series.
         slot_uri: dcterms:issued
-        range: string
+        range: date
         required: false
         multivalued: false
         inlined_as_list: false
@@ -1555,7 +1559,6 @@ classes:
   Distribution:
     name: Distribution
     description: See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
-    abstract: false
     slots:
     - access_URL
     - access_service
@@ -1725,7 +1728,7 @@ classes:
         description: The most recent date on which the Distribution was changed or
           modified.
         slot_uri: dcterms:modified
-        range: string
+        range: date
         required: false
         multivalued: false
         inlined_as_list: false
@@ -1742,7 +1745,7 @@ classes:
         name: release_date
         description: The date of formal issuance (e.g., publication) of the Distribution.
         slot_uri: dcterms:issued
-        range: string
+        range: date
         required: false
         multivalued: false
         inlined_as_list: false
@@ -1792,25 +1795,21 @@ classes:
     name: Document
     description: See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: foaf:Document
   Frequency:
     name: Frequency
     description: See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: dcterms:Frequency
   Geometry:
     name: Geometry
     description: See [DCAT-AP specs:Geometry](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: locn:Geometry
   Identifier:
     name: Identifier
     description: See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)
     is_a: SupportiveEntity
-    abstract: false
     slots:
     - notation
     slot_usage:
@@ -1819,7 +1818,7 @@ classes:
         description: A string that is an identifier in the context of the identifier
           scheme referenced by its datatype.
         slot_uri: skos:notation
-        range: uri
+        range: string
         required: true
         multivalued: false
         inlined_as_list: false
@@ -1828,19 +1827,16 @@ classes:
     name: Kind
     description: See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: vcard:Kind
   LegalResource:
     name: LegalResource
     description: See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: eli:LegalResource
   LicenseDocument:
     name: LicenseDocument
     description: See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)
     is_a: SupportiveEntity
-    abstract: false
     slots:
     - type
     slot_usage:
@@ -1859,13 +1855,11 @@ classes:
     name: LinguisticSystem
     description: See [DCAT-AP specs:LinguisticSystem](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: dcterms:LinguisticSystem
   Location:
     name: Location
     description: See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)
     is_a: SupportiveEntity
-    abstract: false
     slots:
     - bbox
     - centroid
@@ -1902,19 +1896,16 @@ classes:
     name: MediaType
     description: See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: dcterms:MediaType
   MediaTypeOrExtent:
     name: MediaTypeOrExtent
     description: See [DCAT-AP specs:MediaTypeOrExtent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaTypeOrExtent)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: dcterms:MediaTypeOrExtent
   PeriodOfTime:
     name: PeriodOfTime
     description: See [DCAT-AP specs:PeriodOfTime](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime)
     is_a: SupportiveEntity
-    abstract: false
     slots:
     - beginning
     - end
@@ -1960,19 +1951,16 @@ classes:
     name: Policy
     description: See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: odrl:Policy
   ProvenanceStatement:
     name: ProvenanceStatement
     description: See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: dcterms:ProvenanceStatement
   Relationship:
     name: Relationship
     description: See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)
     is_a: SupportiveEntity
-    abstract: false
     slots:
     - had_role
     - relation
@@ -1999,25 +1987,21 @@ classes:
     name: Resource
     description: See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: rdfs:Resource
   RightsStatement:
     name: RightsStatement
     description: See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: dcterms:RightsStatement
   Role:
     name: Role
     description: See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: dcat:Role
   Standard:
     name: Standard
     description: See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: dcterms:Standard
   SupportiveEntity:
     name: SupportiveEntity
@@ -2028,5 +2012,4 @@ classes:
     name: TimeInstant
     description: See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)
     is_a: SupportiveEntity
-    abstract: false
     class_uri: time:Instant

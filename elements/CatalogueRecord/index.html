@@ -251,8 +251,8 @@
 
 
 
-    CatalogueRecord --&gt; "1" CataloguedResource : primary_topic
-    click CataloguedResource href "../CataloguedResource"
+    CatalogueRecord --&gt; "1" Any : primary_topic
+    click Any href "../Any"
 
 
       CatalogueRecord : source_metadata
@@ -306,19 +306,19 @@
 </tr>
 <tr>
 <td><a href="../listing_date/">listing_date</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Date/">Date</a></td>
 <td>The date on which the description of the Resource was included in the Catalog...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../modification_date/">modification_date</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../Date/">Date</a></td>
 <td>The most recent date on which the Catalogue entry was changed or modified</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../primary_topic/">primary_topic</a></td>
-<td>1 <br/> <a href="../CataloguedResource/">CataloguedResource</a></td>
+<td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../Catalogue/">Catalogue</a> or <br/><a href="../Dataset/">Dataset</a> or <br/><a href="../DatasetSeries/">DatasetSeries</a> or <br/><a href="../DataService/">DataService</a></td>
 <td>A link to the Dataset, Data service or Catalog described in the record</td>
 <td>direct</td>
 </tr>
@@ -398,7 +398,6 @@
 <pre><code class="language-yaml">name: CatalogueRecord
 description: See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-abstract: false
 slots:
 - application_profile
 - change_type
@@ -453,7 +452,7 @@ slot_usage:
     description: The date on which the description of the Resource was included in
       the Catalogue.
     slot_uri: dcterms:issued
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -463,7 +462,7 @@ slot_usage:
     description: The most recent date on which the Catalogue entry was changed or
       modified.
     slot_uri: dcterms:modified
-    range: string
+    range: date
     required: true
     multivalued: false
     inlined_as_list: false
@@ -471,10 +470,15 @@ slot_usage:
     name: primary_topic
     description: A link to the Dataset, Data service or Catalog described in the record.
     slot_uri: foaf:primaryTopic
-    range: CataloguedResource
+    range: Any
     required: true
     multivalued: false
     inlined_as_list: false
+    any_of:
+    - range: Catalogue
+    - range: Dataset
+    - range: DatasetSeries
+    - range: DataService
   source_metadata:
     name: source_metadata
     description: The original metadata that was used in creating metadata for the
@@ -501,7 +505,6 @@ class_uri: dcat:CatalogRecord
 <pre><code class="language-yaml">name: CatalogueRecord
 description: See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-abstract: false
 slot_usage:
   application_profile:
     name: application_profile
@@ -546,7 +549,7 @@ slot_usage:
     description: The date on which the description of the Resource was included in
       the Catalogue.
     slot_uri: dcterms:issued
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -556,7 +559,7 @@ slot_usage:
     description: The most recent date on which the Catalogue entry was changed or
       modified.
     slot_uri: dcterms:modified
-    range: string
+    range: date
     required: true
     multivalued: false
     inlined_as_list: false
@@ -564,10 +567,15 @@ slot_usage:
     name: primary_topic
     description: A link to the Dataset, Data service or Catalog described in the record.
     slot_uri: foaf:primaryTopic
-    range: CataloguedResource
+    range: Any
     required: true
     multivalued: false
     inlined_as_list: false
+    any_of:
+    - range: Catalogue
+    - range: Dataset
+    - range: DatasetSeries
+    - range: DataService
   source_metadata:
     name: source_metadata
     description: The original metadata that was used in creating metadata for the
@@ -675,7 +683,7 @@ attributes:
     owner: CatalogueRecord
     domain_of:
     - CatalogueRecord
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -695,7 +703,7 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    range: string
+    range: date
     required: true
     multivalued: false
     inlined_as_list: false
@@ -709,10 +717,15 @@ attributes:
     owner: CatalogueRecord
     domain_of:
     - CatalogueRecord
-    range: CataloguedResource
+    range: Any
     required: true
     multivalued: false
     inlined_as_list: false
+    any_of:
+    - range: Catalogue
+    - range: Dataset
+    - range: DatasetSeries
+    - range: DataService
   source_metadata:
     name: source_metadata
     description: The original metadata that was used in creating metadata for the
