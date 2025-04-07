@@ -292,18 +292,7 @@ def parse_shacl_shapes(builder):
                                             description=description,
                                             pattern=pattern))
 
-    return builder
-
-
-def add_enums(builder):
-    """
-    Add Enums to the schema based on https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs
-    Args:
-        - builder (SchemaBuilder): The LinkML model builder to which to add the enums
-    Returns:
-        - builder (SchemaBuilder): The builder with added enums
-    """
-
+    # Add Enums to the schema based on https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs
     enums = {'DatasetThemes': {'permissible_values':
                                    [{'text': 'Agriculture, fisheries, forestry and food', 'meaning': 'http://publications.europa.eu/resource/authority/data-theme/AGRI'},
                                     {'text': 'Economy and finance', 'meaning': 'http://publications.europa.eu/resource/authority/data-theme/ECON'},
@@ -337,9 +326,9 @@ def add_enums(builder):
     return builder
 
 
-def build_schema():
+def build_linkml_from_dcatap_shacl():
     """
-    Create a LinkML schema representation
+    Create a LinkML schema representation of DCAT-AP
     """
     builder = SchemaBuilder(name="dcat-ap")
     builder.schema.id = 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'
@@ -353,8 +342,6 @@ def build_schema():
     builder.schema.source = 'https://semiceu.github.io/DCAT-AP/releases/3.0.0'
 
     builder = parse_shacl_shapes(builder)
-    builder = add_enums(builder)
-
 
     # sort classes, slots and types alphabetically
     builder.schema.classes = {key: builder.schema.classes[key] for key in sorted(builder.schema.classes)}
@@ -362,20 +349,524 @@ def build_schema():
     builder.schema.types = {key: builder.schema.types[key] for key in sorted(builder.schema.types)}
 
     # TODO list
-    builder.schema.todos = ['Think about how to add all the enums and their permissible values to constrain the allowed instances of classes such as "Concept", "MediaType", etc. as defined in https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs. Using EnumBindings (https://linkml.io/linkml-model/latest/docs/bindings/) seems best, but does not yet work.', 'Check if https://github.com/linkml/linkml/issues/1813 is closed and range unions are validatable']
+    builder.schema.todos = ['Think about how to add all the other enums and their permissible values to constrain the allowed instances of classes such as "Concept", "MediaType", etc. as defined in https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs. Using EnumBindings (https://linkml.io/linkml-model/latest/docs/bindings/) seems best, but does not yet work.', 'Check if https://github.com/linkml/linkml/issues/1813 is closed and range unions are validatable']
 
     return builder.schema
 
 
-def dump_schema(schema, output_file='dcat_ap_linkml.yaml'):
-    filename = output_file
-    filepath = os.path.join('dcat_4c_ap', 'schema', filename)
-    YAMLDumper().dump(schema, filepath)
+def build_dcatap_plus_base():
+    """
+    Extending DCAT-AP
+    """
+    description = ("""
+This metadata schema is an Extension of the DCAT Application Profile for Providing Links to Use-case Specific
+Context. It allows to provide additional metadata regarding: which kind(s) of entity(s) or activity(s) were
+ evaluated (the dcat:Dataset is about), which kind of activity generated the dcat:Dataset, which kind of "tools" (
+input entities like devices or software) were used in the dataset generating activity, in which location (e.g. a
+laboratory) and according to which procedure the dataset generating activity took place, and which kind(s) of
+qualitative and quantitative characteristic were attributed to the evaluated entity or activity and used "tools". """
+                   ).replace('\n', '')
+
+    builder = SchemaBuilder(name="dcat-ap-plus")
+    builder.schema.id = 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'
+    builder.schema.description = description
+    builder.schema.default_prefix = 'dcatap_plus'
+    builder.schema.prefixes = PREFIX_MAP
+    builder.schema.prefixes['dcatap_plus']='https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#'
+    builder.schema.prefixes['BFO']='http://purl.obolibrary.org/obo/BFO_'
+    builder.schema.prefixes['OBI']='http://purl.obolibrary.org/obo/OBI_'
+    builder.schema.prefixes['NCIT']='http://purl.obolibrary.org/obo/NCIT_'
+    builder.schema.prefixes['SOSA']='http://www.w3.org/ns/sosa/'
+    builder.schema.prefixes['qudt']= 'http://qudt.org/schema/qudt/'
+    builder.schema.title = 'DCAT-AP-PLUS'
+    builder.schema.license = 'CC-BY 4.0'
+    builder.schema.default_range = 'string'
+    builder.schema.imports = ['linkml:types']
+    builder.schema.see_also = [
+        'https://github.com/StroemPhi/dcat-4C-ap',
+        'https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml',
+        'https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads'
+    ]
+    builder.schema.subsets = {
+        'domain_agnostic_core': {
+            'description':
+                'The elements of this subset are considered the core layer of our DCAT-AP extension.'
+        }
+    }
+
+    ###########################
+    # Add DCAT-AP v3.0.0 part #
+    ###########################
+    builder = parse_shacl_shapes(builder)
+
+    ###########################################
+    # Extending Dataset
+    ###########################################
+    slots = ['id',
+             'describes_entity',
+             'describes_activity']
+    builder.schema.classes['Dataset'].slots = builder.schema.classes['Dataset'].slots + slots
+    builder.schema.classes['Dataset'].slot_usage.was_generated_by.required = True
+    builder.schema.classes['Dataset'].slot_usage.was_generated_by.notes.append('stricter than DCAT-AP')
+
+    ###########################################
+    # Extending Activity  DataCreatingActivity
+    ###########################################
+    builder.schema.classes['Activity'].description = 'An activity (process) that has the objective to produce information aboutn entity or activity.'
+    slots = ['title',
+             'description',
+             'other_identifier',
+             'evaluated_entity',
+             'evaluated_activity',
+             'used_tool',
+             'realized_plan',
+             'has_part',
+             'occurred_in']
+    builder.schema.classes['Activity'].slots = slots
+    builder.schema.classes['Activity'].slot_usage = {'has_part': {'range': 'Activity'}}
+    builder.schema.classes['Activity'].slot_usage.has_part.description = 'A slot to provide an Activity that is part of the Activity that created the Dataset.'
+    builder.schema.classes['Activity'].slot_usage.has_part.notes =['not in DCAT-AP']
+
+    builder.schema.classes['Activity'].slot_usage = {'other_identifier':{
+        'range': 'Identifier'}}
+    builder.schema.classes['Activity'].slot_usage.other_identifier.description = 'A secondary identifier of the Activity that created the Dataset.'
+    builder.schema.classes['Activity'].slot_usage.other_identifier.notes =['not in DCAT-AP']
+    builder.schema.classes['Activity'].narrow_mappings = ['NCIT:C25598', 'SOSA:Observation', 'OBI:0000070']
+    builder.schema.classes['Activity'].in_subset='domain_agnostic_core'
+
+####################
+## Extend DCAT-AP ##
+####################
+
+    def add_mixins():
+        builder.add_class(ClassDefinition(
+            name='ClassifierMixin',
+            mixin=True,
+            description='A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.',
+            abstract=True,
+            slots=['type',
+                   'rdf_type'
+                   ],
+            slot_usage={
+                'type':{
+                    'inlined':True,
+                    'range':'DefinedTerm'
+                }
+            },
+            in_subset='domain_agnostic_core'
+        ))
+    def add_defined_term():
+        builder.add_class(ClassDefinition(
+            name='DefinedTerm',
+            class_uri='schema:DefinedTerm',
+            description='A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.',
+            slots=['id',
+                   'title'
+                   ],
+            attributes={
+                'from_CV':{
+                    'slot_uri':'schema:inDefinedTermSet',
+                    'range':'uriorcurie',
+                    'description': 'The URL of the controlled vocabulary.'
+                }
+            },
+            in_subset='domain_agnostic_core'
+        ))
+    def add_analysis_dataset():
+        builder.add_class(ClassDefinition(
+            name='AnalysisDataset',
+            is_a= 'Dataset',
+            class_uri='dcat:Dataset',
+            description='A Dataset that was generated by an analysis of some previously generated data. For example, a dataset that contains the data of an assignment of a chemical structure to a sample based on the spectral data obtained from the sample is an AnalyticalDataset.',
+            slot_usage={'was_generated_by':{'range':'DataAnalysis'}},
+            in_subset='domain_agnostic_core'
+        ))
+    def add_data_analysis():
+        builder.add_class(ClassDefinition(
+            name='DataAnalysis',
+            is_a= 'Activity',
+            class_uri='prov:Activity',
+            description='An Activity that evaluates the data produced by another Activity.',
+            slots = ['title',
+                     'description',
+                     'other_identifier',
+                     'evaluated_entity',
+                     'evaluated_activity',
+                     'used_tool',
+                     'realized_plan',
+                     'has_part',
+                     'occurred_in'],
+            slot_usage={
+                'evaluated_entity':{
+                    'description': 'A slot to provide the data that was analysed by the DataAnalysis.',
+                    'range':'AnalysisSourceData',
+                },
+                'other_identifier':{
+                    'description': 'A secondary identifier of the Activity',
+                    'range': 'Identifier',
+                    'required': 'false',
+                    'multivalued': 'true',
+                    'inlined_as_list': 'true'}
+            },
+            close_mappings=['NCIT:C25391'],
+            exact_mappings='OBI:0200000',
+            in_subset='domain_agnostic_core'
+        ))
+    def add_evaluated_entity():
+        builder.add_class(ClassDefinition(
+            name='EvaluatedEntity',
+            mixins= 'ClassifierMixin',
+            class_uri='prov:Entity',
+            description='A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a Activity.',
+            slots = ['title',
+                     'description',
+                     'other_identifier',
+                     'id',
+                     'has_qualitative_attribute',
+                     'has_quantitative_attribute',
+                     'has_part',
+                     'was_generated_by'],
+            slot_usage={
+                'was_generated_by':{
+                    'description': 'A slot to provide the Activity which created the EvaluatedEntity.',
+                    'range':'Activity',
+                    'multivalued': 'true',
+                    'inlined_as_list': 'true'
+                },
+                'has_part':{
+                    'description': 'A slot to provide a part of the EvaluatedEntity.',
+                    'range':'EvaluatedEntity',
+                    'multivalued': 'true',
+                    'inlined_as_list': 'true'
+                },
+                'other_identifier':{
+                    'description': 'A slot to provide a secondary identifier of the EvaluatedEntity.',
+                    'range': 'Identifier',
+                    'required': 'false',
+                    'multivalued': 'true',
+                    'inlined_as_list': 'true'
+                }
+            },
+            in_subset='domain_agnostic_core'
+        ))
+    def add_analysed_source_data():
+        builder.add_class(ClassDefinition(
+            name='AnalysisSourceData',
+            is_a='EvaluatedEntity',
+            class_uri='prov:Entity',
+            description='Information that was evaluated within a DataAnalysis.',
+            slot_usage={
+                'was_generated_by':{
+                    'description': 'A slot to provide the Activity which created the AnalysisSourceData.',
+                    'range':'Activity'
+                }
+            },
+            in_subset='domain_agnostic_core'
+        ))
+    def add_evaluated_activity():
+        builder.add_class(ClassDefinition(
+            name='EvaluatedActivity',
+            mixins= 'ClassifierMixin',
+            class_uri='prov:Activity',
+            description='An activity or process that is being evaluated in a Activity.',
+            slots = ['title',
+                     'description',
+                     'other_identifier',
+                     'id',
+                     'has_qualitative_attribute',
+                     'has_quantitative_attribute',
+                     'has_part'
+                     ],
+            slot_usage={
+                'has_part':{
+                    'description': 'A slot to provide a part of the EvaluatedActivity.',
+                    'range':'EvaluatedActivity',
+                    'multivalued': 'true',
+                    'inlined_as_list': 'true'
+                },
+                'other_identifier':{
+                    'description': 'A slot to provide a secondary identifier of the EvaluatedActivity.',
+                    'range': 'Identifier',
+                    'required': 'false',
+                    'multivalued': 'true',
+                    'inlined_as_list': 'true'
+                }
+            },
+            in_subset='domain_agnostic_core'
+        ))
+    def add_tools():
+        builder.add_class(ClassDefinition(
+            name='Tool',
+            mixins= 'ClassifierMixin',
+            class_uri='prov:Entity',
+            description='A entity with a certain function used within a Activity.',
+            slots = ['title',
+                     'description',
+                     'other_identifier',
+                     'id',
+                     'has_qualitative_attribute',
+                     'has_quantitative_attribute',
+                     'has_part'
+                     ],
+            slot_usage={
+                'has_part':{
+                    'description': 'The slot to specify parts of a tool.',
+                    'range':'Tool',
+                    'multivalued': 'true',
+                    'inlined_as_list': 'true'
+                },
+                'other_identifier':{
+                    'description': 'A slot to provide a secondary identifier of the tool.',
+                    'range': 'Identifier',
+                    'required': 'false',
+                    'multivalued': 'true',
+                    'inlined_as_list': 'true'
+                }
+            },
+            in_subset='domain_agnostic_core'
+        ))
+
+        builder.add_class(ClassDefinition(
+            name='HardwareTool',
+            aliases=['Device'],
+            is_a= 'Tool',
+            class_uri='prov:Entity',
+            description='A hardware device with a certain function that was used within ann Activity.',
+            in_subset='domain_agnostic_core'
+        ))
+
+        builder.add_class(ClassDefinition(
+            name='SoftwareTool',
+            is_a= 'Tool',
+            class_uri='prov:Entity',
+            description='A software program with a certain function that was used within an Activity.',
+            in_subset='domain_agnostic_core'
+        ))
+    def add_environment_and_plan():
+        builder.add_class(ClassDefinition(
+            name='Environment',
+            mixins= 'ClassifierMixin',
+            class_uri='prov:Entity',
+            description='The surrounding in which the dataset creating activity took place (e.g. a lab).',
+            slots = ['title',
+                     'description',
+                     'other_identifier'
+                     ],
+            slot_usage={
+                'other_identifier':{
+                    'description': 'A slot to provide a secondary identifier of the Environment.',
+                    'range': 'Identifier',
+                    'required': 'false',
+                    'multivalued': 'true',
+                    'inlined_as_list': 'true'
+                }
+            },
+            in_subset='domain_agnostic_core'
+        ))
+
+        builder.add_class(ClassDefinition(
+            name='Plan',
+            mixins= 'ClassifierMixin',
+            class_uri='prov:Entity',
+            aliases=['Plan Specification',
+                     'Method',
+                     'Procedure'
+                     ],
+            description='A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.',
+            slots = ['title',
+                     'description'
+                     ],
+            examples=[{
+                'description': 'We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3).'}],
+            in_subset='domain_agnostic_core'
+        ))
+    def add_attribute_classes():
+        builder.add_class(ClassDefinition(
+            name='QualitativeAttribute',
+            mixins= 'ClassifierMixin',
+            class_uri='prov:Entity',
+            description='A piece of information that is attributed to an entity of interest, tool or environment.',
+            slots = ['title',
+                     'description',
+                     'value'
+                     ],
+            slot_usage={
+                'value':{
+                    'description': 'The slot to provide the literal value of the QualitativeAttribute.',
+                    'required': True,
+                }
+            },
+            in_subset='domain_agnostic_core'
+        ))
+
+        builder.add_class(ClassDefinition(
+            name='QuantitativeAttribute',
+            mixins= 'ClassifierMixin',
+            class_uri='qudt:Quantity',
+            description='A quantifiable piece of information that is attributed to an entity of interest, tool or environment.',
+            slots = ['title',
+                     'description',
+                     'value'
+                     ],
+            attributes={
+                'has_quantity_type':{
+                    'range': 'DefinedTerm',
+                    'description': 'The type of quality that is quantifiable according to the QUDT ontology.',
+                    'slot_uri': 'qudt:hasQuantityKind',
+                    'required': True,
+                    'bindings': [{'binds_value_of': 'id',
+                                  'range': 'QUDTQuantityKindEnum',
+                                  'obligation_level': 'RECOMMENDED',
+                                  'description': 'Binds the type of a quantifiable attribute to a QUDT Quantity Kind instance from the QUDT Quantity Kind vocabulary.'}]
+                },
+                'unit':{
+                    'slot_uri': 'qudt:unit',
+                    'range': 'DefinedTerm',
+                    'recommended': True,
+                    'bindings':  [{'binds_value_of': 'id',
+                                   'range': 'QUDTUnitEnum',
+                                   'obligation_level': 'RECOMMENDED',
+                                   'description': 'Restricts the allowable defined terms to the QUDT Unit vocabulary.'}]
+                },
+            },
+            slot_usage={
+                'value':{
+                    'description': 'The slot to provide the literal value of the QuantitativeAttribute.',
+                    'required': True,
+                    'range': 'float'
+                }
+            },
+            in_subset='domain_agnostic_core'
+        ))
+    def add_slots():
+        builder.add_slot(SlotDefinition(name='id',
+                                        identifier= True,
+                                        range= 'uriorcurie',
+                                        description= 'A slot to provide an URI for an entity within this schema.',
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='rdf_type',
+                                        slot_uri= 'rdf:type',
+                                        range= 'DefinedTerm',
+                                        description= 'The slot to specify the ontology class that is instantiated by an entity.',
+                                        recommended= True,
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='evaluated_entity',
+                                        slot_uri= 'prov:used',
+                                        range= 'EvaluatedEntity',
+                                        description= 'The slot to specify the entity of interest that was evaluated.',
+                                        recommended= True,
+                                        multivalued= True,
+                                        inlined_as_list= True,
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='evaluated_activity',
+                                        slot_uri= 'prov:wasInformedBy',
+                                        range= 'EvaluatedActivity',
+                                        description= 'The slot to specify the activity of interest that was evaluated.',
+                                        recommended= True,
+                                        multivalued= True,
+                                        inlined_as_list= True,
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='used_tool',
+                                        slot_uri= 'prov:used',
+                                        range= 'Tool',
+                                        description= 'The slot to specify the tool that was used.',
+                                        recommended= True,
+                                        multivalued= True,
+                                        inlined_as_list= True,
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='realized_plan',
+                                        slot_uri= 'prov:used',
+                                        range= 'EvaluatedActivity',
+                                        description= 'The slot to specify the Method (aka Procedure) that was realized by a Activity.',
+                                        recommended= True,
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='occurred_in',
+                                        slot_uri= 'BFO:0000066',
+                                        range= 'Environment',
+                                        description= 'The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.',
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='has_qualitative_attribute',
+                                        slot_uri= 'dcterms:relation',
+                                        range= 'QualitativeAttribute',
+                                        description= 'The slot to relate a qualitative attribute to an entity of interest, tool or environment.',
+                                        recommended= True,
+                                        multivalued= True,
+                                        inlined_as_list= True,
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='has_quantitative_attribute',
+                                        slot_uri= 'dcterms:relation',
+                                        range= 'QuantitativeAttribute',
+                                        description= 'The slot to relate a quantitative attribute to an entity of interest, tool or environment.',
+                                        recommended= True,
+                                        multivalued= True,
+                                        inlined_as_list= True,
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='value',
+                                        slot_uri= 'prov:value',
+                                        description= 'A slot to provide the literal value of an attribute.',
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='describes_entity',
+                                        slot_uri= 'dcterms:relation',
+                                        range= 'EvaluatedEntity',
+                                        description= 'A slot to provide the EvaluatedEntity that is described by a Dataset.',
+                                        recommended= True,
+                                        multivalued= True,
+                                        inlined_as_list= True,
+                                        in_subset='domain_agnostic_core'
+                                        ))
+        builder.add_slot(SlotDefinition(name='describes_activity',
+                                        slot_uri= 'dcterms:relation',
+                                        range= 'EvaluatedActivity',
+                                        description= 'A slot to provide the EvaluatedActivity that is described by a Dataset.',
+                                        recommended= True,
+                                        multivalued= True,
+                                        inlined_as_list= True,
+                                        in_subset='domain_agnostic_core'
+                                        ))
+
+    add_mixins()
+    add_defined_term()
+    add_analysis_dataset()
+    add_data_analysis()
+    add_evaluated_entity()
+    add_analysed_source_data()
+    add_evaluated_activity()
+    add_tools()
+    add_environment_and_plan()
+    add_attribute_classes()
+    add_slots()
+
+    # sort classes, slots and types alphabetically
+    builder.schema.classes = {key: builder.schema.classes[key] for key in sorted(builder.schema.classes)}
+    builder.schema.slots = {key: builder.schema.slots[key] for key in sorted(builder.schema.slots)}
+    builder.schema.types = {key: builder.schema.types[key] for key in sorted(builder.schema.types)}
+
+    # TODO list
+    builder.schema.todos = ['Think about how to add all the other enums and their permissible values to constrain the allowed instances of classes such as "Concept", "MediaType", etc. as defined in https://semiceu.github.io/DCAT-AP/releases/3.0.0/#controlled-vocs. Using EnumBindings (https://linkml.io/linkml-model/latest/docs/bindings/) seems best, but does not yet work.', 'Check if https://github.com/linkml/linkml/issues/1813 is closed and range unions are validatable']
+
+    return builder.schema
+
+
+def dump_schema(schema, filename=None):
+    if filename:
+        filepath = os.path.join('dcat_4c_ap', 'schema', filename)
+        YAMLDumper().dump(schema, filepath)
 
 
 def main():
-    dump_schema(build_schema())
-
+    # build and dump LinkML representation of DCAT-AP
+    #dump_schema(build_linkml_from_dcatap_shacl(),filename='dcat_ap_linkml.yaml')
+    dump_schema(build_dcatap_plus_base(),filename='dcat_4nfdi_ap.yaml')
 
 if __name__ == '__main__':
     main()
