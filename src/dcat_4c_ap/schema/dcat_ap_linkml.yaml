@@ -3,7 +3,7 @@ description: 'This LinkML schema representation of DCAT-AP 3.0.0 was automatical
   created from these [JSON-LD SHACL shapes](https://github.com/SEMICeu/DCAT-AP/blob/master/releases/3.0.0/shacl/dcat-ap-SHACL.jsonld)
   using this Python script: https://github.com/StroemPhi/dcat-4C-ap/tree/main/src/dcat-ap_shacl_2_linkml.py.
 
-  NOTE:The JSON-LD SHACL constraints published with the [Juli 3.0.0 GitHub release](https://github.com/SEMICeu/DCAT-AP/releases/tag/3.0.0)
+  NOTE:The JSON-LD SHACL constraints published with the [July 3.0.0 GitHub release](https://github.com/SEMICeu/DCAT-AP/releases/tag/3.0.0)
   and in the [3.0.0. release branch](https://github.com/SEMICeu/DCAT-AP/tree/3.0.0)
   are different from the ones in https://github.com/SEMICeu/DCAT-AP/tree/master/releases/3.0.0.
   Also the TTL shapes provided in the latter in the HTML folder differ from the ones
@@ -597,6 +597,7 @@ classes:
     is_a: SupportiveEntity
     class_uri: prov:Attribution
   Catalogue:
+    is_a: CataloguedResource
     name: Catalogue
     description: See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
     slots:
@@ -859,15 +860,8 @@ classes:
         description: A link to the Dataset, Data service or Catalog described in the
           record.
         slot_uri: foaf:primaryTopic
-        range: Any
+        range: CataloguedResource
         required: true
-        multivalued: false
-        inlined_as_list: false
-        any_of:
-        - range: Catalogue
-        - range: Dataset
-        - range: DatasetSeries
-        - range: DataService
       source_metadata:
         name: source_metadata
         description: The original metadata that was used in creating metadata for
@@ -886,6 +880,20 @@ classes:
         multivalued: true
         inlined_as_list: true
     class_uri: dcat:CatalogRecord
+
+  CataloguedResource:
+    name: CataloguedResource
+    # class_uri: ???
+    description: >-
+      A type designating base class for all types of catalogued resources,
+      for example: Catalogue, DataSet, DatasetSeries
+    attributes:
+      type:
+        description: >-
+          The type of the catallogued resource.
+        designates_type: true
+        required: true
+
   Checksum:
     name: Checksum
     description: See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
@@ -950,6 +958,7 @@ classes:
         inlined_as_list: true
     class_uri: skos:ConceptScheme
   DataService:
+    is_a: CataloguedResource
     name: DataService
     description: See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)
     slots:
@@ -1113,6 +1122,7 @@ classes:
         inlined_as_list: true
     class_uri: dcat:DataService
   Dataset:
+    is_a: CataloguedResource
     name: Dataset
     description: See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
     slots:
@@ -1456,6 +1466,7 @@ classes:
         inlined_as_list: true
     class_uri: dcat:Dataset
   DatasetSeries:
+    is_a: CataloguedResource
     name: DatasetSeries
     description: See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)
     slots:
