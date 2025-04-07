@@ -883,7 +883,7 @@ classes:
 
   CataloguedResource:
     name: CataloguedResource
-    # class_uri: ???
+    # class_uri: ??? TODO
     description: >-
       A type designating base class for all types of catalogued resources,
       for example: Catalogue, DataSet, DatasetSeries
