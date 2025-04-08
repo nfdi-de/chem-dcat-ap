@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-04-04T15:45:48
+# Generation date: 2025-04-08T14:31:39
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -80,12 +80,13 @@ PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
 RO = CurieNamespace('RO', 'http://purl.obolibrary.org/obo/RO_')
 RXNO = CurieNamespace('RXNO', 'http://purl.obolibrary.org/obo/RXNO_')
 SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/SIO_')
+SOSA = CurieNamespace('SOSA', 'http://www.w3.org/ns/sosa/')
 T4FS = CurieNamespace('T4FS', 'http://purl.obolibrary.org/obo/T4FS_')
 ADMS = CurieNamespace('adms', 'http://www.w3.org/ns/adms#')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCAT = CurieNamespace('dcat', 'http://www.w3.org/ns/dcat#')
 DCATAP = CurieNamespace('dcatap', 'http://data.europa.eu/r5r/')
-DCATAP_LINKML = CurieNamespace('dcatap_linkml', 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml#')
+DCATAP_PLUS = CurieNamespace('dcatap_plus', 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://doi.org/')
 ELI = CurieNamespace('eli', 'http://data.europa.eu/eli/ontology#')
@@ -137,7 +138,27 @@ class NonNegativeInteger(int):
 
 
 # Class references
+class DatasetId(URIorCURIE):
+    pass
+
+
+class AnalysisDatasetId(DatasetId):
+    pass
+
+
+class NMRAnalysisDatasetId(AnalysisDatasetId):
+    pass
+
+
 class DefinedTermId(URIorCURIE):
+    pass
+
+
+class EvaluatedActivityId(URIorCURIE):
+    pass
+
+
+class ChemicalReactionId(EvaluatedActivityId):
     pass
 
 
@@ -158,30 +179,6 @@ class AnalysisSourceDataId(EvaluatedEntityId):
 
 
 class NMRSpectrumId(AnalysisSourceDataId):
-    pass
-
-
-class EvaluatedActivityId(URIorCURIE):
-    pass
-
-
-class ChemicalReactionId(EvaluatedActivityId):
-    pass
-
-
-class ResearchCatalogId(URIorCURIE):
-    pass
-
-
-class ResearchDatasetId(URIorCURIE):
-    pass
-
-
-class AnalysisDatasetId(ResearchDatasetId):
-    pass
-
-
-class NMRAnalysisDatasetId(AnalysisDatasetId):
     pass
 
 
@@ -220,14 +217,268 @@ class ChemicalEntity(YAMLRoot):
 
 
 @dataclass(repr=False)
+class Activity(YAMLRoot):
+    """
+    An activity (process) that has the objective to produce information aboutn entity or activity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PROV["Activity"]
+    class_class_curie: ClassVar[str] = "prov:Activity"
+    class_name: ClassVar[str] = "Activity"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Activity
+
+    title: Optional[str] = None
+    description: Optional[str] = None
+    other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
+    evaluated_entity: Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, "EvaluatedEntity"]], List[Union[dict, "EvaluatedEntity"]]]] = empty_dict()
+    evaluated_activity: Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, "EvaluatedActivity"]], List[Union[dict, "EvaluatedActivity"]]]] = empty_dict()
+    used_tool: Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]] = empty_list()
+    realized_plan: Optional[Union[str, EvaluatedActivityId]] = None
+    has_part: Optional[Union[dict, "Activity"]] = None
+    occurred_in: Optional[Union[dict, "Environment"]] = None
+    type: Optional[Union[dict, "DefinedTerm"]] = None
+    rdf_type: Optional[Union[dict, "DefinedTerm"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if not isinstance(self.other_identifier, list):
+            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
+        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+
+        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=EvaluatedEntity, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="evaluated_activity", slot_type=EvaluatedActivity, key_name="id", keyed=True)
+
+        if not isinstance(self.used_tool, list):
+            self.used_tool = [self.used_tool] if self.used_tool is not None else []
+        self.used_tool = [v if isinstance(v, Tool) else Tool(**as_dict(v)) for v in self.used_tool]
+
+        if self.realized_plan is not None and not isinstance(self.realized_plan, EvaluatedActivityId):
+            self.realized_plan = EvaluatedActivityId(self.realized_plan)
+
+        if self.has_part is not None and not isinstance(self.has_part, Activity):
+            self.has_part = Activity(**as_dict(self.has_part))
+
+        if self.occurred_in is not None and not isinstance(self.occurred_in, Environment):
+            self.occurred_in = Environment(**as_dict(self.occurred_in))
+
+        if self.type is not None and not isinstance(self.type, DefinedTerm):
+            self.type = DefinedTerm(**as_dict(self.type))
+
+        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
+            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class NMRSpectroscopy(Activity):
+    """
+    Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by
+    inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of
+    radio frequency pulses with delay periods in between them.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NFDI4C["NMRSpectroscopy"]
+    class_class_curie: ClassVar[str] = "nfdi4c:NMRSpectroscopy"
+    class_name: ClassVar[str] = "NMRSpectroscopy"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.NMRSpectroscopy
+
+    evaluated_entity: Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, "ChemicalSample"]], List[Union[dict, "ChemicalSample"]]]] = empty_dict()
+    rdf_type: Optional[Union[dict, "DefinedTerm"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=ChemicalSample, key_name="id", keyed=True)
+
+        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
+            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
+
+        super().__post_init__(**kwargs)
+
+
+Any = Any
+
+@dataclass(repr=False)
+class Catalogue(YAMLRoot):
+    """
+    See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = DCAT["Catalog"]
+    class_class_curie: ClassVar[str] = "dcat:Catalog"
+    class_name: ClassVar[str] = "Catalogue"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Catalogue
+
+    description: Union[str, List[str]] = None
+    publisher: Union[dict, "Agent"] = None
+    title: Union[str, List[str]] = None
+    applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
+    catalogue: Optional[Union[Union[dict, "Catalogue"], List[Union[dict, "Catalogue"]]]] = empty_list()
+    creator: Optional[Union[dict, "Agent"]] = None
+    geographical_coverage: Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]] = empty_list()
+    has_dataset: Optional[Union[Dict[Union[str, DatasetId], Union[dict, "Dataset"]], List[Union[dict, "Dataset"]]]] = empty_dict()
+    has_part: Optional[Union[Union[dict, "Catalogue"], List[Union[dict, "Catalogue"]]]] = empty_list()
+    homepage: Optional[Union[dict, "Document"]] = None
+    language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
+    licence: Optional[Union[dict, "LicenseDocument"]] = None
+    modification_date: Optional[Union[str, XSDDate]] = None
+    record: Optional[Union[Union[dict, "CatalogueRecord"], List[Union[dict, "CatalogueRecord"]]]] = empty_list()
+    release_date: Optional[Union[str, XSDDate]] = None
+    rights: Optional[Union[dict, "RightsStatement"]] = None
+    service: Optional[Union[Union[dict, "DataService"], List[Union[dict, "DataService"]]]] = empty_list()
+    temporal_coverage: Optional[Union[Union[dict, "PeriodOfTime"], List[Union[dict, "PeriodOfTime"]]]] = empty_list()
+    themes: Optional[Union[Union[dict, "ConceptScheme"], List[Union[dict, "ConceptScheme"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, list):
+            self.description = [self.description] if self.description is not None else []
+        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
+
+        if self._is_empty(self.publisher):
+            self.MissingRequiredField("publisher")
+        if not isinstance(self.publisher, Agent):
+            self.publisher = Agent(**as_dict(self.publisher))
+
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, list):
+            self.title = [self.title] if self.title is not None else []
+        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
+
+        if not isinstance(self.applicable_legislation, list):
+            self.applicable_legislation = [self.applicable_legislation] if self.applicable_legislation is not None else []
+        self.applicable_legislation = [v if isinstance(v, LegalResource) else LegalResource(**as_dict(v)) for v in self.applicable_legislation]
+
+        if not isinstance(self.catalogue, list):
+            self.catalogue = [self.catalogue] if self.catalogue is not None else []
+        self.catalogue = [v if isinstance(v, Catalogue) else Catalogue(**as_dict(v)) for v in self.catalogue]
+
+        if self.creator is not None and not isinstance(self.creator, Agent):
+            self.creator = Agent(**as_dict(self.creator))
+
+        if not isinstance(self.geographical_coverage, list):
+            self.geographical_coverage = [self.geographical_coverage] if self.geographical_coverage is not None else []
+        self.geographical_coverage = [v if isinstance(v, Location) else Location(**as_dict(v)) for v in self.geographical_coverage]
+
+        self._normalize_inlined_as_list(slot_name="has_dataset", slot_type=Dataset, key_name="id", keyed=True)
+
+        if not isinstance(self.has_part, list):
+            self.has_part = [self.has_part] if self.has_part is not None else []
+        self.has_part = [v if isinstance(v, Catalogue) else Catalogue(**as_dict(v)) for v in self.has_part]
+
+        if self.homepage is not None and not isinstance(self.homepage, Document):
+            self.homepage = Document()
+
+        if not isinstance(self.language, list):
+            self.language = [self.language] if self.language is not None else []
+        self.language = [v if isinstance(v, LinguisticSystem) else LinguisticSystem(**as_dict(v)) for v in self.language]
+
+        if self.licence is not None and not isinstance(self.licence, LicenseDocument):
+            self.licence = LicenseDocument(**as_dict(self.licence))
+
+        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
+            self.modification_date = XSDDate(self.modification_date)
+
+        if not isinstance(self.record, list):
+            self.record = [self.record] if self.record is not None else []
+        self.record = [v if isinstance(v, CatalogueRecord) else CatalogueRecord(**as_dict(v)) for v in self.record]
+
+        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
+            self.release_date = XSDDate(self.release_date)
+
+        if self.rights is not None and not isinstance(self.rights, RightsStatement):
+            self.rights = RightsStatement()
+
+        if not isinstance(self.service, list):
+            self.service = [self.service] if self.service is not None else []
+        self.service = [v if isinstance(v, DataService) else DataService(**as_dict(v)) for v in self.service]
+
+        if not isinstance(self.temporal_coverage, list):
+            self.temporal_coverage = [self.temporal_coverage] if self.temporal_coverage is not None else []
+        self.temporal_coverage = [v if isinstance(v, PeriodOfTime) else PeriodOfTime(**as_dict(v)) for v in self.temporal_coverage]
+
+        if not isinstance(self.themes, list):
+            self.themes = [self.themes] if self.themes is not None else []
+        self.themes = [v if isinstance(v, ConceptScheme) else ConceptScheme(**as_dict(v)) for v in self.themes]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class CatalogueRecord(YAMLRoot):
+    """
+    See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = DCAT["CatalogRecord"]
+    class_class_curie: ClassVar[str] = "dcat:CatalogRecord"
+    class_name: ClassVar[str] = "CatalogueRecord"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.CatalogueRecord
+
+    modification_date: Union[str, XSDDate] = None
+    primary_topic: Union[dict, Any] = None
+    application_profile: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
+    change_type: Optional[Union[dict, "Concept"]] = None
+    description: Optional[Union[str, List[str]]] = empty_list()
+    language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
+    listing_date: Optional[Union[str, XSDDate]] = None
+    source_metadata: Optional[Union[dict, "CatalogueRecord"]] = None
+    title: Optional[Union[str, List[str]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.modification_date):
+            self.MissingRequiredField("modification_date")
+        if not isinstance(self.modification_date, XSDDate):
+            self.modification_date = XSDDate(self.modification_date)
+
+        if not isinstance(self.application_profile, list):
+            self.application_profile = [self.application_profile] if self.application_profile is not None else []
+        self.application_profile = [v if isinstance(v, Standard) else Standard(**as_dict(v)) for v in self.application_profile]
+
+        if self.change_type is not None and not isinstance(self.change_type, Concept):
+            self.change_type = Concept(**as_dict(self.change_type))
+
+        if not isinstance(self.description, list):
+            self.description = [self.description] if self.description is not None else []
+        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
+
+        if not isinstance(self.language, list):
+            self.language = [self.language] if self.language is not None else []
+        self.language = [v if isinstance(v, LinguisticSystem) else LinguisticSystem(**as_dict(v)) for v in self.language]
+
+        if self.listing_date is not None and not isinstance(self.listing_date, XSDDate):
+            self.listing_date = XSDDate(self.listing_date)
+
+        if self.source_metadata is not None and not isinstance(self.source_metadata, CatalogueRecord):
+            self.source_metadata = CatalogueRecord(**as_dict(self.source_metadata))
+
+        if not isinstance(self.title, list):
+            self.title = [self.title] if self.title is not None else []
+        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class ClassifierMixin(YAMLRoot):
     """
     A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NFDI["ClassifierMixin"]
-    class_class_curie: ClassVar[str] = "nfdi:ClassifierMixin"
+    class_class_uri: ClassVar[URIRef] = DCATAP_PLUS["ClassifierMixin"]
+    class_class_curie: ClassVar[str] = "dcatap_plus:ClassifierMixin"
     class_name: ClassVar[str] = "ClassifierMixin"
     class_model_uri: ClassVar[URIRef] = NFDI4C.ClassifierMixin
 
@@ -240,6 +491,478 @@ class ClassifierMixin(YAMLRoot):
 
         if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
             self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DataAnalysis(Activity):
+    """
+    An Activity that evaluates the data produced by another Activity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PROV["Activity"]
+    class_class_curie: ClassVar[str] = "prov:Activity"
+    class_name: ClassVar[str] = "DataAnalysis"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.DataAnalysis
+
+    evaluated_entity: Optional[Union[Dict[Union[str, AnalysisSourceDataId], Union[dict, "AnalysisSourceData"]], List[Union[dict, "AnalysisSourceData"]]]] = empty_dict()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=AnalysisSourceData, key_name="id", keyed=True)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class NMRSpectralAnalysis(DataAnalysis):
+    """
+    A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectrum generated by a NMRSpectroscopy
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMR["1000259"]
+    class_class_curie: ClassVar[str] = "NMR:1000259"
+    class_name: ClassVar[str] = "NMRSpectralAnalysis"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.NMRSpectralAnalysis
+
+    evaluated_entity: Optional[Union[Dict[Union[str, NMRSpectrumId], Union[dict, "NMRSpectrum"]], List[Union[dict, "NMRSpectrum"]]]] = empty_dict()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=NMRSpectrum, key_name="id", keyed=True)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DataService(YAMLRoot):
+    """
+    See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = DCAT["DataService"]
+    class_class_curie: ClassVar[str] = "dcat:DataService"
+    class_name: ClassVar[str] = "DataService"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.DataService
+
+    endpoint_URL: Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]] = None
+    title: Union[str, List[str]] = None
+    access_rights: Optional[Union[dict, "RightsStatement"]] = None
+    applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
+    contact_point: Optional[Union[Union[dict, "Kind"], List[Union[dict, "Kind"]]]] = empty_list()
+    description: Optional[Union[str, List[str]]] = empty_list()
+    documentation: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
+    endpoint_description: Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]] = empty_list()
+    format: Optional[Union[Union[dict, "MediaTypeOrExtent"], List[Union[dict, "MediaTypeOrExtent"]]]] = empty_list()
+    keyword: Optional[Union[str, List[str]]] = empty_list()
+    landing_page: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
+    licence: Optional[Union[dict, "LicenseDocument"]] = None
+    publisher: Optional[Union[dict, "Agent"]] = None
+    serves_dataset: Optional[Union[Dict[Union[str, DatasetId], Union[dict, "Dataset"]], List[Union[dict, "Dataset"]]]] = empty_dict()
+    theme: Optional[Union[Union[dict, "Concept"], List[Union[dict, "Concept"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.endpoint_URL):
+            self.MissingRequiredField("endpoint_URL")
+        if not isinstance(self.endpoint_URL, list):
+            self.endpoint_URL = [self.endpoint_URL] if self.endpoint_URL is not None else []
+        self.endpoint_URL = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.endpoint_URL]
+
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, list):
+            self.title = [self.title] if self.title is not None else []
+        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
+
+        if self.access_rights is not None and not isinstance(self.access_rights, RightsStatement):
+            self.access_rights = RightsStatement()
+
+        if not isinstance(self.applicable_legislation, list):
+            self.applicable_legislation = [self.applicable_legislation] if self.applicable_legislation is not None else []
+        self.applicable_legislation = [v if isinstance(v, LegalResource) else LegalResource(**as_dict(v)) for v in self.applicable_legislation]
+
+        if not isinstance(self.conforms_to, list):
+            self.conforms_to = [self.conforms_to] if self.conforms_to is not None else []
+        self.conforms_to = [v if isinstance(v, Standard) else Standard(**as_dict(v)) for v in self.conforms_to]
+
+        if not isinstance(self.contact_point, list):
+            self.contact_point = [self.contact_point] if self.contact_point is not None else []
+        self.contact_point = [v if isinstance(v, Kind) else Kind(**as_dict(v)) for v in self.contact_point]
+
+        if not isinstance(self.description, list):
+            self.description = [self.description] if self.description is not None else []
+        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
+
+        if not isinstance(self.documentation, list):
+            self.documentation = [self.documentation] if self.documentation is not None else []
+        self.documentation = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.documentation]
+
+        if not isinstance(self.endpoint_description, list):
+            self.endpoint_description = [self.endpoint_description] if self.endpoint_description is not None else []
+        self.endpoint_description = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.endpoint_description]
+
+        if not isinstance(self.format, list):
+            self.format = [self.format] if self.format is not None else []
+        self.format = [v if isinstance(v, MediaTypeOrExtent) else MediaTypeOrExtent(**as_dict(v)) for v in self.format]
+
+        if not isinstance(self.keyword, list):
+            self.keyword = [self.keyword] if self.keyword is not None else []
+        self.keyword = [v if isinstance(v, str) else str(v) for v in self.keyword]
+
+        if not isinstance(self.landing_page, list):
+            self.landing_page = [self.landing_page] if self.landing_page is not None else []
+        self.landing_page = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.landing_page]
+
+        if self.licence is not None and not isinstance(self.licence, LicenseDocument):
+            self.licence = LicenseDocument(**as_dict(self.licence))
+
+        if self.publisher is not None and not isinstance(self.publisher, Agent):
+            self.publisher = Agent(**as_dict(self.publisher))
+
+        self._normalize_inlined_as_list(slot_name="serves_dataset", slot_type=Dataset, key_name="id", keyed=True)
+
+        if not isinstance(self.theme, list):
+            self.theme = [self.theme] if self.theme is not None else []
+        self.theme = [v if isinstance(v, Concept) else Concept(**as_dict(v)) for v in self.theme]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Dataset(YAMLRoot):
+    """
+    A collection of data, published or curated by a single agent, and available for access or download in one or more
+    representations.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
+    class_class_curie: ClassVar[str] = "dcat:Dataset"
+    class_name: ClassVar[str] = "Dataset"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Dataset
+
+    id: Union[str, DatasetId] = None
+    description: Union[str, List[str]] = None
+    title: Union[str, List[str]] = None
+    was_generated_by: Union[Union[dict, Activity], List[Union[dict, Activity]]] = None
+    access_rights: Optional[Union[dict, "RightsStatement"]] = None
+    applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
+    conforms_to: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
+    contact_point: Optional[Union[Union[dict, "Kind"], List[Union[dict, "Kind"]]]] = empty_list()
+    creator: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
+    dataset_distribution: Optional[Union[Union[dict, "Distribution"], List[Union[dict, "Distribution"]]]] = empty_list()
+    documentation: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
+    frequency: Optional[Union[dict, "Frequency"]] = None
+    geographical_coverage: Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]] = empty_list()
+    has_version: Optional[Union[Dict[Union[str, DatasetId], Union[dict, "Dataset"]], List[Union[dict, "Dataset"]]]] = empty_dict()
+    identifier: Optional[Union[str, List[str]]] = empty_list()
+    in_series: Optional[Union[Union[dict, "DatasetSeries"], List[Union[dict, "DatasetSeries"]]]] = empty_list()
+    is_referenced_by: Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]] = empty_list()
+    keyword: Optional[Union[str, List[str]]] = empty_list()
+    landing_page: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
+    language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
+    modification_date: Optional[Union[str, XSDDate]] = None
+    other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
+    provenance: Optional[Union[Union[dict, "ProvenanceStatement"], List[Union[dict, "ProvenanceStatement"]]]] = empty_list()
+    publisher: Optional[Union[dict, "Agent"]] = None
+    qualified_attribution: Optional[Union[Union[dict, "Attribution"], List[Union[dict, "Attribution"]]]] = empty_list()
+    qualified_relation: Optional[Union[Union[dict, "Relationship"], List[Union[dict, "Relationship"]]]] = empty_list()
+    related_resource: Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]] = empty_list()
+    release_date: Optional[Union[str, XSDDate]] = None
+    sample: Optional[Union[Union[dict, "Distribution"], List[Union[dict, "Distribution"]]]] = empty_list()
+    source: Optional[Union[Dict[Union[str, DatasetId], Union[dict, "Dataset"]], List[Union[dict, "Dataset"]]]] = empty_dict()
+    spatial_resolution: Optional[Decimal] = None
+    temporal_coverage: Optional[Union[Union[dict, "PeriodOfTime"], List[Union[dict, "PeriodOfTime"]]]] = empty_list()
+    temporal_resolution: Optional[str] = None
+    theme: Optional[Union[Union[dict, "Concept"], List[Union[dict, "Concept"]]]] = empty_list()
+    type: Optional[Union[Union[dict, "Concept"], List[Union[dict, "Concept"]]]] = empty_list()
+    version: Optional[str] = None
+    version_notes: Optional[Union[str, List[str]]] = empty_list()
+    describes_entity: Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, "EvaluatedEntity"]], List[Union[dict, "EvaluatedEntity"]]]] = empty_dict()
+    describes_activity: Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, "EvaluatedActivity"]], List[Union[dict, "EvaluatedActivity"]]]] = empty_dict()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DatasetId):
+            self.id = DatasetId(self.id)
+
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, list):
+            self.description = [self.description] if self.description is not None else []
+        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
+
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, list):
+            self.title = [self.title] if self.title is not None else []
+        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
+
+        if self._is_empty(self.was_generated_by):
+            self.MissingRequiredField("was_generated_by")
+        if not isinstance(self.was_generated_by, list):
+            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
+        self.was_generated_by = [v if isinstance(v, Activity) else Activity(**as_dict(v)) for v in self.was_generated_by]
+
+        if self.access_rights is not None and not isinstance(self.access_rights, RightsStatement):
+            self.access_rights = RightsStatement()
+
+        if not isinstance(self.applicable_legislation, list):
+            self.applicable_legislation = [self.applicable_legislation] if self.applicable_legislation is not None else []
+        self.applicable_legislation = [v if isinstance(v, LegalResource) else LegalResource(**as_dict(v)) for v in self.applicable_legislation]
+
+        if not isinstance(self.conforms_to, list):
+            self.conforms_to = [self.conforms_to] if self.conforms_to is not None else []
+        self.conforms_to = [v if isinstance(v, Standard) else Standard(**as_dict(v)) for v in self.conforms_to]
+
+        if not isinstance(self.contact_point, list):
+            self.contact_point = [self.contact_point] if self.contact_point is not None else []
+        self.contact_point = [v if isinstance(v, Kind) else Kind(**as_dict(v)) for v in self.contact_point]
+
+        if not isinstance(self.creator, list):
+            self.creator = [self.creator] if self.creator is not None else []
+        self.creator = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.creator]
+
+        if not isinstance(self.dataset_distribution, list):
+            self.dataset_distribution = [self.dataset_distribution] if self.dataset_distribution is not None else []
+        self.dataset_distribution = [v if isinstance(v, Distribution) else Distribution(**as_dict(v)) for v in self.dataset_distribution]
+
+        if not isinstance(self.documentation, list):
+            self.documentation = [self.documentation] if self.documentation is not None else []
+        self.documentation = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.documentation]
+
+        if self.frequency is not None and not isinstance(self.frequency, Frequency):
+            self.frequency = Frequency()
+
+        if not isinstance(self.geographical_coverage, list):
+            self.geographical_coverage = [self.geographical_coverage] if self.geographical_coverage is not None else []
+        self.geographical_coverage = [v if isinstance(v, Location) else Location(**as_dict(v)) for v in self.geographical_coverage]
+
+        self._normalize_inlined_as_list(slot_name="has_version", slot_type=Dataset, key_name="id", keyed=True)
+
+        if not isinstance(self.identifier, list):
+            self.identifier = [self.identifier] if self.identifier is not None else []
+        self.identifier = [v if isinstance(v, str) else str(v) for v in self.identifier]
+
+        if not isinstance(self.in_series, list):
+            self.in_series = [self.in_series] if self.in_series is not None else []
+        self.in_series = [v if isinstance(v, DatasetSeries) else DatasetSeries(**as_dict(v)) for v in self.in_series]
+
+        if not isinstance(self.is_referenced_by, list):
+            self.is_referenced_by = [self.is_referenced_by] if self.is_referenced_by is not None else []
+        self.is_referenced_by = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.is_referenced_by]
+
+        if not isinstance(self.keyword, list):
+            self.keyword = [self.keyword] if self.keyword is not None else []
+        self.keyword = [v if isinstance(v, str) else str(v) for v in self.keyword]
+
+        if not isinstance(self.landing_page, list):
+            self.landing_page = [self.landing_page] if self.landing_page is not None else []
+        self.landing_page = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.landing_page]
+
+        if not isinstance(self.language, list):
+            self.language = [self.language] if self.language is not None else []
+        self.language = [v if isinstance(v, LinguisticSystem) else LinguisticSystem(**as_dict(v)) for v in self.language]
+
+        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
+            self.modification_date = XSDDate(self.modification_date)
+
+        if not isinstance(self.other_identifier, list):
+            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
+        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+
+        if not isinstance(self.provenance, list):
+            self.provenance = [self.provenance] if self.provenance is not None else []
+        self.provenance = [v if isinstance(v, ProvenanceStatement) else ProvenanceStatement(**as_dict(v)) for v in self.provenance]
+
+        if self.publisher is not None and not isinstance(self.publisher, Agent):
+            self.publisher = Agent(**as_dict(self.publisher))
+
+        if not isinstance(self.qualified_attribution, list):
+            self.qualified_attribution = [self.qualified_attribution] if self.qualified_attribution is not None else []
+        self.qualified_attribution = [v if isinstance(v, Attribution) else Attribution(**as_dict(v)) for v in self.qualified_attribution]
+
+        if not isinstance(self.qualified_relation, list):
+            self.qualified_relation = [self.qualified_relation] if self.qualified_relation is not None else []
+        self.qualified_relation = [v if isinstance(v, Relationship) else Relationship(**as_dict(v)) for v in self.qualified_relation]
+
+        if not isinstance(self.related_resource, list):
+            self.related_resource = [self.related_resource] if self.related_resource is not None else []
+        self.related_resource = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.related_resource]
+
+        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
+            self.release_date = XSDDate(self.release_date)
+
+        if not isinstance(self.sample, list):
+            self.sample = [self.sample] if self.sample is not None else []
+        self.sample = [v if isinstance(v, Distribution) else Distribution(**as_dict(v)) for v in self.sample]
+
+        self._normalize_inlined_as_list(slot_name="source", slot_type=Dataset, key_name="id", keyed=True)
+
+        if self.spatial_resolution is not None and not isinstance(self.spatial_resolution, Decimal):
+            self.spatial_resolution = Decimal(self.spatial_resolution)
+
+        if not isinstance(self.temporal_coverage, list):
+            self.temporal_coverage = [self.temporal_coverage] if self.temporal_coverage is not None else []
+        self.temporal_coverage = [v if isinstance(v, PeriodOfTime) else PeriodOfTime(**as_dict(v)) for v in self.temporal_coverage]
+
+        if self.temporal_resolution is not None and not isinstance(self.temporal_resolution, str):
+            self.temporal_resolution = str(self.temporal_resolution)
+
+        if not isinstance(self.theme, list):
+            self.theme = [self.theme] if self.theme is not None else []
+        self.theme = [v if isinstance(v, Concept) else Concept(**as_dict(v)) for v in self.theme]
+
+        if not isinstance(self.type, list):
+            self.type = [self.type] if self.type is not None else []
+        self.type = [v if isinstance(v, Concept) else Concept(**as_dict(v)) for v in self.type]
+
+        if self.version is not None and not isinstance(self.version, str):
+            self.version = str(self.version)
+
+        if not isinstance(self.version_notes, list):
+            self.version_notes = [self.version_notes] if self.version_notes is not None else []
+        self.version_notes = [v if isinstance(v, str) else str(v) for v in self.version_notes]
+
+        self._normalize_inlined_as_list(slot_name="describes_entity", slot_type=EvaluatedEntity, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="describes_activity", slot_type=EvaluatedActivity, key_name="id", keyed=True)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AnalysisDataset(Dataset):
+    """
+    A Dataset that was generated by an analysis of some previously generated data. For example, a dataset that
+    contains the data of an assignment of a chemical structure to a sample based on the spectral data obtained from
+    the sample is an AnalyticalDataset.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
+    class_class_curie: ClassVar[str] = "dcat:Dataset"
+    class_name: ClassVar[str] = "AnalysisDataset"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.AnalysisDataset
+
+    id: Union[str, AnalysisDatasetId] = None
+    description: Union[str, List[str]] = None
+    title: Union[str, List[str]] = None
+    was_generated_by: Optional[Union[Union[dict, DataAnalysis], List[Union[dict, DataAnalysis]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AnalysisDatasetId):
+            self.id = AnalysisDatasetId(self.id)
+
+        if not isinstance(self.was_generated_by, list):
+            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
+        self.was_generated_by = [v if isinstance(v, DataAnalysis) else DataAnalysis(**as_dict(v)) for v in self.was_generated_by]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class NMRAnalysisDataset(AnalysisDataset):
+    """
+    A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
+    class_class_curie: ClassVar[str] = "dcat:Dataset"
+    class_name: ClassVar[str] = "NMRAnalysisDataset"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.NMRAnalysisDataset
+
+    id: Union[str, NMRAnalysisDatasetId] = None
+    description: Union[str, List[str]] = None
+    title: Union[str, List[str]] = None
+    was_generated_by: Optional[Union[Union[dict, NMRSpectralAnalysis], List[Union[dict, NMRSpectralAnalysis]]]] = empty_list()
+    describes_entity: Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, "ChemicalSample"]], List[Union[dict, "ChemicalSample"]]]] = empty_dict()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, NMRAnalysisDatasetId):
+            self.id = NMRAnalysisDatasetId(self.id)
+
+        if not isinstance(self.was_generated_by, list):
+            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
+        self.was_generated_by = [v if isinstance(v, NMRSpectralAnalysis) else NMRSpectralAnalysis(**as_dict(v)) for v in self.was_generated_by]
+
+        self._normalize_inlined_as_list(slot_name="describes_entity", slot_type=ChemicalSample, key_name="id", keyed=True)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DatasetSeries(YAMLRoot):
+    """
+    See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = DCAT["DatasetSeries"]
+    class_class_curie: ClassVar[str] = "dcat:DatasetSeries"
+    class_name: ClassVar[str] = "DatasetSeries"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.DatasetSeries
+
+    description: Union[str, List[str]] = None
+    title: Union[str, List[str]] = None
+    applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
+    contact_point: Optional[Union[Union[dict, "Kind"], List[Union[dict, "Kind"]]]] = empty_list()
+    frequency: Optional[Union[dict, "Frequency"]] = None
+    geographical_coverage: Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]] = empty_list()
+    modification_date: Optional[Union[str, XSDDate]] = None
+    publisher: Optional[Union[dict, "Agent"]] = None
+    release_date: Optional[Union[str, XSDDate]] = None
+    temporal_coverage: Optional[Union[Union[dict, "PeriodOfTime"], List[Union[dict, "PeriodOfTime"]]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.description):
+            self.MissingRequiredField("description")
+        if not isinstance(self.description, list):
+            self.description = [self.description] if self.description is not None else []
+        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
+
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, list):
+            self.title = [self.title] if self.title is not None else []
+        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
+
+        if not isinstance(self.applicable_legislation, list):
+            self.applicable_legislation = [self.applicable_legislation] if self.applicable_legislation is not None else []
+        self.applicable_legislation = [v if isinstance(v, LegalResource) else LegalResource(**as_dict(v)) for v in self.applicable_legislation]
+
+        if not isinstance(self.contact_point, list):
+            self.contact_point = [self.contact_point] if self.contact_point is not None else []
+        self.contact_point = [v if isinstance(v, Kind) else Kind(**as_dict(v)) for v in self.contact_point]
+
+        if self.frequency is not None and not isinstance(self.frequency, Frequency):
+            self.frequency = Frequency()
+
+        if not isinstance(self.geographical_coverage, list):
+            self.geographical_coverage = [self.geographical_coverage] if self.geographical_coverage is not None else []
+        self.geographical_coverage = [v if isinstance(v, Location) else Location(**as_dict(v)) for v in self.geographical_coverage]
+
+        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
+            self.modification_date = XSDDate(self.modification_date)
+
+        if self.publisher is not None and not isinstance(self.publisher, Agent):
+            self.publisher = Agent(**as_dict(self.publisher))
+
+        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
+            self.release_date = XSDDate(self.release_date)
+
+        if not isinstance(self.temporal_coverage, list):
+            self.temporal_coverage = [self.temporal_coverage] if self.temporal_coverage is not None else []
+        self.temporal_coverage = [v if isinstance(v, PeriodOfTime) else PeriodOfTime(**as_dict(v)) for v in self.temporal_coverage]
 
         super().__post_init__(**kwargs)
 
@@ -277,10 +1000,265 @@ class DefinedTerm(YAMLRoot):
 
 
 @dataclass(repr=False)
+class Distribution(YAMLRoot):
+    """
+    See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = DCAT["Distribution"]
+    class_class_curie: ClassVar[str] = "dcat:Distribution"
+    class_name: ClassVar[str] = "Distribution"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Distribution
+
+    access_URL: Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]] = None
+    access_service: Optional[Union[Union[dict, DataService], List[Union[dict, DataService]]]] = empty_list()
+    applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
+    availability: Optional[Union[dict, "Concept"]] = None
+    byte_size: Optional[int] = None
+    checksum: Optional[Union[dict, "Checksum"]] = None
+    compression_format: Optional[Union[dict, "MediaType"]] = None
+    description: Optional[Union[str, List[str]]] = empty_list()
+    documentation: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
+    download_URL: Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]] = empty_list()
+    format: Optional[Union[dict, "MediaTypeOrExtent"]] = None
+    has_policy: Optional[Union[dict, "Policy"]] = None
+    language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
+    licence: Optional[Union[dict, "LicenseDocument"]] = None
+    linked_schemas: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
+    media_type: Optional[Union[dict, "MediaType"]] = None
+    modification_date: Optional[Union[str, XSDDate]] = None
+    packaging_format: Optional[Union[dict, "MediaType"]] = None
+    release_date: Optional[Union[str, XSDDate]] = None
+    rights: Optional[Union[dict, "RightsStatement"]] = None
+    spatial_resolution: Optional[Decimal] = None
+    status: Optional[Union[dict, "Concept"]] = None
+    temporal_resolution: Optional[str] = None
+    title: Optional[Union[str, List[str]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.access_URL):
+            self.MissingRequiredField("access_URL")
+        if not isinstance(self.access_URL, list):
+            self.access_URL = [self.access_URL] if self.access_URL is not None else []
+        self.access_URL = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.access_URL]
+
+        if not isinstance(self.access_service, list):
+            self.access_service = [self.access_service] if self.access_service is not None else []
+        self.access_service = [v if isinstance(v, DataService) else DataService(**as_dict(v)) for v in self.access_service]
+
+        if not isinstance(self.applicable_legislation, list):
+            self.applicable_legislation = [self.applicable_legislation] if self.applicable_legislation is not None else []
+        self.applicable_legislation = [v if isinstance(v, LegalResource) else LegalResource(**as_dict(v)) for v in self.applicable_legislation]
+
+        if self.availability is not None and not isinstance(self.availability, Concept):
+            self.availability = Concept(**as_dict(self.availability))
+
+        if self.byte_size is not None and not isinstance(self.byte_size, int):
+            self.byte_size = int(self.byte_size)
+
+        if self.checksum is not None and not isinstance(self.checksum, Checksum):
+            self.checksum = Checksum(**as_dict(self.checksum))
+
+        if self.compression_format is not None and not isinstance(self.compression_format, MediaType):
+            self.compression_format = MediaType()
+
+        if not isinstance(self.description, list):
+            self.description = [self.description] if self.description is not None else []
+        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
+
+        if not isinstance(self.documentation, list):
+            self.documentation = [self.documentation] if self.documentation is not None else []
+        self.documentation = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.documentation]
+
+        if not isinstance(self.download_URL, list):
+            self.download_URL = [self.download_URL] if self.download_URL is not None else []
+        self.download_URL = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.download_URL]
+
+        if self.format is not None and not isinstance(self.format, MediaTypeOrExtent):
+            self.format = MediaTypeOrExtent()
+
+        if self.has_policy is not None and not isinstance(self.has_policy, Policy):
+            self.has_policy = Policy()
+
+        if not isinstance(self.language, list):
+            self.language = [self.language] if self.language is not None else []
+        self.language = [v if isinstance(v, LinguisticSystem) else LinguisticSystem(**as_dict(v)) for v in self.language]
+
+        if self.licence is not None and not isinstance(self.licence, LicenseDocument):
+            self.licence = LicenseDocument(**as_dict(self.licence))
+
+        if not isinstance(self.linked_schemas, list):
+            self.linked_schemas = [self.linked_schemas] if self.linked_schemas is not None else []
+        self.linked_schemas = [v if isinstance(v, Standard) else Standard(**as_dict(v)) for v in self.linked_schemas]
+
+        if self.media_type is not None and not isinstance(self.media_type, MediaType):
+            self.media_type = MediaType()
+
+        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
+            self.modification_date = XSDDate(self.modification_date)
+
+        if self.packaging_format is not None and not isinstance(self.packaging_format, MediaType):
+            self.packaging_format = MediaType()
+
+        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
+            self.release_date = XSDDate(self.release_date)
+
+        if self.rights is not None and not isinstance(self.rights, RightsStatement):
+            self.rights = RightsStatement()
+
+        if self.spatial_resolution is not None and not isinstance(self.spatial_resolution, Decimal):
+            self.spatial_resolution = Decimal(self.spatial_resolution)
+
+        if self.status is not None and not isinstance(self.status, Concept):
+            self.status = Concept(**as_dict(self.status))
+
+        if self.temporal_resolution is not None and not isinstance(self.temporal_resolution, str):
+            self.temporal_resolution = str(self.temporal_resolution)
+
+        if not isinstance(self.title, list):
+            self.title = [self.title] if self.title is not None else []
+        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Environment(YAMLRoot):
+    """
+    The surrounding in which the dataset creating activity took place (e.g. a lab).
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
+    class_class_curie: ClassVar[str] = "prov:Entity"
+    class_name: ClassVar[str] = "Environment"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Environment
+
+    title: Optional[str] = None
+    description: Optional[str] = None
+    other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
+    type: Optional[Union[dict, DefinedTerm]] = None
+    rdf_type: Optional[Union[dict, DefinedTerm]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if not isinstance(self.other_identifier, list):
+            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
+        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+
+        if self.type is not None and not isinstance(self.type, DefinedTerm):
+            self.type = DefinedTerm(**as_dict(self.type))
+
+        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
+            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
+
+        super().__post_init__(**kwargs)
+
+
+class Laboratory(Environment):
+    """
+    A facility that provides controlled conditions in which scientific or technological research, experiments, and
+    measurement may be performed.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
+    class_class_curie: ClassVar[str] = "prov:Entity"
+    class_name: ClassVar[str] = "Laboratory"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Laboratory
+
+
+@dataclass(repr=False)
+class EvaluatedActivity(YAMLRoot):
+    """
+    An activity or proces that is being evaluated in a Activity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PROV["Activity"]
+    class_class_curie: ClassVar[str] = "prov:Activity"
+    class_name: ClassVar[str] = "EvaluatedActivity"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.EvaluatedActivity
+
+    id: Union[str, EvaluatedActivityId] = None
+    title: Optional[str] = None
+    description: Optional[str] = None
+    other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
+    has_qualitative_attribute: Optional[Union[Union[dict, "QualitativeAttribute"], List[Union[dict, "QualitativeAttribute"]]]] = empty_list()
+    has_quantitative_attribute: Optional[Union[Union[dict, "QuantitativeAttribute"], List[Union[dict, "QuantitativeAttribute"]]]] = empty_list()
+    has_part: Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, "EvaluatedActivity"]], List[Union[dict, "EvaluatedActivity"]]]] = empty_dict()
+    type: Optional[Union[dict, DefinedTerm]] = None
+    rdf_type: Optional[Union[dict, DefinedTerm]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, EvaluatedActivityId):
+            self.id = EvaluatedActivityId(self.id)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if not isinstance(self.other_identifier, list):
+            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
+        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+
+        if not isinstance(self.has_qualitative_attribute, list):
+            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
+        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
+
+        if not isinstance(self.has_quantitative_attribute, list):
+            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
+        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
+
+        self._normalize_inlined_as_list(slot_name="has_part", slot_type=EvaluatedActivity, key_name="id", keyed=True)
+
+        if self.type is not None and not isinstance(self.type, DefinedTerm):
+            self.type = DefinedTerm(**as_dict(self.type))
+
+        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
+            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ChemicalReaction(EvaluatedActivity):
+    """
+    An experimental procedure with the aim of producing a portion of a given compound or mixture.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = RXNO["0000329"]
+    class_class_curie: ClassVar[str] = "RXNO:0000329"
+    class_name: ClassVar[str] = "ChemicalReaction"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.ChemicalReaction
+
+    id: Union[str, ChemicalReactionId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ChemicalReactionId):
+            self.id = ChemicalReactionId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class EvaluatedEntity(YAMLRoot):
     """
     A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process
-    and that is being evaluated in a DataCreatingActivity.
+    and that is being evaluated in a Activity.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -295,8 +1273,8 @@ class EvaluatedEntity(YAMLRoot):
     other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
     has_qualitative_attribute: Optional[Union[Union[dict, "QualitativeAttribute"], List[Union[dict, "QualitativeAttribute"]]]] = empty_list()
     has_quantitative_attribute: Optional[Union[Union[dict, "QuantitativeAttribute"], List[Union[dict, "QuantitativeAttribute"]]]] = empty_list()
-    has_part: Optional[Union[str, EvaluatedEntityId]] = None
-    was_generated_by: Optional[Union[Union[dict, "Activity"], List[Union[dict, "Activity"]]]] = empty_list()
+    has_part: Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, "EvaluatedEntity"]], List[Union[dict, "EvaluatedEntity"]]]] = empty_dict()
+    was_generated_by: Optional[Union[Union[dict, Activity], List[Union[dict, Activity]]]] = empty_list()
     type: Optional[Union[dict, DefinedTerm]] = None
     rdf_type: Optional[Union[dict, DefinedTerm]] = None
 
@@ -324,8 +1302,7 @@ class EvaluatedEntity(YAMLRoot):
             self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
         self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
 
-        if self.has_part is not None and not isinstance(self.has_part, EvaluatedEntityId):
-            self.has_part = EvaluatedEntityId(self.has_part)
+        self._normalize_inlined_as_list(slot_name="has_part", slot_type=EvaluatedEntity, key_name="id", keyed=True)
 
         if not isinstance(self.was_generated_by, list):
             self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
@@ -406,7 +1383,7 @@ class AnalysisSourceData(EvaluatedEntity):
     class_model_uri: ClassVar[URIRef] = NFDI4C.AnalysisSourceData
 
     id: Union[str, AnalysisSourceDataId] = None
-    was_generated_by: Optional[Union[Union[dict, "DataCreatingActivity"], List[Union[dict, "DataCreatingActivity"]]]] = empty_list()
+    was_generated_by: Optional[Union[Union[dict, Activity], List[Union[dict, Activity]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -416,7 +1393,7 @@ class AnalysisSourceData(EvaluatedEntity):
 
         if not isinstance(self.was_generated_by, list):
             self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, DataCreatingActivity) else DataCreatingActivity(**as_dict(v)) for v in self.was_generated_by]
+        self.was_generated_by = [v if isinstance(v, Activity) else Activity(**as_dict(v)) for v in self.was_generated_by]
 
         super().__post_init__(**kwargs)
 
@@ -434,7 +1411,7 @@ class NMRSpectrum(AnalysisSourceData):
     class_model_uri: ClassVar[URIRef] = NFDI4C.NMRSpectrum
 
     id: Union[str, NMRSpectrumId] = None
-    was_generated_by: Optional[Union[Union[dict, "NMRSpectroscopy"], List[Union[dict, "NMRSpectroscopy"]]]] = empty_list()
+    was_generated_by: Optional[Union[Union[dict, NMRSpectroscopy], List[Union[dict, NMRSpectroscopy]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -447,134 +1424,6 @@ class NMRSpectrum(AnalysisSourceData):
         self.was_generated_by = [v if isinstance(v, NMRSpectroscopy) else NMRSpectroscopy(**as_dict(v)) for v in self.was_generated_by]
 
         super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class Tool(YAMLRoot):
-    """
-    A entity with a certain function used within a DataCreatingActivity.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
-    class_class_curie: ClassVar[str] = "prov:Entity"
-    class_name: ClassVar[str] = "Tool"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.Tool
-
-    title: Optional[str] = None
-    description: Optional[str] = None
-    other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
-    has_qualitative_attribute: Optional[Union[Union[dict, "QualitativeAttribute"], List[Union[dict, "QualitativeAttribute"]]]] = empty_list()
-    has_quantitative_attribute: Optional[Union[Union[dict, "QuantitativeAttribute"], List[Union[dict, "QuantitativeAttribute"]]]] = empty_list()
-    has_part: Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]] = empty_list()
-    type: Optional[Union[dict, DefinedTerm]] = None
-    rdf_type: Optional[Union[dict, DefinedTerm]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
-
-        if not isinstance(self.has_qualitative_attribute, list):
-            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
-        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
-
-        if not isinstance(self.has_quantitative_attribute, list):
-            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
-        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
-
-        if not isinstance(self.has_part, list):
-            self.has_part = [self.has_part] if self.has_part is not None else []
-        self.has_part = [v if isinstance(v, Tool) else Tool(**as_dict(v)) for v in self.has_part]
-
-        if self.type is not None and not isinstance(self.type, DefinedTerm):
-            self.type = DefinedTerm(**as_dict(self.type))
-
-        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
-            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
-
-        super().__post_init__(**kwargs)
-
-
-class HardwareTool(Tool):
-    """
-    A hardware device with a certain function that was used within a DataCreatingActivity.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NFDI["HardwareTool"]
-    class_class_curie: ClassVar[str] = "nfdi:HardwareTool"
-    class_name: ClassVar[str] = "HardwareTool"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.HardwareTool
-
-
-class SoftwareTool(Tool):
-    """
-    A software program with a certain function that was used within a DataCreatingActivity.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NFDI["SoftwareTool"]
-    class_class_curie: ClassVar[str] = "nfdi:SoftwareTool"
-    class_name: ClassVar[str] = "SoftwareTool"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.SoftwareTool
-
-
-@dataclass(repr=False)
-class Environment(YAMLRoot):
-    """
-    The surrounding in which the dataset creating activity took place (e.g. a lab).
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
-    class_class_curie: ClassVar[str] = "prov:Entity"
-    class_name: ClassVar[str] = "Environment"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.Environment
-
-    title: Optional[str] = None
-    description: Optional[str] = None
-    other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
-    type: Optional[Union[dict, DefinedTerm]] = None
-    rdf_type: Optional[Union[dict, DefinedTerm]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
-
-        if self.type is not None and not isinstance(self.type, DefinedTerm):
-            self.type = DefinedTerm(**as_dict(self.type))
-
-        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
-            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
-
-        super().__post_init__(**kwargs)
-
-
-class Laboratory(Environment):
-    """
-    A facility that provides controlled conditions in which scientific or technological research, experiments, and
-    measurement may be performed.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
-    class_class_curie: ClassVar[str] = "prov:Entity"
-    class_name: ClassVar[str] = "Laboratory"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.Laboratory
 
 
 @dataclass(repr=False)
@@ -754,1008 +1603,6 @@ class QuantitativeAttribute(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-class Activity(YAMLRoot):
-    """
-    See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = PROV["Activity"]
-    class_class_curie: ClassVar[str] = "prov:Activity"
-    class_name: ClassVar[str] = "Activity"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.Activity
-
-
-@dataclass(repr=False)
-class DataCreatingActivity(Activity):
-    """
-    An activity (process) that has the objective to produce information about an entity or activity.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = PROV["Activity"]
-    class_class_curie: ClassVar[str] = "prov:Activity"
-    class_name: ClassVar[str] = "DataCreatingActivity"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.DataCreatingActivity
-
-    title: Optional[str] = None
-    description: Optional[str] = None
-    other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
-    evaluated_entity: Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, EvaluatedEntity]], List[Union[dict, EvaluatedEntity]]]] = empty_dict()
-    evaluated_activity: Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, "EvaluatedActivity"]], List[Union[dict, "EvaluatedActivity"]]]] = empty_dict()
-    used_tool: Optional[Union[Union[dict, Tool], List[Union[dict, Tool]]]] = empty_list()
-    realized_plan: Optional[Union[dict, Plan]] = None
-    has_part: Optional[Union[dict, Activity]] = None
-    occurred_in: Optional[Union[dict, Environment]] = None
-    type: Optional[Union[dict, DefinedTerm]] = None
-    rdf_type: Optional[Union[dict, DefinedTerm]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
-
-        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=EvaluatedEntity, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="evaluated_activity", slot_type=EvaluatedActivity, key_name="id", keyed=True)
-
-        if not isinstance(self.used_tool, list):
-            self.used_tool = [self.used_tool] if self.used_tool is not None else []
-        self.used_tool = [v if isinstance(v, Tool) else Tool(**as_dict(v)) for v in self.used_tool]
-
-        if self.realized_plan is not None and not isinstance(self.realized_plan, Plan):
-            self.realized_plan = Plan(**as_dict(self.realized_plan))
-
-        if self.has_part is not None and not isinstance(self.has_part, Activity):
-            self.has_part = Activity()
-
-        if self.occurred_in is not None and not isinstance(self.occurred_in, Environment):
-            self.occurred_in = Environment(**as_dict(self.occurred_in))
-
-        if self.type is not None and not isinstance(self.type, DefinedTerm):
-            self.type = DefinedTerm(**as_dict(self.type))
-
-        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
-            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class NMRSpectroscopy(DataCreatingActivity):
-    """
-    Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by
-    inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of
-    radio frequency pulses with delay periods in between them.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NFDI4C["NMRSpectroscopy"]
-    class_class_curie: ClassVar[str] = "nfdi4c:NMRSpectroscopy"
-    class_name: ClassVar[str] = "NMRSpectroscopy"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.NMRSpectroscopy
-
-    evaluated_entity: Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, ChemicalSample]], List[Union[dict, ChemicalSample]]]] = empty_dict()
-    rdf_type: Optional[Union[dict, DefinedTerm]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=ChemicalSample, key_name="id", keyed=True)
-
-        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
-            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class DataAnalysis(DataCreatingActivity):
-    """
-    A DataCreatingActivity that evaluates the data produced by another DataCreatingActivity.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = PROV["Activity"]
-    class_class_curie: ClassVar[str] = "prov:Activity"
-    class_name: ClassVar[str] = "DataAnalysis"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.DataAnalysis
-
-    evaluated_entity: Optional[Union[Dict[Union[str, AnalysisSourceDataId], Union[dict, AnalysisSourceData]], List[Union[dict, AnalysisSourceData]]]] = empty_dict()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=AnalysisSourceData, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class NMRSpectralAnalysis(DataAnalysis):
-    """
-    A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectrum generated by a NMRSpectroscopy
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1000259"]
-    class_class_curie: ClassVar[str] = "NMR:1000259"
-    class_name: ClassVar[str] = "NMRSpectralAnalysis"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.NMRSpectralAnalysis
-
-    evaluated_entity: Optional[Union[Dict[Union[str, NMRSpectrumId], Union[dict, NMRSpectrum]], List[Union[dict, NMRSpectrum]]]] = empty_dict()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=NMRSpectrum, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class EvaluatedActivity(Activity):
-    """
-    An activity or process that is being evaluated in a DataCreatingActivity.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = PROV["Activity"]
-    class_class_curie: ClassVar[str] = "prov:Activity"
-    class_name: ClassVar[str] = "EvaluatedActivity"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.EvaluatedActivity
-
-    id: Union[str, EvaluatedActivityId] = None
-    title: Optional[str] = None
-    description: Optional[str] = None
-    other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
-    has_qualitative_attribute: Optional[Union[Union[dict, QualitativeAttribute], List[Union[dict, QualitativeAttribute]]]] = empty_list()
-    has_quantitative_attribute: Optional[Union[Union[dict, QuantitativeAttribute], List[Union[dict, QuantitativeAttribute]]]] = empty_list()
-    has_part: Optional[Union[str, EvaluatedActivityId]] = None
-    type: Optional[Union[dict, DefinedTerm]] = None
-    rdf_type: Optional[Union[dict, DefinedTerm]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, EvaluatedActivityId):
-            self.id = EvaluatedActivityId(self.id)
-
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
-
-        if not isinstance(self.has_qualitative_attribute, list):
-            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
-        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
-
-        if not isinstance(self.has_quantitative_attribute, list):
-            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
-        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
-
-        if self.has_part is not None and not isinstance(self.has_part, EvaluatedActivityId):
-            self.has_part = EvaluatedActivityId(self.has_part)
-
-        if self.type is not None and not isinstance(self.type, DefinedTerm):
-            self.type = DefinedTerm(**as_dict(self.type))
-
-        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
-            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ChemicalReaction(EvaluatedActivity):
-    """
-    An experimental procedure with the aim of producing a portion of a given compound or mixture.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = RXNO["0000329"]
-    class_class_curie: ClassVar[str] = "RXNO:0000329"
-    class_name: ClassVar[str] = "ChemicalReaction"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.ChemicalReaction
-
-    id: Union[str, ChemicalReactionId] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ChemicalReactionId):
-            self.id = ChemicalReactionId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-Any = Any
-
-@dataclass(repr=False)
-class Catalogue(YAMLRoot):
-    """
-    See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["Catalog"]
-    class_class_curie: ClassVar[str] = "dcat:Catalog"
-    class_name: ClassVar[str] = "Catalogue"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.Catalogue
-
-    description: Union[str, List[str]] = None
-    publisher: Union[dict, "Agent"] = None
-    title: Union[str, List[str]] = None
-    applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
-    catalogue: Optional[Union[Union[dict, "Catalogue"], List[Union[dict, "Catalogue"]]]] = empty_list()
-    creator: Optional[Union[dict, "Agent"]] = None
-    geographical_coverage: Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]] = empty_list()
-    has_dataset: Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]] = empty_list()
-    has_part: Optional[Union[Union[dict, "Catalogue"], List[Union[dict, "Catalogue"]]]] = empty_list()
-    homepage: Optional[Union[dict, "Document"]] = None
-    language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
-    licence: Optional[Union[dict, "LicenseDocument"]] = None
-    modification_date: Optional[Union[str, XSDDate]] = None
-    record: Optional[Union[Union[dict, "CatalogueRecord"], List[Union[dict, "CatalogueRecord"]]]] = empty_list()
-    release_date: Optional[Union[str, XSDDate]] = None
-    rights: Optional[Union[dict, "RightsStatement"]] = None
-    service: Optional[Union[Union[dict, "DataService"], List[Union[dict, "DataService"]]]] = empty_list()
-    temporal_coverage: Optional[Union[Union[dict, "PeriodOfTime"], List[Union[dict, "PeriodOfTime"]]]] = empty_list()
-    themes: Optional[Union[Union[dict, "ConceptScheme"], List[Union[dict, "ConceptScheme"]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, list):
-            self.description = [self.description] if self.description is not None else []
-        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
-
-        if self._is_empty(self.publisher):
-            self.MissingRequiredField("publisher")
-        if not isinstance(self.publisher, Agent):
-            self.publisher = Agent(**as_dict(self.publisher))
-
-        if self._is_empty(self.title):
-            self.MissingRequiredField("title")
-        if not isinstance(self.title, list):
-            self.title = [self.title] if self.title is not None else []
-        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
-
-        if not isinstance(self.applicable_legislation, list):
-            self.applicable_legislation = [self.applicable_legislation] if self.applicable_legislation is not None else []
-        self.applicable_legislation = [v if isinstance(v, LegalResource) else LegalResource(**as_dict(v)) for v in self.applicable_legislation]
-
-        if not isinstance(self.catalogue, list):
-            self.catalogue = [self.catalogue] if self.catalogue is not None else []
-        self.catalogue = [v if isinstance(v, Catalogue) else Catalogue(**as_dict(v)) for v in self.catalogue]
-
-        if self.creator is not None and not isinstance(self.creator, Agent):
-            self.creator = Agent(**as_dict(self.creator))
-
-        if not isinstance(self.geographical_coverage, list):
-            self.geographical_coverage = [self.geographical_coverage] if self.geographical_coverage is not None else []
-        self.geographical_coverage = [v if isinstance(v, Location) else Location(**as_dict(v)) for v in self.geographical_coverage]
-
-        if not isinstance(self.has_dataset, list):
-            self.has_dataset = [self.has_dataset] if self.has_dataset is not None else []
-        self.has_dataset = [v if isinstance(v, Dataset) else Dataset(**as_dict(v)) for v in self.has_dataset]
-
-        if not isinstance(self.has_part, list):
-            self.has_part = [self.has_part] if self.has_part is not None else []
-        self.has_part = [v if isinstance(v, Catalogue) else Catalogue(**as_dict(v)) for v in self.has_part]
-
-        if self.homepage is not None and not isinstance(self.homepage, Document):
-            self.homepage = Document()
-
-        if not isinstance(self.language, list):
-            self.language = [self.language] if self.language is not None else []
-        self.language = [v if isinstance(v, LinguisticSystem) else LinguisticSystem(**as_dict(v)) for v in self.language]
-
-        if self.licence is not None and not isinstance(self.licence, LicenseDocument):
-            self.licence = LicenseDocument(**as_dict(self.licence))
-
-        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
-            self.modification_date = XSDDate(self.modification_date)
-
-        if not isinstance(self.record, list):
-            self.record = [self.record] if self.record is not None else []
-        self.record = [v if isinstance(v, CatalogueRecord) else CatalogueRecord(**as_dict(v)) for v in self.record]
-
-        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
-            self.release_date = XSDDate(self.release_date)
-
-        if self.rights is not None and not isinstance(self.rights, RightsStatement):
-            self.rights = RightsStatement()
-
-        if not isinstance(self.service, list):
-            self.service = [self.service] if self.service is not None else []
-        self.service = [v if isinstance(v, DataService) else DataService(**as_dict(v)) for v in self.service]
-
-        if not isinstance(self.temporal_coverage, list):
-            self.temporal_coverage = [self.temporal_coverage] if self.temporal_coverage is not None else []
-        self.temporal_coverage = [v if isinstance(v, PeriodOfTime) else PeriodOfTime(**as_dict(v)) for v in self.temporal_coverage]
-
-        if not isinstance(self.themes, list):
-            self.themes = [self.themes] if self.themes is not None else []
-        self.themes = [v if isinstance(v, ConceptScheme) else ConceptScheme(**as_dict(v)) for v in self.themes]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ResearchCatalog(Catalogue):
-    """
-    A curated collection of metadata about data resources.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["Catalog"]
-    class_class_curie: ClassVar[str] = "dcat:Catalog"
-    class_name: ClassVar[str] = "ResearchCatalog"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.ResearchCatalog
-
-    id: Union[str, ResearchCatalogId] = None
-    description: Union[str, List[str]] = None
-    publisher: Union[dict, "Agent"] = None
-    title: Union[str, List[str]] = None
-    has_dataset: Optional[Union[str, ResearchDatasetId]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ResearchCatalogId):
-            self.id = ResearchCatalogId(self.id)
-
-        if self.has_dataset is not None and not isinstance(self.has_dataset, ResearchDatasetId):
-            self.has_dataset = ResearchDatasetId(self.has_dataset)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class CatalogueRecord(YAMLRoot):
-    """
-    See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["CatalogRecord"]
-    class_class_curie: ClassVar[str] = "dcat:CatalogRecord"
-    class_name: ClassVar[str] = "CatalogueRecord"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.CatalogueRecord
-
-    modification_date: Union[str, XSDDate] = None
-    primary_topic: Union[dict, Any] = None
-    application_profile: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
-    change_type: Optional[Union[dict, "Concept"]] = None
-    description: Optional[Union[str, List[str]]] = empty_list()
-    language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
-    listing_date: Optional[Union[str, XSDDate]] = None
-    source_metadata: Optional[Union[dict, "CatalogueRecord"]] = None
-    title: Optional[Union[str, List[str]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.modification_date):
-            self.MissingRequiredField("modification_date")
-        if not isinstance(self.modification_date, XSDDate):
-            self.modification_date = XSDDate(self.modification_date)
-
-        if not isinstance(self.application_profile, list):
-            self.application_profile = [self.application_profile] if self.application_profile is not None else []
-        self.application_profile = [v if isinstance(v, Standard) else Standard(**as_dict(v)) for v in self.application_profile]
-
-        if self.change_type is not None and not isinstance(self.change_type, Concept):
-            self.change_type = Concept(**as_dict(self.change_type))
-
-        if not isinstance(self.description, list):
-            self.description = [self.description] if self.description is not None else []
-        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
-
-        if not isinstance(self.language, list):
-            self.language = [self.language] if self.language is not None else []
-        self.language = [v if isinstance(v, LinguisticSystem) else LinguisticSystem(**as_dict(v)) for v in self.language]
-
-        if self.listing_date is not None and not isinstance(self.listing_date, XSDDate):
-            self.listing_date = XSDDate(self.listing_date)
-
-        if self.source_metadata is not None and not isinstance(self.source_metadata, CatalogueRecord):
-            self.source_metadata = CatalogueRecord(**as_dict(self.source_metadata))
-
-        if not isinstance(self.title, list):
-            self.title = [self.title] if self.title is not None else []
-        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class DataService(YAMLRoot):
-    """
-    See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["DataService"]
-    class_class_curie: ClassVar[str] = "dcat:DataService"
-    class_name: ClassVar[str] = "DataService"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.DataService
-
-    endpoint_URL: Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]] = None
-    title: Union[str, List[str]] = None
-    access_rights: Optional[Union[dict, "RightsStatement"]] = None
-    applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
-    conforms_to: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
-    contact_point: Optional[Union[Union[dict, "Kind"], List[Union[dict, "Kind"]]]] = empty_list()
-    description: Optional[Union[str, List[str]]] = empty_list()
-    documentation: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
-    endpoint_description: Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]] = empty_list()
-    format: Optional[Union[Union[dict, "MediaTypeOrExtent"], List[Union[dict, "MediaTypeOrExtent"]]]] = empty_list()
-    keyword: Optional[Union[str, List[str]]] = empty_list()
-    landing_page: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
-    licence: Optional[Union[dict, "LicenseDocument"]] = None
-    publisher: Optional[Union[dict, "Agent"]] = None
-    serves_dataset: Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]] = empty_list()
-    theme: Optional[Union[Union[dict, "Concept"], List[Union[dict, "Concept"]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.endpoint_URL):
-            self.MissingRequiredField("endpoint_URL")
-        if not isinstance(self.endpoint_URL, list):
-            self.endpoint_URL = [self.endpoint_URL] if self.endpoint_URL is not None else []
-        self.endpoint_URL = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.endpoint_URL]
-
-        if self._is_empty(self.title):
-            self.MissingRequiredField("title")
-        if not isinstance(self.title, list):
-            self.title = [self.title] if self.title is not None else []
-        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
-
-        if self.access_rights is not None and not isinstance(self.access_rights, RightsStatement):
-            self.access_rights = RightsStatement()
-
-        if not isinstance(self.applicable_legislation, list):
-            self.applicable_legislation = [self.applicable_legislation] if self.applicable_legislation is not None else []
-        self.applicable_legislation = [v if isinstance(v, LegalResource) else LegalResource(**as_dict(v)) for v in self.applicable_legislation]
-
-        if not isinstance(self.conforms_to, list):
-            self.conforms_to = [self.conforms_to] if self.conforms_to is not None else []
-        self.conforms_to = [v if isinstance(v, Standard) else Standard(**as_dict(v)) for v in self.conforms_to]
-
-        if not isinstance(self.contact_point, list):
-            self.contact_point = [self.contact_point] if self.contact_point is not None else []
-        self.contact_point = [v if isinstance(v, Kind) else Kind(**as_dict(v)) for v in self.contact_point]
-
-        if not isinstance(self.description, list):
-            self.description = [self.description] if self.description is not None else []
-        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
-
-        if not isinstance(self.documentation, list):
-            self.documentation = [self.documentation] if self.documentation is not None else []
-        self.documentation = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.documentation]
-
-        if not isinstance(self.endpoint_description, list):
-            self.endpoint_description = [self.endpoint_description] if self.endpoint_description is not None else []
-        self.endpoint_description = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.endpoint_description]
-
-        if not isinstance(self.format, list):
-            self.format = [self.format] if self.format is not None else []
-        self.format = [v if isinstance(v, MediaTypeOrExtent) else MediaTypeOrExtent(**as_dict(v)) for v in self.format]
-
-        if not isinstance(self.keyword, list):
-            self.keyword = [self.keyword] if self.keyword is not None else []
-        self.keyword = [v if isinstance(v, str) else str(v) for v in self.keyword]
-
-        if not isinstance(self.landing_page, list):
-            self.landing_page = [self.landing_page] if self.landing_page is not None else []
-        self.landing_page = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.landing_page]
-
-        if self.licence is not None and not isinstance(self.licence, LicenseDocument):
-            self.licence = LicenseDocument(**as_dict(self.licence))
-
-        if self.publisher is not None and not isinstance(self.publisher, Agent):
-            self.publisher = Agent(**as_dict(self.publisher))
-
-        if not isinstance(self.serves_dataset, list):
-            self.serves_dataset = [self.serves_dataset] if self.serves_dataset is not None else []
-        self.serves_dataset = [v if isinstance(v, Dataset) else Dataset(**as_dict(v)) for v in self.serves_dataset]
-
-        if not isinstance(self.theme, list):
-            self.theme = [self.theme] if self.theme is not None else []
-        self.theme = [v if isinstance(v, Concept) else Concept(**as_dict(v)) for v in self.theme]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class Dataset(YAMLRoot):
-    """
-    See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
-    class_class_curie: ClassVar[str] = "dcat:Dataset"
-    class_name: ClassVar[str] = "Dataset"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.Dataset
-
-    description: Union[str, List[str]] = None
-    title: Union[str, List[str]] = None
-    access_rights: Optional[Union[dict, "RightsStatement"]] = None
-    applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
-    conforms_to: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
-    contact_point: Optional[Union[Union[dict, "Kind"], List[Union[dict, "Kind"]]]] = empty_list()
-    creator: Optional[Union[Union[dict, "Agent"], List[Union[dict, "Agent"]]]] = empty_list()
-    dataset_distribution: Optional[Union[Union[dict, "Distribution"], List[Union[dict, "Distribution"]]]] = empty_list()
-    documentation: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
-    frequency: Optional[Union[dict, "Frequency"]] = None
-    geographical_coverage: Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]] = empty_list()
-    has_version: Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]] = empty_list()
-    identifier: Optional[Union[str, List[str]]] = empty_list()
-    in_series: Optional[Union[Union[dict, "DatasetSeries"], List[Union[dict, "DatasetSeries"]]]] = empty_list()
-    is_referenced_by: Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]] = empty_list()
-    keyword: Optional[Union[str, List[str]]] = empty_list()
-    landing_page: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
-    language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
-    modification_date: Optional[Union[str, XSDDate]] = None
-    other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
-    provenance: Optional[Union[Union[dict, "ProvenanceStatement"], List[Union[dict, "ProvenanceStatement"]]]] = empty_list()
-    publisher: Optional[Union[dict, "Agent"]] = None
-    qualified_attribution: Optional[Union[Union[dict, "Attribution"], List[Union[dict, "Attribution"]]]] = empty_list()
-    qualified_relation: Optional[Union[Union[dict, "Relationship"], List[Union[dict, "Relationship"]]]] = empty_list()
-    related_resource: Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]] = empty_list()
-    release_date: Optional[Union[str, XSDDate]] = None
-    sample: Optional[Union[Union[dict, "Distribution"], List[Union[dict, "Distribution"]]]] = empty_list()
-    source: Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]] = empty_list()
-    spatial_resolution: Optional[Decimal] = None
-    temporal_coverage: Optional[Union[Union[dict, "PeriodOfTime"], List[Union[dict, "PeriodOfTime"]]]] = empty_list()
-    temporal_resolution: Optional[str] = None
-    theme: Optional[Union[Union[dict, "Concept"], List[Union[dict, "Concept"]]]] = empty_list()
-    type: Optional[Union[Union[dict, "Concept"], List[Union[dict, "Concept"]]]] = empty_list()
-    version: Optional[str] = None
-    version_notes: Optional[Union[str, List[str]]] = empty_list()
-    was_generated_by: Optional[Union[Union[dict, Activity], List[Union[dict, Activity]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, list):
-            self.description = [self.description] if self.description is not None else []
-        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
-
-        if self._is_empty(self.title):
-            self.MissingRequiredField("title")
-        if not isinstance(self.title, list):
-            self.title = [self.title] if self.title is not None else []
-        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
-
-        if self.access_rights is not None and not isinstance(self.access_rights, RightsStatement):
-            self.access_rights = RightsStatement()
-
-        if not isinstance(self.applicable_legislation, list):
-            self.applicable_legislation = [self.applicable_legislation] if self.applicable_legislation is not None else []
-        self.applicable_legislation = [v if isinstance(v, LegalResource) else LegalResource(**as_dict(v)) for v in self.applicable_legislation]
-
-        if not isinstance(self.conforms_to, list):
-            self.conforms_to = [self.conforms_to] if self.conforms_to is not None else []
-        self.conforms_to = [v if isinstance(v, Standard) else Standard(**as_dict(v)) for v in self.conforms_to]
-
-        if not isinstance(self.contact_point, list):
-            self.contact_point = [self.contact_point] if self.contact_point is not None else []
-        self.contact_point = [v if isinstance(v, Kind) else Kind(**as_dict(v)) for v in self.contact_point]
-
-        if not isinstance(self.creator, list):
-            self.creator = [self.creator] if self.creator is not None else []
-        self.creator = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.creator]
-
-        if not isinstance(self.dataset_distribution, list):
-            self.dataset_distribution = [self.dataset_distribution] if self.dataset_distribution is not None else []
-        self.dataset_distribution = [v if isinstance(v, Distribution) else Distribution(**as_dict(v)) for v in self.dataset_distribution]
-
-        if not isinstance(self.documentation, list):
-            self.documentation = [self.documentation] if self.documentation is not None else []
-        self.documentation = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.documentation]
-
-        if self.frequency is not None and not isinstance(self.frequency, Frequency):
-            self.frequency = Frequency()
-
-        if not isinstance(self.geographical_coverage, list):
-            self.geographical_coverage = [self.geographical_coverage] if self.geographical_coverage is not None else []
-        self.geographical_coverage = [v if isinstance(v, Location) else Location(**as_dict(v)) for v in self.geographical_coverage]
-
-        if not isinstance(self.has_version, list):
-            self.has_version = [self.has_version] if self.has_version is not None else []
-        self.has_version = [v if isinstance(v, Dataset) else Dataset(**as_dict(v)) for v in self.has_version]
-
-        if not isinstance(self.identifier, list):
-            self.identifier = [self.identifier] if self.identifier is not None else []
-        self.identifier = [v if isinstance(v, str) else str(v) for v in self.identifier]
-
-        if not isinstance(self.in_series, list):
-            self.in_series = [self.in_series] if self.in_series is not None else []
-        self.in_series = [v if isinstance(v, DatasetSeries) else DatasetSeries(**as_dict(v)) for v in self.in_series]
-
-        if not isinstance(self.is_referenced_by, list):
-            self.is_referenced_by = [self.is_referenced_by] if self.is_referenced_by is not None else []
-        self.is_referenced_by = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.is_referenced_by]
-
-        if not isinstance(self.keyword, list):
-            self.keyword = [self.keyword] if self.keyword is not None else []
-        self.keyword = [v if isinstance(v, str) else str(v) for v in self.keyword]
-
-        if not isinstance(self.landing_page, list):
-            self.landing_page = [self.landing_page] if self.landing_page is not None else []
-        self.landing_page = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.landing_page]
-
-        if not isinstance(self.language, list):
-            self.language = [self.language] if self.language is not None else []
-        self.language = [v if isinstance(v, LinguisticSystem) else LinguisticSystem(**as_dict(v)) for v in self.language]
-
-        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
-            self.modification_date = XSDDate(self.modification_date)
-
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
-
-        if not isinstance(self.provenance, list):
-            self.provenance = [self.provenance] if self.provenance is not None else []
-        self.provenance = [v if isinstance(v, ProvenanceStatement) else ProvenanceStatement(**as_dict(v)) for v in self.provenance]
-
-        if self.publisher is not None and not isinstance(self.publisher, Agent):
-            self.publisher = Agent(**as_dict(self.publisher))
-
-        if not isinstance(self.qualified_attribution, list):
-            self.qualified_attribution = [self.qualified_attribution] if self.qualified_attribution is not None else []
-        self.qualified_attribution = [v if isinstance(v, Attribution) else Attribution(**as_dict(v)) for v in self.qualified_attribution]
-
-        if not isinstance(self.qualified_relation, list):
-            self.qualified_relation = [self.qualified_relation] if self.qualified_relation is not None else []
-        self.qualified_relation = [v if isinstance(v, Relationship) else Relationship(**as_dict(v)) for v in self.qualified_relation]
-
-        if not isinstance(self.related_resource, list):
-            self.related_resource = [self.related_resource] if self.related_resource is not None else []
-        self.related_resource = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.related_resource]
-
-        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
-            self.release_date = XSDDate(self.release_date)
-
-        if not isinstance(self.sample, list):
-            self.sample = [self.sample] if self.sample is not None else []
-        self.sample = [v if isinstance(v, Distribution) else Distribution(**as_dict(v)) for v in self.sample]
-
-        if not isinstance(self.source, list):
-            self.source = [self.source] if self.source is not None else []
-        self.source = [v if isinstance(v, Dataset) else Dataset(**as_dict(v)) for v in self.source]
-
-        if self.spatial_resolution is not None and not isinstance(self.spatial_resolution, Decimal):
-            self.spatial_resolution = Decimal(self.spatial_resolution)
-
-        if not isinstance(self.temporal_coverage, list):
-            self.temporal_coverage = [self.temporal_coverage] if self.temporal_coverage is not None else []
-        self.temporal_coverage = [v if isinstance(v, PeriodOfTime) else PeriodOfTime(**as_dict(v)) for v in self.temporal_coverage]
-
-        if self.temporal_resolution is not None and not isinstance(self.temporal_resolution, str):
-            self.temporal_resolution = str(self.temporal_resolution)
-
-        if not isinstance(self.theme, list):
-            self.theme = [self.theme] if self.theme is not None else []
-        self.theme = [v if isinstance(v, Concept) else Concept(**as_dict(v)) for v in self.theme]
-
-        if not isinstance(self.type, list):
-            self.type = [self.type] if self.type is not None else []
-        self.type = [v if isinstance(v, Concept) else Concept(**as_dict(v)) for v in self.type]
-
-        if self.version is not None and not isinstance(self.version, str):
-            self.version = str(self.version)
-
-        if not isinstance(self.version_notes, list):
-            self.version_notes = [self.version_notes] if self.version_notes is not None else []
-        self.version_notes = [v if isinstance(v, str) else str(v) for v in self.version_notes]
-
-        if not isinstance(self.was_generated_by, list):
-            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, Activity) else Activity(**as_dict(v)) for v in self.was_generated_by]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ResearchDataset(Dataset):
-    """
-    A collection of data, published or curated by a single agent, and available for access or download in one or more
-    representations.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
-    class_class_curie: ClassVar[str] = "dcat:Dataset"
-    class_name: ClassVar[str] = "ResearchDataset"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.ResearchDataset
-
-    id: Union[str, ResearchDatasetId] = None
-    description: Union[str, List[str]] = None
-    title: Union[str, List[str]] = None
-    was_generated_by: Union[Union[dict, DataCreatingActivity], List[Union[dict, DataCreatingActivity]]] = None
-    describes_entity: Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, EvaluatedEntity]], List[Union[dict, EvaluatedEntity]]]] = empty_dict()
-    describes_activity: Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, EvaluatedActivity]], List[Union[dict, EvaluatedActivity]]]] = empty_dict()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ResearchDatasetId):
-            self.id = ResearchDatasetId(self.id)
-
-        if self._is_empty(self.was_generated_by):
-            self.MissingRequiredField("was_generated_by")
-        if not isinstance(self.was_generated_by, list):
-            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, DataCreatingActivity) else DataCreatingActivity(**as_dict(v)) for v in self.was_generated_by]
-
-        self._normalize_inlined_as_list(slot_name="describes_entity", slot_type=EvaluatedEntity, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="describes_activity", slot_type=EvaluatedActivity, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class AnalysisDataset(ResearchDataset):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
-    class_class_curie: ClassVar[str] = "dcat:Dataset"
-    class_name: ClassVar[str] = "AnalysisDataset"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.AnalysisDataset
-
-    id: Union[str, AnalysisDatasetId] = None
-    description: Union[str, List[str]] = None
-    title: Union[str, List[str]] = None
-    was_generated_by: Union[Union[dict, DataAnalysis], List[Union[dict, DataAnalysis]]] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AnalysisDatasetId):
-            self.id = AnalysisDatasetId(self.id)
-
-        if self._is_empty(self.was_generated_by):
-            self.MissingRequiredField("was_generated_by")
-        if not isinstance(self.was_generated_by, list):
-            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, DataAnalysis) else DataAnalysis(**as_dict(v)) for v in self.was_generated_by]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class NMRAnalysisDataset(AnalysisDataset):
-    """
-    A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
-    class_class_curie: ClassVar[str] = "dcat:Dataset"
-    class_name: ClassVar[str] = "NMRAnalysisDataset"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.NMRAnalysisDataset
-
-    id: Union[str, NMRAnalysisDatasetId] = None
-    description: Union[str, List[str]] = None
-    title: Union[str, List[str]] = None
-    was_generated_by: Optional[Union[Union[dict, NMRSpectralAnalysis], List[Union[dict, NMRSpectralAnalysis]]]] = empty_list()
-    describes_entity: Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, ChemicalSample]], List[Union[dict, ChemicalSample]]]] = empty_dict()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NMRAnalysisDatasetId):
-            self.id = NMRAnalysisDatasetId(self.id)
-
-        if not isinstance(self.was_generated_by, list):
-            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, NMRSpectralAnalysis) else NMRSpectralAnalysis(**as_dict(v)) for v in self.was_generated_by]
-
-        self._normalize_inlined_as_list(slot_name="describes_entity", slot_type=ChemicalSample, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class DatasetSeries(YAMLRoot):
-    """
-    See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["DatasetSeries"]
-    class_class_curie: ClassVar[str] = "dcat:DatasetSeries"
-    class_name: ClassVar[str] = "DatasetSeries"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.DatasetSeries
-
-    description: Union[str, List[str]] = None
-    title: Union[str, List[str]] = None
-    applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
-    contact_point: Optional[Union[Union[dict, "Kind"], List[Union[dict, "Kind"]]]] = empty_list()
-    frequency: Optional[Union[dict, "Frequency"]] = None
-    geographical_coverage: Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]] = empty_list()
-    modification_date: Optional[Union[str, XSDDate]] = None
-    publisher: Optional[Union[dict, "Agent"]] = None
-    release_date: Optional[Union[str, XSDDate]] = None
-    temporal_coverage: Optional[Union[Union[dict, "PeriodOfTime"], List[Union[dict, "PeriodOfTime"]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.description):
-            self.MissingRequiredField("description")
-        if not isinstance(self.description, list):
-            self.description = [self.description] if self.description is not None else []
-        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
-
-        if self._is_empty(self.title):
-            self.MissingRequiredField("title")
-        if not isinstance(self.title, list):
-            self.title = [self.title] if self.title is not None else []
-        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
-
-        if not isinstance(self.applicable_legislation, list):
-            self.applicable_legislation = [self.applicable_legislation] if self.applicable_legislation is not None else []
-        self.applicable_legislation = [v if isinstance(v, LegalResource) else LegalResource(**as_dict(v)) for v in self.applicable_legislation]
-
-        if not isinstance(self.contact_point, list):
-            self.contact_point = [self.contact_point] if self.contact_point is not None else []
-        self.contact_point = [v if isinstance(v, Kind) else Kind(**as_dict(v)) for v in self.contact_point]
-
-        if self.frequency is not None and not isinstance(self.frequency, Frequency):
-            self.frequency = Frequency()
-
-        if not isinstance(self.geographical_coverage, list):
-            self.geographical_coverage = [self.geographical_coverage] if self.geographical_coverage is not None else []
-        self.geographical_coverage = [v if isinstance(v, Location) else Location(**as_dict(v)) for v in self.geographical_coverage]
-
-        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
-            self.modification_date = XSDDate(self.modification_date)
-
-        if self.publisher is not None and not isinstance(self.publisher, Agent):
-            self.publisher = Agent(**as_dict(self.publisher))
-
-        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
-            self.release_date = XSDDate(self.release_date)
-
-        if not isinstance(self.temporal_coverage, list):
-            self.temporal_coverage = [self.temporal_coverage] if self.temporal_coverage is not None else []
-        self.temporal_coverage = [v if isinstance(v, PeriodOfTime) else PeriodOfTime(**as_dict(v)) for v in self.temporal_coverage]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class Distribution(YAMLRoot):
-    """
-    See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["Distribution"]
-    class_class_curie: ClassVar[str] = "dcat:Distribution"
-    class_name: ClassVar[str] = "Distribution"
-    class_model_uri: ClassVar[URIRef] = NFDI4C.Distribution
-
-    access_URL: Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]] = None
-    access_service: Optional[Union[Union[dict, DataService], List[Union[dict, DataService]]]] = empty_list()
-    applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
-    availability: Optional[Union[dict, "Concept"]] = None
-    byte_size: Optional[int] = None
-    checksum: Optional[Union[dict, "Checksum"]] = None
-    compression_format: Optional[Union[dict, "MediaType"]] = None
-    description: Optional[Union[str, List[str]]] = empty_list()
-    documentation: Optional[Union[Union[dict, "Document"], List[Union[dict, "Document"]]]] = empty_list()
-    download_URL: Optional[Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]]] = empty_list()
-    format: Optional[Union[dict, "MediaTypeOrExtent"]] = None
-    has_policy: Optional[Union[dict, "Policy"]] = None
-    language: Optional[Union[Union[dict, "LinguisticSystem"], List[Union[dict, "LinguisticSystem"]]]] = empty_list()
-    licence: Optional[Union[dict, "LicenseDocument"]] = None
-    linked_schemas: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
-    media_type: Optional[Union[dict, "MediaType"]] = None
-    modification_date: Optional[Union[str, XSDDate]] = None
-    packaging_format: Optional[Union[dict, "MediaType"]] = None
-    release_date: Optional[Union[str, XSDDate]] = None
-    rights: Optional[Union[dict, "RightsStatement"]] = None
-    spatial_resolution: Optional[Decimal] = None
-    status: Optional[Union[dict, "Concept"]] = None
-    temporal_resolution: Optional[str] = None
-    title: Optional[Union[str, List[str]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.access_URL):
-            self.MissingRequiredField("access_URL")
-        if not isinstance(self.access_URL, list):
-            self.access_URL = [self.access_URL] if self.access_URL is not None else []
-        self.access_URL = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.access_URL]
-
-        if not isinstance(self.access_service, list):
-            self.access_service = [self.access_service] if self.access_service is not None else []
-        self.access_service = [v if isinstance(v, DataService) else DataService(**as_dict(v)) for v in self.access_service]
-
-        if not isinstance(self.applicable_legislation, list):
-            self.applicable_legislation = [self.applicable_legislation] if self.applicable_legislation is not None else []
-        self.applicable_legislation = [v if isinstance(v, LegalResource) else LegalResource(**as_dict(v)) for v in self.applicable_legislation]
-
-        if self.availability is not None and not isinstance(self.availability, Concept):
-            self.availability = Concept(**as_dict(self.availability))
-
-        if self.byte_size is not None and not isinstance(self.byte_size, int):
-            self.byte_size = int(self.byte_size)
-
-        if self.checksum is not None and not isinstance(self.checksum, Checksum):
-            self.checksum = Checksum(**as_dict(self.checksum))
-
-        if self.compression_format is not None and not isinstance(self.compression_format, MediaType):
-            self.compression_format = MediaType()
-
-        if not isinstance(self.description, list):
-            self.description = [self.description] if self.description is not None else []
-        self.description = [v if isinstance(v, str) else str(v) for v in self.description]
-
-        if not isinstance(self.documentation, list):
-            self.documentation = [self.documentation] if self.documentation is not None else []
-        self.documentation = [v if isinstance(v, Document) else Document(**as_dict(v)) for v in self.documentation]
-
-        if not isinstance(self.download_URL, list):
-            self.download_URL = [self.download_URL] if self.download_URL is not None else []
-        self.download_URL = [v if isinstance(v, Resource) else Resource(**as_dict(v)) for v in self.download_URL]
-
-        if self.format is not None and not isinstance(self.format, MediaTypeOrExtent):
-            self.format = MediaTypeOrExtent()
-
-        if self.has_policy is not None and not isinstance(self.has_policy, Policy):
-            self.has_policy = Policy()
-
-        if not isinstance(self.language, list):
-            self.language = [self.language] if self.language is not None else []
-        self.language = [v if isinstance(v, LinguisticSystem) else LinguisticSystem(**as_dict(v)) for v in self.language]
-
-        if self.licence is not None and not isinstance(self.licence, LicenseDocument):
-            self.licence = LicenseDocument(**as_dict(self.licence))
-
-        if not isinstance(self.linked_schemas, list):
-            self.linked_schemas = [self.linked_schemas] if self.linked_schemas is not None else []
-        self.linked_schemas = [v if isinstance(v, Standard) else Standard(**as_dict(v)) for v in self.linked_schemas]
-
-        if self.media_type is not None and not isinstance(self.media_type, MediaType):
-            self.media_type = MediaType()
-
-        if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
-            self.modification_date = XSDDate(self.modification_date)
-
-        if self.packaging_format is not None and not isinstance(self.packaging_format, MediaType):
-            self.packaging_format = MediaType()
-
-        if self.release_date is not None and not isinstance(self.release_date, XSDDate):
-            self.release_date = XSDDate(self.release_date)
-
-        if self.rights is not None and not isinstance(self.rights, RightsStatement):
-            self.rights = RightsStatement()
-
-        if self.spatial_resolution is not None and not isinstance(self.spatial_resolution, Decimal):
-            self.spatial_resolution = Decimal(self.spatial_resolution)
-
-        if self.status is not None and not isinstance(self.status, Concept):
-            self.status = Concept(**as_dict(self.status))
-
-        if self.temporal_resolution is not None and not isinstance(self.temporal_resolution, str):
-            self.temporal_resolution = str(self.temporal_resolution)
-
-        if not isinstance(self.title, list):
-            self.title = [self.title] if self.title is not None else []
-        self.title = [v if isinstance(v, str) else str(v) for v in self.title]
-
-        super().__post_init__(**kwargs)
-
-
 class SupportiveEntity(YAMLRoot):
     """
     The supportive entities are supporting the main entities in the Application Profile. They are included in the
@@ -1763,8 +1610,8 @@ class SupportiveEntity(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DCATAP_LINKML["SupportiveEntity"]
-    class_class_curie: ClassVar[str] = "dcatap_linkml:SupportiveEntity"
+    class_class_uri: ClassVar[URIRef] = DCATAP_PLUS["SupportiveEntity"]
+    class_class_curie: ClassVar[str] = "dcatap_plus:SupportiveEntity"
     class_name: ClassVar[str] = "SupportiveEntity"
     class_model_uri: ClassVar[URIRef] = NFDI4C.SupportiveEntity
 
@@ -2216,6 +2063,83 @@ class TimeInstant(SupportiveEntity):
     class_model_uri: ClassVar[URIRef] = NFDI4C.TimeInstant
 
 
+@dataclass(repr=False)
+class Tool(YAMLRoot):
+    """
+    A entity with a certain function used within a Activity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
+    class_class_curie: ClassVar[str] = "prov:Entity"
+    class_name: ClassVar[str] = "Tool"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Tool
+
+    title: Optional[str] = None
+    description: Optional[str] = None
+    other_identifier: Optional[Union[Union[dict, Identifier], List[Union[dict, Identifier]]]] = empty_list()
+    has_qualitative_attribute: Optional[Union[Union[dict, QualitativeAttribute], List[Union[dict, QualitativeAttribute]]]] = empty_list()
+    has_quantitative_attribute: Optional[Union[Union[dict, QuantitativeAttribute], List[Union[dict, QuantitativeAttribute]]]] = empty_list()
+    has_part: Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]] = empty_list()
+    type: Optional[Union[dict, DefinedTerm]] = None
+    rdf_type: Optional[Union[dict, DefinedTerm]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if not isinstance(self.other_identifier, list):
+            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
+        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+
+        if not isinstance(self.has_qualitative_attribute, list):
+            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
+        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
+
+        if not isinstance(self.has_quantitative_attribute, list):
+            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
+        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
+
+        if not isinstance(self.has_part, list):
+            self.has_part = [self.has_part] if self.has_part is not None else []
+        self.has_part = [v if isinstance(v, Tool) else Tool(**as_dict(v)) for v in self.has_part]
+
+        if self.type is not None and not isinstance(self.type, DefinedTerm):
+            self.type = DefinedTerm(**as_dict(self.type))
+
+        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
+            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
+
+        super().__post_init__(**kwargs)
+
+
+class Device(Tool):
+    """
+    A hardware device with a certain function that was used within ann Activity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
+    class_class_curie: ClassVar[str] = "prov:Entity"
+    class_name: ClassVar[str] = "Device"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Device
+
+
+class Software(Tool):
+    """
+    A software program with a certain function that was used within an Activity.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
+    class_class_curie: ClassVar[str] = "prov:Entity"
+    class_name: ClassVar[str] = "Software"
+    class_model_uri: ClassVar[URIRef] = NFDI4C.Software
+
+
 # Enumerations
 class NMRAssayEnum(EnumDefinitionImpl):
     """
@@ -2233,24 +2157,6 @@ class NMRAssayEnum(EnumDefinitionImpl):
                 text="CHMO:0000595",
                 description="""Spectroscopy where the energy states of 13C nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.""",
                 meaning=CHMO["0000595"]))
-
-class QUDTQuantityKindEnum(EnumDefinitionImpl):
-    """
-    Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.
-    """
-    _defn = EnumDefinition(
-        name="QUDTQuantityKindEnum",
-        description="Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.",
-    )
-
-class QUDTUnitEnum(EnumDefinitionImpl):
-    """
-    Possible kinds of QUDT unit instances.
-    """
-    _defn = EnumDefinition(
-        name="QUDTUnitEnum",
-        description="Possible kinds of QUDT unit instances.",
-    )
 
 class DatasetThemes(EnumDefinitionImpl):
 
@@ -2332,48 +2238,30 @@ class TopLevelMediaTypes(EnumDefinitionImpl):
         name="TopLevelMediaTypes",
     )
 
+class QUDTQuantityKindEnum(EnumDefinitionImpl):
+    """
+    Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.
+    """
+    _defn = EnumDefinition(
+        name="QUDTQuantityKindEnum",
+        description="Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.",
+    )
+
+class QUDTUnitEnum(EnumDefinitionImpl):
+    """
+    Possible kinds of QUDT unit instances.
+    """
+    _defn = EnumDefinition(
+        name="QUDTUnitEnum",
+        description="Possible kinds of QUDT unit instances.",
+    )
+
 # Slots
 class slots:
     pass
 
 slots.has_role = Slot(uri=NFDI4C.has_role, name="has_role", curie=NFDI4C.curie('has_role'),
                    model_uri=NFDI4C.has_role, domain=None, range=Optional[str])
-
-slots.id = Slot(uri=DCTERMS.identifier, name="id", curie=DCTERMS.curie('identifier'),
-                   model_uri=NFDI4C.id, domain=None, range=URIRef)
-
-slots.rdf_type = Slot(uri=RDF.type, name="rdf_type", curie=RDF.curie('type'),
-                   model_uri=NFDI4C.rdf_type, domain=None, range=Optional[Union[dict, DefinedTerm]])
-
-slots.evaluated_entity = Slot(uri=PROV.used, name="evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=NFDI4C.evaluated_entity, domain=None, range=Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, EvaluatedEntity]], List[Union[dict, EvaluatedEntity]]]])
-
-slots.evaluated_activity = Slot(uri=PROV.wasInformedBy, name="evaluated_activity", curie=PROV.curie('wasInformedBy'),
-                   model_uri=NFDI4C.evaluated_activity, domain=None, range=Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, EvaluatedActivity]], List[Union[dict, EvaluatedActivity]]]])
-
-slots.used_tool = Slot(uri=PROV.used, name="used_tool", curie=PROV.curie('used'),
-                   model_uri=NFDI4C.used_tool, domain=None, range=Optional[Union[Union[dict, Tool], List[Union[dict, Tool]]]])
-
-slots.realized_plan = Slot(uri=PROV.used, name="realized_plan", curie=PROV.curie('used'),
-                   model_uri=NFDI4C.realized_plan, domain=None, range=Optional[Union[dict, Plan]])
-
-slots.occurred_in = Slot(uri=BFO['0000066'], name="occurred_in", curie=BFO.curie('0000066'),
-                   model_uri=NFDI4C.occurred_in, domain=None, range=Optional[Union[dict, Environment]])
-
-slots.has_qualitative_attribute = Slot(uri=DCTERMS.relation, name="has_qualitative_attribute", curie=DCTERMS.curie('relation'),
-                   model_uri=NFDI4C.has_qualitative_attribute, domain=None, range=Optional[Union[Union[dict, QualitativeAttribute], List[Union[dict, QualitativeAttribute]]]])
-
-slots.has_quantitative_attribute = Slot(uri=DCTERMS.relation, name="has_quantitative_attribute", curie=DCTERMS.curie('relation'),
-                   model_uri=NFDI4C.has_quantitative_attribute, domain=None, range=Optional[Union[Union[dict, QuantitativeAttribute], List[Union[dict, QuantitativeAttribute]]]])
-
-slots.value = Slot(uri=PROV.value, name="value", curie=PROV.curie('value'),
-                   model_uri=NFDI4C.value, domain=None, range=Optional[str])
-
-slots.describes_entity = Slot(uri=DCTERMS.relation, name="describes_entity", curie=DCTERMS.curie('relation'),
-                   model_uri=NFDI4C.describes_entity, domain=None, range=Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, EvaluatedEntity]], List[Union[dict, EvaluatedEntity]]]])
-
-slots.describes_activity = Slot(uri=DCTERMS.relation, name="describes_activity", curie=DCTERMS.curie('relation'),
-                   model_uri=NFDI4C.describes_activity, domain=None, range=Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, EvaluatedActivity]], List[Union[dict, EvaluatedActivity]]]])
 
 slots.access_URL = Slot(uri=DCAT.accessURL, name="access_URL", curie=DCAT.curie('accessURL'),
                    model_uri=NFDI4C.access_URL, domain=None, range=Optional[str])
@@ -2435,6 +2323,12 @@ slots.creator = Slot(uri=DCTERMS.creator, name="creator", curie=DCTERMS.curie('c
 slots.dataset_distribution = Slot(uri=DCAT.distribution, name="dataset_distribution", curie=DCAT.curie('distribution'),
                    model_uri=NFDI4C.dataset_distribution, domain=None, range=Optional[str])
 
+slots.describes_activity = Slot(uri=DCTERMS.relation, name="describes_activity", curie=DCTERMS.curie('relation'),
+                   model_uri=NFDI4C.describes_activity, domain=None, range=Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, EvaluatedActivity]], List[Union[dict, EvaluatedActivity]]]])
+
+slots.describes_entity = Slot(uri=DCTERMS.relation, name="describes_entity", curie=DCTERMS.curie('relation'),
+                   model_uri=NFDI4C.describes_entity, domain=None, range=Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, EvaluatedEntity]], List[Union[dict, EvaluatedEntity]]]])
+
 slots.description = Slot(uri=DCTERMS.description, name="description", curie=DCTERMS.curie('description'),
                    model_uri=NFDI4C.description, domain=None, range=Optional[str])
 
@@ -2455,6 +2349,12 @@ slots.endpoint_URL = Slot(uri=DCAT.endpointURL, name="endpoint_URL", curie=DCAT.
 
 slots.endpoint_description = Slot(uri=DCAT.endpointDescription, name="endpoint_description", curie=DCAT.curie('endpointDescription'),
                    model_uri=NFDI4C.endpoint_description, domain=None, range=Optional[str])
+
+slots.evaluated_activity = Slot(uri=PROV.wasInformedBy, name="evaluated_activity", curie=PROV.curie('wasInformedBy'),
+                   model_uri=NFDI4C.evaluated_activity, domain=None, range=Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, EvaluatedActivity]], List[Union[dict, EvaluatedActivity]]]])
+
+slots.evaluated_entity = Slot(uri=PROV.used, name="evaluated_entity", curie=PROV.curie('used'),
+                   model_uri=NFDI4C.evaluated_entity, domain=None, range=Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, EvaluatedEntity]], List[Union[dict, EvaluatedEntity]]]])
 
 slots.format = Slot(uri=DCTERMS.format, name="format", curie=DCTERMS.curie('format'),
                    model_uri=NFDI4C.format, domain=None, range=Optional[str])
@@ -2480,11 +2380,20 @@ slots.has_part = Slot(uri=DCTERMS.hasPart, name="has_part", curie=DCTERMS.curie(
 slots.has_policy = Slot(uri=ODRL.hasPolicy, name="has_policy", curie=ODRL.curie('hasPolicy'),
                    model_uri=NFDI4C.has_policy, domain=None, range=Optional[str])
 
+slots.has_qualitative_attribute = Slot(uri=DCTERMS.relation, name="has_qualitative_attribute", curie=DCTERMS.curie('relation'),
+                   model_uri=NFDI4C.has_qualitative_attribute, domain=None, range=Optional[Union[Union[dict, QualitativeAttribute], List[Union[dict, QualitativeAttribute]]]])
+
+slots.has_quantitative_attribute = Slot(uri=DCTERMS.relation, name="has_quantitative_attribute", curie=DCTERMS.curie('relation'),
+                   model_uri=NFDI4C.has_quantitative_attribute, domain=None, range=Optional[Union[Union[dict, QuantitativeAttribute], List[Union[dict, QuantitativeAttribute]]]])
+
 slots.has_version = Slot(uri=DCAT.hasVersion, name="has_version", curie=DCAT.curie('hasVersion'),
                    model_uri=NFDI4C.has_version, domain=None, range=Optional[str])
 
 slots.homepage = Slot(uri=FOAF.homepage, name="homepage", curie=FOAF.curie('homepage'),
                    model_uri=NFDI4C.homepage, domain=None, range=Optional[str])
+
+slots.id = Slot(uri=DCATAP_PLUS.id, name="id", curie=DCATAP_PLUS.curie('id'),
+                   model_uri=NFDI4C.id, domain=None, range=URIRef)
 
 slots.identifier = Slot(uri=DCTERMS.identifier, name="identifier", curie=DCTERMS.curie('identifier'),
                    model_uri=NFDI4C.identifier, domain=None, range=Optional[str])
@@ -2525,6 +2434,9 @@ slots.name = Slot(uri=FOAF.name, name="name", curie=FOAF.curie('name'),
 slots.notation = Slot(uri=SKOS.notation, name="notation", curie=SKOS.curie('notation'),
                    model_uri=NFDI4C.notation, domain=None, range=Optional[str])
 
+slots.occurred_in = Slot(uri=BFO['0000066'], name="occurred_in", curie=BFO.curie('0000066'),
+                   model_uri=NFDI4C.occurred_in, domain=None, range=Optional[Union[dict, Environment]])
+
 slots.other_identifier = Slot(uri=ADMS.identifier, name="other_identifier", curie=ADMS.curie('identifier'),
                    model_uri=NFDI4C.other_identifier, domain=None, range=Optional[str])
 
@@ -2548,6 +2460,12 @@ slots.qualified_attribution = Slot(uri=PROV.qualifiedAttribution, name="qualifie
 
 slots.qualified_relation = Slot(uri=DCAT.qualifiedRelation, name="qualified_relation", curie=DCAT.curie('qualifiedRelation'),
                    model_uri=NFDI4C.qualified_relation, domain=None, range=Optional[str])
+
+slots.rdf_type = Slot(uri=RDF.type, name="rdf_type", curie=RDF.curie('type'),
+                   model_uri=NFDI4C.rdf_type, domain=None, range=Optional[Union[dict, DefinedTerm]])
+
+slots.realized_plan = Slot(uri=PROV.used, name="realized_plan", curie=PROV.curie('used'),
+                   model_uri=NFDI4C.realized_plan, domain=None, range=Optional[Union[str, EvaluatedActivityId]])
 
 slots.record = Slot(uri=DCAT.record, name="record", curie=DCAT.curie('record'),
                    model_uri=NFDI4C.record, domain=None, range=Optional[str])
@@ -2606,6 +2524,12 @@ slots.title = Slot(uri=DCTERMS.title, name="title", curie=DCTERMS.curie('title')
 slots.type = Slot(uri=DCTERMS.type, name="type", curie=DCTERMS.curie('type'),
                    model_uri=NFDI4C.type, domain=None, range=Optional[str])
 
+slots.used_tool = Slot(uri=PROV.used, name="used_tool", curie=PROV.curie('used'),
+                   model_uri=NFDI4C.used_tool, domain=None, range=Optional[Union[Union[dict, Tool], List[Union[dict, Tool]]]])
+
+slots.value = Slot(uri=PROV.value, name="value", curie=PROV.curie('value'),
+                   model_uri=NFDI4C.value, domain=None, range=Optional[str])
+
 slots.version = Slot(uri=DCAT.version, name="version", curie=DCAT.curie('version'),
                    model_uri=NFDI4C.version, domain=None, range=Optional[str])
 
@@ -2643,82 +2567,37 @@ slots.NMRAnalysisDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="
                    model_uri=NFDI4C.NMRAnalysisDataset_was_generated_by, domain=NMRAnalysisDataset, range=Optional[Union[Union[dict, NMRSpectralAnalysis], List[Union[dict, NMRSpectralAnalysis]]]])
 
 slots.NMRAnalysisDataset_describes_entity = Slot(uri=DCTERMS.relation, name="NMRAnalysisDataset_describes_entity", curie=DCTERMS.curie('relation'),
-                   model_uri=NFDI4C.NMRAnalysisDataset_describes_entity, domain=NMRAnalysisDataset, range=Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, ChemicalSample]], List[Union[dict, ChemicalSample]]]])
+                   model_uri=NFDI4C.NMRAnalysisDataset_describes_entity, domain=NMRAnalysisDataset, range=Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, "ChemicalSample"]], List[Union[dict, "ChemicalSample"]]]])
 
 slots.NMRSpectralAnalysis_evaluated_entity = Slot(uri=PROV.used, name="NMRSpectralAnalysis_evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=NFDI4C.NMRSpectralAnalysis_evaluated_entity, domain=NMRSpectralAnalysis, range=Optional[Union[Dict[Union[str, NMRSpectrumId], Union[dict, NMRSpectrum]], List[Union[dict, NMRSpectrum]]]])
+                   model_uri=NFDI4C.NMRSpectralAnalysis_evaluated_entity, domain=NMRSpectralAnalysis, range=Optional[Union[Dict[Union[str, NMRSpectrumId], Union[dict, "NMRSpectrum"]], List[Union[dict, "NMRSpectrum"]]]])
 
 slots.NMRSpectroscopy_evaluated_entity = Slot(uri=PROV.used, name="NMRSpectroscopy_evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=NFDI4C.NMRSpectroscopy_evaluated_entity, domain=NMRSpectroscopy, range=Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, ChemicalSample]], List[Union[dict, ChemicalSample]]]])
+                   model_uri=NFDI4C.NMRSpectroscopy_evaluated_entity, domain=NMRSpectroscopy, range=Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, "ChemicalSample"]], List[Union[dict, "ChemicalSample"]]]])
 
 slots.NMRSpectroscopy_rdf_type = Slot(uri=RDF.type, name="NMRSpectroscopy_rdf_type", curie=RDF.curie('type'),
-                   model_uri=NFDI4C.NMRSpectroscopy_rdf_type, domain=NMRSpectroscopy, range=Optional[Union[dict, DefinedTerm]])
+                   model_uri=NFDI4C.NMRSpectroscopy_rdf_type, domain=NMRSpectroscopy, range=Optional[Union[dict, "DefinedTerm"]])
 
 slots.NMRSpectrum_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="NMRSpectrum_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.NMRSpectrum_was_generated_by, domain=NMRSpectrum, range=Optional[Union[Union[dict, "NMRSpectroscopy"], List[Union[dict, "NMRSpectroscopy"]]]])
+                   model_uri=NFDI4C.NMRSpectrum_was_generated_by, domain=NMRSpectrum, range=Optional[Union[Union[dict, NMRSpectroscopy], List[Union[dict, NMRSpectroscopy]]]])
 
-slots.ClassifierMixin_type = Slot(uri=DCTERMS.type, name="ClassifierMixin_type", curie=DCTERMS.curie('type'),
-                   model_uri=NFDI4C.ClassifierMixin_type, domain=None, range=Optional[Union[dict, "DefinedTerm"]])
+slots.Activity_has_part = Slot(uri=DCTERMS.hasPart, name="Activity_has_part", curie=DCTERMS.curie('hasPart'),
+                   model_uri=NFDI4C.Activity_has_part, domain=Activity, range=Optional[Union[dict, "Activity"]])
 
-slots.DefinedTerm_title = Slot(uri=SCHEMA.name, name="DefinedTerm_title", curie=SCHEMA.curie('name'),
-                   model_uri=NFDI4C.DefinedTerm_title, domain=DefinedTerm, range=Optional[str])
-
-slots.ResearchDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="ResearchDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.ResearchDataset_was_generated_by, domain=ResearchDataset, range=Union[Union[dict, DataCreatingActivity], List[Union[dict, DataCreatingActivity]]])
-
-slots.AnalysisDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="AnalysisDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.AnalysisDataset_was_generated_by, domain=AnalysisDataset, range=Union[Union[dict, DataAnalysis], List[Union[dict, DataAnalysis]]])
-
-slots.ResearchCatalog_has_dataset = Slot(uri=DCAT.dataset, name="ResearchCatalog_has_dataset", curie=DCAT.curie('dataset'),
-                   model_uri=NFDI4C.ResearchCatalog_has_dataset, domain=ResearchCatalog, range=Optional[Union[str, ResearchDatasetId]])
-
-slots.DataCreatingActivity_has_part = Slot(uri=DCTERMS.hasPart, name="DataCreatingActivity_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=NFDI4C.DataCreatingActivity_has_part, domain=DataCreatingActivity, range=Optional[Union[dict, Activity]])
-
-slots.DataCreatingActivity_other_identifier = Slot(uri=ADMS.identifier, name="DataCreatingActivity_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=NFDI4C.DataCreatingActivity_other_identifier, domain=DataCreatingActivity, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
-
-slots.DataAnalysis_evaluated_entity = Slot(uri=PROV.used, name="DataAnalysis_evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=NFDI4C.DataAnalysis_evaluated_entity, domain=DataAnalysis, range=Optional[Union[Dict[Union[str, AnalysisSourceDataId], Union[dict, AnalysisSourceData]], List[Union[dict, AnalysisSourceData]]]])
-
-slots.EvaluatedEntity_other_identifier = Slot(uri=ADMS.identifier, name="EvaluatedEntity_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=NFDI4C.EvaluatedEntity_other_identifier, domain=EvaluatedEntity, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
-
-slots.EvaluatedEntity_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="EvaluatedEntity_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.EvaluatedEntity_was_generated_by, domain=EvaluatedEntity, range=Optional[Union[Union[dict, "Activity"], List[Union[dict, "Activity"]]]])
-
-slots.EvaluatedEntity_has_part = Slot(uri=DCTERMS.hasPart, name="EvaluatedEntity_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=NFDI4C.EvaluatedEntity_has_part, domain=EvaluatedEntity, range=Optional[Union[str, EvaluatedEntityId]])
-
-slots.AnalysisSourceData_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="AnalysisSourceData_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.AnalysisSourceData_was_generated_by, domain=AnalysisSourceData, range=Optional[Union[Union[dict, "DataCreatingActivity"], List[Union[dict, "DataCreatingActivity"]]]])
-
-slots.EvaluatedActivity_other_identifier = Slot(uri=ADMS.identifier, name="EvaluatedActivity_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=NFDI4C.EvaluatedActivity_other_identifier, domain=EvaluatedActivity, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
-
-slots.EvaluatedActivity_has_part = Slot(uri=DCTERMS.hasPart, name="EvaluatedActivity_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=NFDI4C.EvaluatedActivity_has_part, domain=EvaluatedActivity, range=Optional[Union[str, EvaluatedActivityId]])
-
-slots.Tool_has_part = Slot(uri=DCTERMS.hasPart, name="Tool_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=NFDI4C.Tool_has_part, domain=Tool, range=Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]])
-
-slots.Tool_other_identifier = Slot(uri=ADMS.identifier, name="Tool_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=NFDI4C.Tool_other_identifier, domain=Tool, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
-
-slots.Environment_other_identifier = Slot(uri=ADMS.identifier, name="Environment_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=NFDI4C.Environment_other_identifier, domain=Environment, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
-
-slots.QualitativeAttribute_value = Slot(uri=PROV.value, name="QualitativeAttribute_value", curie=PROV.curie('value'),
-                   model_uri=NFDI4C.QualitativeAttribute_value, domain=QualitativeAttribute, range=str)
-
-slots.QuantitativeAttribute_value = Slot(uri=PROV.value, name="QuantitativeAttribute_value", curie=PROV.curie('value'),
-                   model_uri=NFDI4C.QuantitativeAttribute_value, domain=QuantitativeAttribute, range=float)
+slots.Activity_other_identifier = Slot(uri=ADMS.identifier, name="Activity_other_identifier", curie=ADMS.curie('identifier'),
+                   model_uri=NFDI4C.Activity_other_identifier, domain=Activity, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
 
 slots.Agent_name = Slot(uri=FOAF.name, name="Agent_name", curie=FOAF.curie('name'),
                    model_uri=NFDI4C.Agent_name, domain=Agent, range=Union[str, List[str]])
 
 slots.Agent_type = Slot(uri=DCTERMS.type, name="Agent_type", curie=DCTERMS.curie('type'),
                    model_uri=NFDI4C.Agent_type, domain=Agent, range=Optional[Union[dict, "Concept"]])
+
+slots.AnalysisDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="AnalysisDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
+                   model_uri=NFDI4C.AnalysisDataset_was_generated_by, domain=AnalysisDataset, range=Optional[Union[Union[dict, DataAnalysis], List[Union[dict, DataAnalysis]]]])
+
+slots.AnalysisSourceData_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="AnalysisSourceData_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
+                   model_uri=NFDI4C.AnalysisSourceData_was_generated_by, domain=AnalysisSourceData, range=Optional[Union[Union[dict, Activity], List[Union[dict, Activity]]]])
 
 slots.Catalogue_applicable_legislation = Slot(uri=DCATAP.applicableLegislation, name="Catalogue_applicable_legislation", curie=DCATAP.curie('applicableLegislation'),
                    model_uri=NFDI4C.Catalogue_applicable_legislation, domain=Catalogue, range=Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]])
@@ -2736,7 +2615,7 @@ slots.Catalogue_geographical_coverage = Slot(uri=DCTERMS.spatial, name="Catalogu
                    model_uri=NFDI4C.Catalogue_geographical_coverage, domain=Catalogue, range=Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]])
 
 slots.Catalogue_has_dataset = Slot(uri=DCAT.dataset, name="Catalogue_has_dataset", curie=DCAT.curie('dataset'),
-                   model_uri=NFDI4C.Catalogue_has_dataset, domain=Catalogue, range=Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]])
+                   model_uri=NFDI4C.Catalogue_has_dataset, domain=Catalogue, range=Optional[Union[Dict[Union[str, DatasetId], Union[dict, "Dataset"]], List[Union[dict, "Dataset"]]]])
 
 slots.Catalogue_has_part = Slot(uri=DCTERMS.hasPart, name="Catalogue_has_part", curie=DCTERMS.curie('hasPart'),
                    model_uri=NFDI4C.Catalogue_has_part, domain=Catalogue, range=Optional[Union[Union[dict, "Catalogue"], List[Union[dict, "Catalogue"]]]])
@@ -2810,11 +2689,17 @@ slots.Checksum_algorithm = Slot(uri=SPDX.algorithm, name="Checksum_algorithm", c
 slots.Checksum_checksum_value = Slot(uri=SPDX.checksumValue, name="Checksum_checksum_value", curie=SPDX.curie('checksumValue'),
                    model_uri=NFDI4C.Checksum_checksum_value, domain=Checksum, range=str)
 
+slots.ClassifierMixin_type = Slot(uri=DCTERMS.type, name="ClassifierMixin_type", curie=DCTERMS.curie('type'),
+                   model_uri=NFDI4C.ClassifierMixin_type, domain=None, range=Optional[Union[dict, "DefinedTerm"]])
+
 slots.Concept_preferred_label = Slot(uri=SKOS.prefLabel, name="Concept_preferred_label", curie=SKOS.curie('prefLabel'),
                    model_uri=NFDI4C.Concept_preferred_label, domain=Concept, range=Union[str, List[str]])
 
 slots.ConceptScheme_title = Slot(uri=DCTERMS.title, name="ConceptScheme_title", curie=DCTERMS.curie('title'),
                    model_uri=NFDI4C.ConceptScheme_title, domain=ConceptScheme, range=Union[str, List[str]])
+
+slots.DataAnalysis_evaluated_entity = Slot(uri=PROV.used, name="DataAnalysis_evaluated_entity", curie=PROV.curie('used'),
+                   model_uri=NFDI4C.DataAnalysis_evaluated_entity, domain=DataAnalysis, range=Optional[Union[Dict[Union[str, AnalysisSourceDataId], Union[dict, "AnalysisSourceData"]], List[Union[dict, "AnalysisSourceData"]]]])
 
 slots.DataService_access_rights = Slot(uri=DCTERMS.accessRights, name="DataService_access_rights", curie=DCTERMS.curie('accessRights'),
                    model_uri=NFDI4C.DataService_access_rights, domain=DataService, range=Optional[Union[dict, "RightsStatement"]])
@@ -2856,7 +2741,7 @@ slots.DataService_publisher = Slot(uri=DCTERMS.publisher, name="DataService_publ
                    model_uri=NFDI4C.DataService_publisher, domain=DataService, range=Optional[Union[dict, "Agent"]])
 
 slots.DataService_serves_dataset = Slot(uri=DCAT.servesDataset, name="DataService_serves_dataset", curie=DCAT.curie('servesDataset'),
-                   model_uri=NFDI4C.DataService_serves_dataset, domain=DataService, range=Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]])
+                   model_uri=NFDI4C.DataService_serves_dataset, domain=DataService, range=Optional[Union[Dict[Union[str, DatasetId], Union[dict, "Dataset"]], List[Union[dict, "Dataset"]]]])
 
 slots.DataService_theme = Slot(uri=DCAT.theme, name="DataService_theme", curie=DCAT.curie('theme'),
                    model_uri=NFDI4C.DataService_theme, domain=DataService, range=Optional[Union[Union[dict, "Concept"], List[Union[dict, "Concept"]]]])
@@ -2895,7 +2780,7 @@ slots.Dataset_geographical_coverage = Slot(uri=DCTERMS.spatial, name="Dataset_ge
                    model_uri=NFDI4C.Dataset_geographical_coverage, domain=Dataset, range=Optional[Union[Union[dict, "Location"], List[Union[dict, "Location"]]]])
 
 slots.Dataset_has_version = Slot(uri=DCAT.hasVersion, name="Dataset_has_version", curie=DCAT.curie('hasVersion'),
-                   model_uri=NFDI4C.Dataset_has_version, domain=Dataset, range=Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]])
+                   model_uri=NFDI4C.Dataset_has_version, domain=Dataset, range=Optional[Union[Dict[Union[str, DatasetId], Union[dict, "Dataset"]], List[Union[dict, "Dataset"]]]])
 
 slots.Dataset_identifier = Slot(uri=DCTERMS.identifier, name="Dataset_identifier", curie=DCTERMS.curie('identifier'),
                    model_uri=NFDI4C.Dataset_identifier, domain=Dataset, range=Optional[Union[str, List[str]]])
@@ -2943,7 +2828,7 @@ slots.Dataset_sample = Slot(uri=ADMS.sample, name="Dataset_sample", curie=ADMS.c
                    model_uri=NFDI4C.Dataset_sample, domain=Dataset, range=Optional[Union[Union[dict, "Distribution"], List[Union[dict, "Distribution"]]]])
 
 slots.Dataset_source = Slot(uri=DCTERMS.source, name="Dataset_source", curie=DCTERMS.curie('source'),
-                   model_uri=NFDI4C.Dataset_source, domain=Dataset, range=Optional[Union[Union[dict, "Dataset"], List[Union[dict, "Dataset"]]]])
+                   model_uri=NFDI4C.Dataset_source, domain=Dataset, range=Optional[Union[Dict[Union[str, DatasetId], Union[dict, "Dataset"]], List[Union[dict, "Dataset"]]]])
 
 slots.Dataset_spatial_resolution = Slot(uri=DCAT.spatialResolutionInMeters, name="Dataset_spatial_resolution", curie=DCAT.curie('spatialResolutionInMeters'),
                    model_uri=NFDI4C.Dataset_spatial_resolution, domain=Dataset, range=Optional[Decimal])
@@ -2970,7 +2855,7 @@ slots.Dataset_version_notes = Slot(uri=ADMS.versionNotes, name="Dataset_version_
                    model_uri=NFDI4C.Dataset_version_notes, domain=Dataset, range=Optional[Union[str, List[str]]])
 
 slots.Dataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="Dataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.Dataset_was_generated_by, domain=Dataset, range=Optional[Union[Union[dict, Activity], List[Union[dict, Activity]]]])
+                   model_uri=NFDI4C.Dataset_was_generated_by, domain=Dataset, range=Union[Union[dict, Activity], List[Union[dict, Activity]]])
 
 slots.DatasetSeries_applicable_legislation = Slot(uri=DCATAP.applicableLegislation, name="DatasetSeries_applicable_legislation", curie=DCATAP.curie('applicableLegislation'),
                    model_uri=NFDI4C.DatasetSeries_applicable_legislation, domain=DatasetSeries, range=Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]])
@@ -3001,6 +2886,9 @@ slots.DatasetSeries_temporal_coverage = Slot(uri=DCTERMS.temporal, name="Dataset
 
 slots.DatasetSeries_title = Slot(uri=DCTERMS.title, name="DatasetSeries_title", curie=DCTERMS.curie('title'),
                    model_uri=NFDI4C.DatasetSeries_title, domain=DatasetSeries, range=Union[str, List[str]])
+
+slots.DefinedTerm_title = Slot(uri=SCHEMA.name, name="DefinedTerm_title", curie=SCHEMA.curie('name'),
+                   model_uri=NFDI4C.DefinedTerm_title, domain=DefinedTerm, range=Optional[str])
 
 slots.Distribution_access_URL = Slot(uri=DCAT.accessURL, name="Distribution_access_URL", curie=DCAT.curie('accessURL'),
                    model_uri=NFDI4C.Distribution_access_URL, domain=Distribution, range=Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]])
@@ -3074,6 +2962,24 @@ slots.Distribution_temporal_resolution = Slot(uri=DCAT.temporalResolution, name=
 slots.Distribution_title = Slot(uri=DCTERMS.title, name="Distribution_title", curie=DCTERMS.curie('title'),
                    model_uri=NFDI4C.Distribution_title, domain=Distribution, range=Optional[Union[str, List[str]]])
 
+slots.Environment_other_identifier = Slot(uri=ADMS.identifier, name="Environment_other_identifier", curie=ADMS.curie('identifier'),
+                   model_uri=NFDI4C.Environment_other_identifier, domain=Environment, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
+
+slots.EvaluatedActivity_has_part = Slot(uri=DCTERMS.hasPart, name="EvaluatedActivity_has_part", curie=DCTERMS.curie('hasPart'),
+                   model_uri=NFDI4C.EvaluatedActivity_has_part, domain=EvaluatedActivity, range=Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, "EvaluatedActivity"]], List[Union[dict, "EvaluatedActivity"]]]])
+
+slots.EvaluatedActivity_other_identifier = Slot(uri=ADMS.identifier, name="EvaluatedActivity_other_identifier", curie=ADMS.curie('identifier'),
+                   model_uri=NFDI4C.EvaluatedActivity_other_identifier, domain=EvaluatedActivity, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
+
+slots.EvaluatedEntity_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="EvaluatedEntity_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
+                   model_uri=NFDI4C.EvaluatedEntity_was_generated_by, domain=EvaluatedEntity, range=Optional[Union[Union[dict, Activity], List[Union[dict, Activity]]]])
+
+slots.EvaluatedEntity_has_part = Slot(uri=DCTERMS.hasPart, name="EvaluatedEntity_has_part", curie=DCTERMS.curie('hasPart'),
+                   model_uri=NFDI4C.EvaluatedEntity_has_part, domain=EvaluatedEntity, range=Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, "EvaluatedEntity"]], List[Union[dict, "EvaluatedEntity"]]]])
+
+slots.EvaluatedEntity_other_identifier = Slot(uri=ADMS.identifier, name="EvaluatedEntity_other_identifier", curie=ADMS.curie('identifier'),
+                   model_uri=NFDI4C.EvaluatedEntity_other_identifier, domain=EvaluatedEntity, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
+
 slots.Identifier_notation = Slot(uri=SKOS.notation, name="Identifier_notation", curie=SKOS.curie('notation'),
                    model_uri=NFDI4C.Identifier_notation, domain=Identifier, range=str)
 
@@ -3101,8 +3007,20 @@ slots.PeriodOfTime_end_date = Slot(uri=DCAT.endDate, name="PeriodOfTime_end_date
 slots.PeriodOfTime_start_date = Slot(uri=DCAT.startDate, name="PeriodOfTime_start_date", curie=DCAT.curie('startDate'),
                    model_uri=NFDI4C.PeriodOfTime_start_date, domain=PeriodOfTime, range=Optional[str])
 
+slots.QualitativeAttribute_value = Slot(uri=PROV.value, name="QualitativeAttribute_value", curie=PROV.curie('value'),
+                   model_uri=NFDI4C.QualitativeAttribute_value, domain=QualitativeAttribute, range=str)
+
+slots.QuantitativeAttribute_value = Slot(uri=PROV.value, name="QuantitativeAttribute_value", curie=PROV.curie('value'),
+                   model_uri=NFDI4C.QuantitativeAttribute_value, domain=QuantitativeAttribute, range=float)
+
 slots.Relationship_had_role = Slot(uri=DCAT.hadRole, name="Relationship_had_role", curie=DCAT.curie('hadRole'),
                    model_uri=NFDI4C.Relationship_had_role, domain=Relationship, range=Union[Union[dict, "Role"], List[Union[dict, "Role"]]])
 
 slots.Relationship_relation = Slot(uri=DCTERMS.relation, name="Relationship_relation", curie=DCTERMS.curie('relation'),
                    model_uri=NFDI4C.Relationship_relation, domain=Relationship, range=Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]])
+
+slots.Tool_has_part = Slot(uri=DCTERMS.hasPart, name="Tool_has_part", curie=DCTERMS.curie('hasPart'),
+                   model_uri=NFDI4C.Tool_has_part, domain=Tool, range=Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]])
+
+slots.Tool_other_identifier = Slot(uri=ADMS.identifier, name="Tool_other_identifier", curie=ADMS.curie('identifier'),
+                   model_uri=NFDI4C.Tool_other_identifier, domain=Tool, range=Optional[Union[Union[dict, Identifier], List[Union[dict, Identifier]]]])
