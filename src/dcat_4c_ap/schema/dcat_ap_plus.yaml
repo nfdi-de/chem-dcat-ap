@@ -158,6 +158,45 @@ enums:
         text: text
       video:
         text: video
+  QUDTQuantityKindEnum:
+    name: QUDTQuantityKindEnum
+    implements:
+    - owl:NamedIndividual
+    description: Possible kinds of quantifiable attribute types provided as QUDT QualityKind
+      instances.
+    todos:
+    - 'Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should
+      be used to constrain the range of the type slot instead of using the default
+      DefinedTerm as range. This will be done in profiles of this schema where we
+      define Activity subclasses, e.g. NMRSpectroscopy. seeAlso: https://github.com/linkml/linkml-model/blob/main/tests/input/examples/schema_definition-enum_bindings-1.yaml'
+    in_subset:
+    - domain_agnostic_core
+    reachable_from:
+      source_ontology: http://qudt.org/2.1/vocab/quantitykind
+      source_nodes:
+      - qudt:QuantityKind
+      relationship_types:
+      - rdf:type
+      is_direct: true
+  QUDTUnitEnum:
+    name: QUDTUnitEnum
+    implements:
+    - owl:NamedIndividual
+    description: Possible kinds of QUDT unit instances.
+    todos:
+    - 'Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should
+      be used to constrain the range of the type slot instead of using the default
+      DefinedTerm as range. This will be done in profiles of this schema where we
+      define Activity subclasses, e.g. NMRSpectroscopy. seeAlso: https://github.com/linkml/linkml-model/blob/main/tests/input/examples/schema_definition-enum_bindings-1.yaml'
+    in_subset:
+    - domain_agnostic_core
+    reachable_from:
+      source_ontology: https://qudt.org/vocab/unit/
+      source_nodes:
+      - qudt:QuantityKind
+      relationship_types:
+      - rdf:type
+      is_direct: true
 slots:
   access_URL:
     name: access_URL

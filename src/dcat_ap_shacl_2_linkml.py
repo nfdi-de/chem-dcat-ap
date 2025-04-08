@@ -386,6 +386,8 @@ def build_dcatap_plus():
         dataset.slot_usage.was_generated_by.notes.append('stricter than DCAT-AP')
         dataset.in_subset=['domain_agnostic_core']
         dataset.description = 'A collection of data, published or curated by a single agent, and available for access or download in one or more representations.'
+
+
     def extend_activity():
         builder.add_slot(SlotDefinition(name='evaluated_entity',
                                         slot_uri= 'prov:used',
@@ -450,6 +452,8 @@ def build_dcatap_plus():
         activity.in_subset=['domain_agnostic_core']
         activity.description = 'An activity (process) that has the objective to produce information aboutn entity or activity.'
         activity.notes = ['The properties (slots) of this class are part of the extension of the DCAT-AP.']
+
+
     def add_classification_context():
         builder.add_class(ClassDefinition(name='ClassifierMixin',
                                           mixin=True,
@@ -482,6 +486,8 @@ def build_dcatap_plus():
                                         recommended= True,
                                         inlined= True,
                                         in_subset='domain_agnostic_core'))
+
+
     def add_subject_of_interest_context():
         builder.add_class(ClassDefinition(name='EvaluatedEntity',
                                           mixins= 'ClassifierMixin',
@@ -537,6 +543,8 @@ def build_dcatap_plus():
                                                   'multivalued': True,
                                                   'inlined_as_list': True}},
                                           in_subset='domain_agnostic_core'))
+
+
     def add_tooling_context():
         builder.add_class(ClassDefinition(name='Tool',
                                           mixins= 'ClassifierMixin',
@@ -573,6 +581,8 @@ def build_dcatap_plus():
                                           class_uri='prov:Entity',
                                           description='A software program with a certain function that was used within an Activity.',
                                           in_subset='domain_agnostic_core'))
+
+
     def add_planning_and_surrounding_context():
         builder.add_class(ClassDefinition(name='Environment',
                                           mixins= 'ClassifierMixin',
@@ -600,6 +610,8 @@ def build_dcatap_plus():
                                                    'description'],
                                           examples=[{'description': 'We assigned the structure of sample CRS-37013 using a 13C NMR (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0 K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3).'}],
                                           in_subset='domain_agnostic_core'))
+
+
     def add_attribute_context():
         builder.add_class(ClassDefinition(name='QualitativeAttribute',
                                           mixins= 'ClassifierMixin',
@@ -653,8 +665,7 @@ def build_dcatap_plus():
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
-                                        in_subset='domain_agnostic_core'
-                                        ))
+                                        in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='has_quantitative_attribute',
                                         slot_uri= 'dcterms:relation',
                                         range= 'QuantitativeAttribute',
@@ -662,13 +673,35 @@ def build_dcatap_plus():
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
-                                        in_subset='domain_agnostic_core'
-                                        ))
+                                        in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='value',
                                         slot_uri= 'prov:value',
                                         description= 'A slot to provide the literal value of an attribute.',
-                                        in_subset='domain_agnostic_core'
-                                        ))
+                                        in_subset='domain_agnostic_core'))
+        todos =['Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should be used to '
+                'constrain the range of the type slot instead of using the default DefinedTerm as range. This will be done in profiles of this schema where we define Activity subclasses, e.g. NMRSpectroscopy. seeAlso: https://github.com/linkml/linkml-model/blob/main/tests/input/examples/schema_definition-enum_bindings-1.yaml']
+        builder.add_enum(EnumDefinition(name='QUDTQuantityKindEnum',
+                                        description= 'Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.',
+                                        implements= ['owl:NamedIndividual'],
+                                        reachable_from={
+                                            'source_ontology': 'http://qudt.org/2.1/vocab/quantitykind',
+                                            'source_nodes': ['qudt:QuantityKind'],
+                                            'is_direct': True,
+                                            'relationship_types': ['rdf:type']},
+                                        in_subset='domain_agnostic_core',
+                                        todos=todos))
+        builder.add_enum(EnumDefinition(name='QUDTUnitEnum',
+                                        description= 'Possible kinds of QUDT unit instances.',
+                                        implements= ['owl:NamedIndividual'],
+                                        reachable_from={
+                                            'source_ontology': 'https://qudt.org/vocab/unit/',
+                                            'source_nodes': ['qudt:QuantityKind'],
+                                            'is_direct': True,
+                                            'relationship_types': ['rdf:type']},
+                                        in_subset='domain_agnostic_core',
+                                        todos=todos))
+
+
     def add_analysis_context():
             builder.add_class(ClassDefinition(name='AnalysisDataset',
                                               is_a= 'Dataset',
@@ -705,7 +738,9 @@ def build_dcatap_plus():
                                                       'inlined_as_list': True}},
                                               in_subset='domain_agnostic_core'))
 
+
     # Initialize the extended DCAT-AP LinkML schema
+
     builder = SchemaBuilder(name="dcat-ap-plus")
     builder.schema.id = 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'
     builder.schema.description = DESCRIPTION2
