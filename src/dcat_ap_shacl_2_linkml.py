@@ -96,7 +96,9 @@ def load_dcat_ap_shacl_shapes(jsonld_file='dcat_ap_shacl.jsonld'):
         - A Python object containing the loaded SHACL shapes
     TODO: Use Requests to download directly from the script, maybe with cache option.
     """
-    with open(jsonld_file, 'r') as file:
+    filepath = os.path.join('src', jsonld_file)
+    with open(filepath, 'r') as file:
+        print(f'INFO: Loaded the DCAT-AP SHACL shapes from {filepath}.')
         return json.load(file)
 
 
@@ -328,6 +330,8 @@ def build_dcatap_linkml():
     """
     Create a LinkML schema representation of DCAT-AP
     """
+    print('\n   --- Building the DCAT-AP LinkML representation ---')
+
     builder = SchemaBuilder(name="dcat-ap")
     builder.schema.id = 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'
     builder.schema.description = DESCRIPTION1 + '\nNOTE:' + NOTE
@@ -357,6 +361,8 @@ def build_dcatap_plus():
     """
     Create a LinkML schema representation of DCAT-AP with additional classes, slots and contraints.
     """
+    print('\n  --- Building the extended DCAT-AP LinkML representation ---')
+
     def extend_dataset():
         builder.add_slot(SlotDefinition(name='id',
                                         identifier= True,
@@ -795,8 +801,9 @@ def build_dcatap_plus():
 
 def dump_schema(schema, filename=None):
     if filename:
-        filepath = os.path.join('dcat_4c_ap', 'schema', filename)
+        filepath = os.path.join('src', 'dcat_4c_ap', 'schema', filename)
         YAMLDumper().dump(schema, filepath)
+        print(f'INFO: {filename} was saved to {filepath}')
 
 
 def main():
