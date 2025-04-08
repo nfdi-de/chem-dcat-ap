@@ -81,29 +81,29 @@ Requirements (see also https://github.com/dalito/linkml-project-copier?tab=readm
   * Validate a single example dataset using LinkML's validator framework
     * Validate original DCAT-AP conform example
       ````commandline
-      poetry run linkml validate src/data/examples/Dataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C Dataset
+      poetry run linkml validate tests/data/valid/Dataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C Dataset
       ````
     * Validate domain agnostic DCAT-AP extension conform example
       ````commandline
-      poetry run linkml validate src/data/examples/AnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C AnalysisDataset
+      poetry run linkml validate tests/data/valid/AnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C AnalysisDataset
       ````
     * Validate a NMR spectroscopy-specific DCAT-AP extension conform example
       ````commandline
-      poetry run linkml validate src/data/examples/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C NMRAnalysisDataset
+      poetry run linkml validate tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C NMRAnalysisDataset
       ````
 
 * To convert the test datasets of each DCAT-AP profile into a TTL graph run:
   * Convert original DCAT-AP conform example
      ````commandline
-    poetry run linkml-convert -t ttl src/data/examples/Dataset-001.yaml -s src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C Dataset
+    poetry run linkml-convert -t ttl tests/data/valid/Dataset-001.yaml -s src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C Dataset
     ````
   * Convert domain agnostic DCAT-AP extension conform example of an analysis
     ````commandline
-    poetry run linkml-convert -t ttl src/data/examples/AnalysisDataset-001.yaml -s src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C AnalysisDataset
+    poetry run linkml-convert -t ttl tests/data/valid/AnalysisDataset-001.yaml -s src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C AnalysisDataset
     ````
   * Convert a NMR spectroscopy-specific DCAT-AP extension conform example
     ````commandline
-    poetry run linkml-convert -t ttl src/data/examples/NMRAnalysisDataset-001.yaml -s src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
+    poetry run linkml-convert -t ttl tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
     ````
 
 * Use the `just` command to generate project artefacts:
@@ -118,4 +118,3 @@ This project was initially created with
 [linkml-project-cookiecutter](https://github.com/linkml/linkml-project-cookiecutter).
 and later migrated to
 [linkml-project-copier](https://github.com/dalito/linkml-project-copier).
-
