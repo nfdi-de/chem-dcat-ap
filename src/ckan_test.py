@@ -1,11 +1,8 @@
 from dcat_4c_ap import (AnalysisDataset,
                         AnalysisSourceData,
-                        LinguisticSystem,
-                        Document,
                         DataAnalysis,
-                        DataCreatingActivity,
+                        Activity,
                         DefinedTerm,
-                        Agent,
                         Standard,
                         EvaluatedEntity,
                         QualitativeAttribute)
@@ -196,7 +193,7 @@ def graph_from_dataset(dataset_dict):
     )
 
     # Instantiate the measurement process/activity
-    measurement = DataCreatingActivity(
+    measurement = Activity(
         rdf_type=DefinedTerm(
             id=dataset_dict.get('measurement_technique_iri'),
             title=dataset_dict.get('measurement_technique')),
