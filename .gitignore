@@ -141,3 +141,6 @@ dmypy.json
 .idea
 # Local vscode editor config
 .vscode
+/docs
+/.idea
+/docs

@@ -1,10 +1,10 @@
 -- # Class: "NMRAnalysisDataset" Description: "A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample."
---     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: modification_date Description: The most recent date on which the Dataset was changed or modified.
 --     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Dataset.
 --     * Slot: spatial_resolution Description: The minimum spatial separation resolvable in a dataset, measured in meters.
 --     * Slot: temporal_resolution Description: The minimum time period resolvable in the dataset.
 --     * Slot: version Description: The version indicator (name or identifier) of a resource.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: access_rights_id Description: Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.
 --     * Slot: frequency_id Description: The frequency at which the Dataset is updated.
 --     * Slot: publisher_id Description: An entity (organisation) responsible for making the Dataset available.
@@ -12,27 +12,26 @@
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: realized_plan Description: The slot to specify the Method (aka Procedure) that was realized by a Activity.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
---     * Slot: realized_plan_id Description: The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.
---     * Slot: has_part_id Description: A slot to provide an Activity that is part of the DataCreatingActivity.
---     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
+--     * Slot: has_part_id Description: A slot to provide an Activity that is part of the Activity that created the Dataset.
+--     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "NMRSpectroscopy" Description: "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them."
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: realized_plan Description: The slot to specify the Method (aka Procedure) that was realized by a Activity.
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
---     * Slot: realized_plan_id Description: The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.
---     * Slot: has_part_id Description: A slot to provide an Activity that is part of the DataCreatingActivity.
---     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
+--     * Slot: has_part_id Description: A slot to provide an Activity that is part of the Activity that created the Dataset.
+--     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The type of NMR Spectroscopy provided as CURIE of a subclass of CHMO:0000613.
 -- # Class: "ChemicalReaction" Description: "An experimental procedure with the aim of producing a portion of a given compound or mixture."
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: has_part Description: A slot to provide a part of the EvaluatedActivity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "ChemicalSubstance" Description: "A portion of matter of constant composition, composed of molecular entities of the same type or of different types that is being evaluated in a scientific process."
@@ -40,7 +39,6 @@
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: has_part Description: A slot to provide a part of the EvaluatedEntity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "ChemicalEntity" Description: "Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity."
@@ -56,7 +54,6 @@
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: has_part Description: A slot to provide a part of the EvaluatedEntity.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
@@ -65,7 +62,6 @@
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: has_part Description: A slot to provide a part of the EvaluatedEntity.
 --     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
@@ -103,33 +99,55 @@
 --     * Slot: value Description: The slot to provide the literal value of the QualitativeAttribute.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "Activity" Description: "See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)"
+-- # Class: "Activity" Description: "An activity (process) that has the objective to produce information aboutn entity or activity."
 --     * Slot: id Description: 
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: realized_plan Description: The slot to specify the Method (aka Procedure) that was realized by a Activity.
 --     * Slot: ChemicalSubstance_id Description: Autocreated FK slot
 --     * Slot: ChemicalSample_id Description: Autocreated FK slot
+--     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
+--     * Slot: has_part_id Description: A slot to provide an Activity that is part of the Activity that created the Dataset.
+--     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "Agent" Description: "See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)"
 --     * Slot: id Description: 
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
---     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: type_id Description: The nature of the agent.
--- # Class: "Any" Description: "This abstract class is needed to allow a union of classes from this schema as ranges in slots like: *primary_topic* or *modification_date*"
+-- # Class: "AnalysisDataset" Description: "A Dataset that was generated by an analysis of some previously generated data. For example, a dataset that contains the data of an assignment of a chemical structure to a sample based on the spectral data obtained from the sample is an AnalyticalDataset."
+--     * Slot: modification_date Description: The most recent date on which the Dataset was changed or modified.
+--     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Dataset.
+--     * Slot: spatial_resolution Description: The minimum spatial separation resolvable in a dataset, measured in meters.
+--     * Slot: temporal_resolution Description: The minimum time period resolvable in the dataset.
+--     * Slot: version Description: The version indicator (name or identifier) of a resource.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: access_rights_id Description: Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.
+--     * Slot: frequency_id Description: The frequency at which the Dataset is updated.
+--     * Slot: publisher_id Description: An entity (organisation) responsible for making the Dataset available.
+-- # Class: "AnalysisSourceData" Description: "Information that was evaluated within a DataAnalysis."
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: DataAnalysis_id Description: Autocreated FK slot
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
+-- # Class: "Any" Description: "This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/)"
 --     * Slot: id Description: 
 -- # Class: "Attribution" Description: "See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)"
 --     * Slot: id Description: 
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
---     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 -- # Class: "Catalogue" Description: "See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)"
 --     * Slot: id Description: 
 --     * Slot: modification_date Description: The most recent date on which the Catalogue was modified.
 --     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Catalogue.
 --     * Slot: Catalogue_id Description: Autocreated FK slot
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
 --     * Slot: creator_id Description: An entity responsible for the creation of the catalogue.
 --     * Slot: homepage_id Description: A web page that acts as the main page for the Catalogue.
 --     * Slot: licence_id Description: A licence under which the Catalogue can be used or reused.
@@ -140,7 +158,6 @@
 --     * Slot: listing_date Description: The date on which the description of the Resource was included in the Catalogue.
 --     * Slot: modification_date Description: The most recent date on which the Catalogue entry was changed or modified.
 --     * Slot: Catalogue_id Description: Autocreated FK slot
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
 --     * Slot: change_type_id Description: The status of the catalogue record in the context of editorial flow of the dataset and data service descriptions.
 --     * Slot: primary_topic_id Description: A link to the Dataset, Data service or Catalog described in the record.
 --     * Slot: source_metadata_id Description: The original metadata that was used in creating metadata for the Dataset, Data Service or Dataset Series.
@@ -150,39 +167,49 @@
 --     * Slot: algorithm_id Description: The algorithm used to produce the subject Checksum.
 -- # Class: "ChecksumAlgorithm" Description: "See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)"
 --     * Slot: id Description: 
+-- # Class: "ClassifierMixin" Description: "A mixin with which an entity of this schema can be classified via an additional rdf:type assertion."
+--     * Slot: id Description: 
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "Concept" Description: "See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)"
 --     * Slot: id Description: 
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: DataService_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: LicenseDocument_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 -- # Class: "ConceptScheme" Description: "See [DCAT-AP specs:ConceptScheme](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme)"
 --     * Slot: id Description: 
 --     * Slot: Catalogue_id Description: Autocreated FK slot
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
+-- # Class: "DataAnalysis" Description: "An Activity that evaluates the data produced by another Activity."
+--     * Slot: id Description: 
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: realized_plan Description: The slot to specify the Method (aka Procedure) that was realized by a Activity.
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: has_part_id Description: A slot to provide an Activity that is part of the Activity that created the Dataset.
+--     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "DataService" Description: "See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)"
 --     * Slot: id Description: 
 --     * Slot: Catalogue_id Description: Autocreated FK slot
 --     * Slot: Distribution_id Description: Autocreated FK slot
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
 --     * Slot: access_rights_id Description: Information regarding access or restrictions based on privacy, security, or other policies.
 --     * Slot: licence_id Description: A licence under which the Data service is made available.
 --     * Slot: publisher_id Description: An entity (organisation) responsible for making the Data Service available.
--- # Class: "Dataset" Description: "See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)"
---     * Slot: id Description: 
+-- # Class: "Dataset" Description: "A collection of data, published or curated by a single agent, and available for access or download in one or more representations."
 --     * Slot: modification_date Description: The most recent date on which the Dataset was changed or modified.
 --     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Dataset.
 --     * Slot: spatial_resolution Description: The minimum spatial separation resolvable in a dataset, measured in meters.
 --     * Slot: temporal_resolution Description: The minimum time period resolvable in the dataset.
 --     * Slot: version Description: The version indicator (name or identifier) of a resource.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: Catalogue_id Description: Autocreated FK slot
 --     * Slot: DataService_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: access_rights_id Description: Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.
 --     * Slot: frequency_id Description: The frequency at which the Dataset is updated.
 --     * Slot: publisher_id Description: An entity (organisation) responsible for making the Dataset available.
@@ -191,11 +218,20 @@
 --     * Slot: modification_date Description: The most recent date on which the Dataset Series was changed or modified.
 --     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Dataset Series.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
---     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: frequency_id Description: The frequency at which the Dataset Series is updated.
 --     * Slot: publisher_id Description: An entity (organisation) responsible for ensuring the coherency of the Dataset Series 
+-- # Class: "DefinedTerm" Description: "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema."
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: from_CV Description: The URL of the controlled vocabulary.
+-- # Class: "Device" Description: "A hardware device with a certain function that was used within ann Activity."
+--     * Slot: id Description: 
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "Distribution" Description: "See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)"
 --     * Slot: id Description: 
 --     * Slot: byte_size Description: The size of a Distribution in bytes.
@@ -204,9 +240,8 @@
 --     * Slot: spatial_resolution Description: The minimum spatial separation resolvable in a dataset distribution, measured in meters.
 --     * Slot: temporal_resolution Description: The minimum time period resolvable in the dataset distribution.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
---     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: availability_id Description: An indication how long it is planned to keep the Distribution of the Dataset available.
 --     * Slot: checksum_id Description: A mechanism that can be used to verify that the contents of a distribution have not changed.
 --     * Slot: compression_format_id Description: The format of the file in which the data is contained in a compressed form, e.g. to reduce the size of the downloadable file.
@@ -220,11 +255,45 @@
 -- # Class: "Document" Description: "See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)"
 --     * Slot: id Description: 
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: DataService_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: Distribution_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
+-- # Class: "Environment" Description: "The surrounding in which the dataset creating activity took place (e.g. a lab)."
+--     * Slot: id Description: 
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
+-- # Class: "EvaluatedActivity" Description: "An activity or proces that is being evaluated in a Activity."
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
+--     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
+--     * Slot: ChemicalReaction_id Description: Autocreated FK slot
+--     * Slot: Activity_id Description: Autocreated FK slot
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: DataAnalysis_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
+-- # Class: "EvaluatedEntity" Description: "A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a Activity."
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: ChemicalSubstance_id Description: Autocreated FK slot
+--     * Slot: ChemicalSample_id Description: Autocreated FK slot
+--     * Slot: NMRSpectrum_id Description: Autocreated FK slot
+--     * Slot: Activity_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "Frequency" Description: "See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)"
 --     * Slot: id Description: 
 -- # Class: "Geometry" Description: "See [DCAT-AP specs:Geometry](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry)"
@@ -240,60 +309,52 @@
 --     * Slot: ChemicalSample_id Description: Autocreated FK slot
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
 --     * Slot: Laboratory_id Description: Autocreated FK slot
---     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
+--     * Slot: Activity_id Description: Autocreated FK slot
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: DataCreatingActivity_id Description: Autocreated FK slot
---     * Slot: DataAnalysis_id Description: Autocreated FK slot
---     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
 --     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
---     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
---     * Slot: Tool_id Description: Autocreated FK slot
---     * Slot: HardwareTool_id Description: Autocreated FK slot
---     * Slot: SoftwareTool_id Description: Autocreated FK slot
+--     * Slot: DataAnalysis_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: Device_id Description: Autocreated FK slot
 --     * Slot: Environment_id Description: Autocreated FK slot
+--     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
+--     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
+--     * Slot: Software_id Description: Autocreated FK slot
+--     * Slot: Tool_id Description: Autocreated FK slot
 -- # Class: "Kind" Description: "See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)"
 --     * Slot: id Description: 
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: DataService_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: DatasetSeries_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 -- # Class: "LegalResource" Description: "See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)"
 --     * Slot: id Description: 
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: Catalogue_id Description: Autocreated FK slot
 --     * Slot: DataService_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: DatasetSeries_id Description: Autocreated FK slot
 --     * Slot: Distribution_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
 -- # Class: "LicenseDocument" Description: "See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)"
 --     * Slot: id Description: 
 -- # Class: "LinguisticSystem" Description: "See [DCAT-AP specs:LinguisticSystem](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem)"
 --     * Slot: id Description: 
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: Catalogue_id Description: Autocreated FK slot
 --     * Slot: CatalogueRecord_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: Distribution_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
 -- # Class: "Location" Description: "See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)"
 --     * Slot: id Description: 
 --     * Slot: bbox Description: The geographic bounding box of a resource.
 --     * Slot: centroid Description: The geographic center (centroid) of a resource.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: Catalogue_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: DatasetSeries_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
 --     * Slot: geometry_id Description: The corresponding geometry for a resource.
 -- # Class: "MediaType" Description: "See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)"
 --     * Slot: id Description: 
@@ -305,183 +366,25 @@
 --     * Slot: end_date Description: The end of the period.
 --     * Slot: start_date Description: The start of the period.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: Catalogue_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: DatasetSeries_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
 --     * Slot: beginning_id Description: The beginning of a period or interval.
 --     * Slot: end_id Description: The end of a period or interval.
--- # Class: "Policy" Description: "See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)"
---     * Slot: id Description: 
--- # Class: "ProvenanceStatement" Description: "See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)"
---     * Slot: id Description: 
---     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
---     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
--- # Class: "Relationship" Description: "See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)"
---     * Slot: id Description: 
---     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
---     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
--- # Class: "Resource" Description: "See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)"
---     * Slot: id Description: 
---     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
---     * Slot: DataService_id Description: Autocreated FK slot
---     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: Distribution_id Description: Autocreated FK slot
---     * Slot: Relationship_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
--- # Class: "RightsStatement" Description: "See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)"
---     * Slot: id Description: 
--- # Class: "Role" Description: "See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)"
---     * Slot: id Description: 
---     * Slot: Relationship_id Description: Autocreated FK slot
--- # Class: "Standard" Description: "See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)"
---     * Slot: id Description: 
---     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
---     * Slot: CatalogueRecord_id Description: Autocreated FK slot
---     * Slot: DataService_id Description: Autocreated FK slot
---     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: Distribution_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
--- # Class: "SupportiveEntity" Description: "The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties."
---     * Slot: id Description: 
--- # Class: "TimeInstant" Description: "See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)"
---     * Slot: id Description: 
--- # Class: "ClassifierMixin" Description: "A mixin with which an entity of this schema can be classified via an additional rdf:type assertion."
---     * Slot: id Description: 
---     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
---     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "DefinedTerm" Description: "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema."
---     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: title Description: This slot is described in more detail within the class in which it is used.
---     * Slot: from_CV Description: The URL of the controlled vocabulary.
--- # Class: "ResearchDataset" Description: "A collection of data, published or curated by a single agent, and available for access or download in one or more representations."
---     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: modification_date Description: The most recent date on which the Dataset was changed or modified.
---     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Dataset.
---     * Slot: spatial_resolution Description: The minimum spatial separation resolvable in a dataset, measured in meters.
---     * Slot: temporal_resolution Description: The minimum time period resolvable in the dataset.
---     * Slot: version Description: The version indicator (name or identifier) of a resource.
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
---     * Slot: access_rights_id Description: Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.
---     * Slot: frequency_id Description: The frequency at which the Dataset is updated.
---     * Slot: publisher_id Description: An entity (organisation) responsible for making the Dataset available.
--- # Class: "AnalysisDataset" Description: ""
---     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: modification_date Description: The most recent date on which the Dataset was changed or modified.
---     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Dataset.
---     * Slot: spatial_resolution Description: The minimum spatial separation resolvable in a dataset, measured in meters.
---     * Slot: temporal_resolution Description: The minimum time period resolvable in the dataset.
---     * Slot: version Description: The version indicator (name or identifier) of a resource.
---     * Slot: access_rights_id Description: Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.
---     * Slot: frequency_id Description: The frequency at which the Dataset is updated.
---     * Slot: publisher_id Description: An entity (organisation) responsible for making the Dataset available.
--- # Class: "ResearchCatalog" Description: "A curated collection of metadata about data resources."
---     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: modification_date Description: The most recent date on which the Catalogue was modified.
---     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Catalogue.
---     * Slot: creator_id Description: An entity responsible for the creation of the catalogue.
---     * Slot: homepage_id Description: A web page that acts as the main page for the Catalogue.
---     * Slot: licence_id Description: A licence under which the Catalogue can be used or reused.
---     * Slot: publisher_id Description: An entity (organisation) responsible for making the Catalogue available.
---     * Slot: rights_id Description: A statement that specifies rights associated with the Catalogue.
--- # Class: "DataCreatingActivity" Description: "An activity (process) that has the objective to produce information about an entity or activity."
---     * Slot: id Description: 
---     * Slot: title Description: This slot is described in more detail within the class in which it is used.
---     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
---     * Slot: realized_plan_id Description: The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.
---     * Slot: has_part_id Description: A slot to provide an Activity that is part of the DataCreatingActivity.
---     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
---     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
---     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "DataAnalysis" Description: "A DataCreatingActivity that evaluates the data produced by another DataCreatingActivity."
---     * Slot: id Description: 
---     * Slot: title Description: This slot is described in more detail within the class in which it is used.
---     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: realized_plan_id Description: The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.
---     * Slot: has_part_id Description: A slot to provide an Activity that is part of the DataCreatingActivity.
---     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.
---     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
---     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "EvaluatedEntity" Description: "A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a DataCreatingActivity."
---     * Slot: title Description: This slot is described in more detail within the class in which it is used.
---     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: has_part Description: A slot to provide a part of the EvaluatedEntity.
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: DataCreatingActivity_id Description: Autocreated FK slot
---     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
---     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "AnalysisSourceData" Description: "Information that was evaluated within a DataAnalysis."
---     * Slot: title Description: This slot is described in more detail within the class in which it is used.
---     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: has_part Description: A slot to provide a part of the EvaluatedEntity.
---     * Slot: DataAnalysis_id Description: Autocreated FK slot
---     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
---     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "EvaluatedActivity" Description: "An activity or process that is being evaluated in a DataCreatingActivity."
---     * Slot: title Description: This slot is described in more detail within the class in which it is used.
---     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: has_part Description: A slot to provide a part of the EvaluatedActivity.
---     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
---     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
---     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: DataCreatingActivity_id Description: Autocreated FK slot
---     * Slot: DataAnalysis_id Description: Autocreated FK slot
---     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
---     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "Tool" Description: "A entity with a certain function used within a DataCreatingActivity."
---     * Slot: id Description: 
---     * Slot: title Description: This slot is described in more detail within the class in which it is used.
---     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
---     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
---     * Slot: DataCreatingActivity_id Description: Autocreated FK slot
---     * Slot: DataAnalysis_id Description: Autocreated FK slot
---     * Slot: Tool_id Description: Autocreated FK slot
---     * Slot: HardwareTool_id Description: Autocreated FK slot
---     * Slot: SoftwareTool_id Description: Autocreated FK slot
---     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
---     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "HardwareTool" Description: "A hardware device with a certain function that was used within a DataCreatingActivity."
---     * Slot: id Description: 
---     * Slot: title Description: This slot is described in more detail within the class in which it is used.
---     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
---     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "SoftwareTool" Description: "A software program with a certain function that was used within a DataCreatingActivity."
---     * Slot: id Description: 
---     * Slot: title Description: This slot is described in more detail within the class in which it is used.
---     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
---     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: "Environment" Description: "The surrounding in which the dataset creating activity took place (e.g. a lab)."
---     * Slot: id Description: 
---     * Slot: title Description: This slot is described in more detail within the class in which it is used.
---     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
---     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "Plan" Description: "A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set."
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
+-- # Class: "Policy" Description: "See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)"
+--     * Slot: id Description: 
+-- # Class: "ProvenanceStatement" Description: "See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)"
+--     * Slot: id Description: 
+--     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
 -- # Class: "QualitativeAttribute" Description: "A piece of information that is attributed to an entity of interest, tool or environment."
 --     * Slot: id Description: 
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
@@ -491,12 +394,12 @@
 --     * Slot: ChemicalSubstance_id Description: Autocreated FK slot
 --     * Slot: ChemicalSample_id Description: Autocreated FK slot
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
---     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
 --     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
+--     * Slot: Device_id Description: Autocreated FK slot
 --     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
+--     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
+--     * Slot: Software_id Description: Autocreated FK slot
 --     * Slot: Tool_id Description: Autocreated FK slot
---     * Slot: HardwareTool_id Description: Autocreated FK slot
---     * Slot: SoftwareTool_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "QuantitativeAttribute" Description: "A quantifiable piece of information that is attributed to an entity of interest, tool or environment."
@@ -510,12 +413,61 @@
 --     * Slot: ChemicalSubstance_id Description: Autocreated FK slot
 --     * Slot: ChemicalSample_id Description: Autocreated FK slot
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
---     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
 --     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
+--     * Slot: Device_id Description: Autocreated FK slot
 --     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
+--     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
+--     * Slot: Software_id Description: Autocreated FK slot
 --     * Slot: Tool_id Description: Autocreated FK slot
---     * Slot: HardwareTool_id Description: Autocreated FK slot
---     * Slot: SoftwareTool_id Description: Autocreated FK slot
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
+-- # Class: "Relationship" Description: "See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)"
+--     * Slot: id Description: 
+--     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
+-- # Class: "Resource" Description: "See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)"
+--     * Slot: id Description: 
+--     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: DataService_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: Distribution_id Description: Autocreated FK slot
+--     * Slot: Relationship_id Description: Autocreated FK slot
+-- # Class: "RightsStatement" Description: "See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)"
+--     * Slot: id Description: 
+-- # Class: "Role" Description: "See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)"
+--     * Slot: id Description: 
+--     * Slot: Relationship_id Description: Autocreated FK slot
+-- # Class: "Software" Description: "A software program with a certain function that was used within an Activity."
+--     * Slot: id Description: 
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
+-- # Class: "Standard" Description: "See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)"
+--     * Slot: id Description: 
+--     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: CatalogueRecord_id Description: Autocreated FK slot
+--     * Slot: DataService_id Description: Autocreated FK slot
+--     * Slot: Dataset_id Description: Autocreated FK slot
+--     * Slot: Distribution_id Description: Autocreated FK slot
+-- # Class: "SupportiveEntity" Description: "The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties."
+--     * Slot: id Description: 
+-- # Class: "TimeInstant" Description: "See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)"
+--     * Slot: id Description: 
+-- # Class: "Tool" Description: "A entity with a certain function used within a Activity."
+--     * Slot: id Description: 
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
+--     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
+--     * Slot: Activity_id Description: Autocreated FK slot
+--     * Slot: DataAnalysis_id Description: Autocreated FK slot
+--     * Slot: Device_id Description: Autocreated FK slot
+--     * Slot: Software_id Description: Autocreated FK slot
+--     * Slot: Tool_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "NMRAnalysisDataset_description" Description: ""
@@ -536,6 +488,21 @@
 -- # Class: "Agent_name" Description: ""
 --     * Slot: Agent_id Description: Autocreated FK slot
 --     * Slot: name Description: A name of the agent.
+-- # Class: "AnalysisDataset_description" Description: ""
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: description Description: A free-text account of the Dataset.
+-- # Class: "AnalysisDataset_identifier" Description: ""
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: identifier Description: The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.
+-- # Class: "AnalysisDataset_keyword" Description: ""
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: keyword Description: A keyword or tag describing the Dataset.
+-- # Class: "AnalysisDataset_title" Description: ""
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: title Description: A name given to the Dataset.
+-- # Class: "AnalysisDataset_version_notes" Description: ""
+--     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: version_notes Description: A description of the differences between this version and a previous version of the Dataset.
 -- # Class: "Catalogue_description" Description: ""
 --     * Slot: Catalogue_id Description: Autocreated FK slot
 --     * Slot: description Description: A free-text account of the Catalogue.
@@ -590,50 +557,14 @@
 -- # Class: "Distribution_title" Description: ""
 --     * Slot: Distribution_id Description: Autocreated FK slot
 --     * Slot: title Description: A name given to the Distribution.
--- # Class: "ResearchDataset_description" Description: ""
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: description Description: A free-text account of the Dataset.
--- # Class: "ResearchDataset_identifier" Description: ""
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: identifier Description: The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.
--- # Class: "ResearchDataset_keyword" Description: ""
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: keyword Description: A keyword or tag describing the Dataset.
--- # Class: "ResearchDataset_title" Description: ""
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: title Description: A name given to the Dataset.
--- # Class: "ResearchDataset_version_notes" Description: ""
---     * Slot: ResearchDataset_id Description: Autocreated FK slot
---     * Slot: version_notes Description: A description of the differences between this version and a previous version of the Dataset.
--- # Class: "AnalysisDataset_description" Description: ""
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: description Description: A free-text account of the Dataset.
--- # Class: "AnalysisDataset_identifier" Description: ""
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: identifier Description: The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.
--- # Class: "AnalysisDataset_keyword" Description: ""
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: keyword Description: A keyword or tag describing the Dataset.
--- # Class: "AnalysisDataset_title" Description: ""
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: title Description: A name given to the Dataset.
--- # Class: "AnalysisDataset_version_notes" Description: ""
---     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: version_notes Description: A description of the differences between this version and a previous version of the Dataset.
--- # Class: "ResearchCatalog_description" Description: ""
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
---     * Slot: description Description: A free-text account of the Catalogue.
--- # Class: "ResearchCatalog_title" Description: ""
---     * Slot: ResearchCatalog_id Description: Autocreated FK slot
---     * Slot: title Description: A name given to the Catalogue.
 
 CREATE TABLE "NMRAnalysisDataset" (
-	id TEXT NOT NULL, 
 	modification_date DATE, 
 	release_date DATE, 
 	spatial_resolution INTEGER, 
 	temporal_resolution TEXT, 
 	version TEXT, 
+	id TEXT NOT NULL, 
 	access_rights_id INTEGER, 
 	frequency_id INTEGER, 
 	publisher_id INTEGER, 
@@ -646,15 +577,15 @@ CREATE TABLE "NMRSpectralAnalysis" (
 	id INTEGER NOT NULL, 
 	title TEXT, 
 	description TEXT, 
+	realized_plan TEXT, 
 	"NMRAnalysisDataset_id" TEXT, 
-	realized_plan_id INTEGER, 
 	has_part_id INTEGER, 
 	occurred_in_id INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(realized_plan) REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
-	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id), 
 	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
 	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
@@ -664,30 +595,17 @@ CREATE TABLE "NMRSpectroscopy" (
 	id INTEGER NOT NULL, 
 	title TEXT, 
 	description TEXT, 
+	realized_plan TEXT, 
 	"NMRSpectrum_id" TEXT, 
-	realized_plan_id INTEGER, 
 	has_part_id INTEGER, 
 	occurred_in_id INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(realized_plan) REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id), 
-	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id), 
 	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
 	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);
-CREATE TABLE "ChemicalSubstance" (
-	has_role TEXT, 
-	title TEXT, 
-	description TEXT, 
-	id TEXT NOT NULL, 
-	has_part TEXT, 
-	type_id TEXT, 
-	rdf_type_id TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(has_part) REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
@@ -696,13 +614,11 @@ CREATE TABLE "ChemicalSample" (
 	title TEXT, 
 	description TEXT, 
 	id TEXT NOT NULL, 
-	has_part TEXT, 
 	"NMRAnalysisDataset_id" TEXT, 
 	"NMRSpectroscopy_id" INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_part) REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
 	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
@@ -712,41 +628,78 @@ CREATE TABLE "NMRSpectrum" (
 	title TEXT, 
 	description TEXT, 
 	id TEXT NOT NULL, 
-	has_part TEXT, 
 	"NMRSpectralAnalysis_id" INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_part) REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
 CREATE TABLE "Activity" (
 	id INTEGER NOT NULL, 
+	title TEXT, 
+	description TEXT, 
+	realized_plan TEXT, 
 	"ChemicalSubstance_id" TEXT, 
 	"ChemicalSample_id" TEXT, 
-	"Dataset_id" INTEGER, 
+	"AnalysisSourceData_id" TEXT, 
+	"Dataset_id" TEXT, 
 	"EvaluatedEntity_id" TEXT, 
+	has_part_id INTEGER, 
+	occurred_in_id INTEGER, 
+	type_id TEXT, 
+	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY(realized_plan) REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id), 
 	FOREIGN KEY("ChemicalSample_id") REFERENCES "ChemicalSample" (id), 
+	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id)
+	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
+	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
+	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
 CREATE TABLE "Agent" (
 	id INTEGER NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
-	"Dataset_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
 	"AnalysisDataset_id" TEXT, 
+	"Dataset_id" TEXT, 
 	type_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
 	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
 	FOREIGN KEY(type_id) REFERENCES "Concept" (id)
+);
+CREATE TABLE "AnalysisDataset" (
+	modification_date DATE, 
+	release_date DATE, 
+	spatial_resolution INTEGER, 
+	temporal_resolution TEXT, 
+	version TEXT, 
+	id TEXT NOT NULL, 
+	access_rights_id INTEGER, 
+	frequency_id INTEGER, 
+	publisher_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(access_rights_id) REFERENCES "RightsStatement" (id), 
+	FOREIGN KEY(frequency_id) REFERENCES "Frequency" (id), 
+	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id)
+);
+CREATE TABLE "AnalysisSourceData" (
+	title TEXT, 
+	description TEXT, 
+	id TEXT NOT NULL, 
+	"DataAnalysis_id" INTEGER, 
+	type_id TEXT, 
+	rdf_type_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
 CREATE TABLE "Any" (
 	id INTEGER NOT NULL, 
@@ -757,7 +710,6 @@ CREATE TABLE "Catalogue" (
 	modification_date DATE, 
 	release_date DATE, 
 	"Catalogue_id" INTEGER, 
-	"ResearchCatalog_id" TEXT, 
 	creator_id INTEGER, 
 	homepage_id INTEGER, 
 	licence_id INTEGER, 
@@ -765,7 +717,6 @@ CREATE TABLE "Catalogue" (
 	rights_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id), 
 	FOREIGN KEY(creator_id) REFERENCES "Agent" (id), 
 	FOREIGN KEY(homepage_id) REFERENCES "Document" (id), 
 	FOREIGN KEY(licence_id) REFERENCES "LicenseDocument" (id), 
@@ -779,61 +730,79 @@ CREATE TABLE "ChecksumAlgorithm" (
 CREATE TABLE "Concept" (
 	id INTEGER NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
-	"DataService_id" INTEGER, 
-	"Dataset_id" INTEGER, 
-	"LicenseDocument_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
 	"AnalysisDataset_id" TEXT, 
+	"DataService_id" INTEGER, 
+	"Dataset_id" TEXT, 
+	"LicenseDocument_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("DataService_id") REFERENCES "DataService" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("LicenseDocument_id") REFERENCES "LicenseDocument" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+	FOREIGN KEY("LicenseDocument_id") REFERENCES "LicenseDocument" (id)
+);
+CREATE TABLE "DataAnalysis" (
+	id INTEGER NOT NULL, 
+	title TEXT, 
+	description TEXT, 
+	realized_plan TEXT, 
+	"AnalysisDataset_id" TEXT, 
+	has_part_id INTEGER, 
+	occurred_in_id INTEGER, 
+	type_id TEXT, 
+	rdf_type_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(realized_plan) REFERENCES "EvaluatedActivity" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
+	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
 CREATE TABLE "DataService" (
 	id INTEGER NOT NULL, 
 	"Catalogue_id" INTEGER, 
 	"Distribution_id" INTEGER, 
-	"ResearchCatalog_id" TEXT, 
 	access_rights_id INTEGER, 
 	licence_id INTEGER, 
 	publisher_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id), 
 	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id), 
 	FOREIGN KEY(access_rights_id) REFERENCES "RightsStatement" (id), 
 	FOREIGN KEY(licence_id) REFERENCES "LicenseDocument" (id), 
 	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id)
 );
 CREATE TABLE "Dataset" (
-	id INTEGER NOT NULL, 
 	modification_date DATE, 
 	release_date DATE, 
 	spatial_resolution INTEGER, 
 	temporal_resolution TEXT, 
 	version TEXT, 
+	id TEXT NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
+	"AnalysisDataset_id" TEXT, 
 	"Catalogue_id" INTEGER, 
 	"DataService_id" INTEGER, 
-	"Dataset_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
+	"Dataset_id" TEXT, 
 	access_rights_id INTEGER, 
 	frequency_id INTEGER, 
 	publisher_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id), 
 	FOREIGN KEY("DataService_id") REFERENCES "DataService" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY(access_rights_id) REFERENCES "RightsStatement" (id), 
 	FOREIGN KEY(frequency_id) REFERENCES "Frequency" (id), 
 	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id)
+);
+CREATE TABLE "DefinedTerm" (
+	id TEXT NOT NULL, 
+	title TEXT, 
+	"from_CV" TEXT, 
+	PRIMARY KEY (id)
 );
 CREATE TABLE "Distribution" (
 	id INTEGER NOT NULL, 
@@ -843,9 +812,8 @@ CREATE TABLE "Distribution" (
 	spatial_resolution INTEGER, 
 	temporal_resolution TEXT, 
 	"NMRAnalysisDataset_id" TEXT, 
-	"Dataset_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
 	"AnalysisDataset_id" TEXT, 
+	"Dataset_id" TEXT, 
 	availability_id INTEGER, 
 	checksum_id INTEGER, 
 	compression_format_id INTEGER, 
@@ -858,9 +826,8 @@ CREATE TABLE "Distribution" (
 	status_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
 	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
 	FOREIGN KEY(availability_id) REFERENCES "Concept" (id), 
 	FOREIGN KEY(checksum_id) REFERENCES "Checksum" (id), 
 	FOREIGN KEY(compression_format_id) REFERENCES "MediaType" (id), 
@@ -875,18 +842,70 @@ CREATE TABLE "Distribution" (
 CREATE TABLE "Document" (
 	id INTEGER NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
-	"DataService_id" INTEGER, 
-	"Dataset_id" INTEGER, 
-	"Distribution_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
 	"AnalysisDataset_id" TEXT, 
+	"DataService_id" INTEGER, 
+	"Dataset_id" TEXT, 
+	"Distribution_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("DataService_id") REFERENCES "DataService" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id)
+);
+CREATE TABLE "EvaluatedActivity" (
+	title TEXT, 
+	description TEXT, 
+	id TEXT NOT NULL, 
+	"NMRAnalysisDataset_id" TEXT, 
+	"NMRSpectralAnalysis_id" INTEGER, 
+	"NMRSpectroscopy_id" INTEGER, 
+	"ChemicalReaction_id" TEXT, 
+	"Activity_id" INTEGER, 
+	"AnalysisDataset_id" TEXT, 
+	"DataAnalysis_id" INTEGER, 
+	"Dataset_id" TEXT, 
+	"EvaluatedActivity_id" TEXT, 
+	type_id TEXT, 
+	rdf_type_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id), 
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id), 
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id), 
+	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
+	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id), 
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);
+CREATE TABLE "EvaluatedEntity" (
+	title TEXT, 
+	description TEXT, 
+	id TEXT NOT NULL, 
+	"ChemicalSubstance_id" TEXT, 
+	"ChemicalSample_id" TEXT, 
+	"NMRSpectrum_id" TEXT, 
+	"Activity_id" INTEGER, 
+	"AnalysisDataset_id" TEXT, 
+	"AnalysisSourceData_id" TEXT, 
+	"Dataset_id" TEXT, 
+	"EvaluatedEntity_id" TEXT, 
+	type_id TEXT, 
+	rdf_type_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id), 
+	FOREIGN KEY("ChemicalSample_id") REFERENCES "ChemicalSample" (id), 
+	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id), 
+	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
+	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
 CREATE TABLE "Frequency" (
 	id INTEGER NOT NULL, 
@@ -926,127 +945,24 @@ CREATE TABLE "TimeInstant" (
 	id INTEGER NOT NULL, 
 	PRIMARY KEY (id)
 );
-CREATE TABLE "DefinedTerm" (
-	id TEXT NOT NULL, 
-	title TEXT, 
-	"from_CV" TEXT, 
-	PRIMARY KEY (id)
-);
-CREATE TABLE "ResearchDataset" (
-	id TEXT NOT NULL, 
-	modification_date DATE, 
-	release_date DATE, 
-	spatial_resolution INTEGER, 
-	temporal_resolution TEXT, 
-	version TEXT, 
-	"ResearchCatalog_id" TEXT, 
-	access_rights_id INTEGER, 
-	frequency_id INTEGER, 
-	publisher_id INTEGER, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id), 
-	FOREIGN KEY(access_rights_id) REFERENCES "RightsStatement" (id), 
-	FOREIGN KEY(frequency_id) REFERENCES "Frequency" (id), 
-	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id)
-);
-CREATE TABLE "AnalysisDataset" (
-	id TEXT NOT NULL, 
-	modification_date DATE, 
-	release_date DATE, 
-	spatial_resolution INTEGER, 
-	temporal_resolution TEXT, 
-	version TEXT, 
-	access_rights_id INTEGER, 
-	frequency_id INTEGER, 
-	publisher_id INTEGER, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(access_rights_id) REFERENCES "RightsStatement" (id), 
-	FOREIGN KEY(frequency_id) REFERENCES "Frequency" (id), 
-	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id)
-);
-CREATE TABLE "ResearchCatalog" (
-	id TEXT NOT NULL, 
-	modification_date DATE, 
-	release_date DATE, 
-	creator_id INTEGER, 
-	homepage_id INTEGER, 
-	licence_id INTEGER, 
-	publisher_id INTEGER NOT NULL, 
-	rights_id INTEGER, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(creator_id) REFERENCES "Agent" (id), 
-	FOREIGN KEY(homepage_id) REFERENCES "Document" (id), 
-	FOREIGN KEY(licence_id) REFERENCES "LicenseDocument" (id), 
-	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id), 
-	FOREIGN KEY(rights_id) REFERENCES "RightsStatement" (id)
-);
-CREATE TABLE "DataCreatingActivity" (
-	id INTEGER NOT NULL, 
+CREATE TABLE "ChemicalReaction" (
 	title TEXT, 
 	description TEXT, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisSourceData_id" TEXT, 
-	realized_plan_id INTEGER, 
-	has_part_id INTEGER, 
-	occurred_in_id INTEGER, 
+	id TEXT NOT NULL, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
-	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id), 
-	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
-	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
-CREATE TABLE "DataAnalysis" (
-	id INTEGER NOT NULL, 
-	title TEXT, 
-	description TEXT, 
-	"AnalysisDataset_id" TEXT, 
-	realized_plan_id INTEGER, 
-	has_part_id INTEGER, 
-	occurred_in_id INTEGER, 
-	type_id TEXT, 
-	rdf_type_id TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
-	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id), 
-	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
-	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);
-CREATE TABLE "EvaluatedEntity" (
+CREATE TABLE "ChemicalSubstance" (
+	has_role TEXT, 
 	title TEXT, 
 	description TEXT, 
 	id TEXT NOT NULL, 
-	has_part TEXT, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
-	"DataCreatingActivity_id" INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(has_part) REFERENCES "EvaluatedEntity" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
-	FOREIGN KEY("DataCreatingActivity_id") REFERENCES "DataCreatingActivity" (id), 
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);
-CREATE TABLE "AnalysisSourceData" (
-	title TEXT, 
-	description TEXT, 
-	id TEXT NOT NULL, 
-	has_part TEXT, 
-	"DataAnalysis_id" INTEGER, 
-	type_id TEXT, 
-	rdf_type_id TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(has_part) REFERENCES "EvaluatedEntity" (id), 
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
@@ -1107,27 +1023,23 @@ CREATE TABLE "SMILES" (
 CREATE TABLE "Attribution" (
 	id INTEGER NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
-	"Dataset_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
 	"AnalysisDataset_id" TEXT, 
+	"Dataset_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );
 CREATE TABLE "CatalogueRecord" (
 	id INTEGER NOT NULL, 
 	listing_date DATE, 
 	modification_date DATE NOT NULL, 
 	"Catalogue_id" INTEGER, 
-	"ResearchCatalog_id" TEXT, 
 	change_type_id INTEGER, 
 	primary_topic_id INTEGER NOT NULL, 
 	source_metadata_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id), 
 	FOREIGN KEY(change_type_id) REFERENCES "Concept" (id), 
 	FOREIGN KEY(primary_topic_id) REFERENCES "Any" (id), 
 	FOREIGN KEY(source_metadata_id) REFERENCES "CatalogueRecord" (id)
@@ -1139,56 +1051,6 @@ CREATE TABLE "Checksum" (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(algorithm_id) REFERENCES "ChecksumAlgorithm" (id)
 );
-CREATE TABLE "ConceptScheme" (
-	id INTEGER NOT NULL, 
-	"Catalogue_id" INTEGER, 
-	"ResearchCatalog_id" TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id)
-);
-CREATE TABLE "DatasetSeries" (
-	id INTEGER NOT NULL, 
-	modification_date DATE, 
-	release_date DATE, 
-	"NMRAnalysisDataset_id" TEXT, 
-	"Dataset_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
-	frequency_id INTEGER, 
-	publisher_id INTEGER, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
-	FOREIGN KEY(frequency_id) REFERENCES "Frequency" (id), 
-	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id)
-);
-CREATE TABLE "ProvenanceStatement" (
-	id INTEGER NOT NULL, 
-	"NMRAnalysisDataset_id" TEXT, 
-	"Dataset_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
-);
-CREATE TABLE "Relationship" (
-	id INTEGER NOT NULL, 
-	"NMRAnalysisDataset_id" TEXT, 
-	"Dataset_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
-);
 CREATE TABLE "ClassifierMixin" (
 	id INTEGER NOT NULL, 
 	type_id TEXT, 
@@ -1197,43 +1059,29 @@ CREATE TABLE "ClassifierMixin" (
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
-CREATE TABLE "EvaluatedActivity" (
-	title TEXT, 
-	description TEXT, 
-	id TEXT NOT NULL, 
-	has_part TEXT, 
-	"NMRAnalysisDataset_id" TEXT, 
-	"NMRSpectralAnalysis_id" INTEGER, 
-	"NMRSpectroscopy_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
-	"DataCreatingActivity_id" INTEGER, 
-	"DataAnalysis_id" INTEGER, 
-	type_id TEXT, 
-	rdf_type_id TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(has_part) REFERENCES "EvaluatedActivity" (id), 
-	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id), 
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
-	FOREIGN KEY("DataCreatingActivity_id") REFERENCES "DataCreatingActivity" (id), 
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);
-CREATE TABLE "HardwareTool" (
+CREATE TABLE "ConceptScheme" (
 	id INTEGER NOT NULL, 
-	title TEXT, 
-	description TEXT, 
-	type_id TEXT, 
-	rdf_type_id TEXT, 
+	"Catalogue_id" INTEGER, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id)
 );
-CREATE TABLE "SoftwareTool" (
+CREATE TABLE "DatasetSeries" (
+	id INTEGER NOT NULL, 
+	modification_date DATE, 
+	release_date DATE, 
+	"NMRAnalysisDataset_id" TEXT, 
+	"AnalysisDataset_id" TEXT, 
+	"Dataset_id" TEXT, 
+	frequency_id INTEGER, 
+	publisher_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
+	FOREIGN KEY(frequency_id) REFERENCES "Frequency" (id), 
+	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id)
+);
+CREATE TABLE "Device" (
 	id INTEGER NOT NULL, 
 	title TEXT, 
 	description TEXT, 
@@ -1254,6 +1102,36 @@ CREATE TABLE "Environment" (
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
 CREATE TABLE "Plan" (
+	id INTEGER NOT NULL, 
+	title TEXT, 
+	description TEXT, 
+	type_id TEXT, 
+	rdf_type_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);
+CREATE TABLE "ProvenanceStatement" (
+	id INTEGER NOT NULL, 
+	"NMRAnalysisDataset_id" TEXT, 
+	"AnalysisDataset_id" TEXT, 
+	"Dataset_id" TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);
+CREATE TABLE "Relationship" (
+	id INTEGER NOT NULL, 
+	"NMRAnalysisDataset_id" TEXT, 
+	"AnalysisDataset_id" TEXT, 
+	"Dataset_id" TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
+);
+CREATE TABLE "Software" (
 	id INTEGER NOT NULL, 
 	title TEXT, 
 	description TEXT, 
@@ -1299,6 +1177,36 @@ CREATE TABLE "Agent_name" (
 	PRIMARY KEY ("Agent_id", name), 
 	FOREIGN KEY("Agent_id") REFERENCES "Agent" (id)
 );
+CREATE TABLE "AnalysisDataset_description" (
+	"AnalysisDataset_id" TEXT, 
+	description TEXT NOT NULL, 
+	PRIMARY KEY ("AnalysisDataset_id", description), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+);
+CREATE TABLE "AnalysisDataset_identifier" (
+	"AnalysisDataset_id" TEXT, 
+	identifier TEXT, 
+	PRIMARY KEY ("AnalysisDataset_id", identifier), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+);
+CREATE TABLE "AnalysisDataset_keyword" (
+	"AnalysisDataset_id" TEXT, 
+	keyword TEXT, 
+	PRIMARY KEY ("AnalysisDataset_id", keyword), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+);
+CREATE TABLE "AnalysisDataset_title" (
+	"AnalysisDataset_id" TEXT, 
+	title TEXT NOT NULL, 
+	PRIMARY KEY ("AnalysisDataset_id", title), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+);
+CREATE TABLE "AnalysisDataset_version_notes" (
+	"AnalysisDataset_id" TEXT, 
+	version_notes TEXT, 
+	PRIMARY KEY ("AnalysisDataset_id", version_notes), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+);
 CREATE TABLE "Catalogue_description" (
 	"Catalogue_id" INTEGER, 
 	description TEXT NOT NULL, 
@@ -1336,31 +1244,31 @@ CREATE TABLE "DataService_title" (
 	FOREIGN KEY("DataService_id") REFERENCES "DataService" (id)
 );
 CREATE TABLE "Dataset_description" (
-	"Dataset_id" INTEGER, 
+	"Dataset_id" TEXT, 
 	description TEXT NOT NULL, 
 	PRIMARY KEY ("Dataset_id", description), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );
 CREATE TABLE "Dataset_identifier" (
-	"Dataset_id" INTEGER, 
+	"Dataset_id" TEXT, 
 	identifier TEXT, 
 	PRIMARY KEY ("Dataset_id", identifier), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );
 CREATE TABLE "Dataset_keyword" (
-	"Dataset_id" INTEGER, 
+	"Dataset_id" TEXT, 
 	keyword TEXT, 
 	PRIMARY KEY ("Dataset_id", keyword), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );
 CREATE TABLE "Dataset_title" (
-	"Dataset_id" INTEGER, 
+	"Dataset_id" TEXT, 
 	title TEXT NOT NULL, 
 	PRIMARY KEY ("Dataset_id", title), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
 );
 CREATE TABLE "Dataset_version_notes" (
-	"Dataset_id" INTEGER, 
+	"Dataset_id" TEXT, 
 	version_notes TEXT, 
 	PRIMARY KEY ("Dataset_id", version_notes), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
@@ -1376,90 +1284,6 @@ CREATE TABLE "Distribution_title" (
 	title TEXT, 
 	PRIMARY KEY ("Distribution_id", title), 
 	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id)
-);
-CREATE TABLE "ResearchDataset_description" (
-	"ResearchDataset_id" TEXT, 
-	description TEXT NOT NULL, 
-	PRIMARY KEY ("ResearchDataset_id", description), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id)
-);
-CREATE TABLE "ResearchDataset_identifier" (
-	"ResearchDataset_id" TEXT, 
-	identifier TEXT, 
-	PRIMARY KEY ("ResearchDataset_id", identifier), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id)
-);
-CREATE TABLE "ResearchDataset_keyword" (
-	"ResearchDataset_id" TEXT, 
-	keyword TEXT, 
-	PRIMARY KEY ("ResearchDataset_id", keyword), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id)
-);
-CREATE TABLE "ResearchDataset_title" (
-	"ResearchDataset_id" TEXT, 
-	title TEXT NOT NULL, 
-	PRIMARY KEY ("ResearchDataset_id", title), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id)
-);
-CREATE TABLE "ResearchDataset_version_notes" (
-	"ResearchDataset_id" TEXT, 
-	version_notes TEXT, 
-	PRIMARY KEY ("ResearchDataset_id", version_notes), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id)
-);
-CREATE TABLE "AnalysisDataset_description" (
-	"AnalysisDataset_id" TEXT, 
-	description TEXT NOT NULL, 
-	PRIMARY KEY ("AnalysisDataset_id", description), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
-);
-CREATE TABLE "AnalysisDataset_identifier" (
-	"AnalysisDataset_id" TEXT, 
-	identifier TEXT, 
-	PRIMARY KEY ("AnalysisDataset_id", identifier), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
-);
-CREATE TABLE "AnalysisDataset_keyword" (
-	"AnalysisDataset_id" TEXT, 
-	keyword TEXT, 
-	PRIMARY KEY ("AnalysisDataset_id", keyword), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
-);
-CREATE TABLE "AnalysisDataset_title" (
-	"AnalysisDataset_id" TEXT, 
-	title TEXT NOT NULL, 
-	PRIMARY KEY ("AnalysisDataset_id", title), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
-);
-CREATE TABLE "AnalysisDataset_version_notes" (
-	"AnalysisDataset_id" TEXT, 
-	version_notes TEXT, 
-	PRIMARY KEY ("AnalysisDataset_id", version_notes), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
-);
-CREATE TABLE "ResearchCatalog_description" (
-	"ResearchCatalog_id" TEXT, 
-	description TEXT NOT NULL, 
-	PRIMARY KEY ("ResearchCatalog_id", description), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id)
-);
-CREATE TABLE "ResearchCatalog_title" (
-	"ResearchCatalog_id" TEXT, 
-	title TEXT NOT NULL, 
-	PRIMARY KEY ("ResearchCatalog_id", title), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id)
-);
-CREATE TABLE "ChemicalReaction" (
-	title TEXT, 
-	description TEXT, 
-	id TEXT NOT NULL, 
-	has_part TEXT, 
-	type_id TEXT, 
-	rdf_type_id TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(has_part) REFERENCES "EvaluatedActivity" (id), 
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
 CREATE TABLE "ChemicalEntity" (
 	id INTEGER NOT NULL, 
@@ -1480,81 +1304,67 @@ CREATE TABLE "ChemicalEntity" (
 CREATE TABLE "Kind" (
 	id INTEGER NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
-	"DataService_id" INTEGER, 
-	"Dataset_id" INTEGER, 
-	"DatasetSeries_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
 	"AnalysisDataset_id" TEXT, 
+	"DataService_id" INTEGER, 
+	"Dataset_id" TEXT, 
+	"DatasetSeries_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("DataService_id") REFERENCES "DataService" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("DatasetSeries_id") REFERENCES "DatasetSeries" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+	FOREIGN KEY("DatasetSeries_id") REFERENCES "DatasetSeries" (id)
 );
 CREATE TABLE "LegalResource" (
 	id INTEGER NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
+	"AnalysisDataset_id" TEXT, 
 	"Catalogue_id" INTEGER, 
 	"DataService_id" INTEGER, 
-	"Dataset_id" INTEGER, 
+	"Dataset_id" TEXT, 
 	"DatasetSeries_id" INTEGER, 
 	"Distribution_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
-	"ResearchCatalog_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id), 
 	FOREIGN KEY("DataService_id") REFERENCES "DataService" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
 	FOREIGN KEY("DatasetSeries_id") REFERENCES "DatasetSeries" (id), 
-	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id)
+	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id)
 );
 CREATE TABLE "LinguisticSystem" (
 	id INTEGER NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
+	"AnalysisDataset_id" TEXT, 
 	"Catalogue_id" INTEGER, 
 	"CatalogueRecord_id" INTEGER, 
-	"Dataset_id" INTEGER, 
+	"Dataset_id" TEXT, 
 	"Distribution_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
-	"ResearchCatalog_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id), 
 	FOREIGN KEY("CatalogueRecord_id") REFERENCES "CatalogueRecord" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id)
+	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id)
 );
 CREATE TABLE "Location" (
 	id INTEGER NOT NULL, 
 	bbox TEXT, 
 	centroid TEXT, 
 	"NMRAnalysisDataset_id" TEXT, 
-	"Catalogue_id" INTEGER, 
-	"Dataset_id" INTEGER, 
-	"DatasetSeries_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
 	"AnalysisDataset_id" TEXT, 
-	"ResearchCatalog_id" TEXT, 
+	"Catalogue_id" INTEGER, 
+	"Dataset_id" TEXT, 
+	"DatasetSeries_id" INTEGER, 
 	geometry_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
 	FOREIGN KEY("DatasetSeries_id") REFERENCES "DatasetSeries" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id), 
 	FOREIGN KEY(geometry_id) REFERENCES "Geometry" (id)
 );
 CREATE TABLE "PeriodOfTime" (
@@ -1562,42 +1372,36 @@ CREATE TABLE "PeriodOfTime" (
 	end_date TEXT, 
 	start_date TEXT, 
 	"NMRAnalysisDataset_id" TEXT, 
-	"Catalogue_id" INTEGER, 
-	"Dataset_id" INTEGER, 
-	"DatasetSeries_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
 	"AnalysisDataset_id" TEXT, 
-	"ResearchCatalog_id" TEXT, 
+	"Catalogue_id" INTEGER, 
+	"Dataset_id" TEXT, 
+	"DatasetSeries_id" INTEGER, 
 	beginning_id INTEGER, 
 	end_id INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
 	FOREIGN KEY("DatasetSeries_id") REFERENCES "DatasetSeries" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
-	FOREIGN KEY("ResearchCatalog_id") REFERENCES "ResearchCatalog" (id), 
 	FOREIGN KEY(beginning_id) REFERENCES "TimeInstant" (id), 
 	FOREIGN KEY(end_id) REFERENCES "TimeInstant" (id)
 );
 CREATE TABLE "Resource" (
 	id INTEGER NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
+	"AnalysisDataset_id" TEXT, 
 	"DataService_id" INTEGER, 
-	"Dataset_id" INTEGER, 
+	"Dataset_id" TEXT, 
 	"Distribution_id" INTEGER, 
 	"Relationship_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("DataService_id") REFERENCES "DataService" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
 	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id), 
-	FOREIGN KEY("Relationship_id") REFERENCES "Relationship" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+	FOREIGN KEY("Relationship_id") REFERENCES "Relationship" (id)
 );
 CREATE TABLE "Role" (
 	id INTEGER NOT NULL, 
@@ -1608,20 +1412,18 @@ CREATE TABLE "Role" (
 CREATE TABLE "Standard" (
 	id INTEGER NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
+	"AnalysisDataset_id" TEXT, 
 	"CatalogueRecord_id" INTEGER, 
 	"DataService_id" INTEGER, 
-	"Dataset_id" INTEGER, 
+	"Dataset_id" TEXT, 
 	"Distribution_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("CatalogueRecord_id") REFERENCES "CatalogueRecord" (id), 
 	FOREIGN KEY("DataService_id") REFERENCES "DataService" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
+	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id)
 );
 CREATE TABLE "Tool" (
 	id INTEGER NOT NULL, 
@@ -1629,21 +1431,21 @@ CREATE TABLE "Tool" (
 	description TEXT, 
 	"NMRSpectralAnalysis_id" INTEGER, 
 	"NMRSpectroscopy_id" INTEGER, 
-	"DataCreatingActivity_id" INTEGER, 
+	"Activity_id" INTEGER, 
 	"DataAnalysis_id" INTEGER, 
+	"Device_id" INTEGER, 
+	"Software_id" INTEGER, 
 	"Tool_id" INTEGER, 
-	"HardwareTool_id" INTEGER, 
-	"SoftwareTool_id" INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id), 
 	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id), 
-	FOREIGN KEY("DataCreatingActivity_id") REFERENCES "DataCreatingActivity" (id), 
+	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id), 
 	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
+	FOREIGN KEY("Device_id") REFERENCES "Device" (id), 
+	FOREIGN KEY("Software_id") REFERENCES "Software" (id), 
 	FOREIGN KEY("Tool_id") REFERENCES "Tool" (id), 
-	FOREIGN KEY("HardwareTool_id") REFERENCES "HardwareTool" (id), 
-	FOREIGN KEY("SoftwareTool_id") REFERENCES "SoftwareTool" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
@@ -1688,18 +1490,17 @@ CREATE TABLE "Identifier" (
 	"ChemicalSample_id" TEXT, 
 	"NMRSpectrum_id" TEXT, 
 	"Laboratory_id" INTEGER, 
-	"Dataset_id" INTEGER, 
-	"ResearchDataset_id" TEXT, 
+	"Activity_id" INTEGER, 
 	"AnalysisDataset_id" TEXT, 
-	"DataCreatingActivity_id" INTEGER, 
-	"DataAnalysis_id" INTEGER, 
-	"EvaluatedEntity_id" TEXT, 
 	"AnalysisSourceData_id" TEXT, 
-	"EvaluatedActivity_id" TEXT, 
-	"Tool_id" INTEGER, 
-	"HardwareTool_id" INTEGER, 
-	"SoftwareTool_id" INTEGER, 
+	"DataAnalysis_id" INTEGER, 
+	"Dataset_id" TEXT, 
+	"Device_id" INTEGER, 
 	"Environment_id" INTEGER, 
+	"EvaluatedActivity_id" TEXT, 
+	"EvaluatedEntity_id" TEXT, 
+	"Software_id" INTEGER, 
+	"Tool_id" INTEGER, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
 	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id), 
@@ -1709,18 +1510,17 @@ CREATE TABLE "Identifier" (
 	FOREIGN KEY("ChemicalSample_id") REFERENCES "ChemicalSample" (id), 
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id), 
 	FOREIGN KEY("Laboratory_id") REFERENCES "Laboratory" (id), 
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("ResearchDataset_id") REFERENCES "ResearchDataset" (id), 
+	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id), 
 	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
-	FOREIGN KEY("DataCreatingActivity_id") REFERENCES "DataCreatingActivity" (id), 
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
-	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
+	FOREIGN KEY("Device_id") REFERENCES "Device" (id), 
+	FOREIGN KEY("Environment_id") REFERENCES "Environment" (id), 
 	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id), 
-	FOREIGN KEY("Tool_id") REFERENCES "Tool" (id), 
-	FOREIGN KEY("HardwareTool_id") REFERENCES "HardwareTool" (id), 
-	FOREIGN KEY("SoftwareTool_id") REFERENCES "SoftwareTool" (id), 
-	FOREIGN KEY("Environment_id") REFERENCES "Environment" (id)
+	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
+	FOREIGN KEY("Software_id") REFERENCES "Software" (id), 
+	FOREIGN KEY("Tool_id") REFERENCES "Tool" (id)
 );
 CREATE TABLE "QualitativeAttribute" (
 	id INTEGER NOT NULL, 
@@ -1731,12 +1531,12 @@ CREATE TABLE "QualitativeAttribute" (
 	"ChemicalSubstance_id" TEXT, 
 	"ChemicalSample_id" TEXT, 
 	"NMRSpectrum_id" TEXT, 
-	"EvaluatedEntity_id" TEXT, 
 	"AnalysisSourceData_id" TEXT, 
+	"Device_id" INTEGER, 
 	"EvaluatedActivity_id" TEXT, 
+	"EvaluatedEntity_id" TEXT, 
+	"Software_id" INTEGER, 
 	"Tool_id" INTEGER, 
-	"HardwareTool_id" INTEGER, 
-	"SoftwareTool_id" INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
@@ -1744,12 +1544,12 @@ CREATE TABLE "QualitativeAttribute" (
 	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id), 
 	FOREIGN KEY("ChemicalSample_id") REFERENCES "ChemicalSample" (id), 
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id), 
-	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
+	FOREIGN KEY("Device_id") REFERENCES "Device" (id), 
 	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id), 
+	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
+	FOREIGN KEY("Software_id") REFERENCES "Software" (id), 
 	FOREIGN KEY("Tool_id") REFERENCES "Tool" (id), 
-	FOREIGN KEY("HardwareTool_id") REFERENCES "HardwareTool" (id), 
-	FOREIGN KEY("SoftwareTool_id") REFERENCES "SoftwareTool" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
@@ -1764,12 +1564,12 @@ CREATE TABLE "QuantitativeAttribute" (
 	"ChemicalSubstance_id" TEXT, 
 	"ChemicalSample_id" TEXT, 
 	"NMRSpectrum_id" TEXT, 
-	"EvaluatedEntity_id" TEXT, 
 	"AnalysisSourceData_id" TEXT, 
+	"Device_id" INTEGER, 
 	"EvaluatedActivity_id" TEXT, 
+	"EvaluatedEntity_id" TEXT, 
+	"Software_id" INTEGER, 
 	"Tool_id" INTEGER, 
-	"HardwareTool_id" INTEGER, 
-	"SoftwareTool_id" INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
@@ -1779,12 +1579,12 @@ CREATE TABLE "QuantitativeAttribute" (
 	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id), 
 	FOREIGN KEY("ChemicalSample_id") REFERENCES "ChemicalSample" (id), 
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id), 
-	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
+	FOREIGN KEY("Device_id") REFERENCES "Device" (id), 
 	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id), 
+	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
+	FOREIGN KEY("Software_id") REFERENCES "Software" (id), 
 	FOREIGN KEY("Tool_id") REFERENCES "Tool" (id), 
-	FOREIGN KEY("HardwareTool_id") REFERENCES "HardwareTool" (id), 
-	FOREIGN KEY("SoftwareTool_id") REFERENCES "SoftwareTool" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );

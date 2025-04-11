@@ -70,7 +70,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nfdi4c',
                     'a core that can further be extended in profiles to provide '
                     'domain specific metadata for a dataset.',
      'id': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap',
-     'imports': ['linkml:types', 'dcat_4nfdi_ap'],
+     'imports': ['linkml:types', 'dcat_ap_plus'],
      'license': 'CC-BY 4.0',
      'name': 'dcat-4C-ap',
      'prefixes': {'BFO': {'prefix_prefix': 'BFO',
@@ -197,22 +197,12 @@ class NMRAssayEnum(str, Enum):
 
 
 
-class Activity(ConfiguredBaseModel):
-    """
-    See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Activity',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
-
-    pass
-
-
 class Catalogue(ConfiguredBaseModel):
     """
     See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Catalog',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'applicable_legislation': {'description': 'The legislation '
                                                                   'that mandates the '
                                                                   'creation or '
@@ -393,30 +383,30 @@ class Catalogue(ConfiguredBaseModel):
          'domain_of': ['Catalogue', 'Dataset'],
          'slot_uri': 'dcterms:creator'} })
     description: List[str] = Field(default=..., description="""A free-text account of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
     geographical_coverage: Optional[List[Location]] = Field(default=None, description="""A geographical area covered by the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'geographical_coverage',
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
          'slot_uri': 'dcterms:spatial'} })
     has_dataset: Optional[List[Dataset]] = Field(default=None, description="""A Dataset that is part of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'has_dataset', 'domain_of': ['Catalogue'], 'slot_uri': 'dcat:dataset'} })
     has_part: Optional[List[Catalogue]] = Field(default=None, description="""A related Catalogue that is part of the described Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Tool'],
          'slot_uri': 'dcterms:hasPart'} })
     homepage: Optional[Document] = Field(default=None, description="""A web page that acts as the main page for the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'homepage',
@@ -458,22 +448,22 @@ class Catalogue(ConfiguredBaseModel):
          'recommended': True,
          'slot_uri': 'dcat:themeTaxonomy'} })
     title: List[str] = Field(default=..., description="""A name given to the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
 
 
@@ -482,7 +472,7 @@ class CatalogueRecord(ConfiguredBaseModel):
     See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:CatalogRecord',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'application_profile': {'description': 'An Application Profile '
                                                                'that the Catalogued '
                                                                'Resource&#39;s '
@@ -588,20 +578,20 @@ class CatalogueRecord(ConfiguredBaseModel):
          'recommended': True,
          'slot_uri': 'adms:status'} })
     description: Optional[List[str]] = Field(default=None, description="""A free-text account of the record. This property can be repeated for parallel language versions of the description.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
     language: Optional[List[LinguisticSystem]] = Field(default=None, description="""A language used in the textual metadata describing titles, descriptions, etc. of the Catalogued Resource.""", json_schema_extra = { "linkml_meta": {'alias': 'language',
          'domain_of': ['Catalogue', 'CatalogueRecord', 'Dataset', 'Distribution'],
@@ -617,7 +607,7 @@ class CatalogueRecord(ConfiguredBaseModel):
                        'DatasetSeries',
                        'Distribution'],
          'slot_uri': 'dcterms:modified'} })
-    primary_topic: Union[Catalogue, DataService, Dataset, DatasetSeries] = Field(default=..., description="""A link to the Dataset, Data service or Catalog described in the record.""", json_schema_extra = { "linkml_meta": {'alias': 'primary_topic',
+    primary_topic: Union[Catalogue, DataService, DatasetSeries, str] = Field(default=..., description="""A link to the Dataset, Data service or Catalog described in the record.""", json_schema_extra = { "linkml_meta": {'alias': 'primary_topic',
          'any_of': [{'range': 'Catalogue'},
                     {'range': 'Dataset'},
                     {'range': 'DatasetSeries'},
@@ -628,23 +618,259 @@ class CatalogueRecord(ConfiguredBaseModel):
          'domain_of': ['CatalogueRecord'],
          'slot_uri': 'dcterms:source'} })
     title: Optional[List[str]] = Field(default=None, description="""A name given to the Catalogue Record.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
+
+
+class ClassifierMixin(ConfiguredBaseModel):
+    """
+    A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'mixin': True,
+         'slot_usage': {'type': {'inlined': True,
+                                 'name': 'type',
+                                 'range': 'DefinedTerm'}}})
+
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
+
+
+class Activity(ClassifierMixin):
+    """
+    An activity (process) that has the objective to produce information aboutn entity or activity.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Activity',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'mixins': ['ClassifierMixin'],
+         'narrow_mappings': ['NCIT:C25598', 'SOSA:Observation', 'OBI:0000070'],
+         'notes': ['The properties (slots) of this class are part of the extension of '
+                   'the DCAT-AP.'],
+         'slot_usage': {'has_part': {'description': 'A slot to provide an Activity '
+                                                    'that is part of the Activity that '
+                                                    'created the Dataset.',
+                                     'inlined': True,
+                                     'name': 'has_part',
+                                     'notes': ['not in DCAT-AP'],
+                                     'range': 'Activity'},
+                        'other_identifier': {'description': 'A secondary identifier of '
+                                                            'the Activity that created '
+                                                            'the Dataset.',
+                                             'inlined_as_list': True,
+                                             'multivalued': True,
+                                             'name': 'other_identifier',
+                                             'notes': ['not in DCAT-AP'],
+                                             'range': 'Identifier'}}})
+
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:description'} })
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'notes': ['not in DCAT-AP'],
+         'slot_uri': 'adms:identifier'} })
+    evaluated_entity: Optional[List[EvaluatedEntity]] = Field(default=None, description="""The slot to specify the entity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
+         'domain_of': ['Activity'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'prov:used'} })
+    evaluated_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""The slot to specify the activity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_activity',
+         'domain_of': ['Activity'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'prov:wasInformedBy'} })
+    used_tool: Optional[List[Tool]] = Field(default=None, description="""The slot to specify the tool that was used.""", json_schema_extra = { "linkml_meta": {'alias': 'used_tool',
+         'domain_of': ['Activity'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'prov:used'} })
+    realized_plan: Optional[str] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
+         'domain_of': ['Activity'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'prov:used'} })
+    has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'notes': ['not in DCAT-AP'],
+         'slot_uri': 'dcterms:hasPart'} })
+    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
+         'domain_of': ['Activity'],
+         'in_subset': ['domain_agnostic_core'],
+         'slot_uri': 'BFO:0000066'} })
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
+
+
+class DataAnalysis(Activity):
+    """
+    An Activity that evaluates the data produced by another Activity.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Activity',
+         'close_mappings': ['NCIT:C25391'],
+         'exact_mappings': ['OBI:0200000'],
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'slot_usage': {'evaluated_entity': {'description': 'A slot to provide the '
+                                                            'data that was analysed by '
+                                                            'the DataAnalysis.',
+                                             'inlined_as_list': True,
+                                             'multivalued': True,
+                                             'name': 'evaluated_entity',
+                                             'range': 'AnalysisSourceData'}}})
+
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:description'} })
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'notes': ['not in DCAT-AP'],
+         'slot_uri': 'adms:identifier'} })
+    evaluated_entity: Optional[List[AnalysisSourceData]] = Field(default=None, description="""A slot to provide the data that was analysed by the DataAnalysis.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
+         'domain_of': ['Activity'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'prov:used'} })
+    evaluated_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""The slot to specify the activity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_activity',
+         'domain_of': ['Activity'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'prov:wasInformedBy'} })
+    used_tool: Optional[List[Tool]] = Field(default=None, description="""The slot to specify the tool that was used.""", json_schema_extra = { "linkml_meta": {'alias': 'used_tool',
+         'domain_of': ['Activity'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'prov:used'} })
+    realized_plan: Optional[str] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
+         'domain_of': ['Activity'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'prov:used'} })
+    has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'notes': ['not in DCAT-AP'],
+         'slot_uri': 'dcterms:hasPart'} })
+    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
+         'domain_of': ['Activity'],
+         'in_subset': ['domain_agnostic_core'],
+         'slot_uri': 'BFO:0000066'} })
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
 
 
 class DataService(ConfiguredBaseModel):
@@ -652,7 +878,7 @@ class DataService(ConfiguredBaseModel):
     See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:DataService',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'access_rights': {'description': 'Information regarding access '
                                                          'or restrictions based on '
                                                          'privacy, security, or other '
@@ -821,20 +1047,20 @@ class DataService(ConfiguredBaseModel):
          'recommended': True,
          'slot_uri': 'dcat:contactPoint'} })
     description: Optional[List[str]] = Field(default=None, description="""A free-text account of the Data Service.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
     documentation: Optional[List[Document]] = Field(default=None, description="""A page or document about this Data Service""", json_schema_extra = { "linkml_meta": {'alias': 'documentation',
          'domain_of': ['DataService', 'Dataset', 'Distribution'],
@@ -870,31 +1096,32 @@ class DataService(ConfiguredBaseModel):
          'recommended': True,
          'slot_uri': 'dcat:theme'} })
     title: List[str] = Field(default=..., description="""A name given to the Data Service.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
 
 
 class Dataset(ConfiguredBaseModel):
     """
-    See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
+    A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Dataset',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
          'slot_usage': {'access_rights': {'description': 'Information that indicates '
                                                          'whether the Dataset is '
                                                          'publicly accessible, has '
@@ -1210,8 +1437,9 @@ class Dataset(ConfiguredBaseModel):
                                              'inlined_as_list': True,
                                              'multivalued': True,
                                              'name': 'was_generated_by',
+                                             'notes': ['stricter than DCAT-AP'],
                                              'range': 'Activity',
-                                             'required': False,
+                                             'required': True,
                                              'slot_uri': 'prov:wasGeneratedBy'}}})
 
     access_rights: Optional[RightsStatement] = Field(default=None, description="""Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.""", json_schema_extra = { "linkml_meta": {'alias': 'access_rights',
@@ -1238,20 +1466,20 @@ class Dataset(ConfiguredBaseModel):
          'domain_of': ['Dataset'],
          'slot_uri': 'dcat:distribution'} })
     description: List[str] = Field(default=..., description="""A free-text account of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
     documentation: Optional[List[Document]] = Field(default=None, description="""A page or document about this Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'documentation',
          'domain_of': ['DataService', 'Dataset', 'Distribution'],
@@ -1290,12 +1518,12 @@ class Dataset(ConfiguredBaseModel):
                        'Distribution'],
          'slot_uri': 'dcterms:modified'} })
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Dataset""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
                        'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'slot_uri': 'adms:identifier'} })
     provenance: Optional[List[ProvenanceStatement]] = Field(default=None, description="""A statement about the lineage of a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'provenance',
          'domain_of': ['Dataset'],
@@ -1331,33 +1559,225 @@ class Dataset(ConfiguredBaseModel):
          'recommended': True,
          'slot_uri': 'dcat:theme'} })
     title: List[str] = Field(default=..., description="""A name given to the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     type: Optional[List[Concept]] = Field(default=None, description="""A type of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     version: Optional[str] = Field(default=None, description="""The version indicator (name or identifier) of a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:version'} })
     version_notes: Optional[List[str]] = Field(default=None, description="""A description of the differences between this version and a previous version of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'version_notes',
          'domain_of': ['Dataset'],
          'slot_uri': 'adms:versionNotes'} })
-    was_generated_by: Optional[List[Activity]] = Field(default=None, description="""An activity that generated, or provides the business context for, the creation of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
+    was_generated_by: List[Activity] = Field(default=..., description="""An activity that generated, or provides the business context for, the creation of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
          'domain_of': ['Dataset', 'EvaluatedEntity'],
+         'notes': ['stricter than DCAT-AP'],
          'slot_uri': 'prov:wasGeneratedBy'} })
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    describes_entity: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide the EvaluatedEntity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_entity',
+         'domain_of': ['Dataset'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    describes_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""A slot to provide the EvaluatedActivity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_activity',
+         'domain_of': ['Dataset'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+
+
+class AnalysisDataset(Dataset):
+    """
+    A Dataset that was generated by an analysis of some previously generated data. For example, a dataset that contains the data of an assignment of a chemical structure to a sample based on the spectral data obtained from the sample is an AnalyticalDataset.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Dataset',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'slot_usage': {'was_generated_by': {'inlined_as_list': True,
+                                             'multivalued': True,
+                                             'name': 'was_generated_by',
+                                             'range': 'DataAnalysis'}}})
+
+    access_rights: Optional[RightsStatement] = Field(default=None, description="""Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.""", json_schema_extra = { "linkml_meta": {'alias': 'access_rights',
+         'domain_of': ['DataService', 'Dataset'],
+         'slot_uri': 'dcterms:accessRights'} })
+    applicable_legislation: Optional[List[LegalResource]] = Field(default=None, description="""The legislation that mandates the creation or management of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'applicable_legislation',
+         'domain_of': ['Catalogue',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution'],
+         'slot_uri': 'dcatap:applicableLegislation'} })
+    conforms_to: Optional[List[Standard]] = Field(default=None, description="""An implementing rule or other specification.""", json_schema_extra = { "linkml_meta": {'alias': 'conforms_to',
+         'domain_of': ['DataService', 'Dataset'],
+         'slot_uri': 'dcterms:conformsTo'} })
+    contact_point: Optional[List[Kind]] = Field(default=None, description="""Contact information that can be used for sending comments about the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'contact_point',
+         'domain_of': ['DataService', 'Dataset', 'DatasetSeries'],
+         'recommended': True,
+         'slot_uri': 'dcat:contactPoint'} })
+    creator: Optional[List[Agent]] = Field(default=None, description="""An entity responsible for producing the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'creator',
+         'domain_of': ['Catalogue', 'Dataset'],
+         'slot_uri': 'dcterms:creator'} })
+    dataset_distribution: Optional[List[Distribution]] = Field(default=None, description="""An available Distribution for the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'dataset_distribution',
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcat:distribution'} })
+    description: List[str] = Field(default=..., description="""A free-text account of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:description'} })
+    documentation: Optional[List[Document]] = Field(default=None, description="""A page or document about this Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'documentation',
+         'domain_of': ['DataService', 'Dataset', 'Distribution'],
+         'slot_uri': 'foaf:page'} })
+    frequency: Optional[Frequency] = Field(default=None, description="""The frequency at which the Dataset is updated.""", json_schema_extra = { "linkml_meta": {'alias': 'frequency',
+         'domain_of': ['Dataset', 'DatasetSeries'],
+         'slot_uri': 'dcterms:accrualPeriodicity'} })
+    geographical_coverage: Optional[List[Location]] = Field(default=None, description="""A geographic region that is covered by the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'geographical_coverage',
+         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
+         'slot_uri': 'dcterms:spatial'} })
+    has_version: Optional[List[Dataset]] = Field(default=None, description="""A related Dataset that is a version, edition, or adaptation of the described Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_version',
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcat:hasVersion'} })
+    identifier: Optional[List[str]] = Field(default=None, description="""The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'identifier',
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:identifier'} })
+    in_series: Optional[List[DatasetSeries]] = Field(default=None, description="""A dataset series of which the dataset is part.""", json_schema_extra = { "linkml_meta": {'alias': 'in_series', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:inSeries'} })
+    is_referenced_by: Optional[List[Resource]] = Field(default=None, description="""A related resource, such as a publication, that references, cites, or otherwise points to the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'is_referenced_by',
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:isReferencedBy'} })
+    keyword: Optional[List[str]] = Field(default=None, description="""A keyword or tag describing the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'keyword',
+         'domain_of': ['DataService', 'Dataset'],
+         'recommended': True,
+         'slot_uri': 'dcat:keyword'} })
+    landing_page: Optional[List[Document]] = Field(default=None, description="""A web page that provides access to the Dataset, its Distributions and/or additional information.""", json_schema_extra = { "linkml_meta": {'alias': 'landing_page',
+         'domain_of': ['DataService', 'Dataset'],
+         'slot_uri': 'dcat:landingPage'} })
+    language: Optional[List[LinguisticSystem]] = Field(default=None, description="""A language of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'language',
+         'domain_of': ['Catalogue', 'CatalogueRecord', 'Dataset', 'Distribution'],
+         'slot_uri': 'dcterms:language'} })
+    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
+         'domain_of': ['Catalogue',
+                       'CatalogueRecord',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution'],
+         'slot_uri': 'dcterms:modified'} })
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Dataset""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'adms:identifier'} })
+    provenance: Optional[List[ProvenanceStatement]] = Field(default=None, description="""A statement about the lineage of a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'provenance',
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:provenance'} })
+    publisher: Optional[Agent] = Field(default=None, description="""An entity (organisation) responsible for making the Dataset available.""", json_schema_extra = { "linkml_meta": {'alias': 'publisher',
+         'domain_of': ['Catalogue', 'DataService', 'Dataset', 'DatasetSeries'],
+         'slot_uri': 'dcterms:publisher'} })
+    qualified_attribution: Optional[List[Attribution]] = Field(default=None, description="""An Agent having some form of responsibility for the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'qualified_attribution',
+         'domain_of': ['Dataset'],
+         'slot_uri': 'prov:qualifiedAttribution'} })
+    qualified_relation: Optional[List[Relationship]] = Field(default=None, description="""A description of a relationship with another resource.""", json_schema_extra = { "linkml_meta": {'alias': 'qualified_relation',
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcat:qualifiedRelation'} })
+    related_resource: Optional[List[Resource]] = Field(default=None, description="""A related resource.""", json_schema_extra = { "linkml_meta": {'alias': 'related_resource',
+         'domain_of': ['Dataset'],
+         'slot_uri': 'dcterms:relation'} })
+    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
+         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
+         'slot_uri': 'dcterms:issued'} })
+    sample: Optional[List[Distribution]] = Field(default=None, description="""A sample distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'sample', 'domain_of': ['Dataset'], 'slot_uri': 'adms:sample'} })
+    source: Optional[List[Dataset]] = Field(default=None, description="""A related Dataset from which the described Dataset is derived.""", json_schema_extra = { "linkml_meta": {'alias': 'source', 'domain_of': ['Dataset'], 'slot_uri': 'dcterms:source'} })
+    spatial_resolution: Optional[Decimal] = Field(default=None, description="""The minimum spatial separation resolvable in a dataset, measured in meters.""", json_schema_extra = { "linkml_meta": {'alias': 'spatial_resolution',
+         'domain_of': ['Dataset', 'Distribution'],
+         'slot_uri': 'dcat:spatialResolutionInMeters'} })
+    temporal_coverage: Optional[List[PeriodOfTime]] = Field(default=None, description="""A temporal period that the Dataset covers.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal_coverage',
+         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
+         'slot_uri': 'dcterms:temporal'} })
+    temporal_resolution: Optional[str] = Field(default=None, description="""The minimum time period resolvable in the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal_resolution',
+         'domain_of': ['Dataset', 'Distribution'],
+         'slot_uri': 'dcat:temporalResolution'} })
+    theme: Optional[List[Concept]] = Field(default=None, description="""A category of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'theme',
+         'domain_of': ['DataService', 'Dataset'],
+         'recommended': True,
+         'slot_uri': 'dcat:theme'} })
+    title: List[str] = Field(default=..., description="""A name given to the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:title'} })
+    type: Optional[List[Concept]] = Field(default=None, description="""A type of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    version: Optional[str] = Field(default=None, description="""The version indicator (name or identifier) of a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:version'} })
+    version_notes: Optional[List[str]] = Field(default=None, description="""A description of the differences between this version and a previous version of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'version_notes',
+         'domain_of': ['Dataset'],
+         'slot_uri': 'adms:versionNotes'} })
+    was_generated_by: List[DataAnalysis] = Field(default=..., description="""An activity that generated, or provides the business context for, the creation of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
+         'domain_of': ['Dataset', 'EvaluatedEntity'],
+         'notes': ['stricter than DCAT-AP'],
+         'slot_uri': 'prov:wasGeneratedBy'} })
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    describes_entity: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide the EvaluatedEntity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_entity',
+         'domain_of': ['Dataset'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    describes_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""A slot to provide the EvaluatedActivity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_activity',
+         'domain_of': ['Dataset'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
 
 
 class DatasetSeries(ConfiguredBaseModel):
@@ -1365,7 +1785,7 @@ class DatasetSeries(ConfiguredBaseModel):
     See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:DatasetSeries',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'applicable_legislation': {'description': 'The legislation '
                                                                   'that mandates the '
                                                                   'creation or '
@@ -1466,20 +1886,20 @@ class DatasetSeries(ConfiguredBaseModel):
          'domain_of': ['DataService', 'Dataset', 'DatasetSeries'],
          'slot_uri': 'dcat:contactPoint'} })
     description: List[str] = Field(default=..., description="""A free-text account of the Dataset Series.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
     frequency: Optional[Frequency] = Field(default=None, description="""The frequency at which the Dataset Series is updated.""", json_schema_extra = { "linkml_meta": {'alias': 'frequency',
          'domain_of': ['Dataset', 'DatasetSeries'],
@@ -1504,23 +1924,61 @@ class DatasetSeries(ConfiguredBaseModel):
          'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
          'slot_uri': 'dcterms:temporal'} })
     title: List[str] = Field(default=..., description="""A name given to the Dataset Series.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
+
+
+class DefinedTerm(ConfiguredBaseModel):
+    """
+    A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'schema:DefinedTerm',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'slot_usage': {'title': {'name': 'title', 'slot_uri': 'schema:name'}}})
+
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'schema:name'} })
+    from_CV: Optional[str] = Field(default=None, description="""The URL of the controlled vocabulary.""", json_schema_extra = { "linkml_meta": {'alias': 'from_CV',
+         'domain_of': ['DefinedTerm'],
+         'slot_uri': 'schema:inDefinedTermSet'} })
 
 
 class Distribution(ConfiguredBaseModel):
@@ -1528,7 +1986,7 @@ class Distribution(ConfiguredBaseModel):
     See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Distribution',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'access_URL': {'description': 'A URL that gives access to a '
                                                       'Distribution of the Dataset.',
                                        'inlined_as_list': True,
@@ -1779,20 +2237,20 @@ class Distribution(ConfiguredBaseModel):
          'domain_of': ['Distribution'],
          'slot_uri': 'dcat:compressFormat'} })
     description: Optional[List[str]] = Field(default=None, description="""A free-text account of the Distribution.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'recommended': True,
          'slot_uri': 'dcterms:description'} })
     documentation: Optional[List[Document]] = Field(default=None, description="""A page or document about this Distribution.""", json_schema_extra = { "linkml_meta": {'alias': 'documentation',
@@ -1844,30 +2302,598 @@ class Distribution(ConfiguredBaseModel):
          'domain_of': ['Dataset', 'Distribution'],
          'slot_uri': 'dcat:temporalResolution'} })
     title: Optional[List[str]] = Field(default=None, description="""A name given to the Distribution.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
+
+
+class Environment(ClassifierMixin):
+    """
+    The surrounding in which the dataset creating activity took place (e.g. a lab).
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'mixins': ['ClassifierMixin'],
+         'slot_usage': {'other_identifier': {'description': 'A slot to provide a '
+                                                            'secondary identifier of '
+                                                            'the Environment.',
+                                             'inlined_as_list': True,
+                                             'multivalued': True,
+                                             'name': 'other_identifier',
+                                             'range': 'Identifier',
+                                             'required': False}}})
+
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:description'} })
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the Environment.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'adms:identifier'} })
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
+
+
+class EvaluatedActivity(ClassifierMixin):
+    """
+    An activity or proces that is being evaluated in a Activity.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Activity',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'mixins': ['ClassifierMixin'],
+         'slot_usage': {'has_part': {'description': 'A slot to provide a part of the '
+                                                    'EvaluatedActivity.',
+                                     'inlined_as_list': True,
+                                     'multivalued': True,
+                                     'name': 'has_part',
+                                     'range': 'EvaluatedActivity'},
+                        'other_identifier': {'description': 'A slot to provide a '
+                                                            'secondary identifier of '
+                                                            'the EvaluatedActivity.',
+                                             'inlined_as_list': True,
+                                             'multivalued': True,
+                                             'name': 'other_identifier',
+                                             'range': 'Identifier',
+                                             'required': False}}})
+
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:description'} })
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'adms:identifier'} })
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_part: Optional[List[EvaluatedActivity]] = Field(default=None, description="""A slot to provide a part of the EvaluatedActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'dcterms:hasPart'} })
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
+
+
+class EvaluatedEntity(ClassifierMixin):
+    """
+    A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a Activity.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'mixins': ['ClassifierMixin'],
+         'slot_usage': {'has_part': {'description': 'A slot to provide a part of the '
+                                                    'EvaluatedEntity.',
+                                     'inlined_as_list': True,
+                                     'multivalued': True,
+                                     'name': 'has_part',
+                                     'range': 'EvaluatedEntity'},
+                        'other_identifier': {'description': 'A slot to provide a '
+                                                            'secondary identifier of '
+                                                            'the EvaluatedEntity.',
+                                             'inlined_as_list': True,
+                                             'multivalued': True,
+                                             'name': 'other_identifier',
+                                             'range': 'Identifier',
+                                             'required': False},
+                        'was_generated_by': {'description': 'A slot to provide the '
+                                                            'Activity which created '
+                                                            'the EvaluatedEntity.',
+                                             'inlined_as_list': True,
+                                             'multivalued': True,
+                                             'name': 'was_generated_by',
+                                             'range': 'Activity'}}})
+
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:description'} })
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'adms:identifier'} })
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_part: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide a part of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'dcterms:hasPart'} })
+    was_generated_by: Optional[List[Activity]] = Field(default=None, description="""A slot to provide the Activity which created the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
+         'domain_of': ['Dataset', 'EvaluatedEntity'],
+         'slot_uri': 'prov:wasGeneratedBy'} })
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
+
+
+class AnalysisSourceData(EvaluatedEntity):
+    """
+    Information that was evaluated within a DataAnalysis.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'slot_usage': {'was_generated_by': {'description': 'A slot to provide the '
+                                                            'Activity which created '
+                                                            'the AnalysisSourceData.',
+                                             'inlined_as_list': True,
+                                             'multivalued': True,
+                                             'name': 'was_generated_by',
+                                             'range': 'Activity'}}})
+
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:description'} })
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'adms:identifier'} })
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_part: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide a part of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'dcterms:hasPart'} })
+    was_generated_by: Optional[List[Activity]] = Field(default=None, description="""A slot to provide the Activity which created the AnalysisSourceData.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
+         'domain_of': ['Dataset', 'EvaluatedEntity'],
+         'slot_uri': 'prov:wasGeneratedBy'} })
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
+
+
+class Plan(ClassifierMixin):
+    """
+    A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Plan Specification', 'Method', 'Procedure'],
+         'class_uri': 'prov:Entity',
+         'examples': [{'description': 'We assigned the structure of sample CRS-37013 '
+                                      'using a 13C NMR (CHMO:0000595) and the '
+                                      'settings: pulse sequence: zgpg30, temperature: '
+                                      '298.0 K, number of scans: 1024, Solvent : '
+                                      'chloroform-D1 (CDCl3).'}],
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'mixins': ['ClassifierMixin']})
+
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:description'} })
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
+
+
+class QualitativeAttribute(ClassifierMixin):
+    """
+    A piece of information that is attributed to an entity of interest, tool or environment.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'mixins': ['ClassifierMixin'],
+         'slot_usage': {'value': {'description': 'The slot to provide the literal '
+                                                 'value of the QualitativeAttribute.',
+                                  'name': 'value',
+                                  'required': True}}})
+
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:description'} })
+    value: str = Field(default=..., description="""The slot to provide the literal value of the QualitativeAttribute.""", json_schema_extra = { "linkml_meta": {'alias': 'value',
+         'domain_of': ['QualitativeAttribute', 'QuantitativeAttribute'],
+         'in_subset': ['domain_agnostic_core'],
+         'slot_uri': 'prov:value'} })
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
+
+
+class QuantitativeAttribute(ClassifierMixin):
+    """
+    A quantifiable piece of information that is attributed to an entity of interest, tool or environment.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core'],
+         'mixins': ['ClassifierMixin'],
+         'slot_usage': {'value': {'description': 'The slot to provide the literal '
+                                                 'value of the QuantitativeAttribute.',
+                                  'name': 'value',
+                                  'range': 'float',
+                                  'required': True}}})
+
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Plan',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Tool'],
+         'slot_uri': 'dcterms:description'} })
+    value: float = Field(default=..., description="""The slot to provide the literal value of the QuantitativeAttribute.""", json_schema_extra = { "linkml_meta": {'alias': 'value',
+         'domain_of': ['QualitativeAttribute', 'QuantitativeAttribute'],
+         'in_subset': ['domain_agnostic_core'],
+         'slot_uri': 'prov:value'} })
+    has_quantity_type: str = Field(default=..., description="""The type of quality that is quantifiable according to the QUDT ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantity_type',
+         'bindings': [{'binds_value_of': 'id',
+                       'description': 'Binds the type of a quantifiable attribute to a '
+                                      'QUDT Quantity Kind instance from the QUDT '
+                                      'Quantity Kind vocabulary.',
+                       'obligation_level': 'RECOMMENDED',
+                       'range': 'QUDTQuantityKindEnum'}],
+         'domain_of': ['QuantitativeAttribute'],
+         'slot_uri': 'qudt:hasQuantityKind'} })
+    unit: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'unit',
+         'bindings': [{'binds_value_of': 'id',
+                       'description': 'Restricts the allowable defined terms to the '
+                                      'QUDT Unit vocabulary.',
+                       'obligation_level': 'RECOMMENDED',
+                       'range': 'QUDTUnitEnum'}],
+         'domain_of': ['QuantitativeAttribute'],
+         'recommended': True,
+         'slot_uri': 'qudt:unit'} })
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
 
 
 class SupportiveEntity(ConfiguredBaseModel):
     """
     The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -1877,7 +2903,7 @@ class Agent(SupportiveEntity):
     See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'foaf:Agent',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'name': {'description': 'A name of the agent.',
                                  'inlined_as_list': True,
                                  'multivalued': True,
@@ -1896,7 +2922,7 @@ class Agent(SupportiveEntity):
 
     name: List[str] = Field(default=..., description="""A name of the agent.""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Agent'], 'slot_uri': 'foaf:name'} })
     type: Optional[Concept] = Field(default=None, description="""The nature of the agent.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'recommended': True,
          'slot_uri': 'dcterms:type'} })
 
@@ -1906,7 +2932,7 @@ class Attribution(SupportiveEntity):
     See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Attribution',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -1916,7 +2942,7 @@ class Checksum(SupportiveEntity):
     See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'spdx:Checksum',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'algorithm': {'description': 'The algorithm used to produce '
                                                      'the subject Checksum.',
                                       'inlined_as_list': True,
@@ -1947,7 +2973,7 @@ class ChecksumAlgorithm(SupportiveEntity):
     See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'spdx:ChecksumAlgorithm',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -1957,7 +2983,7 @@ class Concept(SupportiveEntity):
     See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'skos:Concept',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'preferred_label': {'description': 'A preferred label of the '
                                                            'concept.',
                                             'inlined_as_list': True,
@@ -1977,7 +3003,7 @@ class ConceptScheme(SupportiveEntity):
     See [DCAT-AP specs:ConceptScheme](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'skos:ConceptScheme',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'title': {'description': 'A name of the concept scheme.',
                                   'inlined_as_list': True,
                                   'multivalued': True,
@@ -1987,22 +3013,22 @@ class ConceptScheme(SupportiveEntity):
                                   'slot_uri': 'dcterms:title'}}})
 
     title: List[str] = Field(default=..., description="""A name of the concept scheme.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
 
 
@@ -2011,7 +3037,7 @@ class Document(SupportiveEntity):
     See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'foaf:Document',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2021,7 +3047,7 @@ class Frequency(SupportiveEntity):
     See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:Frequency',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2031,7 +3057,7 @@ class Geometry(SupportiveEntity):
     See [DCAT-AP specs:Geometry](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'locn:Geometry',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2041,7 +3067,7 @@ class Identifier(SupportiveEntity):
     See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'adms:Identifier',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'notation': {'description': 'A string that is an identifier in '
                                                     'the context of the identifier '
                                                     'scheme referenced by its '
@@ -2061,7 +3087,7 @@ class Kind(SupportiveEntity):
     See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'vcard:Kind',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2071,7 +3097,7 @@ class LegalResource(SupportiveEntity):
     See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'eli:LegalResource',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2081,7 +3107,7 @@ class LicenseDocument(SupportiveEntity):
     See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:LicenseDocument',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'type': {'description': 'A type of licence, e.g. indicating '
                                                 "'public domain' or 'royalties "
                                                 "required'.",
@@ -2094,7 +3120,7 @@ class LicenseDocument(SupportiveEntity):
                                  'slot_uri': 'dcterms:type'}}})
 
     type: Optional[List[Concept]] = Field(default=None, description="""A type of licence, e.g. indicating 'public domain' or 'royalties required'.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'recommended': True,
          'slot_uri': 'dcterms:type'} })
 
@@ -2104,7 +3130,7 @@ class LinguisticSystem(SupportiveEntity):
     See [DCAT-AP specs:LinguisticSystem](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:LinguisticSystem',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2114,7 +3140,7 @@ class Location(SupportiveEntity):
     See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:Location',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'bbox': {'description': 'The geographic bounding box of a '
                                                 'resource.',
                                  'inlined_as_list': False,
@@ -2158,7 +3184,7 @@ class MediaType(SupportiveEntity):
     See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:MediaType',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2168,7 +3194,7 @@ class MediaTypeOrExtent(SupportiveEntity):
     See [DCAT-AP specs:MediaTypeOrExtent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaTypeOrExtent)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:MediaTypeOrExtent',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2178,7 +3204,7 @@ class PeriodOfTime(SupportiveEntity):
     See [DCAT-AP specs:PeriodOfTime](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:PeriodOfTime',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'beginning': {'description': 'The beginning of a period or '
                                                      'interval.',
                                       'inlined_as_list': True,
@@ -2230,7 +3256,7 @@ class Policy(SupportiveEntity):
     See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'odrl:Policy',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2240,7 +3266,7 @@ class ProvenanceStatement(SupportiveEntity):
     See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:ProvenanceStatement',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2250,7 +3276,7 @@ class Relationship(SupportiveEntity):
     See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Relationship',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'slot_usage': {'had_role': {'description': 'A function of an entity or agent '
                                                     'with respect to another entity or '
                                                     'resource.',
@@ -2280,7 +3306,7 @@ class Resource(SupportiveEntity):
     See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'rdfs:Resource',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2290,7 +3316,7 @@ class RightsStatement(SupportiveEntity):
     See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:RightsStatement',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2300,7 +3326,7 @@ class Role(SupportiveEntity):
     See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Role',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2310,7 +3336,7 @@ class Standard(SupportiveEntity):
     See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcterms:Standard',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
@@ -2320,1043 +3346,17 @@ class TimeInstant(SupportiveEntity):
     See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'time:Instant',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'})
 
     pass
 
 
-class ClassifierMixin(ConfiguredBaseModel):
-    """
-    A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'mixin': True,
-         'slot_usage': {'type': {'inlined': True,
-                                 'name': 'type',
-                                 'range': 'DefinedTerm'}}})
-
-    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
-         'domain_of': ['ClassifierMixin'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'rdf:type'} })
-
-
-class DefinedTerm(ConfiguredBaseModel):
-    """
-    A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'schema:DefinedTerm',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'slot_usage': {'title': {'name': 'title', 'slot_uri': 'schema:name'}}})
-
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
-    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'schema:name'} })
-    from_CV: Optional[str] = Field(default=None, description="""The URL of the controlled vocabulary.""", json_schema_extra = { "linkml_meta": {'alias': 'from_CV',
-         'domain_of': ['DefinedTerm'],
-         'slot_uri': 'schema:inDefinedTermSet'} })
-
-
-class ResearchDataset(Dataset):
-    """
-    A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Dataset',
-         'comments': ['The name of this class is only deviating from its parent as '
-                      'this is needed according to the sub-classing strategy chosen '
-                      'here in this LinkML model to further constrain the slots of '
-                      'existing (imported) classes.'],
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'slot_usage': {'was_generated_by': {'inlined_as_list': True,
-                                             'multivalued': True,
-                                             'name': 'was_generated_by',
-                                             'range': 'DataCreatingActivity',
-                                             'required': True}},
-         'tree_root': True})
-
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
-    describes_entity: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide the EvaluatedEntity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_entity',
-         'domain_of': ['ResearchDataset'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'dcterms:relation'} })
-    describes_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""A slot to provide the EvaluatedActivity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_activity',
-         'domain_of': ['ResearchDataset'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'dcterms:relation'} })
-    access_rights: Optional[RightsStatement] = Field(default=None, description="""Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.""", json_schema_extra = { "linkml_meta": {'alias': 'access_rights',
-         'domain_of': ['DataService', 'Dataset'],
-         'slot_uri': 'dcterms:accessRights'} })
-    applicable_legislation: Optional[List[LegalResource]] = Field(default=None, description="""The legislation that mandates the creation or management of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'applicable_legislation',
-         'domain_of': ['Catalogue',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution'],
-         'slot_uri': 'dcatap:applicableLegislation'} })
-    conforms_to: Optional[List[Standard]] = Field(default=None, description="""An implementing rule or other specification.""", json_schema_extra = { "linkml_meta": {'alias': 'conforms_to',
-         'domain_of': ['DataService', 'Dataset'],
-         'slot_uri': 'dcterms:conformsTo'} })
-    contact_point: Optional[List[Kind]] = Field(default=None, description="""Contact information that can be used for sending comments about the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'contact_point',
-         'domain_of': ['DataService', 'Dataset', 'DatasetSeries'],
-         'recommended': True,
-         'slot_uri': 'dcat:contactPoint'} })
-    creator: Optional[List[Agent]] = Field(default=None, description="""An entity responsible for producing the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'creator',
-         'domain_of': ['Catalogue', 'Dataset'],
-         'slot_uri': 'dcterms:creator'} })
-    dataset_distribution: Optional[List[Distribution]] = Field(default=None, description="""An available Distribution for the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'dataset_distribution',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcat:distribution'} })
-    description: List[str] = Field(default=..., description="""A free-text account of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    documentation: Optional[List[Document]] = Field(default=None, description="""A page or document about this Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'documentation',
-         'domain_of': ['DataService', 'Dataset', 'Distribution'],
-         'slot_uri': 'foaf:page'} })
-    frequency: Optional[Frequency] = Field(default=None, description="""The frequency at which the Dataset is updated.""", json_schema_extra = { "linkml_meta": {'alias': 'frequency',
-         'domain_of': ['Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:accrualPeriodicity'} })
-    geographical_coverage: Optional[List[Location]] = Field(default=None, description="""A geographic region that is covered by the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'geographical_coverage',
-         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:spatial'} })
-    has_version: Optional[List[Dataset]] = Field(default=None, description="""A related Dataset that is a version, edition, or adaptation of the described Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_version',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcat:hasVersion'} })
-    identifier: Optional[List[str]] = Field(default=None, description="""The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'identifier',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcterms:identifier'} })
-    in_series: Optional[List[DatasetSeries]] = Field(default=None, description="""A dataset series of which the dataset is part.""", json_schema_extra = { "linkml_meta": {'alias': 'in_series', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:inSeries'} })
-    is_referenced_by: Optional[List[Resource]] = Field(default=None, description="""A related resource, such as a publication, that references, cites, or otherwise points to the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'is_referenced_by',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcterms:isReferencedBy'} })
-    keyword: Optional[List[str]] = Field(default=None, description="""A keyword or tag describing the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'keyword',
-         'domain_of': ['DataService', 'Dataset'],
-         'recommended': True,
-         'slot_uri': 'dcat:keyword'} })
-    landing_page: Optional[List[Document]] = Field(default=None, description="""A web page that provides access to the Dataset, its Distributions and/or additional information.""", json_schema_extra = { "linkml_meta": {'alias': 'landing_page',
-         'domain_of': ['DataService', 'Dataset'],
-         'slot_uri': 'dcat:landingPage'} })
-    language: Optional[List[LinguisticSystem]] = Field(default=None, description="""A language of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'language',
-         'domain_of': ['Catalogue', 'CatalogueRecord', 'Dataset', 'Distribution'],
-         'slot_uri': 'dcterms:language'} })
-    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution'],
-         'slot_uri': 'dcterms:modified'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Dataset""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
-         'slot_uri': 'adms:identifier'} })
-    provenance: Optional[List[ProvenanceStatement]] = Field(default=None, description="""A statement about the lineage of a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'provenance',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcterms:provenance'} })
-    publisher: Optional[Agent] = Field(default=None, description="""An entity (organisation) responsible for making the Dataset available.""", json_schema_extra = { "linkml_meta": {'alias': 'publisher',
-         'domain_of': ['Catalogue', 'DataService', 'Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:publisher'} })
-    qualified_attribution: Optional[List[Attribution]] = Field(default=None, description="""An Agent having some form of responsibility for the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'qualified_attribution',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'prov:qualifiedAttribution'} })
-    qualified_relation: Optional[List[Relationship]] = Field(default=None, description="""A description of a relationship with another resource.""", json_schema_extra = { "linkml_meta": {'alias': 'qualified_relation',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcat:qualifiedRelation'} })
-    related_resource: Optional[List[Resource]] = Field(default=None, description="""A related resource.""", json_schema_extra = { "linkml_meta": {'alias': 'related_resource',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcterms:relation'} })
-    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
-         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
-         'slot_uri': 'dcterms:issued'} })
-    sample: Optional[List[Distribution]] = Field(default=None, description="""A sample distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'sample', 'domain_of': ['Dataset'], 'slot_uri': 'adms:sample'} })
-    source: Optional[List[Dataset]] = Field(default=None, description="""A related Dataset from which the described Dataset is derived.""", json_schema_extra = { "linkml_meta": {'alias': 'source', 'domain_of': ['Dataset'], 'slot_uri': 'dcterms:source'} })
-    spatial_resolution: Optional[Decimal] = Field(default=None, description="""The minimum spatial separation resolvable in a dataset, measured in meters.""", json_schema_extra = { "linkml_meta": {'alias': 'spatial_resolution',
-         'domain_of': ['Dataset', 'Distribution'],
-         'slot_uri': 'dcat:spatialResolutionInMeters'} })
-    temporal_coverage: Optional[List[PeriodOfTime]] = Field(default=None, description="""A temporal period that the Dataset covers.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal_coverage',
-         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:temporal'} })
-    temporal_resolution: Optional[str] = Field(default=None, description="""The minimum time period resolvable in the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal_resolution',
-         'domain_of': ['Dataset', 'Distribution'],
-         'slot_uri': 'dcat:temporalResolution'} })
-    theme: Optional[List[Concept]] = Field(default=None, description="""A category of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'theme',
-         'domain_of': ['DataService', 'Dataset'],
-         'recommended': True,
-         'slot_uri': 'dcat:theme'} })
-    title: List[str] = Field(default=..., description="""A name given to the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    type: Optional[List[Concept]] = Field(default=None, description="""A type of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    version: Optional[str] = Field(default=None, description="""The version indicator (name or identifier) of a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:version'} })
-    version_notes: Optional[List[str]] = Field(default=None, description="""A description of the differences between this version and a previous version of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'version_notes',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'adms:versionNotes'} })
-    was_generated_by: List[DataCreatingActivity] = Field(default=..., description="""An activity that generated, or provides the business context for, the creation of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
-         'domain_of': ['Dataset', 'EvaluatedEntity'],
-         'slot_uri': 'prov:wasGeneratedBy'} })
-
-
-class AnalysisDataset(ResearchDataset):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Dataset',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'slot_usage': {'was_generated_by': {'name': 'was_generated_by',
-                                             'range': 'DataAnalysis'}}})
-
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
-    describes_entity: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide the EvaluatedEntity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_entity',
-         'domain_of': ['ResearchDataset'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'dcterms:relation'} })
-    describes_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""A slot to provide the EvaluatedActivity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_activity',
-         'domain_of': ['ResearchDataset'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'dcterms:relation'} })
-    access_rights: Optional[RightsStatement] = Field(default=None, description="""Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.""", json_schema_extra = { "linkml_meta": {'alias': 'access_rights',
-         'domain_of': ['DataService', 'Dataset'],
-         'slot_uri': 'dcterms:accessRights'} })
-    applicable_legislation: Optional[List[LegalResource]] = Field(default=None, description="""The legislation that mandates the creation or management of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'applicable_legislation',
-         'domain_of': ['Catalogue',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution'],
-         'slot_uri': 'dcatap:applicableLegislation'} })
-    conforms_to: Optional[List[Standard]] = Field(default=None, description="""An implementing rule or other specification.""", json_schema_extra = { "linkml_meta": {'alias': 'conforms_to',
-         'domain_of': ['DataService', 'Dataset'],
-         'slot_uri': 'dcterms:conformsTo'} })
-    contact_point: Optional[List[Kind]] = Field(default=None, description="""Contact information that can be used for sending comments about the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'contact_point',
-         'domain_of': ['DataService', 'Dataset', 'DatasetSeries'],
-         'recommended': True,
-         'slot_uri': 'dcat:contactPoint'} })
-    creator: Optional[List[Agent]] = Field(default=None, description="""An entity responsible for producing the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'creator',
-         'domain_of': ['Catalogue', 'Dataset'],
-         'slot_uri': 'dcterms:creator'} })
-    dataset_distribution: Optional[List[Distribution]] = Field(default=None, description="""An available Distribution for the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'dataset_distribution',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcat:distribution'} })
-    description: List[str] = Field(default=..., description="""A free-text account of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    documentation: Optional[List[Document]] = Field(default=None, description="""A page or document about this Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'documentation',
-         'domain_of': ['DataService', 'Dataset', 'Distribution'],
-         'slot_uri': 'foaf:page'} })
-    frequency: Optional[Frequency] = Field(default=None, description="""The frequency at which the Dataset is updated.""", json_schema_extra = { "linkml_meta": {'alias': 'frequency',
-         'domain_of': ['Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:accrualPeriodicity'} })
-    geographical_coverage: Optional[List[Location]] = Field(default=None, description="""A geographic region that is covered by the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'geographical_coverage',
-         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:spatial'} })
-    has_version: Optional[List[Dataset]] = Field(default=None, description="""A related Dataset that is a version, edition, or adaptation of the described Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_version',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcat:hasVersion'} })
-    identifier: Optional[List[str]] = Field(default=None, description="""The main identifier for the Dataset, e.g. the URI or other unique identifier in the context of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'identifier',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcterms:identifier'} })
-    in_series: Optional[List[DatasetSeries]] = Field(default=None, description="""A dataset series of which the dataset is part.""", json_schema_extra = { "linkml_meta": {'alias': 'in_series', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:inSeries'} })
-    is_referenced_by: Optional[List[Resource]] = Field(default=None, description="""A related resource, such as a publication, that references, cites, or otherwise points to the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'is_referenced_by',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcterms:isReferencedBy'} })
-    keyword: Optional[List[str]] = Field(default=None, description="""A keyword or tag describing the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'keyword',
-         'domain_of': ['DataService', 'Dataset'],
-         'recommended': True,
-         'slot_uri': 'dcat:keyword'} })
-    landing_page: Optional[List[Document]] = Field(default=None, description="""A web page that provides access to the Dataset, its Distributions and/or additional information.""", json_schema_extra = { "linkml_meta": {'alias': 'landing_page',
-         'domain_of': ['DataService', 'Dataset'],
-         'slot_uri': 'dcat:landingPage'} })
-    language: Optional[List[LinguisticSystem]] = Field(default=None, description="""A language of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'language',
-         'domain_of': ['Catalogue', 'CatalogueRecord', 'Dataset', 'Distribution'],
-         'slot_uri': 'dcterms:language'} })
-    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Dataset was changed or modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution'],
-         'slot_uri': 'dcterms:modified'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Dataset""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
-         'slot_uri': 'adms:identifier'} })
-    provenance: Optional[List[ProvenanceStatement]] = Field(default=None, description="""A statement about the lineage of a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'provenance',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcterms:provenance'} })
-    publisher: Optional[Agent] = Field(default=None, description="""An entity (organisation) responsible for making the Dataset available.""", json_schema_extra = { "linkml_meta": {'alias': 'publisher',
-         'domain_of': ['Catalogue', 'DataService', 'Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:publisher'} })
-    qualified_attribution: Optional[List[Attribution]] = Field(default=None, description="""An Agent having some form of responsibility for the resource.""", json_schema_extra = { "linkml_meta": {'alias': 'qualified_attribution',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'prov:qualifiedAttribution'} })
-    qualified_relation: Optional[List[Relationship]] = Field(default=None, description="""A description of a relationship with another resource.""", json_schema_extra = { "linkml_meta": {'alias': 'qualified_relation',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcat:qualifiedRelation'} })
-    related_resource: Optional[List[Resource]] = Field(default=None, description="""A related resource.""", json_schema_extra = { "linkml_meta": {'alias': 'related_resource',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'dcterms:relation'} })
-    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
-         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
-         'slot_uri': 'dcterms:issued'} })
-    sample: Optional[List[Distribution]] = Field(default=None, description="""A sample distribution of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'sample', 'domain_of': ['Dataset'], 'slot_uri': 'adms:sample'} })
-    source: Optional[List[Dataset]] = Field(default=None, description="""A related Dataset from which the described Dataset is derived.""", json_schema_extra = { "linkml_meta": {'alias': 'source', 'domain_of': ['Dataset'], 'slot_uri': 'dcterms:source'} })
-    spatial_resolution: Optional[Decimal] = Field(default=None, description="""The minimum spatial separation resolvable in a dataset, measured in meters.""", json_schema_extra = { "linkml_meta": {'alias': 'spatial_resolution',
-         'domain_of': ['Dataset', 'Distribution'],
-         'slot_uri': 'dcat:spatialResolutionInMeters'} })
-    temporal_coverage: Optional[List[PeriodOfTime]] = Field(default=None, description="""A temporal period that the Dataset covers.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal_coverage',
-         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:temporal'} })
-    temporal_resolution: Optional[str] = Field(default=None, description="""The minimum time period resolvable in the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal_resolution',
-         'domain_of': ['Dataset', 'Distribution'],
-         'slot_uri': 'dcat:temporalResolution'} })
-    theme: Optional[List[Concept]] = Field(default=None, description="""A category of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'theme',
-         'domain_of': ['DataService', 'Dataset'],
-         'recommended': True,
-         'slot_uri': 'dcat:theme'} })
-    title: List[str] = Field(default=..., description="""A name given to the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    type: Optional[List[Concept]] = Field(default=None, description="""A type of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    version: Optional[str] = Field(default=None, description="""The version indicator (name or identifier) of a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:version'} })
-    version_notes: Optional[List[str]] = Field(default=None, description="""A description of the differences between this version and a previous version of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'version_notes',
-         'domain_of': ['Dataset'],
-         'slot_uri': 'adms:versionNotes'} })
-    was_generated_by: List[DataAnalysis] = Field(default=..., description="""An activity that generated, or provides the business context for, the creation of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
-         'domain_of': ['Dataset', 'EvaluatedEntity'],
-         'slot_uri': 'prov:wasGeneratedBy'} })
-
-
-class ResearchCatalog(Catalogue):
-    """
-    A curated collection of metadata about data resources.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Catalog',
-         'comments': ['The name of this class is only deviating from its parent as '
-                      'this is needed according to the sub-classing strategy chosen '
-                      'here in this LinkML model to further constrain the slots of '
-                      'existing (imported) classes.'],
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'slot_usage': {'has_dataset': {'name': 'has_dataset',
-                                        'range': 'ResearchDataset'}}})
-
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
-    applicable_legislation: Optional[List[LegalResource]] = Field(default=None, description="""The legislation that mandates the creation or management of the Catalog.""", json_schema_extra = { "linkml_meta": {'alias': 'applicable_legislation',
-         'domain_of': ['Catalogue',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution'],
-         'slot_uri': 'dcatap:applicableLegislation'} })
-    catalogue: Optional[List[Catalogue]] = Field(default=None, description="""A catalogue whose contents are of interest in the context of this catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'catalogue', 'domain_of': ['Catalogue'], 'slot_uri': 'dcat:catalog'} })
-    creator: Optional[Agent] = Field(default=None, description="""An entity responsible for the creation of the catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'creator',
-         'domain_of': ['Catalogue', 'Dataset'],
-         'slot_uri': 'dcterms:creator'} })
-    description: List[str] = Field(default=..., description="""A free-text account of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    geographical_coverage: Optional[List[Location]] = Field(default=None, description="""A geographical area covered by the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'geographical_coverage',
-         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:spatial'} })
-    has_dataset: Optional[List[ResearchDataset]] = Field(default=None, description="""A Dataset that is part of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'has_dataset', 'domain_of': ['Catalogue'], 'slot_uri': 'dcat:dataset'} })
-    has_part: Optional[List[Catalogue]] = Field(default=None, description="""A related Catalogue that is part of the described Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool'],
-         'slot_uri': 'dcterms:hasPart'} })
-    homepage: Optional[Document] = Field(default=None, description="""A web page that acts as the main page for the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'homepage',
-         'domain_of': ['Catalogue'],
-         'recommended': True,
-         'slot_uri': 'foaf:homepage'} })
-    language: Optional[List[LinguisticSystem]] = Field(default=None, description="""A language used in the textual metadata describing titles, descriptions, etc. of the Datasets in the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'language',
-         'domain_of': ['Catalogue', 'CatalogueRecord', 'Dataset', 'Distribution'],
-         'recommended': True,
-         'slot_uri': 'dcterms:language'} })
-    licence: Optional[LicenseDocument] = Field(default=None, description="""A licence under which the Catalogue can be used or reused.""", json_schema_extra = { "linkml_meta": {'alias': 'licence',
-         'domain_of': ['Catalogue', 'DataService', 'Distribution'],
-         'slot_uri': 'dcterms:license'} })
-    modification_date: Optional[date] = Field(default=None, description="""The most recent date on which the Catalogue was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'modification_date',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution'],
-         'recommended': True,
-         'slot_uri': 'dcterms:modified'} })
-    publisher: Agent = Field(default=..., description="""An entity (organisation) responsible for making the Catalogue available.""", json_schema_extra = { "linkml_meta": {'alias': 'publisher',
-         'domain_of': ['Catalogue', 'DataService', 'Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:publisher'} })
-    record: Optional[List[CatalogueRecord]] = Field(default=None, description="""A Catalogue Record that is part of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'record', 'domain_of': ['Catalogue'], 'slot_uri': 'dcat:record'} })
-    release_date: Optional[date] = Field(default=None, description="""The date of formal issuance (e.g., publication) of the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'release_date',
-         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries', 'Distribution'],
-         'recommended': True,
-         'slot_uri': 'dcterms:issued'} })
-    rights: Optional[RightsStatement] = Field(default=None, description="""A statement that specifies rights associated with the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'rights',
-         'domain_of': ['Catalogue', 'Distribution'],
-         'slot_uri': 'dcterms:rights'} })
-    service: Optional[List[DataService]] = Field(default=None, description="""A site or end-point (Data Service) that is listed in the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'service', 'domain_of': ['Catalogue'], 'slot_uri': 'dcat:service'} })
-    temporal_coverage: Optional[List[PeriodOfTime]] = Field(default=None, description="""A temporal period that the Catalogue covers.""", json_schema_extra = { "linkml_meta": {'alias': 'temporal_coverage',
-         'domain_of': ['Catalogue', 'Dataset', 'DatasetSeries'],
-         'slot_uri': 'dcterms:temporal'} })
-    themes: Optional[List[ConceptScheme]] = Field(default=None, description="""A knowledge organization system used to classify the Resources that are in the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'themes',
-         'domain_of': ['Catalogue'],
-         'recommended': True,
-         'slot_uri': 'dcat:themeTaxonomy'} })
-    title: List[str] = Field(default=..., description="""A name given to the Catalogue.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-
-
-class DataCreatingActivity(ClassifierMixin, Activity):
-    """
-    An activity (process) that has the objective to produce information about an entity or activity.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Activity',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'mixins': ['ClassifierMixin'],
-         'narrow_mappings': ['NCIT:C25598', 'sosa:Observation', 'OBI:0000070'],
-         'slot_usage': {'has_part': {'description': 'A slot to provide an Activity '
-                                                    'that is part of the '
-                                                    'DataCreatingActivity.',
-                                     'inlined': True,
-                                     'name': 'has_part',
-                                     'range': 'Activity'},
-                        'other_identifier': {'description': 'A secondary identifier of '
-                                                            'the DataCreatingActivity',
-                                             'inlined_as_list': True,
-                                             'multivalued': True,
-                                             'name': 'other_identifier',
-                                             'range': 'Identifier',
-                                             'required': False,
-                                             'slot_uri': 'adms:identifier'}}})
-
-    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the DataCreatingActivity""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
-         'slot_uri': 'adms:identifier'} })
-    evaluated_entity: Optional[List[EvaluatedEntity]] = Field(default=None, description="""The slot to specify the entity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
-         'domain_of': ['DataCreatingActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'prov:used'} })
-    evaluated_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""The slot to specify the activity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_activity',
-         'domain_of': ['DataCreatingActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'prov:wasInformedBy'} })
-    used_tool: Optional[List[Tool]] = Field(default=None, description="""The slot to specify the tool that was used.""", json_schema_extra = { "linkml_meta": {'alias': 'used_tool',
-         'domain_of': ['DataCreatingActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'prov:used'} })
-    realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
-         'domain_of': ['DataCreatingActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'prov:used'} })
-    has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool'],
-         'slot_uri': 'dcterms:hasPart'} })
-    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
-         'domain_of': ['DataCreatingActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'BFO:0000066'} })
-    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
-         'domain_of': ['ClassifierMixin'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'rdf:type'} })
-
-
-class DataAnalysis(DataCreatingActivity):
-    """
-    A DataCreatingActivity that evaluates the data produced by another DataCreatingActivity.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Activity',
-         'close_mappings': ['http://purl.obolibrary.org/obo/NCIT_C25391'],
-         'exact_mappings': ['OBI:0200000'],
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'slot_usage': {'evaluated_entity': {'name': 'evaluated_entity',
-                                             'range': 'AnalysisSourceData'}}})
-
-    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the DataCreatingActivity""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
-         'slot_uri': 'adms:identifier'} })
-    evaluated_entity: Optional[List[AnalysisSourceData]] = Field(default=None, description="""The slot to specify the entity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
-         'domain_of': ['DataCreatingActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'prov:used'} })
-    evaluated_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""The slot to specify the activity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_activity',
-         'domain_of': ['DataCreatingActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'prov:wasInformedBy'} })
-    used_tool: Optional[List[Tool]] = Field(default=None, description="""The slot to specify the tool that was used.""", json_schema_extra = { "linkml_meta": {'alias': 'used_tool',
-         'domain_of': ['DataCreatingActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'prov:used'} })
-    realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
-         'domain_of': ['DataCreatingActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'prov:used'} })
-    has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool'],
-         'slot_uri': 'dcterms:hasPart'} })
-    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
-         'domain_of': ['DataCreatingActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'BFO:0000066'} })
-    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
-         'domain_of': ['ClassifierMixin'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'rdf:type'} })
-
-
-class EvaluatedEntity(ClassifierMixin):
-    """
-    A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a DataCreatingActivity.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'mixins': ['ClassifierMixin'],
-         'slot_usage': {'has_part': {'description': 'A slot to provide a part of the '
-                                                    'EvaluatedEntity.',
-                                     'name': 'has_part',
-                                     'range': 'EvaluatedEntity'},
-                        'other_identifier': {'description': 'A slot to provide a '
-                                                            'secondary identifier of '
-                                                            'the EvaluatedEntity.',
-                                             'inlined_as_list': True,
-                                             'multivalued': True,
-                                             'name': 'other_identifier',
-                                             'range': 'Identifier',
-                                             'required': False,
-                                             'slot_uri': 'adms:identifier'},
-                        'was_generated_by': {'description': 'A slot to provide the '
-                                                            'Activity which created '
-                                                            'the EvaluatedEntity.',
-                                             'inlined_as_list': True,
-                                             'multivalued': True,
-                                             'name': 'was_generated_by',
-                                             'range': 'Activity'}}})
-
-    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
-         'slot_uri': 'adms:identifier'} })
-    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative  attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_part: Optional[str] = Field(default=None, description="""A slot to provide a part of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool'],
-         'slot_uri': 'dcterms:hasPart'} })
-    was_generated_by: Optional[List[Activity]] = Field(default=None, description="""A slot to provide the Activity which created the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
-         'domain_of': ['Dataset', 'EvaluatedEntity'],
-         'slot_uri': 'prov:wasGeneratedBy'} })
-    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
-         'domain_of': ['ClassifierMixin'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'rdf:type'} })
-
-
-class AnalysisSourceData(EvaluatedEntity):
-    """
-    Information that was evaluated within a DataAnalysis.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'slot_usage': {'was_generated_by': {'name': 'was_generated_by',
-                                             'range': 'DataCreatingActivity'}}})
-
-    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
-         'slot_uri': 'adms:identifier'} })
-    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative  attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_part: Optional[str] = Field(default=None, description="""A slot to provide a part of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool'],
-         'slot_uri': 'dcterms:hasPart'} })
-    was_generated_by: Optional[List[DataCreatingActivity]] = Field(default=None, description="""A slot to provide the Activity which created the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
-         'domain_of': ['Dataset', 'EvaluatedEntity'],
-         'slot_uri': 'prov:wasGeneratedBy'} })
-    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
-         'domain_of': ['ClassifierMixin'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'rdf:type'} })
-
-
-class EvaluatedActivity(ClassifierMixin, Activity):
-    """
-    An activity or process that is being evaluated in a DataCreatingActivity.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Activity',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'mixins': ['ClassifierMixin'],
-         'slot_usage': {'has_part': {'description': 'A slot to provide a part of the '
-                                                    'EvaluatedActivity.',
-                                     'name': 'has_part',
-                                     'range': 'EvaluatedActivity'},
-                        'other_identifier': {'description': 'A secondary identifier of '
-                                                            'the EvaluatedActivity',
-                                             'inlined_as_list': True,
-                                             'multivalued': True,
-                                             'name': 'other_identifier',
-                                             'range': 'Identifier',
-                                             'required': False,
-                                             'slot_uri': 'adms:identifier'}}})
-
-    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the EvaluatedActivity""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
-         'slot_uri': 'adms:identifier'} })
-    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative  attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_part: Optional[str] = Field(default=None, description="""A slot to provide a part of the EvaluatedActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool'],
-         'slot_uri': 'dcterms:hasPart'} })
-    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
-         'domain_of': ['ClassifierMixin'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'rdf:type'} })
-
-
 class Tool(ClassifierMixin):
     """
-    A entity with a certain function used within a DataCreatingActivity.
+    A entity with a certain function used within a Activity.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'broad_mappings': ['prov:Entity'],
-         'class_uri': 'prov:Entity',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'in_subset': ['domain_agnostic_core'],
          'mixins': ['ClassifierMixin'],
          'slot_usage': {'has_part': {'description': 'The slot to specify parts of a '
@@ -3366,74 +3366,76 @@ class Tool(ClassifierMixin):
                                      'multivalued': True,
                                      'name': 'has_part',
                                      'range': 'Tool'},
-                        'other_identifier': {'description': 'A secondary identifier of '
-                                                            'the EvaluatedActivity',
+                        'other_identifier': {'description': 'A slot to provide a '
+                                                            'secondary identifier of '
+                                                            'the tool.',
                                              'inlined_as_list': True,
                                              'multivalued': True,
                                              'name': 'other_identifier',
                                              'range': 'Identifier',
-                                             'required': False,
-                                             'slot_uri': 'adms:identifier'}}})
+                                             'required': False}}})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the EvaluatedActivity""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the tool.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
                        'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'slot_uri': 'adms:identifier'} })
     has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
          'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
          'slot_uri': 'dcterms:relation'} })
-    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative  attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
+    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
          'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
          'slot_uri': 'dcterms:relation'} })
     has_part: Optional[List[Tool]] = Field(default=None, description="""The slot to specify parts of a tool.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Tool'],
          'slot_uri': 'dcterms:hasPart'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -3442,275 +3444,76 @@ class Tool(ClassifierMixin):
          'slot_uri': 'rdf:type'} })
 
 
-class HardwareTool(Tool):
+class Device(Tool):
     """
-    A hardware device with a certain function that was used within a DataCreatingActivity.
+    A hardware device with a certain function that was used within ann Activity.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Device'],
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core']})
-
-    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the EvaluatedActivity""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
-         'slot_uri': 'adms:identifier'} })
-    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative  attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_part: Optional[List[Tool]] = Field(default=None, description="""The slot to specify parts of a tool.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool'],
-         'slot_uri': 'dcterms:hasPart'} })
-    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
-         'domain_of': ['ClassifierMixin'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'rdf:type'} })
-
-
-class SoftwareTool(Tool):
-    """
-    A software program with a certain function that was used within a DataCreatingActivity.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core']})
-
-    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the EvaluatedActivity""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
-         'slot_uri': 'adms:identifier'} })
-    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative  attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_part: Optional[List[Tool]] = Field(default=None, description="""The slot to specify parts of a tool.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool'],
-         'slot_uri': 'dcterms:hasPart'} })
-    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
-         'domain_of': ['ClassifierMixin'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'rdf:type'} })
-
-
-class Environment(ClassifierMixin):
-    """
-    The surrounding in which the dataset creating activity took place (e.g. a lab).
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'mixins': ['ClassifierMixin'],
-         'slot_usage': {'other_identifier': {'description': 'A secondary identifier of '
-                                                            'the Environment',
-                                             'inlined_as_list': True,
-                                             'multivalued': True,
-                                             'name': 'other_identifier',
-                                             'range': 'Identifier',
-                                             'required': False,
-                                             'slot_uri': 'adms:identifier'}}})
-
-    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Environment""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
-         'slot_uri': 'adms:identifier'} })
-    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
-         'domain_of': ['ClassifierMixin'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'rdf:type'} })
-
-
-class Plan(ClassifierMixin):
-    """
-    A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Plan Specification', 'Method', 'Procedure'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['hardware tool'],
          'class_uri': 'prov:Entity',
-         'examples': [{'description': 'We assigned the structure of sample CRS-37013 '
-                                      'using a 13C NMR (CHMO:0000595) and the '
-                                      'settings: pulse sequence: zgpg30, temperature: '
-                                      '298.0 K, number of scans: 1024, Solvent : '
-                                      'chloroform-D1 (CDCl3).'}],
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'mixins': ['ClassifierMixin']})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core']})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the tool.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'adms:identifier'} })
+    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_part: Optional[List[Tool]] = Field(default=None, description="""The slot to specify parts of a tool.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'dcterms:hasPart'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -3719,139 +3522,75 @@ class Plan(ClassifierMixin):
          'slot_uri': 'rdf:type'} })
 
 
-class QualitativeAttribute(ClassifierMixin):
+class Software(Tool):
     """
-    A piece of information that is attributed to an entity of interest, tool or environment.
+    A software program with a certain function that was used within an Activity.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
-         'in_subset': ['domain_agnostic_core'],
-         'mixins': ['ClassifierMixin'],
-         'slot_usage': {'value': {'description': 'The slot to provide the literal '
-                                                 'value of the QualitativeAttribute.',
-                                  'name': 'value',
-                                  'required': True}}})
+         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
+         'in_subset': ['domain_agnostic_core']})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
-    value: str = Field(default=..., description="""The slot to provide the literal value of the QualitativeAttribute.""", json_schema_extra = { "linkml_meta": {'alias': 'value',
-         'domain_of': ['QualitativeAttribute', 'QuantitativeAttribute'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'prov:value'} })
-    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
-         'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
-         'domain_of': ['ClassifierMixin'],
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the tool.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'adms:identifier'} })
+    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
-         'slot_uri': 'rdf:type'} })
-
-
-class QuantitativeAttribute(ClassifierMixin):
-    """
-    A quantifiable piece of information that is attributed to an entity of interest, tool or environment.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
-         'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/',
+         'slot_uri': 'dcterms:relation'} })
+    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
          'in_subset': ['domain_agnostic_core'],
-         'mixins': ['ClassifierMixin'],
-         'slot_usage': {'value': {'description': 'The slot to provide the literal '
-                                                 'value of the QuantitativeAttribute.',
-                                  'name': 'value',
-                                  'range': 'float',
-                                  'required': True}}})
-
-    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'ConceptScheme',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:title'} })
-    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
-                       'CatalogueRecord',
-                       'DataService',
-                       'Dataset',
-                       'DatasetSeries',
-                       'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
-                       'Environment',
-                       'Plan',
-                       'QualitativeAttribute',
-                       'QuantitativeAttribute'],
-         'slot_uri': 'dcterms:description'} })
-    value: float = Field(default=..., description="""The slot to provide the literal value of the QuantitativeAttribute.""", json_schema_extra = { "linkml_meta": {'alias': 'value',
-         'domain_of': ['QualitativeAttribute', 'QuantitativeAttribute'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'prov:value'} })
-    has_quantity_type: str = Field(default=..., description="""The type of quality that is quantifiable according to the QUDT ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantity_type',
-         'bindings': [{'binds_value_of': 'id',
-                       'description': 'Binds the type of a quantifiable attribute to a '
-                                      'QUDT Quantity Kind instance from the QUDT '
-                                      'Quantity Kind vocabulary.',
-                       'obligation_level': 'RECOMMENDED',
-                       'range': 'QUDTQuantityKindEnum'}],
-         'domain_of': ['QuantitativeAttribute'],
-         'slot_uri': 'qudt:hasQuantityKind'} })
-    unit: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'unit',
-         'bindings': [{'binds_value_of': 'id',
-                       'description': 'Restricts the allowable defined terms to the '
-                                      'QUDT Unit vocabulary.',
-                       'obligation_level': 'RECOMMENDED',
-                       'range': 'QUDTUnitEnum'}],
-         'domain_of': ['QuantitativeAttribute'],
          'recommended': True,
-         'slot_uri': 'qudt:unit'} })
+         'slot_uri': 'dcterms:relation'} })
+    has_part: Optional[List[Tool]] = Field(default=None, description="""The slot to specify parts of a tool.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'slot_uri': 'dcterms:hasPart'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -3876,24 +3615,6 @@ class NMRAnalysisDataset(AnalysisDataset):
                                              'name': 'was_generated_by',
                                              'range': 'NMRSpectralAnalysis'}}})
 
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
-    describes_entity: Optional[List[ChemicalSample]] = Field(default=None, description="""A slot to provide the EvaluatedEntity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_entity',
-         'domain_of': ['ResearchDataset'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'dcterms:relation'} })
-    describes_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""A slot to provide the EvaluatedActivity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_activity',
-         'domain_of': ['ResearchDataset'],
-         'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
-         'slot_uri': 'dcterms:relation'} })
     access_rights: Optional[RightsStatement] = Field(default=None, description="""Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.""", json_schema_extra = { "linkml_meta": {'alias': 'access_rights',
          'domain_of': ['DataService', 'Dataset'],
          'slot_uri': 'dcterms:accessRights'} })
@@ -3918,20 +3639,20 @@ class NMRAnalysisDataset(AnalysisDataset):
          'domain_of': ['Dataset'],
          'slot_uri': 'dcat:distribution'} })
     description: List[str] = Field(default=..., description="""A free-text account of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
     documentation: Optional[List[Document]] = Field(default=None, description="""A page or document about this Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'documentation',
          'domain_of': ['DataService', 'Dataset', 'Distribution'],
@@ -3970,12 +3691,12 @@ class NMRAnalysisDataset(AnalysisDataset):
                        'Distribution'],
          'slot_uri': 'dcterms:modified'} })
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Dataset""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
                        'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'slot_uri': 'adms:identifier'} })
     provenance: Optional[List[ProvenanceStatement]] = Field(default=None, description="""A statement about the lineage of a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'provenance',
          'domain_of': ['Dataset'],
@@ -4011,25 +3732,25 @@ class NMRAnalysisDataset(AnalysisDataset):
          'recommended': True,
          'slot_uri': 'dcat:theme'} })
     title: List[str] = Field(default=..., description="""A name given to the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     type: Optional[List[Concept]] = Field(default=None, description="""A type of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     version: Optional[str] = Field(default=None, description="""The version indicator (name or identifier) of a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['Dataset'], 'slot_uri': 'dcat:version'} })
     version_notes: Optional[List[str]] = Field(default=None, description="""A description of the differences between this version and a previous version of the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'version_notes',
@@ -4037,7 +3758,24 @@ class NMRAnalysisDataset(AnalysisDataset):
          'slot_uri': 'adms:versionNotes'} })
     was_generated_by: List[NMRSpectralAnalysis] = Field(default=..., description="""An activity that generated, or provides the business context for, the creation of the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
          'domain_of': ['Dataset', 'EvaluatedEntity'],
+         'notes': ['stricter than DCAT-AP'],
          'slot_uri': 'prov:wasGeneratedBy'} })
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    describes_entity: Optional[List[ChemicalSample]] = Field(default=None, description="""A slot to provide the EvaluatedEntity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_entity',
+         'domain_of': ['Dataset'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    describes_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""A slot to provide the EvaluatedActivity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_activity',
+         'domain_of': ['Dataset'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
 
 
 class NMRSpectralAnalysis(DataAnalysis):
@@ -4053,80 +3791,82 @@ class NMRSpectralAnalysis(DataAnalysis):
                                              'range': 'NMRSpectrum'}}})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the DataCreatingActivity""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
                        'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
+                       'EvaluatedEntity',
+                       'Tool'],
+         'notes': ['not in DCAT-AP'],
          'slot_uri': 'adms:identifier'} })
-    evaluated_entity: Optional[List[NMRSpectrum]] = Field(default=None, description="""The slot to specify the entity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
-         'domain_of': ['DataCreatingActivity'],
+    evaluated_entity: Optional[List[NMRSpectrum]] = Field(default=None, description="""A slot to provide the data that was analysed by the DataAnalysis.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
+         'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:used'} })
     evaluated_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""The slot to specify the activity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_activity',
-         'domain_of': ['DataCreatingActivity'],
+         'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:wasInformedBy'} })
     used_tool: Optional[List[Tool]] = Field(default=None, description="""The slot to specify the tool that was used.""", json_schema_extra = { "linkml_meta": {'alias': 'used_tool',
-         'domain_of': ['DataCreatingActivity'],
+         'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:used'} })
-    realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
-         'domain_of': ['DataCreatingActivity'],
+    realized_plan: Optional[str] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
+         'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:used'} })
-    has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Tool'],
+         'notes': ['not in DCAT-AP'],
          'slot_uri': 'dcterms:hasPart'} })
-    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
-         'domain_of': ['DataCreatingActivity'],
+    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
+         'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'slot_uri': 'BFO:0000066'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -4135,7 +3875,7 @@ class NMRSpectralAnalysis(DataAnalysis):
          'slot_uri': 'rdf:type'} })
 
 
-class NMRSpectroscopy(DataCreatingActivity):
+class NMRSpectroscopy(Activity):
     """
     Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.
     """
@@ -4157,80 +3897,82 @@ class NMRSpectroscopy(DataCreatingActivity):
                                      'name': 'rdf_type'}}})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the DataCreatingActivity""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
                        'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
+                       'EvaluatedEntity',
+                       'Tool'],
+         'notes': ['not in DCAT-AP'],
          'slot_uri': 'adms:identifier'} })
     evaluated_entity: Optional[List[ChemicalSample]] = Field(default=None, description="""The slot to specify the entity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
-         'domain_of': ['DataCreatingActivity'],
+         'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:used'} })
     evaluated_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""The slot to specify the activity of interest that was evaluated.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_activity',
-         'domain_of': ['DataCreatingActivity'],
+         'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:wasInformedBy'} })
     used_tool: Optional[List[Tool]] = Field(default=None, description="""The slot to specify the tool that was used.""", json_schema_extra = { "linkml_meta": {'alias': 'used_tool',
-         'domain_of': ['DataCreatingActivity'],
+         'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:used'} })
-    realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
-         'domain_of': ['DataCreatingActivity'],
+    realized_plan: Optional[str] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
+         'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:used'} })
-    has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Tool'],
+         'notes': ['not in DCAT-AP'],
          'slot_uri': 'dcterms:hasPart'} })
-    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the DataCreatingActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
-         'domain_of': ['DataCreatingActivity'],
+    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
+         'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'slot_uri': 'BFO:0000066'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The type of NMR Spectroscopy provided as CURIE of a subclass of CHMO:0000613.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'bindings': [{'binds_value_of': 'id',
@@ -4251,72 +3993,72 @@ class ChemicalReaction(EvaluatedActivity):
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the EvaluatedActivity""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
                        'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'slot_uri': 'adms:identifier'} })
-    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative  attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_part: Optional[str] = Field(default=None, description="""A slot to provide a part of the EvaluatedActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
                        'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_part: Optional[List[EvaluatedActivity]] = Field(default=None, description="""A slot to provide a part of the EvaluatedActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Tool'],
          'slot_uri': 'dcterms:hasPart'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -4338,75 +4080,75 @@ class ChemicalSubstance(EvaluatedEntity):
          'exact_mappings': ['BFO:0000051'],
          'recommended': True} })
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
                        'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'slot_uri': 'adms:identifier'} })
-    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative  attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_part: Optional[str] = Field(default=None, description="""A slot to provide a part of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
                        'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_part: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide a part of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Tool'],
          'slot_uri': 'dcterms:hasPart'} })
     was_generated_by: Optional[List[Activity]] = Field(default=None, description="""A slot to provide the Activity which created the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
          'domain_of': ['Dataset', 'EvaluatedEntity'],
          'slot_uri': 'prov:wasGeneratedBy'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -4437,75 +4179,75 @@ class ChemicalSample(ChemicalSubstance):
          'exact_mappings': ['BFO:0000051'],
          'recommended': True} })
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
                        'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'slot_uri': 'adms:identifier'} })
-    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative  attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_part: Optional[str] = Field(default=None, description="""A slot to provide a part of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
                        'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_part: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide a part of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Tool'],
          'slot_uri': 'dcterms:hasPart'} })
     was_generated_by: Optional[List[Activity]] = Field(default=None, description="""A slot to provide the Activity which created the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
          'domain_of': ['Dataset', 'EvaluatedEntity'],
          'slot_uri': 'prov:wasGeneratedBy'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -4529,75 +4271,75 @@ class NMRSpectrum(AnalysisSourceData):
                                              'range': 'NMRSpectroscopy'}}})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
-    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['DefinedTerm',
-                       'ResearchDataset',
-                       'ResearchCatalog',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:identifier'} })
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
                        'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'slot_uri': 'adms:identifier'} })
-    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative  attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
-         'domain_of': ['EvaluatedEntity', 'EvaluatedActivity', 'Tool'],
-         'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'dcterms:relation'} })
-    has_part: Optional[str] = Field(default=None, description="""A slot to provide a part of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
-         'domain_of': ['Catalogue',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Dataset',
+                       'DefinedTerm',
                        'EvaluatedActivity',
+                       'EvaluatedEntity'],
+         'in_subset': ['domain_agnostic_core']} })
+    has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_quantitative_attribute: Optional[List[QuantitativeAttribute]] = Field(default=None, description="""The slot to relate a quantitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantitative_attribute',
+         'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'dcterms:relation'} })
+    has_part: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide a part of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
+         'domain_of': ['Activity',
+                       'Catalogue',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Tool'],
          'slot_uri': 'dcterms:hasPart'} })
-    was_generated_by: Optional[List[NMRSpectroscopy]] = Field(default=None, description="""A slot to provide the Activity which created the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
+    was_generated_by: Optional[List[NMRSpectroscopy]] = Field(default=None, description="""A slot to provide the Activity which created the AnalysisSourceData.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
          'domain_of': ['Dataset', 'EvaluatedEntity'],
          'slot_uri': 'prov:wasGeneratedBy'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -4614,49 +4356,49 @@ class Laboratory(Environment):
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Environment""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Dataset',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
+    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the Environment.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'Environment',
                        'EvaluatedActivity',
-                       'Tool',
-                       'Environment'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'slot_uri': 'adms:identifier'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -4670,45 +4412,45 @@ class InChIKey(QualitativeAttribute):
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
     value: str = Field(default=..., description="""The slot to provide the literal value of the QualitativeAttribute.""", json_schema_extra = { "linkml_meta": {'alias': 'value',
          'domain_of': ['QualitativeAttribute', 'QuantitativeAttribute'],
          'in_subset': ['domain_agnostic_core'],
          'slot_uri': 'prov:value'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -4725,45 +4467,45 @@ class InChi(QualitativeAttribute):
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
     value: str = Field(default=..., description="""The slot to provide the literal value of the QualitativeAttribute.""", json_schema_extra = { "linkml_meta": {'alias': 'value',
          'domain_of': ['QualitativeAttribute', 'QuantitativeAttribute'],
          'in_subset': ['domain_agnostic_core'],
          'slot_uri': 'prov:value'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -4780,45 +4522,45 @@ class IUPACChemicalFormula(QualitativeAttribute):
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
     value: str = Field(default=..., description="""The slot to provide the literal value of the QualitativeAttribute.""", json_schema_extra = { "linkml_meta": {'alias': 'value',
          'domain_of': ['QualitativeAttribute', 'QuantitativeAttribute'],
          'in_subset': ['domain_agnostic_core'],
          'slot_uri': 'prov:value'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -4835,45 +4577,45 @@ class SMILES(QualitativeAttribute):
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'ConceptScheme',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
-                       'Distribution',
                        'DefinedTerm',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
+                       'Distribution',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:title'} })
     description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['Catalogue',
+         'domain_of': ['Activity',
+                       'Catalogue',
                        'CatalogueRecord',
                        'DataService',
                        'Dataset',
                        'DatasetSeries',
                        'Distribution',
-                       'DataCreatingActivity',
-                       'EvaluatedEntity',
-                       'EvaluatedActivity',
-                       'Tool',
                        'Environment',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
                        'Plan',
                        'QualitativeAttribute',
-                       'QuantitativeAttribute'],
+                       'QuantitativeAttribute',
+                       'Tool'],
          'slot_uri': 'dcterms:description'} })
     value: str = Field(default=..., description="""The slot to provide the literal value of the QualitativeAttribute.""", json_schema_extra = { "linkml_meta": {'alias': 'value',
          'domain_of': ['QualitativeAttribute', 'QuantitativeAttribute'],
          'in_subset': ['domain_agnostic_core'],
          'slot_uri': 'prov:value'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'domain_of': ['Agent', 'Dataset', 'LicenseDocument', 'ClassifierMixin'],
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
     rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'domain_of': ['ClassifierMixin'],
@@ -4884,13 +4626,24 @@ class SMILES(QualitativeAttribute):
 
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
-Activity.model_rebuild()
 Catalogue.model_rebuild()
 CatalogueRecord.model_rebuild()
+ClassifierMixin.model_rebuild()
+Activity.model_rebuild()
+DataAnalysis.model_rebuild()
 DataService.model_rebuild()
 Dataset.model_rebuild()
+AnalysisDataset.model_rebuild()
 DatasetSeries.model_rebuild()
+DefinedTerm.model_rebuild()
 Distribution.model_rebuild()
+Environment.model_rebuild()
+EvaluatedActivity.model_rebuild()
+EvaluatedEntity.model_rebuild()
+AnalysisSourceData.model_rebuild()
+Plan.model_rebuild()
+QualitativeAttribute.model_rebuild()
+QuantitativeAttribute.model_rebuild()
 SupportiveEntity.model_rebuild()
 Agent.model_rebuild()
 Attribution.model_rebuild()
@@ -4918,23 +4671,9 @@ RightsStatement.model_rebuild()
 Role.model_rebuild()
 Standard.model_rebuild()
 TimeInstant.model_rebuild()
-ClassifierMixin.model_rebuild()
-DefinedTerm.model_rebuild()
-ResearchDataset.model_rebuild()
-AnalysisDataset.model_rebuild()
-ResearchCatalog.model_rebuild()
-DataCreatingActivity.model_rebuild()
-DataAnalysis.model_rebuild()
-EvaluatedEntity.model_rebuild()
-AnalysisSourceData.model_rebuild()
-EvaluatedActivity.model_rebuild()
 Tool.model_rebuild()
-HardwareTool.model_rebuild()
-SoftwareTool.model_rebuild()
-Environment.model_rebuild()
-Plan.model_rebuild()
-QualitativeAttribute.model_rebuild()
-QuantitativeAttribute.model_rebuild()
+Device.model_rebuild()
+Software.model_rebuild()
 NMRAnalysisDataset.model_rebuild()
 NMRSpectralAnalysis.model_rebuild()
 NMRSpectroscopy.model_rebuild()

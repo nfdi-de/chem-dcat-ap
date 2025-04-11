@@ -1,12 +1,8 @@
+id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
 description:
 - Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)
 title:
 - 13C nuclear magnetic resonance spectroscopy (13C NMR)
-other_identifier:
-- notation: https://www.chemotion-repository.net/pid/50434
-theme:
-- preferred_label:
-  - Science and technology
 was_generated_by:
 - evaluated_entity:
   - id: CDCl3_13C_NMR_Spectrum
@@ -95,7 +91,11 @@ was_generated_by:
       rdf_type:
         id: CHMO:0000595
         title: 13C nuclear magnetic resonance spectroscopy
-id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
+other_identifier:
+- notation: https://www.chemotion-repository.net/pid/50434
+theme:
+- preferred_label:
+  - Science and technology
 describes_entity:
 - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
   title: CRS-50440

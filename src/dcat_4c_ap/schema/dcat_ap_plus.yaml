@@ -1,24 +1,14 @@
-name: dcat-ap
-description: 'This LinkML schema representation of DCAT-AP 3.0.0 was automatically
-  created from these [JSON-LD SHACL shapes](https://github.com/SEMICeu/DCAT-AP/blob/master/releases/3.0.0/shacl/dcat-ap-SHACL.jsonld)
-  using this Python script: https://github.com/StroemPhi/dcat-4C-ap/tree/main/src/dcat-ap_shacl_2_linkml.py.
-
-  NOTE:The JSON-LD SHACL constraints published with the [July 3.0.0 GitHub release](https://github.com/SEMICeu/DCAT-AP/releases/tag/3.0.0)
-  and in the [3.0.0. release branch](https://github.com/SEMICeu/DCAT-AP/tree/3.0.0)
-  are different from the ones in https://github.com/SEMICeu/DCAT-AP/tree/master/releases/3.0.0.
-  Also the TTL shapes provided in the latter in the HTML folder differ from the ones
-  in the SHACL folder, in that they declare "dcat:ResourceShape/DcatResource_Shape"
-  and "TemporalLiteralShape/DateOrDateTimeDataType_Shape"(shacl/html folder) as unions
-  of the dcat:Dataset, dcat:Catalog, dcat:DataService and dcat:DatasetSeries respectively
-  the datatypes xsd:date, xsd:dateTime, xsd:gYear & xsd:gYearMonth. We currently address
-  this in the conversion script by only allowing xsd:date as a [Temporal Literal](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TemporalLiteral),
-  which means that this LinkML representation of DCAT-AP is stricter and values in
-  xsd:dateTime format will automatically be typecast to xsd:date. Regarding the ''dcat:ResourceShape/DcatResource_Shape''
-  we use the LinkML [union as ranges](https://linkml.io/linkml/schemas/advanced.html#unions-as-ranges)
-  approach to provide the expected union of dcat:Resource subclasses. However, this
-  is not fully implemented in LinkML yet, so that any kind of object/class could be
-  used, until https://github.com/linkml/linkml/issues/1813 is fixed.'
-title: LinkML schema representation of DCAT-AP 3.0.0
+name: dcat-ap-plus
+description: 'This metadata schema is an Extension of the DCAT Application Profile
+  for Providing Links to Use-case Specific Context. It allows to provide additional
+  metadata regarding: which kind(s) of entity(s) or activity(s) were evaluated (the
+  dcat:Dataset is about), which kind of activity generated the dcat:Dataset, which
+  kind of "tools" (input entities like devices or software) were used in the dataset
+  generating activity, in which location (e.g. a laboratory) and according to which
+  procedure the dataset generating activity took place, and which kind(s) of qualitative
+  and quantitative characteristic were attributed to the evaluated entity or activity
+  and used "tools". '
+title: DCAT-AP-PLUS
 todos:
 - Think about how to add all the other enums and their permissible values to constrain
   the allowed instances of classes such as "Concept", "MediaType", etc. as defined
@@ -27,8 +17,11 @@ todos:
   yet work.
 - Check if https://github.com/linkml/linkml/issues/1813 is closed and range unions
   are validatable
-source: https://semiceu.github.io/DCAT-AP/releases/3.0.0
-id: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml
+see_also:
+- https://github.com/StroemPhi/dcat-4C-ap
+- https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
+- https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
+id: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml
 imports:
 - linkml:types
 license: CC-BY 4.0
@@ -54,9 +47,20 @@ prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   vl: https://purl.eu/ns/shacl#
   iana: https://www.iana.org/assignments/
-  dcatap_linkml: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml#
-default_prefix: dcatap_linkml
+  dcatap_plus: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  SOSA: http://www.w3.org/ns/sosa/
+  qudt: http://qudt.org/schema/qudt/
+  schema: http://schema.org/
+  ex: http://example.org/
+default_prefix: dcatap_plus
 default_range: string
+subsets:
+  domain_agnostic_core:
+    description: The elements of this subset are considered the core layer of our
+      DCAT-AP extension.
 types:
   duration:
     name: duration
@@ -154,6 +158,45 @@ enums:
         text: text
       video:
         text: video
+  QUDTQuantityKindEnum:
+    name: QUDTQuantityKindEnum
+    implements:
+    - owl:NamedIndividual
+    description: Possible kinds of quantifiable attribute types provided as QUDT QualityKind
+      instances.
+    todos:
+    - 'Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should
+      be used to constrain the range of the type slot instead of using the default
+      DefinedTerm as range. This will be done in profiles of this schema where we
+      define Activity subclasses, e.g. NMRSpectroscopy. seeAlso: https://github.com/linkml/linkml-model/blob/main/tests/input/examples/schema_definition-enum_bindings-1.yaml'
+    in_subset:
+    - domain_agnostic_core
+    reachable_from:
+      source_ontology: http://qudt.org/2.1/vocab/quantitykind
+      source_nodes:
+      - qudt:QuantityKind
+      relationship_types:
+      - rdf:type
+      is_direct: true
+  QUDTUnitEnum:
+    name: QUDTUnitEnum
+    implements:
+    - owl:NamedIndividual
+    description: Possible kinds of QUDT unit instances.
+    todos:
+    - 'Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should
+      be used to constrain the range of the type slot instead of using the default
+      DefinedTerm as range. This will be done in profiles of this schema where we
+      define Activity subclasses, e.g. NMRSpectroscopy. seeAlso: https://github.com/linkml/linkml-model/blob/main/tests/input/examples/schema_definition-enum_bindings-1.yaml'
+    in_subset:
+    - domain_agnostic_core
+    reachable_from:
+      source_ontology: https://qudt.org/vocab/unit/
+      source_nodes:
+      - qudt:QuantityKind
+      relationship_types:
+      - rdf:type
+      is_direct: true
 slots:
   access_URL:
     name: access_URL
@@ -255,6 +298,26 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: dcat:distribution
+  describes_activity:
+    name: describes_activity
+    description: A slot to provide the EvaluatedActivity that is described by a Dataset.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: dcterms:relation
+    range: EvaluatedActivity
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  describes_entity:
+    name: describes_entity
+    description: A slot to provide the EvaluatedEntity that is described by a Dataset.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: dcterms:relation
+    range: EvaluatedEntity
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
   description:
     name: description
     description: This slot is described in more detail within the class in which it
@@ -290,6 +353,26 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: dcat:endpointDescription
+  evaluated_activity:
+    name: evaluated_activity
+    description: The slot to specify the activity of interest that was evaluated.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: prov:wasInformedBy
+    range: EvaluatedActivity
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  evaluated_entity:
+    name: evaluated_entity
+    description: The slot to specify the entity of interest that was evaluated.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: prov:used
+    range: EvaluatedEntity
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
   format:
     name: format
     description: This slot is described in more detail within the class in which it
@@ -330,6 +413,28 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: odrl:hasPolicy
+  has_qualitative_attribute:
+    name: has_qualitative_attribute
+    description: The slot to relate a qualitative attribute to an entity of interest,
+      tool or environment.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: dcterms:relation
+    range: QualitativeAttribute
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  has_quantitative_attribute:
+    name: has_quantitative_attribute
+    description: The slot to relate a quantitative attribute to an entity of interest,
+      tool or environment.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: dcterms:relation
+    range: QuantitativeAttribute
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
   has_version:
     name: has_version
     description: This slot is described in more detail within the class in which it
@@ -340,6 +445,13 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: foaf:homepage
+  id:
+    name: id
+    description: A slot to provide an URI for an entity within this schema.
+    in_subset:
+    - domain_agnostic_core
+    identifier: true
+    range: uriorcurie
   identifier:
     name: identifier
     description: This slot is described in more detail within the class in which it
@@ -405,6 +517,14 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: skos:notation
+  occurred_in:
+    name: occurred_in
+    description: The slot to specify the Method (aka Procedure) that was used in the
+      ActivityActivity.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: BFO:0000066
+    range: Environment
   other_identifier:
     name: other_identifier
     description: This slot is described in more detail within the class in which it
@@ -445,6 +565,25 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: dcat:qualifiedRelation
+  rdf_type:
+    name: rdf_type
+    description: The slot to specify the ontology class that is instantiated by an
+      entity.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: rdf:type
+    range: DefinedTerm
+    recommended: true
+    inlined: true
+  realized_plan:
+    name: realized_plan
+    description: The slot to specify the Method (aka Procedure) that was realized
+      by a Activity.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: prov:used
+    range: EvaluatedActivity
+    recommended: true
   record:
     name: record
     description: This slot is described in more detail within the class in which it
@@ -540,6 +679,22 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: dcterms:type
+  used_tool:
+    name: used_tool
+    description: The slot to specify the tool that was used.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: prov:used
+    range: Tool
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  value:
+    name: value
+    description: A slot to provide the literal value of an attribute.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: prov:value
   version:
     name: version
     description: This slot is described in more detail within the class in which it
@@ -558,7 +713,43 @@ slots:
 classes:
   Activity:
     name: Activity
-    description: See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
+    description: An activity (process) that has the objective to produce information
+      aboutn entity or activity.
+    notes:
+    - The properties (slots) of this class are part of the extension of the DCAT-AP.
+    in_subset:
+    - domain_agnostic_core
+    narrow_mappings:
+    - NCIT:C25598
+    - SOSA:Observation
+    - OBI:0000070
+    mixins:
+    - ClassifierMixin
+    slots:
+    - title
+    - description
+    - other_identifier
+    - evaluated_entity
+    - evaluated_activity
+    - used_tool
+    - realized_plan
+    - has_part
+    - occurred_in
+    slot_usage:
+      has_part:
+        range: Activity
+        description: A slot to provide an Activity that is part of the Activity that
+          created the Dataset.
+        inlined: true
+        notes:
+        - not in DCAT-AP
+      other_identifier:
+        range: Identifier
+        description: A secondary identifier of the Activity that created the Dataset.
+        multivalued: true
+        inlined_as_list: true
+        notes:
+        - not in DCAT-AP
     class_uri: prov:Activity
   Agent:
     name: Agent
@@ -586,6 +777,36 @@ classes:
         multivalued: false
         inlined_as_list: true
     class_uri: foaf:Agent
+  AnalysisDataset:
+    name: AnalysisDataset
+    description: A Dataset that was generated by an analysis of some previously generated
+      data. For example, a dataset that contains the data of an assignment of a chemical
+      structure to a sample based on the spectral data obtained from the sample is
+      an AnalyticalDataset.
+    in_subset:
+    - domain_agnostic_core
+    is_a: Dataset
+    slot_usage:
+      was_generated_by:
+        name: was_generated_by
+        range: DataAnalysis
+        multivalued: true
+        inlined_as_list: true
+    class_uri: dcat:Dataset
+  AnalysisSourceData:
+    name: AnalysisSourceData
+    description: Information that was evaluated within a DataAnalysis.
+    in_subset:
+    - domain_agnostic_core
+    is_a: EvaluatedEntity
+    slot_usage:
+      was_generated_by:
+        name: was_generated_by
+        description: A slot to provide the Activity which created the AnalysisSourceData.
+        range: Activity
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Entity
   Any:
     name: Any
     description: This abstract class is needed to create the union of Dataset, DatasetSeries,
@@ -917,6 +1138,22 @@ classes:
     description: See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)
     is_a: SupportiveEntity
     class_uri: spdx:ChecksumAlgorithm
+  ClassifierMixin:
+    name: ClassifierMixin
+    description: A mixin with which an entity of this schema can be classified via
+      an additional rdf:type assertion.
+    in_subset:
+    - domain_agnostic_core
+    abstract: true
+    mixin: true
+    slots:
+    - type
+    - rdf_type
+    slot_usage:
+      type:
+        name: type
+        range: DefinedTerm
+        inlined: true
   Concept:
     name: Concept
     description: See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)
@@ -949,6 +1186,24 @@ classes:
         multivalued: true
         inlined_as_list: true
     class_uri: skos:ConceptScheme
+  DataAnalysis:
+    name: DataAnalysis
+    description: An Activity that evaluates the data produced by another Activity.
+    in_subset:
+    - domain_agnostic_core
+    exact_mappings:
+    - OBI:0200000
+    close_mappings:
+    - NCIT:C25391
+    is_a: Activity
+    slot_usage:
+      evaluated_entity:
+        name: evaluated_entity
+        description: A slot to provide the data that was analysed by the DataAnalysis.
+        range: AnalysisSourceData
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Activity
   DataService:
     name: DataService
     description: See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)
@@ -1114,7 +1369,10 @@ classes:
     class_uri: dcat:DataService
   Dataset:
     name: Dataset
-    description: See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
+    description: A collection of data, published or curated by a single agent, and
+      available for access or download in one or more representations.
+    in_subset:
+    - domain_agnostic_core
     slots:
     - access_rights
     - applicable_legislation
@@ -1152,6 +1410,9 @@ classes:
     - version
     - version_notes
     - was_generated_by
+    - id
+    - describes_entity
+    - describes_activity
     slot_usage:
       access_rights:
         name: access_rights
@@ -1449,9 +1710,11 @@ classes:
         name: was_generated_by
         description: An activity that generated, or provides the business context
           for, the creation of the dataset.
+        notes:
+        - stricter than DCAT-AP
         slot_uri: prov:wasGeneratedBy
         range: Activity
-        required: false
+        required: true
         multivalued: true
         inlined_as_list: true
     class_uri: dcat:Dataset
@@ -1556,6 +1819,37 @@ classes:
         multivalued: true
         inlined_as_list: true
     class_uri: dcat:DatasetSeries
+  DefinedTerm:
+    name: DefinedTerm
+    description: A word, name, acronym, phrase that is defined in a controlled vocabulary
+      (CV) and that is used to provide an additional rdf:type or dcterms:type of a
+      class within this schema.
+    in_subset:
+    - domain_agnostic_core
+    slots:
+    - id
+    - title
+    slot_usage:
+      title:
+        name: title
+        slot_uri: schema:name
+    attributes:
+      from_CV:
+        name: from_CV
+        description: The URL of the controlled vocabulary.
+        slot_uri: schema:inDefinedTermSet
+        range: uriorcurie
+    class_uri: schema:DefinedTerm
+  Device:
+    name: Device
+    description: A hardware device with a certain function that was used within ann
+      Activity.
+    in_subset:
+    - domain_agnostic_core
+    aliases:
+    - hardware tool
+    is_a: Tool
+    class_uri: prov:Entity
   Distribution:
     name: Distribution
     description: See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
@@ -1796,6 +2090,96 @@ classes:
     description: See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)
     is_a: SupportiveEntity
     class_uri: foaf:Document
+  Environment:
+    name: Environment
+    description: The surrounding in which the dataset creating activity took place
+      (e.g. a lab).
+    in_subset:
+    - domain_agnostic_core
+    mixins:
+    - ClassifierMixin
+    slots:
+    - title
+    - description
+    - other_identifier
+    slot_usage:
+      other_identifier:
+        name: other_identifier
+        description: A slot to provide a secondary identifier of the Environment.
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Entity
+  EvaluatedActivity:
+    name: EvaluatedActivity
+    description: An activity or proces that is being evaluated in a Activity.
+    in_subset:
+    - domain_agnostic_core
+    mixins:
+    - ClassifierMixin
+    slots:
+    - title
+    - description
+    - other_identifier
+    - id
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - has_part
+    slot_usage:
+      has_part:
+        name: has_part
+        description: A slot to provide a part of the EvaluatedActivity.
+        range: EvaluatedActivity
+        multivalued: true
+        inlined_as_list: true
+      other_identifier:
+        name: other_identifier
+        description: A slot to provide a secondary identifier of the EvaluatedActivity.
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Activity
+  EvaluatedEntity:
+    name: EvaluatedEntity
+    description: A physical, digital, conceptual, or other kind of thing with some
+      fixed aspects that is not an activity or process and that is being evaluated
+      in a Activity.
+    in_subset:
+    - domain_agnostic_core
+    mixins:
+    - ClassifierMixin
+    slots:
+    - title
+    - description
+    - other_identifier
+    - id
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - has_part
+    - was_generated_by
+    slot_usage:
+      was_generated_by:
+        name: was_generated_by
+        description: A slot to provide the Activity which created the EvaluatedEntity.
+        range: Activity
+        multivalued: true
+        inlined_as_list: true
+      has_part:
+        name: has_part
+        description: A slot to provide a part of the EvaluatedEntity.
+        range: EvaluatedEntity
+        multivalued: true
+        inlined_as_list: true
+      other_identifier:
+        name: other_identifier
+        description: A slot to provide a secondary identifier of the EvaluatedEntity.
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Entity
   Frequency:
     name: Frequency
     description: See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)
@@ -1947,6 +2331,27 @@ classes:
         multivalued: false
         inlined_as_list: false
     class_uri: dcterms:PeriodOfTime
+  Plan:
+    name: Plan
+    description: A piece of information that specifies how an activity has to be carried
+      out by its agents including what kind of steps have to be taken and what kind
+      of parameters have to be met/set.
+    examples:
+    - description: 'We assigned the structure of sample CRS-37013 using a 13C NMR
+        (CHMO:0000595) and the settings: pulse sequence: zgpg30, temperature: 298.0
+        K, number of scans: 1024, Solvent : chloroform-D1 (CDCl3).'
+    in_subset:
+    - domain_agnostic_core
+    aliases:
+    - Plan Specification
+    - Method
+    - Procedure
+    mixins:
+    - ClassifierMixin
+    slots:
+    - title
+    - description
+    class_uri: prov:Entity
   Policy:
     name: Policy
     description: See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)
@@ -1957,6 +2362,67 @@ classes:
     description: See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)
     is_a: SupportiveEntity
     class_uri: dcterms:ProvenanceStatement
+  QualitativeAttribute:
+    name: QualitativeAttribute
+    description: A piece of information that is attributed to an entity of interest,
+      tool or environment.
+    in_subset:
+    - domain_agnostic_core
+    mixins:
+    - ClassifierMixin
+    slots:
+    - title
+    - description
+    - value
+    slot_usage:
+      value:
+        name: value
+        description: The slot to provide the literal value of the QualitativeAttribute.
+        required: true
+    class_uri: prov:Entity
+  QuantitativeAttribute:
+    name: QuantitativeAttribute
+    description: A quantifiable piece of information that is attributed to an entity
+      of interest, tool or environment.
+    in_subset:
+    - domain_agnostic_core
+    mixins:
+    - ClassifierMixin
+    slots:
+    - title
+    - description
+    - value
+    slot_usage:
+      value:
+        name: value
+        description: The slot to provide the literal value of the QuantitativeAttribute.
+        range: float
+        required: true
+    attributes:
+      has_quantity_type:
+        name: has_quantity_type
+        description: The type of quality that is quantifiable according to the QUDT
+          ontology.
+        slot_uri: qudt:hasQuantityKind
+        range: DefinedTerm
+        bindings:
+        - range: QUDTQuantityKindEnum
+          obligation_level: RECOMMENDED
+          binds_value_of: id
+          description: Binds the type of a quantifiable attribute to a QUDT Quantity
+            Kind instance from the QUDT Quantity Kind vocabulary.
+        required: true
+      unit:
+        name: unit
+        slot_uri: qudt:unit
+        range: DefinedTerm
+        bindings:
+        - range: QUDTUnitEnum
+          obligation_level: RECOMMENDED
+          binds_value_of: id
+          description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
+        recommended: true
+    class_uri: qudt:Quantity
   Relationship:
     name: Relationship
     description: See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)
@@ -1998,6 +2464,14 @@ classes:
     description: See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)
     is_a: SupportiveEntity
     class_uri: dcat:Role
+  Software:
+    name: Software
+    description: A software program with a certain function that was used within an
+      Activity.
+    in_subset:
+    - domain_agnostic_core
+    is_a: Tool
+    class_uri: prov:Entity
   Standard:
     name: Standard
     description: See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)
@@ -2013,3 +2487,33 @@ classes:
     description: See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)
     is_a: SupportiveEntity
     class_uri: time:Instant
+  Tool:
+    name: Tool
+    description: A entity with a certain function used within a Activity.
+    in_subset:
+    - domain_agnostic_core
+    mixins:
+    - ClassifierMixin
+    slots:
+    - title
+    - description
+    - other_identifier
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - has_part
+    slot_usage:
+      has_part:
+        name: has_part
+        description: The slot to specify parts of a tool.
+        range: Tool
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      other_identifier:
+        name: other_identifier
+        description: A slot to provide a secondary identifier of the tool.
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Entity

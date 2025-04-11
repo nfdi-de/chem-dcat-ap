@@ -12,12 +12,13 @@
    "RO": "http://purl.obolibrary.org/obo/RO_",
    "RXNO": "http://purl.obolibrary.org/obo/RXNO_",
    "SIO": "http://semanticscience.org/resource/SIO_",
+   "SOSA": "http://www.w3.org/ns/sosa/",
    "T4FS": "http://purl.obolibrary.org/obo/T4FS_",
    "adms": "http://www.w3.org/ns/adms#",
    "biolink": "https://w3id.org/biolink/vocab/",
    "dcat": "http://www.w3.org/ns/dcat#",
    "dcatap": "http://data.europa.eu/r5r/",
-   "dcatap_linkml": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml#",
+   "dcatap_plus": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#",
    "dcterms": "http://purl.org/dc/terms/",
    "doi": "https://doi.org/",
    "eli": "http://data.europa.eu/eli/ontology#",
@@ -79,7 +80,7 @@
       "@id": "prov:Entity"
    },
    "ClassifierMixin": {
-      "@id": "nfdi:ClassifierMixin"
+      "@id": "dcatap_plus:ClassifierMixin"
    },
    "Concept": {
       "@id": "skos:Concept"
@@ -88,9 +89,6 @@
       "@id": "skos:ConceptScheme"
    },
    "DataAnalysis": {
-      "@id": "prov:Activity"
-   },
-   "DataCreatingActivity": {
       "@id": "prov:Activity"
    },
    "DataService": {
@@ -104,6 +102,9 @@
    },
    "DefinedTerm": {
       "@id": "schema:DefinedTerm"
+   },
+   "Device": {
+      "@id": "prov:Entity"
    },
    "Distribution": {
       "@id": "dcat:Distribution"
@@ -125,9 +126,6 @@
    },
    "Geometry": {
       "@id": "locn:Geometry"
-   },
-   "HardwareTool": {
-      "@id": "nfdi:HardwareTool"
    },
    "Identifier": {
       "@id": "adms:Identifier"
@@ -195,12 +193,6 @@
    "Relationship": {
       "@id": "dcat:Relationship"
    },
-   "ResearchCatalog": {
-      "@id": "dcat:Catalog"
-   },
-   "ResearchDataset": {
-      "@id": "dcat:Dataset"
-   },
    "Resource": {
       "@id": "rdfs:Resource"
    },
@@ -213,14 +205,14 @@
    "SMILES": {
       "@id": "CHEMINF:000018"
    },
-   "SoftwareTool": {
-      "@id": "nfdi:SoftwareTool"
+   "Software": {
+      "@id": "prov:Entity"
    },
    "Standard": {
       "@id": "dcterms:Standard"
    },
    "SupportiveEntity": {
-      "@id": "dcatap_linkml:SupportiveEntity"
+      "@id": "dcatap_plus:SupportiveEntity"
    },
    "TimeInstant": {
       "@id": "time:Instant"
