@@ -213,23 +213,113 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-activity">Class: Activity</h1>
-<p><em>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity">DCAT-AP specs:Activity</a></em></p>
+<p><em>An activity (process) that has the objective to produce information aboutn entity or activity.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></p>
 <div class="mermaid"> classDiagram
     class Activity
     click Activity href "../Activity"
-      Activity &lt;|-- DataCreatingActivity
-        click DataCreatingActivity href "../DataCreatingActivity"
-      Activity &lt;|-- EvaluatedActivity
-        click EvaluatedActivity href "../EvaluatedActivity"
+      ClassifierMixin &lt;|-- Activity
+        click ClassifierMixin href "../ClassifierMixin"
+
+
+      Activity &lt;|-- NMRSpectroscopy
+        click NMRSpectroscopy href "../NMRSpectroscopy"
+      Activity &lt;|-- DataAnalysis
+        click DataAnalysis href "../DataAnalysis"
+
+
+      Activity : description
+
+      Activity : evaluated_activity
+
+
+
+
+    Activity --&gt; "* _recommended_" EvaluatedActivity : evaluated_activity
+    click EvaluatedActivity href "../EvaluatedActivity"
+
+
+      Activity : evaluated_entity
+
+
+
+
+    Activity --&gt; "* _recommended_" EvaluatedEntity : evaluated_entity
+    click EvaluatedEntity href "../EvaluatedEntity"
+
+
+      Activity : has_part
+
+
+
+
+    Activity --&gt; "0..1" Activity : has_part
+    click Activity href "../Activity"
+
+
+      Activity : occurred_in
+
+
+
+
+    Activity --&gt; "0..1" Environment : occurred_in
+    click Environment href "../Environment"
+
+
+      Activity : other_identifier
+
+
+
+
+    Activity --&gt; "*" Identifier : other_identifier
+    click Identifier href "../Identifier"
+
+
+      Activity : rdf_type
+
+
+
+
+    Activity --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+    click DefinedTerm href "../DefinedTerm"
+
+
+      Activity : realized_plan
+
+
+
+
+    Activity --&gt; "0..1 _recommended_" EvaluatedActivity : realized_plan
+    click EvaluatedActivity href "../EvaluatedActivity"
+
+
+      Activity : title
+
+      Activity : type
+
+
+
+
+    Activity --&gt; "0..1" DefinedTerm : type
+    click DefinedTerm href "../DefinedTerm"
+
+
+      Activity : used_tool
+
+
+
+
+    Activity --&gt; "* _recommended_" Tool : used_tool
+    click Tool href "../Tool"
+
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>Activity</strong><ul>
-<li><a href="../DataCreatingActivity/">DataCreatingActivity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]</li>
-<li><a href="../EvaluatedActivity/">EvaluatedActivity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]</li>
+<li><strong>Activity</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></li>
+<li><a href="../DataAnalysis/">DataAnalysis</a></li>
 </ul>
 </li>
 </ul>
@@ -245,10 +335,70 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="../title/">title</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../other_identifier/">other_identifier</a></td>
+<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>A secondary identifier of the Activity that created the Dataset</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../evaluated_entity/">evaluated_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>The slot to specify the entity of interest that was evaluated</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../evaluated_activity/">evaluated_activity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>The slot to specify the activity of interest that was evaluated</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../used_tool/">used_tool</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Tool/">Tool</a></td>
+<td>The slot to specify the tool that was used</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../realized_plan/">realized_plan</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>The slot to specify the Method (aka Procedure) that was realized by a Activit...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../has_part/">has_part</a></td>
+<td>0..1 <br/> <a href="./">Activity</a></td>
+<td>A slot to provide an Activity that is part of the Activity that created the D...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../occurred_in/">occurred_in</a></td>
+<td>0..1 <br/> <a href="../Environment/">Environment</a></td>
+<td>The slot to specify the Method (aka Procedure) that was used in the ActivityA...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>0..1 <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>This slot is described in more detail within the class in which it is used</td>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
+</tr>
+<tr>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>The slot to specify the ontology class that is instantiated by an entity</td>
+<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
 </tr>
 </tbody>
 </table>
@@ -288,20 +438,26 @@
 <td><a href="./">Activity</a></td>
 </tr>
 <tr>
-<td><a href="../Dataset/">Dataset</a></td>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
+<td><a href="./">Activity</a></td>
+<td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">Activity</a></td>
 </tr>
 <tr>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
-<td><a href="../has_part/">has_part</a></td>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
 <td>range</td>
 <td><a href="./">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../DataAnalysis/">DataAnalysis</a></td>
 <td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../Dataset/">Dataset</a></td>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
 <td>range</td>
 <td><a href="./">Activity</a></td>
 </tr>
@@ -335,6 +491,10 @@
 <td>native</td>
 <td>nfdi4c:Activity</td>
 </tr>
+<tr>
+<td>narrow</td>
+<td>NCIT:C25598, SOSA:Observation, OBI:0000070</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -342,8 +502,46 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Activity
-description: See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
+description: An activity (process) that has the objective to produce information aboutn
+  entity or activity.
+notes:
+- The properties (slots) of this class are part of the extension of the DCAT-AP.
+in_subset:
+- domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+narrow_mappings:
+- NCIT:C25598
+- SOSA:Observation
+- OBI:0000070
+mixins:
+- ClassifierMixin
+slots:
+- title
+- description
+- other_identifier
+- evaluated_entity
+- evaluated_activity
+- used_tool
+- realized_plan
+- has_part
+- occurred_in
+slot_usage:
+  has_part:
+    name: has_part
+    description: A slot to provide an Activity that is part of the Activity that created
+      the Dataset.
+    notes:
+    - not in DCAT-AP
+    range: Activity
+    inlined: true
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the Activity that created the Dataset.
+    notes:
+    - not in DCAT-AP
+    range: Identifier
+    multivalued: true
+    inlined_as_list: true
 class_uri: prov:Activity
 
 </code></pre>
@@ -351,8 +549,240 @@ class_uri: prov:Activity
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Activity
-description: See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
+description: An activity (process) that has the objective to produce information aboutn
+  entity or activity.
+notes:
+- The properties (slots) of this class are part of the extension of the DCAT-AP.
+in_subset:
+- domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+narrow_mappings:
+- NCIT:C25598
+- SOSA:Observation
+- OBI:0000070
+mixins:
+- ClassifierMixin
+slot_usage:
+  has_part:
+    name: has_part
+    description: A slot to provide an Activity that is part of the Activity that created
+      the Dataset.
+    notes:
+    - not in DCAT-AP
+    range: Activity
+    inlined: true
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the Activity that created the Dataset.
+    notes:
+    - not in DCAT-AP
+    range: Identifier
+    multivalued: true
+    inlined_as_list: true
+attributes:
+  title:
+    name: title
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:title
+    alias: title
+    owner: Activity
+    domain_of:
+    - Activity
+    - Catalogue
+    - CatalogueRecord
+    - ConceptScheme
+    - DataService
+    - Dataset
+    - DatasetSeries
+    - DefinedTerm
+    - Distribution
+    - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Plan
+    - QualitativeAttribute
+    - QuantitativeAttribute
+    - Tool
+    range: string
+  description:
+    name: description
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: Activity
+    domain_of:
+    - Activity
+    - Catalogue
+    - CatalogueRecord
+    - DataService
+    - Dataset
+    - DatasetSeries
+    - Distribution
+    - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Plan
+    - QualitativeAttribute
+    - QuantitativeAttribute
+    - Tool
+    range: string
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the Activity that created the Dataset.
+    notes:
+    - not in DCAT-AP
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: adms:identifier
+    alias: other_identifier
+    owner: Activity
+    domain_of:
+    - Activity
+    - Dataset
+    - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Tool
+    range: Identifier
+    multivalued: true
+    inlined_as_list: true
+  evaluated_entity:
+    name: evaluated_entity
+    description: The slot to specify the entity of interest that was evaluated.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:used
+    alias: evaluated_entity
+    owner: Activity
+    domain_of:
+    - Activity
+    range: EvaluatedEntity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  evaluated_activity:
+    name: evaluated_activity
+    description: The slot to specify the activity of interest that was evaluated.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:wasInformedBy
+    alias: evaluated_activity
+    owner: Activity
+    domain_of:
+    - Activity
+    range: EvaluatedActivity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  used_tool:
+    name: used_tool
+    description: The slot to specify the tool that was used.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:used
+    alias: used_tool
+    owner: Activity
+    domain_of:
+    - Activity
+    range: Tool
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  realized_plan:
+    name: realized_plan
+    description: The slot to specify the Method (aka Procedure) that was realized
+      by a Activity.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:used
+    alias: realized_plan
+    owner: Activity
+    domain_of:
+    - Activity
+    range: EvaluatedActivity
+    recommended: true
+  has_part:
+    name: has_part
+    description: A slot to provide an Activity that is part of the Activity that created
+      the Dataset.
+    notes:
+    - not in DCAT-AP
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:hasPart
+    alias: has_part
+    owner: Activity
+    domain_of:
+    - Activity
+    - Catalogue
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Tool
+    range: Activity
+    inlined: true
+  occurred_in:
+    name: occurred_in
+    description: The slot to specify the Method (aka Procedure) that was used in the
+      ActivityActivity.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: BFO:0000066
+    alias: occurred_in
+    owner: Activity
+    domain_of:
+    - Activity
+    range: Environment
+  type:
+    name: type
+    description: This slot is described in more detail within the class in which it
+      is used.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:type
+    alias: type
+    owner: Activity
+    domain_of:
+    - Agent
+    - ClassifierMixin
+    - Dataset
+    - LicenseDocument
+    range: DefinedTerm
+    inlined: true
+  rdf_type:
+    name: rdf_type
+    description: The slot to specify the ontology class that is instantiated by an
+      entity.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: rdf:type
+    alias: rdf_type
+    owner: Activity
+    domain_of:
+    - ClassifierMixin
+    range: DefinedTerm
+    recommended: true
+    inlined: true
 class_uri: prov:Activity
 
 </code></pre>

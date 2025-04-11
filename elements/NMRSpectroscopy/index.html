@@ -223,8 +223,8 @@
 <div class="mermaid"> classDiagram
     class NMRSpectroscopy
     click NMRSpectroscopy href "../NMRSpectroscopy"
-      DataCreatingActivity &lt;|-- NMRSpectroscopy
-        click DataCreatingActivity href "../DataCreatingActivity"
+      Activity &lt;|-- NMRSpectroscopy
+        click Activity href "../Activity"
 
       NMRSpectroscopy : description
 
@@ -287,8 +287,8 @@
 
 
 
-    NMRSpectroscopy --&gt; "0..1 _recommended_" Plan : realized_plan
-    click Plan href "../Plan"
+    NMRSpectroscopy --&gt; "0..1 _recommended_" EvaluatedActivity : realized_plan
+    click EvaluatedActivity href "../EvaluatedActivity"
 
 
       NMRSpectroscopy : title
@@ -315,11 +315,8 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Activity/">Activity</a><ul>
-<li><a href="../DataCreatingActivity/">DataCreatingActivity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../Activity/">Activity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><strong>NMRSpectroscopy</strong></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -338,55 +335,55 @@
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A secondary identifier of the DataCreatingActivity</td>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td>A secondary identifier of the Activity that created the Dataset</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../ChemicalSample/">ChemicalSample</a></td>
 <td>The slot to specify the entity of interest that was evaluated</td>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../evaluated_activity/">evaluated_activity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
 <td>The slot to specify the activity of interest that was evaluated</td>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../used_tool/">used_tool</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Tool/">Tool</a></td>
 <td>The slot to specify the tool that was used</td>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../realized_plan/">realized_plan</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../Plan/">Plan</a></td>
-<td>The slot to specify the Method (aka Procedure) that was realized by a DataCre...</td>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>The slot to specify the Method (aka Procedure) that was realized by a Activit...</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
 <td>0..1 <br/> <a href="../Activity/">Activity</a></td>
-<td>A slot to provide an Activity that is part of the DataCreatingActivity</td>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td>A slot to provide an Activity that is part of the Activity that created the D...</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../occurred_in/">occurred_in</a></td>
 <td>0..1 <br/> <a href="../Environment/">Environment</a></td>
-<td>The slot to specify the Method (aka Procedure) that was used in the DataCreat...</td>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td>The slot to specify the Method (aka Procedure) that was used in the ActivityA...</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
@@ -462,7 +459,7 @@ comments:
 - This class serves as an example for the way in which we want to build domain specific
   schema profiles. It will be outsourced to a more appropriate location in the future.
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-is_a: DataCreatingActivity
+is_a: Activity
 slot_usage:
   evaluated_entity:
     name: evaluated_entity
@@ -489,7 +486,7 @@ comments:
 - This class serves as an example for the way in which we want to build domain specific
   schema profiles. It will be outsourced to a more appropriate location in the future.
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-is_a: DataCreatingActivity
+is_a: Activity
 slot_usage:
   evaluated_entity:
     name: evaluated_entity
@@ -513,22 +510,22 @@ attributes:
     alias: title
     owner: NMRSpectroscopy
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
-    - Distribution
     - DefinedTerm
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
+    - Distribution
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   description:
     name: description
@@ -540,38 +537,39 @@ attributes:
     alias: description
     owner: NMRSpectroscopy
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   other_identifier:
     name: other_identifier
-    description: A secondary identifier of the DataCreatingActivity
+    description: A secondary identifier of the Activity that created the Dataset.
+    notes:
+    - not in DCAT-AP
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: adms:identifier
     alias: other_identifier
     owner: NMRSpectroscopy
     domain_of:
+    - Activity
     - Dataset
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Tool
     range: Identifier
-    required: false
     multivalued: true
     inlined_as_list: true
   evaluated_entity:
@@ -585,7 +583,7 @@ attributes:
     alias: evaluated_entity
     owner: NMRSpectroscopy
     domain_of:
-    - DataCreatingActivity
+    - Activity
     range: ChemicalSample
     recommended: true
     multivalued: true
@@ -602,7 +600,7 @@ attributes:
     alias: evaluated_activity
     owner: NMRSpectroscopy
     domain_of:
-    - DataCreatingActivity
+    - Activity
     range: EvaluatedActivity
     recommended: true
     multivalued: true
@@ -619,7 +617,7 @@ attributes:
     alias: used_tool
     owner: NMRSpectroscopy
     domain_of:
-    - DataCreatingActivity
+    - Activity
     range: Tool
     recommended: true
     multivalued: true
@@ -628,7 +626,7 @@ attributes:
   realized_plan:
     name: realized_plan
     description: The slot to specify the Method (aka Procedure) that was realized
-      by a DataCreatingActivity.
+      by a Activity.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -637,29 +635,32 @@ attributes:
     alias: realized_plan
     owner: NMRSpectroscopy
     domain_of:
-    - DataCreatingActivity
-    range: Plan
+    - Activity
+    range: EvaluatedActivity
     recommended: true
   has_part:
     name: has_part
-    description: A slot to provide an Activity that is part of the DataCreatingActivity.
+    description: A slot to provide an Activity that is part of the Activity that created
+      the Dataset.
+    notes:
+    - not in DCAT-AP
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:hasPart
     alias: has_part
     owner: NMRSpectroscopy
     domain_of:
+    - Activity
     - Catalogue
-    - DataCreatingActivity
-    - EvaluatedEntity
     - EvaluatedActivity
+    - EvaluatedEntity
     - Tool
     range: Activity
     inlined: true
   occurred_in:
     name: occurred_in
     description: The slot to specify the Method (aka Procedure) that was used in the
-      DataCreatingActivity.
+      ActivityActivity.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -668,7 +669,7 @@ attributes:
     alias: occurred_in
     owner: NMRSpectroscopy
     domain_of:
-    - DataCreatingActivity
+    - Activity
     range: Environment
   type:
     name: type
@@ -681,9 +682,9 @@ attributes:
     owner: NMRSpectroscopy
     domain_of:
     - Agent
+    - ClassifierMixin
     - Dataset
     - LicenseDocument
-    - ClassifierMixin
     range: DefinedTerm
     inlined: true
   rdf_type:

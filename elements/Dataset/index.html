@@ -213,13 +213,13 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-dataset">Class: Dataset</h1>
-<p><em>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset">DCAT-AP specs:Dataset</a></em></p>
+<p><em>A collection of data, published or curated by a single agent, and available for access or download in one or more representations.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/dcat#Dataset">dcat:Dataset</a></p>
 <div class="mermaid"> classDiagram
     class Dataset
     click Dataset href "../Dataset"
-      Dataset &lt;|-- ResearchDataset
-        click ResearchDataset href "../ResearchDataset"
+      Dataset &lt;|-- AnalysisDataset
+        click AnalysisDataset href "../AnalysisDataset"
 
       Dataset : access_rights
 
@@ -275,6 +275,24 @@
     click Distribution href "../Distribution"
 
 
+      Dataset : describes_activity
+
+
+
+
+    Dataset --&gt; "* _recommended_" EvaluatedActivity : describes_activity
+    click EvaluatedActivity href "../EvaluatedActivity"
+
+
+      Dataset : describes_entity
+
+
+
+
+    Dataset --&gt; "* _recommended_" EvaluatedEntity : describes_entity
+    click EvaluatedEntity href "../EvaluatedEntity"
+
+
       Dataset : description
 
       Dataset : documentation
@@ -312,6 +330,8 @@
     Dataset --&gt; "*" Dataset : has_version
     click Dataset href "../Dataset"
 
+
+      Dataset : id
 
       Dataset : identifier
 
@@ -471,7 +491,7 @@
 
 
 
-    Dataset --&gt; "*" Activity : was_generated_by
+    Dataset --&gt; "1..*" Activity : was_generated_by
     click Activity href "../Activity"
 
 
@@ -480,7 +500,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Dataset</strong><ul>
-<li><a href="../ResearchDataset/">ResearchDataset</a></li>
+<li><a href="../AnalysisDataset/">AnalysisDataset</a></li>
 </ul>
 </li>
 </ul>
@@ -707,8 +727,26 @@
 </tr>
 <tr>
 <td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>* <br/> <a href="../Activity/">Activity</a></td>
+<td>1..* <br/> <a href="../Activity/">Activity</a></td>
 <td>An activity that generated, or provides the business context for, the creatio...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A slot to provide an URI for an entity within this schema</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../describes_entity/">describes_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>A slot to provide the EvaluatedEntity that is described by a Dataset</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../describes_activity/">describes_activity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>A slot to provide the EvaluatedActivity that is described by a Dataset</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -732,6 +770,18 @@
 </tr>
 <tr>
 <td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
+<td><a href="../source/">source</a></td>
+<td>range</td>
+<td><a href="./">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
+<td><a href="../has_version/">has_version</a></td>
+<td>range</td>
+<td><a href="./">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
 <td><a href="../source/">source</a></td>
 <td>range</td>
 <td><a href="./">Dataset</a></td>
@@ -762,30 +812,6 @@
 </tr>
 <tr>
 <td><a href="./">Dataset</a></td>
-<td><a href="../source/">source</a></td>
-<td>range</td>
-<td><a href="./">Dataset</a></td>
-</tr>
-<tr>
-<td><a href="../ResearchDataset/">ResearchDataset</a></td>
-<td><a href="../has_version/">has_version</a></td>
-<td>range</td>
-<td><a href="./">Dataset</a></td>
-</tr>
-<tr>
-<td><a href="../ResearchDataset/">ResearchDataset</a></td>
-<td><a href="../source/">source</a></td>
-<td>range</td>
-<td><a href="./">Dataset</a></td>
-</tr>
-<tr>
-<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
-<td><a href="../has_version/">has_version</a></td>
-<td>range</td>
-<td><a href="./">Dataset</a></td>
-</tr>
-<tr>
-<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
 <td><a href="../source/">source</a></td>
 <td>range</td>
 <td><a href="./">Dataset</a></td>
@@ -821,7 +847,10 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Dataset
-description: See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
+description: A collection of data, published or curated by a single agent, and available
+  for access or download in one or more representations.
+in_subset:
+- domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 slots:
 - access_rights
@@ -860,6 +889,9 @@ slots:
 - version
 - version_notes
 - was_generated_by
+- id
+- describes_entity
+- describes_activity
 slot_usage:
   access_rights:
     name: access_rights
@@ -1156,9 +1188,11 @@ slot_usage:
     name: was_generated_by
     description: An activity that generated, or provides the business context for,
       the creation of the dataset.
+    notes:
+    - stricter than DCAT-AP
     slot_uri: prov:wasGeneratedBy
     range: Activity
-    required: false
+    required: true
     multivalued: true
     inlined_as_list: true
 class_uri: dcat:Dataset
@@ -1168,7 +1202,10 @@ class_uri: dcat:Dataset
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Dataset
-description: See [DCAT-AP specs:Dataset](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Dataset)
+description: A collection of data, published or curated by a single agent, and available
+  for access or download in one or more representations.
+in_subset:
+- domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 slot_usage:
   access_rights:
@@ -1466,9 +1503,11 @@ slot_usage:
     name: was_generated_by
     description: An activity that generated, or provides the business context for,
       the creation of the dataset.
+    notes:
+    - stricter than DCAT-AP
     slot_uri: prov:wasGeneratedBy
     range: Activity
-    required: false
+    required: true
     multivalued: true
     inlined_as_list: true
 attributes:
@@ -1577,20 +1616,20 @@ attributes:
     alias: description
     owner: Dataset
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
     required: true
     multivalued: true
@@ -1777,12 +1816,12 @@ attributes:
     alias: other_identifier
     owner: Dataset
     domain_of:
+    - Activity
     - Dataset
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Tool
     range: Identifier
     required: false
     multivalued: true
@@ -1977,22 +2016,22 @@ attributes:
     alias: title
     owner: Dataset
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
-    - Distribution
     - DefinedTerm
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
+    - Distribution
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
     required: true
     multivalued: true
@@ -2007,9 +2046,9 @@ attributes:
     owner: Dataset
     domain_of:
     - Agent
+    - ClassifierMixin
     - Dataset
     - LicenseDocument
-    - ClassifierMixin
     range: Concept
     required: false
     multivalued: true
@@ -2047,6 +2086,8 @@ attributes:
     name: was_generated_by
     description: An activity that generated, or provides the business context for,
       the creation of the dataset.
+    notes:
+    - stricter than DCAT-AP
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: prov:wasGeneratedBy
@@ -2056,8 +2097,59 @@ attributes:
     - Dataset
     - EvaluatedEntity
     range: Activity
-    required: false
+    required: true
     multivalued: true
+    inlined_as_list: true
+  id:
+    name: id
+    description: A slot to provide an URI for an entity within this schema.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: Dataset
+    domain_of:
+    - Dataset
+    - DefinedTerm
+    - EvaluatedActivity
+    - EvaluatedEntity
+    range: uriorcurie
+    required: true
+  describes_entity:
+    name: describes_entity
+    description: A slot to provide the EvaluatedEntity that is described by a Dataset.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:relation
+    alias: describes_entity
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: EvaluatedEntity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  describes_activity:
+    name: describes_activity
+    description: A slot to provide the EvaluatedActivity that is described by a Dataset.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:relation
+    alias: describes_activity
+    owner: Dataset
+    domain_of:
+    - Dataset
+    range: EvaluatedActivity
+    recommended: true
+    multivalued: true
+    inlined: true
     inlined_as_list: true
 class_uri: dcat:Dataset
 

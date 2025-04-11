@@ -360,13 +360,13 @@
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td><a href="../Device/">Device</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
@@ -378,19 +378,19 @@
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../Software/">Software</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
 <td><a href="../Tool/">Tool</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../HardwareTool/">HardwareTool</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../SoftwareTool/">SoftwareTool</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
@@ -447,7 +447,7 @@ attributes:
   has_quantity_type:
     name: has_quantity_type
     description: The type of quality that is quantifiable according to the QUDT ontology.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml
     rank: 1000
     slot_uri: qudt:hasQuantityKind
     domain_of:
@@ -462,7 +462,7 @@ attributes:
     required: true
   unit:
     name: unit
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml
     rank: 1000
     slot_uri: qudt:unit
     domain_of:
@@ -498,7 +498,7 @@ attributes:
   has_quantity_type:
     name: has_quantity_type
     description: The type of quality that is quantifiable according to the QUDT ontology.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml
     rank: 1000
     slot_uri: qudt:hasQuantityKind
     alias: has_quantity_type
@@ -515,7 +515,7 @@ attributes:
     required: true
   unit:
     name: unit
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml
     rank: 1000
     slot_uri: qudt:unit
     alias: unit
@@ -539,22 +539,22 @@ attributes:
     alias: title
     owner: QuantitativeAttribute
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
-    - Distribution
     - DefinedTerm
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
+    - Distribution
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   description:
     name: description
@@ -566,20 +566,20 @@ attributes:
     alias: description
     owner: QuantitativeAttribute
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   value:
     name: value
@@ -607,9 +607,9 @@ attributes:
     owner: QuantitativeAttribute
     domain_of:
     - Agent
+    - ClassifierMixin
     - Dataset
     - LicenseDocument
-    - ClassifierMixin
     range: DefinedTerm
     inlined: true
   rdf_type:

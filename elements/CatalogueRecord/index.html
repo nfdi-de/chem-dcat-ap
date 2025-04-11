@@ -359,12 +359,6 @@
 <td>range</td>
 <td><a href="./">CatalogueRecord</a></td>
 </tr>
-<tr>
-<td><a href="../ResearchCatalog/">ResearchCatalog</a></td>
-<td><a href="../record/">record</a></td>
-<td>range</td>
-<td><a href="./">CatalogueRecord</a></td>
-</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -636,20 +630,20 @@ attributes:
     alias: description
     owner: CatalogueRecord
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
     required: false
     multivalued: true
@@ -750,22 +744,22 @@ attributes:
     alias: title
     owner: CatalogueRecord
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
-    - Distribution
     - DefinedTerm
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
+    - Distribution
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
     required: false
     multivalued: true

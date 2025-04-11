@@ -345,7 +345,7 @@
 
 
 <h1 id="slot-realized_plan">Slot: realized_plan</h1>
-<p><em>The slot to specify the Method (aka Procedure) that was realized by a DataCreatingActivity.</em></p>
+<p><em>The slot to specify the Method (aka Procedure) that was realized by a Activity.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#used">prov:used</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -360,13 +360,18 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../Activity/">Activity</a></td>
+<td>An activity (process) that has the objective to produce information aboutn en...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
 <td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../DataAnalysis/">DataAnalysis</a></td>
-<td>A DataCreatingActivity that evaluates the data produced by another DataCreati...</td>
+<td>An Activity that evaluates the data produced by another Activity</td>
 <td>no</td>
 </tr>
 <tr>
@@ -374,17 +379,12 @@
 <td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
 <td>no</td>
 </tr>
-<tr>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
-<td>An activity (process) that has the objective to produce information about an ...</td>
-<td>no</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Plan/">Plan</a></p>
+<p>Range: <a href="../EvaluatedActivity/">EvaluatedActivity</a></p>
 </li>
 <li>
 <p>Recommended: True</p>
@@ -419,7 +419,7 @@
 
 <pre><code class="language-yaml">name: realized_plan
 description: The slot to specify the Method (aka Procedure) that was realized by a
-  DataCreatingActivity.
+  Activity.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -427,8 +427,8 @@ rank: 1000
 slot_uri: prov:used
 alias: realized_plan
 domain_of:
-- DataCreatingActivity
-range: Plan
+- Activity
+range: EvaluatedActivity
 recommended: true
 
 </code></pre>

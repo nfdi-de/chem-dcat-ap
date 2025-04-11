@@ -564,30 +564,6 @@
 <td><a href="./">Distribution</a></td>
 </tr>
 <tr>
-<td><a href="../Dataset/">Dataset</a></td>
-<td><a href="../dataset_distribution/">dataset_distribution</a></td>
-<td>range</td>
-<td><a href="./">Distribution</a></td>
-</tr>
-<tr>
-<td><a href="../Dataset/">Dataset</a></td>
-<td><a href="../sample/">sample</a></td>
-<td>range</td>
-<td><a href="./">Distribution</a></td>
-</tr>
-<tr>
-<td><a href="../ResearchDataset/">ResearchDataset</a></td>
-<td><a href="../dataset_distribution/">dataset_distribution</a></td>
-<td>range</td>
-<td><a href="./">Distribution</a></td>
-</tr>
-<tr>
-<td><a href="../ResearchDataset/">ResearchDataset</a></td>
-<td><a href="../sample/">sample</a></td>
-<td>range</td>
-<td><a href="./">Distribution</a></td>
-</tr>
-<tr>
 <td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
 <td><a href="../dataset_distribution/">dataset_distribution</a></td>
 <td>range</td>
@@ -595,6 +571,18 @@
 </tr>
 <tr>
 <td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
+<td><a href="../sample/">sample</a></td>
+<td>range</td>
+<td><a href="./">Distribution</a></td>
+</tr>
+<tr>
+<td><a href="../Dataset/">Dataset</a></td>
+<td><a href="../dataset_distribution/">dataset_distribution</a></td>
+<td>range</td>
+<td><a href="./">Distribution</a></td>
+</tr>
+<tr>
+<td><a href="../Dataset/">Dataset</a></td>
 <td><a href="../sample/">sample</a></td>
 <td>range</td>
 <td><a href="./">Distribution</a></td>
@@ -1188,20 +1176,20 @@ attributes:
     alias: description
     owner: Distribution
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
     required: false
     recommended: true
@@ -1449,22 +1437,22 @@ attributes:
     alias: title
     owner: Distribution
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
-    - Distribution
     - DefinedTerm
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
+    - Distribution
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
     required: false
     multivalued: true

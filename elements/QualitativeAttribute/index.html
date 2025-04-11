@@ -347,13 +347,13 @@
 <td><a href="./">QualitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td><a href="../Device/">Device</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>
@@ -365,19 +365,19 @@
 <td><a href="./">QualitativeAttribute</a></td>
 </tr>
 <tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QualitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../Software/">Software</a></td>
+<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QualitativeAttribute</a></td>
+</tr>
+<tr>
 <td><a href="../Tool/">Tool</a></td>
-<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QualitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../HardwareTool/">HardwareTool</a></td>
-<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QualitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../SoftwareTool/">SoftwareTool</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>
@@ -459,22 +459,22 @@ attributes:
     alias: title
     owner: QualitativeAttribute
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
-    - Distribution
     - DefinedTerm
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
+    - Distribution
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   description:
     name: description
@@ -486,20 +486,20 @@ attributes:
     alias: description
     owner: QualitativeAttribute
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   value:
     name: value
@@ -527,9 +527,9 @@ attributes:
     owner: QualitativeAttribute
     domain_of:
     - Agent
+    - ClassifierMixin
     - Dataset
     - LicenseDocument
-    - ClassifierMixin
     range: DefinedTerm
     inlined: true
   rdf_type:

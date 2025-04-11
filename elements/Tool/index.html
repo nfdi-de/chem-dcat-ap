@@ -213,7 +213,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-tool">Class: Tool</h1>
-<p><em>A entity with a certain function used within a DataCreatingActivity.</em></p>
+<p><em>A entity with a certain function used within a Activity.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a></p>
 <div class="mermaid"> classDiagram
     class Tool
@@ -222,10 +222,10 @@
         click ClassifierMixin href "../ClassifierMixin"
 
 
-      Tool &lt;|-- HardwareTool
-        click HardwareTool href "../HardwareTool"
-      Tool &lt;|-- SoftwareTool
-        click SoftwareTool href "../SoftwareTool"
+      Tool &lt;|-- Device
+        click Device href "../Device"
+      Tool &lt;|-- Software
+        click Software href "../Software"
 
 
       Tool : description
@@ -244,7 +244,7 @@
 
 
 
-    Tool --&gt; "*" QualitativeAttribute : has_qualitative_attribute
+    Tool --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
     click QualitativeAttribute href "../QualitativeAttribute"
 
 
@@ -253,7 +253,7 @@
 
 
 
-    Tool --&gt; "*" QuantitativeAttribute : has_quantitative_attribute
+    Tool --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
     click QuantitativeAttribute href "../QuantitativeAttribute"
 
 
@@ -291,8 +291,8 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Tool</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
-<li><a href="../HardwareTool/">HardwareTool</a></li>
-<li><a href="../SoftwareTool/">SoftwareTool</a></li>
+<li><a href="../Device/">Device</a></li>
+<li><a href="../Software/">Software</a></li>
 </ul>
 </li>
 </ul>
@@ -322,19 +322,19 @@
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A secondary identifier of the EvaluatedActivity</td>
+<td>A slot to provide a secondary identifier of the tool</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>* <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 <td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>* <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative  attribute to an entity of interest, tool o...</td>
+<td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -381,7 +381,7 @@
 <td><a href="./">Tool</a></td>
 </tr>
 <tr>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td><a href="../Activity/">Activity</a></td>
 <td><a href="../used_tool/">used_tool</a></td>
 <td>range</td>
 <td><a href="./">Tool</a></td>
@@ -393,19 +393,19 @@
 <td><a href="./">Tool</a></td>
 </tr>
 <tr>
-<td><a href="./">Tool</a></td>
+<td><a href="../Device/">Device</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">Tool</a></td>
 </tr>
 <tr>
-<td><a href="../HardwareTool/">HardwareTool</a></td>
+<td><a href="../Software/">Software</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">Tool</a></td>
 </tr>
 <tr>
-<td><a href="../SoftwareTool/">SoftwareTool</a></td>
+<td><a href="./">Tool</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">Tool</a></td>
@@ -434,10 +434,6 @@
 <td>native</td>
 <td>nfdi4c:Tool</td>
 </tr>
-<tr>
-<td>broad</td>
-<td>prov:Entity</td>
-</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
@@ -445,12 +441,10 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Tool
-description: A entity with a certain function used within a DataCreatingActivity.
+description: A entity with a certain function used within a Activity.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-broad_mappings:
-- prov:Entity
 mixins:
 - ClassifierMixin
 slots:
@@ -470,8 +464,7 @@ slot_usage:
     inlined_as_list: true
   other_identifier:
     name: other_identifier
-    description: A secondary identifier of the EvaluatedActivity
-    slot_uri: adms:identifier
+    description: A slot to provide a secondary identifier of the tool.
     range: Identifier
     required: false
     multivalued: true
@@ -483,12 +476,10 @@ class_uri: prov:Entity
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Tool
-description: A entity with a certain function used within a DataCreatingActivity.
+description: A entity with a certain function used within a Activity.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-broad_mappings:
-- prov:Entity
 mixins:
 - ClassifierMixin
 slot_usage:
@@ -501,8 +492,7 @@ slot_usage:
     inlined_as_list: true
   other_identifier:
     name: other_identifier
-    description: A secondary identifier of the EvaluatedActivity
-    slot_uri: adms:identifier
+    description: A slot to provide a secondary identifier of the tool.
     range: Identifier
     required: false
     multivalued: true
@@ -518,22 +508,22 @@ attributes:
     alias: title
     owner: Tool
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
-    - Distribution
     - DefinedTerm
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
+    - Distribution
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   description:
     name: description
@@ -545,36 +535,36 @@ attributes:
     alias: description
     owner: Tool
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   other_identifier:
     name: other_identifier
-    description: A secondary identifier of the EvaluatedActivity
+    description: A slot to provide a secondary identifier of the tool.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: adms:identifier
     alias: other_identifier
     owner: Tool
     domain_of:
+    - Activity
     - Dataset
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Tool
     range: Identifier
     required: false
     multivalued: true
@@ -591,16 +581,17 @@ attributes:
     alias: has_qualitative_attribute
     owner: Tool
     domain_of:
-    - EvaluatedEntity
     - EvaluatedActivity
+    - EvaluatedEntity
     - Tool
     range: QualitativeAttribute
+    recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
   has_quantitative_attribute:
     name: has_quantitative_attribute
-    description: The slot to relate a quantitative  attribute to an entity of interest,
+    description: The slot to relate a quantitative attribute to an entity of interest,
       tool or environment.
     in_subset:
     - domain_agnostic_core
@@ -610,10 +601,11 @@ attributes:
     alias: has_quantitative_attribute
     owner: Tool
     domain_of:
-    - EvaluatedEntity
     - EvaluatedActivity
+    - EvaluatedEntity
     - Tool
     range: QuantitativeAttribute
+    recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -626,10 +618,10 @@ attributes:
     alias: has_part
     owner: Tool
     domain_of:
+    - Activity
     - Catalogue
-    - DataCreatingActivity
-    - EvaluatedEntity
     - EvaluatedActivity
+    - EvaluatedEntity
     - Tool
     range: Tool
     multivalued: true
@@ -646,9 +638,9 @@ attributes:
     owner: Tool
     domain_of:
     - Agent
+    - ClassifierMixin
     - Dataset
     - LicenseDocument
-    - ClassifierMixin
     range: DefinedTerm
     inlined: true
   rdf_type:

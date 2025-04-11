@@ -369,6 +369,12 @@
 <td><a href="./">DatasetSeries</a></td>
 </tr>
 <tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
+<td><a href="../in_series/">in_series</a></td>
+<td>range</td>
+<td><a href="./">DatasetSeries</a></td>
+</tr>
+<tr>
 <td><a href="../CatalogueRecord/">CatalogueRecord</a></td>
 <td><a href="../primary_topic/">primary_topic</a></td>
 <td>any_of[range]</td>
@@ -376,18 +382,6 @@
 </tr>
 <tr>
 <td><a href="../Dataset/">Dataset</a></td>
-<td><a href="../in_series/">in_series</a></td>
-<td>range</td>
-<td><a href="./">DatasetSeries</a></td>
-</tr>
-<tr>
-<td><a href="../ResearchDataset/">ResearchDataset</a></td>
-<td><a href="../in_series/">in_series</a></td>
-<td>range</td>
-<td><a href="./">DatasetSeries</a></td>
-</tr>
-<tr>
-<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
 <td><a href="../in_series/">in_series</a></td>
 <td>range</td>
 <td><a href="./">DatasetSeries</a></td>
@@ -659,20 +653,20 @@ attributes:
     alias: description
     owner: DatasetSeries
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
     required: true
     multivalued: true
@@ -786,22 +780,22 @@ attributes:
     alias: title
     owner: DatasetSeries
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
-    - Distribution
     - DefinedTerm
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
+    - Distribution
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
     required: true
     multivalued: true

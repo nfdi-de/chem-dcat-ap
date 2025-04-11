@@ -277,6 +277,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#todos" class="md-nav__link">
+    TODOs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     Identifier and Mapping Information
   </a>
@@ -327,6 +334,10 @@
 <p><em>Possible kinds of QUDT unit instances.</em></p>
 <p>URI: <a href="./">QUDTUnitEnum</a></p>
 <p><em>This is a dynamic enum</em></p>
+<h2 id="todos">TODOs</h2>
+<ul>
+<li>Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should be used to constrain the range of the type slot instead of using the default DefinedTerm as range. This will be done in profiles of this schema where we define Activity subclasses, e.g. NMRSpectroscopy. seeAlso: https://github.com/linkml/linkml-model/blob/main/tests/input/examples/schema_definition-enum_bindings-1.yaml</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -339,6 +350,11 @@
 implements:
 - owl:NamedIndividual
 description: Possible kinds of QUDT unit instances.
+todos:
+- 'Dynamic enums (https://linkml.io/linkml/schemas/enums.html#dynamic-enums) should
+  be used to constrain the range of the type slot instead of using the default DefinedTerm
+  as range. This will be done in profiles of this schema where we define Activity
+  subclasses, e.g. NMRSpectroscopy. seeAlso: https://github.com/linkml/linkml-model/blob/main/tests/input/examples/schema_definition-enum_bindings-1.yaml'
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -346,7 +362,7 @@ rank: 1000
 reachable_from:
   source_ontology: https://qudt.org/vocab/unit/
   source_nodes:
-  - qudt:Unit
+  - qudt:QuantityKind
   relationship_types:
   - rdf:type
   is_direct: true

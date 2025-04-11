@@ -237,7 +237,7 @@
 
 
 
-    ChemicalSubstance --&gt; "0..1" EvaluatedEntity : has_part
+    ChemicalSubstance --&gt; "*" EvaluatedEntity : has_part
     click EvaluatedEntity href "../EvaluatedEntity"
 
 
@@ -246,7 +246,7 @@
 
 
 
-    ChemicalSubstance --&gt; "*" QualitativeAttribute : has_qualitative_attribute
+    ChemicalSubstance --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
     click QualitativeAttribute href "../QualitativeAttribute"
 
 
@@ -255,7 +255,7 @@
 
 
 
-    ChemicalSubstance --&gt; "*" QuantitativeAttribute : has_quantitative_attribute
+    ChemicalSubstance --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
     click QuantitativeAttribute href "../QuantitativeAttribute"
 
 
@@ -349,32 +349,32 @@
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 </tr>
 <tr>
-<td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A slot to provide an URI for an entity within this schema</td>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-</tr>
-<tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
 <td>A slot to provide a secondary identifier of the EvaluatedEntity</td>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 </tr>
 <tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A slot to provide an URI for an entity within this schema</td>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+</tr>
+<tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>* <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 <td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>* <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative  attribute to an entity of interest, tool o...</td>
+<td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>0..1 <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>* <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 <td>A slot to provide a part of the EvaluatedEntity</td>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 </tr>
@@ -497,22 +497,22 @@ attributes:
     alias: title
     owner: ChemicalSubstance
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
-    - Distribution
     - DefinedTerm
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
+    - Distribution
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   description:
     name: description
@@ -524,40 +524,21 @@ attributes:
     alias: description
     owner: ChemicalSubstance
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
-  id:
-    name: id
-    description: A slot to provide an URI for an entity within this schema.
-    in_subset:
-    - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: dcterms:identifier
-    identifier: true
-    alias: id
-    owner: ChemicalSubstance
-    domain_of:
-    - DefinedTerm
-    - ResearchDataset
-    - ResearchCatalog
-    - EvaluatedEntity
-    - EvaluatedActivity
-    range: uriorcurie
-    required: true
   other_identifier:
     name: other_identifier
     description: A slot to provide a secondary identifier of the EvaluatedEntity.
@@ -567,16 +548,33 @@ attributes:
     alias: other_identifier
     owner: ChemicalSubstance
     domain_of:
+    - Activity
     - Dataset
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Tool
     range: Identifier
     required: false
     multivalued: true
     inlined_as_list: true
+  id:
+    name: id
+    description: A slot to provide an URI for an entity within this schema.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: ChemicalSubstance
+    domain_of:
+    - Dataset
+    - DefinedTerm
+    - EvaluatedActivity
+    - EvaluatedEntity
+    range: uriorcurie
+    required: true
   has_qualitative_attribute:
     name: has_qualitative_attribute
     description: The slot to relate a qualitative attribute to an entity of interest,
@@ -589,16 +587,17 @@ attributes:
     alias: has_qualitative_attribute
     owner: ChemicalSubstance
     domain_of:
-    - EvaluatedEntity
     - EvaluatedActivity
+    - EvaluatedEntity
     - Tool
     range: QualitativeAttribute
+    recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
   has_quantitative_attribute:
     name: has_quantitative_attribute
-    description: The slot to relate a quantitative  attribute to an entity of interest,
+    description: The slot to relate a quantitative attribute to an entity of interest,
       tool or environment.
     in_subset:
     - domain_agnostic_core
@@ -608,10 +607,11 @@ attributes:
     alias: has_quantitative_attribute
     owner: ChemicalSubstance
     domain_of:
-    - EvaluatedEntity
     - EvaluatedActivity
+    - EvaluatedEntity
     - Tool
     range: QuantitativeAttribute
+    recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -624,12 +624,14 @@ attributes:
     alias: has_part
     owner: ChemicalSubstance
     domain_of:
+    - Activity
     - Catalogue
-    - DataCreatingActivity
-    - EvaluatedEntity
     - EvaluatedActivity
+    - EvaluatedEntity
     - Tool
     range: EvaluatedEntity
+    multivalued: true
+    inlined_as_list: true
   was_generated_by:
     name: was_generated_by
     description: A slot to provide the Activity which created the EvaluatedEntity.
@@ -655,9 +657,9 @@ attributes:
     owner: ChemicalSubstance
     domain_of:
     - Agent
+    - ClassifierMixin
     - Dataset
     - LicenseDocument
-    - ClassifierMixin
     range: DefinedTerm
     inlined: true
   rdf_type:

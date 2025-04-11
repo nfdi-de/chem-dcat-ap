@@ -292,7 +292,7 @@
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A secondary identifier of the Environment</td>
+<td>A slot to provide a secondary identifier of the Environment</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -333,7 +333,7 @@
 <td><a href="./">Environment</a></td>
 </tr>
 <tr>
-<td><a href="../DataCreatingActivity/">DataCreatingActivity</a></td>
+<td><a href="../Activity/">Activity</a></td>
 <td><a href="../occurred_in/">occurred_in</a></td>
 <td>range</td>
 <td><a href="./">Environment</a></td>
@@ -389,8 +389,7 @@ slots:
 slot_usage:
   other_identifier:
     name: other_identifier
-    description: A secondary identifier of the Environment
-    slot_uri: adms:identifier
+    description: A slot to provide a secondary identifier of the Environment.
     range: Identifier
     required: false
     multivalued: true
@@ -412,8 +411,7 @@ mixins:
 slot_usage:
   other_identifier:
     name: other_identifier
-    description: A secondary identifier of the Environment
-    slot_uri: adms:identifier
+    description: A slot to provide a secondary identifier of the Environment.
     range: Identifier
     required: false
     multivalued: true
@@ -429,22 +427,22 @@ attributes:
     alias: title
     owner: Environment
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
-    - Distribution
     - DefinedTerm
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
+    - Distribution
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   description:
     name: description
@@ -456,36 +454,36 @@ attributes:
     alias: description
     owner: Environment
     domain_of:
+    - Activity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Tool
     range: string
   other_identifier:
     name: other_identifier
-    description: A secondary identifier of the Environment
+    description: A slot to provide a secondary identifier of the Environment.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: adms:identifier
     alias: other_identifier
     owner: Environment
     domain_of:
+    - Activity
     - Dataset
-    - DataCreatingActivity
-    - EvaluatedEntity
-    - EvaluatedActivity
-    - Tool
     - Environment
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Tool
     range: Identifier
     required: false
     multivalued: true
@@ -501,9 +499,9 @@ attributes:
     owner: Environment
     domain_of:
     - Agent
+    - ClassifierMixin
     - Dataset
     - LicenseDocument
-    - ClassifierMixin
     range: DefinedTerm
     inlined: true
   rdf_type:

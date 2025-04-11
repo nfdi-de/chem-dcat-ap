@@ -290,6 +290,18 @@
 <td><a href="./">Agent</a></td>
 </tr>
 <tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
+<td><a href="../creator/">creator</a></td>
+<td>range</td>
+<td><a href="./">Agent</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
+<td><a href="../publisher/">publisher</a></td>
+<td>range</td>
+<td><a href="./">Agent</a></td>
+</tr>
+<tr>
 <td><a href="../Catalogue/">Catalogue</a></td>
 <td><a href="../creator/">creator</a></td>
 <td>range</td>
@@ -321,42 +333,6 @@
 </tr>
 <tr>
 <td><a href="../DatasetSeries/">DatasetSeries</a></td>
-<td><a href="../publisher/">publisher</a></td>
-<td>range</td>
-<td><a href="./">Agent</a></td>
-</tr>
-<tr>
-<td><a href="../ResearchDataset/">ResearchDataset</a></td>
-<td><a href="../creator/">creator</a></td>
-<td>range</td>
-<td><a href="./">Agent</a></td>
-</tr>
-<tr>
-<td><a href="../ResearchDataset/">ResearchDataset</a></td>
-<td><a href="../publisher/">publisher</a></td>
-<td>range</td>
-<td><a href="./">Agent</a></td>
-</tr>
-<tr>
-<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
-<td><a href="../creator/">creator</a></td>
-<td>range</td>
-<td><a href="./">Agent</a></td>
-</tr>
-<tr>
-<td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
-<td><a href="../publisher/">publisher</a></td>
-<td>range</td>
-<td><a href="./">Agent</a></td>
-</tr>
-<tr>
-<td><a href="../ResearchCatalog/">ResearchCatalog</a></td>
-<td><a href="../creator/">creator</a></td>
-<td>range</td>
-<td><a href="./">Agent</a></td>
-</tr>
-<tr>
-<td><a href="../ResearchCatalog/">ResearchCatalog</a></td>
 <td><a href="../publisher/">publisher</a></td>
 <td>range</td>
 <td><a href="./">Agent</a></td>
@@ -469,9 +445,9 @@ attributes:
     owner: Agent
     domain_of:
     - Agent
+    - ClassifierMixin
     - Dataset
     - LicenseDocument
-    - ClassifierMixin
     range: Concept
     required: false
     recommended: true

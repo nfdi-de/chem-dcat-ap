@@ -345,7 +345,7 @@
 
 
 <h1 id="slot-has_quantitative_attribute">Slot: has_quantitative_attribute</h1>
-<p><em>The slot to relate a quantitative  attribute to an entity of interest, tool or environment.</em></p>
+<p><em>The slot to relate a quantitative attribute to an entity of interest, tool or environment.</em></p>
 <p>URI: <a href="http://purl.org/dc/terms/relation">dcterms:relation</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -360,33 +360,23 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../SoftwareTool/">SoftwareTool</a></td>
-<td>A software program with a certain function that was used within a DataCreatin...</td>
+<td><a href="../Software/">Software</a></td>
+<td>A software program with a certain function that was used within an Activity</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td>A portion of matter of constant composition, composed of molecular entities o...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../HardwareTool/">HardwareTool</a></td>
-<td>A hardware device with a certain function that was used within a DataCreating...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
-<td>Information that was evaluated within a DataAnalysis</td>
+<td><a href="../Tool/">Tool</a></td>
+<td>A entity with a certain function used within a Activity</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>An activity or process that is being evaluated in a DataCreatingActivity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
-<td>A set of chemical shifts obtained via NMR spectroscopy</td>
+<td>An activity or proces that is being evaluated in a Activity</td>
 <td>no</td>
 </tr>
 <tr>
@@ -395,13 +385,23 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Tool/">Tool</a></td>
-<td>A entity with a certain function used within a DataCreatingActivity</td>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>Information that was evaluated within a DataAnalysis</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A portion of matter of constant composition, composed of molecular entities o...</td>
+<td><a href="../Device/">Device</a></td>
+<td>A hardware device with a certain function that was used within ann Activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td>A set of chemical shifts obtained via NMR spectroscopy</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -418,6 +418,9 @@
 </li>
 <li>
 <p>Multivalued: True</p>
+</li>
+<li>
+<p>Recommended: True</p>
 </li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -448,7 +451,7 @@
 <details>
 
 <pre><code class="language-yaml">name: has_quantitative_attribute
-description: The slot to relate a quantitative  attribute to an entity of interest,
+description: The slot to relate a quantitative attribute to an entity of interest,
   tool or environment.
 in_subset:
 - domain_agnostic_core
@@ -457,10 +460,11 @@ rank: 1000
 slot_uri: dcterms:relation
 alias: has_quantitative_attribute
 domain_of:
-- EvaluatedEntity
 - EvaluatedActivity
+- EvaluatedEntity
 - Tool
 range: QuantitativeAttribute
+recommended: true
 multivalued: true
 inlined: true
 inlined_as_list: true
