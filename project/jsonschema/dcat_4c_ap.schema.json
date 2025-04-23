@@ -42,6 +42,13 @@
                     ],
                     "description": "A slot to provide an Activity that is part of the Activity that created the Dataset."
                 },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "occurred_in": {
                     "anyOf": [
                         {
@@ -110,6 +117,9 @@
                     ]
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "Activity",
             "type": "object"
         },
@@ -1419,6 +1429,10 @@
                     ],
                     "description": "A slot to provide an Activity that is part of the Activity that created the Dataset."
                 },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
                 "occurred_in": {
                     "anyOf": [
                         {
@@ -1487,6 +1501,9 @@
                     ]
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "DataAnalysis",
             "type": "object"
         },
@@ -2234,6 +2251,10 @@
                         "null"
                     ]
                 },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
                 "other_identifier": {
                     "description": "A slot to provide a secondary identifier of the tool.",
                     "items": {
@@ -2274,6 +2295,9 @@
                     "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "Device",
             "type": "object"
         },
@@ -2718,10 +2742,7 @@
                 },
                 "id": {
                     "description": "A slot to provide an URI for an entity within this schema.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "other_identifier": {
                     "description": "A slot to provide a secondary identifier of the EvaluatedEntity.",
@@ -3524,6 +3545,10 @@
                     ],
                     "description": "A slot to provide an Activity that is part of the Activity that created the Dataset."
                 },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
                 "occurred_in": {
                     "anyOf": [
                         {
@@ -3592,6 +3617,9 @@
                     ]
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "NMRSpectralAnalysis",
             "type": "object"
         },
@@ -3636,6 +3664,10 @@
                         }
                     ],
                     "description": "A slot to provide an Activity that is part of the Activity that created the Dataset."
+                },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
                 },
                 "occurred_in": {
                     "anyOf": [
@@ -3705,6 +3737,9 @@
                     ]
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "NMRSpectroscopy",
             "type": "object"
         },
@@ -4168,6 +4203,10 @@
                         "null"
                     ]
                 },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
                 "other_identifier": {
                     "description": "A slot to provide a secondary identifier of the tool.",
                     "items": {
@@ -4208,6 +4247,9 @@
                     "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "Software",
             "type": "object"
         },
@@ -4270,6 +4312,10 @@
                         "null"
                     ]
                 },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
                 "other_identifier": {
                     "description": "A slot to provide a secondary identifier of the tool.",
                     "items": {
@@ -4310,6 +4356,9 @@
                     "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "Tool",
             "type": "object"
         },
