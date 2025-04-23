@@ -177,7 +177,7 @@ def parse_dcat_ap_shacl_shapes(builder):
                                   {'range':'Dataset'},
                                   {'range':'DatasetSeries'},
                                   {'range':'DataService'}]
-                    elif slot_name in ['modification_date', 'listing_date', 'release_date']:
+                    elif slot_name in ['modification_date', 'listing_date', 'release_date', 'start_date', 'end_date']:
                         slot_range = 'date'
                     else:
                         slot_range = 'string'
