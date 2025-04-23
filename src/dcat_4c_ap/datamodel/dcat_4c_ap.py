@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-04-08T14:31:39
+# Generation date: 2025-04-23T11:41:37
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -138,6 +138,22 @@ class NonNegativeInteger(int):
 
 
 # Class references
+class ActivityId(URIorCURIE):
+    pass
+
+
+class NMRSpectroscopyId(ActivityId):
+    pass
+
+
+class DataAnalysisId(ActivityId):
+    pass
+
+
+class NMRSpectralAnalysisId(DataAnalysisId):
+    pass
+
+
 class DatasetId(URIorCURIE):
     pass
 
@@ -179,6 +195,18 @@ class AnalysisSourceDataId(EvaluatedEntityId):
 
 
 class NMRSpectrumId(AnalysisSourceDataId):
+    pass
+
+
+class ToolId(URIorCURIE):
+    pass
+
+
+class DeviceId(ToolId):
+    pass
+
+
+class SoftwareId(ToolId):
     pass
 
 
@@ -228,12 +256,13 @@ class Activity(YAMLRoot):
     class_name: ClassVar[str] = "Activity"
     class_model_uri: ClassVar[URIRef] = NFDI4C.Activity
 
+    id: Union[str, ActivityId] = None
     title: Optional[str] = None
     description: Optional[str] = None
     other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
     evaluated_entity: Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, "EvaluatedEntity"]], List[Union[dict, "EvaluatedEntity"]]]] = empty_dict()
     evaluated_activity: Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, "EvaluatedActivity"]], List[Union[dict, "EvaluatedActivity"]]]] = empty_dict()
-    used_tool: Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]] = empty_list()
+    used_tool: Optional[Union[Dict[Union[str, ToolId], Union[dict, "Tool"]], List[Union[dict, "Tool"]]]] = empty_dict()
     realized_plan: Optional[Union[str, EvaluatedActivityId]] = None
     has_part: Optional[Union[dict, "Activity"]] = None
     occurred_in: Optional[Union[dict, "Environment"]] = None
@@ -241,6 +270,11 @@ class Activity(YAMLRoot):
     rdf_type: Optional[Union[dict, "DefinedTerm"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ActivityId):
+            self.id = ActivityId(self.id)
+
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
 
@@ -255,9 +289,7 @@ class Activity(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="evaluated_activity", slot_type=EvaluatedActivity, key_name="id", keyed=True)
 
-        if not isinstance(self.used_tool, list):
-            self.used_tool = [self.used_tool] if self.used_tool is not None else []
-        self.used_tool = [v if isinstance(v, Tool) else Tool(**as_dict(v)) for v in self.used_tool]
+        self._normalize_inlined_as_list(slot_name="used_tool", slot_type=Tool, key_name="id", keyed=True)
 
         if self.realized_plan is not None and not isinstance(self.realized_plan, EvaluatedActivityId):
             self.realized_plan = EvaluatedActivityId(self.realized_plan)
@@ -291,10 +323,16 @@ class NMRSpectroscopy(Activity):
     class_name: ClassVar[str] = "NMRSpectroscopy"
     class_model_uri: ClassVar[URIRef] = NFDI4C.NMRSpectroscopy
 
+    id: Union[str, NMRSpectroscopyId] = None
     evaluated_entity: Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, "ChemicalSample"]], List[Union[dict, "ChemicalSample"]]]] = empty_dict()
     rdf_type: Optional[Union[dict, "DefinedTerm"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, NMRSpectroscopyId):
+            self.id = NMRSpectroscopyId(self.id)
+
         self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=ChemicalSample, key_name="id", keyed=True)
 
         if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
@@ -507,9 +545,15 @@ class DataAnalysis(Activity):
     class_name: ClassVar[str] = "DataAnalysis"
     class_model_uri: ClassVar[URIRef] = NFDI4C.DataAnalysis
 
+    id: Union[str, DataAnalysisId] = None
     evaluated_entity: Optional[Union[Dict[Union[str, AnalysisSourceDataId], Union[dict, "AnalysisSourceData"]], List[Union[dict, "AnalysisSourceData"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DataAnalysisId):
+            self.id = DataAnalysisId(self.id)
+
         self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=AnalysisSourceData, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
@@ -527,9 +571,15 @@ class NMRSpectralAnalysis(DataAnalysis):
     class_name: ClassVar[str] = "NMRSpectralAnalysis"
     class_model_uri: ClassVar[URIRef] = NFDI4C.NMRSpectralAnalysis
 
+    id: Union[str, NMRSpectralAnalysisId] = None
     evaluated_entity: Optional[Union[Dict[Union[str, NMRSpectrumId], Union[dict, "NMRSpectrum"]], List[Union[dict, "NMRSpectrum"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, NMRSpectralAnalysisId):
+            self.id = NMRSpectralAnalysisId(self.id)
+
         self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=NMRSpectrum, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
@@ -647,7 +697,7 @@ class Dataset(YAMLRoot):
     id: Union[str, DatasetId] = None
     description: Union[str, List[str]] = None
     title: Union[str, List[str]] = None
-    was_generated_by: Union[Union[dict, Activity], List[Union[dict, Activity]]] = None
+    was_generated_by: Union[Dict[Union[str, ActivityId], Union[dict, Activity]], List[Union[dict, Activity]]] = empty_dict()
     access_rights: Optional[Union[dict, "RightsStatement"]] = None
     applicable_legislation: Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]] = empty_list()
     conforms_to: Optional[Union[Union[dict, "Standard"], List[Union[dict, "Standard"]]]] = empty_list()
@@ -704,9 +754,7 @@ class Dataset(YAMLRoot):
 
         if self._is_empty(self.was_generated_by):
             self.MissingRequiredField("was_generated_by")
-        if not isinstance(self.was_generated_by, list):
-            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, Activity) else Activity(**as_dict(v)) for v in self.was_generated_by]
+        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=Activity, key_name="id", keyed=True)
 
         if self.access_rights is not None and not isinstance(self.access_rights, RightsStatement):
             self.access_rights = RightsStatement()
@@ -852,7 +900,7 @@ class AnalysisDataset(Dataset):
     id: Union[str, AnalysisDatasetId] = None
     description: Union[str, List[str]] = None
     title: Union[str, List[str]] = None
-    was_generated_by: Optional[Union[Union[dict, DataAnalysis], List[Union[dict, DataAnalysis]]]] = empty_list()
+    was_generated_by: Optional[Union[Dict[Union[str, DataAnalysisId], Union[dict, DataAnalysis]], List[Union[dict, DataAnalysis]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -860,9 +908,7 @@ class AnalysisDataset(Dataset):
         if not isinstance(self.id, AnalysisDatasetId):
             self.id = AnalysisDatasetId(self.id)
 
-        if not isinstance(self.was_generated_by, list):
-            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, DataAnalysis) else DataAnalysis(**as_dict(v)) for v in self.was_generated_by]
+        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=DataAnalysis, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -882,7 +928,7 @@ class NMRAnalysisDataset(AnalysisDataset):
     id: Union[str, NMRAnalysisDatasetId] = None
     description: Union[str, List[str]] = None
     title: Union[str, List[str]] = None
-    was_generated_by: Optional[Union[Union[dict, NMRSpectralAnalysis], List[Union[dict, NMRSpectralAnalysis]]]] = empty_list()
+    was_generated_by: Optional[Union[Dict[Union[str, NMRSpectralAnalysisId], Union[dict, NMRSpectralAnalysis]], List[Union[dict, NMRSpectralAnalysis]]]] = empty_dict()
     describes_entity: Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, "ChemicalSample"]], List[Union[dict, "ChemicalSample"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -891,9 +937,7 @@ class NMRAnalysisDataset(AnalysisDataset):
         if not isinstance(self.id, NMRAnalysisDatasetId):
             self.id = NMRAnalysisDatasetId(self.id)
 
-        if not isinstance(self.was_generated_by, list):
-            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, NMRSpectralAnalysis) else NMRSpectralAnalysis(**as_dict(v)) for v in self.was_generated_by]
+        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=NMRSpectralAnalysis, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="describes_entity", slot_type=ChemicalSample, key_name="id", keyed=True)
 
@@ -1274,7 +1318,7 @@ class EvaluatedEntity(YAMLRoot):
     has_qualitative_attribute: Optional[Union[Union[dict, "QualitativeAttribute"], List[Union[dict, "QualitativeAttribute"]]]] = empty_list()
     has_quantitative_attribute: Optional[Union[Union[dict, "QuantitativeAttribute"], List[Union[dict, "QuantitativeAttribute"]]]] = empty_list()
     has_part: Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, "EvaluatedEntity"]], List[Union[dict, "EvaluatedEntity"]]]] = empty_dict()
-    was_generated_by: Optional[Union[Union[dict, Activity], List[Union[dict, Activity]]]] = empty_list()
+    was_generated_by: Optional[Union[Dict[Union[str, ActivityId], Union[dict, Activity]], List[Union[dict, Activity]]]] = empty_dict()
     type: Optional[Union[dict, DefinedTerm]] = None
     rdf_type: Optional[Union[dict, DefinedTerm]] = None
 
@@ -1304,9 +1348,7 @@ class EvaluatedEntity(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="has_part", slot_type=EvaluatedEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.was_generated_by, list):
-            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, Activity) else Activity(**as_dict(v)) for v in self.was_generated_by]
+        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=Activity, key_name="id", keyed=True)
 
         if self.type is not None and not isinstance(self.type, DefinedTerm):
             self.type = DefinedTerm(**as_dict(self.type))
@@ -1383,7 +1425,7 @@ class AnalysisSourceData(EvaluatedEntity):
     class_model_uri: ClassVar[URIRef] = NFDI4C.AnalysisSourceData
 
     id: Union[str, AnalysisSourceDataId] = None
-    was_generated_by: Optional[Union[Union[dict, Activity], List[Union[dict, Activity]]]] = empty_list()
+    was_generated_by: Optional[Union[Dict[Union[str, ActivityId], Union[dict, Activity]], List[Union[dict, Activity]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1391,9 +1433,7 @@ class AnalysisSourceData(EvaluatedEntity):
         if not isinstance(self.id, AnalysisSourceDataId):
             self.id = AnalysisSourceDataId(self.id)
 
-        if not isinstance(self.was_generated_by, list):
-            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, Activity) else Activity(**as_dict(v)) for v in self.was_generated_by]
+        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=Activity, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -1411,7 +1451,7 @@ class NMRSpectrum(AnalysisSourceData):
     class_model_uri: ClassVar[URIRef] = NFDI4C.NMRSpectrum
 
     id: Union[str, NMRSpectrumId] = None
-    was_generated_by: Optional[Union[Union[dict, NMRSpectroscopy], List[Union[dict, NMRSpectroscopy]]]] = empty_list()
+    was_generated_by: Optional[Union[Dict[Union[str, NMRSpectroscopyId], Union[dict, NMRSpectroscopy]], List[Union[dict, NMRSpectroscopy]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1419,9 +1459,7 @@ class NMRSpectrum(AnalysisSourceData):
         if not isinstance(self.id, NMRSpectrumId):
             self.id = NMRSpectrumId(self.id)
 
-        if not isinstance(self.was_generated_by, list):
-            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
-        self.was_generated_by = [v if isinstance(v, NMRSpectroscopy) else NMRSpectroscopy(**as_dict(v)) for v in self.was_generated_by]
+        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=NMRSpectroscopy, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -2075,16 +2113,22 @@ class Tool(YAMLRoot):
     class_name: ClassVar[str] = "Tool"
     class_model_uri: ClassVar[URIRef] = NFDI4C.Tool
 
+    id: Union[str, ToolId] = None
     title: Optional[str] = None
     description: Optional[str] = None
     other_identifier: Optional[Union[Union[dict, Identifier], List[Union[dict, Identifier]]]] = empty_list()
     has_qualitative_attribute: Optional[Union[Union[dict, QualitativeAttribute], List[Union[dict, QualitativeAttribute]]]] = empty_list()
     has_quantitative_attribute: Optional[Union[Union[dict, QuantitativeAttribute], List[Union[dict, QuantitativeAttribute]]]] = empty_list()
-    has_part: Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]] = empty_list()
+    has_part: Optional[Union[Dict[Union[str, ToolId], Union[dict, "Tool"]], List[Union[dict, "Tool"]]]] = empty_dict()
     type: Optional[Union[dict, DefinedTerm]] = None
     rdf_type: Optional[Union[dict, DefinedTerm]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ToolId):
+            self.id = ToolId(self.id)
+
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
 
@@ -2103,9 +2147,7 @@ class Tool(YAMLRoot):
             self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
         self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
 
-        if not isinstance(self.has_part, list):
-            self.has_part = [self.has_part] if self.has_part is not None else []
-        self.has_part = [v if isinstance(v, Tool) else Tool(**as_dict(v)) for v in self.has_part]
+        self._normalize_inlined_as_list(slot_name="has_part", slot_type=Tool, key_name="id", keyed=True)
 
         if self.type is not None and not isinstance(self.type, DefinedTerm):
             self.type = DefinedTerm(**as_dict(self.type))
@@ -2116,6 +2158,7 @@ class Tool(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class Device(Tool):
     """
     A hardware device with a certain function that was used within ann Activity.
@@ -2127,7 +2170,18 @@ class Device(Tool):
     class_name: ClassVar[str] = "Device"
     class_model_uri: ClassVar[URIRef] = NFDI4C.Device
 
+    id: Union[str, DeviceId] = None
 
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DeviceId):
+            self.id = DeviceId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Software(Tool):
     """
     A software program with a certain function that was used within an Activity.
@@ -2138,6 +2192,16 @@ class Software(Tool):
     class_class_curie: ClassVar[str] = "prov:Entity"
     class_name: ClassVar[str] = "Software"
     class_model_uri: ClassVar[URIRef] = NFDI4C.Software
+
+    id: Union[str, SoftwareId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SoftwareId):
+            self.id = SoftwareId(self.id)
+
+        super().__post_init__(**kwargs)
 
 
 # Enumerations
@@ -2525,7 +2589,7 @@ slots.type = Slot(uri=DCTERMS.type, name="type", curie=DCTERMS.curie('type'),
                    model_uri=NFDI4C.type, domain=None, range=Optional[str])
 
 slots.used_tool = Slot(uri=PROV.used, name="used_tool", curie=PROV.curie('used'),
-                   model_uri=NFDI4C.used_tool, domain=None, range=Optional[Union[Union[dict, Tool], List[Union[dict, Tool]]]])
+                   model_uri=NFDI4C.used_tool, domain=None, range=Optional[Union[Dict[Union[str, ToolId], Union[dict, Tool]], List[Union[dict, Tool]]]])
 
 slots.value = Slot(uri=PROV.value, name="value", curie=PROV.curie('value'),
                    model_uri=NFDI4C.value, domain=None, range=Optional[str])
@@ -2564,7 +2628,7 @@ slots.quantitativeAttribute__unit = Slot(uri=QUDT.unit, name="quantitativeAttrib
                    model_uri=NFDI4C.quantitativeAttribute__unit, domain=None, range=Optional[Union[str, DefinedTermId]])
 
 slots.NMRAnalysisDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="NMRAnalysisDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.NMRAnalysisDataset_was_generated_by, domain=NMRAnalysisDataset, range=Optional[Union[Union[dict, NMRSpectralAnalysis], List[Union[dict, NMRSpectralAnalysis]]]])
+                   model_uri=NFDI4C.NMRAnalysisDataset_was_generated_by, domain=NMRAnalysisDataset, range=Optional[Union[Dict[Union[str, NMRSpectralAnalysisId], Union[dict, NMRSpectralAnalysis]], List[Union[dict, NMRSpectralAnalysis]]]])
 
 slots.NMRAnalysisDataset_describes_entity = Slot(uri=DCTERMS.relation, name="NMRAnalysisDataset_describes_entity", curie=DCTERMS.curie('relation'),
                    model_uri=NFDI4C.NMRAnalysisDataset_describes_entity, domain=NMRAnalysisDataset, range=Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, "ChemicalSample"]], List[Union[dict, "ChemicalSample"]]]])
@@ -2579,7 +2643,7 @@ slots.NMRSpectroscopy_rdf_type = Slot(uri=RDF.type, name="NMRSpectroscopy_rdf_ty
                    model_uri=NFDI4C.NMRSpectroscopy_rdf_type, domain=NMRSpectroscopy, range=Optional[Union[dict, "DefinedTerm"]])
 
 slots.NMRSpectrum_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="NMRSpectrum_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.NMRSpectrum_was_generated_by, domain=NMRSpectrum, range=Optional[Union[Union[dict, NMRSpectroscopy], List[Union[dict, NMRSpectroscopy]]]])
+                   model_uri=NFDI4C.NMRSpectrum_was_generated_by, domain=NMRSpectrum, range=Optional[Union[Dict[Union[str, NMRSpectroscopyId], Union[dict, NMRSpectroscopy]], List[Union[dict, NMRSpectroscopy]]]])
 
 slots.Activity_has_part = Slot(uri=DCTERMS.hasPart, name="Activity_has_part", curie=DCTERMS.curie('hasPart'),
                    model_uri=NFDI4C.Activity_has_part, domain=Activity, range=Optional[Union[dict, "Activity"]])
@@ -2594,10 +2658,10 @@ slots.Agent_type = Slot(uri=DCTERMS.type, name="Agent_type", curie=DCTERMS.curie
                    model_uri=NFDI4C.Agent_type, domain=Agent, range=Optional[Union[dict, "Concept"]])
 
 slots.AnalysisDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="AnalysisDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.AnalysisDataset_was_generated_by, domain=AnalysisDataset, range=Optional[Union[Union[dict, DataAnalysis], List[Union[dict, DataAnalysis]]]])
+                   model_uri=NFDI4C.AnalysisDataset_was_generated_by, domain=AnalysisDataset, range=Optional[Union[Dict[Union[str, DataAnalysisId], Union[dict, DataAnalysis]], List[Union[dict, DataAnalysis]]]])
 
 slots.AnalysisSourceData_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="AnalysisSourceData_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.AnalysisSourceData_was_generated_by, domain=AnalysisSourceData, range=Optional[Union[Union[dict, Activity], List[Union[dict, Activity]]]])
+                   model_uri=NFDI4C.AnalysisSourceData_was_generated_by, domain=AnalysisSourceData, range=Optional[Union[Dict[Union[str, ActivityId], Union[dict, Activity]], List[Union[dict, Activity]]]])
 
 slots.Catalogue_applicable_legislation = Slot(uri=DCATAP.applicableLegislation, name="Catalogue_applicable_legislation", curie=DCATAP.curie('applicableLegislation'),
                    model_uri=NFDI4C.Catalogue_applicable_legislation, domain=Catalogue, range=Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]])
@@ -2855,7 +2919,7 @@ slots.Dataset_version_notes = Slot(uri=ADMS.versionNotes, name="Dataset_version_
                    model_uri=NFDI4C.Dataset_version_notes, domain=Dataset, range=Optional[Union[str, List[str]]])
 
 slots.Dataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="Dataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.Dataset_was_generated_by, domain=Dataset, range=Union[Union[dict, Activity], List[Union[dict, Activity]]])
+                   model_uri=NFDI4C.Dataset_was_generated_by, domain=Dataset, range=Union[Dict[Union[str, ActivityId], Union[dict, Activity]], List[Union[dict, Activity]]])
 
 slots.DatasetSeries_applicable_legislation = Slot(uri=DCATAP.applicableLegislation, name="DatasetSeries_applicable_legislation", curie=DCATAP.curie('applicableLegislation'),
                    model_uri=NFDI4C.DatasetSeries_applicable_legislation, domain=DatasetSeries, range=Optional[Union[Union[dict, "LegalResource"], List[Union[dict, "LegalResource"]]]])
@@ -2972,7 +3036,7 @@ slots.EvaluatedActivity_other_identifier = Slot(uri=ADMS.identifier, name="Evalu
                    model_uri=NFDI4C.EvaluatedActivity_other_identifier, domain=EvaluatedActivity, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
 
 slots.EvaluatedEntity_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="EvaluatedEntity_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=NFDI4C.EvaluatedEntity_was_generated_by, domain=EvaluatedEntity, range=Optional[Union[Union[dict, Activity], List[Union[dict, Activity]]]])
+                   model_uri=NFDI4C.EvaluatedEntity_was_generated_by, domain=EvaluatedEntity, range=Optional[Union[Dict[Union[str, ActivityId], Union[dict, Activity]], List[Union[dict, Activity]]]])
 
 slots.EvaluatedEntity_has_part = Slot(uri=DCTERMS.hasPart, name="EvaluatedEntity_has_part", curie=DCTERMS.curie('hasPart'),
                    model_uri=NFDI4C.EvaluatedEntity_has_part, domain=EvaluatedEntity, range=Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, "EvaluatedEntity"]], List[Union[dict, "EvaluatedEntity"]]]])
@@ -3020,7 +3084,7 @@ slots.Relationship_relation = Slot(uri=DCTERMS.relation, name="Relationship_rela
                    model_uri=NFDI4C.Relationship_relation, domain=Relationship, range=Union[Union[dict, "Resource"], List[Union[dict, "Resource"]]])
 
 slots.Tool_has_part = Slot(uri=DCTERMS.hasPart, name="Tool_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=NFDI4C.Tool_has_part, domain=Tool, range=Optional[Union[Union[dict, "Tool"], List[Union[dict, "Tool"]]]])
+                   model_uri=NFDI4C.Tool_has_part, domain=Tool, range=Optional[Union[Dict[Union[str, ToolId], Union[dict, "Tool"]], List[Union[dict, "Tool"]]]])
 
 slots.Tool_other_identifier = Slot(uri=ADMS.identifier, name="Tool_other_identifier", curie=ADMS.curie('identifier'),
                    model_uri=NFDI4C.Tool_other_identifier, domain=Tool, range=Optional[Union[Union[dict, Identifier], List[Union[dict, Identifier]]]])

@@ -726,6 +726,7 @@ classes:
     mixins:
     - ClassifierMixin
     slots:
+    - id
     - title
     - description
     - other_identifier
@@ -2495,6 +2496,7 @@ classes:
     mixins:
     - ClassifierMixin
     slots:
+    - id
     - title
     - description
     - other_identifier

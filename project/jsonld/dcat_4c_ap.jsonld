@@ -1469,12 +1469,14 @@
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#id",
       "identifier": true,
-      "owner": "EvaluatedEntity",
+      "owner": "Tool",
       "domain_of": [
+        "Activity",
         "Dataset",
         "DefinedTerm",
         "EvaluatedActivity",
-        "EvaluatedEntity"
+        "EvaluatedEntity",
+        "Tool"
       ],
       "range": "uriorcurie",
       "required": true,
@@ -6221,6 +6223,7 @@
       ],
       "is_a": "DataAnalysis",
       "slots": [
+        "id",
         "title",
         "description",
         "Activity_other_identifier",
@@ -6247,6 +6250,7 @@
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "is_a": "Activity",
       "slots": [
+        "id",
         "title",
         "description",
         "Activity_other_identifier",
@@ -6549,6 +6553,7 @@
         "ClassifierMixin"
       ],
       "slots": [
+        "id",
         "title",
         "description",
         "Activity_other_identifier",
@@ -6847,6 +6852,7 @@
       ],
       "is_a": "Activity",
       "slots": [
+        "id",
         "title",
         "description",
         "Activity_other_identifier",
@@ -7018,6 +7024,7 @@
       ],
       "is_a": "Tool",
       "slots": [
+        "id",
         "title",
         "description",
         "Tool_other_identifier",
@@ -7551,6 +7558,7 @@
       ],
       "is_a": "Tool",
       "slots": [
+        "id",
         "title",
         "description",
         "Tool_other_identifier",
@@ -7614,6 +7622,7 @@
         "ClassifierMixin"
       ],
       "slots": [
+        "id",
         "title",
         "description",
         "Tool_other_identifier",
@@ -7630,9 +7639,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcat_4c_ap.yaml",
-  "source_file_date": "2025-04-08T12:23:37",
+  "source_file_date": "2025-04-22T15:24:14",
   "source_file_size": 9718,
-  "generation_date": "2025-04-08T14:13:35",
+  "generation_date": "2025-04-23T11:41:30",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

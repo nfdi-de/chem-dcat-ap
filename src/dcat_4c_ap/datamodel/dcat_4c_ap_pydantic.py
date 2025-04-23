@@ -686,6 +686,14 @@ class Activity(ClassifierMixin):
                                              'notes': ['not in DCAT-AP'],
                                              'range': 'Identifier'}}})
 
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'in_subset': ['domain_agnostic_core']} })
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
          'domain_of': ['Activity',
                        'Catalogue',
@@ -788,6 +796,14 @@ class DataAnalysis(Activity):
                                              'name': 'evaluated_entity',
                                              'range': 'AnalysisSourceData'}}})
 
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'in_subset': ['domain_agnostic_core']} })
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
          'domain_of': ['Activity',
                        'Catalogue',
@@ -1588,10 +1604,12 @@ class Dataset(ConfiguredBaseModel):
          'notes': ['stricter than DCAT-AP'],
          'slot_uri': 'prov:wasGeneratedBy'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     describes_entity: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide the EvaluatedEntity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_entity',
          'domain_of': ['Dataset'],
@@ -1763,10 +1781,12 @@ class AnalysisDataset(Dataset):
          'notes': ['stricter than DCAT-AP'],
          'slot_uri': 'prov:wasGeneratedBy'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     describes_entity: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide the EvaluatedEntity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_entity',
          'domain_of': ['Dataset'],
@@ -1953,10 +1973,12 @@ class DefinedTerm(ConfiguredBaseModel):
          'slot_usage': {'title': {'name': 'title', 'slot_uri': 'schema:name'}}})
 
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
          'domain_of': ['Activity',
@@ -2456,10 +2478,12 @@ class EvaluatedActivity(ClassifierMixin):
                        'Tool'],
          'slot_uri': 'adms:identifier'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
          'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
@@ -2561,10 +2585,12 @@ class EvaluatedEntity(ClassifierMixin):
                        'Tool'],
          'slot_uri': 'adms:identifier'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
          'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
@@ -2654,10 +2680,12 @@ class AnalysisSourceData(EvaluatedEntity):
                        'Tool'],
          'slot_uri': 'adms:identifier'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
          'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
@@ -3375,6 +3403,14 @@ class Tool(ClassifierMixin):
                                              'range': 'Identifier',
                                              'required': False}}})
 
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'in_subset': ['domain_agnostic_core']} })
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
          'domain_of': ['Activity',
                        'Catalogue',
@@ -3453,6 +3489,14 @@ class Device(Tool):
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'in_subset': ['domain_agnostic_core']})
 
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'in_subset': ['domain_agnostic_core']} })
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
          'domain_of': ['Activity',
                        'Catalogue',
@@ -3530,6 +3574,14 @@ class Software(Tool):
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'in_subset': ['domain_agnostic_core']})
 
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'in_subset': ['domain_agnostic_core']} })
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
          'domain_of': ['Activity',
                        'Catalogue',
@@ -3761,10 +3813,12 @@ class NMRAnalysisDataset(AnalysisDataset):
          'notes': ['stricter than DCAT-AP'],
          'slot_uri': 'prov:wasGeneratedBy'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     describes_entity: Optional[List[ChemicalSample]] = Field(default=None, description="""A slot to provide the EvaluatedEntity that is described by a Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'describes_entity',
          'domain_of': ['Dataset'],
@@ -3790,6 +3844,14 @@ class NMRSpectralAnalysis(DataAnalysis):
          'slot_usage': {'evaluated_entity': {'name': 'evaluated_entity',
                                              'range': 'NMRSpectrum'}}})
 
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'in_subset': ['domain_agnostic_core']} })
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
          'domain_of': ['Activity',
                        'Catalogue',
@@ -3896,6 +3958,14 @@ class NMRSpectroscopy(Activity):
                                                     'of CHMO:0000613.',
                                      'name': 'rdf_type'}}})
 
+    id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Activity',
+                       'Dataset',
+                       'DefinedTerm',
+                       'EvaluatedActivity',
+                       'EvaluatedEntity',
+                       'Tool'],
+         'in_subset': ['domain_agnostic_core']} })
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
          'domain_of': ['Activity',
                        'Catalogue',
@@ -4035,10 +4105,12 @@ class ChemicalReaction(EvaluatedActivity):
                        'Tool'],
          'slot_uri': 'adms:identifier'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
          'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
@@ -4122,10 +4194,12 @@ class ChemicalSubstance(EvaluatedEntity):
                        'Tool'],
          'slot_uri': 'adms:identifier'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
          'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
@@ -4221,10 +4295,12 @@ class ChemicalSample(ChemicalSubstance):
                        'Tool'],
          'slot_uri': 'adms:identifier'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
          'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],
@@ -4313,10 +4389,12 @@ class NMRSpectrum(AnalysisSourceData):
                        'Tool'],
          'slot_uri': 'adms:identifier'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['Dataset',
+         'domain_of': ['Activity',
+                       'Dataset',
                        'DefinedTerm',
                        'EvaluatedActivity',
-                       'EvaluatedEntity'],
+                       'EvaluatedEntity',
+                       'Tool'],
          'in_subset': ['domain_agnostic_core']} })
     has_qualitative_attribute: Optional[List[QualitativeAttribute]] = Field(default=None, description="""The slot to relate a qualitative attribute to an entity of interest, tool or environment.""", json_schema_extra = { "linkml_meta": {'alias': 'has_qualitative_attribute',
          'domain_of': ['EvaluatedActivity', 'EvaluatedEntity', 'Tool'],

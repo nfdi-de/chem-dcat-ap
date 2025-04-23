@@ -83,7 +83,7 @@ dcatap_plus:Activity  (
              dcterms:type @dcatap_plus:DefinedTerm ? ;
              rdf:type @dcatap_plus:DefinedTerm ?
           ) ;
-          rdf:type [ prov:Activity ] ?
+          rdf:type [ prov:Activity ]
        )
     } OR @dcatap_plus:DataAnalysis OR @<NMRSpectroscopy>
 )
@@ -262,7 +262,7 @@ dcatap_plus:DataAnalysis  (
              rdf:type [ prov:Activity ] ? ;
              prov:used @dcatap_plus:AnalysisSourceData *
           ) ;
-          rdf:type [ prov:Activity ] ?
+          rdf:type [ prov:Activity ]
        )
     } OR @<NMRSpectralAnalysis>
 )
@@ -363,7 +363,7 @@ dcatap_plus:Device CLOSED {
     (  $dcatap_plus:Device_tes (  &dcatap_plus:Tool_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
-       rdf:type [ prov:Entity ] ?
+       rdf:type [ prov:Entity ]
     )
 }
 
@@ -589,7 +589,7 @@ dcatap_plus:MediaTypeOrExtent CLOSED {
           rdf:type [ prov:Activity ] ? ;
           prov:used @<NMRSpectrum> *
        ) ;
-       rdf:type [ NMR:1000259 ] ?
+       rdf:type [ NMR:1000259 ]
     )
 }
 
@@ -599,7 +599,7 @@ dcatap_plus:MediaTypeOrExtent CLOSED {
           prov:used @<ChemicalSample> * ;
           rdf:type @dcatap_plus:DefinedTerm ?
        ) ;
-       rdf:type [ <NMRSpectroscopy> ] ?
+       rdf:type [ <NMRSpectroscopy> ]
     )
 }
 
@@ -728,7 +728,7 @@ dcatap_plus:Software CLOSED {
     (  $dcatap_plus:Software_tes (  &dcatap_plus:Tool_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
-       rdf:type [ prov:Entity ] ?
+       rdf:type [ prov:Entity ]
     )
 }
 
@@ -774,7 +774,7 @@ dcatap_plus:Tool  (
              dcterms:type @dcatap_plus:DefinedTerm ? ;
              rdf:type @dcatap_plus:DefinedTerm ?
           ) ;
-          rdf:type [ prov:Entity ] ?
+          rdf:type [ prov:Entity ]
        )
     } OR @dcatap_plus:Device OR @dcatap_plus:Software
 )
