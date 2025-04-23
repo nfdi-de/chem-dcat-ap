@@ -250,6 +250,8 @@
     click QuantitativeAttribute href "../QuantitativeAttribute"
 
 
+      Device : id
+
       Device : other_identifier
 
 
@@ -299,6 +301,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A slot to provide an URI for an entity within this schema</td>
+<td><a href="../Tool/">Tool</a></td>
+</tr>
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
@@ -404,6 +412,25 @@ aliases:
 - hardware tool
 is_a: Tool
 attributes:
+  id:
+    name: id
+    description: A slot to provide an URI for an entity within this schema.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: Device
+    domain_of:
+    - Activity
+    - Dataset
+    - DefinedTerm
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Tool
+    range: uriorcurie
+    required: true
   title:
     name: title
     description: This slot is described in more detail within the class in which it

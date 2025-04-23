@@ -257,6 +257,8 @@
     click Activity href "../Activity"
 
 
+      Activity : id
+
       Activity : occurred_in
 
 
@@ -334,6 +336,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A slot to provide an URI for an entity within this schema</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
@@ -516,6 +524,7 @@ narrow_mappings:
 mixins:
 - ClassifierMixin
 slots:
+- id
 - title
 - description
 - other_identifier
@@ -580,6 +589,25 @@ slot_usage:
     multivalued: true
     inlined_as_list: true
 attributes:
+  id:
+    name: id
+    description: A slot to provide an URI for an entity within this schema.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: Activity
+    domain_of:
+    - Activity
+    - Dataset
+    - DefinedTerm
+    - EvaluatedActivity
+    - EvaluatedEntity
+    - Tool
+    range: uriorcurie
+    required: true
   title:
     name: title
     description: This slot is described in more detail within the class in which it
