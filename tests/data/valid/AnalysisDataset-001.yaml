@@ -71,8 +71,6 @@ was_generated_by: # a DataAnalysis
                   id: CHEBI:85365
                   title: "deuterated chloroform"
                 title: "chloroform-D1 (CDCl3)"
-                has_qualitative_attribute:
-                  value: "had solvent role"
       - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum
         was_generated_by:
           - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Activity2
@@ -90,5 +88,3 @@ was_generated_by: # a DataAnalysis
                   id: CHEBI:28262
                   title: "dimethyl sulfoxide"
                 title: "DMSO"
-                has_qualitative_attribute:
-                  value: "had solvent role"
