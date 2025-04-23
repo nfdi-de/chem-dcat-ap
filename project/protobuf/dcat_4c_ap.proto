@@ -507,8 +507,8 @@ message PeriodOfTime
  {
   timeInstant beginning = 0
   timeInstant end = 0
-  string endDate = 0
-  string startDate = 0
+  date endDate = 0
+  date startDate = 0
  }
 // A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.
 message Plan

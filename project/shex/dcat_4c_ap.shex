@@ -617,8 +617,8 @@ dcatap_plus:PeriodOfTime CLOSED {
           rdf:type [ dcatap_plus:SupportiveEntity ] ? ;
           time:hasBeginning @dcatap_plus:TimeInstant ? ;
           time:hasEnd @dcatap_plus:TimeInstant ? ;
-          dcat:endDate @linkml:String ? ;
-          dcat:startDate @linkml:String ?
+          dcat:endDate @linkml:Date ? ;
+          dcat:startDate @linkml:Date ?
        ) ;
        rdf:type [ dcterms:PeriodOfTime ] ?
     )

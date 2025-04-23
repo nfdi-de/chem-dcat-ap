@@ -5976,7 +5976,7 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "end_date",
-      "range": "string",
+      "range": "date",
       "recommended": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
@@ -5999,7 +5999,7 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "start_date",
-      "range": "string",
+      "range": "date",
       "recommended": true,
       "@type": "SlotDefinition"
     },
@@ -7641,7 +7641,7 @@
   "source_file": "dcat_4c_ap.yaml",
   "source_file_date": "2025-04-22T15:24:14",
   "source_file_size": 9718,
-  "generation_date": "2025-04-23T11:41:30",
+  "generation_date": "2025-04-23T15:37:39",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",
