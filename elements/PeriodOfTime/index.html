@@ -277,13 +277,13 @@
 </tr>
 <tr>
 <td><a href="../end_date/">end_date</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Date/">Date</a></td>
 <td>The end of the period</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../start_date/">start_date</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Date/">Date</a></td>
 <td>The start of the period</td>
 <td>direct</td>
 </tr>
@@ -390,7 +390,7 @@ slot_usage:
     name: end_date
     description: The end of the period.
     slot_uri: dcat:endDate
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -399,7 +399,7 @@ slot_usage:
     name: start_date
     description: The start of the period.
     slot_uri: dcat:startDate
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -435,7 +435,7 @@ slot_usage:
     name: end_date
     description: The end of the period.
     slot_uri: dcat:endDate
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -444,7 +444,7 @@ slot_usage:
     name: start_date
     description: The start of the period.
     slot_uri: dcat:startDate
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -488,7 +488,7 @@ attributes:
     owner: PeriodOfTime
     domain_of:
     - PeriodOfTime
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
@@ -503,7 +503,7 @@ attributes:
     owner: PeriodOfTime
     domain_of:
     - PeriodOfTime
-    range: string
+    range: date
     required: false
     recommended: true
     multivalued: false
