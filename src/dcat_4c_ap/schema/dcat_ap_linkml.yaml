@@ -1932,7 +1932,7 @@ classes:
         name: end_date
         description: The end of the period.
         slot_uri: dcat:endDate
-        range: string
+        range: date
         required: false
         recommended: true
         multivalued: false
@@ -1941,7 +1941,7 @@ classes:
         name: start_date
         description: The start of the period.
         slot_uri: dcat:startDate
-        range: string
+        range: date
         required: false
         recommended: true
         multivalued: false

@@ -3252,7 +3252,7 @@ class PeriodOfTime(SupportiveEntity):
                                      'inlined_as_list': True,
                                      'multivalued': False,
                                      'name': 'end_date',
-                                     'range': 'string',
+                                     'range': 'date',
                                      'recommended': True,
                                      'required': False,
                                      'slot_uri': 'dcat:endDate'},
@@ -3260,7 +3260,7 @@ class PeriodOfTime(SupportiveEntity):
                                        'inlined_as_list': False,
                                        'multivalued': False,
                                        'name': 'start_date',
-                                       'range': 'string',
+                                       'range': 'date',
                                        'recommended': True,
                                        'required': False,
                                        'slot_uri': 'dcat:startDate'}}})
@@ -3269,11 +3269,11 @@ class PeriodOfTime(SupportiveEntity):
          'domain_of': ['PeriodOfTime'],
          'slot_uri': 'time:hasBeginning'} })
     end: Optional[TimeInstant] = Field(default=None, description="""The end of a period or interval.""", json_schema_extra = { "linkml_meta": {'alias': 'end', 'domain_of': ['PeriodOfTime'], 'slot_uri': 'time:hasEnd'} })
-    end_date: Optional[str] = Field(default=None, description="""The end of the period.""", json_schema_extra = { "linkml_meta": {'alias': 'end_date',
+    end_date: Optional[date] = Field(default=None, description="""The end of the period.""", json_schema_extra = { "linkml_meta": {'alias': 'end_date',
          'domain_of': ['PeriodOfTime'],
          'recommended': True,
          'slot_uri': 'dcat:endDate'} })
-    start_date: Optional[str] = Field(default=None, description="""The start of the period.""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
+    start_date: Optional[date] = Field(default=None, description="""The start of the period.""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'domain_of': ['PeriodOfTime'],
          'recommended': True,
          'slot_uri': 'dcat:startDate'} })

@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-04-23T11:41:37
+# Generation date: 2025-04-23T15:37:45
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -1967,8 +1967,8 @@ class PeriodOfTime(SupportiveEntity):
 
     beginning: Optional[Union[dict, "TimeInstant"]] = None
     end: Optional[Union[dict, "TimeInstant"]] = None
-    end_date: Optional[str] = None
-    start_date: Optional[str] = None
+    end_date: Optional[Union[str, XSDDate]] = None
+    start_date: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.beginning is not None and not isinstance(self.beginning, TimeInstant):
@@ -1977,11 +1977,11 @@ class PeriodOfTime(SupportiveEntity):
         if self.end is not None and not isinstance(self.end, TimeInstant):
             self.end = TimeInstant()
 
-        if self.end_date is not None and not isinstance(self.end_date, str):
-            self.end_date = str(self.end_date)
+        if self.end_date is not None and not isinstance(self.end_date, XSDDate):
+            self.end_date = XSDDate(self.end_date)
 
-        if self.start_date is not None and not isinstance(self.start_date, str):
-            self.start_date = str(self.start_date)
+        if self.start_date is not None and not isinstance(self.start_date, XSDDate):
+            self.start_date = XSDDate(self.start_date)
 
         super().__post_init__(**kwargs)
 
@@ -3066,10 +3066,10 @@ slots.PeriodOfTime_end = Slot(uri=TIME.hasEnd, name="PeriodOfTime_end", curie=TI
                    model_uri=NFDI4C.PeriodOfTime_end, domain=PeriodOfTime, range=Optional[Union[dict, "TimeInstant"]])
 
 slots.PeriodOfTime_end_date = Slot(uri=DCAT.endDate, name="PeriodOfTime_end_date", curie=DCAT.curie('endDate'),
-                   model_uri=NFDI4C.PeriodOfTime_end_date, domain=PeriodOfTime, range=Optional[str])
+                   model_uri=NFDI4C.PeriodOfTime_end_date, domain=PeriodOfTime, range=Optional[Union[str, XSDDate]])
 
 slots.PeriodOfTime_start_date = Slot(uri=DCAT.startDate, name="PeriodOfTime_start_date", curie=DCAT.curie('startDate'),
-                   model_uri=NFDI4C.PeriodOfTime_start_date, domain=PeriodOfTime, range=Optional[str])
+                   model_uri=NFDI4C.PeriodOfTime_start_date, domain=PeriodOfTime, range=Optional[Union[str, XSDDate]])
 
 slots.QualitativeAttribute_value = Slot(uri=PROV.value, name="QualitativeAttribute_value", curie=PROV.curie('value'),
                    model_uri=NFDI4C.QualitativeAttribute_value, domain=QualitativeAttribute, range=str)

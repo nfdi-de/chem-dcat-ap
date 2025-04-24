@@ -1369,8 +1369,8 @@ CREATE TABLE "Location" (
 );
 CREATE TABLE "PeriodOfTime" (
 	id INTEGER NOT NULL, 
-	end_date TEXT, 
-	start_date TEXT, 
+	end_date DATE, 
+	start_date DATE, 
 	"NMRAnalysisDataset_id" TEXT, 
 	"AnalysisDataset_id" TEXT, 
 	"Catalogue_id" INTEGER, 

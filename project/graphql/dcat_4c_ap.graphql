@@ -594,8 +594,8 @@ type PeriodOfTime
   {
     beginning: TimeInstant
     end: TimeInstant
-    endDate: String
-    startDate: String
+    endDate: Date
+    startDate: Date
   }
 
 type Plan implements ClassifierMixin
