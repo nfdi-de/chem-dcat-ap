@@ -1704,20 +1704,20 @@
     {
       "name": "occurred_in",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#occurred_in",
-      "description": "The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.",
+      "description": "The slot to specify the Location at which an Activity took place.",
       "in_subset": [
         "domain_agnostic_core"
       ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "mappings": [
-        "http://purl.obolibrary.org/obo/BFO_0000066"
+        "http://www.w3.org/ns/prov#atLocation"
       ],
-      "slot_uri": "http://purl.obolibrary.org/obo/BFO_0000066",
+      "slot_uri": "http://www.w3.org/ns/prov#atLocation",
       "owner": "Activity",
       "domain_of": [
         "Activity"
       ],
-      "range": "Environment",
+      "range": "Location",
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -1734,7 +1734,6 @@
       "domain_of": [
         "Activity",
         "Dataset",
-        "Environment",
         "EvaluatedActivity",
         "EvaluatedEntity",
         "Tool"
@@ -1881,7 +1880,7 @@
     {
       "name": "realized_plan",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#realized_plan",
-      "description": "The slot to specify the Method (aka Procedure) that was realized by a Activity.",
+      "description": "The slot to specify the Plan (aka procedure) that was realized by an Activity.",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -1894,8 +1893,8 @@
       "domain_of": [
         "Activity"
       ],
-      "range": "EvaluatedActivity",
-      "recommended": true,
+      "range": "Plan",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -5656,30 +5655,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Environment_other_identifier",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#other_identifier",
-      "description": "A slot to provide a secondary identifier of the Environment.",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
-      "mappings": [
-        "http://www.w3.org/ns/adms#identifier"
-      ],
-      "is_a": "other_identifier",
-      "domain": "Environment",
-      "slot_uri": "http://www.w3.org/ns/adms#identifier",
-      "alias": "other_identifier",
-      "owner": "Environment",
-      "domain_of": [
-        "Environment"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "other_identifier",
-      "range": "Identifier",
-      "multivalued": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "EvaluatedActivity_has_part",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#has_part",
       "description": "A slot to provide a part of the EvaluatedActivity.",
@@ -6437,18 +6412,17 @@
       "description": "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
       "mappings": [
-        "prov:Entity"
+        "prov:Location"
       ],
       "is_a": "Environment",
       "slots": [
         "title",
         "description",
-        "Environment_other_identifier",
         "ClassifierMixin_type",
         "rdf_type"
       ],
       "slot_usage": {},
-      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "class_uri": "http://www.w3.org/ns/prov#Location",
       "@type": "ClassDefinition"
     },
     {
@@ -7098,7 +7072,7 @@
       ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "mappings": [
-        "prov:Entity"
+        "prov:Location"
       ],
       "mixins": [
         "ClassifierMixin"
@@ -7106,12 +7080,11 @@
       "slots": [
         "title",
         "description",
-        "Environment_other_identifier",
         "ClassifierMixin_type",
         "rdf_type"
       ],
       "slot_usage": {},
-      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "class_uri": "http://www.w3.org/ns/prov#Location",
       "@type": "ClassDefinition"
     },
     {
@@ -7353,7 +7326,7 @@
         "Procedure"
       ],
       "mappings": [
-        "prov:Entity"
+        "prov:Plan"
       ],
       "mixins": [
         "ClassifierMixin"
@@ -7365,7 +7338,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
-      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "class_uri": "http://www.w3.org/ns/prov#Plan",
       "@type": "ClassDefinition"
     },
     {
@@ -7639,9 +7612,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcat_4c_ap.yaml",
-  "source_file_date": "2025-04-22T15:24:14",
-  "source_file_size": 9718,
-  "generation_date": "2025-04-23T15:37:39",
+  "source_file_date": "2025-04-28T11:22:13",
+  "source_file_size": 9720,
+  "generation_date": "2025-04-28T11:56:47",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

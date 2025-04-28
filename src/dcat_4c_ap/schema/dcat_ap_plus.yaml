@@ -519,12 +519,11 @@ slots:
     slot_uri: skos:notation
   occurred_in:
     name: occurred_in
-    description: The slot to specify the Method (aka Procedure) that was used in the
-      ActivityActivity.
+    description: The slot to specify the Location at which an Activity took place.
     in_subset:
     - domain_agnostic_core
-    slot_uri: BFO:0000066
-    range: Environment
+    slot_uri: prov:atLocation
+    range: Location
   other_identifier:
     name: other_identifier
     description: This slot is described in more detail within the class in which it
@@ -577,13 +576,12 @@ slots:
     inlined: true
   realized_plan:
     name: realized_plan
-    description: The slot to specify the Method (aka Procedure) that was realized
-      by a Activity.
+    description: The slot to specify the Plan (aka procedure) that was realized by
+      an Activity.
     in_subset:
     - domain_agnostic_core
     slot_uri: prov:used
-    range: EvaluatedActivity
-    recommended: true
+    range: Plan
   record:
     name: record
     description: This slot is described in more detail within the class in which it
@@ -2102,16 +2100,7 @@ classes:
     slots:
     - title
     - description
-    - other_identifier
-    slot_usage:
-      other_identifier:
-        name: other_identifier
-        description: A slot to provide a secondary identifier of the Environment.
-        range: Identifier
-        required: false
-        multivalued: true
-        inlined_as_list: true
-    class_uri: prov:Entity
+    class_uri: prov:Location
   EvaluatedActivity:
     name: EvaluatedActivity
     description: An activity or proces that is being evaluated in a Activity.
@@ -2352,7 +2341,7 @@ classes:
     slots:
     - title
     - description
-    class_uri: prov:Entity
+    class_uri: prov:Plan
   Policy:
     name: Policy
     description: See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)

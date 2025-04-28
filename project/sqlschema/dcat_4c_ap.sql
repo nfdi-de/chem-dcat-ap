@@ -12,20 +12,20 @@
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: realized_plan Description: The slot to specify the Method (aka Procedure) that was realized by a Activity.
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: realized_plan_id Description: The slot to specify the Plan (aka procedure) that was realized by an Activity.
 --     * Slot: has_part_id Description: A slot to provide an Activity that is part of the Activity that created the Dataset.
---     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.
+--     * Slot: occurred_in_id Description: The slot to specify the Location at which an Activity took place.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "NMRSpectroscopy" Description: "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them."
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: realized_plan Description: The slot to specify the Method (aka Procedure) that was realized by a Activity.
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
+--     * Slot: realized_plan_id Description: The slot to specify the Plan (aka procedure) that was realized by an Activity.
 --     * Slot: has_part_id Description: A slot to provide an Activity that is part of the Activity that created the Dataset.
---     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.
+--     * Slot: occurred_in_id Description: The slot to specify the Location at which an Activity took place.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The type of NMR Spectroscopy provided as CURIE of a subclass of CHMO:0000613.
 -- # Class: "ChemicalReaction" Description: "An experimental procedure with the aim of producing a portion of a given compound or mixture."
@@ -103,14 +103,14 @@
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: realized_plan Description: The slot to specify the Method (aka Procedure) that was realized by a Activity.
 --     * Slot: ChemicalSubstance_id Description: Autocreated FK slot
 --     * Slot: ChemicalSample_id Description: Autocreated FK slot
 --     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
+--     * Slot: realized_plan_id Description: The slot to specify the Plan (aka procedure) that was realized by an Activity.
 --     * Slot: has_part_id Description: A slot to provide an Activity that is part of the Activity that created the Dataset.
---     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.
+--     * Slot: occurred_in_id Description: The slot to specify the Location at which an Activity took place.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "Agent" Description: "See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)"
@@ -185,10 +185,10 @@
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
---     * Slot: realized_plan Description: The slot to specify the Method (aka Procedure) that was realized by a Activity.
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
+--     * Slot: realized_plan_id Description: The slot to specify the Plan (aka procedure) that was realized by an Activity.
 --     * Slot: has_part_id Description: A slot to provide an Activity that is part of the Activity that created the Dataset.
---     * Slot: occurred_in_id Description: The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.
+--     * Slot: occurred_in_id Description: The slot to specify the Location at which an Activity took place.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: "DataService" Description: "See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)"
@@ -308,14 +308,12 @@
 --     * Slot: ChemicalSubstance_id Description: Autocreated FK slot
 --     * Slot: ChemicalSample_id Description: Autocreated FK slot
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
---     * Slot: Laboratory_id Description: Autocreated FK slot
 --     * Slot: Activity_id Description: Autocreated FK slot
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
 --     * Slot: DataAnalysis_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: Device_id Description: Autocreated FK slot
---     * Slot: Environment_id Description: Autocreated FK slot
 --     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
 --     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
 --     * Slot: Software_id Description: Autocreated FK slot
@@ -577,17 +575,17 @@ CREATE TABLE "NMRSpectralAnalysis" (
 	id TEXT NOT NULL, 
 	title TEXT, 
 	description TEXT, 
-	realized_plan TEXT, 
 	"NMRAnalysisDataset_id" TEXT, 
+	realized_plan_id INTEGER, 
 	has_part_id TEXT, 
 	occurred_in_id INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(realized_plan) REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id), 
 	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
-	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
+	FOREIGN KEY(occurred_in_id) REFERENCES "Location" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
@@ -595,17 +593,17 @@ CREATE TABLE "NMRSpectroscopy" (
 	id TEXT NOT NULL, 
 	title TEXT, 
 	description TEXT, 
-	realized_plan TEXT, 
 	"NMRSpectrum_id" TEXT, 
+	realized_plan_id INTEGER, 
 	has_part_id TEXT, 
 	occurred_in_id INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(realized_plan) REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id), 
+	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id), 
 	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
-	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
+	FOREIGN KEY(occurred_in_id) REFERENCES "Location" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
@@ -640,25 +638,25 @@ CREATE TABLE "Activity" (
 	id TEXT NOT NULL, 
 	title TEXT, 
 	description TEXT, 
-	realized_plan TEXT, 
 	"ChemicalSubstance_id" TEXT, 
 	"ChemicalSample_id" TEXT, 
 	"AnalysisSourceData_id" TEXT, 
 	"Dataset_id" TEXT, 
 	"EvaluatedEntity_id" TEXT, 
+	realized_plan_id INTEGER, 
 	has_part_id TEXT, 
 	occurred_in_id INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(realized_plan) REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id), 
 	FOREIGN KEY("ChemicalSample_id") REFERENCES "ChemicalSample" (id), 
 	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
 	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
+	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id), 
 	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
-	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
+	FOREIGN KEY(occurred_in_id) REFERENCES "Location" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
@@ -745,17 +743,17 @@ CREATE TABLE "DataAnalysis" (
 	id TEXT NOT NULL, 
 	title TEXT, 
 	description TEXT, 
-	realized_plan TEXT, 
 	"AnalysisDataset_id" TEXT, 
+	realized_plan_id INTEGER, 
 	has_part_id TEXT, 
 	occurred_in_id INTEGER, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY(realized_plan) REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id), 
 	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id), 
-	FOREIGN KEY(occurred_in_id) REFERENCES "Environment" (id), 
+	FOREIGN KEY(occurred_in_id) REFERENCES "Location" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
@@ -852,34 +850,6 @@ CREATE TABLE "Document" (
 	FOREIGN KEY("DataService_id") REFERENCES "DataService" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
 	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id)
-);
-CREATE TABLE "EvaluatedActivity" (
-	title TEXT, 
-	description TEXT, 
-	id TEXT NOT NULL, 
-	"NMRAnalysisDataset_id" TEXT, 
-	"NMRSpectralAnalysis_id" TEXT, 
-	"NMRSpectroscopy_id" TEXT, 
-	"ChemicalReaction_id" TEXT, 
-	"Activity_id" TEXT, 
-	"AnalysisDataset_id" TEXT, 
-	"DataAnalysis_id" TEXT, 
-	"Dataset_id" TEXT, 
-	"EvaluatedActivity_id" TEXT, 
-	type_id TEXT, 
-	rdf_type_id TEXT, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id), 
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id), 
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id), 
-	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id), 
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
-	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id), 
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );
 CREATE TABLE "EvaluatedEntity" (
 	title TEXT, 
@@ -1301,6 +1271,34 @@ CREATE TABLE "ChemicalEntity" (
 	FOREIGN KEY(smiles_id) REFERENCES "SMILES" (id), 
 	FOREIGN KEY(iupac_formula_id) REFERENCES "IUPACChemicalFormula" (id)
 );
+CREATE TABLE "EvaluatedActivity" (
+	title TEXT, 
+	description TEXT, 
+	id TEXT NOT NULL, 
+	"NMRAnalysisDataset_id" TEXT, 
+	"NMRSpectralAnalysis_id" TEXT, 
+	"NMRSpectroscopy_id" TEXT, 
+	"ChemicalReaction_id" TEXT, 
+	"Activity_id" TEXT, 
+	"AnalysisDataset_id" TEXT, 
+	"DataAnalysis_id" TEXT, 
+	"Dataset_id" TEXT, 
+	"EvaluatedActivity_id" TEXT, 
+	type_id TEXT, 
+	rdf_type_id TEXT, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id), 
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id), 
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id), 
+	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id), 
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
+	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id), 
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);
 CREATE TABLE "Kind" (
 	id INTEGER NOT NULL, 
 	"NMRAnalysisDataset_id" TEXT, 
@@ -1489,14 +1487,12 @@ CREATE TABLE "Identifier" (
 	"ChemicalSubstance_id" TEXT, 
 	"ChemicalSample_id" TEXT, 
 	"NMRSpectrum_id" TEXT, 
-	"Laboratory_id" INTEGER, 
 	"Activity_id" TEXT, 
 	"AnalysisDataset_id" TEXT, 
 	"AnalysisSourceData_id" TEXT, 
 	"DataAnalysis_id" TEXT, 
 	"Dataset_id" TEXT, 
 	"Device_id" TEXT, 
-	"Environment_id" INTEGER, 
 	"EvaluatedActivity_id" TEXT, 
 	"EvaluatedEntity_id" TEXT, 
 	"Software_id" TEXT, 
@@ -1509,14 +1505,12 @@ CREATE TABLE "Identifier" (
 	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id), 
 	FOREIGN KEY("ChemicalSample_id") REFERENCES "ChemicalSample" (id), 
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id), 
-	FOREIGN KEY("Laboratory_id") REFERENCES "Laboratory" (id), 
 	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id), 
 	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id), 
 	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id), 
 	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id), 
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id), 
 	FOREIGN KEY("Device_id") REFERENCES "Device" (id), 
-	FOREIGN KEY("Environment_id") REFERENCES "Environment" (id), 
 	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id), 
 	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id), 
 	FOREIGN KEY("Software_id") REFERENCES "Software" (id), 

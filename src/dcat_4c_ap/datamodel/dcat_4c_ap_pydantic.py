@@ -731,7 +731,6 @@ class Activity(ClassifierMixin):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -752,10 +751,9 @@ class Activity(ClassifierMixin):
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:used'} })
-    realized_plan: Optional[str] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
+    realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Plan (aka procedure) that was realized by an Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
          'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
          'slot_uri': 'prov:used'} })
     has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
          'domain_of': ['Activity',
@@ -765,10 +763,10 @@ class Activity(ClassifierMixin):
                        'Tool'],
          'notes': ['not in DCAT-AP'],
          'slot_uri': 'dcterms:hasPart'} })
-    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
+    occurred_in: Optional[Location] = Field(default=None, description="""The slot to specify the Location at which an Activity took place.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
          'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'BFO:0000066'} })
+         'slot_uri': 'prov:atLocation'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
@@ -841,7 +839,6 @@ class DataAnalysis(Activity):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -862,10 +859,9 @@ class DataAnalysis(Activity):
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:used'} })
-    realized_plan: Optional[str] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
+    realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Plan (aka procedure) that was realized by an Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
          'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
          'slot_uri': 'prov:used'} })
     has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
          'domain_of': ['Activity',
@@ -875,10 +871,10 @@ class DataAnalysis(Activity):
                        'Tool'],
          'notes': ['not in DCAT-AP'],
          'slot_uri': 'dcterms:hasPart'} })
-    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
+    occurred_in: Optional[Location] = Field(default=None, description="""The slot to specify the Location at which an Activity took place.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
          'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'BFO:0000066'} })
+         'slot_uri': 'prov:atLocation'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
@@ -1536,7 +1532,6 @@ class Dataset(ConfiguredBaseModel):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Dataset""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -1713,7 +1708,6 @@ class AnalysisDataset(Dataset):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Dataset""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -2347,18 +2341,10 @@ class Environment(ClassifierMixin):
     """
     The surrounding in which the dataset creating activity took place (e.g. a lab).
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Location',
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml',
          'in_subset': ['domain_agnostic_core'],
-         'mixins': ['ClassifierMixin'],
-         'slot_usage': {'other_identifier': {'description': 'A slot to provide a '
-                                                            'secondary identifier of '
-                                                            'the Environment.',
-                                             'inlined_as_list': True,
-                                             'multivalued': True,
-                                             'name': 'other_identifier',
-                                             'range': 'Identifier',
-                                             'required': False}}})
+         'mixins': ['ClassifierMixin']})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
          'domain_of': ['Activity',
@@ -2394,14 +2380,6 @@ class Environment(ClassifierMixin):
                        'QuantitativeAttribute',
                        'Tool'],
          'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the Environment.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Activity',
-                       'Dataset',
-                       'Environment',
-                       'EvaluatedActivity',
-                       'EvaluatedEntity',
-                       'Tool'],
-         'slot_uri': 'adms:identifier'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
@@ -2472,7 +2450,6 @@ class EvaluatedActivity(ClassifierMixin):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -2579,7 +2556,6 @@ class EvaluatedEntity(ClassifierMixin):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -2674,7 +2650,6 @@ class AnalysisSourceData(EvaluatedEntity):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -2722,7 +2697,7 @@ class Plan(ClassifierMixin):
     A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['Plan Specification', 'Method', 'Procedure'],
-         'class_uri': 'prov:Entity',
+         'class_uri': 'prov:Plan',
          'examples': [{'description': 'We assigned the structure of sample CRS-37013 '
                                       'using a 13C NMR (CHMO:0000595) and the '
                                       'settings: pulse sequence: zgpg30, temperature: '
@@ -3448,7 +3423,6 @@ class Tool(ClassifierMixin):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the tool.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -3534,7 +3508,6 @@ class Device(Tool):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the tool.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -3619,7 +3592,6 @@ class Software(Tool):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the tool.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -3745,7 +3717,6 @@ class NMRAnalysisDataset(AnalysisDataset):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Dataset""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -3889,7 +3860,6 @@ class NMRSpectralAnalysis(DataAnalysis):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -3910,10 +3880,9 @@ class NMRSpectralAnalysis(DataAnalysis):
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:used'} })
-    realized_plan: Optional[str] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
+    realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Plan (aka procedure) that was realized by an Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
          'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
          'slot_uri': 'prov:used'} })
     has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
          'domain_of': ['Activity',
@@ -3923,10 +3892,10 @@ class NMRSpectralAnalysis(DataAnalysis):
                        'Tool'],
          'notes': ['not in DCAT-AP'],
          'slot_uri': 'dcterms:hasPart'} })
-    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
+    occurred_in: Optional[Location] = Field(default=None, description="""The slot to specify the Location at which an Activity took place.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
          'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'BFO:0000066'} })
+         'slot_uri': 'prov:atLocation'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
@@ -4003,7 +3972,6 @@ class NMRSpectroscopy(Activity):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A secondary identifier of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -4024,10 +3992,9 @@ class NMRSpectroscopy(Activity):
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'prov:used'} })
-    realized_plan: Optional[str] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was realized by a Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
+    realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Plan (aka procedure) that was realized by an Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
          'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
-         'recommended': True,
          'slot_uri': 'prov:used'} })
     has_part: Optional[Activity] = Field(default=None, description="""A slot to provide an Activity that is part of the Activity that created the Dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'has_part',
          'domain_of': ['Activity',
@@ -4037,10 +4004,10 @@ class NMRSpectroscopy(Activity):
                        'Tool'],
          'notes': ['not in DCAT-AP'],
          'slot_uri': 'dcterms:hasPart'} })
-    occurred_in: Optional[Environment] = Field(default=None, description="""The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
+    occurred_in: Optional[Location] = Field(default=None, description="""The slot to specify the Location at which an Activity took place.""", json_schema_extra = { "linkml_meta": {'alias': 'occurred_in',
          'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
-         'slot_uri': 'BFO:0000066'} })
+         'slot_uri': 'prov:atLocation'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
@@ -4099,7 +4066,6 @@ class ChemicalReaction(EvaluatedActivity):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedActivity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -4188,7 +4154,6 @@ class ChemicalSubstance(EvaluatedEntity):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -4289,7 +4254,6 @@ class ChemicalSample(ChemicalSubstance):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -4383,7 +4347,6 @@ class NMRSpectrum(AnalysisSourceData):
     other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the EvaluatedEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
          'domain_of': ['Activity',
                        'Dataset',
-                       'Environment',
                        'EvaluatedActivity',
                        'EvaluatedEntity',
                        'Tool'],
@@ -4430,7 +4393,7 @@ class Laboratory(Environment):
     """
     A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Entity',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'prov:Location',
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
@@ -4467,14 +4430,6 @@ class Laboratory(Environment):
                        'QuantitativeAttribute',
                        'Tool'],
          'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[List[Identifier]] = Field(default=None, description="""A slot to provide a secondary identifier of the Environment.""", json_schema_extra = { "linkml_meta": {'alias': 'other_identifier',
-         'domain_of': ['Activity',
-                       'Dataset',
-                       'Environment',
-                       'EvaluatedActivity',
-                       'EvaluatedEntity',
-                       'Tool'],
-         'slot_uri': 'adms:identifier'} })
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
