@@ -421,9 +421,8 @@ def build_dcatap_plus():
                                         in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='realized_plan',
                                         slot_uri= 'prov:used',
-                                        range= 'EvaluatedActivity',
-                                        description= 'The slot to specify the Method (aka Procedure) that was realized by a Activity.',
-                                        recommended= True,
+                                        range= 'Plan',
+                                        description= 'The slot to specify the Plan (aka procedure) that was realized by an Activity.',
                                         in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='occurred_in',
                                         slot_uri= 'prov:atLocation',
@@ -485,7 +484,8 @@ def build_dcatap_plus():
                                               'from_CV':{
                                                   'slot_uri':'schema:inDefinedTermSet',
                                                   'range':'uriorcurie',
-                                                  'description': 'The URL of the controlled vocabulary.'}},            in_subset='domain_agnostic_core'))
+                                                  'description': 'The URL of the controlled vocabulary.'}},
+                                          in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='rdf_type',
                                         slot_uri= 'rdf:type',
                                         range= 'DefinedTerm',
@@ -601,7 +601,7 @@ def build_dcatap_plus():
                                           in_subset='domain_agnostic_core'))
         builder.add_class(ClassDefinition(name='Plan',
                                           mixins= 'ClassifierMixin',
-                                          class_uri='prov:Entity',
+                                          class_uri='prov:Plan',
                                           aliases=['Plan Specification',
                                                    'Method',
                                                    'Procedure'],
