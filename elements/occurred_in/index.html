@@ -345,8 +345,8 @@
 
 
 <h1 id="slot-occurred_in">Slot: occurred_in</h1>
-<p><em>The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.</em></p>
-<p>URI: <a href="http://purl.obolibrary.org/obo/BFO_0000066">BFO:0000066</a></p>
+<p><em>The slot to specify the Location at which an Activity took place.</em></p>
+<p>URI: <a href="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -360,6 +360,16 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../Activity/">Activity</a></td>
+<td>An activity (process) that has the objective to produce information aboutn en...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
 <td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
 <td>no</td>
@@ -369,21 +379,11 @@
 <td>An Activity that evaluates the data produced by another Activity</td>
 <td>no</td>
 </tr>
-<tr>
-<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
-<td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>An activity (process) that has the objective to produce information aboutn en...</td>
-<td>no</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Environment/">Environment</a></li>
+<li>Range: <a href="../Location/">Location</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -401,7 +401,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>BFO:0000066</td>
+<td>prov:atLocation</td>
 </tr>
 <tr>
 <td>native</td>
@@ -413,16 +413,16 @@
 <details>
 
 <pre><code class="language-yaml">name: occurred_in
-description: The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.
+description: The slot to specify the Location at which an Activity took place.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 rank: 1000
-slot_uri: BFO:0000066
+slot_uri: prov:atLocation
 alias: occurred_in
 domain_of:
 - Activity
-range: Environment
+range: Location
 
 </code></pre>
 

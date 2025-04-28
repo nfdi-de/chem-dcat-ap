@@ -264,8 +264,8 @@
 
 
 
-    Activity --&gt; "0..1" Environment : occurred_in
-    click Environment href "../Environment"
+    Activity --&gt; "0..1" Location : occurred_in
+    click Location href "../Location"
 
 
       Activity : other_identifier
@@ -291,8 +291,8 @@
 
 
 
-    Activity --&gt; "0..1 _recommended_" EvaluatedActivity : realized_plan
-    click EvaluatedActivity href "../EvaluatedActivity"
+    Activity --&gt; "0..1" Plan : realized_plan
+    click Plan href "../Plan"
 
 
       Activity : title
@@ -380,8 +380,8 @@
 </tr>
 <tr>
 <td><a href="../realized_plan/">realized_plan</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>The slot to specify the Method (aka Procedure) that was realized by a Activit...</td>
+<td>0..1 <br/> <a href="../Plan/">Plan</a></td>
+<td>The slot to specify the Plan (aka procedure) that was realized by an Activity</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -392,8 +392,8 @@
 </tr>
 <tr>
 <td><a href="../occurred_in/">occurred_in</a></td>
-<td>0..1 <br/> <a href="../Environment/">Environment</a></td>
-<td>The slot to specify the Method (aka Procedure) that was used in the ActivityA...</td>
+<td>0..1 <br/> <a href="../Location/">Location</a></td>
+<td>The slot to specify the Location at which an Activity took place</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -673,7 +673,6 @@ attributes:
     domain_of:
     - Activity
     - Dataset
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
     - Tool
@@ -733,8 +732,8 @@ attributes:
     inlined_as_list: true
   realized_plan:
     name: realized_plan
-    description: The slot to specify the Method (aka Procedure) that was realized
-      by a Activity.
+    description: The slot to specify the Plan (aka procedure) that was realized by
+      an Activity.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -744,8 +743,7 @@ attributes:
     owner: Activity
     domain_of:
     - Activity
-    range: EvaluatedActivity
-    recommended: true
+    range: Plan
   has_part:
     name: has_part
     description: A slot to provide an Activity that is part of the Activity that created
@@ -767,18 +765,17 @@ attributes:
     inlined: true
   occurred_in:
     name: occurred_in
-    description: The slot to specify the Method (aka Procedure) that was used in the
-      ActivityActivity.
+    description: The slot to specify the Location at which an Activity took place.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
-    slot_uri: BFO:0000066
+    slot_uri: prov:atLocation
     alias: occurred_in
     owner: Activity
     domain_of:
     - Activity
-    range: Environment
+    range: Location
   type:
     name: type
     description: This slot is described in more detail within the class in which it

@@ -179,7 +179,7 @@ classes:
 
   Laboratory:
     is_a: Environment
-    class_uri: prov:Entity
+    class_uri: prov:Location
     description: A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
 
   ############################
