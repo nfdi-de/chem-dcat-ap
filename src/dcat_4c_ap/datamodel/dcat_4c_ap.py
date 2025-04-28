@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-04-23T15:37:45
+# Generation date: 2025-04-28T11:56:52
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -263,9 +263,9 @@ class Activity(YAMLRoot):
     evaluated_entity: Optional[Union[Dict[Union[str, EvaluatedEntityId], Union[dict, "EvaluatedEntity"]], List[Union[dict, "EvaluatedEntity"]]]] = empty_dict()
     evaluated_activity: Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, "EvaluatedActivity"]], List[Union[dict, "EvaluatedActivity"]]]] = empty_dict()
     used_tool: Optional[Union[Dict[Union[str, ToolId], Union[dict, "Tool"]], List[Union[dict, "Tool"]]]] = empty_dict()
-    realized_plan: Optional[Union[str, EvaluatedActivityId]] = None
+    realized_plan: Optional[Union[dict, "Plan"]] = None
     has_part: Optional[Union[dict, "Activity"]] = None
-    occurred_in: Optional[Union[dict, "Environment"]] = None
+    occurred_in: Optional[Union[dict, "Location"]] = None
     type: Optional[Union[dict, "DefinedTerm"]] = None
     rdf_type: Optional[Union[dict, "DefinedTerm"]] = None
 
@@ -291,14 +291,14 @@ class Activity(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="used_tool", slot_type=Tool, key_name="id", keyed=True)
 
-        if self.realized_plan is not None and not isinstance(self.realized_plan, EvaluatedActivityId):
-            self.realized_plan = EvaluatedActivityId(self.realized_plan)
+        if self.realized_plan is not None and not isinstance(self.realized_plan, Plan):
+            self.realized_plan = Plan(**as_dict(self.realized_plan))
 
         if self.has_part is not None and not isinstance(self.has_part, Activity):
             self.has_part = Activity(**as_dict(self.has_part))
 
-        if self.occurred_in is not None and not isinstance(self.occurred_in, Environment):
-            self.occurred_in = Environment(**as_dict(self.occurred_in))
+        if self.occurred_in is not None and not isinstance(self.occurred_in, Location):
+            self.occurred_in = Location(**as_dict(self.occurred_in))
 
         if self.type is not None and not isinstance(self.type, DefinedTerm):
             self.type = DefinedTerm(**as_dict(self.type))
@@ -1174,14 +1174,13 @@ class Environment(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
-    class_class_curie: ClassVar[str] = "prov:Entity"
+    class_class_uri: ClassVar[URIRef] = PROV["Location"]
+    class_class_curie: ClassVar[str] = "prov:Location"
     class_name: ClassVar[str] = "Environment"
     class_model_uri: ClassVar[URIRef] = NFDI4C.Environment
 
     title: Optional[str] = None
     description: Optional[str] = None
-    other_identifier: Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]] = empty_list()
     type: Optional[Union[dict, DefinedTerm]] = None
     rdf_type: Optional[Union[dict, DefinedTerm]] = None
 
@@ -1191,10 +1190,6 @@ class Environment(YAMLRoot):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
-
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
 
         if self.type is not None and not isinstance(self.type, DefinedTerm):
             self.type = DefinedTerm(**as_dict(self.type))
@@ -1212,8 +1207,8 @@ class Laboratory(Environment):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
-    class_class_curie: ClassVar[str] = "prov:Entity"
+    class_class_uri: ClassVar[URIRef] = PROV["Location"]
+    class_class_curie: ClassVar[str] = "prov:Location"
     class_name: ClassVar[str] = "Laboratory"
     class_model_uri: ClassVar[URIRef] = NFDI4C.Laboratory
 
@@ -1472,8 +1467,8 @@ class Plan(YAMLRoot):
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = PROV["Entity"]
-    class_class_curie: ClassVar[str] = "prov:Entity"
+    class_class_uri: ClassVar[URIRef] = PROV["Plan"]
+    class_class_curie: ClassVar[str] = "prov:Plan"
     class_name: ClassVar[str] = "Plan"
     class_model_uri: ClassVar[URIRef] = NFDI4C.Plan
 
@@ -2498,8 +2493,8 @@ slots.name = Slot(uri=FOAF.name, name="name", curie=FOAF.curie('name'),
 slots.notation = Slot(uri=SKOS.notation, name="notation", curie=SKOS.curie('notation'),
                    model_uri=NFDI4C.notation, domain=None, range=Optional[str])
 
-slots.occurred_in = Slot(uri=BFO['0000066'], name="occurred_in", curie=BFO.curie('0000066'),
-                   model_uri=NFDI4C.occurred_in, domain=None, range=Optional[Union[dict, Environment]])
+slots.occurred_in = Slot(uri=PROV.atLocation, name="occurred_in", curie=PROV.curie('atLocation'),
+                   model_uri=NFDI4C.occurred_in, domain=None, range=Optional[Union[dict, Location]])
 
 slots.other_identifier = Slot(uri=ADMS.identifier, name="other_identifier", curie=ADMS.curie('identifier'),
                    model_uri=NFDI4C.other_identifier, domain=None, range=Optional[str])
@@ -2529,7 +2524,7 @@ slots.rdf_type = Slot(uri=RDF.type, name="rdf_type", curie=RDF.curie('type'),
                    model_uri=NFDI4C.rdf_type, domain=None, range=Optional[Union[dict, DefinedTerm]])
 
 slots.realized_plan = Slot(uri=PROV.used, name="realized_plan", curie=PROV.curie('used'),
-                   model_uri=NFDI4C.realized_plan, domain=None, range=Optional[Union[str, EvaluatedActivityId]])
+                   model_uri=NFDI4C.realized_plan, domain=None, range=Optional[Union[dict, Plan]])
 
 slots.record = Slot(uri=DCAT.record, name="record", curie=DCAT.curie('record'),
                    model_uri=NFDI4C.record, domain=None, range=Optional[str])
@@ -3025,9 +3020,6 @@ slots.Distribution_temporal_resolution = Slot(uri=DCAT.temporalResolution, name=
 
 slots.Distribution_title = Slot(uri=DCTERMS.title, name="Distribution_title", curie=DCTERMS.curie('title'),
                    model_uri=NFDI4C.Distribution_title, domain=Distribution, range=Optional[Union[str, List[str]]])
-
-slots.Environment_other_identifier = Slot(uri=ADMS.identifier, name="Environment_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=NFDI4C.Environment_other_identifier, domain=Environment, range=Optional[Union[Union[dict, "Identifier"], List[Union[dict, "Identifier"]]]])
 
 slots.EvaluatedActivity_has_part = Slot(uri=DCTERMS.hasPart, name="EvaluatedActivity_has_part", curie=DCTERMS.curie('hasPart'),
                    model_uri=NFDI4C.EvaluatedActivity_has_part, domain=EvaluatedActivity, range=Optional[Union[Dict[Union[str, EvaluatedActivityId], Union[dict, "EvaluatedActivity"]], List[Union[dict, "EvaluatedActivity"]]]])

@@ -52,13 +52,13 @@
                 "occurred_in": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Environment"
+                            "$ref": "#/$defs/Location"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Method (aka Procedure) that was used in the ActivityActivity."
+                    "description": "The slot to specify the Location at which an Activity took place."
                 },
                 "other_identifier": {
                     "description": "A secondary identifier of the Activity that created the Dataset.",
@@ -82,11 +82,15 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "realized_plan": {
-                    "description": "The slot to specify the Method (aka Procedure) that was realized by a Activity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Plan"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the Plan (aka procedure) that was realized by an Activity."
                 },
                 "title": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -1436,13 +1440,13 @@
                 "occurred_in": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Environment"
+                            "$ref": "#/$defs/Location"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Method (aka Procedure) that was used in the ActivityActivity."
+                    "description": "The slot to specify the Location at which an Activity took place."
                 },
                 "other_identifier": {
                     "description": "A secondary identifier of the Activity that created the Dataset.",
@@ -1466,11 +1470,15 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "realized_plan": {
-                    "description": "The slot to specify the Method (aka Procedure) that was realized by a Activity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Plan"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the Plan (aka procedure) that was realized by an Activity."
                 },
                 "title": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -2565,16 +2573,6 @@
                         "null"
                     ]
                 },
-                "other_identifier": {
-                    "description": "A slot to provide a secondary identifier of the Environment.",
-                    "items": {
-                        "$ref": "#/$defs/Identifier"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "rdf_type": {
                     "anyOf": [
                         {
@@ -2994,16 +2992,6 @@
                     "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "other_identifier": {
-                    "description": "A slot to provide a secondary identifier of the Environment.",
-                    "items": {
-                        "$ref": "#/$defs/Identifier"
-                    },
-                    "type": [
-                        "array",
                         "null"
                     ]
                 },
@@ -3552,13 +3540,13 @@
                 "occurred_in": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Environment"
+                            "$ref": "#/$defs/Location"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Method (aka Procedure) that was used in the ActivityActivity."
+                    "description": "The slot to specify the Location at which an Activity took place."
                 },
                 "other_identifier": {
                     "description": "A secondary identifier of the Activity that created the Dataset.",
@@ -3582,11 +3570,15 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "realized_plan": {
-                    "description": "The slot to specify the Method (aka Procedure) that was realized by a Activity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Plan"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the Plan (aka procedure) that was realized by an Activity."
                 },
                 "title": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -3672,13 +3664,13 @@
                 "occurred_in": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Environment"
+                            "$ref": "#/$defs/Location"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Method (aka Procedure) that was used in the ActivityActivity."
+                    "description": "The slot to specify the Location at which an Activity took place."
                 },
                 "other_identifier": {
                     "description": "A secondary identifier of the Activity that created the Dataset.",
@@ -3702,11 +3694,15 @@
                     "description": "The type of NMR Spectroscopy provided as CURIE of a subclass of CHMO:0000613."
                 },
                 "realized_plan": {
-                    "description": "The slot to specify the Method (aka Procedure) that was realized by a Activity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Plan"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the Plan (aka procedure) that was realized by an Activity."
                 },
                 "title": {
                     "description": "This slot is described in more detail within the class in which it is used.",

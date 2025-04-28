@@ -11,9 +11,9 @@ message Activity
  repeated  evaluatedEntity evaluatedEntity = 0
  repeated  evaluatedActivity evaluatedActivity = 0
  repeated  tool usedTool = 0
-  evaluatedActivity realizedPlan = 0
+  plan realizedPlan = 0
   activity hasPart = 0
-  environment occurredIn = 0
+  location occurredIn = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -193,9 +193,9 @@ message DataAnalysis
  repeated  identifier otherIdentifier = 0
  repeated  evaluatedActivity evaluatedActivity = 0
  repeated  tool usedTool = 0
-  evaluatedActivity realizedPlan = 0
+  plan realizedPlan = 0
   activity hasPart = 0
-  environment occurredIn = 0
+  location occurredIn = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  analysisSourceData evaluatedEntity = 0
@@ -330,7 +330,6 @@ message Environment
  {
   string title = 0
   string description = 0
- repeated  identifier otherIdentifier = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -397,7 +396,6 @@ message Laboratory
  {
   string title = 0
   string description = 0
- repeated  identifier otherIdentifier = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -465,9 +463,9 @@ message NMRSpectralAnalysis
  repeated  identifier otherIdentifier = 0
  repeated  evaluatedActivity evaluatedActivity = 0
  repeated  tool usedTool = 0
-  evaluatedActivity realizedPlan = 0
+  plan realizedPlan = 0
   activity hasPart = 0
-  environment occurredIn = 0
+  location occurredIn = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  nMRSpectrum evaluatedEntity = 0
@@ -481,9 +479,9 @@ message NMRSpectroscopy
  repeated  identifier otherIdentifier = 0
  repeated  evaluatedActivity evaluatedActivity = 0
  repeated  tool usedTool = 0
-  evaluatedActivity realizedPlan = 0
+  plan realizedPlan = 0
   activity hasPart = 0
-  environment occurredIn = 0
+  location occurredIn = 0
   definedTerm type = 0
  repeated  chemicalSample evaluatedEntity = 0
   definedTerm rdfType = 0

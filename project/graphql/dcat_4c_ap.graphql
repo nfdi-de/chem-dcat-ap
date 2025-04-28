@@ -46,9 +46,9 @@ type Activity implements ClassifierMixin
     evaluatedEntity: [EvaluatedEntity]
     evaluatedActivity: [EvaluatedActivity]
     usedTool: [Tool]
-    realizedPlan: EvaluatedActivity
+    realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Environment
+    occurredIn: Location
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -247,9 +247,9 @@ type DataAnalysis
     otherIdentifier: [Identifier]
     evaluatedActivity: [EvaluatedActivity]
     usedTool: [Tool]
-    realizedPlan: EvaluatedActivity
+    realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Environment
+    occurredIn: Location
     type: DefinedTerm
     rdfType: DefinedTerm
     evaluatedEntity: [AnalysisSourceData]
@@ -388,7 +388,6 @@ type Environment implements ClassifierMixin
   {
     title: String
     description: String
-    otherIdentifier: [Identifier]
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -468,7 +467,6 @@ type Laboratory
   {
     title: String
     description: String
-    otherIdentifier: [Identifier]
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -552,9 +550,9 @@ type NMRSpectralAnalysis
     otherIdentifier: [Identifier]
     evaluatedActivity: [EvaluatedActivity]
     usedTool: [Tool]
-    realizedPlan: EvaluatedActivity
+    realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Environment
+    occurredIn: Location
     type: DefinedTerm
     rdfType: DefinedTerm
     evaluatedEntity: [NMRSpectrum]
@@ -568,9 +566,9 @@ type NMRSpectroscopy
     otherIdentifier: [Identifier]
     evaluatedActivity: [EvaluatedActivity]
     usedTool: [Tool]
-    realizedPlan: EvaluatedActivity
+    realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Environment
+    occurredIn: Location
     type: DefinedTerm
     evaluatedEntity: [ChemicalSample]
     rdfType: DefinedTerm

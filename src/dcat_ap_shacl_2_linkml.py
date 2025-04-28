@@ -421,14 +421,13 @@ def build_dcatap_plus():
                                         in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='realized_plan',
                                         slot_uri= 'prov:used',
-                                        range= 'EvaluatedActivity',
-                                        description= 'The slot to specify the Method (aka Procedure) that was realized by a Activity.',
-                                        recommended= True,
+                                        range= 'Plan',
+                                        description= 'The slot to specify the Plan (aka procedure) that was realized by an Activity.',
                                         in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='occurred_in',
-                                        slot_uri= 'BFO:0000066',
-                                        range= 'Environment',
-                                        description= 'The slot to specify the Method (aka Procedure) that was used in the ActivityActivity.',
+                                        slot_uri= 'prov:atLocation',
+                                        range= 'Location',
+                                        description= 'The slot to specify the Location at which an Activity took place.',
                                         in_subset='domain_agnostic_core'))
         slots = ['id',
                  'title',
@@ -485,7 +484,8 @@ def build_dcatap_plus():
                                               'from_CV':{
                                                   'slot_uri':'schema:inDefinedTermSet',
                                                   'range':'uriorcurie',
-                                                  'description': 'The URL of the controlled vocabulary.'}},            in_subset='domain_agnostic_core'))
+                                                  'description': 'The URL of the controlled vocabulary.'}},
+                                          in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='rdf_type',
                                         slot_uri= 'rdf:type',
                                         range= 'DefinedTerm',
@@ -594,22 +594,14 @@ def build_dcatap_plus():
     def add_planning_and_surrounding_context():
         builder.add_class(ClassDefinition(name='Environment',
                                           mixins= 'ClassifierMixin',
-                                          class_uri='prov:Entity',
                                           description='The surrounding in which the dataset creating activity took place (e.g. a lab).',
+                                          class_uri='prov:Location',
                                           slots = ['title',
-                                                   'description',
-                                                   'other_identifier'],
-                                          slot_usage={
-                                              'other_identifier':{
-                                                  'description': 'A slot to provide a secondary identifier of the Environment.',
-                                                  'range': 'Identifier',
-                                                  'required': 'false',
-                                                  'multivalued': 'true',
-                                                  'inlined_as_list': 'true'}},
+                                                   'description'],
                                           in_subset='domain_agnostic_core'))
         builder.add_class(ClassDefinition(name='Plan',
                                           mixins= 'ClassifierMixin',
-                                          class_uri='prov:Entity',
+                                          class_uri='prov:Plan',
                                           aliases=['Plan Specification',
                                                    'Method',
                                                    'Procedure'],

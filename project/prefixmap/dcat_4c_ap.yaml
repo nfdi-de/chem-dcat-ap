@@ -113,7 +113,7 @@
       "@id": "foaf:Document"
    },
    "Environment": {
-      "@id": "prov:Entity"
+      "@id": "prov:Location"
    },
    "EvaluatedActivity": {
       "@id": "prov:Activity"
@@ -143,7 +143,7 @@
       "@id": "vcard:Kind"
    },
    "Laboratory": {
-      "@id": "prov:Entity"
+      "@id": "prov:Location"
    },
    "LegalResource": {
       "@id": "eli:LegalResource"
@@ -176,7 +176,7 @@
       "@id": "dcterms:PeriodOfTime"
    },
    "Plan": {
-      "@id": "prov:Entity"
+      "@id": "prov:Plan"
    },
    "Policy": {
       "@id": "odrl:Policy"

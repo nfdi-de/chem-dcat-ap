@@ -77,9 +77,9 @@ dcatap_plus:Activity  (
              prov:used @dcatap_plus:EvaluatedEntity * ;
              prov:wasInformedBy @dcatap_plus:EvaluatedActivity * ;
              prov:used @dcatap_plus:Tool * ;
-             prov:used @dcatap_plus:EvaluatedActivity ? ;
+             prov:used @dcatap_plus:Plan ? ;
              dcterms:hasPart @dcatap_plus:Activity ? ;
-             <http://purl.obolibrary.org/obo/BFO_0000066> @dcatap_plus:Environment ? ;
+             prov:atLocation @dcatap_plus:Location ? ;
              dcterms:type @dcatap_plus:DefinedTerm ? ;
              rdf:type @dcatap_plus:DefinedTerm ?
           ) ;
@@ -411,11 +411,10 @@ dcatap_plus:Environment  (
              rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
-             adms:identifier @dcatap_plus:Identifier * ;
              dcterms:type @dcatap_plus:DefinedTerm ? ;
              rdf:type @dcatap_plus:DefinedTerm ?
           ) ;
-          rdf:type [ prov:Entity ] ?
+          rdf:type [ prov:Location ] ?
        )
     } OR @<Laboratory>
 )
@@ -516,9 +515,9 @@ dcatap_plus:Kind CLOSED {
 
 <Laboratory> CLOSED {
     (  $<Laboratory_tes> (  &dcatap_plus:Environment_tes ;
-          rdf:type [ prov:Entity ] ?
+          rdf:type [ prov:Location ] ?
        ) ;
-       rdf:type [ prov:Entity ] ?
+       rdf:type [ prov:Location ] ?
     )
 }
 
@@ -632,7 +631,7 @@ dcatap_plus:Plan CLOSED {
           dcterms:type @dcatap_plus:DefinedTerm ? ;
           rdf:type @dcatap_plus:DefinedTerm ?
        ) ;
-       rdf:type [ prov:Entity ] ?
+       rdf:type [ prov:Plan ] ?
     )
 }
 
