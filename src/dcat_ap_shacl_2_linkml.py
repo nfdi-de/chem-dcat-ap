@@ -138,8 +138,20 @@ def parse_dcat_ap_shacl_shapes(builder):
         if node_name not in ['dateTime', 'decimal', 'duration', 'hexBinary', 'nonNegativeInteger'] + IGNORED_NODES:
             # Add DCAT-AP Supportive Entity classes, this is done only to have an easier to read documentation.
             # 'Activity' is considered a main entity here, since we use it to extend DCAT-AP.
-            if node_name not in ['Dataset', 'DatasetSeries', 'Distribution', 'Catalogue', 'CataloguedResource',
-                                 'DataService', 'Activity', 'CatalogueRecord']:
+            if node_name not in ['Agent',
+                                 'Catalogue',
+                                 'CatalogueRecord',
+                                 'CataloguedResource',
+                                 'Checksum',
+                                 'DataService',
+                                 'Dataset',
+                                 'DatasetSeries',
+                                 'Distribution',
+                                 'Kind',
+                                 'Licence Document',
+                                 'Location',
+                                 'Relationship',
+                                 'Activity' ]:
                 builder.add_class(ClassDefinition(name='SupportiveEntity',
                                                   description='The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.'))
                 builder.add_class(ClassDefinition(name=node_name,
