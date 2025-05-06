@@ -22,6 +22,7 @@
    "dcterms": "http://purl.org/dc/terms/",
    "doi": "https://doi.org/",
    "eli": "http://data.europa.eu/eli/ontology#",
+   "epos": "https://www.epos-eu.org/epos-dcat-ap#",
    "ex": "http://example.org/",
    "foaf": "http://xmlns.com/foaf/0.1/",
    "linkml": "https://w3id.org/linkml/",
@@ -104,16 +105,13 @@
       "@id": "schema:DefinedTerm"
    },
    "Device": {
-      "@id": "prov:Entity"
+      "@id": "prov:Agent"
    },
    "Distribution": {
       "@id": "dcat:Distribution"
    },
    "Document": {
       "@id": "foaf:Document"
-   },
-   "Environment": {
-      "@id": "prov:Location"
    },
    "EvaluatedActivity": {
       "@id": "prov:Activity"
@@ -135,6 +133,9 @@
    },
    "InChIKey": {
       "@id": "CHEMINF:000059"
+   },
+   "Instrument": {
+      "@id": "prov:Agent"
    },
    "IUPACChemicalFormula": {
       "@id": "CHEMINF:000037"
@@ -206,7 +207,7 @@
       "@id": "CHEMINF:000018"
    },
    "Software": {
-      "@id": "prov:Entity"
+      "@id": "prov:SoftwareAgent"
    },
    "Standard": {
       "@id": "dcterms:Standard"
@@ -214,10 +215,10 @@
    "SupportiveEntity": {
       "@id": "dcatap_plus:SupportiveEntity"
    },
+   "Surrounding": {
+      "@id": "prov:Location"
+   },
    "TimeInstant": {
       "@id": "time:Instant"
-   },
-   "Tool": {
-      "@id": "prov:Entity"
    }
 }

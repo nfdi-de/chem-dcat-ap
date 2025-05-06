@@ -114,8 +114,6 @@ classes:
     is_a: EvaluatedEntity
     class_uri: prov:Entity
     description: A portion of matter of constant composition, composed of molecular entities of the same type or of different types that is being evaluated in a scientific process.
-    slots:
-      - has_role
     attributes:
       composed_of:
         description: The slot to provide the chemical entities of which the chemical substance is composed of.
@@ -174,11 +172,11 @@ classes:
   ##############
 
   #####################
-  # Environment Types #
+  # Surrounding Types #
   #####################
 
   Laboratory:
-    is_a: Environment
+    is_a: Surrounding
     class_uri: prov:Location
     description: A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
 
@@ -206,7 +204,7 @@ classes:
     description: A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
 
 slots:
-  has_role:
+ # has_role:
     #slot_uri: RO:0000087
 
 enums:

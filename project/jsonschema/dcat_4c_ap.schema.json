@@ -2,7 +2,7 @@
     "$defs": {
         "Activity": {
             "additionalProperties": false,
-            "description": "An activity (process) that has the objective to produce information aboutn entity or activity.",
+            "description": "An activity (process) that has the objective to produce information about an entity or activity.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -12,7 +12,7 @@
                     ]
                 },
                 "evaluated_activity": {
-                    "description": "The slot to specify the activity of interest that was evaluated.",
+                    "description": "The slot to provide the EvaluatedActivity evaluated by an Activity.",
                     "items": {
                         "$ref": "#/$defs/EvaluatedActivity"
                     },
@@ -22,7 +22,7 @@
                     ]
                 },
                 "evaluated_entity": {
-                    "description": "The slot to specify the entity of interest that was evaluated.",
+                    "description": "The slot to provide the EvaluatedEntity evaluated by an Activity.",
                     "items": {
                         "$ref": "#/$defs/EvaluatedEntity"
                     },
@@ -52,13 +52,13 @@
                 "occurred_in": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Location"
+                            "$ref": "#/$defs/Surrounding"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Location at which an Activity took place."
+                    "description": "The slot to specify the Surrounding in which an Activity took place."
                 },
                 "other_identifier": {
                     "description": "A secondary identifier of the Activity that created the Dataset.",
@@ -110,10 +110,10 @@
                     ],
                     "description": "This slot is described in more detail within the class in which it is used."
                 },
-                "used_tool": {
-                    "description": "The slot to specify the tool that was used.",
+                "used_instrument": {
+                    "description": "The slot to specify the Instruments that were used in the data generating Activity.",
                     "items": {
-                        "$ref": "#/$defs/Tool"
+                        "$ref": "#/$defs/Instrument"
                     },
                     "type": [
                         "array",
@@ -221,26 +221,6 @@
                         "null"
                     ]
                 },
-                "describes_activity": {
-                    "description": "A slot to provide the EvaluatedActivity that is described by a Dataset.",
-                    "items": {
-                        "$ref": "#/$defs/EvaluatedActivity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "describes_entity": {
-                    "description": "A slot to provide the EvaluatedEntity that is described by a Dataset.",
-                    "items": {
-                        "$ref": "#/$defs/EvaluatedEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
                     "description": "A free-text account of the Dataset.",
                     "items": {
@@ -307,6 +287,26 @@
                     "description": "A dataset series of which the dataset is part.",
                     "items": {
                         "$ref": "#/$defs/DatasetSeries"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "is_about_activity": {
+                    "description": "A slot to provide the EvaluatedActivity a Dataset is about.",
+                    "items": {
+                        "$ref": "#/$defs/EvaluatedActivity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "is_about_entity": {
+                    "description": "A slot to provide the EvaluatedEntity a Dataset is about.",
+                    "items": {
+                        "$ref": "#/$defs/EvaluatedEntity"
                     },
                     "type": [
                         "array",
@@ -558,7 +558,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -568,7 +568,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -639,7 +639,7 @@
         },
         "Any": {
             "additionalProperties": true,
-            "description": "This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/)",
+            "description": "This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/).",
             "title": "Any",
             "type": [
                 "null",
@@ -1052,7 +1052,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -1062,7 +1062,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -1153,7 +1153,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -1163,18 +1163,12 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
                     "type": [
                         "array",
-                        "null"
-                    ]
-                },
-                "has_role": {
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
@@ -1270,7 +1264,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -1280,18 +1274,12 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
                     "type": [
                         "array",
-                        "null"
-                    ]
-                },
-                "has_role": {
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
@@ -1403,7 +1391,7 @@
                     ]
                 },
                 "evaluated_activity": {
-                    "description": "The slot to specify the activity of interest that was evaluated.",
+                    "description": "The slot to provide the EvaluatedActivity evaluated by an Activity.",
                     "items": {
                         "$ref": "#/$defs/EvaluatedActivity"
                     },
@@ -1440,13 +1428,13 @@
                 "occurred_in": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Location"
+                            "$ref": "#/$defs/Surrounding"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Location at which an Activity took place."
+                    "description": "The slot to specify the Surrounding in which an Activity took place."
                 },
                 "other_identifier": {
                     "description": "A secondary identifier of the Activity that created the Dataset.",
@@ -1498,10 +1486,10 @@
                     ],
                     "description": "This slot is described in more detail within the class in which it is used."
                 },
-                "used_tool": {
-                    "description": "The slot to specify the tool that was used.",
+                "used_instrument": {
+                    "description": "The slot to specify the Instruments that were used in the data generating Activity.",
                     "items": {
-                        "$ref": "#/$defs/Tool"
+                        "$ref": "#/$defs/Instrument"
                     },
                     "type": [
                         "array",
@@ -1749,26 +1737,6 @@
                         "null"
                     ]
                 },
-                "describes_activity": {
-                    "description": "A slot to provide the EvaluatedActivity that is described by a Dataset.",
-                    "items": {
-                        "$ref": "#/$defs/EvaluatedActivity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "describes_entity": {
-                    "description": "A slot to provide the EvaluatedEntity that is described by a Dataset.",
-                    "items": {
-                        "$ref": "#/$defs/EvaluatedEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
                     "description": "A free-text account of the Dataset.",
                     "items": {
@@ -1835,6 +1803,26 @@
                     "description": "A dataset series of which the dataset is part.",
                     "items": {
                         "$ref": "#/$defs/DatasetSeries"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "is_about_activity": {
+                    "description": "A slot to provide the EvaluatedActivity a Dataset is about.",
+                    "items": {
+                        "$ref": "#/$defs/EvaluatedActivity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "is_about_entity": {
+                    "description": "A slot to provide the EvaluatedEntity a Dataset is about.",
+                    "items": {
+                        "$ref": "#/$defs/EvaluatedEntity"
                     },
                     "type": [
                         "array",
@@ -2191,7 +2179,7 @@
         },
         "DefinedTerm": {
             "additionalProperties": false,
-            "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.",
+            "description": "A word, name, acronym or phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.",
             "properties": {
                 "from_CV": {
                     "description": "The URL of the controlled vocabulary.",
@@ -2220,7 +2208,7 @@
         },
         "Device": {
             "additionalProperties": false,
-            "description": "A hardware device with a certain function that was used within ann Activity.",
+            "description": "A material instrument that is designed to perform a function primarily by means of its mechanical or electrical nature.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -2230,9 +2218,9 @@
                     ]
                 },
                 "has_part": {
-                    "description": "The slot to specify parts of a tool.",
+                    "description": "The slot to specify parts of a Device that are themselves Devices.",
                     "items": {
-                        "$ref": "#/$defs/Tool"
+                        "$ref": "#/$defs/Instrument"
                     },
                     "type": [
                         "array",
@@ -2240,7 +2228,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -2250,7 +2238,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -2264,7 +2252,7 @@
                     "type": "string"
                 },
                 "other_identifier": {
-                    "description": "A slot to provide a secondary identifier of the tool.",
+                    "description": "A slot to provide a secondary identifier for a Device.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },
@@ -2562,50 +2550,6 @@
             "title": "Document",
             "type": "object"
         },
-        "Environment": {
-            "additionalProperties": false,
-            "description": "The surrounding in which the dataset creating activity took place (e.g. a lab).",
-            "properties": {
-                "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rdf_type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the ontology class that is instantiated by an entity."
-                },
-                "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "This slot is described in more detail within the class in which it is used."
-                }
-            },
-            "title": "Environment",
-            "type": "object"
-        },
         "EvaluatedActivity": {
             "additionalProperties": false,
             "description": "An activity or proces that is being evaluated in a Activity.",
@@ -2628,7 +2572,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -2638,7 +2582,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -2719,7 +2663,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -2729,7 +2673,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -2978,6 +2922,97 @@
             "title": "InChi",
             "type": "object"
         },
+        "Instrument": {
+            "additionalProperties": false,
+            "description": "An entity that is actively used within an Activity as a means to achieve the planned objectives of said Activity because of its function.",
+            "properties": {
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "The slot to specify parts of an Instrument that are themselves Instruments.",
+                    "items": {
+                        "$ref": "#/$defs/Instrument"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
+                "other_identifier": {
+                    "description": "A slot to provide a secondary identifier for an Instrument.",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Instrument",
+            "type": "object"
+        },
         "Kind": {
             "additionalProperties": false,
             "description": "See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)",
@@ -3168,26 +3203,6 @@
                         "null"
                     ]
                 },
-                "describes_activity": {
-                    "description": "A slot to provide the EvaluatedActivity that is described by a Dataset.",
-                    "items": {
-                        "$ref": "#/$defs/EvaluatedActivity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "describes_entity": {
-                    "description": "A slot to provide the EvaluatedEntity that is described by a Dataset.",
-                    "items": {
-                        "$ref": "#/$defs/ChemicalSample"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "description": {
                     "description": "A free-text account of the Dataset.",
                     "items": {
@@ -3254,6 +3269,26 @@
                     "description": "A dataset series of which the dataset is part.",
                     "items": {
                         "$ref": "#/$defs/DatasetSeries"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "is_about_activity": {
+                    "description": "A slot to provide the EvaluatedActivity a Dataset is about.",
+                    "items": {
+                        "$ref": "#/$defs/EvaluatedActivity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "is_about_entity": {
+                    "description": "A slot to provide the EvaluatedEntity a Dataset is about.",
+                    "items": {
+                        "$ref": "#/$defs/EvaluatedEntity"
                     },
                     "type": [
                         "array",
@@ -3503,7 +3538,7 @@
                     ]
                 },
                 "evaluated_activity": {
-                    "description": "The slot to specify the activity of interest that was evaluated.",
+                    "description": "The slot to provide the EvaluatedActivity evaluated by an Activity.",
                     "items": {
                         "$ref": "#/$defs/EvaluatedActivity"
                     },
@@ -3540,13 +3575,13 @@
                 "occurred_in": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Location"
+                            "$ref": "#/$defs/Surrounding"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Location at which an Activity took place."
+                    "description": "The slot to specify the Surrounding in which an Activity took place."
                 },
                 "other_identifier": {
                     "description": "A secondary identifier of the Activity that created the Dataset.",
@@ -3598,10 +3633,10 @@
                     ],
                     "description": "This slot is described in more detail within the class in which it is used."
                 },
-                "used_tool": {
-                    "description": "The slot to specify the tool that was used.",
+                "used_instrument": {
+                    "description": "The slot to specify the Instruments that were used in the data generating Activity.",
                     "items": {
-                        "$ref": "#/$defs/Tool"
+                        "$ref": "#/$defs/Instrument"
                     },
                     "type": [
                         "array",
@@ -3627,7 +3662,7 @@
                     ]
                 },
                 "evaluated_activity": {
-                    "description": "The slot to specify the activity of interest that was evaluated.",
+                    "description": "The slot to provide the EvaluatedActivity evaluated by an Activity.",
                     "items": {
                         "$ref": "#/$defs/EvaluatedActivity"
                     },
@@ -3637,7 +3672,7 @@
                     ]
                 },
                 "evaluated_entity": {
-                    "description": "The slot to specify the entity of interest that was evaluated.",
+                    "description": "The slot to provide the EvaluatedEntity evaluated by an Activity.",
                     "items": {
                         "$ref": "#/$defs/ChemicalSample"
                     },
@@ -3664,13 +3699,13 @@
                 "occurred_in": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Location"
+                            "$ref": "#/$defs/Surrounding"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Location at which an Activity took place."
+                    "description": "The slot to specify the Surrounding in which an Activity took place."
                 },
                 "other_identifier": {
                     "description": "A secondary identifier of the Activity that created the Dataset.",
@@ -3722,10 +3757,10 @@
                     ],
                     "description": "This slot is described in more detail within the class in which it is used."
                 },
-                "used_tool": {
-                    "description": "The slot to specify the tool that was used.",
+                "used_instrument": {
+                    "description": "The slot to specify the Instruments that were used in the data generating Activity.",
                     "items": {
-                        "$ref": "#/$defs/Tool"
+                        "$ref": "#/$defs/Instrument"
                     },
                     "type": [
                         "array",
@@ -3761,7 +3796,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -3771,7 +3806,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -3954,7 +3989,7 @@
         },
         "QualitativeAttribute": {
             "additionalProperties": false,
-            "description": "A piece of information that is attributed to an entity of interest, tool or environment.",
+            "description": "A piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -4005,7 +4040,7 @@
         },
         "QuantitativeAttribute": {
             "additionalProperties": false,
-            "description": "A quantifiable piece of information that is attributed to an entity of interest, tool or environment.",
+            "description": "A quantifiable piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -4162,7 +4197,7 @@
         },
         "Software": {
             "additionalProperties": false,
-            "description": "A software program with a certain function that was used within an Activity.",
+            "description": "An instrument composed of a series of instructions that can be interpreted by or directly executed by a computer.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -4172,9 +4207,9 @@
                     ]
                 },
                 "has_part": {
-                    "description": "The slot to specify parts of a tool.",
+                    "description": "The slot to specify parts of a Software that are themselves Software.",
                     "items": {
-                        "$ref": "#/$defs/Tool"
+                        "$ref": "#/$defs/Instrument"
                     },
                     "type": [
                         "array",
@@ -4182,7 +4217,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -4192,7 +4227,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -4206,7 +4241,7 @@
                     "type": "string"
                 },
                 "other_identifier": {
-                    "description": "A slot to provide a secondary identifier of the tool.",
+                    "description": "A slot to provide a secondary identifier for a Software.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },
@@ -4263,64 +4298,14 @@
             "title": "SupportiveEntity",
             "type": "object"
         },
-        "TimeInstant": {
+        "Surrounding": {
             "additionalProperties": false,
-            "description": "See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)",
-            "title": "TimeInstant",
-            "type": "object"
-        },
-        "Tool": {
-            "additionalProperties": false,
-            "description": "A entity with a certain function used within a Activity.",
+            "description": "The surrounding in which the dataset creating activity took place (e.g. a lab).",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "has_part": {
-                    "description": "The slot to specify parts of a tool.",
-                    "items": {
-                        "$ref": "#/$defs/Tool"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
-                    "items": {
-                        "$ref": "#/$defs/QualitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
-                    "items": {
-                        "$ref": "#/$defs/QuantitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A slot to provide an URI for an entity within this schema.",
-                    "type": "string"
-                },
-                "other_identifier": {
-                    "description": "A slot to provide a secondary identifier of the tool.",
-                    "items": {
-                        "$ref": "#/$defs/Identifier"
-                    },
-                    "type": [
-                        "array",
                         "null"
                     ]
                 },
@@ -4354,10 +4339,13 @@
                     "description": "This slot is described in more detail within the class in which it is used."
                 }
             },
-            "required": [
-                "id"
-            ],
-            "title": "Tool",
+            "title": "Surrounding",
+            "type": "object"
+        },
+        "TimeInstant": {
+            "additionalProperties": false,
+            "description": "See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)",
+            "title": "TimeInstant",
             "type": "object"
         },
         "TopLevelMediaTypes": {

@@ -45,10 +45,10 @@ type Activity implements ClassifierMixin
     otherIdentifier: [Identifier]
     evaluatedEntity: [EvaluatedEntity]
     evaluatedActivity: [EvaluatedActivity]
-    usedTool: [Tool]
+    usedInstrument: [Instrument]
     realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Location
+    occurredIn: Surrounding
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -97,8 +97,8 @@ type AnalysisDataset
     version: String
     versionNotes: [String]
     id: Uriorcurie!
-    describesEntity: [EvaluatedEntity]
-    describesActivity: [EvaluatedActivity]
+    isAboutEntity: [EvaluatedEntity]
+    isAboutActivity: [EvaluatedActivity]
     wasGeneratedBy: [DataAnalysis]
   }
 
@@ -203,7 +203,6 @@ type ChemicalSample
     wasGeneratedBy: [Activity]
     type: DefinedTerm
     rdfType: DefinedTerm
-    hasRole: String
     composedOf: [ChemicalEntity]
   }
 
@@ -219,7 +218,6 @@ type ChemicalSubstance
     wasGeneratedBy: [Activity]
     type: DefinedTerm
     rdfType: DefinedTerm
-    hasRole: String
     composedOf: [ChemicalEntity]
   }
 
@@ -246,10 +244,10 @@ type DataAnalysis
     description: String
     otherIdentifier: [Identifier]
     evaluatedActivity: [EvaluatedActivity]
-    usedTool: [Tool]
+    usedInstrument: [Instrument]
     realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Location
+    occurredIn: Surrounding
     type: DefinedTerm
     rdfType: DefinedTerm
     evaluatedEntity: [AnalysisSourceData]
@@ -314,8 +312,8 @@ type Dataset
     versionNotes: [String]
     wasGeneratedBy: [Activity]!
     id: Uriorcurie!
-    describesEntity: [EvaluatedEntity]
-    describesActivity: [EvaluatedActivity]
+    isAboutEntity: [EvaluatedEntity]
+    isAboutActivity: [EvaluatedActivity]
   }
 
 type DatasetSeries
@@ -344,12 +342,12 @@ type Device
     id: Uriorcurie!
     title: String
     description: String
-    otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [Tool]
     type: DefinedTerm
     rdfType: DefinedTerm
+    hasPart: [Instrument]
+    otherIdentifier: [Identifier]
   }
 
 type Distribution
@@ -382,14 +380,6 @@ type Distribution
 
 type Document
   {
-  }
-
-type Environment implements ClassifierMixin
-  {
-    title: String
-    description: String
-    type: DefinedTerm
-    rdfType: DefinedTerm
   }
 
 type EvaluatedActivity implements ClassifierMixin
@@ -446,6 +436,19 @@ type InChIKey
     title: String
     description: String
     value: String!
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
+type Instrument implements ClassifierMixin
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [Instrument]
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -537,9 +540,10 @@ type NMRAnalysisDataset
     version: String
     versionNotes: [String]
     id: Uriorcurie!
-    describesActivity: [EvaluatedActivity]
+    isAboutEntity: [EvaluatedEntity]
+    isAboutActivity: [EvaluatedActivity]
     wasGeneratedBy: [NMRSpectralAnalysis]
-    describesEntity: [ChemicalSample]
+    describesEntity: ChemicalSample
   }
 
 type NMRSpectralAnalysis
@@ -549,10 +553,10 @@ type NMRSpectralAnalysis
     description: String
     otherIdentifier: [Identifier]
     evaluatedActivity: [EvaluatedActivity]
-    usedTool: [Tool]
+    usedInstrument: [Instrument]
     realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Location
+    occurredIn: Surrounding
     type: DefinedTerm
     rdfType: DefinedTerm
     evaluatedEntity: [NMRSpectrum]
@@ -565,10 +569,10 @@ type NMRSpectroscopy
     description: String
     otherIdentifier: [Identifier]
     evaluatedActivity: [EvaluatedActivity]
-    usedTool: [Tool]
+    usedInstrument: [Instrument]
     realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Location
+    occurredIn: Surrounding
     type: DefinedTerm
     evaluatedEntity: [ChemicalSample]
     rdfType: DefinedTerm
@@ -664,12 +668,12 @@ type Software
     id: Uriorcurie!
     title: String
     description: String
-    otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [Tool]
     type: DefinedTerm
     rdfType: DefinedTerm
+    hasPart: [Instrument]
+    otherIdentifier: [Identifier]
   }
 
 type Standard
@@ -680,20 +684,15 @@ type SupportiveEntity
   {
   }
 
-type TimeInstant
+type Surrounding implements ClassifierMixin
   {
-  }
-
-type Tool implements ClassifierMixin
-  {
-    id: Uriorcurie!
     title: String
     description: String
-    otherIdentifier: [Identifier]
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [Tool]
     type: DefinedTerm
     rdfType: DefinedTerm
+  }
+
+type TimeInstant
+  {
   }
 
