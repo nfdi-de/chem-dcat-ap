@@ -213,7 +213,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-qualitativeattribute">Class: QualitativeAttribute</h1>
-<p><em>A piece of information that is attributed to an entity of interest, tool or environment.</em></p>
+<p><em>A piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a></p>
 <div class="mermaid"> classDiagram
     class QualitativeAttribute
@@ -371,13 +371,13 @@
 <td><a href="./">QualitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../Software/">Software</a></td>
+<td><a href="../Instrument/">Instrument</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../Tool/">Tool</a></td>
+<td><a href="../Software/">Software</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>
@@ -413,8 +413,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: QualitativeAttribute
-description: A piece of information that is attributed to an entity of interest, tool
-  or environment.
+description: A piece of information that is attributed to an EvaluatedEntity, Instrument
+  or Surrounding.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -436,8 +436,8 @@ class_uri: prov:Entity
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: QualitativeAttribute
-description: A piece of information that is attributed to an entity of interest, tool
-  or environment.
+description: A piece of information that is attributed to an EvaluatedEntity, Instrument
+  or Surrounding.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -468,13 +468,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   description:
     name: description
@@ -493,13 +493,13 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   value:
     name: value

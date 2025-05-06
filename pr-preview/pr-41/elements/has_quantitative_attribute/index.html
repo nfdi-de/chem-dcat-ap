@@ -345,7 +345,7 @@
 
 
 <h1 id="slot-has_quantitative_attribute">Slot: has_quantitative_attribute</h1>
-<p><em>The slot to relate a quantitative attribute to an entity of interest, tool or environment.</em></p>
+<p><em>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument</em></p>
 <p>URI: <a href="http://purl.org/dc/terms/relation">dcterms:relation</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -360,38 +360,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Software/">Software</a></td>
-<td>A software program with a certain function that was used within an Activity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalSample/">ChemicalSample</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Device/">Device</a></td>
-<td>A hardware device with a certain function that was used within ann Activity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Tool/">Tool</a></td>
-<td>A entity with a certain function used within a Activity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
-<td>A set of chemical shifts obtained via NMR spectroscopy</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
-<td>Information that was evaluated within a DataAnalysis</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 <td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
+<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -405,8 +380,33 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
-<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>Information that was evaluated within a DataAnalysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Device/">Device</a></td>
+<td>A material instrument that is designed to perform a function primarily by mea...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalSample/">ChemicalSample</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Instrument/">Instrument</a></td>
+<td>An entity that is actively used within an Activity as a means to achieve the ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Software/">Software</a></td>
+<td>An instrument composed of a series of instructions that can be interpreted by...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td>A set of chemical shifts obtained via NMR spectroscopy</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -451,8 +451,8 @@
 <details>
 
 <pre><code class="language-yaml">name: has_quantitative_attribute
-description: The slot to relate a quantitative attribute to an entity of interest,
-  tool or environment.
+description: The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity
+  or Instrument
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -462,7 +462,7 @@ alias: has_quantitative_attribute
 domain_of:
 - EvaluatedActivity
 - EvaluatedEntity
-- Tool
+- Instrument
 range: QuantitativeAttribute
 recommended: true
 multivalued: true

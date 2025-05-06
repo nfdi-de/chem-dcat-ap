@@ -360,48 +360,18 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Software/">Software</a></td>
-<td>A software program with a certain function that was used within an Activity</td>
-<td>no</td>
+<td><a href="../Activity/">Activity</a></td>
+<td>An activity (process) that has the objective to produce information about an ...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
 <td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalSample/">ChemicalSample</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataAnalysis/">DataAnalysis</a></td>
-<td>An Activity that evaluates the data produced by another Activity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Device/">Device</a></td>
-<td>A hardware device with a certain function that was used within ann Activity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Tool/">Tool</a></td>
-<td>A entity with a certain function used within a Activity</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
-<td>A set of chemical shifts obtained via NMR spectroscopy</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>An activity (process) that has the objective to produce information aboutn en...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
-<td>Information that was evaluated within a DataAnalysis</td>
 <td>no</td>
 </tr>
 <tr>
@@ -410,14 +380,9 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
-<td>A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample</td>
+<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
+<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
@@ -430,18 +395,53 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
-<td>An experimental procedure with the aim of producing a portion of a given comp...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Dataset/">Dataset</a></td>
 <td>A collection of data, published or curated by a single agent, and available f...</td>
 <td>yes</td>
 </tr>
 <tr>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>Information that was evaluated within a DataAnalysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td>An Activity that evaluates the data produced by another Activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Device/">Device</a></td>
+<td>A material instrument that is designed to perform a function primarily by mea...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Software/">Software</a></td>
+<td>An instrument composed of a series of instructions that can be interpreted by...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
+<td>A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalSample/">ChemicalSample</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Instrument/">Instrument</a></td>
+<td>An entity that is actively used within an Activity as a means to achieve the ...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
 <td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td>A set of chemical shifts obtained via NMR spectroscopy</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -489,7 +489,7 @@ domain_of:
 - Dataset
 - EvaluatedActivity
 - EvaluatedEntity
-- Tool
+- Instrument
 range: string
 
 </code></pre>

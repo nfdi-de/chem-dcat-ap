@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/elements/used_tool/">
+        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/elements/used_instrument/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: used_tool - dcat-4C-ap</title>
+        <title>Slot: used_instrument - dcat-4C-ap</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-used_tool" class="md-skip">
+        <a href="#slot-used_instrument" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: used_tool
+              Slot: used_instrument
             
           </span>
         </div>
@@ -338,15 +338,15 @@
                 
                   
 
-  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/elements/used_tool.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/elements/used_instrument.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-used_tool">Slot: used_tool</h1>
-<p><em>The slot to specify the tool that was used.</em></p>
-<p>URI: <a href="http://www.w3.org/ns/prov#used">prov:used</a></p>
+<h1 id="slot-used_instrument">Slot: used_instrument</h1>
+<p><em>The slot to specify the Instruments that were used in the data generating Activity.</em></p>
+<p>URI: <a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -371,7 +371,7 @@
 </tr>
 <tr>
 <td><a href="../Activity/">Activity</a></td>
-<td>An activity (process) that has the objective to produce information aboutn en...</td>
+<td>An activity (process) that has the objective to produce information about an ...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -384,7 +384,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Tool/">Tool</a></p>
+<p>Range: <a href="../Instrument/">Instrument</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -409,28 +409,29 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>prov:used</td>
+<td>prov:wasAssociatedWith</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi4c:used_tool</td>
+<td>nfdi4c:used_instrument</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: used_tool
-description: The slot to specify the tool that was used.
+<pre><code class="language-yaml">name: used_instrument
+description: The slot to specify the Instruments that were used in the data generating
+  Activity.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 rank: 1000
-slot_uri: prov:used
-alias: used_tool
+slot_uri: prov:wasAssociatedWith
+alias: used_instrument
 domain_of:
 - Activity
-range: Tool
+range: Instrument
 recommended: true
 multivalued: true
 inlined: true

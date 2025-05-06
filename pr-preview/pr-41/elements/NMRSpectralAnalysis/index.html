@@ -262,8 +262,8 @@
 
 
 
-    NMRSpectralAnalysis --&gt; "0..1" Location : occurred_in
-    click Location href "../Location"
+    NMRSpectralAnalysis --&gt; "0..1" Surrounding : occurred_in
+    click Surrounding href "../Surrounding"
 
 
       NMRSpectralAnalysis : other_identifier
@@ -304,13 +304,13 @@
     click DefinedTerm href "../DefinedTerm"
 
 
-      NMRSpectralAnalysis : used_tool
+      NMRSpectralAnalysis : used_instrument
 
 
 
 
-    NMRSpectralAnalysis --&gt; "* _recommended_" Tool : used_tool
-    click Tool href "../Tool"
+    NMRSpectralAnalysis --&gt; "* _recommended_" Instrument : used_instrument
+    click Instrument href "../Instrument"
 
 
 
@@ -369,13 +369,13 @@
 <tr>
 <td><a href="../evaluated_activity/">evaluated_activity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>The slot to specify the activity of interest that was evaluated</td>
+<td>The slot to provide the EvaluatedActivity evaluated by an Activity</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
-<td><a href="../used_tool/">used_tool</a></td>
-<td>* <em>recommended</em> <br/> <a href="../Tool/">Tool</a></td>
-<td>The slot to specify the tool that was used</td>
+<td><a href="../used_instrument/">used_instrument</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Instrument/">Instrument</a></td>
+<td>The slot to specify the Instruments that were used in the data generating Act...</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
@@ -392,8 +392,8 @@
 </tr>
 <tr>
 <td><a href="../occurred_in/">occurred_in</a></td>
-<td>0..1 <br/> <a href="../Location/">Location</a></td>
-<td>The slot to specify the Location at which an Activity took place</td>
+<td>0..1 <br/> <a href="../Surrounding/">Surrounding</a></td>
+<td>The slot to specify the Surrounding in which an Activity took place</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
@@ -508,7 +508,7 @@ attributes:
     - DefinedTerm
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: uriorcurie
     required: true
   title:
@@ -530,13 +530,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   description:
     name: description
@@ -555,13 +555,13 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   other_identifier:
     name: other_identifier
@@ -578,7 +578,7 @@ attributes:
     - Dataset
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: Identifier
     multivalued: true
     inlined_as_list: true
@@ -601,7 +601,7 @@ attributes:
     inlined_as_list: true
   evaluated_activity:
     name: evaluated_activity
-    description: The slot to specify the activity of interest that was evaluated.
+    description: The slot to provide the EvaluatedActivity evaluated by an Activity.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -616,19 +616,20 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  used_tool:
-    name: used_tool
-    description: The slot to specify the tool that was used.
+  used_instrument:
+    name: used_instrument
+    description: The slot to specify the Instruments that were used in the data generating
+      Activity.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
-    slot_uri: prov:used
-    alias: used_tool
+    slot_uri: prov:wasAssociatedWith
+    alias: used_instrument
     owner: NMRSpectralAnalysis
     domain_of:
     - Activity
-    range: Tool
+    range: Instrument
     recommended: true
     multivalued: true
     inlined: true
@@ -663,12 +664,12 @@ attributes:
     - Catalogue
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: Activity
     inlined: true
   occurred_in:
     name: occurred_in
-    description: The slot to specify the Location at which an Activity took place.
+    description: The slot to specify the Surrounding in which an Activity took place.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -678,7 +679,7 @@ attributes:
     owner: NMRSpectralAnalysis
     domain_of:
     - Activity
-    range: Location
+    range: Surrounding
   type:
     name: type
     description: This slot is described in more detail within the class in which it
