@@ -432,10 +432,11 @@ def build_dcatap_plus():
                                         multivalued= True,
                                         inlined_as_list= True,
                                         in_subset='domain_agnostic_core'))
-        builder.add_slot(SlotDefinition(name='used_tool',
-                                        slot_uri= 'prov:used',
-                                        range= 'Tool',
-                                        description= 'The slot to specify the tool that was used.',
+        builder.add_slot(SlotDefinition(name='used_instrument',
+                                        slot_uri= 'prov:wasAssociatedWith',
+                                        range= 'Instrument',
+                                        description= 'The slot to specify the Instruments that were used in the data '
+                                                     'generating Activity.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
@@ -456,7 +457,7 @@ def build_dcatap_plus():
                  'other_identifier',
                  'evaluated_entity',
                  'evaluated_activity',
-                 'used_tool',
+                 'used_instrument',
                  'realized_plan',
                  'has_part',
                  'occurred_in']
