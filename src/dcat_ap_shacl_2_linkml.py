@@ -41,7 +41,9 @@ PREFIX_MAP = {
     'sh': 'http://www.w3.org/ns/shacl#',
     'skos': 'http://www.w3.org/2004/02/skos/core#',
     'vl': 'https://purl.eu/ns/shacl#',
-    'iana': 'https://www.iana.org/assignments/'}
+    'iana': 'https://www.iana.org/assignments/',
+    'epos': 'https://www.epos-eu.org/epos-dcat-ap#',
+    'schema': 'https://schema.org/'}
 
 # The shape for rdfs:Literal is ignored, since we use LinkML's 'string' as default datatype for unspecified literal
 # slot ranges.
