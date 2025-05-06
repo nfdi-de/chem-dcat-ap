@@ -575,11 +575,13 @@ def build_dcatap_plus():
                                           in_subset='domain_agnostic_core'))
 
 
-    def add_tooling_context():
-        builder.add_class(ClassDefinition(name='Tool',
+    def add_instrument_context():
+        builder.add_class(ClassDefinition(name='Instrument',
                                           mixins= 'ClassifierMixin',
-                                          class_uri='prov:Entity',
-                                          description='A entity with a certain function used within a Activity.',
+                                          class_uri='prov:Agent',
+                                          description='An entity that is actively used within an Activity as a means '
+                                                      'to achieve the planned objectives of said Activity because of '
+                                                      'its function.',
                                           slots = ['id',
                                                    'title',
                                                    'description',
@@ -589,29 +591,66 @@ def build_dcatap_plus():
                                                    'has_part'],
                                           slot_usage={
                                               'has_part':{
-                                                  'description': 'The slot to specify parts of a tool.',
-                                                  'range':'Tool',
+                                                  'description': 'The slot to specify parts of an Instrument that are '
+                                                                 'themselves Instruments.',
+                                                  'range':'Instrument',
                                                   'inlined': True,
                                                   'multivalued': True,
                                                   'inlined_as_list': True},
                                               'other_identifier':{
-                                                  'description': 'A slot to provide a secondary identifier of the tool.',
+                                                  'description': 'A slot to provide a secondary identifier for an Instrument.',
                                                   'range': 'Identifier',
                                                   'required': False,
                                                   'multivalued': True,
                                                   'inlined_as_list': True}},
                                           in_subset='domain_agnostic_core'))
         builder.add_class(ClassDefinition(name='Device',
-                                          aliases=['hardware tool'],
-                                          is_a='Tool',
-                                          class_uri='prov:Entity',
-                                          description='A hardware device with a certain function that was used within ann Activity.',
-                                          in_subset='domain_agnostic_core'))
+                                          aliases=['hardware instrument'],
+                                          is_a='Instrument',
+                                          class_uri='prov:Agent',
+                                          description='A material instrument that is designed to perform a function '
+                                                      'primarily by means of its mechanical or electrical nature. ',
+                                          in_subset='domain_agnostic_core',
+                                          exact_mappings=['epos:Equipment',
+                                                          'OBI:0000968',
+                                                          'http://purl.obolibrary.org/obo/NCIT_C62103',
+                                                          'http://semanticscience.org/resource/SIO_000956',
+                                                          'http://purl.allotrope.org/ontologies/equipment#AFE_0000354'],
+                                          slot_usage={
+                                              'has_part':{
+                                                  'description': 'The slot to specify parts of a Device that are '
+                                                                 'themselves Devices.',
+                                                  'range':'Instrument',
+                                                  'inlined': True,
+                                                  'multivalued': True,
+                                                  'inlined_as_list': True},
+                                              'other_identifier':{
+                                                  'description': 'A slot to provide a secondary identifier for a Device.',
+                                                  'range': 'Identifier',
+                                                  'required': False,
+                                                  'multivalued': True,
+                                                  'inlined_as_list': True}}))
         builder.add_class(ClassDefinition(name='Software',
-                                          is_a='Tool',
-                                          class_uri='prov:Entity',
-                                          description='A software program with a certain function that was used within an Activity.',
-                                          in_subset='domain_agnostic_core'))
+                                          is_a='Instrument',
+                                          class_uri='prov:SoftwareAgent',
+                                          description='An instrument composed of a series of instructions that can be '
+                                                      'interpreted by or directly executed by a computer.',
+                                          in_subset='domain_agnostic_core',
+                                          exact_mappings=['schema:SoftwareApplication'],
+                                          slot_usage={
+                                              'has_part':{
+                                                  'description': 'The slot to specify parts of a Software that are '
+                                                                 'themselves Software.',
+                                                  'range':'Instrument',
+                                                  'inlined': True,
+                                                  'multivalued': True,
+                                                  'inlined_as_list': True},
+                                              'other_identifier':{
+                                                  'description': 'A slot to provide a secondary identifier for a Software.',
+                                                  'range': 'Identifier',
+                                                  'required': False,
+                                                  'multivalued': True,
+                                              'inlined_as_list': True}}))
 
 
     def add_planning_and_surrounding_context():
@@ -800,7 +839,7 @@ def build_dcatap_plus():
     # Add classes and properties needed to extend DCAT-AP
     add_classification_context()
     add_subject_of_interest_context()
-    add_tooling_context()
+    add_instrument_context()
     add_planning_and_surrounding_context()
     add_attribute_context()
     add_analysis_context()
