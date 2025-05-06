@@ -384,23 +384,27 @@ def build_dcatap_plus():
                                         range= 'uriorcurie',
                                         description= 'A slot to provide an URI for an entity within this schema.',
                                         in_subset='domain_agnostic_core'))
-        builder.add_slot(SlotDefinition(name='describes_entity',
-                                        slot_uri= 'dcterms:relation',
+        builder.add_slot(SlotDefinition(name='is_about_entity',
+                                        slot_uri= 'dcterms:subject',
                                         range= 'EvaluatedEntity',
-                                        description= 'A slot to provide the EvaluatedEntity that is described by a Dataset.',
+                                        description= 'A slot to provide the EvaluatedEntity a Dataset is about.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
-                                        in_subset='domain_agnostic_core'))
-        builder.add_slot(SlotDefinition(name='describes_activity',
-                                        slot_uri= 'dcterms:relation',
+                                        in_subset='domain_agnostic_core',
+                                        exact_mappings=['IAO:0000136']))
+        builder.add_slot(SlotDefinition(name='is_about_activity',
+                                        slot_uri= 'dcterms:subject',
                                         range= 'EvaluatedActivity',
-                                        description= 'A slot to provide the EvaluatedActivity that is described by a Dataset.',
+                                        description= 'A slot to provide the EvaluatedActivity a Dataset is about.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
-                                        in_subset='domain_agnostic_core'))
-        slots = ['id', 'describes_entity', 'describes_activity']
+                                        in_subset='domain_agnostic_core',
+                                        exact_mappings=['IAO:0000136']))
+        slots = ['id',
+                 'is_about_entity',
+                 'is_about_activity']
         dataset = builder.schema.classes['Dataset']
         dataset.slots = dataset.slots + slots
         dataset.slot_usage.was_generated_by.required = True
