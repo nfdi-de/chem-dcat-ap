@@ -63,7 +63,7 @@ classes:
         range: NMRSpectralAnalysis
         multivalued: true
         inlined_as_list: true
-      describes_entity:
+      is_about_entity:
         range: ChemicalSample
     comments:
       - This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.
