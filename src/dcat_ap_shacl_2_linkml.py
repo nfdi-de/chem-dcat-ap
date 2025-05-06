@@ -654,7 +654,7 @@ def build_dcatap_plus():
 
 
     def add_planning_and_surrounding_context():
-        builder.add_class(ClassDefinition(name='Environment',
+        builder.add_class(ClassDefinition(name='Surrounding',
                                           mixins= 'ClassifierMixin',
                                           description='The surrounding in which the dataset creating activity took place (e.g. a lab).',
                                           class_uri='prov:Location',
