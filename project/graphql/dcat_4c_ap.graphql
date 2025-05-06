@@ -540,10 +540,9 @@ type NMRAnalysisDataset
     version: String
     versionNotes: [String]
     id: Uriorcurie!
-    isAboutEntity: [EvaluatedEntity]
     isAboutActivity: [EvaluatedActivity]
     wasGeneratedBy: [NMRSpectralAnalysis]
-    describesEntity: ChemicalSample
+    isAboutEntity: [ChemicalSample]
   }
 
 type NMRSpectralAnalysis

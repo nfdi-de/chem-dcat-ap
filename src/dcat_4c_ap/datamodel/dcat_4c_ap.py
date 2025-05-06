@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-05-06T15:12:44
+# Generation date: 2025-05-06T15:29:23
 # Schema: dcat-4C-ap
 #
 # id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -987,7 +987,7 @@ class NMRAnalysisDataset(AnalysisDataset):
     description: Union[str, List[str]] = None
     title: Union[str, List[str]] = None
     was_generated_by: Optional[Union[Dict[Union[str, NMRSpectralAnalysisId], Union[dict, NMRSpectralAnalysis]], List[Union[dict, NMRSpectralAnalysis]]]] = empty_dict()
-    describes_entity: Optional[Union[str, ChemicalSampleId]] = None
+    is_about_entity: Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, "ChemicalSample"]], List[Union[dict, "ChemicalSample"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -997,8 +997,7 @@ class NMRAnalysisDataset(AnalysisDataset):
 
         self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=NMRSpectralAnalysis, key_name="id", keyed=True)
 
-        if self.describes_entity is not None and not isinstance(self.describes_entity, ChemicalSampleId):
-            self.describes_entity = ChemicalSampleId(self.describes_entity)
+        self._normalize_inlined_as_list(slot_name="is_about_entity", slot_type=ChemicalSample, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -2635,14 +2634,11 @@ slots.quantitativeAttribute__has_quantity_type = Slot(uri=QUDT.hasQuantityKind, 
 slots.quantitativeAttribute__unit = Slot(uri=QUDT.unit, name="quantitativeAttribute__unit", curie=QUDT.curie('unit'),
                    model_uri=NFDI4C.quantitativeAttribute__unit, domain=None, range=Optional[Union[str, DefinedTermId]])
 
-slots.describes_entity = Slot(uri=NFDI4C.describes_entity, name="describes_entity", curie=NFDI4C.curie('describes_entity'),
-                   model_uri=NFDI4C.describes_entity, domain=None, range=Optional[Union[str, ChemicalSampleId]])
-
 slots.NMRAnalysisDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="NMRAnalysisDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
                    model_uri=NFDI4C.NMRAnalysisDataset_was_generated_by, domain=NMRAnalysisDataset, range=Optional[Union[Dict[Union[str, NMRSpectralAnalysisId], Union[dict, NMRSpectralAnalysis]], List[Union[dict, NMRSpectralAnalysis]]]])
 
-slots.NMRAnalysisDataset_describes_entity = Slot(uri=NFDI4C.describes_entity, name="NMRAnalysisDataset_describes_entity", curie=NFDI4C.curie('describes_entity'),
-                   model_uri=NFDI4C.NMRAnalysisDataset_describes_entity, domain=NMRAnalysisDataset, range=Optional[Union[str, ChemicalSampleId]])
+slots.NMRAnalysisDataset_is_about_entity = Slot(uri=DCTERMS.subject, name="NMRAnalysisDataset_is_about_entity", curie=DCTERMS.curie('subject'),
+                   model_uri=NFDI4C.NMRAnalysisDataset_is_about_entity, domain=NMRAnalysisDataset, range=Optional[Union[Dict[Union[str, ChemicalSampleId], Union[dict, "ChemicalSample"]], List[Union[dict, "ChemicalSample"]]]])
 
 slots.NMRSpectralAnalysis_evaluated_entity = Slot(uri=PROV.used, name="NMRSpectralAnalysis_evaluated_entity", curie=PROV.curie('used'),
                    model_uri=NFDI4C.NMRSpectralAnalysis_evaluated_entity, domain=NMRSpectralAnalysis, range=Optional[Union[Dict[Union[str, NMRSpectrumId], Union[dict, "NMRSpectrum"]], List[Union[dict, "NMRSpectrum"]]]])

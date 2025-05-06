@@ -3288,7 +3288,7 @@
                 "is_about_entity": {
                     "description": "A slot to provide the EvaluatedEntity a Dataset is about.",
                     "items": {
-                        "$ref": "#/$defs/EvaluatedEntity"
+                        "$ref": "#/$defs/ChemicalSample"
                     },
                     "type": [
                         "array",

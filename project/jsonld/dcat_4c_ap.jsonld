@@ -2466,13 +2466,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "describes_entity",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
-      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/describes_entity",
-      "range": "ChemicalSample",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "NMRAnalysisDataset_was_generated_by",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#was_generated_by",
       "description": "This slot is described in more detail within the class in which it is used.",
@@ -2497,19 +2490,34 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "NMRAnalysisDataset_describes_entity",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
-      "is_a": "describes_entity",
+      "name": "NMRAnalysisDataset_is_about_entity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#is_about_entity",
+      "description": "A slot to provide the EvaluatedEntity a Dataset is about.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "http://purl.org/dc/terms/subject"
+      ],
+      "exact_mappings": [
+        "http://purl.obolibrary.org/obo/IAO_0000136"
+      ],
+      "is_a": "is_about_entity",
       "domain": "NMRAnalysisDataset",
-      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/describes_entity",
-      "alias": "describes_entity",
+      "slot_uri": "http://purl.org/dc/terms/subject",
+      "alias": "is_about_entity",
       "owner": "NMRAnalysisDataset",
       "domain_of": [
         "NMRAnalysisDataset"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "describes_entity",
+      "usage_slot_name": "is_about_entity",
       "range": "ChemicalSample",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -6262,10 +6270,9 @@
         "Dataset_version",
         "Dataset_version_notes",
         "id",
-        "is_about_entity",
         "is_about_activity",
         "NMRAnalysisDataset_was_generated_by",
-        "NMRAnalysisDataset_describes_entity"
+        "NMRAnalysisDataset_is_about_entity"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/dcat#Dataset",
@@ -7701,9 +7708,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcat_4c_ap.yaml",
-  "source_file_date": "2025-05-06T13:14:07",
-  "source_file_size": 9691,
-  "generation_date": "2025-05-06T15:12:40",
+  "source_file_date": "2025-05-06T15:28:43",
+  "source_file_size": 9690,
+  "generation_date": "2025-05-06T15:29:18",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

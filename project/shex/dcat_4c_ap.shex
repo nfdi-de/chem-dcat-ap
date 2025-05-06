@@ -574,7 +574,7 @@ dcatap_plus:MediaTypeOrExtent CLOSED {
     (  $<NMRAnalysisDataset_tes> (  &dcatap_plus:AnalysisDataset_tes ;
           rdf:type [ dcat:Dataset ] ? ;
           prov:wasGeneratedBy @<NMRSpectralAnalysis> * ;
-          <describes_entity> @<ChemicalSample> ?
+          dcterms:subject @<ChemicalSample> *
        ) ;
        rdf:type [ dcat:Dataset ]
     )

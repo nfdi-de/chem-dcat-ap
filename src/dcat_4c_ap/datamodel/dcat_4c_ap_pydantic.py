@@ -3675,8 +3675,8 @@ class NMRAnalysisDataset(AnalysisDataset):
                       'build domain specific schema profiles. It will be outsourced to '
                       'a more appropriate location in the future.'],
          'from_schema': 'https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap',
-         'slot_usage': {'describes_entity': {'name': 'describes_entity',
-                                             'range': 'ChemicalSample'},
+         'slot_usage': {'is_about_entity': {'name': 'is_about_entity',
+                                            'range': 'ChemicalSample'},
                         'was_generated_by': {'inlined_as_list': True,
                                              'multivalued': True,
                                              'name': 'was_generated_by',
@@ -3834,7 +3834,7 @@ class NMRAnalysisDataset(AnalysisDataset):
                        'EvaluatedEntity',
                        'Instrument'],
          'in_subset': ['domain_agnostic_core']} })
-    is_about_entity: Optional[List[EvaluatedEntity]] = Field(default=None, description="""A slot to provide the EvaluatedEntity a Dataset is about.""", json_schema_extra = { "linkml_meta": {'alias': 'is_about_entity',
+    is_about_entity: Optional[List[ChemicalSample]] = Field(default=None, description="""A slot to provide the EvaluatedEntity a Dataset is about.""", json_schema_extra = { "linkml_meta": {'alias': 'is_about_entity',
          'domain_of': ['Dataset'],
          'exact_mappings': ['IAO:0000136'],
          'in_subset': ['domain_agnostic_core'],

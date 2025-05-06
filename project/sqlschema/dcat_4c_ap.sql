@@ -52,6 +52,7 @@
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
@@ -275,7 +276,6 @@
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: ChemicalSubstance_id Description: Autocreated FK slot
 --     * Slot: ChemicalSample_id Description: Autocreated FK slot
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
@@ -609,10 +609,12 @@ CREATE TABLE "ChemicalSample" (
 	title TEXT, 
 	description TEXT, 
 	id TEXT NOT NULL, 
+	"NMRAnalysisDataset_id" TEXT, 
 	"NMRSpectroscopy_id" TEXT, 
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
+	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
 	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id), 
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id), 
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
@@ -850,7 +852,6 @@ CREATE TABLE "EvaluatedEntity" (
 	title TEXT, 
 	description TEXT, 
 	id TEXT NOT NULL, 
-	"NMRAnalysisDataset_id" TEXT, 
 	"ChemicalSubstance_id" TEXT, 
 	"ChemicalSample_id" TEXT, 
 	"NMRSpectrum_id" TEXT, 
@@ -862,7 +863,6 @@ CREATE TABLE "EvaluatedEntity" (
 	type_id TEXT, 
 	rdf_type_id TEXT, 
 	PRIMARY KEY (id), 
-	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id), 
 	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id), 
 	FOREIGN KEY("ChemicalSample_id") REFERENCES "ChemicalSample" (id), 
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id), 
