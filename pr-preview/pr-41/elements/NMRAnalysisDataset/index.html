@@ -340,8 +340,8 @@
 
 
 
-    NMRAnalysisDataset --&gt; "* _recommended_" EvaluatedEntity : is_about_entity
-    click EvaluatedEntity href "../EvaluatedEntity"
+    NMRAnalysisDataset --&gt; "* _recommended_" ChemicalSample : is_about_entity
+    click ChemicalSample href "../ChemicalSample"
 
 
       NMRAnalysisDataset : is_referenced_by
@@ -742,7 +742,7 @@
 </tr>
 <tr>
 <td><a href="../is_about_entity/">is_about_entity</a></td>
-<td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../ChemicalSample/">ChemicalSample</a></td>
 <td>A slot to provide the EvaluatedEntity a Dataset is about</td>
 <td><a href="../Dataset/">Dataset</a></td>
 </tr>
@@ -799,8 +799,8 @@ slot_usage:
     range: NMRSpectralAnalysis
     multivalued: true
     inlined_as_list: true
-  describes_entity:
-    name: describes_entity
+  is_about_entity:
+    name: is_about_entity
     range: ChemicalSample
 class_uri: dcat:Dataset
 
@@ -821,8 +821,8 @@ slot_usage:
     range: NMRSpectralAnalysis
     multivalued: true
     inlined_as_list: true
-  describes_entity:
-    name: describes_entity
+  is_about_entity:
+    name: is_about_entity
     range: ChemicalSample
 attributes:
   access_rights:
@@ -1445,7 +1445,7 @@ attributes:
     owner: NMRAnalysisDataset
     domain_of:
     - Dataset
-    range: EvaluatedEntity
+    range: ChemicalSample
     recommended: true
     multivalued: true
     inlined_as_list: true
