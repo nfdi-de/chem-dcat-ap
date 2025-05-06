@@ -118,7 +118,8 @@ def parse_dcat_ap_shacl_shapes(builder):
     # see also https://linkml.io/linkml/schemas/advanced.html#unions-as-ranges
     builder.add_class(ClassDefinition(name='Any',
                                       class_uri='linkml:Any',
-                                      description='This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/)'))
+                                      description='This abstract class is needed to create the union of Dataset, '
+                                                  'DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/).'))
     # Iterate through each SHACL node shape within the loaded JSON-LD to derive the LinkML classes or types from them.
     for node_shape in dcat_ap_shapes['shapes']:
         node_curie = get_curie(node_shape['sh:targetClass'])
@@ -478,8 +479,9 @@ def build_dcatap_plus():
         activity.mixins = ['ClassifierMixin']
         activity.narrow_mappings = ['NCIT:C25598', 'SOSA:Observation','OBI:0000070']
         activity.in_subset=['domain_agnostic_core']
-        activity.description = 'An activity (process) that has the objective to produce information aboutn entity or activity.'
-        activity.notes = ['The properties (slots) of this class are part of the extension of the DCAT-AP.']
+        activity.description = ('An activity (process) that has the objective to produce information about an entity '
+                                'or activity.')
+        activity.notes = ['The properties (slots) of this class are part of our extension of the DCAT-AP.']
 
 
     def add_classification_context():
@@ -496,7 +498,9 @@ def build_dcatap_plus():
                                           in_subset='domain_agnostic_core'))
         builder.add_class(ClassDefinition(name='DefinedTerm',
                                           class_uri='schema:DefinedTerm',
-                                          description='A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.',
+                                          description='A word, name, acronym or phrase that is defined in a controlled '
+                                                      'vocabulary (CV) and that is used to provide an additional '
+                                                      'rdf:type or dcterms:type of a class within this schema.',
                                           slots=['id',
                                                  'title'],
                                           slot_usage={

@@ -13,7 +13,7 @@ import lombok.*;
 **/
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class Laboratory extends Environment {
+public class Laboratory extends Surrounding {
 
 
 }
