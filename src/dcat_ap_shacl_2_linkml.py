@@ -608,7 +608,7 @@ def build_dcatap_plus():
                                           is_a='Instrument',
                                           class_uri='prov:Agent',
                                           description='A material instrument that is designed to perform a function '
-                                                      'primarily by means of its mechanical or electrical nature. ',
+                                                      'primarily by means of its mechanical or electrical nature.',
                                           in_subset='domain_agnostic_core',
                                           exact_mappings=['epos:Equipment',
                                                           'OBI:0000968',
