@@ -345,7 +345,7 @@
 
 
 <h1 id="slot-evaluated_entity">Slot: evaluated_entity</h1>
-<p><em>The slot to provide the EvaluatedEntity evaluated by an Activity.</em></p>
+<p><em>The slot to specify the entity of interest that was evaluated.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#used">prov:used</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -360,9 +360,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
-<td>yes</td>
+<td><a href="../Activity/">Activity</a></td>
+<td>An activity (process) that has the objective to produce information aboutn en...</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../DataAnalysis/">DataAnalysis</a></td>
@@ -370,9 +370,9 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>An activity (process) that has the objective to produce information about an ...</td>
-<td>no</td>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
@@ -421,7 +421,7 @@
 <details>
 
 <pre><code class="language-yaml">name: evaluated_entity
-description: The slot to provide the EvaluatedEntity evaluated by an Activity.
+description: The slot to specify the entity of interest that was evaluated.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap

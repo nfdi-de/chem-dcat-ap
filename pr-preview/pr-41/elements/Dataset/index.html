@@ -275,6 +275,24 @@
     click Distribution href "../Distribution"
 
 
+      Dataset : describes_activity
+
+
+
+
+    Dataset --&gt; "* _recommended_" EvaluatedActivity : describes_activity
+    click EvaluatedActivity href "../EvaluatedActivity"
+
+
+      Dataset : describes_entity
+
+
+
+
+    Dataset --&gt; "* _recommended_" EvaluatedEntity : describes_entity
+    click EvaluatedEntity href "../EvaluatedEntity"
+
+
       Dataset : description
 
       Dataset : documentation
@@ -324,24 +342,6 @@
 
     Dataset --&gt; "*" DatasetSeries : in_series
     click DatasetSeries href "../DatasetSeries"
-
-
-      Dataset : is_about_activity
-
-
-
-
-    Dataset --&gt; "* _recommended_" EvaluatedActivity : is_about_activity
-    click EvaluatedActivity href "../EvaluatedActivity"
-
-
-      Dataset : is_about_entity
-
-
-
-
-    Dataset --&gt; "* _recommended_" EvaluatedEntity : is_about_entity
-    click EvaluatedEntity href "../EvaluatedEntity"
 
 
       Dataset : is_referenced_by
@@ -738,15 +738,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../is_about_entity/">is_about_entity</a></td>
+<td><a href="../describes_entity/">describes_entity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>A slot to provide the EvaluatedEntity a Dataset is about</td>
+<td>A slot to provide the EvaluatedEntity that is described by a Dataset</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../is_about_activity/">is_about_activity</a></td>
+<td><a href="../describes_activity/">describes_activity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>A slot to provide the EvaluatedActivity a Dataset is about</td>
+<td>A slot to provide the EvaluatedActivity that is described by a Dataset</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -890,8 +890,8 @@ slots:
 - version_notes
 - was_generated_by
 - id
-- is_about_entity
-- is_about_activity
+- describes_entity
+- describes_activity
 slot_usage:
   access_rights:
     name: access_rights
@@ -1623,13 +1623,13 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
+    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Surrounding
+    - Tool
     range: string
     required: true
     multivalued: true
@@ -1820,7 +1820,7 @@ attributes:
     - Dataset
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
+    - Tool
     range: Identifier
     required: false
     multivalued: true
@@ -2024,13 +2024,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
+    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Surrounding
+    - Tool
     range: string
     required: true
     multivalued: true
@@ -2115,20 +2115,18 @@ attributes:
     - DefinedTerm
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
+    - Tool
     range: uriorcurie
     required: true
-  is_about_entity:
-    name: is_about_entity
-    description: A slot to provide the EvaluatedEntity a Dataset is about.
+  describes_entity:
+    name: describes_entity
+    description: A slot to provide the EvaluatedEntity that is described by a Dataset.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    exact_mappings:
-    - IAO:0000136
     rank: 1000
-    slot_uri: dcterms:subject
-    alias: is_about_entity
+    slot_uri: dcterms:relation
+    alias: describes_entity
     owner: Dataset
     domain_of:
     - Dataset
@@ -2137,17 +2135,15 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  is_about_activity:
-    name: is_about_activity
-    description: A slot to provide the EvaluatedActivity a Dataset is about.
+  describes_activity:
+    name: describes_activity
+    description: A slot to provide the EvaluatedActivity that is described by a Dataset.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    exact_mappings:
-    - IAO:0000136
     rank: 1000
-    slot_uri: dcterms:subject
-    alias: is_about_activity
+    slot_uri: dcterms:relation
+    alias: describes_activity
     owner: Dataset
     domain_of:
     - Dataset

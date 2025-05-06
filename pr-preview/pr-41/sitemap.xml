@@ -153,6 +153,10 @@
          <lastmod>2025-05-06</lastmod>
     </url>
     <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/Environment/</loc>
+         <lastmod>2025-05-06</lastmod>
+    </url>
+    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/EvaluatedActivity/</loc>
          <lastmod>2025-05-06</lastmod>
     </url>
@@ -190,10 +194,6 @@
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/InChi/</loc>
-         <lastmod>2025-05-06</lastmod>
-    </url>
-    <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/Instrument/</loc>
          <lastmod>2025-05-06</lastmod>
     </url>
     <url>
@@ -349,15 +349,15 @@
          <lastmod>2025-05-06</lastmod>
     </url>
     <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/Surrounding/</loc>
-         <lastmod>2025-05-06</lastmod>
-    </url>
-    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/Time/</loc>
          <lastmod>2025-05-06</lastmod>
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/TimeInstant/</loc>
+         <lastmod>2025-05-06</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/Tool/</loc>
          <lastmod>2025-05-06</lastmod>
     </url>
     <url>
@@ -461,6 +461,14 @@
          <lastmod>2025-05-06</lastmod>
     </url>
     <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/describes_activity/</loc>
+         <lastmod>2025-05-06</lastmod>
+    </url>
+    <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/describes_entity/</loc>
+         <lastmod>2025-05-06</lastmod>
+    </url>
+    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/description/</loc>
          <lastmod>2025-05-06</lastmod>
     </url>
@@ -545,6 +553,10 @@
          <lastmod>2025-05-06</lastmod>
     </url>
     <url>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/has_role/</loc>
+         <lastmod>2025-05-06</lastmod>
+    </url>
+    <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/has_version/</loc>
          <lastmod>2025-05-06</lastmod>
     </url>
@@ -570,14 +582,6 @@
     </url>
     <url>
          <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/inchikey/</loc>
-         <lastmod>2025-05-06</lastmod>
-    </url>
-    <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/is_about_activity/</loc>
-         <lastmod>2025-05-06</lastmod>
-    </url>
-    <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/is_about_entity/</loc>
          <lastmod>2025-05-06</lastmod>
     </url>
     <url>
@@ -757,7 +761,7 @@
          <lastmod>2025-05-06</lastmod>
     </url>
     <url>
-         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/used_instrument/</loc>
+         <loc>https://StroemPhi.github.io/dcat-4C-ap/elements/used_tool/</loc>
          <lastmod>2025-05-06</lastmod>
     </url>
     <url>

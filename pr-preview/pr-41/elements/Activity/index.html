@@ -213,7 +213,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-activity">Class: Activity</h1>
-<p><em>An activity (process) that has the objective to produce information about an entity or activity.</em></p>
+<p><em>An activity (process) that has the objective to produce information aboutn entity or activity.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></p>
 <div class="mermaid"> classDiagram
     class Activity
@@ -264,8 +264,8 @@
 
 
 
-    Activity --&gt; "0..1" Surrounding : occurred_in
-    click Surrounding href "../Surrounding"
+    Activity --&gt; "0..1" Location : occurred_in
+    click Location href "../Location"
 
 
       Activity : other_identifier
@@ -306,13 +306,13 @@
     click DefinedTerm href "../DefinedTerm"
 
 
-      Activity : used_instrument
+      Activity : used_tool
 
 
 
 
-    Activity --&gt; "* _recommended_" Instrument : used_instrument
-    click Instrument href "../Instrument"
+    Activity --&gt; "* _recommended_" Tool : used_tool
+    click Tool href "../Tool"
 
 
 
@@ -363,19 +363,19 @@
 <tr>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>The slot to provide the EvaluatedEntity evaluated by an Activity</td>
+<td>The slot to specify the entity of interest that was evaluated</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../evaluated_activity/">evaluated_activity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>The slot to provide the EvaluatedActivity evaluated by an Activity</td>
+<td>The slot to specify the activity of interest that was evaluated</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../used_instrument/">used_instrument</a></td>
-<td>* <em>recommended</em> <br/> <a href="../Instrument/">Instrument</a></td>
-<td>The slot to specify the Instruments that were used in the data generating Act...</td>
+<td><a href="../used_tool/">used_tool</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Tool/">Tool</a></td>
+<td>The slot to specify the tool that was used</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -392,8 +392,8 @@
 </tr>
 <tr>
 <td><a href="../occurred_in/">occurred_in</a></td>
-<td>0..1 <br/> <a href="../Surrounding/">Surrounding</a></td>
-<td>The slot to specify the Surrounding in which an Activity took place</td>
+<td>0..1 <br/> <a href="../Location/">Location</a></td>
+<td>The slot to specify the Location at which an Activity took place</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -510,10 +510,10 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Activity
-description: An activity (process) that has the objective to produce information about
-  an entity or activity.
+description: An activity (process) that has the objective to produce information aboutn
+  entity or activity.
 notes:
-- The properties (slots) of this class are part of our extension of the DCAT-AP.
+- The properties (slots) of this class are part of the extension of the DCAT-AP.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -530,7 +530,7 @@ slots:
 - other_identifier
 - evaluated_entity
 - evaluated_activity
-- used_instrument
+- used_tool
 - realized_plan
 - has_part
 - occurred_in
@@ -558,10 +558,10 @@ class_uri: prov:Activity
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Activity
-description: An activity (process) that has the objective to produce information about
-  an entity or activity.
+description: An activity (process) that has the objective to produce information aboutn
+  entity or activity.
 notes:
-- The properties (slots) of this class are part of our extension of the DCAT-AP.
+- The properties (slots) of this class are part of the extension of the DCAT-AP.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -605,7 +605,7 @@ attributes:
     - DefinedTerm
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
+    - Tool
     range: uriorcurie
     required: true
   title:
@@ -627,13 +627,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
+    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Surrounding
+    - Tool
     range: string
   description:
     name: description
@@ -652,13 +652,13 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
+    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Surrounding
+    - Tool
     range: string
   other_identifier:
     name: other_identifier
@@ -675,13 +675,13 @@ attributes:
     - Dataset
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
+    - Tool
     range: Identifier
     multivalued: true
     inlined_as_list: true
   evaluated_entity:
     name: evaluated_entity
-    description: The slot to provide the EvaluatedEntity evaluated by an Activity.
+    description: The slot to specify the entity of interest that was evaluated.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -698,7 +698,7 @@ attributes:
     inlined_as_list: true
   evaluated_activity:
     name: evaluated_activity
-    description: The slot to provide the EvaluatedActivity evaluated by an Activity.
+    description: The slot to specify the activity of interest that was evaluated.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -713,20 +713,19 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  used_instrument:
-    name: used_instrument
-    description: The slot to specify the Instruments that were used in the data generating
-      Activity.
+  used_tool:
+    name: used_tool
+    description: The slot to specify the tool that was used.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
-    slot_uri: prov:wasAssociatedWith
-    alias: used_instrument
+    slot_uri: prov:used
+    alias: used_tool
     owner: Activity
     domain_of:
     - Activity
-    range: Instrument
+    range: Tool
     recommended: true
     multivalued: true
     inlined: true
@@ -761,12 +760,12 @@ attributes:
     - Catalogue
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
+    - Tool
     range: Activity
     inlined: true
   occurred_in:
     name: occurred_in
-    description: The slot to specify the Surrounding in which an Activity took place.
+    description: The slot to specify the Location at which an Activity took place.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -776,7 +775,7 @@ attributes:
     owner: Activity
     domain_of:
     - Activity
-    range: Surrounding
+    range: Location
   type:
     name: type
     description: This slot is described in more detail within the class in which it

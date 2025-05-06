@@ -208,13 +208,13 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-software">Class: Software</h1>
-<p><em>An instrument composed of a series of instructions that can be interpreted by or directly executed by a computer.</em></p>
-<p>URI: <a href="http://www.w3.org/ns/prov#SoftwareAgent">prov:SoftwareAgent</a></p>
+<p><em>A software program with a certain function that was used within an Activity.</em></p>
+<p>URI: <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a></p>
 <div class="mermaid"> classDiagram
     class Software
     click Software href "../Software"
-      Instrument &lt;|-- Software
-        click Instrument href "../Instrument"
+      Tool &lt;|-- Software
+        click Tool href "../Tool"
 
       Software : description
 
@@ -223,8 +223,8 @@
 
 
 
-    Software --&gt; "*" Instrument : has_part
-    click Instrument href "../Instrument"
+    Software --&gt; "*" Tool : has_part
+    click Tool href "../Tool"
 
 
       Software : has_qualitative_attribute
@@ -280,7 +280,7 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Instrument/">Instrument</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../Tool/">Tool</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><strong>Software</strong></li>
 </ul>
 </li>
@@ -300,43 +300,43 @@
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../Tool/">Tool</a></td>
 </tr>
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../Tool/">Tool</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../Tool/">Tool</a></td>
 </tr>
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A slot to provide a secondary identifier for a Software</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td>A slot to provide a secondary identifier of the tool</td>
+<td><a href="../Tool/">Tool</a></td>
 </tr>
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
+<td><a href="../Tool/">Tool</a></td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
+<td><a href="../Tool/">Tool</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>* <br/> <a href="../Instrument/">Instrument</a></td>
-<td>The slot to specify parts of a Software that are themselves Software</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td>* <br/> <a href="../Tool/">Tool</a></td>
+<td>The slot to specify parts of a tool</td>
+<td><a href="../Tool/">Tool</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
@@ -368,15 +368,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>prov:SoftwareAgent</td>
+<td>prov:Entity</td>
 </tr>
 <tr>
 <td>native</td>
 <td>nfdi4c:Software</td>
-</tr>
-<tr>
-<td>exact</td>
-<td>schema:SoftwareApplication</td>
 </tr>
 </tbody>
 </table>
@@ -385,59 +381,23 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Software
-description: An instrument composed of a series of instructions that can be interpreted
-  by or directly executed by a computer.
+description: A software program with a certain function that was used within an Activity.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-exact_mappings:
-- schema:SoftwareApplication
-is_a: Instrument
-slot_usage:
-  has_part:
-    name: has_part
-    description: The slot to specify parts of a Software that are themselves Software.
-    range: Instrument
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  other_identifier:
-    name: other_identifier
-    description: A slot to provide a secondary identifier for a Software.
-    range: Identifier
-    required: false
-    multivalued: true
-    inlined_as_list: true
-class_uri: prov:SoftwareAgent
+is_a: Tool
+class_uri: prov:Entity
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Software
-description: An instrument composed of a series of instructions that can be interpreted
-  by or directly executed by a computer.
+description: A software program with a certain function that was used within an Activity.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-exact_mappings:
-- schema:SoftwareApplication
-is_a: Instrument
-slot_usage:
-  has_part:
-    name: has_part
-    description: The slot to specify parts of a Software that are themselves Software.
-    range: Instrument
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  other_identifier:
-    name: other_identifier
-    description: A slot to provide a secondary identifier for a Software.
-    range: Identifier
-    required: false
-    multivalued: true
-    inlined_as_list: true
+is_a: Tool
 attributes:
   id:
     name: id
@@ -455,7 +415,7 @@ attributes:
     - DefinedTerm
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
+    - Tool
     range: uriorcurie
     required: true
   title:
@@ -477,13 +437,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
+    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Surrounding
+    - Tool
     range: string
   description:
     name: description
@@ -502,17 +462,17 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
+    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Surrounding
+    - Tool
     range: string
   other_identifier:
     name: other_identifier
-    description: A slot to provide a secondary identifier for a Software.
+    description: A slot to provide a secondary identifier of the tool.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: adms:identifier
@@ -523,15 +483,15 @@ attributes:
     - Dataset
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
+    - Tool
     range: Identifier
     required: false
     multivalued: true
     inlined_as_list: true
   has_qualitative_attribute:
     name: has_qualitative_attribute
-    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
+    description: The slot to relate a qualitative attribute to an entity of interest,
+      tool or environment.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -542,7 +502,7 @@ attributes:
     domain_of:
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
+    - Tool
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -550,8 +510,8 @@ attributes:
     inlined_as_list: true
   has_quantitative_attribute:
     name: has_quantitative_attribute
-    description: The slot to relate a quantitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
+    description: The slot to relate a quantitative attribute to an entity of interest,
+      tool or environment.
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -562,7 +522,7 @@ attributes:
     domain_of:
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
+    - Tool
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -570,7 +530,7 @@ attributes:
     inlined_as_list: true
   has_part:
     name: has_part
-    description: The slot to specify parts of a Software that are themselves Software.
+    description: The slot to specify parts of a tool.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:hasPart
@@ -581,8 +541,8 @@ attributes:
     - Catalogue
     - EvaluatedActivity
     - EvaluatedEntity
-    - Instrument
-    range: Instrument
+    - Tool
+    range: Tool
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -618,7 +578,7 @@ attributes:
     range: DefinedTerm
     recommended: true
     inlined: true
-class_uri: prov:SoftwareAgent
+class_uri: prov:Entity
 
 </code></pre>
 </details>

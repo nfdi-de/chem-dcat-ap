@@ -361,6 +361,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#slots-from-environment-also-in-domain_agnostic_core" class="md-nav__link">
+    Slots from Environment also in domain_agnostic_core
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#slots-from-evaluatedactivity-also-in-domain_agnostic_core" class="md-nav__link">
     Slots from EvaluatedActivity also in domain_agnostic_core
   </a>
@@ -370,13 +377,6 @@
           <li class="md-nav__item">
   <a href="#slots-from-evaluatedentity-also-in-domain_agnostic_core" class="md-nav__link">
     Slots from EvaluatedEntity also in domain_agnostic_core
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#slots-from-instrument-also-in-domain_agnostic_core" class="md-nav__link">
-    Slots from Instrument also in domain_agnostic_core
   </a>
   
 </li>
@@ -410,8 +410,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#slots-from-surrounding-also-in-domain_agnostic_core" class="md-nav__link">
-    Slots from Surrounding also in domain_agnostic_core
+  <a href="#slots-from-tool-also-in-domain_agnostic_core" class="md-nav__link">
+    Slots from Tool also in domain_agnostic_core
   </a>
   
 </li>
@@ -474,7 +474,7 @@
 <tbody>
 <tr>
 <td><a href="../Activity/">Activity</a></td>
-<td>An activity (process) that has the objective to produce information about an ...</td>
+<td>An activity (process) that has the objective to produce information aboutn en...</td>
 </tr>
 <tr>
 <td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
@@ -498,11 +498,15 @@
 </tr>
 <tr>
 <td><a href="../DefinedTerm/">DefinedTerm</a></td>
-<td>A word, name, acronym or phrase that is defined in a controlled vocabulary (C...</td>
+<td>A word, name, acronym, phrase that is defined in a controlled vocabulary (CV)...</td>
 </tr>
 <tr>
 <td><a href="../Device/">Device</a></td>
-<td>A material instrument that is designed to perform a function primarily by mea...</td>
+<td>A hardware device with a certain function that was used within ann Activity</td>
+</tr>
+<tr>
+<td><a href="../Environment/">Environment</a></td>
+<td>The surrounding in which the dataset creating activity took place (e</td>
 </tr>
 <tr>
 <td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
@@ -513,28 +517,24 @@
 <td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
 </tr>
 <tr>
-<td><a href="../Instrument/">Instrument</a></td>
-<td>An entity that is actively used within an Activity as a means to achieve the ...</td>
-</tr>
-<tr>
 <td><a href="../Plan/">Plan</a></td>
 <td>A piece of information that specifies how an activity has to be carried out b...</td>
 </tr>
 <tr>
 <td><a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>A piece of information that is attributed to an EvaluatedEntity, Instrument o...</td>
+<td>A piece of information that is attributed to an entity of interest, tool or e...</td>
 </tr>
 <tr>
 <td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>A quantifiable piece of information that is attributed to an EvaluatedEntity,...</td>
+<td>A quantifiable piece of information that is attributed to an entity of intere...</td>
 </tr>
 <tr>
 <td><a href="../Software/">Software</a></td>
-<td>An instrument composed of a series of instructions that can be interpreted by...</td>
+<td>A software program with a certain function that was used within an Activity</td>
 </tr>
 <tr>
-<td><a href="../Surrounding/">Surrounding</a></td>
-<td>The surrounding in which the dataset creating activity took place (e</td>
+<td><a href="../Tool/">Tool</a></td>
+<td>A entity with a certain function used within a Activity</td>
 </tr>
 </tbody>
 </table>
@@ -551,12 +551,12 @@
 <tr>
 <td><a href="../evaluated_activity/">evaluated_activity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>The slot to provide the EvaluatedActivity evaluated by an Activity</td>
+<td>The slot to specify the activity of interest that was evaluated</td>
 </tr>
 <tr>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>The slot to provide the EvaluatedEntity evaluated by an Activity</td>
+<td>The slot to specify the entity of interest that was evaluated</td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
@@ -565,8 +565,8 @@
 </tr>
 <tr>
 <td><a href="../occurred_in/">occurred_in</a></td>
-<td>0..1 <br/> <a href="../Surrounding/">Surrounding</a></td>
-<td>The slot to specify the Surrounding in which an Activity took place</td>
+<td>0..1 <br/> <a href="../Location/">Location</a></td>
+<td>The slot to specify the Location at which an Activity took place</td>
 </tr>
 <tr>
 <td><a href="../rdf_type/">rdf_type</a></td>
@@ -579,9 +579,9 @@
 <td>The slot to specify the Plan (aka procedure) that was realized by an Activity</td>
 </tr>
 <tr>
-<td><a href="../used_instrument/">used_instrument</a></td>
-<td>* <em>recommended</em> <br/> <a href="../Instrument/">Instrument</a></td>
-<td>The slot to specify the Instruments that were used in the data generating Act...</td>
+<td><a href="../used_tool/">used_tool</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Tool/">Tool</a></td>
+<td>The slot to specify the tool that was used</td>
 </tr>
 </tbody>
 </table>
@@ -596,19 +596,19 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../describes_activity/">describes_activity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>A slot to provide the EvaluatedActivity that is described by a Dataset</td>
+</tr>
+<tr>
+<td><a href="../describes_entity/">describes_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>A slot to provide the EvaluatedEntity that is described by a Dataset</td>
+</tr>
+<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema <strong>identifier</strong></td>
-</tr>
-<tr>
-<td><a href="../is_about_activity/">is_about_activity</a></td>
-<td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>A slot to provide the EvaluatedActivity a Dataset is about</td>
-</tr>
-<tr>
-<td><a href="../is_about_entity/">is_about_entity</a></td>
-<td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>A slot to provide the EvaluatedEntity a Dataset is about</td>
 </tr>
 </tbody>
 </table>
@@ -625,12 +625,12 @@
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
+<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
+<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
@@ -674,7 +674,7 @@
 <tr>
 <td><a href="../evaluated_activity/">evaluated_activity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>The slot to provide the EvaluatedActivity evaluated by an Activity</td>
+<td>The slot to specify the activity of interest that was evaluated</td>
 </tr>
 <tr>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
@@ -688,8 +688,8 @@
 </tr>
 <tr>
 <td><a href="../occurred_in/">occurred_in</a></td>
-<td>0..1 <br/> <a href="../Surrounding/">Surrounding</a></td>
-<td>The slot to specify the Surrounding in which an Activity took place</td>
+<td>0..1 <br/> <a href="../Location/">Location</a></td>
+<td>The slot to specify the Location at which an Activity took place</td>
 </tr>
 <tr>
 <td><a href="../rdf_type/">rdf_type</a></td>
@@ -702,9 +702,9 @@
 <td>The slot to specify the Plan (aka procedure) that was realized by an Activity</td>
 </tr>
 <tr>
-<td><a href="../used_instrument/">used_instrument</a></td>
-<td>* <em>recommended</em> <br/> <a href="../Instrument/">Instrument</a></td>
-<td>The slot to specify the Instruments that were used in the data generating Act...</td>
+<td><a href="../used_tool/">used_tool</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Tool/">Tool</a></td>
+<td>The slot to specify the tool that was used</td>
 </tr>
 </tbody>
 </table>
@@ -719,19 +719,19 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../describes_activity/">describes_activity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>A slot to provide the EvaluatedActivity that is described by a Dataset</td>
+</tr>
+<tr>
+<td><a href="../describes_entity/">describes_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>A slot to provide the EvaluatedEntity that is described by a Dataset</td>
+</tr>
+<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema <strong>identifier</strong></td>
-</tr>
-<tr>
-<td><a href="../is_about_activity/">is_about_activity</a></td>
-<td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>A slot to provide the EvaluatedActivity a Dataset is about</td>
-</tr>
-<tr>
-<td><a href="../is_about_entity/">is_about_entity</a></td>
-<td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>A slot to provide the EvaluatedEntity a Dataset is about</td>
 </tr>
 </tbody>
 </table>
@@ -765,18 +765,35 @@
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
+<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
+<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema <strong>identifier</strong></td>
 </tr>
+<tr>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>The slot to specify the ontology class that is instantiated by an entity</td>
+</tr>
+</tbody>
+</table>
+<h3 id="slots-from-environment-also-in-domain_agnostic_core">Slots from <a href="../Environment/">Environment</a> also in <em>domain_agnostic_core</em></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td><a href="../rdf_type/">rdf_type</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
@@ -797,12 +814,12 @@
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
+<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
+<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
@@ -829,44 +846,12 @@
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
+<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
-</tr>
-<tr>
-<td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A slot to provide an URI for an entity within this schema <strong>identifier</strong></td>
-</tr>
-<tr>
-<td><a href="../rdf_type/">rdf_type</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
-<td>The slot to specify the ontology class that is instantiated by an entity</td>
-</tr>
-</tbody>
-</table>
-<h3 id="slots-from-instrument-also-in-domain_agnostic_core">Slots from <a href="../Instrument/">Instrument</a> also in <em>domain_agnostic_core</em></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
-</tr>
-<tr>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
+<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
@@ -954,12 +939,12 @@
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
+<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
+<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
@@ -973,7 +958,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="slots-from-surrounding-also-in-domain_agnostic_core">Slots from <a href="../Surrounding/">Surrounding</a> also in <em>domain_agnostic_core</em></h3>
+<h3 id="slots-from-tool-also-in-domain_agnostic_core">Slots from <a href="../Tool/">Tool</a> also in <em>domain_agnostic_core</em></h3>
 <table>
 <thead>
 <tr>
@@ -983,6 +968,21 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
+<td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
+</tr>
+<tr>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A slot to provide an URI for an entity within this schema <strong>identifier</strong></td>
+</tr>
 <tr>
 <td><a href="../rdf_type/">rdf_type</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
@@ -1000,36 +1000,36 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../describes_activity/">describes_activity</a></td>
+<td>A slot to provide the EvaluatedActivity that is described by a Dataset</td>
+</tr>
+<tr>
+<td><a href="../describes_entity/">describes_entity</a></td>
+<td>A slot to provide the EvaluatedEntity that is described by a Dataset</td>
+</tr>
+<tr>
 <td><a href="../evaluated_activity/">evaluated_activity</a></td>
-<td>The slot to provide the EvaluatedActivity evaluated by an Activity</td>
+<td>The slot to specify the activity of interest that was evaluated</td>
 </tr>
 <tr>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
-<td>The slot to provide the EvaluatedEntity evaluated by an Activity</td>
+<td>The slot to specify the entity of interest that was evaluated</td>
 </tr>
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
+<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
+<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
 <td>A slot to provide an URI for an entity within this schema</td>
 </tr>
 <tr>
-<td><a href="../is_about_activity/">is_about_activity</a></td>
-<td>A slot to provide the EvaluatedActivity a Dataset is about</td>
-</tr>
-<tr>
-<td><a href="../is_about_entity/">is_about_entity</a></td>
-<td>A slot to provide the EvaluatedEntity a Dataset is about</td>
-</tr>
-<tr>
 <td><a href="../occurred_in/">occurred_in</a></td>
-<td>The slot to specify the Surrounding in which an Activity took place</td>
+<td>The slot to specify the Location at which an Activity took place</td>
 </tr>
 <tr>
 <td><a href="../rdf_type/">rdf_type</a></td>
@@ -1040,8 +1040,8 @@
 <td>The slot to specify the Plan (aka procedure) that was realized by an Activity</td>
 </tr>
 <tr>
-<td><a href="../used_instrument/">used_instrument</a></td>
-<td>The slot to specify the Instruments that were used in the data generating Act...</td>
+<td><a href="../used_tool/">used_tool</a></td>
+<td>The slot to specify the tool that was used</td>
 </tr>
 <tr>
 <td><a href="../value/">value</a></td>

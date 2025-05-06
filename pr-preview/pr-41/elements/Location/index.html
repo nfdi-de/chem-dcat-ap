@@ -150,6 +150,11 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+    Inheritance
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -213,6 +218,9 @@
 <div class="mermaid"> classDiagram
     class Location
     click Location href "../Location"
+      SupportiveEntity &lt;|-- Location
+        click SupportiveEntity href "../SupportiveEntity"
+
       Location : bbox
 
       Location : centroid
@@ -228,7 +236,13 @@
 
 
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../SupportiveEntity/">SupportiveEntity</a><ul>
+<li><strong>Location</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -278,6 +292,24 @@
 <td><a href="./">Location</a></td>
 </tr>
 <tr>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td><a href="../occurred_in/">occurred_in</a></td>
+<td>range</td>
+<td><a href="./">Location</a></td>
+</tr>
+<tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td><a href="../occurred_in/">occurred_in</a></td>
+<td>range</td>
+<td><a href="./">Location</a></td>
+</tr>
+<tr>
+<td><a href="../Activity/">Activity</a></td>
+<td><a href="../occurred_in/">occurred_in</a></td>
+<td>range</td>
+<td><a href="./">Location</a></td>
+</tr>
+<tr>
 <td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
 <td><a href="../geographical_coverage/">geographical_coverage</a></td>
 <td>range</td>
@@ -286,6 +318,12 @@
 <tr>
 <td><a href="../Catalogue/">Catalogue</a></td>
 <td><a href="../geographical_coverage/">geographical_coverage</a></td>
+<td>range</td>
+<td><a href="./">Location</a></td>
+</tr>
+<tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td><a href="../occurred_in/">occurred_in</a></td>
 <td>range</td>
 <td><a href="./">Location</a></td>
 </tr>
@@ -334,6 +372,7 @@
 <pre><code class="language-yaml">name: Location
 description: See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+is_a: SupportiveEntity
 slots:
 - bbox
 - centroid
@@ -374,6 +413,7 @@ class_uri: dcterms:Location
 <pre><code class="language-yaml">name: Location
 description: See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+is_a: SupportiveEntity
 slot_usage:
   bbox:
     name: bbox
