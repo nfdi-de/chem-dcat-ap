@@ -417,7 +417,8 @@ def build_dcatap_plus():
         builder.add_slot(SlotDefinition(name='evaluated_entity',
                                         slot_uri= 'prov:used',
                                         range= 'EvaluatedEntity',
-                                        description= 'The slot to specify the entity of interest that was evaluated.',
+                                        description= 'The slot to provide the EvaluatedEntity evaluated by an '
+                                                     'Activity.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
@@ -425,7 +426,8 @@ def build_dcatap_plus():
         builder.add_slot(SlotDefinition(name='evaluated_activity',
                                         slot_uri= 'prov:wasInformedBy',
                                         range= 'EvaluatedActivity',
-                                        description= 'The slot to specify the activity of interest that was evaluated.',
+                                        description= 'The slot to provide the EvaluatedActivity evaluated by an '
+                                                     'Activity.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
