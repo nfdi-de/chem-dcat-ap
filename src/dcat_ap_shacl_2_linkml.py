@@ -486,7 +486,7 @@ def build_dcatap_plus():
     def add_classification_context():
         builder.add_class(ClassDefinition(name='ClassifierMixin',
                                           mixin=True,
-                                          description='A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.',
+                                          description='A mixin with which an entity of this schema can be classified via an additional rdf:type or dcterms:type assertion.',
                                           abstract=True,
                                           slots=['type',
                                                  'rdf_type'],
