@@ -448,8 +448,9 @@ def build_dcatap_plus():
                                         in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='occurred_in',
                                         slot_uri= 'prov:atLocation',
-                                        range= 'Location',
-                                        description= 'The slot to specify the Location at which an Activity took place.',
+                                        range= 'Surrounding',
+                                        description= 'The slot to specify the Surrounding in which an Activity took '
+                                                     'place.',
                                         in_subset='domain_agnostic_core'))
         slots = ['id',
                  'title',
