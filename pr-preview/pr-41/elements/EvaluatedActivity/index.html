@@ -333,13 +333,13 @@
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
+<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
+<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -375,7 +375,7 @@
 <tbody>
 <tr>
 <td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
-<td><a href="../describes_activity/">describes_activity</a></td>
+<td><a href="../is_about_activity/">is_about_activity</a></td>
 <td>range</td>
 <td><a href="./">EvaluatedActivity</a></td>
 </tr>
@@ -405,7 +405,7 @@
 </tr>
 <tr>
 <td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
-<td><a href="../describes_activity/">describes_activity</a></td>
+<td><a href="../is_about_activity/">is_about_activity</a></td>
 <td>range</td>
 <td><a href="./">EvaluatedActivity</a></td>
 </tr>
@@ -417,7 +417,7 @@
 </tr>
 <tr>
 <td><a href="../Dataset/">Dataset</a></td>
-<td><a href="../describes_activity/">describes_activity</a></td>
+<td><a href="../is_about_activity/">is_about_activity</a></td>
 <td>range</td>
 <td><a href="./">EvaluatedActivity</a></td>
 </tr>
@@ -533,13 +533,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   description:
     name: description
@@ -558,13 +558,13 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   other_identifier:
     name: other_identifier
@@ -579,7 +579,7 @@ attributes:
     - Dataset
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: Identifier
     required: false
     multivalued: true
@@ -600,13 +600,13 @@ attributes:
     - DefinedTerm
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: uriorcurie
     required: true
   has_qualitative_attribute:
     name: has_qualitative_attribute
-    description: The slot to relate a qualitative attribute to an entity of interest,
-      tool or environment.
+    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or Instrument
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -617,7 +617,7 @@ attributes:
     domain_of:
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -625,8 +625,8 @@ attributes:
     inlined_as_list: true
   has_quantitative_attribute:
     name: has_quantitative_attribute
-    description: The slot to relate a quantitative attribute to an entity of interest,
-      tool or environment.
+    description: The slot to relate a quantitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or Instrument
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -637,7 +637,7 @@ attributes:
     domain_of:
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -656,7 +656,7 @@ attributes:
     - Catalogue
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: EvaluatedActivity
     multivalued: true
     inlined_as_list: true

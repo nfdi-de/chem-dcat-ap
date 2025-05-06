@@ -258,8 +258,6 @@
     click QuantitativeAttribute href "../QuantitativeAttribute"
 
 
-      ChemicalSample : has_role
-
       ChemicalSample : id
 
       ChemicalSample : other_identifier
@@ -324,12 +322,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../has_role/">has_role</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-</tr>
-<tr>
 <td><a href="../composed_of/">composed_of</a></td>
 <td>* <em>recommended</em> <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
 <td>The slot to provide the chemical entities of which the chemical substance is ...</td>
@@ -362,13 +354,13 @@
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
+<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
+<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 </tr>
 <tr>
@@ -408,12 +400,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../NMRAnalysisDataset/">NMRAnalysisDataset</a></td>
-<td><a href="../describes_entity/">describes_entity</a></td>
-<td>range</td>
-<td><a href="./">ChemicalSample</a></td>
-</tr>
 <tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
@@ -462,15 +448,6 @@ is_a: ChemicalSubstance
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 is_a: ChemicalSubstance
 attributes:
-  has_role:
-    name: has_role
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    alias: has_role
-    owner: ChemicalSample
-    domain_of:
-    - ChemicalSubstance
-    range: string
   composed_of:
     name: composed_of
     description: The slot to provide the chemical entities of which the chemical substance
@@ -507,13 +484,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   description:
     name: description
@@ -532,13 +509,13 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   other_identifier:
     name: other_identifier
@@ -553,7 +530,7 @@ attributes:
     - Dataset
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: Identifier
     required: false
     multivalued: true
@@ -574,13 +551,13 @@ attributes:
     - DefinedTerm
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: uriorcurie
     required: true
   has_qualitative_attribute:
     name: has_qualitative_attribute
-    description: The slot to relate a qualitative attribute to an entity of interest,
-      tool or environment.
+    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or Instrument
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -591,7 +568,7 @@ attributes:
     domain_of:
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -599,8 +576,8 @@ attributes:
     inlined_as_list: true
   has_quantitative_attribute:
     name: has_quantitative_attribute
-    description: The slot to relate a quantitative attribute to an entity of interest,
-      tool or environment.
+    description: The slot to relate a quantitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or Instrument
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -611,7 +588,7 @@ attributes:
     domain_of:
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -630,7 +607,7 @@ attributes:
     - Catalogue
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: EvaluatedEntity
     multivalued: true
     inlined_as_list: true

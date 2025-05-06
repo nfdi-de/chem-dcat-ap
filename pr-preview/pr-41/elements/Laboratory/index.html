@@ -213,8 +213,8 @@
 <div class="mermaid"> classDiagram
     class Laboratory
     click Laboratory href "../Laboratory"
-      Environment &lt;|-- Laboratory
-        click Environment href "../Environment"
+      Surrounding &lt;|-- Laboratory
+        click Surrounding href "../Surrounding"
 
       Laboratory : description
 
@@ -242,7 +242,7 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Environment/">Environment</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../Surrounding/">Surrounding</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><strong>Laboratory</strong></li>
 </ul>
 </li>
@@ -262,13 +262,13 @@
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../Environment/">Environment</a></td>
+<td><a href="../Surrounding/">Surrounding</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../Environment/">Environment</a></td>
+<td><a href="../Surrounding/">Surrounding</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
@@ -316,7 +316,7 @@
 description: A facility that provides controlled conditions in which scientific or
   technological research, experiments, and measurement may be performed.
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-is_a: Environment
+is_a: Surrounding
 class_uri: prov:Location
 
 </code></pre>
@@ -327,7 +327,7 @@ class_uri: prov:Location
 description: A facility that provides controlled conditions in which scientific or
   technological research, experiments, and measurement may be performed.
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-is_a: Environment
+is_a: Surrounding
 attributes:
   title:
     name: title
@@ -348,13 +348,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   description:
     name: description
@@ -373,13 +373,13 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   type:
     name: type
