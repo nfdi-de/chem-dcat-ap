@@ -15,7 +15,6 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class ChemicalSubstance extends EvaluatedEntity {
 
-  private String hasRole;
   private List<ChemicalEntity> composedOf;
 
 }

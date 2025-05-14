@@ -54,6 +54,8 @@ prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   vl: https://purl.eu/ns/shacl#
   iana: https://www.iana.org/assignments/
+  epos: https://www.epos-eu.org/epos-dcat-ap#
+  schema: https://schema.org/
   dcatap_linkml: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml#
 default_prefix: dcatap_linkml
 default_range: string
@@ -563,7 +565,6 @@ classes:
   Agent:
     name: Agent
     description: See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)
-    is_a: SupportiveEntity
     slots:
     - name
     - type
@@ -589,7 +590,7 @@ classes:
   Any:
     name: Any
     description: This abstract class is needed to create the union of Dataset, DatasetSeries,
-      Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/)
+      Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/).
     class_uri: linkml:Any
   Attribution:
     name: Attribution
@@ -889,7 +890,6 @@ classes:
   Checksum:
     name: Checksum
     description: See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
-    is_a: SupportiveEntity
     slots:
     - algorithm
     - checksum_value
@@ -1826,7 +1826,6 @@ classes:
   Kind:
     name: Kind
     description: See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)
-    is_a: SupportiveEntity
     class_uri: vcard:Kind
   LegalResource:
     name: LegalResource
@@ -1859,7 +1858,6 @@ classes:
   Location:
     name: Location
     description: See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)
-    is_a: SupportiveEntity
     slots:
     - bbox
     - centroid
@@ -1960,7 +1958,6 @@ classes:
   Relationship:
     name: Relationship
     description: See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)
-    is_a: SupportiveEntity
     slots:
     - had_role
     - relation

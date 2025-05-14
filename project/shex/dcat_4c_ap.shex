@@ -76,10 +76,10 @@ dcatap_plus:Activity  (
              adms:identifier @dcatap_plus:Identifier * ;
              prov:used @dcatap_plus:EvaluatedEntity * ;
              prov:wasInformedBy @dcatap_plus:EvaluatedActivity * ;
-             prov:used @dcatap_plus:Tool * ;
+             prov:wasAssociatedWith @dcatap_plus:Instrument * ;
              prov:used @dcatap_plus:Plan ? ;
              dcterms:hasPart @dcatap_plus:Activity ? ;
-             prov:atLocation @dcatap_plus:Location ? ;
+             prov:atLocation @dcatap_plus:Surrounding ? ;
              dcterms:type @dcatap_plus:DefinedTerm ? ;
              rdf:type @dcatap_plus:DefinedTerm ?
           ) ;
@@ -89,9 +89,7 @@ dcatap_plus:Activity  (
 )
 
 dcatap_plus:Agent CLOSED {
-    (  $dcatap_plus:Agent_tes (  &dcatap_plus:SupportiveEntity_tes ;
-          rdf:type [ dcatap_plus:SupportiveEntity ] ? ;
-          foaf:name @linkml:String + ;
+    (  $dcatap_plus:Agent_tes (  foaf:name @linkml:String + ;
           dcterms:type @dcatap_plus:Concept ?
        ) ;
        rdf:type [ foaf:Agent ] ?
@@ -175,9 +173,7 @@ dcatap_plus:CatalogueRecord CLOSED {
 }
 
 dcatap_plus:Checksum CLOSED {
-    (  $dcatap_plus:Checksum_tes (  &dcatap_plus:SupportiveEntity_tes ;
-          rdf:type [ dcatap_plus:SupportiveEntity ] ? ;
-          spdx:algorithm @dcatap_plus:ChecksumAlgorithm ;
+    (  $dcatap_plus:Checksum_tes (  spdx:algorithm @dcatap_plus:ChecksumAlgorithm ;
           spdx:checksumValue @dcatap_plus:HexBinary
        ) ;
        rdf:type [ spdx:Checksum ] ?
@@ -222,7 +218,6 @@ dcatap_plus:ChecksumAlgorithm CLOSED {
     CLOSED {
        (  $<ChemicalSubstance_tes> (  &dcatap_plus:EvaluatedEntity_tes ;
              rdf:type [ prov:Entity ] ? ;
-             <has_role> @linkml:String ? ;
              <composed_of> @<ChemicalEntity> *
           ) ;
           rdf:type [ prov:Entity ]
@@ -327,8 +322,8 @@ dcatap_plus:Dataset  (
              dcat:version @linkml:String ? ;
              adms:versionNotes @linkml:String * ;
              prov:wasGeneratedBy @dcatap_plus:Activity + ;
-             dcterms:relation @dcatap_plus:EvaluatedEntity * ;
-             dcterms:relation @dcatap_plus:EvaluatedActivity *
+             dcterms:subject @dcatap_plus:EvaluatedEntity * ;
+             dcterms:subject @dcatap_plus:EvaluatedActivity *
           ) ;
           rdf:type [ dcat:Dataset ]
        )
@@ -360,10 +355,12 @@ dcatap_plus:DefinedTerm CLOSED {
 }
 
 dcatap_plus:Device CLOSED {
-    (  $dcatap_plus:Device_tes (  &dcatap_plus:Tool_tes ;
-          rdf:type [ prov:Entity ] ?
+    (  $dcatap_plus:Device_tes (  &dcatap_plus:Instrument_tes ;
+          rdf:type [ prov:Agent ] ? ;
+          dcterms:hasPart @dcatap_plus:Instrument * ;
+          adms:identifier @dcatap_plus:Identifier *
        ) ;
-       rdf:type [ prov:Entity ]
+       rdf:type [ prov:Agent ]
     )
 }
 
@@ -404,20 +401,6 @@ dcatap_plus:Document CLOSED {
        rdf:type [ foaf:Document ] ?
     )
 }
-
-dcatap_plus:Environment  (
-    CLOSED {
-       (  $dcatap_plus:Environment_tes (  &dcatap_plus:ClassifierMixin_tes ;
-             rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
-             dcterms:title @linkml:String ? ;
-             dcterms:description @linkml:String ? ;
-             dcterms:type @dcatap_plus:DefinedTerm ? ;
-             rdf:type @dcatap_plus:DefinedTerm ?
-          ) ;
-          rdf:type [ prov:Location ] ?
-       )
-    } OR @<Laboratory>
-)
 
 dcatap_plus:EvaluatedActivity  (
     CLOSED {
@@ -497,6 +480,24 @@ dcatap_plus:Identifier CLOSED {
     )
 }
 
+dcatap_plus:Instrument  (
+    CLOSED {
+       (  $dcatap_plus:Instrument_tes (  &dcatap_plus:ClassifierMixin_tes ;
+             rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             adms:identifier @dcatap_plus:Identifier * ;
+             dcterms:relation @dcatap_plus:QualitativeAttribute * ;
+             dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
+             dcterms:hasPart @dcatap_plus:Instrument * ;
+             dcterms:type @dcatap_plus:DefinedTerm ? ;
+             rdf:type @dcatap_plus:DefinedTerm ?
+          ) ;
+          rdf:type [ prov:Agent ]
+       )
+    } OR @dcatap_plus:Device OR @dcatap_plus:Software
+)
+
 <IUPACChemicalFormula> CLOSED {
     (  $<IUPACChemicalFormula_tes> (  &dcatap_plus:QualitativeAttribute_tes ;
           rdf:type [ prov:Entity ] ?
@@ -506,15 +507,13 @@ dcatap_plus:Identifier CLOSED {
 }
 
 dcatap_plus:Kind CLOSED {
-    (  $dcatap_plus:Kind_tes (  &dcatap_plus:SupportiveEntity_tes ;
-          rdf:type [ dcatap_plus:SupportiveEntity ] ?
-       ) ;
+    (  $dcatap_plus:Kind_tes rdf:type . * ;
        rdf:type [ vcard:Kind ] ?
     )
 }
 
 <Laboratory> CLOSED {
-    (  $<Laboratory_tes> (  &dcatap_plus:Environment_tes ;
+    (  $<Laboratory_tes> (  &dcatap_plus:Surrounding_tes ;
           rdf:type [ prov:Location ] ?
        ) ;
        rdf:type [ prov:Location ] ?
@@ -547,9 +546,7 @@ dcatap_plus:LinguisticSystem CLOSED {
 }
 
 dcatap_plus:Location CLOSED {
-    (  $dcatap_plus:Location_tes (  &dcatap_plus:SupportiveEntity_tes ;
-          rdf:type [ dcatap_plus:SupportiveEntity ] ? ;
-          dcat:bbox @linkml:String ? ;
+    (  $dcatap_plus:Location_tes (  dcat:bbox @linkml:String ? ;
           dcat:centroid @linkml:String ? ;
           locn:geometry @dcatap_plus:Geometry ?
        ) ;
@@ -577,7 +574,7 @@ dcatap_plus:MediaTypeOrExtent CLOSED {
     (  $<NMRAnalysisDataset_tes> (  &dcatap_plus:AnalysisDataset_tes ;
           rdf:type [ dcat:Dataset ] ? ;
           prov:wasGeneratedBy @<NMRSpectralAnalysis> * ;
-          dcterms:relation @<ChemicalSample> *
+          dcterms:subject @<ChemicalSample> *
        ) ;
        rdf:type [ dcat:Dataset ]
     )
@@ -682,9 +679,7 @@ dcatap_plus:QuantitativeAttribute CLOSED {
 }
 
 dcatap_plus:Relationship CLOSED {
-    (  $dcatap_plus:Relationship_tes (  &dcatap_plus:SupportiveEntity_tes ;
-          rdf:type [ dcatap_plus:SupportiveEntity ] ? ;
-          dcat:hadRole @dcatap_plus:Role + ;
+    (  $dcatap_plus:Relationship_tes (  dcat:hadRole @dcatap_plus:Role + ;
           dcterms:relation @dcatap_plus:Resource +
        ) ;
        rdf:type [ dcat:Relationship ] ?
@@ -724,10 +719,12 @@ dcatap_plus:Role CLOSED {
 }
 
 dcatap_plus:Software CLOSED {
-    (  $dcatap_plus:Software_tes (  &dcatap_plus:Tool_tes ;
-          rdf:type [ prov:Entity ] ?
+    (  $dcatap_plus:Software_tes (  &dcatap_plus:Instrument_tes ;
+          rdf:type [ prov:Agent ] ? ;
+          dcterms:hasPart @dcatap_plus:Instrument * ;
+          adms:identifier @dcatap_plus:Identifier *
        ) ;
-       rdf:type [ prov:Entity ]
+       rdf:type [ prov:SoftwareAgent ]
     )
 }
 
@@ -744,12 +741,25 @@ dcatap_plus:SupportiveEntity  (
        (  $dcatap_plus:SupportiveEntity_tes rdf:type . * ;
           rdf:type [ dcatap_plus:SupportiveEntity ] ?
        )
-    } OR @dcatap_plus:Agent OR @dcatap_plus:Attribution OR @dcatap_plus:Checksum OR @dcatap_plus:ChecksumAlgorithm OR
-    @dcatap_plus:Concept OR @dcatap_plus:ConceptScheme OR @dcatap_plus:Document OR @dcatap_plus:Frequency OR @dcatap_plus:Geometry
-    OR @dcatap_plus:Identifier OR @dcatap_plus:Kind OR @dcatap_plus:LegalResource OR @dcatap_plus:LicenseDocument OR
-    @dcatap_plus:LinguisticSystem OR @dcatap_plus:Location OR @dcatap_plus:MediaType OR @dcatap_plus:MediaTypeOrExtent OR
-    @dcatap_plus:PeriodOfTime OR @dcatap_plus:Policy OR @dcatap_plus:ProvenanceStatement OR @dcatap_plus:Relationship OR
+    } OR @dcatap_plus:Attribution OR @dcatap_plus:ChecksumAlgorithm OR @dcatap_plus:Concept OR @dcatap_plus:ConceptScheme OR
+    @dcatap_plus:Document OR @dcatap_plus:Frequency OR @dcatap_plus:Geometry OR @dcatap_plus:Identifier OR
+    @dcatap_plus:LegalResource OR @dcatap_plus:LicenseDocument OR @dcatap_plus:LinguisticSystem OR @dcatap_plus:MediaType OR
+    @dcatap_plus:MediaTypeOrExtent OR @dcatap_plus:PeriodOfTime OR @dcatap_plus:Policy OR @dcatap_plus:ProvenanceStatement OR
     @dcatap_plus:Resource OR @dcatap_plus:RightsStatement OR @dcatap_plus:Role OR @dcatap_plus:Standard OR @dcatap_plus:TimeInstant
+)
+
+dcatap_plus:Surrounding  (
+    CLOSED {
+       (  $dcatap_plus:Surrounding_tes (  &dcatap_plus:ClassifierMixin_tes ;
+             rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             dcterms:type @dcatap_plus:DefinedTerm ? ;
+             rdf:type @dcatap_plus:DefinedTerm ?
+          ) ;
+          rdf:type [ prov:Location ] ?
+       )
+    } OR @<Laboratory>
 )
 
 dcatap_plus:TimeInstant CLOSED {
@@ -759,22 +769,4 @@ dcatap_plus:TimeInstant CLOSED {
        rdf:type [ time:Instant ] ?
     )
 }
-
-dcatap_plus:Tool  (
-    CLOSED {
-       (  $dcatap_plus:Tool_tes (  &dcatap_plus:ClassifierMixin_tes ;
-             rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
-             dcterms:title @linkml:String ? ;
-             dcterms:description @linkml:String ? ;
-             adms:identifier @dcatap_plus:Identifier * ;
-             dcterms:relation @dcatap_plus:QualitativeAttribute * ;
-             dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
-             dcterms:hasPart @dcatap_plus:Tool * ;
-             dcterms:type @dcatap_plus:DefinedTerm ? ;
-             rdf:type @dcatap_plus:DefinedTerm ?
-          ) ;
-          rdf:type [ prov:Entity ]
-       )
-    } OR @dcatap_plus:Device OR @dcatap_plus:Software
-)
 

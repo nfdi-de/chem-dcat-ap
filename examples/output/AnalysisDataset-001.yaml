@@ -12,7 +12,7 @@ was_generated_by:
       evaluated_entity:
       - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
         title: CRS-50440
-      used_tool:
+      used_instrument:
       - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool1
         title: Bruker 400 MHz
         has_qualitative_attribute:
@@ -40,7 +40,7 @@ was_generated_by:
           id: OBI:0000566
           title: NMR instrument
       - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool2
-        title: 'solvent: chloroform-D1 (CDCl3)'
+        title: chloroform-D1 (CDCl3)
         rdf_type:
           id: CHEBI:85365
           title: deuterated chloroform
@@ -53,11 +53,11 @@ was_generated_by:
       evaluated_entity:
       - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
         title: CRS-50440
-      used_tool:
+      used_instrument:
       - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool1
         title: Bruker 400 MHz
       - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#Tool3
-        title: 'solvent: DMSO'
+        title: DMSO
         rdf_type:
           id: CHEBI:28262
           title: dimethyl sulfoxide
@@ -72,7 +72,7 @@ other_identifier:
 theme:
 - preferred_label:
   - Science and technology
-describes_entity:
+is_about_entity:
 - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
   title: CRS-50440
   other_identifier:

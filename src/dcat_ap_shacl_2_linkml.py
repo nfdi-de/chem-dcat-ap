@@ -17,7 +17,7 @@ The JSON-LD SHACL constraints published with the [July 3.0.0 GitHub release](htt
 """.replace('\n', '')
 
 DESCRIPTION2 = """
-This metadata schema is an Extension of the DCAT Application Profile for Providing Links to Use-case Specific Context. It allows to provide additional metadata regarding: which kind(s) of entity(s) or activity(s) were evaluated (the dcat:Dataset is about), which kind of activity generated the dcat:Dataset, which kind of "tools" (input entities like devices or software) were used in the dataset generating activity, in which location (e.g. a laboratory) and according to which procedure the dataset generating activity took place, and which kind(s) of qualitative and quantitative characteristic were attributed to the evaluated entity or activity and used "tools". """.replace('\n', '')
+This metadata schema is an Extension of the DCAT Application Profile for Providing Links to Use-case Specific Context. It allows to provide additional metadata regarding: which kind(s) of entity(s) or activity(s) were evaluated (the dcat:Dataset is about), which kind of activity generated the dcat:Dataset, which kind of instruments were used in the dataset generating activity, in which surrounding (e.g. a laboratory) and according to which plan the dataset generating activity took place, as well as regarding which kind(s) of qualitative and quantitative characteristic were attributed to the evaluated entity or evaluated activity and to the used instruments.""".replace('\n', '')
 
 PREFIX_MAP = {
     'linkml': 'https://w3id.org/linkml/',
@@ -40,7 +40,9 @@ PREFIX_MAP = {
     'sh': 'http://www.w3.org/ns/shacl#',
     'skos': 'http://www.w3.org/2004/02/skos/core#',
     'vl': 'https://purl.eu/ns/shacl#',
-    'iana': 'https://www.iana.org/assignments/'}
+    'iana': 'https://www.iana.org/assignments/',
+    'epos': 'https://www.epos-eu.org/epos-dcat-ap#',
+    'schema': 'https://schema.org/'}
 
 # The shape for rdfs:Literal is ignored, since we use LinkML's 'string' as default datatype for unspecified literal
 # slot ranges.
@@ -116,7 +118,8 @@ def parse_dcat_ap_shacl_shapes(builder):
     # see also https://linkml.io/linkml/schemas/advanced.html#unions-as-ranges
     builder.add_class(ClassDefinition(name='Any',
                                       class_uri='linkml:Any',
-                                      description='This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/)'))
+                                      description='This abstract class is needed to create the union of Dataset, '
+                                                  'DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/).'))
     # Iterate through each SHACL node shape within the loaded JSON-LD to derive the LinkML classes or types from them.
     for node_shape in dcat_ap_shapes['shapes']:
         node_curie = get_curie(node_shape['sh:targetClass'])
@@ -138,8 +141,20 @@ def parse_dcat_ap_shacl_shapes(builder):
         if node_name not in ['dateTime', 'decimal', 'duration', 'hexBinary', 'nonNegativeInteger'] + IGNORED_NODES:
             # Add DCAT-AP Supportive Entity classes, this is done only to have an easier to read documentation.
             # 'Activity' is considered a main entity here, since we use it to extend DCAT-AP.
-            if node_name not in ['Dataset', 'DatasetSeries', 'Distribution', 'Catalogue', 'CataloguedResource',
-                                 'DataService', 'Activity', 'CatalogueRecord']:
+            if node_name not in ['Agent',
+                                 'Catalogue',
+                                 'CatalogueRecord',
+                                 'CataloguedResource',
+                                 'Checksum',
+                                 'DataService',
+                                 'Dataset',
+                                 'DatasetSeries',
+                                 'Distribution',
+                                 'Kind',
+                                 'Licence Document',
+                                 'Location',
+                                 'Relationship',
+                                 'Activity' ]:
                 builder.add_class(ClassDefinition(name='SupportiveEntity',
                                                   description='The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.'))
                 builder.add_class(ClassDefinition(name=node_name,
@@ -369,23 +384,27 @@ def build_dcatap_plus():
                                         range= 'uriorcurie',
                                         description= 'A slot to provide an URI for an entity within this schema.',
                                         in_subset='domain_agnostic_core'))
-        builder.add_slot(SlotDefinition(name='describes_entity',
-                                        slot_uri= 'dcterms:relation',
+        builder.add_slot(SlotDefinition(name='is_about_entity',
+                                        slot_uri= 'dcterms:subject',
                                         range= 'EvaluatedEntity',
-                                        description= 'A slot to provide the EvaluatedEntity that is described by a Dataset.',
+                                        description= 'A slot to provide the EvaluatedEntity a Dataset is about.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
-                                        in_subset='domain_agnostic_core'))
-        builder.add_slot(SlotDefinition(name='describes_activity',
-                                        slot_uri= 'dcterms:relation',
+                                        in_subset='domain_agnostic_core',
+                                        exact_mappings=['IAO:0000136']))
+        builder.add_slot(SlotDefinition(name='is_about_activity',
+                                        slot_uri= 'dcterms:subject',
                                         range= 'EvaluatedActivity',
-                                        description= 'A slot to provide the EvaluatedActivity that is described by a Dataset.',
+                                        description= 'A slot to provide the EvaluatedActivity a Dataset is about.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
-                                        in_subset='domain_agnostic_core'))
-        slots = ['id', 'describes_entity', 'describes_activity']
+                                        in_subset='domain_agnostic_core',
+                                        exact_mappings=['IAO:0000136']))
+        slots = ['id',
+                 'is_about_entity',
+                 'is_about_activity']
         dataset = builder.schema.classes['Dataset']
         dataset.slots = dataset.slots + slots
         dataset.slot_usage.was_generated_by.required = True
@@ -398,7 +417,8 @@ def build_dcatap_plus():
         builder.add_slot(SlotDefinition(name='evaluated_entity',
                                         slot_uri= 'prov:used',
                                         range= 'EvaluatedEntity',
-                                        description= 'The slot to specify the entity of interest that was evaluated.',
+                                        description= 'The slot to provide the EvaluatedEntity evaluated by an '
+                                                     'Activity.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
@@ -406,15 +426,17 @@ def build_dcatap_plus():
         builder.add_slot(SlotDefinition(name='evaluated_activity',
                                         slot_uri= 'prov:wasInformedBy',
                                         range= 'EvaluatedActivity',
-                                        description= 'The slot to specify the activity of interest that was evaluated.',
+                                        description= 'The slot to provide the EvaluatedActivity evaluated by an '
+                                                     'Activity.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
                                         in_subset='domain_agnostic_core'))
-        builder.add_slot(SlotDefinition(name='used_tool',
-                                        slot_uri= 'prov:used',
-                                        range= 'Tool',
-                                        description= 'The slot to specify the tool that was used.',
+        builder.add_slot(SlotDefinition(name='used_instrument',
+                                        slot_uri= 'prov:wasAssociatedWith',
+                                        range= 'Instrument',
+                                        description= 'The slot to specify the Instruments that were used in the data '
+                                                     'generating Activity.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
@@ -426,8 +448,9 @@ def build_dcatap_plus():
                                         in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='occurred_in',
                                         slot_uri= 'prov:atLocation',
-                                        range= 'Location',
-                                        description= 'The slot to specify the Location at which an Activity took place.',
+                                        range= 'Surrounding',
+                                        description= 'The slot to specify the Surrounding in which an Activity took '
+                                                     'place.',
                                         in_subset='domain_agnostic_core'))
         slots = ['id',
                  'title',
@@ -435,7 +458,7 @@ def build_dcatap_plus():
                  'other_identifier',
                  'evaluated_entity',
                  'evaluated_activity',
-                 'used_tool',
+                 'used_instrument',
                  'realized_plan',
                  'has_part',
                  'occurred_in']
@@ -456,14 +479,15 @@ def build_dcatap_plus():
         activity.mixins = ['ClassifierMixin']
         activity.narrow_mappings = ['NCIT:C25598', 'SOSA:Observation','OBI:0000070']
         activity.in_subset=['domain_agnostic_core']
-        activity.description = 'An activity (process) that has the objective to produce information aboutn entity or activity.'
-        activity.notes = ['The properties (slots) of this class are part of the extension of the DCAT-AP.']
+        activity.description = ('An activity (process) that has the objective to produce information about an entity '
+                                'or activity.')
+        activity.notes = ['The properties (slots) of this class are part of our extension of the DCAT-AP.']
 
 
     def add_classification_context():
         builder.add_class(ClassDefinition(name='ClassifierMixin',
                                           mixin=True,
-                                          description='A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.',
+                                          description='A mixin with which an entity of this schema can be classified via an additional rdf:type or dcterms:type assertion.',
                                           abstract=True,
                                           slots=['type',
                                                  'rdf_type'],
@@ -474,7 +498,9 @@ def build_dcatap_plus():
                                           in_subset='domain_agnostic_core'))
         builder.add_class(ClassDefinition(name='DefinedTerm',
                                           class_uri='schema:DefinedTerm',
-                                          description='A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.',
+                                          description='A word, name, acronym or phrase that is defined in a controlled '
+                                                      'vocabulary (CV) and that is used to provide an additional '
+                                                      'rdf:type or dcterms:type of a class within this schema.',
                                           slots=['id',
                                                  'title'],
                                           slot_usage={
@@ -552,11 +578,13 @@ def build_dcatap_plus():
                                           in_subset='domain_agnostic_core'))
 
 
-    def add_tooling_context():
-        builder.add_class(ClassDefinition(name='Tool',
+    def add_instrument_context():
+        builder.add_class(ClassDefinition(name='Instrument',
                                           mixins= 'ClassifierMixin',
-                                          class_uri='prov:Entity',
-                                          description='A entity with a certain function used within a Activity.',
+                                          class_uri='prov:Agent',
+                                          description='An entity that is actively used within an Activity as a means '
+                                                      'to achieve the planned objectives of said Activity because of '
+                                                      'its function.',
                                           slots = ['id',
                                                    'title',
                                                    'description',
@@ -566,33 +594,70 @@ def build_dcatap_plus():
                                                    'has_part'],
                                           slot_usage={
                                               'has_part':{
-                                                  'description': 'The slot to specify parts of a tool.',
-                                                  'range':'Tool',
+                                                  'description': 'The slot to specify parts of an Instrument that are '
+                                                                 'themselves Instruments.',
+                                                  'range':'Instrument',
                                                   'inlined': True,
                                                   'multivalued': True,
                                                   'inlined_as_list': True},
                                               'other_identifier':{
-                                                  'description': 'A slot to provide a secondary identifier of the tool.',
+                                                  'description': 'A slot to provide a secondary identifier for an Instrument.',
                                                   'range': 'Identifier',
                                                   'required': False,
                                                   'multivalued': True,
                                                   'inlined_as_list': True}},
                                           in_subset='domain_agnostic_core'))
         builder.add_class(ClassDefinition(name='Device',
-                                          aliases=['hardware tool'],
-                                          is_a='Tool',
-                                          class_uri='prov:Entity',
-                                          description='A hardware device with a certain function that was used within ann Activity.',
-                                          in_subset='domain_agnostic_core'))
+                                          aliases=['hardware instrument'],
+                                          is_a='Instrument',
+                                          class_uri='prov:Agent',
+                                          description='A material instrument that is designed to perform a function '
+                                                      'primarily by means of its mechanical or electrical nature.',
+                                          in_subset='domain_agnostic_core',
+                                          exact_mappings=['epos:Equipment',
+                                                          'OBI:0000968',
+                                                          'http://purl.obolibrary.org/obo/NCIT_C62103',
+                                                          'http://semanticscience.org/resource/SIO_000956',
+                                                          'http://purl.allotrope.org/ontologies/equipment#AFE_0000354'],
+                                          slot_usage={
+                                              'has_part':{
+                                                  'description': 'The slot to specify parts of a Device that are '
+                                                                 'themselves Devices.',
+                                                  'range':'Instrument',
+                                                  'inlined': True,
+                                                  'multivalued': True,
+                                                  'inlined_as_list': True},
+                                              'other_identifier':{
+                                                  'description': 'A slot to provide a secondary identifier for a Device.',
+                                                  'range': 'Identifier',
+                                                  'required': False,
+                                                  'multivalued': True,
+                                                  'inlined_as_list': True}}))
         builder.add_class(ClassDefinition(name='Software',
-                                          is_a='Tool',
-                                          class_uri='prov:Entity',
-                                          description='A software program with a certain function that was used within an Activity.',
-                                          in_subset='domain_agnostic_core'))
+                                          is_a='Instrument',
+                                          class_uri='prov:SoftwareAgent',
+                                          description='An instrument composed of a series of instructions that can be '
+                                                      'interpreted by or directly executed by a computer.',
+                                          in_subset='domain_agnostic_core',
+                                          exact_mappings=['schema:SoftwareApplication'],
+                                          slot_usage={
+                                              'has_part':{
+                                                  'description': 'The slot to specify parts of a Software that are '
+                                                                 'themselves Software.',
+                                                  'range':'Instrument',
+                                                  'inlined': True,
+                                                  'multivalued': True,
+                                                  'inlined_as_list': True},
+                                              'other_identifier':{
+                                                  'description': 'A slot to provide a secondary identifier for a Software.',
+                                                  'range': 'Identifier',
+                                                  'required': False,
+                                                  'multivalued': True,
+                                              'inlined_as_list': True}}))
 
 
     def add_planning_and_surrounding_context():
-        builder.add_class(ClassDefinition(name='Environment',
+        builder.add_class(ClassDefinition(name='Surrounding',
                                           mixins= 'ClassifierMixin',
                                           description='The surrounding in which the dataset creating activity took place (e.g. a lab).',
                                           class_uri='prov:Location',
@@ -616,7 +681,7 @@ def build_dcatap_plus():
         builder.add_class(ClassDefinition(name='QualitativeAttribute',
                                           mixins= 'ClassifierMixin',
                                           class_uri='prov:Entity',
-                                          description='A piece of information that is attributed to an entity of interest, tool or environment.',
+                                          description='A piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.',
                                           slots = ['title',
                                                    'description',
                                                    'value'],
@@ -628,7 +693,7 @@ def build_dcatap_plus():
         builder.add_class(ClassDefinition(name='QuantitativeAttribute',
                                           mixins= 'ClassifierMixin',
                                           class_uri='qudt:Quantity',
-                                          description='A quantifiable piece of information that is attributed to an entity of interest, tool or environment.',
+                                          description='A quantifiable piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.',
                                           slots = ['title',
                                                    'description',
                                                    'value'],
@@ -661,7 +726,7 @@ def build_dcatap_plus():
         builder.add_slot(SlotDefinition(name='has_qualitative_attribute',
                                         slot_uri= 'dcterms:relation',
                                         range= 'QualitativeAttribute',
-                                        description= 'The slot to relate a qualitative attribute to an entity of interest, tool or environment.',
+                                        description= 'The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
@@ -669,7 +734,7 @@ def build_dcatap_plus():
         builder.add_slot(SlotDefinition(name='has_quantitative_attribute',
                                         slot_uri= 'dcterms:relation',
                                         range= 'QuantitativeAttribute',
-                                        description= 'The slot to relate a quantitative attribute to an entity of interest, tool or environment.',
+                                        description= 'The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
@@ -777,7 +842,7 @@ def build_dcatap_plus():
     # Add classes and properties needed to extend DCAT-AP
     add_classification_context()
     add_subject_of_interest_context()
-    add_tooling_context()
+    add_instrument_context()
     add_planning_and_surrounding_context()
     add_attribute_context()
     add_analysis_context()

@@ -21,7 +21,7 @@
                   "title": "CRS-50440"
                 }
               ],
-              "used_tool": [
+              "used_instrument": [
                 {
                   "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool1",
                   "title": "Bruker 400 MHz",
@@ -64,7 +64,7 @@
                 },
                 {
                   "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool2",
-                  "title": "solvent: chloroform-D1 (CDCl3)",
+                  "title": "chloroform-D1 (CDCl3)",
                   "rdf_type": {
                     "id": "CHEBI:85365",
                     "title": "deuterated chloroform"
@@ -89,14 +89,14 @@
                   "title": "CRS-50440"
                 }
               ],
-              "used_tool": [
+              "used_instrument": [
                 {
                   "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool1",
                   "title": "Bruker 400 MHz"
                 },
                 {
                   "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#Tool3",
-                  "title": "solvent: DMSO",
+                  "title": "DMSO",
                   "rdf_type": {
                     "id": "CHEBI:28262",
                     "title": "dimethyl sulfoxide"
@@ -129,7 +129,7 @@
       ]
     }
   ],
-  "describes_entity": [
+  "is_about_entity": [
     {
       "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
       "title": "CRS-50440",

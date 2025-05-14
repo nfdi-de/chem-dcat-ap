@@ -682,18 +682,6 @@
   ],
   "slots": [
     {
-      "name": "has_role",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/has_role",
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap",
-      "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/has_role",
-      "owner": "ChemicalSubstance",
-      "domain_of": [
-        "ChemicalSubstance"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "access_URL",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#access_URL",
       "description": "This slot is described in more detail within the class in which it is used.",
@@ -1023,52 +1011,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "describes_activity",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#describes_activity",
-      "description": "A slot to provide the EvaluatedActivity that is described by a Dataset.",
-      "in_subset": [
-        "domain_agnostic_core"
-      ],
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
-      "mappings": [
-        "http://purl.org/dc/terms/relation"
-      ],
-      "slot_uri": "http://purl.org/dc/terms/relation",
-      "owner": "Dataset",
-      "domain_of": [
-        "Dataset"
-      ],
-      "range": "EvaluatedActivity",
-      "recommended": true,
-      "multivalued": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "describes_entity",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#describes_entity",
-      "description": "A slot to provide the EvaluatedEntity that is described by a Dataset.",
-      "in_subset": [
-        "domain_agnostic_core"
-      ],
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
-      "mappings": [
-        "http://purl.org/dc/terms/relation"
-      ],
-      "slot_uri": "http://purl.org/dc/terms/relation",
-      "owner": "Dataset",
-      "domain_of": [
-        "Dataset"
-      ],
-      "range": "EvaluatedEntity",
-      "recommended": true,
-      "multivalued": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "description",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#description",
       "description": "This slot is described in more detail within the class in which it is used.",
@@ -1077,7 +1019,7 @@
         "http://purl.org/dc/terms/description"
       ],
       "slot_uri": "http://purl.org/dc/terms/description",
-      "owner": "Tool",
+      "owner": "Surrounding",
       "domain_of": [
         "Activity",
         "Catalogue",
@@ -1086,13 +1028,13 @@
         "Dataset",
         "DatasetSeries",
         "Distribution",
-        "Environment",
         "EvaluatedActivity",
         "EvaluatedEntity",
+        "Instrument",
         "Plan",
         "QualitativeAttribute",
         "QuantitativeAttribute",
-        "Tool"
+        "Surrounding"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -1198,7 +1140,7 @@
     {
       "name": "evaluated_activity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#evaluated_activity",
-      "description": "The slot to specify the activity of interest that was evaluated.",
+      "description": "The slot to provide the EvaluatedActivity evaluated by an Activity.",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -1221,7 +1163,7 @@
     {
       "name": "evaluated_entity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#evaluated_entity",
-      "description": "The slot to specify the entity of interest that was evaluated.",
+      "description": "The slot to provide the EvaluatedEntity evaluated by an Activity.",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -1350,13 +1292,13 @@
         "http://purl.org/dc/terms/hasPart"
       ],
       "slot_uri": "http://purl.org/dc/terms/hasPart",
-      "owner": "Tool",
+      "owner": "Instrument",
       "domain_of": [
         "Activity",
         "Catalogue",
         "EvaluatedActivity",
         "EvaluatedEntity",
-        "Tool"
+        "Instrument"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -1380,7 +1322,7 @@
     {
       "name": "has_qualitative_attribute",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#has_qualitative_attribute",
-      "description": "The slot to relate a qualitative attribute to an entity of interest, tool or environment.",
+      "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -1389,11 +1331,11 @@
         "http://purl.org/dc/terms/relation"
       ],
       "slot_uri": "http://purl.org/dc/terms/relation",
-      "owner": "Tool",
+      "owner": "Instrument",
       "domain_of": [
         "EvaluatedActivity",
         "EvaluatedEntity",
-        "Tool"
+        "Instrument"
       ],
       "range": "QualitativeAttribute",
       "recommended": true,
@@ -1405,7 +1347,7 @@
     {
       "name": "has_quantitative_attribute",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#has_quantitative_attribute",
-      "description": "The slot to relate a quantitative attribute to an entity of interest, tool or environment.",
+      "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -1414,11 +1356,11 @@
         "http://purl.org/dc/terms/relation"
       ],
       "slot_uri": "http://purl.org/dc/terms/relation",
-      "owner": "Tool",
+      "owner": "Instrument",
       "domain_of": [
         "EvaluatedActivity",
         "EvaluatedEntity",
-        "Tool"
+        "Instrument"
       ],
       "range": "QuantitativeAttribute",
       "recommended": true,
@@ -1469,14 +1411,14 @@
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "slot_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#id",
       "identifier": true,
-      "owner": "Tool",
+      "owner": "Instrument",
       "domain_of": [
         "Activity",
         "Dataset",
         "DefinedTerm",
         "EvaluatedActivity",
         "EvaluatedEntity",
-        "Tool"
+        "Instrument"
       ],
       "range": "uriorcurie",
       "required": true,
@@ -1512,6 +1454,58 @@
         "Dataset"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "is_about_activity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#is_about_activity",
+      "description": "A slot to provide the EvaluatedActivity a Dataset is about.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "http://purl.org/dc/terms/subject"
+      ],
+      "exact_mappings": [
+        "http://purl.obolibrary.org/obo/IAO_0000136"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/subject",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "EvaluatedActivity",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "is_about_entity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#is_about_entity",
+      "description": "A slot to provide the EvaluatedEntity a Dataset is about.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "http://purl.org/dc/terms/subject"
+      ],
+      "exact_mappings": [
+        "http://purl.obolibrary.org/obo/IAO_0000136"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/subject",
+      "owner": "Dataset",
+      "domain_of": [
+        "Dataset"
+      ],
+      "range": "EvaluatedEntity",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1704,7 +1698,7 @@
     {
       "name": "occurred_in",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#occurred_in",
-      "description": "The slot to specify the Location at which an Activity took place.",
+      "description": "The slot to specify the Surrounding in which an Activity took place.",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -1717,7 +1711,7 @@
       "domain_of": [
         "Activity"
       ],
-      "range": "Location",
+      "range": "Surrounding",
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -1730,13 +1724,13 @@
         "http://www.w3.org/ns/adms#identifier"
       ],
       "slot_uri": "http://www.w3.org/ns/adms#identifier",
-      "owner": "Tool",
+      "owner": "Instrument",
       "domain_of": [
         "Activity",
         "Dataset",
         "EvaluatedActivity",
         "EvaluatedEntity",
-        "Tool"
+        "Instrument"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -2187,7 +2181,7 @@
         "http://purl.org/dc/terms/title"
       ],
       "slot_uri": "http://purl.org/dc/terms/title",
-      "owner": "Tool",
+      "owner": "Surrounding",
       "domain_of": [
         "Activity",
         "Catalogue",
@@ -2198,13 +2192,13 @@
         "DatasetSeries",
         "DefinedTerm",
         "Distribution",
-        "Environment",
         "EvaluatedActivity",
         "EvaluatedEntity",
+        "Instrument",
         "Plan",
         "QualitativeAttribute",
         "QuantitativeAttribute",
-        "Tool"
+        "Surrounding"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -2229,22 +2223,22 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "used_tool",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#used_tool",
-      "description": "The slot to specify the tool that was used.",
+      "name": "used_instrument",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#used_instrument",
+      "description": "The slot to specify the Instruments that were used in the data generating Activity.",
       "in_subset": [
         "domain_agnostic_core"
       ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "mappings": [
-        "http://www.w3.org/ns/prov#used"
+        "http://www.w3.org/ns/prov#wasAssociatedWith"
       ],
-      "slot_uri": "http://www.w3.org/ns/prov#used",
+      "slot_uri": "http://www.w3.org/ns/prov#wasAssociatedWith",
       "owner": "Activity",
       "domain_of": [
         "Activity"
       ],
-      "range": "Tool",
+      "range": "Instrument",
       "recommended": true,
       "multivalued": true,
       "inlined": true,
@@ -2496,26 +2490,29 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "NMRAnalysisDataset_describes_entity",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#describes_entity",
-      "description": "A slot to provide the EvaluatedEntity that is described by a Dataset.",
+      "name": "NMRAnalysisDataset_is_about_entity",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#is_about_entity",
+      "description": "A slot to provide the EvaluatedEntity a Dataset is about.",
       "in_subset": [
         "domain_agnostic_core"
       ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "mappings": [
-        "http://purl.org/dc/terms/relation"
+        "http://purl.org/dc/terms/subject"
       ],
-      "is_a": "describes_entity",
+      "exact_mappings": [
+        "http://purl.obolibrary.org/obo/IAO_0000136"
+      ],
+      "is_a": "is_about_entity",
       "domain": "NMRAnalysisDataset",
-      "slot_uri": "http://purl.org/dc/terms/relation",
-      "alias": "describes_entity",
+      "slot_uri": "http://purl.org/dc/terms/subject",
+      "alias": "is_about_entity",
       "owner": "NMRAnalysisDataset",
       "domain_of": [
         "NMRAnalysisDataset"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "describes_entity",
+      "usage_slot_name": "is_about_entity",
       "range": "ChemicalSample",
       "recommended": true,
       "multivalued": true,
@@ -2526,7 +2523,7 @@
     {
       "name": "NMRSpectralAnalysis_evaluated_entity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#evaluated_entity",
-      "description": "The slot to specify the entity of interest that was evaluated.",
+      "description": "The slot to provide the EvaluatedEntity evaluated by an Activity.",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -2554,7 +2551,7 @@
     {
       "name": "NMRSpectroscopy_evaluated_entity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#evaluated_entity",
-      "description": "The slot to specify the entity of interest that was evaluated.",
+      "description": "The slot to provide the EvaluatedEntity evaluated by an Activity.",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -5103,6 +5100,54 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "Device_has_part",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#has_part",
+      "description": "The slot to specify parts of a Device that are themselves Devices.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "http://purl.org/dc/terms/hasPart"
+      ],
+      "is_a": "has_part",
+      "domain": "Device",
+      "slot_uri": "http://purl.org/dc/terms/hasPart",
+      "alias": "has_part",
+      "owner": "Device",
+      "domain_of": [
+        "Device"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_part",
+      "range": "Instrument",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Device_other_identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#other_identifier",
+      "description": "A slot to provide a secondary identifier for a Device.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "http://www.w3.org/ns/adms#identifier"
+      ],
+      "is_a": "other_identifier",
+      "domain": "Device",
+      "slot_uri": "http://www.w3.org/ns/adms#identifier",
+      "alias": "other_identifier",
+      "owner": "Device",
+      "domain_of": [
+        "Device"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "other_identifier",
+      "range": "Identifier",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "Distribution_access_URL",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#access_URL",
       "description": "A URL that gives access to a Distribution of the Dataset.",
@@ -5797,6 +5842,54 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "Instrument_has_part",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#has_part",
+      "description": "The slot to specify parts of an Instrument that are themselves Instruments.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "http://purl.org/dc/terms/hasPart"
+      ],
+      "is_a": "has_part",
+      "domain": "Instrument",
+      "slot_uri": "http://purl.org/dc/terms/hasPart",
+      "alias": "has_part",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_part",
+      "range": "Instrument",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Instrument_other_identifier",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#other_identifier",
+      "description": "A slot to provide a secondary identifier for an Instrument.",
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "http://www.w3.org/ns/adms#identifier"
+      ],
+      "is_a": "other_identifier",
+      "domain": "Instrument",
+      "slot_uri": "http://www.w3.org/ns/adms#identifier",
+      "alias": "other_identifier",
+      "owner": "Instrument",
+      "domain_of": [
+        "Instrument"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "other_identifier",
+      "range": "Identifier",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "LicenseDocument_type",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#type",
       "description": "A type of licence, e.g. indicating 'public domain' or 'royalties required'.",
@@ -6079,44 +6172,44 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Tool_has_part",
+      "name": "Software_has_part",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#has_part",
-      "description": "The slot to specify parts of a tool.",
+      "description": "The slot to specify parts of a Software that are themselves Software.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
       ],
-      "is_a": "has_part",
-      "domain": "Tool",
+      "is_a": "Instrument_has_part",
+      "domain": "Software",
       "slot_uri": "http://purl.org/dc/terms/hasPart",
       "alias": "has_part",
-      "owner": "Tool",
+      "owner": "Software",
       "domain_of": [
-        "Tool"
+        "Software"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "has_part",
-      "range": "Tool",
+      "range": "Instrument",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "Tool_other_identifier",
+      "name": "Software_other_identifier",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#other_identifier",
-      "description": "A slot to provide a secondary identifier of the tool.",
+      "description": "A slot to provide a secondary identifier for a Software.",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "mappings": [
         "http://www.w3.org/ns/adms#identifier"
       ],
-      "is_a": "other_identifier",
-      "domain": "Tool",
+      "is_a": "Instrument_other_identifier",
+      "domain": "Software",
       "slot_uri": "http://www.w3.org/ns/adms#identifier",
       "alias": "other_identifier",
-      "owner": "Tool",
+      "owner": "Software",
       "domain_of": [
-        "Tool"
+        "Software"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "other_identifier",
@@ -6177,9 +6270,9 @@
         "Dataset_version",
         "Dataset_version_notes",
         "id",
-        "describes_activity",
+        "is_about_activity",
         "NMRAnalysisDataset_was_generated_by",
-        "NMRAnalysisDataset_describes_entity"
+        "NMRAnalysisDataset_is_about_entity"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/dcat#Dataset",
@@ -6203,7 +6296,7 @@
         "description",
         "Activity_other_identifier",
         "evaluated_activity",
-        "used_tool",
+        "used_instrument",
         "realized_plan",
         "Activity_has_part",
         "occurred_in",
@@ -6230,7 +6323,7 @@
         "description",
         "Activity_other_identifier",
         "evaluated_activity",
-        "used_tool",
+        "used_instrument",
         "realized_plan",
         "Activity_has_part",
         "occurred_in",
@@ -6286,7 +6379,6 @@
         "EvaluatedEntity_was_generated_by",
         "ClassifierMixin_type",
         "rdf_type",
-        "has_role",
         "chemicalSubstance__composed_of"
       ],
       "slot_usage": {},
@@ -6371,7 +6463,6 @@
         "EvaluatedEntity_was_generated_by",
         "ClassifierMixin_type",
         "rdf_type",
-        "has_role",
         "chemicalSubstance__composed_of"
       ],
       "slot_usage": {},
@@ -6414,7 +6505,7 @@
       "mappings": [
         "prov:Location"
       ],
-      "is_a": "Environment",
+      "is_a": "Surrounding",
       "slots": [
         "title",
         "description",
@@ -6507,9 +6598,9 @@
     {
       "name": "Activity",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#Activity",
-      "description": "An activity (process) that has the objective to produce information aboutn entity or activity.",
+      "description": "An activity (process) that has the objective to produce information about an entity or activity.",
       "notes": [
-        "The properties (slots) of this class are part of the extension of the DCAT-AP."
+        "The properties (slots) of this class are part of our extension of the DCAT-AP."
       ],
       "in_subset": [
         "domain_agnostic_core"
@@ -6533,7 +6624,7 @@
         "Activity_other_identifier",
         "evaluated_entity",
         "evaluated_activity",
-        "used_tool",
+        "used_instrument",
         "realized_plan",
         "Activity_has_part",
         "occurred_in",
@@ -6552,7 +6643,6 @@
       "mappings": [
         "foaf:Agent"
       ],
-      "is_a": "SupportiveEntity",
       "slots": [
         "Agent_name",
         "Agent_type"
@@ -6610,8 +6700,8 @@
         "Dataset_version",
         "Dataset_version_notes",
         "id",
-        "describes_entity",
-        "describes_activity",
+        "is_about_entity",
+        "is_about_activity",
         "AnalysisDataset_was_generated_by"
       ],
       "slot_usage": {},
@@ -6649,7 +6739,7 @@
     {
       "name": "Any",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#Any",
-      "description": "This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/)",
+      "description": "This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/).",
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "mappings": [
         "linkml:Any"
@@ -6735,7 +6825,6 @@
       "mappings": [
         "spdx:Checksum"
       ],
-      "is_a": "SupportiveEntity",
       "slots": [
         "Checksum_algorithm",
         "Checksum_checksum_value"
@@ -6760,7 +6849,7 @@
     {
       "name": "ClassifierMixin",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#ClassifierMixin",
-      "description": "A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.",
+      "description": "A mixin with which an entity of this schema can be classified via an additional rdf:type or dcterms:type assertion.",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -6831,7 +6920,7 @@
         "description",
         "Activity_other_identifier",
         "evaluated_activity",
-        "used_tool",
+        "used_instrument",
         "realized_plan",
         "Activity_has_part",
         "occurred_in",
@@ -6922,8 +7011,8 @@
         "Dataset_version_notes",
         "Dataset_was_generated_by",
         "id",
-        "describes_entity",
-        "describes_activity"
+        "is_about_entity",
+        "is_about_activity"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/dcat#Dataset",
@@ -6956,7 +7045,7 @@
     {
       "name": "DefinedTerm",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#DefinedTerm",
-      "description": "A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.",
+      "description": "A word, name, acronym or phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -6985,31 +7074,38 @@
     {
       "name": "Device",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#Device",
-      "description": "A hardware device with a certain function that was used within ann Activity.",
+      "description": "A material instrument that is designed to perform a function primarily by means of its mechanical or electrical nature.",
       "in_subset": [
         "domain_agnostic_core"
       ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "aliases": [
-        "hardware tool"
+        "hardware instrument"
       ],
       "mappings": [
-        "prov:Entity"
+        "prov:Agent"
       ],
-      "is_a": "Tool",
+      "exact_mappings": [
+        "epos:Equipment",
+        "OBI:0000968",
+        "http://purl.obolibrary.org/obo/NCIT_C62103",
+        "http://semanticscience.org/resource/SIO_000956",
+        "http://purl.allotrope.org/ontologies/equipment#AFE_0000354"
+      ],
+      "is_a": "Instrument",
       "slots": [
         "id",
         "title",
         "description",
-        "Tool_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "Tool_has_part",
         "ClassifierMixin_type",
-        "rdf_type"
+        "rdf_type",
+        "Device_has_part",
+        "Device_other_identifier"
       ],
       "slot_usage": {},
-      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "class_uri": "http://www.w3.org/ns/prov#Agent",
       "@type": "ClassDefinition"
     },
     {
@@ -7061,30 +7157,6 @@
       "is_a": "SupportiveEntity",
       "slot_usage": {},
       "class_uri": "http://xmlns.com/foaf/0.1/Document",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Environment",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#Environment",
-      "description": "The surrounding in which the dataset creating activity took place (e.g. a lab).",
-      "in_subset": [
-        "domain_agnostic_core"
-      ],
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
-      "mappings": [
-        "prov:Location"
-      ],
-      "mixins": [
-        "ClassifierMixin"
-      ],
-      "slots": [
-        "title",
-        "description",
-        "ClassifierMixin_type",
-        "rdf_type"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://www.w3.org/ns/prov#Location",
       "@type": "ClassDefinition"
     },
     {
@@ -7189,6 +7261,35 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "Instrument",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#Instrument",
+      "description": "An entity that is actively used within an Activity as a means to achieve the planned objectives of said Activity because of its function.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "prov:Agent"
+      ],
+      "mixins": [
+        "ClassifierMixin"
+      ],
+      "slots": [
+        "id",
+        "title",
+        "description",
+        "Instrument_other_identifier",
+        "has_qualitative_attribute",
+        "has_quantitative_attribute",
+        "Instrument_has_part",
+        "ClassifierMixin_type",
+        "rdf_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Agent",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "Kind",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#Kind",
       "description": "See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)",
@@ -7196,7 +7297,6 @@
       "mappings": [
         "vcard:Kind"
       ],
-      "is_a": "SupportiveEntity",
       "slot_usage": {},
       "class_uri": "http://www.w3.org/2006/vcard/ns#Kind",
       "@type": "ClassDefinition"
@@ -7251,7 +7351,6 @@
       "mappings": [
         "dcterms:Location"
       ],
-      "is_a": "SupportiveEntity",
       "slots": [
         "Location_bbox",
         "Location_centroid",
@@ -7370,7 +7469,7 @@
     {
       "name": "QualitativeAttribute",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#QualitativeAttribute",
-      "description": "A piece of information that is attributed to an entity of interest, tool or environment.",
+      "description": "A piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -7395,7 +7494,7 @@
     {
       "name": "QuantitativeAttribute",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#QuantitativeAttribute",
-      "description": "A quantifiable piece of information that is attributed to an entity of interest, tool or environment.",
+      "description": "A quantifiable piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.",
       "in_subset": [
         "domain_agnostic_core"
       ],
@@ -7470,7 +7569,6 @@
       "mappings": [
         "dcat:Relationship"
       ],
-      "is_a": "SupportiveEntity",
       "slots": [
         "Relationship_had_role",
         "Relationship_relation"
@@ -7521,28 +7619,31 @@
     {
       "name": "Software",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#Software",
-      "description": "A software program with a certain function that was used within an Activity.",
+      "description": "An instrument composed of a series of instructions that can be interpreted by or directly executed by a computer.",
       "in_subset": [
         "domain_agnostic_core"
       ],
       "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
       "mappings": [
-        "prov:Entity"
+        "prov:SoftwareAgent"
       ],
-      "is_a": "Tool",
+      "exact_mappings": [
+        "schema:SoftwareApplication"
+      ],
+      "is_a": "Instrument",
       "slots": [
         "id",
         "title",
         "description",
-        "Tool_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "Tool_has_part",
         "ClassifierMixin_type",
-        "rdf_type"
+        "rdf_type",
+        "Software_has_part",
+        "Software_other_identifier"
       ],
       "slot_usage": {},
-      "class_uri": "http://www.w3.org/ns/prov#Entity",
+      "class_uri": "http://www.w3.org/ns/prov#SoftwareAgent",
       "@type": "ClassDefinition"
     },
     {
@@ -7568,6 +7669,30 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "Surrounding",
+      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#Surrounding",
+      "description": "The surrounding in which the dataset creating activity took place (e.g. a lab).",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
+      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "prov:Location"
+      ],
+      "mixins": [
+        "ClassifierMixin"
+      ],
+      "slots": [
+        "title",
+        "description",
+        "ClassifierMixin_type",
+        "rdf_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Location",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "TimeInstant",
       "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#TimeInstant",
       "description": "See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)",
@@ -7579,42 +7704,13 @@
       "slot_usage": {},
       "class_uri": "http://www.w3.org/2006/time#Instant",
       "@type": "ClassDefinition"
-    },
-    {
-      "name": "Tool",
-      "definition_uri": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#Tool",
-      "description": "A entity with a certain function used within a Activity.",
-      "in_subset": [
-        "domain_agnostic_core"
-      ],
-      "from_schema": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml",
-      "mappings": [
-        "prov:Entity"
-      ],
-      "mixins": [
-        "ClassifierMixin"
-      ],
-      "slots": [
-        "id",
-        "title",
-        "description",
-        "Tool_other_identifier",
-        "has_qualitative_attribute",
-        "has_quantitative_attribute",
-        "Tool_has_part",
-        "ClassifierMixin_type",
-        "rdf_type"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://www.w3.org/ns/prov#Entity",
-      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcat_4c_ap.yaml",
-  "source_file_date": "2025-04-28T11:22:13",
-  "source_file_size": 9720,
-  "generation_date": "2025-04-28T11:56:47",
+  "source_file_date": "2025-05-06T15:28:43",
+  "source_file_size": 9690,
+  "generation_date": "2025-05-06T15:29:18",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

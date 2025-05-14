@@ -1,7 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// An activity (process) that has the objective to produce information aboutn entity or activity.
+// An activity (process) that has the objective to produce information about an entity or activity.
 message Activity
  {
   uriorcurie id = 0
@@ -10,10 +10,10 @@ message Activity
  repeated  identifier otherIdentifier = 0
  repeated  evaluatedEntity evaluatedEntity = 0
  repeated  evaluatedActivity evaluatedActivity = 0
- repeated  tool usedTool = 0
+ repeated  instrument usedInstrument = 0
   plan realizedPlan = 0
   activity hasPart = 0
-  location occurredIn = 0
+  surrounding occurredIn = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -62,8 +62,8 @@ message AnalysisDataset
   string version = 0
  repeated  string versionNotes = 0
   uriorcurie id = 0
- repeated  evaluatedEntity describesEntity = 0
- repeated  evaluatedActivity describesActivity = 0
+ repeated  evaluatedEntity isAboutEntity = 0
+ repeated  evaluatedActivity isAboutActivity = 0
  repeated  dataAnalysis wasGeneratedBy = 0
  }
 // Information that was evaluated within a DataAnalysis.
@@ -155,7 +155,6 @@ message ChemicalSample
  repeated  activity wasGeneratedBy = 0
   definedTerm type = 0
   definedTerm rdfType = 0
-  string hasRole = 0
  repeated  chemicalEntity composedOf = 0
  }
 // A portion of matter of constant composition, composed of molecular entities of the same type or of different types that is being evaluated in a scientific process.
@@ -171,7 +170,6 @@ message ChemicalSubstance
  repeated  activity wasGeneratedBy = 0
   definedTerm type = 0
   definedTerm rdfType = 0
-  string hasRole = 0
  repeated  chemicalEntity composedOf = 0
  }
 // See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)
@@ -192,10 +190,10 @@ message DataAnalysis
   string description = 0
  repeated  identifier otherIdentifier = 0
  repeated  evaluatedActivity evaluatedActivity = 0
- repeated  tool usedTool = 0
+ repeated  instrument usedInstrument = 0
   plan realizedPlan = 0
   activity hasPart = 0
-  location occurredIn = 0
+  surrounding occurredIn = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  analysisSourceData evaluatedEntity = 0
@@ -260,8 +258,8 @@ message Dataset
  repeated  string versionNotes = 0
  repeated  activity wasGeneratedBy = 0
   uriorcurie id = 0
- repeated  evaluatedEntity describesEntity = 0
- repeated  evaluatedActivity describesActivity = 0
+ repeated  evaluatedEntity isAboutEntity = 0
+ repeated  evaluatedActivity isAboutActivity = 0
  }
 // See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)
 message DatasetSeries
@@ -277,25 +275,25 @@ message DatasetSeries
  repeated  periodOfTime temporalCoverage = 0
  repeated  string title = 0
  }
-// A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.
+// A word, name, acronym or phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.
 message DefinedTerm
  {
   uriorcurie id = 0
   string title = 0
   uriorcurie fromCV = 0
  }
-// A hardware device with a certain function that was used within ann Activity.
+// A material instrument that is designed to perform a function primarily by means of its mechanical or electrical nature.
 message Device
  {
   uriorcurie id = 0
   string title = 0
   string description = 0
- repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  tool hasPart = 0
   definedTerm type = 0
   definedTerm rdfType = 0
+ repeated  instrument hasPart = 0
+ repeated  identifier otherIdentifier = 0
  }
 // See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
 message Distribution
@@ -324,14 +322,6 @@ message Distribution
   concept status = 0
   duration temporalResolution = 0
  repeated  string title = 0
- }
-// The surrounding in which the dataset creating activity took place (e.g. a lab).
-message Environment
- {
-  string title = 0
-  string description = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
  }
 // An activity or proces that is being evaluated in a Activity.
 message EvaluatedActivity
@@ -379,6 +369,19 @@ message InChIKey
   string title = 0
   string description = 0
   string value = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// An entity that is actively used within an Activity as a means to achieve the planned objectives of said Activity because of its function.
+message Instrument
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  instrument hasPart = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -450,9 +453,9 @@ message NMRAnalysisDataset
   string version = 0
  repeated  string versionNotes = 0
   uriorcurie id = 0
- repeated  evaluatedActivity describesActivity = 0
+ repeated  evaluatedActivity isAboutActivity = 0
  repeated  nMRSpectralAnalysis wasGeneratedBy = 0
- repeated  chemicalSample describesEntity = 0
+ repeated  chemicalSample isAboutEntity = 0
  }
 // A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectrum generated by a NMRSpectroscopy
 message NMRSpectralAnalysis
@@ -462,10 +465,10 @@ message NMRSpectralAnalysis
   string description = 0
  repeated  identifier otherIdentifier = 0
  repeated  evaluatedActivity evaluatedActivity = 0
- repeated  tool usedTool = 0
+ repeated  instrument usedInstrument = 0
   plan realizedPlan = 0
   activity hasPart = 0
-  location occurredIn = 0
+  surrounding occurredIn = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  nMRSpectrum evaluatedEntity = 0
@@ -478,10 +481,10 @@ message NMRSpectroscopy
   string description = 0
  repeated  identifier otherIdentifier = 0
  repeated  evaluatedActivity evaluatedActivity = 0
- repeated  tool usedTool = 0
+ repeated  instrument usedInstrument = 0
   plan realizedPlan = 0
   activity hasPart = 0
-  location occurredIn = 0
+  surrounding occurredIn = 0
   definedTerm type = 0
  repeated  chemicalSample evaluatedEntity = 0
   definedTerm rdfType = 0
@@ -516,7 +519,7 @@ message Plan
   definedTerm type = 0
   definedTerm rdfType = 0
  }
-// A piece of information that is attributed to an entity of interest, tool or environment.
+// A piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.
 message QualitativeAttribute
  {
   string title = 0
@@ -525,7 +528,7 @@ message QualitativeAttribute
   definedTerm type = 0
   definedTerm rdfType = 0
  }
-// A quantifiable piece of information that is attributed to an entity of interest, tool or environment.
+// A quantifiable piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.
 message QuantitativeAttribute
  {
   string title = 0
@@ -551,29 +554,24 @@ message SMILES
   definedTerm type = 0
   definedTerm rdfType = 0
  }
-// A software program with a certain function that was used within an Activity.
+// An instrument composed of a series of instructions that can be interpreted by or directly executed by a computer.
 message Software
  {
   uriorcurie id = 0
   string title = 0
   string description = 0
- repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  tool hasPart = 0
   definedTerm type = 0
   definedTerm rdfType = 0
+ repeated  instrument hasPart = 0
+ repeated  identifier otherIdentifier = 0
  }
-// A entity with a certain function used within a Activity.
-message Tool
+// The surrounding in which the dataset creating activity took place (e.g. a lab).
+message Surrounding
  {
-  uriorcurie id = 0
   string title = 0
   string description = 0
- repeated  identifier otherIdentifier = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  tool hasPart = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
