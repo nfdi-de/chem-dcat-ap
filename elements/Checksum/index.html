@@ -150,11 +150,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-    Inheritance
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
   </a>
@@ -218,9 +213,6 @@
 <div class="mermaid"> classDiagram
     class Checksum
     click Checksum href "../Checksum"
-      SupportiveEntity &lt;|-- Checksum
-        click SupportiveEntity href "../SupportiveEntity"
-
       Checksum : algorithm
 
 
@@ -234,13 +226,7 @@
 
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../SupportiveEntity/">SupportiveEntity</a><ul>
-<li><strong>Checksum</strong></li>
-</ul>
-</li>
-</ul>
+<!-- no inheritance hierarchy -->
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -316,7 +302,6 @@
 <pre><code class="language-yaml">name: Checksum
 description: See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-is_a: SupportiveEntity
 slots:
 - algorithm
 - checksum_value
@@ -347,7 +332,6 @@ class_uri: spdx:Checksum
 <pre><code class="language-yaml">name: Checksum
 description: See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-is_a: SupportiveEntity
 slot_usage:
   algorithm:
     name: algorithm

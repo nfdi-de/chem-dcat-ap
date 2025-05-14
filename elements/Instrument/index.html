@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://StroemPhi.github.io/dcat-4C-ap/elements/Tool/" rel="canonical"/>
+<link href="https://StroemPhi.github.io/dcat-4C-ap/elements/Instrument/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: Tool - dcat-4C-ap</title>
+<title>Class: Instrument - dcat-4C-ap</title>
 <link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -24,7 +24,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-tool">
+<a class="md-skip" href="#class-instrument">
           Skip to content
         </a>
 </div>
@@ -48,7 +48,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: Tool
+              Class: Instrument
             
           </span>
 </div>
@@ -209,82 +209,82 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/elements/Tool.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/elements/Instrument.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-tool">Class: Tool</h1>
-<p><em>A entity with a certain function used within a Activity.</em></p>
-<p>URI: <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a></p>
+<h1 id="class-instrument">Class: Instrument</h1>
+<p><em>An entity that is actively used within an Activity as a means to achieve the planned objectives of said Activity because of its function.</em></p>
+<p>URI: <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a></p>
 <div class="mermaid"> classDiagram
-    class Tool
-    click Tool href "../Tool"
-      ClassifierMixin &lt;|-- Tool
+    class Instrument
+    click Instrument href "../Instrument"
+      ClassifierMixin &lt;|-- Instrument
         click ClassifierMixin href "../ClassifierMixin"
 
 
-      Tool &lt;|-- Device
+      Instrument &lt;|-- Device
         click Device href "../Device"
-      Tool &lt;|-- Software
+      Instrument &lt;|-- Software
         click Software href "../Software"
 
 
-      Tool : description
+      Instrument : description
 
-      Tool : has_part
-
-
-
-
-    Tool --&gt; "*" Tool : has_part
-    click Tool href "../Tool"
-
-
-      Tool : has_qualitative_attribute
+      Instrument : has_part
 
 
 
 
-    Tool --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
+    Instrument --&gt; "*" Instrument : has_part
+    click Instrument href "../Instrument"
+
+
+      Instrument : has_qualitative_attribute
+
+
+
+
+    Instrument --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
     click QualitativeAttribute href "../QualitativeAttribute"
 
 
-      Tool : has_quantitative_attribute
+      Instrument : has_quantitative_attribute
 
 
 
 
-    Tool --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
+    Instrument --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
     click QuantitativeAttribute href "../QuantitativeAttribute"
 
 
-      Tool : id
+      Instrument : id
 
-      Tool : other_identifier
-
-
+      Instrument : other_identifier
 
 
-    Tool --&gt; "*" Identifier : other_identifier
+
+
+    Instrument --&gt; "*" Identifier : other_identifier
     click Identifier href "../Identifier"
 
 
-      Tool : rdf_type
+      Instrument : rdf_type
 
 
 
 
-    Tool --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+    Instrument --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
     click DefinedTerm href "../DefinedTerm"
 
 
-      Tool : title
+      Instrument : title
 
-      Tool : type
-
-
+      Instrument : type
 
 
-    Tool --&gt; "0..1" DefinedTerm : type
+
+
+    Instrument --&gt; "0..1" DefinedTerm : type
     click DefinedTerm href "../DefinedTerm"
 
 
@@ -292,7 +292,7 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>Tool</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><strong>Instrument</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><a href="../Device/">Device</a></li>
 <li><a href="../Software/">Software</a></li>
 </ul>
@@ -330,25 +330,25 @@
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A slot to provide a secondary identifier of the tool</td>
+<td>A slot to provide a secondary identifier for an Instrument</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
+<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
+<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>* <br/> <a href="./">Tool</a></td>
-<td>The slot to specify parts of a tool</td>
+<td>* <br/> <a href="./">Instrument</a></td>
+<td>The slot to specify parts of an Instrument that are themselves Instruments</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -378,45 +378,45 @@
 <tbody>
 <tr>
 <td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
-<td><a href="../used_tool/">used_tool</a></td>
+<td><a href="../used_instrument/">used_instrument</a></td>
 <td>range</td>
-<td><a href="./">Tool</a></td>
+<td><a href="./">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td><a href="../used_tool/">used_tool</a></td>
+<td><a href="../used_instrument/">used_instrument</a></td>
 <td>range</td>
-<td><a href="./">Tool</a></td>
+<td><a href="./">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../Activity/">Activity</a></td>
-<td><a href="../used_tool/">used_tool</a></td>
+<td><a href="../used_instrument/">used_instrument</a></td>
 <td>range</td>
-<td><a href="./">Tool</a></td>
+<td><a href="./">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../DataAnalysis/">DataAnalysis</a></td>
-<td><a href="../used_tool/">used_tool</a></td>
+<td><a href="../used_instrument/">used_instrument</a></td>
 <td>range</td>
-<td><a href="./">Tool</a></td>
+<td><a href="./">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../Device/">Device</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
-<td><a href="./">Tool</a></td>
+<td><a href="./">Instrument</a></td>
+</tr>
+<tr>
+<td><a href="./">Instrument</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../Software/">Software</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
-<td><a href="./">Tool</a></td>
-</tr>
-<tr>
-<td><a href="./">Tool</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">Tool</a></td>
+<td><a href="./">Instrument</a></td>
 </tr>
 </tbody>
 </table>
@@ -436,11 +436,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>prov:Entity</td>
+<td>prov:Agent</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi4c:Tool</td>
+<td>nfdi4c:Instrument</td>
 </tr>
 </tbody>
 </table>
@@ -448,8 +448,9 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Tool
-description: A entity with a certain function used within a Activity.
+<pre><code class="language-yaml">name: Instrument
+description: An entity that is actively used within an Activity as a means to achieve
+  the planned objectives of said Activity because of its function.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -466,26 +467,27 @@ slots:
 slot_usage:
   has_part:
     name: has_part
-    description: The slot to specify parts of a tool.
-    range: Tool
+    description: The slot to specify parts of an Instrument that are themselves Instruments.
+    range: Instrument
     multivalued: true
     inlined: true
     inlined_as_list: true
   other_identifier:
     name: other_identifier
-    description: A slot to provide a secondary identifier of the tool.
+    description: A slot to provide a secondary identifier for an Instrument.
     range: Identifier
     required: false
     multivalued: true
     inlined_as_list: true
-class_uri: prov:Entity
+class_uri: prov:Agent
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Tool
-description: A entity with a certain function used within a Activity.
+<pre><code class="language-yaml">name: Instrument
+description: An entity that is actively used within an Activity as a means to achieve
+  the planned objectives of said Activity because of its function.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -494,14 +496,14 @@ mixins:
 slot_usage:
   has_part:
     name: has_part
-    description: The slot to specify parts of a tool.
-    range: Tool
+    description: The slot to specify parts of an Instrument that are themselves Instruments.
+    range: Instrument
     multivalued: true
     inlined: true
     inlined_as_list: true
   other_identifier:
     name: other_identifier
-    description: A slot to provide a secondary identifier of the tool.
+    description: A slot to provide a secondary identifier for an Instrument.
     range: Identifier
     required: false
     multivalued: true
@@ -516,14 +518,14 @@ attributes:
     rank: 1000
     identifier: true
     alias: id
-    owner: Tool
+    owner: Instrument
     domain_of:
     - Activity
     - Dataset
     - DefinedTerm
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: uriorcurie
     required: true
   title:
@@ -534,7 +536,7 @@ attributes:
     rank: 1000
     slot_uri: dcterms:title
     alias: title
-    owner: Tool
+    owner: Instrument
     domain_of:
     - Activity
     - Catalogue
@@ -545,13 +547,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   description:
     name: description
@@ -561,7 +563,7 @@ attributes:
     rank: 1000
     slot_uri: dcterms:description
     alias: description
-    owner: Tool
+    owner: Instrument
     domain_of:
     - Activity
     - Catalogue
@@ -570,47 +572,47 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   other_identifier:
     name: other_identifier
-    description: A slot to provide a secondary identifier of the tool.
+    description: A slot to provide a secondary identifier for an Instrument.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: adms:identifier
     alias: other_identifier
-    owner: Tool
+    owner: Instrument
     domain_of:
     - Activity
     - Dataset
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: Identifier
     required: false
     multivalued: true
     inlined_as_list: true
   has_qualitative_attribute:
     name: has_qualitative_attribute
-    description: The slot to relate a qualitative attribute to an entity of interest,
-      tool or environment.
+    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or Instrument
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:relation
     alias: has_qualitative_attribute
-    owner: Tool
+    owner: Instrument
     domain_of:
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -618,19 +620,19 @@ attributes:
     inlined_as_list: true
   has_quantitative_attribute:
     name: has_quantitative_attribute
-    description: The slot to relate a quantitative attribute to an entity of interest,
-      tool or environment.
+    description: The slot to relate a quantitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or Instrument
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:relation
     alias: has_quantitative_attribute
-    owner: Tool
+    owner: Instrument
     domain_of:
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -638,19 +640,19 @@ attributes:
     inlined_as_list: true
   has_part:
     name: has_part
-    description: The slot to specify parts of a tool.
+    description: The slot to specify parts of an Instrument that are themselves Instruments.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:hasPart
     alias: has_part
-    owner: Tool
+    owner: Instrument
     domain_of:
     - Activity
     - Catalogue
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
-    range: Tool
+    - Instrument
+    range: Instrument
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -662,7 +664,7 @@ attributes:
     rank: 1000
     slot_uri: dcterms:type
     alias: type
-    owner: Tool
+    owner: Instrument
     domain_of:
     - Agent
     - ClassifierMixin
@@ -680,13 +682,13 @@ attributes:
     rank: 1000
     slot_uri: rdf:type
     alias: rdf_type
-    owner: Tool
+    owner: Instrument
     domain_of:
     - ClassifierMixin
     range: DefinedTerm
     recommended: true
     inlined: true
-class_uri: prov:Entity
+class_uri: prov:Agent
 
 </code></pre>
 </details>

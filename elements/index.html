@@ -415,7 +415,7 @@
 <tbody>
 <tr>
 <td><a href="Activity/">Activity</a></td>
-<td>An activity (process) that has the objective to produce information aboutn entity or activity.</td>
+<td>An activity (process) that has the objective to produce information about an entity or activity.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataAnalysis/">DataAnalysis</a></td>
@@ -430,8 +430,12 @@
 <td>Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.</td>
 </tr>
 <tr>
+<td><a href="Agent/">Agent</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent">DCAT-AP specs:Agent</a></td>
+</tr>
+<tr>
 <td><a href="Any/">Any</a></td>
-<td>This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot <a href="https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/">primary_topic</a></td>
+<td>This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot <a href="https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/">primary_topic</a>.</td>
 </tr>
 <tr>
 <td><a href="Catalogue/">Catalogue</a></td>
@@ -442,12 +446,16 @@
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord">DCAT-AP specs:CatalogueRecord</a></td>
 </tr>
 <tr>
+<td><a href="Checksum/">Checksum</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum">DCAT-AP specs:Checksum</a></td>
+</tr>
+<tr>
 <td><a href="ChemicalEntity/">ChemicalEntity</a></td>
 <td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.</td>
 </tr>
 <tr>
 <td><a href="ClassifierMixin/">ClassifierMixin</a></td>
-<td>A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.</td>
+<td>A mixin with which an entity of this schema can be classified via an additional rdf:type or dcterms:type assertion.</td>
 </tr>
 <tr>
 <td><a href="DataService/">DataService</a></td>
@@ -471,19 +479,11 @@
 </tr>
 <tr>
 <td><a href="DefinedTerm/">DefinedTerm</a></td>
-<td>A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.</td>
+<td>A word, name, acronym or phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.</td>
 </tr>
 <tr>
 <td><a href="Distribution/">Distribution</a></td>
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution">DCAT-AP specs:Distribution</a></td>
-</tr>
-<tr>
-<td><a href="Environment/">Environment</a></td>
-<td>The surrounding in which the dataset creating activity took place (e.g. a lab).</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Laboratory/">Laboratory</a></td>
-<td>A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.</td>
 </tr>
 <tr>
 <td><a href="EvaluatedActivity/">EvaluatedActivity</a></td>
@@ -514,12 +514,32 @@
 <td>None</td>
 </tr>
 <tr>
+<td><a href="Instrument/">Instrument</a></td>
+<td>An entity that is actively used within an Activity as a means to achieve the planned objectives of said Activity because of its function.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Device/">Device</a></td>
+<td>A material instrument that is designed to perform a function primarily by means of its mechanical or electrical nature.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Software/">Software</a></td>
+<td>An instrument composed of a series of instructions that can be interpreted by or directly executed by a computer.</td>
+</tr>
+<tr>
+<td><a href="Kind/">Kind</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind">DCAT-AP specs:Kind</a></td>
+</tr>
+<tr>
+<td><a href="Location/">Location</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location">DCAT-AP specs:Location</a></td>
+</tr>
+<tr>
 <td><a href="Plan/">Plan</a></td>
 <td>A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.</td>
 </tr>
 <tr>
 <td><a href="QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>A piece of information that is attributed to an entity of interest, tool or environment.</td>
+<td>A piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="InChi/">InChi</a></td>
@@ -539,23 +559,19 @@
 </tr>
 <tr>
 <td><a href="QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>A quantifiable piece of information that is attributed to an entity of interest, tool or environment.</td>
+<td>A quantifiable piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.</td>
+</tr>
+<tr>
+<td><a href="Relationship/">Relationship</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship">DCAT-AP specs:Relationship</a></td>
 </tr>
 <tr>
 <td><a href="SupportiveEntity/">SupportiveEntity</a></td>
 <td>The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Agent/">Agent</a></td>
-<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent">DCAT-AP specs:Agent</a></td>
-</tr>
-<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Attribution/">Attribution</a></td>
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution">DCAT-AP specs:Attribution</a></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Checksum/">Checksum</a></td>
-<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum">DCAT-AP specs:Checksum</a></td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ChecksumAlgorithm/">ChecksumAlgorithm</a></td>
@@ -586,10 +602,6 @@
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier">DCAT-AP specs:Identifier</a></td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Kind/">Kind</a></td>
-<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind">DCAT-AP specs:Kind</a></td>
-</tr>
-<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="LegalResource/">LegalResource</a></td>
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource">DCAT-AP specs:LegalResource</a></td>
 </tr>
@@ -600,10 +612,6 @@
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="LinguisticSystem/">LinguisticSystem</a></td>
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem">DCAT-AP specs:LinguisticSystem</a></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Location/">Location</a></td>
-<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location">DCAT-AP specs:Location</a></td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MediaType/">MediaType</a></td>
@@ -626,10 +634,6 @@
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement">DCAT-AP specs:ProvenanceStatement</a></td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Relationship/">Relationship</a></td>
-<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship">DCAT-AP specs:Relationship</a></td>
-</tr>
-<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Resource/">Resource</a></td>
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource">DCAT-AP specs:Resource</a></td>
 </tr>
@@ -650,16 +654,12 @@
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant">DCAT-AP specs:TimeInstant</a></td>
 </tr>
 <tr>
-<td><a href="Tool/">Tool</a></td>
-<td>A entity with a certain function used within a Activity.</td>
+<td><a href="Surrounding/">Surrounding</a></td>
+<td>The surrounding in which the dataset creating activity took place (e.g. a lab).</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Device/">Device</a></td>
-<td>A hardware device with a certain function that was used within ann Activity.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Software/">Software</a></td>
-<td>A software program with a certain function that was used within an Activity.</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Laboratory/">Laboratory</a></td>
+<td>A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.</td>
 </tr>
 </tbody>
 </table>
@@ -757,14 +757,6 @@
 <td>This slot is described in more detail within the class in which it is used</td>
 </tr>
 <tr>
-<td><a href="describes_activity/">describes_activity</a></td>
-<td>A slot to provide the EvaluatedActivity that is described by a Dataset</td>
-</tr>
-<tr>
-<td><a href="describes_entity/">describes_entity</a></td>
-<td>A slot to provide the EvaluatedEntity that is described by a Dataset</td>
-</tr>
-<tr>
 <td><a href="description/">description</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
 </tr>
@@ -794,11 +786,11 @@
 </tr>
 <tr>
 <td><a href="evaluated_activity/">evaluated_activity</a></td>
-<td>The slot to specify the activity of interest that was evaluated</td>
+<td>The slot to provide the EvaluatedActivity evaluated by an Activity</td>
 </tr>
 <tr>
 <td><a href="evaluated_entity/">evaluated_entity</a></td>
-<td>The slot to specify the entity of interest that was evaluated</td>
+<td>The slot to provide the EvaluatedEntity evaluated by an Activity</td>
 </tr>
 <tr>
 <td><a href="format/">format</a></td>
@@ -838,19 +830,15 @@
 </tr>
 <tr>
 <td><a href="has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
+<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
 </tr>
 <tr>
 <td><a href="has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
+<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
 </tr>
 <tr>
 <td><a href="has_quantity_type/">has_quantity_type</a></td>
 <td>The type of quality that is quantifiable according to the QUDT ontology</td>
-</tr>
-<tr>
-<td><a href="has_role/">has_role</a></td>
-<td></td>
 </tr>
 <tr>
 <td><a href="has_version/">has_version</a></td>
@@ -879,6 +867,14 @@
 <tr>
 <td><a href="inchikey/">inchikey</a></td>
 <td>The slot to provide the InChiKey of a chemical substance</td>
+</tr>
+<tr>
+<td><a href="is_about_activity/">is_about_activity</a></td>
+<td>A slot to provide the EvaluatedActivity a Dataset is about</td>
+</tr>
+<tr>
+<td><a href="is_about_entity/">is_about_entity</a></td>
+<td>A slot to provide the EvaluatedEntity a Dataset is about</td>
 </tr>
 <tr>
 <td><a href="is_referenced_by/">is_referenced_by</a></td>
@@ -930,7 +926,7 @@
 </tr>
 <tr>
 <td><a href="occurred_in/">occurred_in</a></td>
-<td>The slot to specify the Location at which an Activity took place</td>
+<td>The slot to specify the Surrounding in which an Activity took place</td>
 </tr>
 <tr>
 <td><a href="other_identifier/">other_identifier</a></td>
@@ -1057,8 +1053,8 @@
 <td></td>
 </tr>
 <tr>
-<td><a href="used_tool/">used_tool</a></td>
-<td>The slot to specify the tool that was used</td>
+<td><a href="used_instrument/">used_instrument</a></td>
+<td>The slot to specify the Instruments that were used in the data generating Act...</td>
 </tr>
 <tr>
 <td><a href="value/">value</a></td>

@@ -208,7 +208,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-classifiermixin">Class: ClassifierMixin</h1>
-<p><em>A mixin with which an entity of this schema can be classified via an additional rdf:type assertion.</em></p>
+<p><em>A mixin with which an entity of this schema can be classified via an additional rdf:type or dcterms:type assertion.</em></p>
 <ul>
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
 </ul>
@@ -218,20 +218,20 @@
     click ClassifierMixin href "../ClassifierMixin"
       ClassifierMixin &lt;|-- Activity
         click Activity href "../Activity"
-      ClassifierMixin &lt;|-- Environment
-        click Environment href "../Environment"
       ClassifierMixin &lt;|-- EvaluatedActivity
         click EvaluatedActivity href "../EvaluatedActivity"
       ClassifierMixin &lt;|-- EvaluatedEntity
         click EvaluatedEntity href "../EvaluatedEntity"
+      ClassifierMixin &lt;|-- Instrument
+        click Instrument href "../Instrument"
       ClassifierMixin &lt;|-- Plan
         click Plan href "../Plan"
       ClassifierMixin &lt;|-- QualitativeAttribute
         click QualitativeAttribute href "../QualitativeAttribute"
       ClassifierMixin &lt;|-- QuantitativeAttribute
         click QuantitativeAttribute href "../QuantitativeAttribute"
-      ClassifierMixin &lt;|-- Tool
-        click Tool href "../Tool"
+      ClassifierMixin &lt;|-- Surrounding
+        click Surrounding href "../Surrounding"
 
       ClassifierMixin : rdf_type
 
@@ -290,11 +290,7 @@
 <tbody>
 <tr>
 <td><a href="../Activity/">Activity</a></td>
-<td>An activity (process) that has the objective to produce information aboutn en...</td>
-</tr>
-<tr>
-<td><a href="../Environment/">Environment</a></td>
-<td>The surrounding in which the dataset creating activity took place (e</td>
+<td>An activity (process) that has the objective to produce information about an ...</td>
 </tr>
 <tr>
 <td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
@@ -305,20 +301,24 @@
 <td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
 </tr>
 <tr>
+<td><a href="../Instrument/">Instrument</a></td>
+<td>An entity that is actively used within an Activity as a means to achieve the ...</td>
+</tr>
+<tr>
 <td><a href="../Plan/">Plan</a></td>
 <td>A piece of information that specifies how an activity has to be carried out b...</td>
 </tr>
 <tr>
 <td><a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>A piece of information that is attributed to an entity of interest, tool or e...</td>
+<td>A piece of information that is attributed to an EvaluatedEntity, Instrument o...</td>
 </tr>
 <tr>
 <td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>A quantifiable piece of information that is attributed to an entity of intere...</td>
+<td>A quantifiable piece of information that is attributed to an EvaluatedEntity,...</td>
 </tr>
 <tr>
-<td><a href="../Tool/">Tool</a></td>
-<td>A entity with a certain function used within a Activity</td>
+<td><a href="../Surrounding/">Surrounding</a></td>
+<td>The surrounding in which the dataset creating activity took place (e</td>
 </tr>
 </tbody>
 </table>
@@ -352,7 +352,7 @@
 <details>
 <pre><code class="language-yaml">name: ClassifierMixin
 description: A mixin with which an entity of this schema can be classified via an
-  additional rdf:type assertion.
+  additional rdf:type or dcterms:type assertion.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -373,7 +373,7 @@ slot_usage:
 <details>
 <pre><code class="language-yaml">name: ClassifierMixin
 description: A mixin with which an entity of this schema can be classified via an
-  additional rdf:type assertion.
+  additional rdf:type or dcterms:type assertion.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap

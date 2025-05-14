@@ -213,13 +213,13 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-device">Class: Device</h1>
-<p><em>A hardware device with a certain function that was used within ann Activity.</em></p>
-<p>URI: <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a></p>
+<p><em>A material instrument that is designed to perform a function primarily by means of its mechanical or electrical nature.</em></p>
+<p>URI: <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a></p>
 <div class="mermaid"> classDiagram
     class Device
     click Device href "../Device"
-      Tool &lt;|-- Device
-        click Tool href "../Tool"
+      Instrument &lt;|-- Device
+        click Instrument href "../Instrument"
 
       Device : description
 
@@ -228,8 +228,8 @@
 
 
 
-    Device --&gt; "*" Tool : has_part
-    click Tool href "../Tool"
+    Device --&gt; "*" Instrument : has_part
+    click Instrument href "../Instrument"
 
 
       Device : has_qualitative_attribute
@@ -285,7 +285,7 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Tool/">Tool</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../Instrument/">Instrument</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><strong>Device</strong></li>
 </ul>
 </li>
@@ -305,43 +305,43 @@
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema</td>
-<td><a href="../Tool/">Tool</a></td>
+<td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../Tool/">Tool</a></td>
+<td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../Tool/">Tool</a></td>
+<td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A slot to provide a secondary identifier of the tool</td>
-<td><a href="../Tool/">Tool</a></td>
+<td>A slot to provide a secondary identifier for a Device</td>
+<td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an entity of interest, tool or ...</td>
-<td><a href="../Tool/">Tool</a></td>
+<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
+<td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an entity of interest, tool or...</td>
-<td><a href="../Tool/">Tool</a></td>
+<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
+<td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>* <br/> <a href="../Tool/">Tool</a></td>
-<td>The slot to specify parts of a tool</td>
-<td><a href="../Tool/">Tool</a></td>
+<td>* <br/> <a href="../Instrument/">Instrument</a></td>
+<td>The slot to specify parts of a Device that are themselves Devices</td>
+<td><a href="../Instrument/">Instrument</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
@@ -359,7 +359,7 @@
 </table>
 <h2 id="aliases">Aliases</h2>
 <ul>
-<li>hardware tool</li>
+<li>hardware instrument</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -377,11 +377,15 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>prov:Entity</td>
+<td>prov:Agent</td>
 </tr>
 <tr>
 <td>native</td>
 <td>nfdi4c:Device</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>epos:Equipment, OBI:0000968, http://purl.obolibrary.org/obo/NCIT_C62103, http://semanticscience.org/resource/SIO_000956, http://purl.allotrope.org/ontologies/equipment#AFE_0000354</td>
 </tr>
 </tbody>
 </table>
@@ -390,27 +394,71 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Device
-description: A hardware device with a certain function that was used within ann Activity.
+description: A material instrument that is designed to perform a function primarily
+  by means of its mechanical or electrical nature.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 aliases:
-- hardware tool
-is_a: Tool
-class_uri: prov:Entity
+- hardware instrument
+exact_mappings:
+- epos:Equipment
+- OBI:0000968
+- http://purl.obolibrary.org/obo/NCIT_C62103
+- http://semanticscience.org/resource/SIO_000956
+- http://purl.allotrope.org/ontologies/equipment#AFE_0000354
+is_a: Instrument
+slot_usage:
+  has_part:
+    name: has_part
+    description: The slot to specify parts of a Device that are themselves Devices.
+    range: Instrument
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  other_identifier:
+    name: other_identifier
+    description: A slot to provide a secondary identifier for a Device.
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
+class_uri: prov:Agent
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Device
-description: A hardware device with a certain function that was used within ann Activity.
+description: A material instrument that is designed to perform a function primarily
+  by means of its mechanical or electrical nature.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 aliases:
-- hardware tool
-is_a: Tool
+- hardware instrument
+exact_mappings:
+- epos:Equipment
+- OBI:0000968
+- http://purl.obolibrary.org/obo/NCIT_C62103
+- http://semanticscience.org/resource/SIO_000956
+- http://purl.allotrope.org/ontologies/equipment#AFE_0000354
+is_a: Instrument
+slot_usage:
+  has_part:
+    name: has_part
+    description: The slot to specify parts of a Device that are themselves Devices.
+    range: Instrument
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  other_identifier:
+    name: other_identifier
+    description: A slot to provide a secondary identifier for a Device.
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
 attributes:
   id:
     name: id
@@ -428,7 +476,7 @@ attributes:
     - DefinedTerm
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: uriorcurie
     required: true
   title:
@@ -450,13 +498,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   description:
     name: description
@@ -475,17 +523,17 @@ attributes:
     - Dataset
     - DatasetSeries
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
   other_identifier:
     name: other_identifier
-    description: A slot to provide a secondary identifier of the tool.
+    description: A slot to provide a secondary identifier for a Device.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: adms:identifier
@@ -496,15 +544,15 @@ attributes:
     - Dataset
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: Identifier
     required: false
     multivalued: true
     inlined_as_list: true
   has_qualitative_attribute:
     name: has_qualitative_attribute
-    description: The slot to relate a qualitative attribute to an entity of interest,
-      tool or environment.
+    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or Instrument
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -515,7 +563,7 @@ attributes:
     domain_of:
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -523,8 +571,8 @@ attributes:
     inlined_as_list: true
   has_quantitative_attribute:
     name: has_quantitative_attribute
-    description: The slot to relate a quantitative attribute to an entity of interest,
-      tool or environment.
+    description: The slot to relate a quantitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or Instrument
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -535,7 +583,7 @@ attributes:
     domain_of:
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -543,7 +591,7 @@ attributes:
     inlined_as_list: true
   has_part:
     name: has_part
-    description: The slot to specify parts of a tool.
+    description: The slot to specify parts of a Device that are themselves Devices.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:hasPart
@@ -554,8 +602,8 @@ attributes:
     - Catalogue
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
-    range: Tool
+    - Instrument
+    range: Instrument
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -591,7 +639,7 @@ attributes:
     range: DefinedTerm
     recommended: true
     inlined: true
-class_uri: prov:Entity
+class_uri: prov:Agent
 
 </code></pre>
 </details>

@@ -208,7 +208,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-definedterm">Class: DefinedTerm</h1>
-<p><em>A word, name, acronym, phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.</em></p>
+<p><em>A word, name, acronym or phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.</em></p>
 <p>URI: <a href="http://schema.org/DefinedTerm">schema:DefinedTerm</a></p>
 <div class="mermaid"> classDiagram
     class DefinedTerm
@@ -457,18 +457,6 @@
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
-<td><a href="../Environment/">Environment</a></td>
-<td><a href="../type/">type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
-<td><a href="../Environment/">Environment</a></td>
-<td><a href="../rdf_type/">rdf_type</a></td>
-<td>range</td>
-<td><a href="./">DefinedTerm</a></td>
-</tr>
-<tr>
 <td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
 <td><a href="../type/">type</a></td>
 <td>range</td>
@@ -488,6 +476,18 @@
 </tr>
 <tr>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../rdf_type/">rdf_type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../type/">type</a></td>
+<td>range</td>
+<td><a href="./">DefinedTerm</a></td>
+</tr>
+<tr>
+<td><a href="../Instrument/">Instrument</a></td>
 <td><a href="../rdf_type/">rdf_type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
@@ -553,13 +553,13 @@
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
-<td><a href="../Tool/">Tool</a></td>
+<td><a href="../Surrounding/">Surrounding</a></td>
 <td><a href="../type/">type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
 </tr>
 <tr>
-<td><a href="../Tool/">Tool</a></td>
+<td><a href="../Surrounding/">Surrounding</a></td>
 <td><a href="../rdf_type/">rdf_type</a></td>
 <td>range</td>
 <td><a href="./">DefinedTerm</a></td>
@@ -595,7 +595,7 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: DefinedTerm
-description: A word, name, acronym, phrase that is defined in a controlled vocabulary
+description: A word, name, acronym or phrase that is defined in a controlled vocabulary
   (CV) and that is used to provide an additional rdf:type or dcterms:type of a class
   within this schema.
 in_subset:
@@ -625,7 +625,7 @@ class_uri: schema:DefinedTerm
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: DefinedTerm
-description: A word, name, acronym, phrase that is defined in a controlled vocabulary
+description: A word, name, acronym or phrase that is defined in a controlled vocabulary
   (CV) and that is used to provide an additional rdf:type or dcterms:type of a class
   within this schema.
 in_subset:
@@ -663,7 +663,7 @@ attributes:
     - DefinedTerm
     - EvaluatedActivity
     - EvaluatedEntity
-    - Tool
+    - Instrument
     range: uriorcurie
     required: true
   title:
@@ -685,13 +685,13 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - Environment
     - EvaluatedActivity
     - EvaluatedEntity
+    - Instrument
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
-    - Tool
+    - Surrounding
     range: string
 class_uri: schema:DefinedTerm
 
