@@ -415,29 +415,39 @@ def build_dcatap_plus():
 
 
     def extend_activity():
-        builder.add_slot(SlotDefinition(name='evaluated_entity',
+        builder.add_slot(SlotDefinition(name='had_input_entity',
                                         slot_uri= 'prov:used',
-                                        range= 'EvaluatedEntity',
-                                        description= 'The slot to provide the EvaluatedEntity evaluated by an '
-                                                     'Activity.',
+                                        range= 'Entity',
+                                        description= 'The slot to specify the Entity that was used as an input of an '
+                                                     'Activity that is to be changed, consumed or transformed.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
                                         in_subset='domain_agnostic_core'))
-        builder.add_slot(SlotDefinition(name='evaluated_activity',
+        builder.add_slot(SlotDefinition(name='had_output_entity',
+                                        slot_uri= 'prov:generated',
+                                        range= 'Entity',
+                                        description= 'The slot to specify the Entity that was generated as an output '
+                                                     'of an Activity.',
+                                        recommended= True,
+                                        multivalued= True,
+                                        inlined_as_list= True,
+                                        in_subset='domain_agnostic_core'))
+        builder.add_slot(SlotDefinition(name='had_input_activity',
                                         slot_uri= 'prov:wasInformedBy',
-                                        range= 'EvaluatedActivity',
-                                        description= 'The slot to provide the EvaluatedActivity evaluated by an '
-                                                     'Activity.',
+                                        range= 'Activity',
+                                        description= 'The slot to provide a previous Activity that informed the '
+                                                     'Activity by being causally via a shared participant.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
                                         in_subset='domain_agnostic_core'))
-        builder.add_slot(SlotDefinition(name='used_instrument',
+        builder.add_slot(SlotDefinition(name='carried_out_by',
                                         slot_uri= 'prov:wasAssociatedWith',
-                                        range= 'Instrument',
-                                        description= 'The slot to specify the Instruments that were used in the data '
-                                                     'generating Activity.',
+                                        range= 'AgenticEntity',
+                                        description= 'The slot to specify the AgenticEntity that played a certain '
+                                                     'part in carrying out the Activity, either via having a specific '
+                                                     'role, function or disposition that was realized in the Activity.',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
@@ -445,44 +455,65 @@ def build_dcatap_plus():
         builder.add_slot(SlotDefinition(name='realized_plan',
                                         slot_uri= 'prov:used',
                                         range= 'Plan',
-                                        description= 'The slot to specify the Plan (aka procedure) that was realized by an Activity.',
+                                        description= 'The slot to specify the Plan (i.e. directive information or '
+                                                     'procedure) that was realized by an Activity.',
                                         in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='occurred_in',
                                         slot_uri= 'prov:atLocation',
                                         range= 'Surrounding',
-                                        description= 'The slot to specify the Surrounding in which an Activity took '
-                                                     'place.',
+                                        description= 'The slot to specify the Surrounding in which an Activity '
+                                                     'took place.',
                                         in_subset='domain_agnostic_core'))
-        slots = ['id',
-                 'title',
-                 'description',
-                 'other_identifier',
-                 'evaluated_entity',
-                 'evaluated_activity',
-                 'used_instrument',
-                 'realized_plan',
-                 'has_part',
-                 'occurred_in']
+
         activity = builder.schema.classes['Activity']
-        activity.slots = slots
+        activity.slots = ['id',
+                          'title',
+                          'description',
+                          'other_identifier',
+                          'has_part',
+                          'had_input_entity',
+                          'had_output_entity',
+                          'had_input_activity',
+                          'carried_out_by',
+                          'has_qualitative_attribute',
+                          'has_quantitative_attribute',]
         activity.slot_usage = {
+            'title': {
+                'description': 'The slot to provide a title for the Activity.',
+                'multivalued': True,
+                'inlined_as_list': True,
+                'notes':['not in DCAT-AP']},
+            'description': {
+                'description': 'The slot to provide a description for the Activity.',
+                'multivalued': True,
+                'inlined_as_list': True,
+                'notes':['not in DCAT-AP']},
             'has_part': {
                 'range': 'Activity',
-                'description': 'A slot to provide an Activity that is part of the Activity that created the Dataset.',
+                'description': 'The slot to provide an Activity that is part of the Activity.',
                 'inlined': True,
                 'notes':['not in DCAT-AP']},
             'other_identifier':{
                 'range': 'Identifier',
-                'description': 'A secondary identifier of the Activity that created the Dataset.',
+                'description': 'The slot to provide a secondary identifier of the Activity.',
                 'multivalued': True,
                 'inlined_as_list': True,
+                'notes':['not in DCAT-AP']},
+            'has_qualitative_attribute':{
+                'notes':['not in DCAT-AP']},
+            'has_quantitative_attribute':{
+                'notes':['not in DCAT-AP']},
+            'had_input_entity':{
+                'notes':['not in DCAT-AP']},
+            'had_output_entity':{
+                'notes':['not in DCAT-AP']},
+            'had_input_activity':{
+                'notes':['not in DCAT-AP']},
+            'carried_out_by':{
                 'notes':['not in DCAT-AP']}}
         activity.mixins = ['ClassifierMixin']
-        activity.narrow_mappings = ['NCIT:C25598', 'SOSA:Observation','OBI:0000070']
         activity.in_subset=['domain_agnostic_core']
-        activity.description = ('An activity (process) that has the objective to produce information about an entity '
-                                'or activity.')
-        activity.notes = ['The properties (slots) of this class are part of our extension of the DCAT-AP.']
+        activity.notes = ['The specified properties (slots) of this class are part of our extension of the DCAT-AP.']
 
         builder.add_slot(SlotDefinition(name='evaluated_entity',
                                         slot_uri= 'prov:used',
