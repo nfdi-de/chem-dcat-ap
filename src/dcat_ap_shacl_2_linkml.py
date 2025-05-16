@@ -663,13 +663,12 @@ def build_dcatap_plus():
                                           in_subset='domain_agnostic_core'))
 
 
-    def add_instrument_context():
-        builder.add_class(ClassDefinition(name='Instrument',
+    def add_agent_context():
+        builder.add_class(ClassDefinition(name='AgenticEntity',
                                           mixins= 'ClassifierMixin',
                                           class_uri='prov:Agent',
-                                          description='An entity that is actively used within an Activity as a means '
-                                                      'to achieve the planned objectives of said Activity because of '
-                                                      'its function.',
+                                          description='An entity that is somehow responsible for an Activity to take '
+                                                      'place.',
                                           slots = ['id',
                                                    'title',
                                                    'description',
@@ -681,7 +680,7 @@ def build_dcatap_plus():
                                               'has_part':{
                                                   'description': 'The slot to specify parts of an Instrument that are '
                                                                  'themselves Instruments.',
-                                                  'range':'Instrument',
+                                                  'range':'AgenticEntity',
                                                   'inlined': True,
                                                   'multivalued': True,
                                                   'inlined_as_list': True},
@@ -694,7 +693,7 @@ def build_dcatap_plus():
                                           in_subset='domain_agnostic_core'))
         builder.add_class(ClassDefinition(name='Device',
                                           aliases=['hardware instrument'],
-                                          is_a='Instrument',
+                                          is_a='AgenticEntity',
                                           class_uri='prov:Agent',
                                           description='A material instrument that is designed to perform a function '
                                                       'primarily by means of its mechanical or electrical nature.',
@@ -708,7 +707,7 @@ def build_dcatap_plus():
                                               'has_part':{
                                                   'description': 'The slot to specify parts of a Device that are '
                                                                  'themselves Devices.',
-                                                  'range':'Instrument',
+                                                  'range':'Device',
                                                   'inlined': True,
                                                   'multivalued': True,
                                                   'inlined_as_list': True},
@@ -719,7 +718,7 @@ def build_dcatap_plus():
                                                   'multivalued': True,
                                                   'inlined_as_list': True}}))
         builder.add_class(ClassDefinition(name='Software',
-                                          is_a='Instrument',
+                                          is_a='AgenticEntity',
                                           class_uri='prov:SoftwareAgent',
                                           description='An instrument composed of a series of instructions that can be '
                                                       'interpreted by or directly executed by a computer.',
@@ -729,7 +728,7 @@ def build_dcatap_plus():
                                               'has_part':{
                                                   'description': 'The slot to specify parts of a Software that are '
                                                                  'themselves Software.',
-                                                  'range':'Instrument',
+                                                  'range':'Software',
                                                   'inlined': True,
                                                   'multivalued': True,
                                                   'inlined_as_list': True},
@@ -927,7 +926,7 @@ def build_dcatap_plus():
     # Add classes and properties needed to extend DCAT-AP
     add_classification_context()
     add_subject_of_interest_context()
-    add_instrument_context()
+    add_agent_context()
     add_planning_and_surrounding_context()
     add_attribute_context()
     add_analysis_context()
