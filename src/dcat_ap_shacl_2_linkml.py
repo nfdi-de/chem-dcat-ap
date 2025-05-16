@@ -583,19 +583,46 @@ def build_dcatap_plus():
 
 
     def add_subject_of_interest_context():
-        builder.add_class(ClassDefinition(name='EvaluatedEntity',
-                                          mixins= 'ClassifierMixin',
+        builder.add_class(ClassDefinition(name='Entity',
                                           class_uri='prov:Entity',
-                                          description='A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a Activity.',
-                                          slots = ['title',
-                                                   'description',
-                                                   'other_identifier',
-                                                   'id',
-                                                   'has_qualitative_attribute',
-                                                   'has_quantitative_attribute',
-                                                   'has_part',
-                                                   'was_generated_by'],
+                                          mixins=['ClassifierMixin'],
+                                          description='A physical, digital, conceptual, or other kind of thing with '
+                                                      'some fixed aspects; entities may be real or imaginary.',
+                                          slots=['title',
+                                                 'description',
+                                                 'id',
+                                                 'other_identifier',
+                                                 'has_qualitative_attribute',
+                                                 'has_quantitative_attribute',
+                                                 'has_part',],
                                           slot_usage={
+                                              'title': {
+                                                  'description': 'The slot to provide a title for the Entity.'},
+                                              'description': {
+                                                  'description': 'The slot to provide a description for the Entity.'},
+                                              'other_identifier':{
+                                                  'description': 'A slot to provide a secondary identifier of the Entity.',
+                                                  'range': 'Identifier',
+                                                  'required': 'false',
+                                                  'multivalued': 'true',
+                                                  'inlined_as_list': 'true'},
+                                              'has_part':{
+                                                  'description': 'A slot to provide a part of the EvaluatedEntity.',
+                                                  'range':'Entity',
+                                                  'multivalued': 'true',
+                                                  'inlined_as_list': 'true'}},
+                                          in_subset='domain_agnostic_core'))
+        builder.add_class(ClassDefinition(name='EvaluatedEntity',
+                                          is_a= 'Entity',
+                                          class_uri='prov:Entity',
+                                          description='An Entity that is being evaluated in a DataGeneratingActivity.',
+                                          slots = ['was_generated_by'],
+                                          slot_usage={
+                                              'title': {
+                                                  'description': 'The slot to provide a title for the EvaluatedEntity.'},
+                                              'description': {
+                                                  'description': 'The slot to provide a description for the '
+                                                                 'EvaluatedEntity.'},
                                               'was_generated_by':{
                                                   'description': 'A slot to provide the Activity which created the EvaluatedEntity.',
                                                   'range':'Activity',
@@ -614,14 +641,11 @@ def build_dcatap_plus():
                                                   'inlined_as_list': 'true'}},
                                           in_subset='domain_agnostic_core'))
         builder.add_class(ClassDefinition(name='EvaluatedActivity',
-                                          mixins= 'ClassifierMixin',
+                                          is_a='Activity',
                                           class_uri='prov:Activity',
-                                          description='An activity or proces that is being evaluated in a Activity.',
-                                          slots = ['title',
-                                                   'description',
-                                                   'other_identifier',
-                                                   'id',
-                                                   'has_qualitative_attribute',
+                                          description='An activity or proces that is being evaluated in a '
+                                                      'DataGeneratingActivity.',
+                                          slots = ['has_qualitative_attribute',
                                                    'has_quantitative_attribute',
                                                    'has_part'],
                                           slot_usage={
