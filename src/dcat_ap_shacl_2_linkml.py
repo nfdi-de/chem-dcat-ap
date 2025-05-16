@@ -408,6 +408,7 @@ def build_dcatap_plus():
         dataset = builder.schema.classes['Dataset']
         dataset.slots = dataset.slots + slots
         dataset.slot_usage.was_generated_by.required = True
+        dataset.slot_usage.was_generated_by.range = 'DataGeneratingActivity'
         dataset.slot_usage.was_generated_by.notes.append('stricter than DCAT-AP')
         dataset.in_subset=['domain_agnostic_core']
         dataset.description = 'A collection of data, published or curated by a single agent, and available for access or download in one or more representations.'
@@ -483,6 +484,35 @@ def build_dcatap_plus():
                                 'or activity.')
         activity.notes = ['The properties (slots) of this class are part of our extension of the DCAT-AP.']
 
+        builder.add_slot(SlotDefinition(name='evaluated_entity',
+                                        slot_uri= 'prov:used',
+                                        range= 'EvaluatedEntity',
+                                        description= 'The slot to specify the Entity about which the '
+                                                     'DataGeneratingActivity produced information.',
+                                        recommended= True,
+                                        multivalued= True,
+                                        inlined_as_list= True,
+                                        in_subset='domain_agnostic_core'))
+        builder.add_slot(SlotDefinition(name='evaluated_activity',
+                                        slot_uri= 'prov:wasInformedBy',
+                                        range= 'EvaluatedActivity',
+                                        description= 'The slot to specify the Activity about which the '
+                                                     'DataGeneratingActivity produced information.',
+                                        recommended= True,
+                                        multivalued= True,
+                                        inlined_as_list= True,
+                                        in_subset='domain_agnostic_core'))
+        builder.add_class(ClassDefinition(name='DataGeneratingActivity',
+                                          class_uri='prov:Activity',
+                                          is_a='Activity',
+                                          description='An Activity (process) that has the objective to produce '
+                                                      'information (in form of a dataset) about another Activity or '
+                                                      'Entity.',
+                                          slots=['evaluated_entity',
+                                                 'evaluated_activity',
+                                                 'realized_plan',
+                                                 'occurred_in'],
+                                          in_subset='domain_agnostic_core'))
 
     def add_classification_context():
         builder.add_class(ClassDefinition(name='ClassifierMixin',
@@ -779,7 +809,7 @@ def build_dcatap_plus():
                                                       'inlined_as_list': True}},
                                               in_subset='domain_agnostic_core'))
             builder.add_class(ClassDefinition(name='DataAnalysis',
-                                              is_a= 'Activity',
+                                              is_a= 'DataGeneratingActivity',
                                               class_uri='prov:Activity',
                                               description='An Activity that evaluates the data produced by another Activity.',
                                               slot_usage={
@@ -798,7 +828,7 @@ def build_dcatap_plus():
                                               slot_usage={
                                                   'was_generated_by':{
                                                       'description': 'A slot to provide the Activity which created the AnalysisSourceData.',
-                                                      'range':'Activity',
+                                                      'range':'DataGeneratingActivity',
                                                       'multivalued': True,
                                                       'inlined_as_list': True}},
                                               in_subset='domain_agnostic_core'))
