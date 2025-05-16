@@ -765,7 +765,8 @@ def build_dcatap_plus():
         builder.add_class(ClassDefinition(name='QualitativeAttribute',
                                           mixins= 'ClassifierMixin',
                                           class_uri='prov:Entity',
-                                          description='A piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.',
+                                          description='A piece of information that is attributed to an '
+                                                      'Entity, Activity or AgenticEntity.',
                                           slots = ['title',
                                                    'description',
                                                    'value'],
@@ -777,7 +778,8 @@ def build_dcatap_plus():
         builder.add_class(ClassDefinition(name='QuantitativeAttribute',
                                           mixins= 'ClassifierMixin',
                                           class_uri='qudt:Quantity',
-                                          description='A quantifiable piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.',
+                                          description='A quantifiable piece of information that is attributed to an '
+                                                      'Entity, Activity or AgenticEntity.',
                                           slots = ['title',
                                                    'description',
                                                    'value'],
@@ -810,7 +812,8 @@ def build_dcatap_plus():
         builder.add_slot(SlotDefinition(name='has_qualitative_attribute',
                                         slot_uri= 'dcterms:relation',
                                         range= 'QualitativeAttribute',
-                                        description= 'The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument',
+                                        description= 'The slot to relate a qualitative attribute to an '
+                                                     'EvaluatedEntity, EvaluatedActivity or AgenticEntity',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
@@ -818,7 +821,8 @@ def build_dcatap_plus():
         builder.add_slot(SlotDefinition(name='has_quantitative_attribute',
                                         slot_uri= 'dcterms:relation',
                                         range= 'QuantitativeAttribute',
-                                        description= 'The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument',
+                                        description= 'The slot to relate a quantitative attribute to an '
+                                                     'EvaluatedEntity, EvaluatedActivity or AgenticEntity',
                                         recommended= True,
                                         multivalued= True,
                                         inlined_as_list= True,
