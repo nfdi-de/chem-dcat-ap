@@ -1170,6 +1170,7 @@
       "mappings": [
         "http://www.w3.org/ns/prov#wasInformedBy"
       ],
+      "is_a": "had_input_activity",
       "slot_uri": "http://www.w3.org/ns/prov#wasInformedBy",
       "owner": "DataGeneratingActivity",
       "domain_of": [
@@ -1193,6 +1194,7 @@
       "mappings": [
         "http://www.w3.org/ns/prov#used"
       ],
+      "is_a": "had_input_entity",
       "slot_uri": "http://www.w3.org/ns/prov#used",
       "owner": "DataGeneratingActivity",
       "domain_of": [
@@ -8227,7 +8229,7 @@
   "source_file": "dcat_4c_ap.yaml",
   "source_file_date": "2025-06-20T12:43:45",
   "source_file_size": 9704,
-  "generation_date": "2025-06-20T12:51:21",
+  "generation_date": "2025-06-20T14:00:02",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

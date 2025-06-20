@@ -960,11 +960,13 @@ class DataGeneratingActivity(Activity):
     evaluated_entity: Optional[List[EvaluatedEntity]] = Field(default=None, description="""The slot to specify the Entity about which the DataGeneratingActivity produced information.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
          'domain_of': ['DataGeneratingActivity'],
          'in_subset': ['domain_agnostic_core'],
+         'is_a': 'had_input_entity',
          'recommended': True,
          'slot_uri': 'prov:used'} })
     evaluated_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""The slot to specify the Activity about which the DataGeneratingActivity produced information.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_activity',
          'domain_of': ['DataGeneratingActivity'],
          'in_subset': ['domain_agnostic_core'],
+         'is_a': 'had_input_activity',
          'recommended': True,
          'slot_uri': 'prov:wasInformedBy'} })
     realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
@@ -1090,11 +1092,13 @@ class DataAnalysis(DataGeneratingActivity):
     evaluated_entity: Optional[List[AnalysisSourceData]] = Field(default=None, description="""A slot to provide the data that was analysed by the DataAnalysis.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
          'domain_of': ['DataGeneratingActivity'],
          'in_subset': ['domain_agnostic_core'],
+         'is_a': 'had_input_entity',
          'recommended': True,
          'slot_uri': 'prov:used'} })
     evaluated_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""The slot to specify the Activity about which the DataGeneratingActivity produced information.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_activity',
          'domain_of': ['DataGeneratingActivity'],
          'in_subset': ['domain_agnostic_core'],
+         'is_a': 'had_input_activity',
          'recommended': True,
          'slot_uri': 'prov:wasInformedBy'} })
     realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
@@ -4037,11 +4041,13 @@ class NMRSpectralAnalysis(DataAnalysis):
     evaluated_entity: Optional[List[NMRSpectrum]] = Field(default=None, description="""A slot to provide the data that was analysed by the DataAnalysis.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
          'domain_of': ['DataGeneratingActivity'],
          'in_subset': ['domain_agnostic_core'],
+         'is_a': 'had_input_entity',
          'recommended': True,
          'slot_uri': 'prov:used'} })
     evaluated_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""The slot to specify the Activity about which the DataGeneratingActivity produced information.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_activity',
          'domain_of': ['DataGeneratingActivity'],
          'in_subset': ['domain_agnostic_core'],
+         'is_a': 'had_input_activity',
          'recommended': True,
          'slot_uri': 'prov:wasInformedBy'} })
     realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
@@ -4171,11 +4177,13 @@ class NMRSpectroscopy(DataGeneratingActivity):
     evaluated_entity: Optional[List[ChemicalSample]] = Field(default=None, description="""The slot to specify the Entity about which the DataGeneratingActivity produced information.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
          'domain_of': ['DataGeneratingActivity'],
          'in_subset': ['domain_agnostic_core'],
+         'is_a': 'had_input_entity',
          'recommended': True,
          'slot_uri': 'prov:used'} })
     evaluated_activity: Optional[List[EvaluatedActivity]] = Field(default=None, description="""The slot to specify the Activity about which the DataGeneratingActivity produced information.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_activity',
          'domain_of': ['DataGeneratingActivity'],
          'in_subset': ['domain_agnostic_core'],
+         'is_a': 'had_input_activity',
          'recommended': True,
          'slot_uri': 'prov:wasInformedBy'} })
     realized_plan: Optional[Plan] = Field(default=None, description="""The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.""", json_schema_extra = { "linkml_meta": {'alias': 'realized_plan',
