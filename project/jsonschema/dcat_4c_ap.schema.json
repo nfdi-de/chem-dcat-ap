@@ -2,29 +2,52 @@
     "$defs": {
         "Activity": {
             "additionalProperties": false,
-            "description": "An activity (process) that has the objective to produce information about an entity or activity.",
+            "description": "See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)",
             "properties": {
-                "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "evaluated_activity": {
-                    "description": "The slot to provide the EvaluatedActivity evaluated by an Activity.",
+                "carried_out_by": {
+                    "description": "The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.",
                     "items": {
-                        "$ref": "#/$defs/EvaluatedActivity"
+                        "$ref": "#/$defs/AgenticEntity"
                     },
                     "type": [
                         "array",
                         "null"
                     ]
                 },
-                "evaluated_entity": {
-                    "description": "The slot to provide the EvaluatedEntity evaluated by an Activity.",
+                "description": {
+                    "description": "The slot to provide a description for the Activity.",
                     "items": {
-                        "$ref": "#/$defs/EvaluatedEntity"
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_activity": {
+                    "description": "The slot to provide a previous Activity that informed the Activity by being causally via a shared participant.",
+                    "items": {
+                        "$ref": "#/$defs/Activity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_entity": {
+                    "description": "The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_output_entity": {
+                    "description": "The slot to specify the Entity that was generated as an output of an Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
                     },
                     "type": [
                         "array",
@@ -40,7 +63,27 @@
                             "type": "null"
                         }
                     ],
-                    "description": "A slot to provide an Activity that is part of the Activity that created the Dataset."
+                    "description": "The slot to provide an Activity that is part of the Activity."
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "id": {
                     "description": "A slot to provide an URI for an entity within this schema.",
@@ -49,19 +92,8 @@
                         "null"
                     ]
                 },
-                "occurred_in": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Surrounding"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the Surrounding in which an Activity took place."
-                },
                 "other_identifier": {
-                    "description": "A secondary identifier of the Activity that created the Dataset.",
+                    "description": "The slot to provide a secondary identifier of the Activity.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },
@@ -81,21 +113,13 @@
                     ],
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
-                "realized_plan": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Plan"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the Plan (aka procedure) that was realized by an Activity."
-                },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -109,16 +133,6 @@
                         }
                     ],
                     "description": "This slot is described in more detail within the class in which it is used."
-                },
-                "used_instrument": {
-                    "description": "The slot to specify the Instruments that were used in the data generating Activity.",
-                    "items": {
-                        "$ref": "#/$defs/Instrument"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
                 }
             },
             "required": [
@@ -154,6 +168,97 @@
                 "name"
             ],
             "title": "Agent",
+            "type": "object"
+        },
+        "AgenticEntity": {
+            "additionalProperties": false,
+            "description": "An entity that is somehow responsible for an Activity to take place.",
+            "properties": {
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "The slot to specify parts of an Instrument that are themselves Instruments.",
+                    "items": {
+                        "$ref": "#/$defs/AgenticEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
+                "other_identifier": {
+                    "description": "A slot to provide a secondary identifier for an Instrument.",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "AgenticEntity",
             "type": "object"
         },
         "AnalysisDataset": {
@@ -541,7 +646,7 @@
             "description": "Information that was evaluated within a DataAnalysis.",
             "properties": {
                 "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a description for the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -558,7 +663,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -568,7 +673,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -603,7 +708,7 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -623,7 +728,7 @@
                 "was_generated_by": {
                     "description": "A slot to provide the Activity which created the AnalysisSourceData.",
                     "items": {
-                        "$ref": "#/$defs/Activity"
+                        "$ref": "#/$defs/DataGeneratingActivity"
                     },
                     "type": [
                         "array",
@@ -1034,10 +1139,53 @@
             "additionalProperties": false,
             "description": "An experimental procedure with the aim of producing a portion of a given compound or mixture.",
             "properties": {
-                "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                "carried_out_by": {
+                    "description": "The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/AgenticEntity"
+                    },
                     "type": [
-                        "string",
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a description for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_activity": {
+                    "description": "The slot to provide a previous Activity that informed the Activity by being causally via a shared participant.",
+                    "items": {
+                        "$ref": "#/$defs/Activity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_entity": {
+                    "description": "The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_output_entity": {
+                    "description": "The slot to specify the Entity that was generated as an output of an Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -1052,7 +1200,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -1062,7 +1210,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -1097,9 +1245,12 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -1136,7 +1287,7 @@
                     ]
                 },
                 "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a description for the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -1153,7 +1304,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -1163,7 +1314,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -1198,7 +1349,7 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -1247,7 +1398,7 @@
                     ]
                 },
                 "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a description for the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -1264,7 +1415,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -1274,7 +1425,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -1309,7 +1460,7 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -1383,15 +1534,28 @@
             "additionalProperties": false,
             "description": "An Activity that evaluates the data produced by another Activity.",
             "properties": {
-                "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                "carried_out_by": {
+                    "description": "The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/AgenticEntity"
+                    },
                     "type": [
-                        "string",
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a description for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
                 "evaluated_activity": {
-                    "description": "The slot to provide the EvaluatedActivity evaluated by an Activity.",
+                    "description": "The slot to specify the Activity about which the DataGeneratingActivity produced information.",
                     "items": {
                         "$ref": "#/$defs/EvaluatedActivity"
                     },
@@ -1410,6 +1574,36 @@
                         "null"
                     ]
                 },
+                "had_input_activity": {
+                    "description": "The slot to provide a previous Activity that informed the Activity by being causally via a shared participant.",
+                    "items": {
+                        "$ref": "#/$defs/Activity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_entity": {
+                    "description": "The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_output_entity": {
+                    "description": "The slot to specify the Entity that was generated as an output of an Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_part": {
                     "anyOf": [
                         {
@@ -1419,7 +1613,27 @@
                             "type": "null"
                         }
                     ],
-                    "description": "A slot to provide an Activity that is part of the Activity that created the Dataset."
+                    "description": "The slot to provide an Activity that is part of the Activity."
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "id": {
                     "description": "A slot to provide an URI for an entity within this schema.",
@@ -1437,7 +1651,7 @@
                     "description": "The slot to specify the Surrounding in which an Activity took place."
                 },
                 "other_identifier": {
-                    "description": "A secondary identifier of the Activity that created the Dataset.",
+                    "description": "The slot to provide a secondary identifier of the Activity.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },
@@ -1466,12 +1680,15 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Plan (aka procedure) that was realized by an Activity."
+                    "description": "The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity."
                 },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -1485,22 +1702,192 @@
                         }
                     ],
                     "description": "This slot is described in more detail within the class in which it is used."
-                },
-                "used_instrument": {
-                    "description": "The slot to specify the Instruments that were used in the data generating Activity.",
-                    "items": {
-                        "$ref": "#/$defs/Instrument"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
                 }
             },
             "required": [
                 "id"
             ],
             "title": "DataAnalysis",
+            "type": "object"
+        },
+        "DataGeneratingActivity": {
+            "additionalProperties": false,
+            "description": "An Activity (process) that has the objective to produce information (in form of a dataset) about another Activity or Entity.",
+            "properties": {
+                "carried_out_by": {
+                    "description": "The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/AgenticEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a description for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "evaluated_activity": {
+                    "description": "The slot to specify the Activity about which the DataGeneratingActivity produced information.",
+                    "items": {
+                        "$ref": "#/$defs/EvaluatedActivity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "evaluated_entity": {
+                    "description": "The slot to specify the Entity about which the DataGeneratingActivity produced information.",
+                    "items": {
+                        "$ref": "#/$defs/EvaluatedEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_activity": {
+                    "description": "The slot to provide a previous Activity that informed the Activity by being causally via a shared participant.",
+                    "items": {
+                        "$ref": "#/$defs/Activity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_entity": {
+                    "description": "The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_output_entity": {
+                    "description": "The slot to specify the Entity that was generated as an output of an Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Activity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to provide an Activity that is part of the Activity."
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
+                "occurred_in": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Surrounding"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the Surrounding in which an Activity took place."
+                },
+                "other_identifier": {
+                    "description": "The slot to provide a secondary identifier of the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "realized_plan": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Plan"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity."
+                },
+                "title": {
+                    "description": "The slot to provide a title for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "DataGeneratingActivity",
             "type": "object"
         },
         "DataService": {
@@ -2038,7 +2425,7 @@
                 "was_generated_by": {
                     "description": "An activity that generated, or provides the business context for, the creation of the dataset.",
                     "items": {
-                        "$ref": "#/$defs/Activity"
+                        "$ref": "#/$defs/DataGeneratingActivity"
                     },
                     "type": "array"
                 }
@@ -2220,7 +2607,7 @@
                 "has_part": {
                     "description": "The slot to specify parts of a Device that are themselves Devices.",
                     "items": {
-                        "$ref": "#/$defs/Instrument"
+                        "$ref": "#/$defs/Device"
                     },
                     "type": [
                         "array",
@@ -2228,7 +2615,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -2238,7 +2625,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -2550,14 +2937,148 @@
             "title": "Document",
             "type": "object"
         },
-        "EvaluatedActivity": {
+        "Entity": {
             "additionalProperties": false,
-            "description": "An activity or proces that is being evaluated in a Activity.",
+            "description": "A physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.",
             "properties": {
                 "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a description for the Entity.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "A slot to provide a part of the EvaluatedEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
+                "other_identifier": {
+                    "description": "A slot to provide a secondary identifier of the Entity.",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "The slot to provide a title for the Entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Entity",
+            "type": "object"
+        },
+        "EvaluatedActivity": {
+            "additionalProperties": false,
+            "description": "An activity or proces that is being evaluated in a DataGeneratingActivity.",
+            "properties": {
+                "carried_out_by": {
+                    "description": "The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/AgenticEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a description for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_activity": {
+                    "description": "The slot to provide a previous Activity that informed the Activity by being causally via a shared participant.",
+                    "items": {
+                        "$ref": "#/$defs/Activity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_entity": {
+                    "description": "The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_output_entity": {
+                    "description": "The slot to specify the Entity that was generated as an output of an Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -2572,7 +3093,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -2582,7 +3103,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -2617,9 +3138,12 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -2643,10 +3167,10 @@
         },
         "EvaluatedEntity": {
             "additionalProperties": false,
-            "description": "A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a Activity.",
+            "description": "An Entity that is being evaluated in a DataGeneratingActivity.",
             "properties": {
                 "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a description for the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -2663,7 +3187,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -2673,7 +3197,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -2708,7 +3232,7 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -2920,97 +3444,6 @@
                 "value"
             ],
             "title": "InChi",
-            "type": "object"
-        },
-        "Instrument": {
-            "additionalProperties": false,
-            "description": "An entity that is actively used within an Activity as a means to achieve the planned objectives of said Activity because of its function.",
-            "properties": {
-                "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "has_part": {
-                    "description": "The slot to specify parts of an Instrument that are themselves Instruments.",
-                    "items": {
-                        "$ref": "#/$defs/Instrument"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
-                    "items": {
-                        "$ref": "#/$defs/QualitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
-                    "items": {
-                        "$ref": "#/$defs/QuantitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A slot to provide an URI for an entity within this schema.",
-                    "type": "string"
-                },
-                "other_identifier": {
-                    "description": "A slot to provide a secondary identifier for an Instrument.",
-                    "items": {
-                        "$ref": "#/$defs/Identifier"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "rdf_type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the ontology class that is instantiated by an entity."
-                },
-                "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "This slot is described in more detail within the class in which it is used."
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "Instrument",
             "type": "object"
         },
         "Kind": {
@@ -3530,15 +3963,28 @@
             "additionalProperties": false,
             "description": "A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectrum generated by a NMRSpectroscopy",
             "properties": {
-                "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                "carried_out_by": {
+                    "description": "The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/AgenticEntity"
+                    },
                     "type": [
-                        "string",
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a description for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
                 "evaluated_activity": {
-                    "description": "The slot to provide the EvaluatedActivity evaluated by an Activity.",
+                    "description": "The slot to specify the Activity about which the DataGeneratingActivity produced information.",
                     "items": {
                         "$ref": "#/$defs/EvaluatedActivity"
                     },
@@ -3557,6 +4003,36 @@
                         "null"
                     ]
                 },
+                "had_input_activity": {
+                    "description": "The slot to provide a previous Activity that informed the Activity by being causally via a shared participant.",
+                    "items": {
+                        "$ref": "#/$defs/Activity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_entity": {
+                    "description": "The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_output_entity": {
+                    "description": "The slot to specify the Entity that was generated as an output of an Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_part": {
                     "anyOf": [
                         {
@@ -3566,7 +4042,27 @@
                             "type": "null"
                         }
                     ],
-                    "description": "A slot to provide an Activity that is part of the Activity that created the Dataset."
+                    "description": "The slot to provide an Activity that is part of the Activity."
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "id": {
                     "description": "A slot to provide an URI for an entity within this schema.",
@@ -3584,7 +4080,7 @@
                     "description": "The slot to specify the Surrounding in which an Activity took place."
                 },
                 "other_identifier": {
-                    "description": "A secondary identifier of the Activity that created the Dataset.",
+                    "description": "The slot to provide a secondary identifier of the Activity.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },
@@ -3613,12 +4109,15 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Plan (aka procedure) that was realized by an Activity."
+                    "description": "The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity."
                 },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -3632,16 +4131,6 @@
                         }
                     ],
                     "description": "This slot is described in more detail within the class in which it is used."
-                },
-                "used_instrument": {
-                    "description": "The slot to specify the Instruments that were used in the data generating Activity.",
-                    "items": {
-                        "$ref": "#/$defs/Instrument"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
                 }
             },
             "required": [
@@ -3654,15 +4143,28 @@
             "additionalProperties": false,
             "description": "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.",
             "properties": {
-                "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                "carried_out_by": {
+                    "description": "The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/AgenticEntity"
+                    },
                     "type": [
-                        "string",
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "The slot to provide a description for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
                 "evaluated_activity": {
-                    "description": "The slot to provide the EvaluatedActivity evaluated by an Activity.",
+                    "description": "The slot to specify the Activity about which the DataGeneratingActivity produced information.",
                     "items": {
                         "$ref": "#/$defs/EvaluatedActivity"
                     },
@@ -3672,9 +4174,39 @@
                     ]
                 },
                 "evaluated_entity": {
-                    "description": "The slot to provide the EvaluatedEntity evaluated by an Activity.",
+                    "description": "The slot to specify the Entity about which the DataGeneratingActivity produced information.",
                     "items": {
                         "$ref": "#/$defs/ChemicalSample"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_activity": {
+                    "description": "The slot to provide a previous Activity that informed the Activity by being causally via a shared participant.",
+                    "items": {
+                        "$ref": "#/$defs/Activity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_input_entity": {
+                    "description": "The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "had_output_entity": {
+                    "description": "The slot to specify the Entity that was generated as an output of an Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
                     },
                     "type": [
                         "array",
@@ -3690,7 +4222,27 @@
                             "type": "null"
                         }
                     ],
-                    "description": "A slot to provide an Activity that is part of the Activity that created the Dataset."
+                    "description": "The slot to provide an Activity that is part of the Activity."
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "id": {
                     "description": "A slot to provide an URI for an entity within this schema.",
@@ -3708,7 +4260,7 @@
                     "description": "The slot to specify the Surrounding in which an Activity took place."
                 },
                 "other_identifier": {
-                    "description": "A secondary identifier of the Activity that created the Dataset.",
+                    "description": "The slot to provide a secondary identifier of the Activity.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },
@@ -3737,12 +4289,15 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the Plan (aka procedure) that was realized by an Activity."
+                    "description": "The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity."
                 },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the Activity.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -3756,16 +4311,6 @@
                         }
                     ],
                     "description": "This slot is described in more detail within the class in which it is used."
-                },
-                "used_instrument": {
-                    "description": "The slot to specify the Instruments that were used in the data generating Activity.",
-                    "items": {
-                        "$ref": "#/$defs/Instrument"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
                 }
             },
             "required": [
@@ -3779,7 +4324,7 @@
             "description": "A set of chemical shifts obtained via NMR spectroscopy.",
             "properties": {
                 "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a description for the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -3796,7 +4341,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -3806,7 +4351,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },
@@ -3841,7 +4386,7 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "description": "The slot to provide a title for the EvaluatedEntity.",
                     "type": [
                         "string",
                         "null"
@@ -3989,7 +4534,7 @@
         },
         "QualitativeAttribute": {
             "additionalProperties": false,
-            "description": "A piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.",
+            "description": "A piece of information that is attributed to an Entity, Activity or AgenticEntity.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -4040,7 +4585,7 @@
         },
         "QuantitativeAttribute": {
             "additionalProperties": false,
-            "description": "A quantifiable piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.",
+            "description": "A quantifiable piece of information that is attributed to an Entity, Activity or AgenticEntity.",
             "properties": {
                 "description": {
                     "description": "This slot is described in more detail within the class in which it is used.",
@@ -4209,7 +4754,7 @@
                 "has_part": {
                     "description": "The slot to specify parts of a Software that are themselves Software.",
                     "items": {
-                        "$ref": "#/$defs/Instrument"
+                        "$ref": "#/$defs/Software"
                     },
                     "type": [
                         "array",
@@ -4217,7 +4762,7 @@
                     ]
                 },
                 "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QualitativeAttribute"
                     },
@@ -4227,7 +4772,7 @@
                     ]
                 },
                 "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or Instrument",
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
                     },

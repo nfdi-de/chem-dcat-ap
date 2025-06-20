@@ -9,22 +9,21 @@
   "was_generated_by": [
     {
       "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DataAnalysis",
+      "rdf_type": {
+        "id": "NMR:1000259",
+        "title": "peak assignment"
+      },
       "evaluated_entity": [
         {
           "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum",
           "was_generated_by": [
             {
               "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Activity1",
-              "evaluated_entity": [
-                {
-                  "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
-                  "title": "CRS-50440"
-                }
-              ],
-              "used_instrument": [
+              "carried_out_by": [
                 {
                   "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool1",
                   "title": "Bruker 400 MHz",
+                  "description": "The NMR spectrometer used.",
                   "has_qualitative_attribute": [
                     {
                       "value": "zgpg30",
@@ -74,7 +73,13 @@
               "rdf_type": {
                 "id": "CHMO:0000595",
                 "title": "13C nuclear magnetic resonance spectroscopy"
-              }
+              },
+              "evaluated_entity": [
+                {
+                  "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
+                  "title": "CRS-50440"
+                }
+              ]
             }
           ]
         },
@@ -83,13 +88,7 @@
           "was_generated_by": [
             {
               "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Activity2",
-              "evaluated_entity": [
-                {
-                  "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
-                  "title": "CRS-50440"
-                }
-              ],
-              "used_instrument": [
+              "carried_out_by": [
                 {
                   "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool1",
                   "title": "Bruker 400 MHz"
@@ -106,15 +105,17 @@
               "rdf_type": {
                 "id": "CHMO:0000595",
                 "title": "13C nuclear magnetic resonance spectroscopy"
-              }
+              },
+              "evaluated_entity": [
+                {
+                  "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
+                  "title": "CRS-50440"
+                }
+              ]
             }
           ]
         }
-      ],
-      "rdf_type": {
-        "id": "NMR:1000259",
-        "title": "peak assignment"
-      }
+      ]
     }
   ],
   "other_identifier": [

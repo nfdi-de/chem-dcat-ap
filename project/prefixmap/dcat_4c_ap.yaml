@@ -12,7 +12,6 @@
    "RO": "http://purl.obolibrary.org/obo/RO_",
    "RXNO": "http://purl.obolibrary.org/obo/RXNO_",
    "SIO": "http://semanticscience.org/resource/SIO_",
-   "SOSA": "http://www.w3.org/ns/sosa/",
    "T4FS": "http://purl.obolibrary.org/obo/T4FS_",
    "adms": "http://www.w3.org/ns/adms#",
    "biolink": "https://w3id.org/biolink/vocab/",
@@ -46,6 +45,9 @@
    },
    "Agent": {
       "@id": "foaf:Agent"
+   },
+   "AgenticEntity": {
+      "@id": "prov:Agent"
    },
    "AnalysisDataset": {
       "@id": "dcat:Dataset"
@@ -92,6 +94,9 @@
    "DataAnalysis": {
       "@id": "prov:Activity"
    },
+   "DataGeneratingActivity": {
+      "@id": "prov:Activity"
+   },
    "DataService": {
       "@id": "dcat:DataService"
    },
@@ -113,6 +118,9 @@
    "Document": {
       "@id": "foaf:Document"
    },
+   "Entity": {
+      "@id": "prov:Entity"
+   },
    "EvaluatedActivity": {
       "@id": "prov:Activity"
    },
@@ -133,9 +141,6 @@
    },
    "InChIKey": {
       "@id": "CHEMINF:000059"
-   },
-   "Instrument": {
-      "@id": "prov:Agent"
    },
    "IUPACChemicalFormula": {
       "@id": "CHEMINF:000037"

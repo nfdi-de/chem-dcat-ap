@@ -40,15 +40,16 @@ enum TopLevelMediaTypes
 type Activity implements ClassifierMixin
   {
     id: Uriorcurie!
-    title: String
-    description: String
+    title: [String]
+    description: [String]
     otherIdentifier: [Identifier]
-    evaluatedEntity: [EvaluatedEntity]
-    evaluatedActivity: [EvaluatedActivity]
-    usedInstrument: [Instrument]
-    realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Surrounding
+    hadInputEntity: [Entity]
+    hadOutputEntity: [Entity]
+    hadInputActivity: [Activity]
+    carriedOutBy: [AgenticEntity]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -57,6 +58,19 @@ type Agent
   {
     name: [String]!
     type: Concept
+  }
+
+type AgenticEntity implements ClassifierMixin
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [AgenticEntity]
+    type: DefinedTerm
+    rdfType: DefinedTerm
   }
 
 type AnalysisDataset
@@ -104,16 +118,16 @@ type AnalysisDataset
 
 type AnalysisSourceData
   {
-    title: String
-    description: String
-    otherIdentifier: [Identifier]
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [EvaluatedEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
-    wasGeneratedBy: [Activity]
+    title: String
+    description: String
+    hasPart: [EvaluatedEntity]
+    otherIdentifier: [Identifier]
+    wasGeneratedBy: [DataGeneratingActivity]
   }
 
 type Any
@@ -180,44 +194,48 @@ type ChemicalEntity
 
 type ChemicalReaction
   {
-    title: String
-    description: String
-    otherIdentifier: [Identifier]
     id: Uriorcurie!
+    title: [String]
+    description: [String]
+    hadInputEntity: [Entity]
+    hadOutputEntity: [Entity]
+    hadInputActivity: [Activity]
+    carriedOutBy: [AgenticEntity]
+    type: DefinedTerm
+    rdfType: DefinedTerm
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
     hasPart: [EvaluatedActivity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
+    otherIdentifier: [Identifier]
   }
 
 type ChemicalSample
   {
-    title: String
-    description: String
-    otherIdentifier: [Identifier]
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [EvaluatedEntity]
-    wasGeneratedBy: [Activity]
     type: DefinedTerm
     rdfType: DefinedTerm
+    wasGeneratedBy: [Activity]
+    title: String
+    description: String
+    hasPart: [EvaluatedEntity]
+    otherIdentifier: [Identifier]
     composedOf: [ChemicalEntity]
   }
 
 type ChemicalSubstance
   {
-    title: String
-    description: String
-    otherIdentifier: [Identifier]
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [EvaluatedEntity]
-    wasGeneratedBy: [Activity]
     type: DefinedTerm
     rdfType: DefinedTerm
+    wasGeneratedBy: [Activity]
+    title: String
+    description: String
+    hasPart: [EvaluatedEntity]
+    otherIdentifier: [Identifier]
     composedOf: [ChemicalEntity]
   }
 
@@ -240,17 +258,43 @@ type ConceptScheme
 type DataAnalysis
   {
     id: Uriorcurie!
-    title: String
-    description: String
+    title: [String]
+    description: [String]
     otherIdentifier: [Identifier]
-    evaluatedActivity: [EvaluatedActivity]
-    usedInstrument: [Instrument]
-    realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Surrounding
+    hadInputEntity: [Entity]
+    hadOutputEntity: [Entity]
+    hadInputActivity: [Activity]
+    carriedOutBy: [AgenticEntity]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
     type: DefinedTerm
     rdfType: DefinedTerm
+    evaluatedActivity: [EvaluatedActivity]
+    realizedPlan: Plan
+    occurredIn: Surrounding
     evaluatedEntity: [AnalysisSourceData]
+  }
+
+type DataGeneratingActivity
+  {
+    id: Uriorcurie!
+    title: [String]
+    description: [String]
+    otherIdentifier: [Identifier]
+    hasPart: Activity
+    hadInputEntity: [Entity]
+    hadOutputEntity: [Entity]
+    hadInputActivity: [Activity]
+    carriedOutBy: [AgenticEntity]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    evaluatedEntity: [EvaluatedEntity]
+    evaluatedActivity: [EvaluatedActivity]
+    realizedPlan: Plan
+    occurredIn: Surrounding
   }
 
 type DataService
@@ -310,7 +354,7 @@ type Dataset
     type: [Concept]
     version: String
     versionNotes: [String]
-    wasGeneratedBy: [Activity]!
+    wasGeneratedBy: [DataGeneratingActivity]!
     id: Uriorcurie!
     isAboutEntity: [EvaluatedEntity]
     isAboutActivity: [EvaluatedActivity]
@@ -346,7 +390,7 @@ type Device
     hasQuantitativeAttribute: [QuantitativeAttribute]
     type: DefinedTerm
     rdfType: DefinedTerm
-    hasPart: [Instrument]
+    hasPart: [Device]
     otherIdentifier: [Identifier]
   }
 
@@ -382,31 +426,48 @@ type Document
   {
   }
 
-type EvaluatedActivity implements ClassifierMixin
+type Entity implements ClassifierMixin
   {
     title: String
     description: String
-    otherIdentifier: [Identifier]
     id: Uriorcurie!
+    otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [EvaluatedActivity]
+    hasPart: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
   }
 
-type EvaluatedEntity implements ClassifierMixin
+type EvaluatedActivity
   {
-    title: String
-    description: String
+    id: Uriorcurie!
+    title: [String]
+    description: [String]
+    hadInputEntity: [Entity]
+    hadOutputEntity: [Entity]
+    hadInputActivity: [Activity]
+    carriedOutBy: [AgenticEntity]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: String
     otherIdentifier: [Identifier]
+  }
+
+type EvaluatedEntity
+  {
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [EvaluatedEntity]
-    wasGeneratedBy: [Activity]
     type: DefinedTerm
     rdfType: DefinedTerm
+    wasGeneratedBy: [Activity]
+    title: String
+    description: String
+    hasPart: [EvaluatedEntity]
+    otherIdentifier: [Identifier]
   }
 
 type Frequency
@@ -436,19 +497,6 @@ type InChIKey
     title: String
     description: String
     value: String!
-    type: DefinedTerm
-    rdfType: DefinedTerm
-  }
-
-type Instrument implements ClassifierMixin
-  {
-    id: Uriorcurie!
-    title: String
-    description: String
-    otherIdentifier: [Identifier]
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [Instrument]
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -548,46 +596,56 @@ type NMRAnalysisDataset
 type NMRSpectralAnalysis
   {
     id: Uriorcurie!
-    title: String
-    description: String
+    title: [String]
+    description: [String]
     otherIdentifier: [Identifier]
-    evaluatedActivity: [EvaluatedActivity]
-    usedInstrument: [Instrument]
-    realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Surrounding
+    hadInputEntity: [Entity]
+    hadOutputEntity: [Entity]
+    hadInputActivity: [Activity]
+    carriedOutBy: [AgenticEntity]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
     type: DefinedTerm
     rdfType: DefinedTerm
+    evaluatedActivity: [EvaluatedActivity]
+    realizedPlan: Plan
+    occurredIn: Surrounding
     evaluatedEntity: [NMRSpectrum]
   }
 
 type NMRSpectroscopy
   {
     id: Uriorcurie!
-    title: String
-    description: String
+    title: [String]
+    description: [String]
     otherIdentifier: [Identifier]
-    evaluatedActivity: [EvaluatedActivity]
-    usedInstrument: [Instrument]
-    realizedPlan: Plan
     hasPart: Activity
-    occurredIn: Surrounding
+    hadInputEntity: [Entity]
+    hadOutputEntity: [Entity]
+    hadInputActivity: [Activity]
+    carriedOutBy: [AgenticEntity]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
     type: DefinedTerm
+    evaluatedActivity: [EvaluatedActivity]
+    realizedPlan: Plan
+    occurredIn: Surrounding
     evaluatedEntity: [ChemicalSample]
     rdfType: DefinedTerm
   }
 
 type NMRSpectrum
   {
-    title: String
-    description: String
-    otherIdentifier: [Identifier]
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [EvaluatedEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
+    title: String
+    description: String
+    hasPart: [EvaluatedEntity]
+    otherIdentifier: [Identifier]
     wasGeneratedBy: [NMRSpectroscopy]
   }
 
@@ -671,7 +729,7 @@ type Software
     hasQuantitativeAttribute: [QuantitativeAttribute]
     type: DefinedTerm
     rdfType: DefinedTerm
-    hasPart: [Instrument]
+    hasPart: [Software]
     otherIdentifier: [Identifier]
   }
 

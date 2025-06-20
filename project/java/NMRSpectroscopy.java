@@ -13,7 +13,7 @@ import lombok.*;
 **/
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class NMRSpectroscopy extends Activity {
+public class NMRSpectroscopy extends DataGeneratingActivity {
 
 
 }
