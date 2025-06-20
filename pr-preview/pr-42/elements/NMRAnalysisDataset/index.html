@@ -1,0 +1,1497 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://StroemPhi.github.io/dcat-4C-ap/elements/NMRAnalysisDataset/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
+<title>Class: NMRAnalysisDataset - dcat-4C-ap</title>
+<link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../css/ansi-colours.css" rel="stylesheet"/>
+<link href="../../css/jupyter-cells.css" rel="stylesheet"/>
+<link href="../../css/pandas-dataframe.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#class-nmranalysisdataset">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="dcat-4C-ap" class="md-header__button md-logo" data-md-component="logo" href="../.." title="dcat-4C-ap">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            dcat-4C-ap
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Class: NMRAnalysisDataset
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/StroemPhi/dcat-4C-ap" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="dcat-4C-ap" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="dcat-4C-ap">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    dcat-4C-ap
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/StroemPhi/dcat-4C-ap" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../">
+        Schema
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../about/">
+        About
+      </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+    Inheritance
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+    Slots
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comments">
+    Comments
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+    Identifier and Mapping Information
+  </a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+    Schema Source
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+    Mappings
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+    LinkML Source
+  </a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+    Direct
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+    Induced
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/elements/NMRAnalysisDataset.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
+</a>
+<h1 id="class-nmranalysisdataset">Class: NMRAnalysisDataset</h1>
+<p><em>A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample.</em></p>
+<p>URI: <a href="http://www.w3.org/ns/dcat#Dataset">dcat:Dataset</a></p>
+<div class="mermaid"> classDiagram
+    class NMRAnalysisDataset
+    click NMRAnalysisDataset href "../NMRAnalysisDataset"
+      AnalysisDataset &lt;|-- NMRAnalysisDataset
+        click AnalysisDataset href "../AnalysisDataset"
+
+      NMRAnalysisDataset : access_rights
+
+
+
+
+    NMRAnalysisDataset --&gt; "0..1" RightsStatement : access_rights
+    click RightsStatement href "../RightsStatement"
+
+
+      NMRAnalysisDataset : applicable_legislation
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" LegalResource : applicable_legislation
+    click LegalResource href "../LegalResource"
+
+
+      NMRAnalysisDataset : conforms_to
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Standard : conforms_to
+    click Standard href "../Standard"
+
+
+      NMRAnalysisDataset : contact_point
+
+
+
+
+    NMRAnalysisDataset --&gt; "* _recommended_" Kind : contact_point
+    click Kind href "../Kind"
+
+
+      NMRAnalysisDataset : creator
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Agent : creator
+    click Agent href "../Agent"
+
+
+      NMRAnalysisDataset : dataset_distribution
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Distribution : dataset_distribution
+    click Distribution href "../Distribution"
+
+
+      NMRAnalysisDataset : description
+
+      NMRAnalysisDataset : documentation
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Document : documentation
+    click Document href "../Document"
+
+
+      NMRAnalysisDataset : frequency
+
+
+
+
+    NMRAnalysisDataset --&gt; "0..1" Frequency : frequency
+    click Frequency href "../Frequency"
+
+
+      NMRAnalysisDataset : geographical_coverage
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Location : geographical_coverage
+    click Location href "../Location"
+
+
+      NMRAnalysisDataset : has_version
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Dataset : has_version
+    click Dataset href "../Dataset"
+
+
+      NMRAnalysisDataset : id
+
+      NMRAnalysisDataset : identifier
+
+      NMRAnalysisDataset : in_series
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" DatasetSeries : in_series
+    click DatasetSeries href "../DatasetSeries"
+
+
+      NMRAnalysisDataset : is_about_activity
+
+
+
+
+    NMRAnalysisDataset --&gt; "* _recommended_" EvaluatedActivity : is_about_activity
+    click EvaluatedActivity href "../EvaluatedActivity"
+
+
+      NMRAnalysisDataset : is_about_entity
+
+
+
+
+    NMRAnalysisDataset --&gt; "* _recommended_" ChemicalSample : is_about_entity
+    click ChemicalSample href "../ChemicalSample"
+
+
+      NMRAnalysisDataset : is_referenced_by
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Resource : is_referenced_by
+    click Resource href "../Resource"
+
+
+      NMRAnalysisDataset : keyword
+
+      NMRAnalysisDataset : landing_page
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Document : landing_page
+    click Document href "../Document"
+
+
+      NMRAnalysisDataset : language
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" LinguisticSystem : language
+    click LinguisticSystem href "../LinguisticSystem"
+
+
+      NMRAnalysisDataset : modification_date
+
+      NMRAnalysisDataset : other_identifier
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Identifier : other_identifier
+    click Identifier href "../Identifier"
+
+
+      NMRAnalysisDataset : provenance
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" ProvenanceStatement : provenance
+    click ProvenanceStatement href "../ProvenanceStatement"
+
+
+      NMRAnalysisDataset : publisher
+
+
+
+
+    NMRAnalysisDataset --&gt; "0..1" Agent : publisher
+    click Agent href "../Agent"
+
+
+      NMRAnalysisDataset : qualified_attribution
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Attribution : qualified_attribution
+    click Attribution href "../Attribution"
+
+
+      NMRAnalysisDataset : qualified_relation
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Relationship : qualified_relation
+    click Relationship href "../Relationship"
+
+
+      NMRAnalysisDataset : related_resource
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Resource : related_resource
+    click Resource href "../Resource"
+
+
+      NMRAnalysisDataset : release_date
+
+      NMRAnalysisDataset : sample
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Distribution : sample
+    click Distribution href "../Distribution"
+
+
+      NMRAnalysisDataset : source
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Dataset : source
+    click Dataset href "../Dataset"
+
+
+      NMRAnalysisDataset : spatial_resolution
+
+      NMRAnalysisDataset : temporal_coverage
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" PeriodOfTime : temporal_coverage
+    click PeriodOfTime href "../PeriodOfTime"
+
+
+      NMRAnalysisDataset : temporal_resolution
+
+      NMRAnalysisDataset : theme
+
+
+
+
+    NMRAnalysisDataset --&gt; "* _recommended_" Concept : theme
+    click Concept href "../Concept"
+
+
+      NMRAnalysisDataset : title
+
+      NMRAnalysisDataset : type
+
+
+
+
+    NMRAnalysisDataset --&gt; "*" Concept : type
+    click Concept href "../Concept"
+
+
+      NMRAnalysisDataset : version
+
+      NMRAnalysisDataset : version_notes
+
+      NMRAnalysisDataset : was_generated_by
+
+
+
+
+    NMRAnalysisDataset --&gt; "1..*" NMRSpectralAnalysis : was_generated_by
+    click NMRSpectralAnalysis href "../NMRSpectralAnalysis"
+
+
+
+</div>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Dataset/">Dataset</a><ul>
+<li><a href="../AnalysisDataset/">AnalysisDataset</a><ul>
+<li><strong>NMRAnalysisDataset</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../access_rights/">access_rights</a></td>
+<td>0..1 <br/> <a href="../RightsStatement/">RightsStatement</a></td>
+<td>Information that indicates whether the Dataset is publicly accessible, has ac...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../applicable_legislation/">applicable_legislation</a></td>
+<td>* <br/> <a href="../LegalResource/">LegalResource</a></td>
+<td>The legislation that mandates the creation or management of the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../conforms_to/">conforms_to</a></td>
+<td>* <br/> <a href="../Standard/">Standard</a></td>
+<td>An implementing rule or other specification</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../contact_point/">contact_point</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Kind/">Kind</a></td>
+<td>Contact information that can be used for sending comments about the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../creator/">creator</a></td>
+<td>* <br/> <a href="../Agent/">Agent</a></td>
+<td>An entity responsible for producing the dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../dataset_distribution/">dataset_distribution</a></td>
+<td>* <br/> <a href="../Distribution/">Distribution</a></td>
+<td>An available Distribution for the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>1..* <br/> <a href="../String/">String</a></td>
+<td>A free-text account of the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../documentation/">documentation</a></td>
+<td>* <br/> <a href="../Document/">Document</a></td>
+<td>A page or document about this Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../frequency/">frequency</a></td>
+<td>0..1 <br/> <a href="../Frequency/">Frequency</a></td>
+<td>The frequency at which the Dataset is updated</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../geographical_coverage/">geographical_coverage</a></td>
+<td>* <br/> <a href="../Location/">Location</a></td>
+<td>A geographic region that is covered by the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../has_version/">has_version</a></td>
+<td>* <br/> <a href="../Dataset/">Dataset</a></td>
+<td>A related Dataset that is a version, edition, or adaptation of the described ...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../identifier/">identifier</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>The main identifier for the Dataset, e</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../in_series/">in_series</a></td>
+<td>* <br/> <a href="../DatasetSeries/">DatasetSeries</a></td>
+<td>A dataset series of which the dataset is part</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../is_referenced_by/">is_referenced_by</a></td>
+<td>* <br/> <a href="../Resource/">Resource</a></td>
+<td>A related resource, such as a publication, that references, cites, or otherwi...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../keyword/">keyword</a></td>
+<td>* <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>A keyword or tag describing the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../landing_page/">landing_page</a></td>
+<td>* <br/> <a href="../Document/">Document</a></td>
+<td>A web page that provides access to the Dataset, its Distributions and/or addi...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../language/">language</a></td>
+<td>* <br/> <a href="../LinguisticSystem/">LinguisticSystem</a></td>
+<td>A language of the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../modification_date/">modification_date</a></td>
+<td>0..1 <br/> <a href="../Date/">Date</a></td>
+<td>The most recent date on which the Dataset was changed or modified</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../other_identifier/">other_identifier</a></td>
+<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>A secondary identifier of the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../provenance/">provenance</a></td>
+<td>* <br/> <a href="../ProvenanceStatement/">ProvenanceStatement</a></td>
+<td>A statement about the lineage of a Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../publisher/">publisher</a></td>
+<td>0..1 <br/> <a href="../Agent/">Agent</a></td>
+<td>An entity (organisation) responsible for making the Dataset available</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../qualified_attribution/">qualified_attribution</a></td>
+<td>* <br/> <a href="../Attribution/">Attribution</a></td>
+<td>An Agent having some form of responsibility for the resource</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../qualified_relation/">qualified_relation</a></td>
+<td>* <br/> <a href="../Relationship/">Relationship</a></td>
+<td>A description of a relationship with another resource</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../related_resource/">related_resource</a></td>
+<td>* <br/> <a href="../Resource/">Resource</a></td>
+<td>A related resource</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../release_date/">release_date</a></td>
+<td>0..1 <br/> <a href="../Date/">Date</a></td>
+<td>The date of formal issuance (e</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../sample/">sample</a></td>
+<td>* <br/> <a href="../Distribution/">Distribution</a></td>
+<td>A sample distribution of the dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../source/">source</a></td>
+<td>* <br/> <a href="../Dataset/">Dataset</a></td>
+<td>A related Dataset from which the described Dataset is derived</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../spatial_resolution/">spatial_resolution</a></td>
+<td>0..1 <br/> <a href="../Decimal/">Decimal</a></td>
+<td>The minimum spatial separation resolvable in a dataset, measured in meters</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../temporal_coverage/">temporal_coverage</a></td>
+<td>* <br/> <a href="../PeriodOfTime/">PeriodOfTime</a></td>
+<td>A temporal period that the Dataset covers</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../temporal_resolution/">temporal_resolution</a></td>
+<td>0..1 <br/> <a href="../Duration/">Duration</a></td>
+<td>The minimum time period resolvable in the dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../theme/">theme</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Concept/">Concept</a></td>
+<td>A category of the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../title/">title</a></td>
+<td>1..* <br/> <a href="../String/">String</a></td>
+<td>A name given to the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>* <br/> <a href="../Concept/">Concept</a></td>
+<td>A type of the Dataset</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../version/">version</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The version indicator (name or identifier) of a resource</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../version_notes/">version_notes</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>A description of the differences between this version and a previous version ...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
+<td>1..* <br/> <a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td>An activity that generated, or provides the business context for, the creatio...</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A slot to provide an URI for an entity within this schema</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../is_about_entity/">is_about_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../ChemicalSample/">ChemicalSample</a></td>
+<td>A slot to provide the EvaluatedEntity a Dataset is about</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../is_about_activity/">is_about_activity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>A slot to provide the EvaluatedActivity a Dataset is about</td>
+<td><a href="../Dataset/">Dataset</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.</li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>dcat:Dataset</td>
+</tr>
+<tr>
+<td>native</td>
+<td>nfdi4c:NMRAnalysisDataset</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+<pre><code class="language-yaml">name: NMRAnalysisDataset
+description: A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample.
+comments:
+- This class serves as an example for the way in which we want to build domain specific
+  schema profiles. It will be outsourced to a more appropriate location in the future.
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+is_a: AnalysisDataset
+slot_usage:
+  was_generated_by:
+    name: was_generated_by
+    range: NMRSpectralAnalysis
+    multivalued: true
+    inlined_as_list: true
+  is_about_entity:
+    name: is_about_entity
+    range: ChemicalSample
+class_uri: dcat:Dataset
+
+</code></pre>
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: NMRAnalysisDataset
+description: A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample.
+comments:
+- This class serves as an example for the way in which we want to build domain specific
+  schema profiles. It will be outsourced to a more appropriate location in the future.
+from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+is_a: AnalysisDataset
+slot_usage:
+  was_generated_by:
+    name: was_generated_by
+    range: NMRSpectralAnalysis
+    multivalued: true
+    inlined_as_list: true
+  is_about_entity:
+    name: is_about_entity
+    range: ChemicalSample
+attributes:
+  access_rights:
+    name: access_rights
+    description: Information that indicates whether the Dataset is publicly accessible,
+      has access restrictions or is not public.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:accessRights
+    alias: access_rights
+    owner: NMRAnalysisDataset
+    domain_of:
+    - DataService
+    - Dataset
+    range: RightsStatement
+    required: false
+    multivalued: false
+    inlined_as_list: true
+  applicable_legislation:
+    name: applicable_legislation
+    description: The legislation that mandates the creation or management of the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcatap:applicableLegislation
+    alias: applicable_legislation
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Catalogue
+    - DataService
+    - Dataset
+    - DatasetSeries
+    - Distribution
+    range: LegalResource
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  conforms_to:
+    name: conforms_to
+    description: An implementing rule or other specification.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:conformsTo
+    alias: conforms_to
+    owner: NMRAnalysisDataset
+    domain_of:
+    - DataService
+    - Dataset
+    range: Standard
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  contact_point:
+    name: contact_point
+    description: Contact information that can be used for sending comments about the
+      Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:contactPoint
+    alias: contact_point
+    owner: NMRAnalysisDataset
+    domain_of:
+    - DataService
+    - Dataset
+    - DatasetSeries
+    range: Kind
+    required: false
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  creator:
+    name: creator
+    description: An entity responsible for producing the dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:creator
+    alias: creator
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Catalogue
+    - Dataset
+    range: Agent
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  dataset_distribution:
+    name: dataset_distribution
+    description: An available Distribution for the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:distribution
+    alias: dataset_distribution
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: Distribution
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  description:
+    name: description
+    description: A free-text account of the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Catalogue
+    - CatalogueRecord
+    - DataService
+    - Dataset
+    - DatasetSeries
+    - Distribution
+    - Entity
+    - Plan
+    - QualitativeAttribute
+    - QuantitativeAttribute
+    - Surrounding
+    range: string
+    required: true
+    multivalued: true
+    inlined_as_list: true
+  documentation:
+    name: documentation
+    description: A page or document about this Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: foaf:page
+    alias: documentation
+    owner: NMRAnalysisDataset
+    domain_of:
+    - DataService
+    - Dataset
+    - Distribution
+    range: Document
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  frequency:
+    name: frequency
+    description: The frequency at which the Dataset is updated.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:accrualPeriodicity
+    alias: frequency
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    - DatasetSeries
+    range: Frequency
+    required: false
+    multivalued: false
+    inlined_as_list: false
+  geographical_coverage:
+    name: geographical_coverage
+    description: A geographic region that is covered by the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:spatial
+    alias: geographical_coverage
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Catalogue
+    - Dataset
+    - DatasetSeries
+    range: Location
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  has_version:
+    name: has_version
+    description: A related Dataset that is a version, edition, or adaptation of the
+      described Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:hasVersion
+    alias: has_version
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: Dataset
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  identifier:
+    name: identifier
+    description: The main identifier for the Dataset, e.g. the URI or other unique
+      identifier in the context of the Catalogue.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:identifier
+    alias: identifier
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: string
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  in_series:
+    name: in_series
+    description: A dataset series of which the dataset is part.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:inSeries
+    alias: in_series
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: DatasetSeries
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  is_referenced_by:
+    name: is_referenced_by
+    description: A related resource, such as a publication, that references, cites,
+      or otherwise points to the dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:isReferencedBy
+    alias: is_referenced_by
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: Resource
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  keyword:
+    name: keyword
+    description: A keyword or tag describing the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:keyword
+    alias: keyword
+    owner: NMRAnalysisDataset
+    domain_of:
+    - DataService
+    - Dataset
+    range: string
+    required: false
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  landing_page:
+    name: landing_page
+    description: A web page that provides access to the Dataset, its Distributions
+      and/or additional information.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:landingPage
+    alias: landing_page
+    owner: NMRAnalysisDataset
+    domain_of:
+    - DataService
+    - Dataset
+    range: Document
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  language:
+    name: language
+    description: A language of the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:language
+    alias: language
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Catalogue
+    - CatalogueRecord
+    - Dataset
+    - Distribution
+    range: LinguisticSystem
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  modification_date:
+    name: modification_date
+    description: The most recent date on which the Dataset was changed or modified.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:modified
+    alias: modification_date
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Catalogue
+    - CatalogueRecord
+    - Dataset
+    - DatasetSeries
+    - Distribution
+    range: date
+    required: false
+    multivalued: false
+    inlined_as_list: false
+  other_identifier:
+    name: other_identifier
+    description: A secondary identifier of the Dataset
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: adms:identifier
+    alias: other_identifier
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Dataset
+    - Entity
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  provenance:
+    name: provenance
+    description: A statement about the lineage of a Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:provenance
+    alias: provenance
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: ProvenanceStatement
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  publisher:
+    name: publisher
+    description: An entity (organisation) responsible for making the Dataset available.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:publisher
+    alias: publisher
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Catalogue
+    - DataService
+    - Dataset
+    - DatasetSeries
+    range: Agent
+    required: false
+    multivalued: false
+    inlined_as_list: true
+  qualified_attribution:
+    name: qualified_attribution
+    description: An Agent having some form of responsibility for the resource.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:qualifiedAttribution
+    alias: qualified_attribution
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: Attribution
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  qualified_relation:
+    name: qualified_relation
+    description: A description of a relationship with another resource.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:qualifiedRelation
+    alias: qualified_relation
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: Relationship
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  related_resource:
+    name: related_resource
+    description: A related resource.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:relation
+    alias: related_resource
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: Resource
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  release_date:
+    name: release_date
+    description: The date of formal issuance (e.g., publication) of the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:issued
+    alias: release_date
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Catalogue
+    - Dataset
+    - DatasetSeries
+    - Distribution
+    range: date
+    required: false
+    multivalued: false
+    inlined_as_list: false
+  sample:
+    name: sample
+    description: A sample distribution of the dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: adms:sample
+    alias: sample
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: Distribution
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  source:
+    name: source
+    description: A related Dataset from which the described Dataset is derived.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:source
+    alias: source
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: Dataset
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  spatial_resolution:
+    name: spatial_resolution
+    description: The minimum spatial separation resolvable in a dataset, measured
+      in meters.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:spatialResolutionInMeters
+    alias: spatial_resolution
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    - Distribution
+    range: decimal
+    required: false
+    multivalued: false
+    inlined_as_list: false
+  temporal_coverage:
+    name: temporal_coverage
+    description: A temporal period that the Dataset covers.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:temporal
+    alias: temporal_coverage
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Catalogue
+    - Dataset
+    - DatasetSeries
+    range: PeriodOfTime
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  temporal_resolution:
+    name: temporal_resolution
+    description: The minimum time period resolvable in the dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:temporalResolution
+    alias: temporal_resolution
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    - Distribution
+    range: duration
+    required: false
+    multivalued: false
+    inlined_as_list: true
+  theme:
+    name: theme
+    description: A category of the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:theme
+    alias: theme
+    owner: NMRAnalysisDataset
+    domain_of:
+    - DataService
+    - Dataset
+    range: Concept
+    required: false
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  title:
+    name: title
+    description: A name given to the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:title
+    alias: title
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Catalogue
+    - CatalogueRecord
+    - ConceptScheme
+    - DataService
+    - Dataset
+    - DatasetSeries
+    - DefinedTerm
+    - Distribution
+    - Entity
+    - Plan
+    - QualitativeAttribute
+    - QuantitativeAttribute
+    - Surrounding
+    range: string
+    required: true
+    multivalued: true
+    inlined_as_list: true
+  type:
+    name: type
+    description: A type of the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:type
+    alias: type
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Agent
+    - ClassifierMixin
+    - Dataset
+    - LicenseDocument
+    range: Concept
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  version:
+    name: version
+    description: The version indicator (name or identifier) of a resource.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcat:version
+    alias: version
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: string
+    required: false
+    multivalued: false
+    inlined_as_list: true
+  version_notes:
+    name: version_notes
+    description: A description of the differences between this version and a previous
+      version of the Dataset.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: adms:versionNotes
+    alias: version_notes
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: string
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  was_generated_by:
+    name: was_generated_by
+    description: An activity that generated, or provides the business context for,
+      the creation of the dataset.
+    notes:
+    - stricter than DCAT-AP
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:wasGeneratedBy
+    alias: was_generated_by
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    - EvaluatedEntity
+    range: NMRSpectralAnalysis
+    required: true
+    multivalued: true
+    inlined_as_list: true
+  id:
+    name: id
+    description: A slot to provide an URI for an entity within this schema.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Dataset
+    - DefinedTerm
+    - Entity
+    range: uriorcurie
+  is_about_entity:
+    name: is_about_entity
+    description: A slot to provide the EvaluatedEntity a Dataset is about.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    exact_mappings:
+    - IAO:0000136
+    rank: 1000
+    slot_uri: dcterms:subject
+    alias: is_about_entity
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: ChemicalSample
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  is_about_activity:
+    name: is_about_activity
+    description: A slot to provide the EvaluatedActivity a Dataset is about.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    exact_mappings:
+    - IAO:0000136
+    rank: 1000
+    slot_uri: dcterms:subject
+    alias: is_about_activity
+    owner: NMRAnalysisDataset
+    domain_of:
+    - Dataset
+    range: EvaluatedActivity
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+class_uri: dcat:Dataset
+
+</code></pre>
+</details>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
