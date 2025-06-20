@@ -516,6 +516,7 @@ def build_dcatap_plus():
         activity.notes = ['The specified properties (slots) of this class are part of our extension of the DCAT-AP.']
 
         builder.add_slot(SlotDefinition(name='evaluated_entity',
+                                        is_a='had_input_entity',
                                         slot_uri= 'prov:used',
                                         range= 'EvaluatedEntity',
                                         description= 'The slot to specify the Entity about which the '
@@ -525,6 +526,7 @@ def build_dcatap_plus():
                                         inlined_as_list= True,
                                         in_subset='domain_agnostic_core'))
         builder.add_slot(SlotDefinition(name='evaluated_activity',
+                                        is_a='had_input_activity',
                                         slot_uri= 'prov:wasInformedBy',
                                         range= 'EvaluatedActivity',
                                         description= 'The slot to specify the Activity about which the '

@@ -351,6 +351,7 @@ slots:
       produced information.
     in_subset:
     - domain_agnostic_core
+    is_a: had_input_activity
     slot_uri: prov:wasInformedBy
     range: EvaluatedActivity
     recommended: true
@@ -362,6 +363,7 @@ slots:
       produced information.
     in_subset:
     - domain_agnostic_core
+    is_a: had_input_entity
     slot_uri: prov:used
     range: EvaluatedEntity
     recommended: true
