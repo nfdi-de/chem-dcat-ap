@@ -40,7 +40,7 @@ was_generated_by: # a NMRSpectralAnalysis
           evaluated_entity:
             - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
               title: "CRS-50440"
-          used_instrument:
+          carried_out_by:
             - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool1
               rdf_type:
                 id: OBI:0000566
@@ -81,7 +81,7 @@ was_generated_by: # a NMRSpectralAnalysis
           evaluated_entity:
             - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
               title: "CRS-50440"
-          used_instrument:
+          carried_out_by:
             - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool1
               title: "Bruker 400 MHz"
             - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#Tool3

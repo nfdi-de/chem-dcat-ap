@@ -39,12 +39,13 @@ was_generated_by: # a DataAnalysis
             evaluated_entity:
               - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
                 title: "CRS-50440"
-            used_instrument:
+            carried_out_by:
               - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool1
                 rdf_type:
                   id: OBI:0000566
                   title: "NMR instrument"
                 title: "Bruker 400 MHz"
+                description: 'The NMR spectrometer used.'
                 has_qualitative_attribute:
                   - rdf_type:
                       id: NMR:1400037
@@ -80,7 +81,7 @@ was_generated_by: # a DataAnalysis
             evaluated_entity:
               - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
                 title: "CRS-50440"
-            used_instrument:
+            carried_out_by:
               - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#Tool1
                 title: "Bruker 400 MHz"
               - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#Tool3
