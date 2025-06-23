@@ -213,7 +213,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-quantitativeattribute">Class: QuantitativeAttribute</h1>
-<p><em>A quantifiable piece of information that is attributed to an EvaluatedEntity, Instrument or Surrounding.</em></p>
+<p><em>A quantifiable piece of information that is attributed to an Entity, Activity or AgenticEntity.</em></p>
 <p>URI: <a href="http://qudt.org/schema/qudt/Quantity">qudt:Quantity</a></p>
 <div class="mermaid"> classDiagram
     class QuantitativeAttribute
@@ -336,6 +336,18 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
@@ -360,13 +372,43 @@
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
+<td><a href="../Activity/">Activity</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
 <td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
 <td><a href="../Device/">Device</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../Entity/">Entity</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
@@ -379,12 +421,6 @@
 </tr>
 <tr>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../Instrument/">Instrument</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
@@ -426,8 +462,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: QuantitativeAttribute
-description: A quantifiable piece of information that is attributed to an EvaluatedEntity,
-  Instrument or Surrounding.
+description: A quantifiable piece of information that is attributed to an Entity,
+  Activity or AgenticEntity.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -481,8 +517,8 @@ class_uri: qudt:Quantity
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: QuantitativeAttribute
-description: A quantifiable piece of information that is attributed to an EvaluatedEntity,
-  Instrument or Surrounding.
+description: A quantifiable piece of information that is attributed to an Entity,
+  Activity or AgenticEntity.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -540,6 +576,7 @@ attributes:
     owner: QuantitativeAttribute
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
@@ -548,9 +585,7 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
@@ -567,15 +602,14 @@ attributes:
     owner: QuantitativeAttribute
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute

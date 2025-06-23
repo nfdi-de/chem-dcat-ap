@@ -160,6 +160,11 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+    Usages
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#aliases">
     Aliases
   </a>
@@ -218,8 +223,8 @@
 <div class="mermaid"> classDiagram
     class Device
     click Device href "../Device"
-      Instrument &lt;|-- Device
-        click Instrument href "../Instrument"
+      AgenticEntity &lt;|-- Device
+        click AgenticEntity href "../AgenticEntity"
 
       Device : description
 
@@ -228,8 +233,8 @@
 
 
 
-    Device --&gt; "*" Instrument : has_part
-    click Instrument href "../Instrument"
+    Device --&gt; "*" Device : has_part
+    click Device href "../Device"
 
 
       Device : has_qualitative_attribute
@@ -285,7 +290,7 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Instrument/">Instrument</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../AgenticEntity/">AgenticEntity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><strong>Device</strong></li>
 </ul>
 </li>
@@ -305,43 +310,43 @@
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
 <td>A slot to provide a secondary identifier for a Device</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 <td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
 <td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>* <br/> <a href="../Instrument/">Instrument</a></td>
+<td>* <br/> <a href="./">Device</a></td>
 <td>The slot to specify parts of a Device that are themselves Devices</td>
-<td><a href="../Instrument/">Instrument</a></td>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
@@ -354,6 +359,25 @@
 <td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
 <td>The slot to specify the ontology class that is instantiated by an entity</td>
 <td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./">Device</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Device</a></td>
 </tr>
 </tbody>
 </table>
@@ -407,12 +431,12 @@ exact_mappings:
 - http://purl.obolibrary.org/obo/NCIT_C62103
 - http://semanticscience.org/resource/SIO_000956
 - http://purl.allotrope.org/ontologies/equipment#AFE_0000354
-is_a: Instrument
+is_a: AgenticEntity
 slot_usage:
   has_part:
     name: has_part
     description: The slot to specify parts of a Device that are themselves Devices.
-    range: Instrument
+    range: Device
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -443,12 +467,12 @@ exact_mappings:
 - http://purl.obolibrary.org/obo/NCIT_C62103
 - http://semanticscience.org/resource/SIO_000956
 - http://purl.allotrope.org/ontologies/equipment#AFE_0000354
-is_a: Instrument
+is_a: AgenticEntity
 slot_usage:
   has_part:
     name: has_part
     description: The slot to specify parts of a Device that are themselves Devices.
-    range: Instrument
+    range: Device
     multivalued: true
     inlined: true
     inlined_as_list: true
@@ -472,11 +496,10 @@ attributes:
     owner: Device
     domain_of:
     - Activity
+    - AgenticEntity
     - Dataset
     - DefinedTerm
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     range: uriorcurie
     required: true
   title:
@@ -490,6 +513,7 @@ attributes:
     owner: Device
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
@@ -498,9 +522,7 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
@@ -517,15 +539,14 @@ attributes:
     owner: Device
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
@@ -541,10 +562,9 @@ attributes:
     owner: Device
     domain_of:
     - Activity
+    - AgenticEntity
     - Dataset
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     range: Identifier
     required: false
     multivalued: true
@@ -552,7 +572,7 @@ attributes:
   has_qualitative_attribute:
     name: has_qualitative_attribute
     description: The slot to relate a qualitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
+      EvaluatedActivity or AgenticEntity
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -561,9 +581,10 @@ attributes:
     alias: has_qualitative_attribute
     owner: Device
     domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -572,7 +593,7 @@ attributes:
   has_quantitative_attribute:
     name: has_quantitative_attribute
     description: The slot to relate a quantitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
+      EvaluatedActivity or AgenticEntity
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -581,9 +602,10 @@ attributes:
     alias: has_quantitative_attribute
     owner: Device
     domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -599,11 +621,11 @@ attributes:
     owner: Device
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
-    range: Instrument
+    range: Device
     multivalued: true
     inlined: true
     inlined_as_list: true

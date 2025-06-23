@@ -925,15 +925,14 @@ attributes:
     owner: AnalysisDataset
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
@@ -1125,10 +1124,9 @@ attributes:
     owner: AnalysisDataset
     domain_of:
     - Activity
+    - AgenticEntity
     - Dataset
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     range: Identifier
     required: false
     multivalued: true
@@ -1324,6 +1322,7 @@ attributes:
     owner: AnalysisDataset
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
@@ -1332,9 +1331,7 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
@@ -1419,11 +1416,10 @@ attributes:
     owner: AnalysisDataset
     domain_of:
     - Activity
+    - AgenticEntity
     - Dataset
     - DefinedTerm
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     range: uriorcurie
     required: true
   is_about_entity:

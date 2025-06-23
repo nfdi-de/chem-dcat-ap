@@ -318,13 +318,13 @@
 <td><a href="./">Surrounding</a></td>
 </tr>
 <tr>
-<td><a href="../Activity/">Activity</a></td>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
 <td><a href="../occurred_in/">occurred_in</a></td>
 <td>range</td>
 <td><a href="./">Surrounding</a></td>
 </tr>
 <tr>
-<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
 <td><a href="../occurred_in/">occurred_in</a></td>
 <td>range</td>
 <td><a href="./">Surrounding</a></td>
@@ -396,6 +396,7 @@ attributes:
     owner: Surrounding
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
@@ -404,9 +405,7 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
@@ -423,15 +422,14 @@ attributes:
     owner: Surrounding
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute

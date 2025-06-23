@@ -218,12 +218,21 @@
 <div class="mermaid"> classDiagram
     class DataAnalysis
     click DataAnalysis href "../DataAnalysis"
-      Activity &lt;|-- DataAnalysis
-        click Activity href "../Activity"
+      DataGeneratingActivity &lt;|-- DataAnalysis
+        click DataGeneratingActivity href "../DataGeneratingActivity"
 
 
       DataAnalysis &lt;|-- NMRSpectralAnalysis
         click NMRSpectralAnalysis href "../NMRSpectralAnalysis"
+
+
+      DataAnalysis : carried_out_by
+
+
+
+
+    DataAnalysis --&gt; "* _recommended_" AgenticEntity : carried_out_by
+    click AgenticEntity href "../AgenticEntity"
 
 
       DataAnalysis : description
@@ -246,6 +255,33 @@
     click AnalysisSourceData href "../AnalysisSourceData"
 
 
+      DataAnalysis : had_input_activity
+
+
+
+
+    DataAnalysis --&gt; "* _recommended_" Activity : had_input_activity
+    click Activity href "../Activity"
+
+
+      DataAnalysis : had_input_entity
+
+
+
+
+    DataAnalysis --&gt; "* _recommended_" Entity : had_input_entity
+    click Entity href "../Entity"
+
+
+      DataAnalysis : had_output_entity
+
+
+
+
+    DataAnalysis --&gt; "* _recommended_" Entity : had_output_entity
+    click Entity href "../Entity"
+
+
       DataAnalysis : has_part
 
 
@@ -253,6 +289,24 @@
 
     DataAnalysis --&gt; "0..1" Activity : has_part
     click Activity href "../Activity"
+
+
+      DataAnalysis : has_qualitative_attribute
+
+
+
+
+    DataAnalysis --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
+    click QualitativeAttribute href "../QualitativeAttribute"
+
+
+      DataAnalysis : has_quantitative_attribute
+
+
+
+
+    DataAnalysis --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
+    click QuantitativeAttribute href "../QuantitativeAttribute"
 
 
       DataAnalysis : id
@@ -304,22 +358,16 @@
     click DefinedTerm href "../DefinedTerm"
 
 
-      DataAnalysis : used_instrument
-
-
-
-
-    DataAnalysis --&gt; "* _recommended_" Instrument : used_instrument
-    click Instrument href "../Instrument"
-
-
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Activity/">Activity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../DataGeneratingActivity/">DataGeneratingActivity</a><ul>
 <li><strong>DataAnalysis</strong><ul>
 <li><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -337,6 +385,30 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../evaluated_entity/">evaluated_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>A slot to provide the data that was analysed by the DataAnalysis</td>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+</tr>
+<tr>
+<td><a href="../evaluated_activity/">evaluated_activity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>The slot to specify the Activity about which the DataGeneratingActivity produ...</td>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+</tr>
+<tr>
+<td><a href="../realized_plan/">realized_plan</a></td>
+<td>0..1 <br/> <a href="../Plan/">Plan</a></td>
+<td>The slot to specify the Plan (i</td>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+</tr>
+<tr>
+<td><a href="../occurred_in/">occurred_in</a></td>
+<td>0..1 <br/> <a href="../Surrounding/">Surrounding</a></td>
+<td>The slot to specify the Surrounding in which an Activity took place</td>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+</tr>
+<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema</td>
@@ -344,56 +416,62 @@
 </tr>
 <tr>
 <td><a href="../title/">title</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>This slot is described in more detail within the class in which it is used</td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>The slot to provide a title for the Activity</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>This slot is described in more detail within the class in which it is used</td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>The slot to provide a description for the Activity</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A secondary identifier of the Activity that created the Dataset</td>
-<td><a href="../Activity/">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../evaluated_entity/">evaluated_entity</a></td>
-<td>* <em>recommended</em> <br/> <a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
-<td>A slot to provide the data that was analysed by the DataAnalysis</td>
-<td><a href="../Activity/">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../evaluated_activity/">evaluated_activity</a></td>
-<td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>The slot to provide the EvaluatedActivity evaluated by an Activity</td>
-<td><a href="../Activity/">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../used_instrument/">used_instrument</a></td>
-<td>* <em>recommended</em> <br/> <a href="../Instrument/">Instrument</a></td>
-<td>The slot to specify the Instruments that were used in the data generating Act...</td>
-<td><a href="../Activity/">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../realized_plan/">realized_plan</a></td>
-<td>0..1 <br/> <a href="../Plan/">Plan</a></td>
-<td>The slot to specify the Plan (aka procedure) that was realized by an Activity</td>
+<td>The slot to provide a secondary identifier of the Activity</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
 <td>0..1 <br/> <a href="../Activity/">Activity</a></td>
-<td>A slot to provide an Activity that is part of the Activity that created the D...</td>
+<td>The slot to provide an Activity that is part of the Activity</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
-<td><a href="../occurred_in/">occurred_in</a></td>
-<td>0..1 <br/> <a href="../Surrounding/">Surrounding</a></td>
-<td>The slot to specify the Surrounding in which an Activity took place</td>
+<td><a href="../had_input_entity/">had_input_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Entity/">Entity</a></td>
+<td>The slot to specify the Entity that was used as an input of an Activity that ...</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../had_output_entity/">had_output_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Entity/">Entity</a></td>
+<td>The slot to specify the Entity that was generated as an output of an Activity</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../had_input_activity/">had_input_activity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Activity/">Activity</a></td>
+<td>The slot to provide a previous Activity that informed the Activity by being c...</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../carried_out_by/">carried_out_by</a></td>
+<td>* <em>recommended</em> <br/> <a href="../AgenticEntity/">AgenticEntity</a></td>
+<td>The slot to specify the AgenticEntity that played a certain part in carrying ...</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
+<td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
@@ -474,7 +552,7 @@ exact_mappings:
 - OBI:0200000
 close_mappings:
 - NCIT:C25391
-is_a: Activity
+is_a: DataGeneratingActivity
 slot_usage:
   evaluated_entity:
     name: evaluated_entity
@@ -497,7 +575,7 @@ exact_mappings:
 - OBI:0200000
 close_mappings:
 - NCIT:C25391
-is_a: Activity
+is_a: DataGeneratingActivity
 slot_usage:
   evaluated_entity:
     name: evaluated_entity
@@ -506,6 +584,70 @@ slot_usage:
     multivalued: true
     inlined_as_list: true
 attributes:
+  evaluated_entity:
+    name: evaluated_entity
+    description: A slot to provide the data that was analysed by the DataAnalysis.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    is_a: had_input_entity
+    slot_uri: prov:used
+    alias: evaluated_entity
+    owner: DataAnalysis
+    domain_of:
+    - DataGeneratingActivity
+    range: AnalysisSourceData
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  evaluated_activity:
+    name: evaluated_activity
+    description: The slot to specify the Activity about which the DataGeneratingActivity
+      produced information.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    is_a: had_input_activity
+    slot_uri: prov:wasInformedBy
+    alias: evaluated_activity
+    owner: DataAnalysis
+    domain_of:
+    - DataGeneratingActivity
+    range: EvaluatedActivity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  realized_plan:
+    name: realized_plan
+    description: The slot to specify the Plan (i.e. directive information or procedure)
+      that was realized by an Activity.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:used
+    alias: realized_plan
+    owner: DataAnalysis
+    domain_of:
+    - DataGeneratingActivity
+    range: Plan
+  occurred_in:
+    name: occurred_in
+    description: The slot to specify the Surrounding in which an Activity took place.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:atLocation
+    alias: occurred_in
+    owner: DataAnalysis
+    domain_of:
+    - DataGeneratingActivity
+    range: Surrounding
   id:
     name: id
     description: A slot to provide an URI for an entity within this schema.
@@ -518,17 +660,17 @@ attributes:
     owner: DataAnalysis
     domain_of:
     - Activity
+    - AgenticEntity
     - Dataset
     - DefinedTerm
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     range: uriorcurie
     required: true
   title:
     name: title
-    description: This slot is described in more detail within the class in which it
-      is used.
+    description: The slot to provide a title for the Activity.
+    notes:
+    - not in DCAT-AP
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:title
@@ -536,6 +678,7 @@ attributes:
     owner: DataAnalysis
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
@@ -544,18 +687,19 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
     - Surrounding
     range: string
+    multivalued: true
+    inlined_as_list: true
   description:
     name: description
-    description: This slot is described in more detail within the class in which it
-      is used.
+    description: The slot to provide a description for the Activity.
+    notes:
+    - not in DCAT-AP
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:description
@@ -563,23 +707,24 @@ attributes:
     owner: DataAnalysis
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
     - Surrounding
     range: string
+    multivalued: true
+    inlined_as_list: true
   other_identifier:
     name: other_identifier
-    description: A secondary identifier of the Activity that created the Dataset.
+    description: The slot to provide a secondary identifier of the Activity.
     notes:
     - not in DCAT-AP
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -589,83 +734,15 @@ attributes:
     owner: DataAnalysis
     domain_of:
     - Activity
+    - AgenticEntity
     - Dataset
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     range: Identifier
     multivalued: true
     inlined_as_list: true
-  evaluated_entity:
-    name: evaluated_entity
-    description: A slot to provide the data that was analysed by the DataAnalysis.
-    in_subset:
-    - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: prov:used
-    alias: evaluated_entity
-    owner: DataAnalysis
-    domain_of:
-    - Activity
-    range: AnalysisSourceData
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  evaluated_activity:
-    name: evaluated_activity
-    description: The slot to provide the EvaluatedActivity evaluated by an Activity.
-    in_subset:
-    - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: prov:wasInformedBy
-    alias: evaluated_activity
-    owner: DataAnalysis
-    domain_of:
-    - Activity
-    range: EvaluatedActivity
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  used_instrument:
-    name: used_instrument
-    description: The slot to specify the Instruments that were used in the data generating
-      Activity.
-    in_subset:
-    - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: prov:wasAssociatedWith
-    alias: used_instrument
-    owner: DataAnalysis
-    domain_of:
-    - Activity
-    range: Instrument
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  realized_plan:
-    name: realized_plan
-    description: The slot to specify the Plan (aka procedure) that was realized by
-      an Activity.
-    in_subset:
-    - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: prov:used
-    alias: realized_plan
-    owner: DataAnalysis
-    domain_of:
-    - Activity
-    range: Plan
   has_part:
     name: has_part
-    description: A slot to provide an Activity that is part of the Activity that created
-      the Dataset.
+    description: The slot to provide an Activity that is part of the Activity.
     notes:
     - not in DCAT-AP
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -675,25 +752,139 @@ attributes:
     owner: DataAnalysis
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
     range: Activity
     inlined: true
-  occurred_in:
-    name: occurred_in
-    description: The slot to specify the Surrounding in which an Activity took place.
+  had_input_entity:
+    name: had_input_entity
+    description: The slot to specify the Entity that was used as an input of an Activity
+      that is to be changed, consumed or transformed.
+    notes:
+    - not in DCAT-AP
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
-    slot_uri: prov:atLocation
-    alias: occurred_in
+    slot_uri: prov:used
+    alias: had_input_entity
     owner: DataAnalysis
     domain_of:
     - Activity
-    range: Surrounding
+    range: Entity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  had_output_entity:
+    name: had_output_entity
+    description: The slot to specify the Entity that was generated as an output of
+      an Activity.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:generated
+    alias: had_output_entity
+    owner: DataAnalysis
+    domain_of:
+    - Activity
+    range: Entity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  had_input_activity:
+    name: had_input_activity
+    description: The slot to provide a previous Activity that informed the Activity
+      by being causally via a shared participant.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:wasInformedBy
+    alias: had_input_activity
+    owner: DataAnalysis
+    domain_of:
+    - Activity
+    range: Activity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  carried_out_by:
+    name: carried_out_by
+    description: The slot to specify the AgenticEntity that played a certain part
+      in carrying out the Activity, either via having a specific role, function or
+      disposition that was realized in the Activity.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:wasAssociatedWith
+    alias: carried_out_by
+    owner: DataAnalysis
+    domain_of:
+    - Activity
+    range: AgenticEntity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  has_qualitative_attribute:
+    name: has_qualitative_attribute
+    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or AgenticEntity
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:relation
+    alias: has_qualitative_attribute
+    owner: DataAnalysis
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    - EvaluatedActivity
+    range: QualitativeAttribute
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  has_quantitative_attribute:
+    name: has_quantitative_attribute
+    description: The slot to relate a quantitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or AgenticEntity
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:relation
+    alias: has_quantitative_attribute
+    owner: DataAnalysis
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    - EvaluatedActivity
+    range: QuantitativeAttribute
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   type:
     name: type
     description: This slot is described in more detail within the class in which it

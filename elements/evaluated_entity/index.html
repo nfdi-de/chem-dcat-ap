@@ -277,6 +277,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    Inheritance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     Applicable Classes
   </a>
@@ -345,10 +352,15 @@
 
 
 <h1 id="slot-evaluated_entity">Slot: evaluated_entity</h1>
-<p><em>The slot to provide the EvaluatedEntity evaluated by an Activity.</em></p>
+<p><em>The slot to specify the Entity about which the DataGeneratingActivity produced information.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#used">prov:used</a></p>
-<!-- no inheritance hierarchy -->
-
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../had_input_entity/">had_input_entity</a><ul>
+<li><strong>evaluated_entity</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -360,9 +372,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>An activity (process) that has the objective to produce information about an ...</td>
-<td>no</td>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td>An Activity that evaluates the data produced by another Activity</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
@@ -370,14 +382,14 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../DataAnalysis/">DataAnalysis</a></td>
-<td>An Activity that evaluates the data produced by another Activity</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
 <td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+<td>An Activity (process) that has the objective to produce information (in form ...</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -421,15 +433,17 @@
 <details>
 
 <pre><code class="language-yaml">name: evaluated_entity
-description: The slot to provide the EvaluatedEntity evaluated by an Activity.
+description: The slot to specify the Entity about which the DataGeneratingActivity
+  produced information.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 rank: 1000
+is_a: had_input_entity
 slot_uri: prov:used
 alias: evaluated_entity
 domain_of:
-- Activity
+- DataGeneratingActivity
 range: EvaluatedEntity
 recommended: true
 multivalued: true

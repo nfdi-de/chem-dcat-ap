@@ -360,18 +360,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../ChemicalSample/">ChemicalSample</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>An activity (process) that has the objective to produce information about an ...</td>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or proces that is being evaluated in a DataGeneratingActivity</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -380,13 +375,53 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td>A portion of matter of constant composition, composed of molecular entities o...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+<td>An Activity (process) that has the objective to produce information (in form ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Software/">Software</a></td>
+<td>An instrument composed of a series of instructions that can be interpreted by...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>Information that was evaluated within a DataAnalysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>An Entity that is being evaluated in a DataGeneratingActivity</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Activity/">Activity</a></td>
+<td>See [DCAT-AP specs:Activity](https://semiceu</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td>An Activity that evaluates the data produced by another Activity</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td>An experimental procedure with the aim of producing a portion of a given comp...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Instrument/">Instrument</a></td>
-<td>An entity that is actively used within an Activity as a means to achieve the ...</td>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
+<td>An entity that is somehow responsible for an Activity to take place</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -400,38 +435,13 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Software/">Software</a></td>
-<td>An instrument composed of a series of instructions that can be interpreted by...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A portion of matter of constant composition, composed of molecular entities o...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataAnalysis/">DataAnalysis</a></td>
-<td>An Activity that evaluates the data produced by another Activity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
-<td>Information that was evaluated within a DataAnalysis</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
 <td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>An activity or proces that is being evaluated in a Activity</td>
+<td><a href="../Entity/">Entity</a></td>
+<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -476,10 +486,10 @@ slot_uri: dcterms:hasPart
 alias: has_part
 domain_of:
 - Activity
+- AgenticEntity
 - Catalogue
+- Entity
 - EvaluatedActivity
-- EvaluatedEntity
-- Instrument
 range: string
 
 </code></pre>

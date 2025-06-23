@@ -299,9 +299,12 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../EvaluatedEntity/">EvaluatedEntity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../Entity/">Entity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../EvaluatedEntity/">EvaluatedEntity</a><ul>
 <li><a href="../AnalysisSourceData/">AnalysisSourceData</a><ul>
 <li><strong>NMRSpectrum</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -319,52 +322,52 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
+<td>* <br/> <a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td>A slot to provide the Activity which created the AnalysisSourceData</td>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+</tr>
+<tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>The slot to provide a title for the EvaluatedEntity</td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-</tr>
-<tr>
-<td><a href="../other_identifier/">other_identifier</a></td>
-<td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A slot to provide a secondary identifier of the EvaluatedEntity</td>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>The slot to provide a description for the EvaluatedEntity</td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema</td>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../other_identifier/">other_identifier</a></td>
+<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>A slot to provide a secondary identifier of the EvaluatedEntity</td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 <td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
 <td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
 <td>* <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 <td>A slot to provide a part of the EvaluatedEntity</td>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-</tr>
-<tr>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>* <br/> <a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td>A slot to provide the Activity which created the AnalysisSourceData</td>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
@@ -464,10 +467,23 @@ slot_usage:
     multivalued: true
     inlined_as_list: true
 attributes:
+  was_generated_by:
+    name: was_generated_by
+    description: A slot to provide the Activity which created the AnalysisSourceData.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:wasGeneratedBy
+    alias: was_generated_by
+    owner: NMRSpectrum
+    domain_of:
+    - Dataset
+    - EvaluatedEntity
+    range: NMRSpectroscopy
+    multivalued: true
+    inlined_as_list: true
   title:
     name: title
-    description: This slot is described in more detail within the class in which it
-      is used.
+    description: The slot to provide a title for the EvaluatedEntity.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:title
@@ -475,6 +491,7 @@ attributes:
     owner: NMRSpectrum
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
@@ -483,9 +500,7 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
@@ -493,8 +508,7 @@ attributes:
     range: string
   description:
     name: description
-    description: This slot is described in more detail within the class in which it
-      is used.
+    description: The slot to provide a description for the EvaluatedEntity.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:description
@@ -502,38 +516,19 @@ attributes:
     owner: NMRSpectrum
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
     - Surrounding
     range: string
-  other_identifier:
-    name: other_identifier
-    description: A slot to provide a secondary identifier of the EvaluatedEntity.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: adms:identifier
-    alias: other_identifier
-    owner: NMRSpectrum
-    domain_of:
-    - Activity
-    - Dataset
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
-    range: Identifier
-    required: false
-    multivalued: true
-    inlined_as_list: true
   id:
     name: id
     description: A slot to provide an URI for an entity within this schema.
@@ -546,17 +541,33 @@ attributes:
     owner: NMRSpectrum
     domain_of:
     - Activity
+    - AgenticEntity
     - Dataset
     - DefinedTerm
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     range: uriorcurie
     required: true
+  other_identifier:
+    name: other_identifier
+    description: A slot to provide a secondary identifier of the EvaluatedEntity.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: adms:identifier
+    alias: other_identifier
+    owner: NMRSpectrum
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Dataset
+    - Entity
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
   has_qualitative_attribute:
     name: has_qualitative_attribute
     description: The slot to relate a qualitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
+      EvaluatedActivity or AgenticEntity
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -565,9 +576,10 @@ attributes:
     alias: has_qualitative_attribute
     owner: NMRSpectrum
     domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -576,7 +588,7 @@ attributes:
   has_quantitative_attribute:
     name: has_quantitative_attribute
     description: The slot to relate a quantitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
+      EvaluatedActivity or AgenticEntity
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -585,9 +597,10 @@ attributes:
     alias: has_quantitative_attribute
     owner: NMRSpectrum
     domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -603,25 +616,11 @@ attributes:
     owner: NMRSpectrum
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
     range: EvaluatedEntity
-    multivalued: true
-    inlined_as_list: true
-  was_generated_by:
-    name: was_generated_by
-    description: A slot to provide the Activity which created the AnalysisSourceData.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: prov:wasGeneratedBy
-    alias: was_generated_by
-    owner: NMRSpectrum
-    domain_of:
-    - Dataset
-    - EvaluatedEntity
-    range: NMRSpectroscopy
     multivalued: true
     inlined_as_list: true
   type:

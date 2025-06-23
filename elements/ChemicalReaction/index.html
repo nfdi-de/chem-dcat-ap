@@ -216,7 +216,43 @@
       EvaluatedActivity &lt;|-- ChemicalReaction
         click EvaluatedActivity href "../EvaluatedActivity"
 
+      ChemicalReaction : carried_out_by
+
+
+
+
+    ChemicalReaction --&gt; "* _recommended_" AgenticEntity : carried_out_by
+    click AgenticEntity href "../AgenticEntity"
+
+
       ChemicalReaction : description
+
+      ChemicalReaction : had_input_activity
+
+
+
+
+    ChemicalReaction --&gt; "* _recommended_" Activity : had_input_activity
+    click Activity href "../Activity"
+
+
+      ChemicalReaction : had_input_entity
+
+
+
+
+    ChemicalReaction --&gt; "* _recommended_" Entity : had_input_entity
+    click Entity href "../Entity"
+
+
+      ChemicalReaction : had_output_entity
+
+
+
+
+    ChemicalReaction --&gt; "* _recommended_" Entity : had_output_entity
+    click Entity href "../Entity"
+
 
       ChemicalReaction : has_part
 
@@ -280,8 +316,11 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../EvaluatedActivity/">EvaluatedActivity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../Activity/">Activity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../EvaluatedActivity/">EvaluatedActivity</a><ul>
 <li><strong>ChemicalReaction</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -297,46 +336,70 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../title/">title</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>This slot is described in more detail within the class in which it is used</td>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-</tr>
-<tr>
-<td><a href="../other_identifier/">other_identifier</a></td>
-<td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A slot to provide a secondary identifier of the EvaluatedActivity</td>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-</tr>
-<tr>
-<td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A slot to provide an URI for an entity within this schema</td>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-</tr>
-<tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 <td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a>, <a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
 <td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a>, <a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
 <td>* <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
 <td>A slot to provide a part of the EvaluatedActivity</td>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a>, <a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A slot to provide an URI for an entity within this schema</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../title/">title</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>The slot to provide a title for the Activity</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>The slot to provide a description for the Activity</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../other_identifier/">other_identifier</a></td>
+<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>A slot to provide a secondary identifier of the EvaluatedActivity</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../had_input_entity/">had_input_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Entity/">Entity</a></td>
+<td>The slot to specify the Entity that was used as an input of an Activity that ...</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../had_output_entity/">had_output_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Entity/">Entity</a></td>
+<td>The slot to specify the Entity that was generated as an output of an Activity</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../had_input_activity/">had_input_activity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Activity/">Activity</a></td>
+<td>The slot to provide a previous Activity that informed the Activity by being c...</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../carried_out_by/">carried_out_by</a></td>
+<td>* <em>recommended</em> <br/> <a href="../AgenticEntity/">AgenticEntity</a></td>
+<td>The slot to specify the AgenticEntity that played a certain part in carrying ...</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
@@ -397,75 +460,71 @@ description: An experimental procedure with the aim of producing a portion of a 
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
 is_a: EvaluatedActivity
 attributes:
-  title:
-    name: title
-    description: This slot is described in more detail within the class in which it
-      is used.
+  has_qualitative_attribute:
+    name: has_qualitative_attribute
+    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or AgenticEntity
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
-    slot_uri: dcterms:title
-    alias: title
+    slot_uri: dcterms:relation
+    alias: has_qualitative_attribute
     owner: ChemicalReaction
     domain_of:
     - Activity
-    - Catalogue
-    - CatalogueRecord
-    - ConceptScheme
-    - DataService
-    - Dataset
-    - DatasetSeries
-    - DefinedTerm
-    - Distribution
+    - AgenticEntity
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
-    - Plan
-    - QualitativeAttribute
-    - QuantitativeAttribute
-    - Surrounding
-    range: string
-  description:
-    name: description
-    description: This slot is described in more detail within the class in which it
-      is used.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: dcterms:description
-    alias: description
-    owner: ChemicalReaction
-    domain_of:
-    - Activity
-    - Catalogue
-    - CatalogueRecord
-    - DataService
-    - Dataset
-    - DatasetSeries
-    - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
-    - Plan
-    - QualitativeAttribute
-    - QuantitativeAttribute
-    - Surrounding
-    range: string
-  other_identifier:
-    name: other_identifier
-    description: A slot to provide a secondary identifier of the EvaluatedActivity.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: adms:identifier
-    alias: other_identifier
-    owner: ChemicalReaction
-    domain_of:
-    - Activity
-    - Dataset
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
-    range: Identifier
-    required: false
+    range: QualitativeAttribute
+    recommended: true
     multivalued: true
+    inlined: true
+    inlined_as_list: true
+  has_quantitative_attribute:
+    name: has_quantitative_attribute
+    description: The slot to relate a quantitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or AgenticEntity
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:relation
+    alias: has_quantitative_attribute
+    owner: ChemicalReaction
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    - EvaluatedActivity
+    range: QuantitativeAttribute
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  has_part:
+    name: has_part
+    description: A slot to provide a part of the EvaluatedActivity.
+    notes:
+    - not in DCAT-AP
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:hasPart
+    alias: has_part
+    owner: ChemicalReaction
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Catalogue
+    - Entity
+    - EvaluatedActivity
+    range: EvaluatedActivity
+    multivalued: true
+    inlined: true
     inlined_as_list: true
   id:
     name: id
@@ -479,69 +538,167 @@ attributes:
     owner: ChemicalReaction
     domain_of:
     - Activity
+    - AgenticEntity
     - Dataset
     - DefinedTerm
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     range: uriorcurie
     required: true
-  has_qualitative_attribute:
-    name: has_qualitative_attribute
-    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
-    in_subset:
-    - domain_agnostic_core
+  title:
+    name: title
+    description: The slot to provide a title for the Activity.
+    notes:
+    - not in DCAT-AP
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
-    slot_uri: dcterms:relation
-    alias: has_qualitative_attribute
-    owner: ChemicalReaction
-    domain_of:
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
-    range: QualitativeAttribute
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  has_quantitative_attribute:
-    name: has_quantitative_attribute
-    description: The slot to relate a quantitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
-    in_subset:
-    - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: dcterms:relation
-    alias: has_quantitative_attribute
-    owner: ChemicalReaction
-    domain_of:
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
-    range: QuantitativeAttribute
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  has_part:
-    name: has_part
-    description: A slot to provide a part of the EvaluatedActivity.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: dcterms:hasPart
-    alias: has_part
+    slot_uri: dcterms:title
+    alias: title
     owner: ChemicalReaction
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
-    range: EvaluatedActivity
+    - CatalogueRecord
+    - ConceptScheme
+    - DataService
+    - Dataset
+    - DatasetSeries
+    - DefinedTerm
+    - Distribution
+    - Entity
+    - Plan
+    - QualitativeAttribute
+    - QuantitativeAttribute
+    - Surrounding
+    range: string
     multivalued: true
+    inlined_as_list: true
+  description:
+    name: description
+    description: The slot to provide a description for the Activity.
+    notes:
+    - not in DCAT-AP
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: ChemicalReaction
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Catalogue
+    - CatalogueRecord
+    - DataService
+    - Dataset
+    - DatasetSeries
+    - Distribution
+    - Entity
+    - Plan
+    - QualitativeAttribute
+    - QuantitativeAttribute
+    - Surrounding
+    range: string
+    multivalued: true
+    inlined_as_list: true
+  other_identifier:
+    name: other_identifier
+    description: A slot to provide a secondary identifier of the EvaluatedActivity.
+    notes:
+    - not in DCAT-AP
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: adms:identifier
+    alias: other_identifier
+    owner: ChemicalReaction
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Dataset
+    - Entity
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
+  had_input_entity:
+    name: had_input_entity
+    description: The slot to specify the Entity that was used as an input of an Activity
+      that is to be changed, consumed or transformed.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:used
+    alias: had_input_entity
+    owner: ChemicalReaction
+    domain_of:
+    - Activity
+    range: Entity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  had_output_entity:
+    name: had_output_entity
+    description: The slot to specify the Entity that was generated as an output of
+      an Activity.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:generated
+    alias: had_output_entity
+    owner: ChemicalReaction
+    domain_of:
+    - Activity
+    range: Entity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  had_input_activity:
+    name: had_input_activity
+    description: The slot to provide a previous Activity that informed the Activity
+      by being causally via a shared participant.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:wasInformedBy
+    alias: had_input_activity
+    owner: ChemicalReaction
+    domain_of:
+    - Activity
+    range: Activity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  carried_out_by:
+    name: carried_out_by
+    description: The slot to specify the AgenticEntity that played a certain part
+      in carrying out the Activity, either via having a specific role, function or
+      disposition that was realized in the Activity.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:wasAssociatedWith
+    alias: carried_out_by
+    owner: ChemicalReaction
+    domain_of:
+    - Activity
+    range: AgenticEntity
+    recommended: true
+    multivalued: true
+    inlined: true
     inlined_as_list: true
   type:
     name: type

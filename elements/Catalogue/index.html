@@ -958,15 +958,14 @@ attributes:
     owner: Catalogue
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
@@ -1015,10 +1014,10 @@ attributes:
     owner: Catalogue
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
     range: Catalogue
     required: false
     multivalued: true
@@ -1212,6 +1211,7 @@ attributes:
     owner: Catalogue
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
@@ -1220,9 +1220,7 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute

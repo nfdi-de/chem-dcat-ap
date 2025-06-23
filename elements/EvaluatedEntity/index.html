@@ -213,13 +213,13 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-evaluatedentity">Class: EvaluatedEntity</h1>
-<p><em>A physical, digital, conceptual, or other kind of thing with some fixed aspects that is not an activity or process and that is being evaluated in a Activity.</em></p>
+<p><em>An Entity that is being evaluated in a DataGeneratingActivity.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#Entity">prov:Entity</a></p>
 <div class="mermaid"> classDiagram
     class EvaluatedEntity
     click EvaluatedEntity href "../EvaluatedEntity"
-      ClassifierMixin &lt;|-- EvaluatedEntity
-        click ClassifierMixin href "../ClassifierMixin"
+      Entity &lt;|-- EvaluatedEntity
+        click Entity href "../Entity"
 
 
       EvaluatedEntity &lt;|-- ChemicalSubstance
@@ -301,9 +301,12 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>EvaluatedEntity</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../Entity/">Entity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><strong>EvaluatedEntity</strong><ul>
 <li><a href="../ChemicalSubstance/">ChemicalSubstance</a></li>
 <li><a href="../AnalysisSourceData/">AnalysisSourceData</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -319,52 +322,52 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
+<td>* <br/> <a href="../Activity/">Activity</a></td>
+<td>A slot to provide the Activity which created the EvaluatedEntity</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>This slot is described in more detail within the class in which it is used</td>
-<td>direct</td>
+<td>The slot to provide a title for the EvaluatedEntity</td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>This slot is described in more detail within the class in which it is used</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../other_identifier/">other_identifier</a></td>
-<td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A slot to provide a secondary identifier of the EvaluatedEntity</td>
-<td>direct</td>
+<td>The slot to provide a description for the EvaluatedEntity</td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema</td>
-<td>direct</td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../other_identifier/">other_identifier</a></td>
+<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>A slot to provide a secondary identifier of the EvaluatedEntity</td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 <td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
-<td>direct</td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
 <td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
-<td>direct</td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
 <td>* <br/> <a href="./">EvaluatedEntity</a></td>
 <td>A slot to provide a part of the EvaluatedEntity</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>* <br/> <a href="../Activity/">Activity</a></td>
-<td>A slot to provide the Activity which created the EvaluatedEntity</td>
-<td>direct</td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
@@ -410,12 +413,6 @@
 <td><a href="./">EvaluatedEntity</a></td>
 </tr>
 <tr>
-<td><a href="../Activity/">Activity</a></td>
-<td><a href="../evaluated_entity/">evaluated_entity</a></td>
-<td>range</td>
-<td><a href="./">EvaluatedEntity</a></td>
-</tr>
-<tr>
 <td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
 <td><a href="../is_about_entity/">is_about_entity</a></td>
 <td>range</td>
@@ -424,6 +421,12 @@
 <tr>
 <td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
 <td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">EvaluatedEntity</a></td>
+</tr>
+<tr>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+<td><a href="../evaluated_entity/">evaluated_entity</a></td>
 <td>range</td>
 <td><a href="./">EvaluatedEntity</a></td>
 </tr>
@@ -470,23 +473,20 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: EvaluatedEntity
-description: A physical, digital, conceptual, or other kind of thing with some fixed
-  aspects that is not an activity or process and that is being evaluated in a Activity.
+description: An Entity that is being evaluated in a DataGeneratingActivity.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-mixins:
-- ClassifierMixin
+is_a: Entity
 slots:
-- title
-- description
-- other_identifier
-- id
-- has_qualitative_attribute
-- has_quantitative_attribute
-- has_part
 - was_generated_by
 slot_usage:
+  title:
+    name: title
+    description: The slot to provide a title for the EvaluatedEntity.
+  description:
+    name: description
+    description: The slot to provide a description for the EvaluatedEntity.
   was_generated_by:
     name: was_generated_by
     description: A slot to provide the Activity which created the EvaluatedEntity.
@@ -513,14 +513,18 @@ class_uri: prov:Entity
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: EvaluatedEntity
-description: A physical, digital, conceptual, or other kind of thing with some fixed
-  aspects that is not an activity or process and that is being evaluated in a Activity.
+description: An Entity that is being evaluated in a DataGeneratingActivity.
 in_subset:
 - domain_agnostic_core
 from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-mixins:
-- ClassifierMixin
+is_a: Entity
 slot_usage:
+  title:
+    name: title
+    description: The slot to provide a title for the EvaluatedEntity.
+  description:
+    name: description
+    description: The slot to provide a description for the EvaluatedEntity.
   was_generated_by:
     name: was_generated_by
     description: A slot to provide the Activity which created the EvaluatedEntity.
@@ -541,10 +545,23 @@ slot_usage:
     multivalued: true
     inlined_as_list: true
 attributes:
+  was_generated_by:
+    name: was_generated_by
+    description: A slot to provide the Activity which created the EvaluatedEntity.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: prov:wasGeneratedBy
+    alias: was_generated_by
+    owner: EvaluatedEntity
+    domain_of:
+    - Dataset
+    - EvaluatedEntity
+    range: Activity
+    multivalued: true
+    inlined_as_list: true
   title:
     name: title
-    description: This slot is described in more detail within the class in which it
-      is used.
+    description: The slot to provide a title for the EvaluatedEntity.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:title
@@ -552,6 +569,7 @@ attributes:
     owner: EvaluatedEntity
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - ConceptScheme
@@ -560,9 +578,7 @@ attributes:
     - DatasetSeries
     - DefinedTerm
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
@@ -570,8 +586,7 @@ attributes:
     range: string
   description:
     name: description
-    description: This slot is described in more detail within the class in which it
-      is used.
+    description: The slot to provide a description for the EvaluatedEntity.
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
     rank: 1000
     slot_uri: dcterms:description
@@ -579,38 +594,19 @@ attributes:
     owner: EvaluatedEntity
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
     - CatalogueRecord
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     - Plan
     - QualitativeAttribute
     - QuantitativeAttribute
     - Surrounding
     range: string
-  other_identifier:
-    name: other_identifier
-    description: A slot to provide a secondary identifier of the EvaluatedEntity.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: adms:identifier
-    alias: other_identifier
-    owner: EvaluatedEntity
-    domain_of:
-    - Activity
-    - Dataset
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
-    range: Identifier
-    required: false
-    multivalued: true
-    inlined_as_list: true
   id:
     name: id
     description: A slot to provide an URI for an entity within this schema.
@@ -623,17 +619,33 @@ attributes:
     owner: EvaluatedEntity
     domain_of:
     - Activity
+    - AgenticEntity
     - Dataset
     - DefinedTerm
-    - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
+    - Entity
     range: uriorcurie
     required: true
+  other_identifier:
+    name: other_identifier
+    description: A slot to provide a secondary identifier of the EvaluatedEntity.
+    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    rank: 1000
+    slot_uri: adms:identifier
+    alias: other_identifier
+    owner: EvaluatedEntity
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Dataset
+    - Entity
+    range: Identifier
+    required: false
+    multivalued: true
+    inlined_as_list: true
   has_qualitative_attribute:
     name: has_qualitative_attribute
     description: The slot to relate a qualitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
+      EvaluatedActivity or AgenticEntity
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -642,9 +654,10 @@ attributes:
     alias: has_qualitative_attribute
     owner: EvaluatedEntity
     domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -653,7 +666,7 @@ attributes:
   has_quantitative_attribute:
     name: has_quantitative_attribute
     description: The slot to relate a quantitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
+      EvaluatedActivity or AgenticEntity
     in_subset:
     - domain_agnostic_core
     from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
@@ -662,9 +675,10 @@ attributes:
     alias: has_quantitative_attribute
     owner: EvaluatedEntity
     domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -680,25 +694,11 @@ attributes:
     owner: EvaluatedEntity
     domain_of:
     - Activity
+    - AgenticEntity
     - Catalogue
+    - Entity
     - EvaluatedActivity
-    - EvaluatedEntity
-    - Instrument
     range: EvaluatedEntity
-    multivalued: true
-    inlined_as_list: true
-  was_generated_by:
-    name: was_generated_by
-    description: A slot to provide the Activity which created the EvaluatedEntity.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
-    rank: 1000
-    slot_uri: prov:wasGeneratedBy
-    alias: was_generated_by
-    owner: EvaluatedEntity
-    domain_of:
-    - Dataset
-    - EvaluatedEntity
-    range: Activity
     multivalued: true
     inlined_as_list: true
   type:

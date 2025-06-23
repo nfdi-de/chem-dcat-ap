@@ -248,6 +248,18 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: dcat:byteSize
+  carried_out_by:
+    name: carried_out_by
+    description: The slot to specify the AgenticEntity that played a certain part
+      in carrying out the Activity, either via having a specific role, function or
+      disposition that was realized in the Activity.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: prov:wasAssociatedWith
+    range: AgenticEntity
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
   catalogue:
     name: catalogue
     description: This slot is described in more detail within the class in which it
@@ -335,9 +347,11 @@ slots:
     slot_uri: dcat:endpointDescription
   evaluated_activity:
     name: evaluated_activity
-    description: The slot to provide the EvaluatedActivity evaluated by an Activity.
+    description: The slot to specify the Activity about which the DataGeneratingActivity
+      produced information.
     in_subset:
     - domain_agnostic_core
+    is_a: had_input_activity
     slot_uri: prov:wasInformedBy
     range: EvaluatedActivity
     recommended: true
@@ -345,9 +359,11 @@ slots:
     inlined_as_list: true
   evaluated_entity:
     name: evaluated_entity
-    description: The slot to provide the EvaluatedEntity evaluated by an Activity.
+    description: The slot to specify the Entity about which the DataGeneratingActivity
+      produced information.
     in_subset:
     - domain_agnostic_core
+    is_a: had_input_entity
     slot_uri: prov:used
     range: EvaluatedEntity
     recommended: true
@@ -373,6 +389,39 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: locn:geometry
+  had_input_activity:
+    name: had_input_activity
+    description: The slot to provide a previous Activity that informed the Activity
+      by being causally via a shared participant.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: prov:wasInformedBy
+    range: Activity
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  had_input_entity:
+    name: had_input_entity
+    description: The slot to specify the Entity that was used as an input of an Activity
+      that is to be changed, consumed or transformed.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: prov:used
+    range: Entity
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  had_output_entity:
+    name: had_output_entity
+    description: The slot to specify the Entity that was generated as an output of
+      an Activity.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: prov:generated
+    range: Entity
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
   had_role:
     name: had_role
     description: This slot is described in more detail within the class in which it
@@ -396,7 +445,7 @@ slots:
   has_qualitative_attribute:
     name: has_qualitative_attribute
     description: The slot to relate a qualitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
+      EvaluatedActivity or AgenticEntity
     in_subset:
     - domain_agnostic_core
     slot_uri: dcterms:relation
@@ -407,7 +456,7 @@ slots:
   has_quantitative_attribute:
     name: has_quantitative_attribute
     description: The slot to relate a quantitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or Instrument
+      EvaluatedActivity or AgenticEntity
     in_subset:
     - domain_agnostic_core
     slot_uri: dcterms:relation
@@ -580,8 +629,8 @@ slots:
     inlined: true
   realized_plan:
     name: realized_plan
-    description: The slot to specify the Plan (aka procedure) that was realized by
-      an Activity.
+    description: The slot to specify the Plan (i.e. directive information or procedure)
+      that was realized by an Activity.
     in_subset:
     - domain_agnostic_core
     slot_uri: prov:used
@@ -681,17 +730,6 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: dcterms:type
-  used_instrument:
-    name: used_instrument
-    description: The slot to specify the Instruments that were used in the data generating
-      Activity.
-    in_subset:
-    - domain_agnostic_core
-    slot_uri: prov:wasAssociatedWith
-    range: Instrument
-    recommended: true
-    multivalued: true
-    inlined_as_list: true
   value:
     name: value
     description: A slot to provide the literal value of an attribute.
@@ -716,16 +754,12 @@ slots:
 classes:
   Activity:
     name: Activity
-    description: An activity (process) that has the objective to produce information
-      about an entity or activity.
+    description: See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
     notes:
-    - The properties (slots) of this class are part of our extension of the DCAT-AP.
+    - The specified properties (slots) of this class are part of our extension of
+      the DCAT-AP.
     in_subset:
     - domain_agnostic_core
-    narrow_mappings:
-    - NCIT:C25598
-    - SOSA:Observation
-    - OBI:0000070
     mixins:
     - ClassifierMixin
     slots:
@@ -733,25 +767,55 @@ classes:
     - title
     - description
     - other_identifier
-    - evaluated_entity
-    - evaluated_activity
-    - used_instrument
-    - realized_plan
     - has_part
-    - occurred_in
+    - had_input_entity
+    - had_output_entity
+    - had_input_activity
+    - carried_out_by
+    - has_qualitative_attribute
+    - has_quantitative_attribute
     slot_usage:
+      title:
+        description: The slot to provide a title for the Activity.
+        multivalued: true
+        inlined_as_list: true
+        notes:
+        - not in DCAT-AP
+      description:
+        description: The slot to provide a description for the Activity.
+        multivalued: true
+        inlined_as_list: true
+        notes:
+        - not in DCAT-AP
       has_part:
         range: Activity
-        description: A slot to provide an Activity that is part of the Activity that
-          created the Dataset.
+        description: The slot to provide an Activity that is part of the Activity.
         inlined: true
         notes:
         - not in DCAT-AP
       other_identifier:
         range: Identifier
-        description: A secondary identifier of the Activity that created the Dataset.
+        description: The slot to provide a secondary identifier of the Activity.
         multivalued: true
         inlined_as_list: true
+        notes:
+        - not in DCAT-AP
+      has_qualitative_attribute:
+        notes:
+        - not in DCAT-AP
+      has_quantitative_attribute:
+        notes:
+        - not in DCAT-AP
+      had_input_entity:
+        notes:
+        - not in DCAT-AP
+      had_output_entity:
+        notes:
+        - not in DCAT-AP
+      had_input_activity:
+        notes:
+        - not in DCAT-AP
+      carried_out_by:
         notes:
         - not in DCAT-AP
     class_uri: prov:Activity
@@ -780,6 +844,38 @@ classes:
         multivalued: false
         inlined_as_list: true
     class_uri: foaf:Agent
+  AgenticEntity:
+    name: AgenticEntity
+    description: An entity that is somehow responsible for an Activity to take place.
+    in_subset:
+    - domain_agnostic_core
+    mixins:
+    - ClassifierMixin
+    slots:
+    - id
+    - title
+    - description
+    - other_identifier
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - has_part
+    slot_usage:
+      has_part:
+        name: has_part
+        description: The slot to specify parts of an Instrument that are themselves
+          Instruments.
+        range: AgenticEntity
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      other_identifier:
+        name: other_identifier
+        description: A slot to provide a secondary identifier for an Instrument.
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Agent
   AnalysisDataset:
     name: AnalysisDataset
     description: A Dataset that was generated by an analysis of some previously generated
@@ -806,7 +902,7 @@ classes:
       was_generated_by:
         name: was_generated_by
         description: A slot to provide the Activity which created the AnalysisSourceData.
-        range: Activity
+        range: DataGeneratingActivity
         multivalued: true
         inlined_as_list: true
     class_uri: prov:Entity
@@ -1197,7 +1293,7 @@ classes:
     - OBI:0200000
     close_mappings:
     - NCIT:C25391
-    is_a: Activity
+    is_a: DataGeneratingActivity
     slot_usage:
       evaluated_entity:
         name: evaluated_entity
@@ -1205,6 +1301,19 @@ classes:
         range: AnalysisSourceData
         multivalued: true
         inlined_as_list: true
+    class_uri: prov:Activity
+  DataGeneratingActivity:
+    name: DataGeneratingActivity
+    description: An Activity (process) that has the objective to produce information
+      (in form of a dataset) about another Activity or Entity.
+    in_subset:
+    - domain_agnostic_core
+    is_a: Activity
+    slots:
+    - evaluated_entity
+    - evaluated_activity
+    - realized_plan
+    - occurred_in
     class_uri: prov:Activity
   DataService:
     name: DataService
@@ -1715,7 +1824,7 @@ classes:
         notes:
         - stricter than DCAT-AP
         slot_uri: prov:wasGeneratedBy
-        range: Activity
+        range: DataGeneratingActivity
         required: true
         multivalued: true
         inlined_as_list: true
@@ -1856,12 +1965,12 @@ classes:
     - http://purl.obolibrary.org/obo/NCIT_C62103
     - http://semanticscience.org/resource/SIO_000956
     - http://purl.allotrope.org/ontologies/equipment#AFE_0000354
-    is_a: Instrument
+    is_a: AgenticEntity
     slot_usage:
       has_part:
         name: has_part
         description: The slot to specify parts of a Device that are themselves Devices.
-        range: Instrument
+        range: Device
         multivalued: true
         inlined: true
         inlined_as_list: true
@@ -2113,9 +2222,10 @@ classes:
     description: See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)
     is_a: SupportiveEntity
     class_uri: foaf:Document
-  EvaluatedActivity:
-    name: EvaluatedActivity
-    description: An activity or proces that is being evaluated in a Activity.
+  Entity:
+    name: Entity
+    description: A physical, digital, conceptual, or other kind of thing with some
+      fixed aspects; entities may be real or imaginary.
     in_subset:
     - domain_agnostic_core
     mixins:
@@ -2123,8 +2233,39 @@ classes:
     slots:
     - title
     - description
-    - other_identifier
     - id
+    - other_identifier
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - has_part
+    slot_usage:
+      title:
+        name: title
+        description: The slot to provide a title for the Entity.
+      description:
+        name: description
+        description: The slot to provide a description for the Entity.
+      other_identifier:
+        name: other_identifier
+        description: A slot to provide a secondary identifier of the Entity.
+        range: Identifier
+        required: false
+        multivalued: true
+        inlined_as_list: true
+      has_part:
+        name: has_part
+        description: A slot to provide a part of the EvaluatedEntity.
+        range: Entity
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Entity
+  EvaluatedActivity:
+    name: EvaluatedActivity
+    description: An activity or proces that is being evaluated in a DataGeneratingActivity.
+    in_subset:
+    - domain_agnostic_core
+    is_a: Activity
+    slots:
     - has_qualitative_attribute
     - has_quantitative_attribute
     - has_part
@@ -2145,23 +2286,19 @@ classes:
     class_uri: prov:Activity
   EvaluatedEntity:
     name: EvaluatedEntity
-    description: A physical, digital, conceptual, or other kind of thing with some
-      fixed aspects that is not an activity or process and that is being evaluated
-      in a Activity.
+    description: An Entity that is being evaluated in a DataGeneratingActivity.
     in_subset:
     - domain_agnostic_core
-    mixins:
-    - ClassifierMixin
+    is_a: Entity
     slots:
-    - title
-    - description
-    - other_identifier
-    - id
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - has_part
     - was_generated_by
     slot_usage:
+      title:
+        name: title
+        description: The slot to provide a title for the EvaluatedEntity.
+      description:
+        name: description
+        description: The slot to provide a description for the EvaluatedEntity.
       was_generated_by:
         name: was_generated_by
         description: A slot to provide the Activity which created the EvaluatedEntity.
@@ -2209,39 +2346,6 @@ classes:
         multivalued: false
         inlined_as_list: false
     class_uri: adms:Identifier
-  Instrument:
-    name: Instrument
-    description: An entity that is actively used within an Activity as a means to
-      achieve the planned objectives of said Activity because of its function.
-    in_subset:
-    - domain_agnostic_core
-    mixins:
-    - ClassifierMixin
-    slots:
-    - id
-    - title
-    - description
-    - other_identifier
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - has_part
-    slot_usage:
-      has_part:
-        name: has_part
-        description: The slot to specify parts of an Instrument that are themselves
-          Instruments.
-        range: Instrument
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      other_identifier:
-        name: other_identifier
-        description: A slot to provide a secondary identifier for an Instrument.
-        range: Identifier
-        required: false
-        multivalued: true
-        inlined_as_list: true
-    class_uri: prov:Agent
   Kind:
     name: Kind
     description: See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)
@@ -2397,8 +2501,8 @@ classes:
     class_uri: dcterms:ProvenanceStatement
   QualitativeAttribute:
     name: QualitativeAttribute
-    description: A piece of information that is attributed to an EvaluatedEntity,
-      Instrument or Surrounding.
+    description: A piece of information that is attributed to an Entity, Activity
+      or AgenticEntity.
     in_subset:
     - domain_agnostic_core
     mixins:
@@ -2415,8 +2519,8 @@ classes:
     class_uri: prov:Entity
   QuantitativeAttribute:
     name: QuantitativeAttribute
-    description: A quantifiable piece of information that is attributed to an EvaluatedEntity,
-      Instrument or Surrounding.
+    description: A quantifiable piece of information that is attributed to an Entity,
+      Activity or AgenticEntity.
     in_subset:
     - domain_agnostic_core
     mixins:
@@ -2504,12 +2608,12 @@ classes:
     - domain_agnostic_core
     exact_mappings:
     - schema:SoftwareApplication
-    is_a: Instrument
+    is_a: AgenticEntity
     slot_usage:
       has_part:
         name: has_part
         description: The slot to specify parts of a Software that are themselves Software.
-        range: Instrument
+        range: Software
         multivalued: true
         inlined: true
         inlined_as_list: true
