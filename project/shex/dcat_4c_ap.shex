@@ -71,21 +71,22 @@ dcatap_plus:Activity  (
     CLOSED {
        (  $dcatap_plus:Activity_tes (  &dcatap_plus:ClassifierMixin_tes ;
              rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
-             dcterms:title @linkml:String ? ;
-             dcterms:description @linkml:String ? ;
+             dcterms:title @linkml:String * ;
+             dcterms:description @linkml:String * ;
              adms:identifier @dcatap_plus:Identifier * ;
-             prov:used @dcatap_plus:EvaluatedEntity * ;
-             prov:wasInformedBy @dcatap_plus:EvaluatedActivity * ;
-             prov:wasAssociatedWith @dcatap_plus:Instrument * ;
-             prov:used @dcatap_plus:Plan ? ;
              dcterms:hasPart @dcatap_plus:Activity ? ;
-             prov:atLocation @dcatap_plus:Surrounding ? ;
+             prov:used @dcatap_plus:Entity * ;
+             prov:generated @dcatap_plus:Entity * ;
+             prov:wasInformedBy @dcatap_plus:Activity * ;
+             prov:wasAssociatedWith @dcatap_plus:AgenticEntity * ;
+             dcterms:relation @dcatap_plus:QualitativeAttribute * ;
+             dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
              dcterms:type @dcatap_plus:DefinedTerm ? ;
              rdf:type @dcatap_plus:DefinedTerm ?
           ) ;
           rdf:type [ prov:Activity ]
        )
-    } OR @dcatap_plus:DataAnalysis OR @<NMRSpectroscopy>
+    } OR @dcatap_plus:DataGeneratingActivity OR @dcatap_plus:EvaluatedActivity
 )
 
 dcatap_plus:Agent CLOSED {
@@ -95,6 +96,24 @@ dcatap_plus:Agent CLOSED {
        rdf:type [ foaf:Agent ] ?
     )
 }
+
+dcatap_plus:AgenticEntity  (
+    CLOSED {
+       (  $dcatap_plus:AgenticEntity_tes (  &dcatap_plus:ClassifierMixin_tes ;
+             rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             adms:identifier @dcatap_plus:Identifier * ;
+             dcterms:relation @dcatap_plus:QualitativeAttribute * ;
+             dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
+             dcterms:hasPart @dcatap_plus:AgenticEntity * ;
+             dcterms:type @dcatap_plus:DefinedTerm ? ;
+             rdf:type @dcatap_plus:DefinedTerm ?
+          ) ;
+          rdf:type [ prov:Agent ]
+       )
+    } OR @dcatap_plus:Device OR @dcatap_plus:Software
+)
 
 dcatap_plus:AnalysisDataset  (
     CLOSED {
@@ -111,7 +130,7 @@ dcatap_plus:AnalysisSourceData  (
     CLOSED {
        (  $dcatap_plus:AnalysisSourceData_tes (  &dcatap_plus:EvaluatedEntity_tes ;
              rdf:type [ prov:Entity ] ? ;
-             prov:wasGeneratedBy @dcatap_plus:Activity *
+             prov:wasGeneratedBy @dcatap_plus:DataGeneratingActivity *
           ) ;
           rdf:type [ prov:Entity ]
        )
@@ -253,13 +272,27 @@ dcatap_plus:ConceptScheme CLOSED {
 
 dcatap_plus:DataAnalysis  (
     CLOSED {
-       (  $dcatap_plus:DataAnalysis_tes (  &dcatap_plus:Activity_tes ;
+       (  $dcatap_plus:DataAnalysis_tes (  &dcatap_plus:DataGeneratingActivity_tes ;
              rdf:type [ prov:Activity ] ? ;
              prov:used @dcatap_plus:AnalysisSourceData *
           ) ;
           rdf:type [ prov:Activity ]
        )
     } OR @<NMRSpectralAnalysis>
+)
+
+dcatap_plus:DataGeneratingActivity  (
+    CLOSED {
+       (  $dcatap_plus:DataGeneratingActivity_tes (  &dcatap_plus:Activity_tes ;
+             rdf:type [ prov:Activity ] ? ;
+             prov:used @dcatap_plus:EvaluatedEntity * ;
+             prov:wasInformedBy @dcatap_plus:EvaluatedActivity * ;
+             prov:used @dcatap_plus:Plan ? ;
+             prov:atLocation @dcatap_plus:Surrounding ?
+          ) ;
+          rdf:type [ prov:Activity ]
+       )
+    } OR @dcatap_plus:DataAnalysis OR @<NMRSpectroscopy>
 )
 
 dcatap_plus:DataService CLOSED {
@@ -321,7 +354,7 @@ dcatap_plus:Dataset  (
              dcterms:type @dcatap_plus:Concept * ;
              dcat:version @linkml:String ? ;
              adms:versionNotes @linkml:String * ;
-             prov:wasGeneratedBy @dcatap_plus:Activity + ;
+             prov:wasGeneratedBy @dcatap_plus:DataGeneratingActivity + ;
              dcterms:subject @dcatap_plus:EvaluatedEntity * ;
              dcterms:subject @dcatap_plus:EvaluatedActivity *
           ) ;
@@ -355,9 +388,9 @@ dcatap_plus:DefinedTerm CLOSED {
 }
 
 dcatap_plus:Device CLOSED {
-    (  $dcatap_plus:Device_tes (  &dcatap_plus:Instrument_tes ;
+    (  $dcatap_plus:Device_tes (  &dcatap_plus:AgenticEntity_tes ;
           rdf:type [ prov:Agent ] ? ;
-          dcterms:hasPart @dcatap_plus:Instrument * ;
+          dcterms:hasPart @dcatap_plus:Device * ;
           adms:identifier @dcatap_plus:Identifier *
        ) ;
        rdf:type [ prov:Agent ]
@@ -402,18 +435,32 @@ dcatap_plus:Document CLOSED {
     )
 }
 
-dcatap_plus:EvaluatedActivity  (
+dcatap_plus:Entity  (
     CLOSED {
-       (  $dcatap_plus:EvaluatedActivity_tes (  &dcatap_plus:ClassifierMixin_tes ;
+       (  $dcatap_plus:Entity_tes (  &dcatap_plus:ClassifierMixin_tes ;
              rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
              adms:identifier @dcatap_plus:Identifier * ;
              dcterms:relation @dcatap_plus:QualitativeAttribute * ;
              dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
-             dcterms:hasPart @dcatap_plus:EvaluatedActivity * ;
+             dcterms:hasPart @dcatap_plus:Entity * ;
              dcterms:type @dcatap_plus:DefinedTerm ? ;
              rdf:type @dcatap_plus:DefinedTerm ?
+          ) ;
+          rdf:type [ prov:Entity ]
+       )
+    } OR @dcatap_plus:EvaluatedEntity
+)
+
+dcatap_plus:EvaluatedActivity  (
+    CLOSED {
+       (  $dcatap_plus:EvaluatedActivity_tes (  &dcatap_plus:Activity_tes ;
+             rdf:type [ prov:Activity ] ? ;
+             dcterms:relation @dcatap_plus:QualitativeAttribute * ;
+             dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
+             dcterms:hasPart @linkml:String ? ;
+             adms:identifier @dcatap_plus:Identifier *
           ) ;
           rdf:type [ prov:Activity ]
        )
@@ -422,17 +469,13 @@ dcatap_plus:EvaluatedActivity  (
 
 dcatap_plus:EvaluatedEntity  (
     CLOSED {
-       (  $dcatap_plus:EvaluatedEntity_tes (  &dcatap_plus:ClassifierMixin_tes ;
-             rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
+       (  $dcatap_plus:EvaluatedEntity_tes (  &dcatap_plus:Entity_tes ;
+             rdf:type [ prov:Entity ] ? ;
+             prov:wasGeneratedBy @dcatap_plus:Activity * ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
-             adms:identifier @dcatap_plus:Identifier * ;
-             dcterms:relation @dcatap_plus:QualitativeAttribute * ;
-             dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
              dcterms:hasPart @dcatap_plus:EvaluatedEntity * ;
-             prov:wasGeneratedBy @dcatap_plus:Activity * ;
-             dcterms:type @dcatap_plus:DefinedTerm ? ;
-             rdf:type @dcatap_plus:DefinedTerm ?
+             adms:identifier @dcatap_plus:Identifier *
           ) ;
           rdf:type [ prov:Entity ]
        )
@@ -479,24 +522,6 @@ dcatap_plus:Identifier CLOSED {
        rdf:type [ <http://semanticscience.org/resource/CHEMINF_000059> ] ?
     )
 }
-
-dcatap_plus:Instrument  (
-    CLOSED {
-       (  $dcatap_plus:Instrument_tes (  &dcatap_plus:ClassifierMixin_tes ;
-             rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
-             dcterms:title @linkml:String ? ;
-             dcterms:description @linkml:String ? ;
-             adms:identifier @dcatap_plus:Identifier * ;
-             dcterms:relation @dcatap_plus:QualitativeAttribute * ;
-             dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
-             dcterms:hasPart @dcatap_plus:Instrument * ;
-             dcterms:type @dcatap_plus:DefinedTerm ? ;
-             rdf:type @dcatap_plus:DefinedTerm ?
-          ) ;
-          rdf:type [ prov:Agent ]
-       )
-    } OR @dcatap_plus:Device OR @dcatap_plus:Software
-)
 
 <IUPACChemicalFormula> CLOSED {
     (  $<IUPACChemicalFormula_tes> (  &dcatap_plus:QualitativeAttribute_tes ;
@@ -590,7 +615,7 @@ dcatap_plus:MediaTypeOrExtent CLOSED {
 }
 
 <NMRSpectroscopy> CLOSED {
-    (  $<NMRSpectroscopy_tes> (  &dcatap_plus:Activity_tes ;
+    (  $<NMRSpectroscopy_tes> (  &dcatap_plus:DataGeneratingActivity_tes ;
           rdf:type [ prov:Activity ] ? ;
           prov:used @<ChemicalSample> * ;
           rdf:type @dcatap_plus:DefinedTerm ?
@@ -719,9 +744,9 @@ dcatap_plus:Role CLOSED {
 }
 
 dcatap_plus:Software CLOSED {
-    (  $dcatap_plus:Software_tes (  &dcatap_plus:Instrument_tes ;
+    (  $dcatap_plus:Software_tes (  &dcatap_plus:AgenticEntity_tes ;
           rdf:type [ prov:Agent ] ? ;
-          dcterms:hasPart @dcatap_plus:Instrument * ;
+          dcterms:hasPart @dcatap_plus:Software * ;
           adms:identifier @dcatap_plus:Identifier *
        ) ;
        rdf:type [ prov:SoftwareAgent ]
