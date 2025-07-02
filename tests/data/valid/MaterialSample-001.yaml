@@ -1,0 +1,32 @@
+# Example MaterialSample object
+---
+id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+title: "CRS-50440"
+other_identifier:
+  - notation: https://www.chemotion-repository.net/pid/50440
+derived_from: "the lab"
+physical_state: SOLID
+temperature:
+  has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+  unit: https://qudt.org/vocab/unit/K
+  value: 300.0
+mass:
+  has_quantity_type: http://qudt.org/vocab/quantitykind/Mass
+  unit: https://qudt.org/vocab/unit/MilliGM
+  value: 30.0
+volume:
+  has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+  unit: https://qudt.org/vocab/unit/L
+  value: 0.03
+amount_concentration:
+  has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration
+  unit: https://qudt.org/vocab/unit/MOL-PER-L
+  value: 30.0
+pH:
+  has_quantity_type: https://qudt.org/vocab/quantitykind/Acidity
+  unit: https://qudt.org/vocab/unit/PH
+  value: 11
+pressure:
+  has_quantity_type: http://qudt.org/vocab/quantitykind/Pressure
+  unit: https://qudt.org/vocab/unit/BAR
+  value: 2.0
