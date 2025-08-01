@@ -43,7 +43,7 @@ jobs:
           poetry run mkdocs build
 
       - name: Deploy preview
-        uses: rossjrw/pr-preview-action@2fb559e4766555e23d07b73d313fe97c4f8c3cfe
+        uses: rossjrw/pr-preview-action@9f77b1d057b494e662c50b8ca40ecc63f21e0887
         with:
           source-dir: site/
           preview-branch: gh-pages
