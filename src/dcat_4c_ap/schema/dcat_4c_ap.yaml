@@ -50,44 +50,9 @@ imports:
 
 classes:
 
-#################
-# Dataset Types #
-#################
 
-
-################################
-# Data Creating Activity Types #
-################################
-
-
-##############################
-# Entities of Interest Types #
-##############################
-
-
-
-  ##############
-  # Tool Types #
-  ##############
-
-  #####################
-  # Surrounding Types #
-  #####################
 
   Laboratory:
     is_a: Surrounding
     class_uri: prov:Location
     description: A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
-
-  ############################
-  # Plan Specification Types #
-  ############################
-
-  ###################
-  # Attribute Types #
-  ###################
-
-slots:
- # has_role:
-    #slot_uri: RO:0000087
-
