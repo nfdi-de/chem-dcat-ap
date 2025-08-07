@@ -64,7 +64,20 @@ imports:
 
 classes:
 
+  SubstanceSample:
+    class_uri: SIO:001378
+    is_a: MaterialSample
+    aliases:
+      - analyte
+    description: A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.
+    mixins:
+      - ChemicalSubstance
 
+  PolymerSample:
+    is_a: SubstanceSample
+    description: A SubstanceSample derived from a Polymer.
+    mixins:
+      - Polymer
 
   Laboratory:
     is_a: Surrounding
