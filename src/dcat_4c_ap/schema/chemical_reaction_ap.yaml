@@ -1,0 +1,196 @@
+---
+id: https://stroemphi.github.io/dcat-4C-ap/chemical_reaction_ap.yaml
+name: chemical_reaction_ap
+title: Chemical Reaction Application Profile
+description: |-
+  This is an application profile for chemical reactions that is intended to be used as an extension of DCAT-AP-PLUS.
+license: CC-BY 4.0
+prefixes:
+  chemical_reaction_ap: https://stroemphi.github.io/dcat-4C-ap/chemical_reaction_ap.yaml#
+  chemical_entities_ap: https://stroemphi.github.io/dcat-4C-ap/chemical_entities_ap.yaml#
+  material_entities_ap: https://stroemphi.github.io/dcat-4C-ap/material_entities_ap.yaml#
+  dcatap_plus: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/vocab/
+  schema: http://schema.org/
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  prov: http://www.w3.org/ns/prov#
+  sosa: http://www.w3.org/ns/sosa/
+  vcard: http://www.w3.org/2006/vcard/ns#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  foaf: http://xmlns.com/foaf/0.1/
+  qudt: http://qudt.org/schema/qudt/
+  RO: http://purl.obolibrary.org/obo/RO_
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  IAO: http://purl.obolibrary.org/obo/IAO_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  T4FS: http://purl.obolibrary.org/obo/T4FS_
+  FOODON: http://purl.obolibrary.org/obo/FOODON_
+  CHEMINF: http://semanticscience.org/resource/CHEMINF_
+  RXNO: http://purl.obolibrary.org/obo/RXNO_
+  MOP: http://purl.obolibrary.org/obo/MOP_
+  ex: http://example.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  SIO: http://semanticscience.org/resource/SIO_
+  doi: https://doi.org/
+  NMR: "http://nmrML.org/nmrCV#NMR:"
+  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
+  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
+  AFP: http://purl.allotrope.org/ontologies/process#AFP_
+  VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
+  PROCO: http://purl.obolibrary.org/obo/PROCO_
+  time: http://www.w3.org/2006/time#
+  REX: http://purl.obolibrary.org/obo/REX_
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+default_prefix: chemical_reaction_ap
+default_range: string
+imports:
+  - linkml:types
+  - dcat_ap_plus
+  - chemical_entities_ap
+classes:
+
+  ChemicalReaction:
+    is_a: Activity
+    class_uri: SIO:010345
+    description: A process that leads to the transformation of one set of chemical substances to another.
+    slots:
+      - has_reagent
+      - has_product
+      - has_catalyst
+      - has_solvent
+      - has_duration
+      - has_temperature # reused from material_entities_ap.yaml
+      - has_pressure # reused from material_entities_ap.yaml
+      - has_yield
+      - has_reaction_step
+    slot_usage:
+      has_temperature:
+        description: The slot to specify the Temperature at which a ChemicalReaction takes place.
+      has_pressure:
+        description: The slot to specify the Pressure at which a ChemicalReaction takes place.
+    exact_mappings:
+      - MOP:0000543
+      - REX:0000002
+      - AFP:0003711
+    narrow_mappings:
+      - RXNO:0000329
+
+  StartingMaterial:
+    class_uri: PROCO:0000029
+    is_a: ChemicalSubstance
+    description: A ChemicalSubstance with that has a starting material role in a synthesis.
+
+  Reagent:
+    class_uri: NCIT:C802
+    is_a: ChemicalSubstance
+    description: A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.
+    exact_mappings:
+      - SIO:010411
+      - VOC4CAT:0007005
+    close_mappings:
+      - OBI:0001879
+      - PROCO:0000029
+
+  ChemicalProduct:
+    class_uri: NCIT:C48810
+    is_a: ChemicalSubstance
+    description: A chemical substance that is produced by a ChemicalReaction.
+    exact_mappings:
+      - VOC4CAT:0000194
+    close_mappings:
+      - ENVO:2000000
+
+  Catalyst:
+    class_uri: SIO:010344
+    is_a: AgenticEntity
+    mixins:
+      - ChemicalSubstance
+      - MaterialEntity
+    description: A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.
+    exact_mappings:
+      - VOC4CAT:0000194
+      - NCIT:C48810
+    close_mappings:
+      - CHEBI:35223
+
+  DissolvingSubstance:
+    class_uri: NCIT:C45790
+    is_a: AgenticEntity
+    mixins:
+      - ChemicalSubstance
+    description: A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.
+    exact_mappings:
+      - VOC4CAT:0007246
+      - SIO:010417
+
+  Reactor:
+    is_a: Device
+    class_uri: AFE:0000153
+    mixins:
+      - MaterialEntity
+    description: A reactor is a container for controlling a biological or chemical reaction or process.
+    exact_mappings:
+      - VOC4CAT:0007017
+
+slots:
+  has_starting_material:
+    range: StartingMaterial
+    is_a: had_input_entity
+    slot_uri: RO:0004009
+    description: The slot to specify the Reagent(s) of a ChemicalReaction.
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+  has_reagent:
+    range: Reagent
+    is_a: had_input_entity
+    slot_uri: RO:0004009
+    description: The slot to specify the Reagent(s) of a ChemicalReaction.
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+  has_product:
+    range: ChemicalProduct
+    is_a: had_output_entity
+    slot_uri: RO:0004008
+    description: The slot to specify the Product of a ChemicalReaction.
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+  has_catalyst:
+    range: Catalyst
+    is_a: carried_out_by
+    slot_uri: RXNO:0000425
+    description: The slot to specify the Catalyst of a ChemicalReaction.
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+  has_solvent:
+    range: DissolvingSubstance
+    is_a: carried_out_by
+    slot_uri: RO:0002333
+    description: The slot to specify the chemical substance that had a solvent role (CHEBI:35223) in a ChemicalReaction.
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  has_duration:
+    slot_uri: schema:duration
+    is_a: has_quantitative_attribute
+    range: duration
+    description: A slot to provide the duration of a ChemicalReaction
+  has_yield:
+    is_a: has_quantitative_attribute
+    description: A slot to provide the percentage of how much of the ChemicalProduct was produced by a ChemicalReaction.
+  has_reaction_step:
+    is_a: has_part
+    slot_uri: BFO:0000051
+    description: A slot to specify a step (part) of a ChemicalReaction that is itself a ChemicalReaction.
+    range: ChemicalReaction
