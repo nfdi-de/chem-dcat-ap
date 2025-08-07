@@ -10,13 +10,14 @@ see_also:
   - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
   - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
-  nfdi4c: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/
-  nfdi: https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/
+  dcat_4c_ap: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap.yaml#
+  dcatap_plus: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
   dcterms: http://purl.org/dc/terms/
   dcat: http://www.w3.org/ns/dcat#
+  adms: http://www.w3.org/ns/adms#
   prov: http://www.w3.org/ns/prov#
   sosa: http://www.w3.org/ns/sosa/
   vcard: http://www.w3.org/2006/vcard/ns#
@@ -37,12 +38,22 @@ prefixes:
   FOODON: http://purl.obolibrary.org/obo/FOODON_
   CHEMINF: http://semanticscience.org/resource/CHEMINF_
   RXNO: http://purl.obolibrary.org/obo/RXNO_
+  MOP: http://purl.obolibrary.org/obo/MOP_
   ex: http://example.org/
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   SIO: http://semanticscience.org/resource/SIO_
   doi: https://doi.org/
   NMR: "http://nmrML.org/nmrCV#NMR:"
-default_prefix: nfdi4c
+  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
+  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
+  AFP: http://purl.allotrope.org/ontologies/process#AFP_
+  AFR: http://purl.allotrope.org/ontologies/result#AFR_
+  VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
+  PROCO: http://purl.obolibrary.org/obo/PROCO_
+  time: http://www.w3.org/2006/time#
+  REX: http://purl.obolibrary.org/obo/REX_
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+default_prefix: dcat_4c_ap
 default_range: string
 imports:
   - linkml:types
