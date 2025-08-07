@@ -68,5 +68,5 @@ classes:
 
   Laboratory:
     is_a: Surrounding
-    class_uri: prov:Location
+    class_uri: ENVO:01001405
     description: A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
