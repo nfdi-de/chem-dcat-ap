@@ -1,16 +1,12 @@
 ---
-id: https://stroemphi.github.io/dcat-4C-ap/material_entity.yaml
-name: dcat-4C-ap
-title: DCAT-4C-AP
+id: https://stroemphi.github.io/dcat-4C-ap/material_entities_ap.yaml
+name: material-entity-ap
+title: Material-Entity-AP
 description: |-
-  This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.
+  This is an application profile for material entities to be used for extending the DCAT-AP-PLUS.
 license: CC-BY 4.0
-see_also:
-  - https://github.com/StroemPhi/dcat-4C-ap
-  - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
-  - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
-  material_entity: https://stroemphi.github.io/dcat-4C-ap/material_entity.yaml#
+  material_entities_ap: https://stroemphi.github.io/dcat-4C-ap/material_entities_ap.yaml#
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -32,7 +28,7 @@ prefixes:
   AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
   AFP: http://purl.allotrope.org/ontologies/process#AFP_
   VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
-default_prefix: material_entity
+default_prefix: material_entities_ap
 default_range: string
 imports:
   - linkml:types
@@ -44,7 +40,7 @@ classes:
     class_uri: BFO:0000040
     is_a: Entity
     mixin: true
-    description: A material entity is an Entity that has some portion of matter as proper or improper continuant part.
+    description: A material entity is an Entity that has some portion of matter as proper part.
     slot_usage:
       has_part:
         slot_uri: BFO:0000051
@@ -55,22 +51,33 @@ classes:
         recommended: true
     slots:
       - alternative_label
-      - physical_state
-      - temperature
-      - mass
-      - volume
-      - amount_concentration
-      - pH
-      - pressure
+      - has_physical_state
+      - has_temperature
+      - has_mass
+      - has_volume
+      - has_pressure
       # more slots might need to be defined for a MaterialEntity
+
+  MaterialSample:
+    is_a: EvaluatedEntity
+    class_uri: OBI:0000747
+    description: A Sample that was derived from a MaterialEntity.
+    mixins:
+      - MaterialEntity
+    slots:
+      - derived_from
+    exact_mappings:
+      - SIO:001050
+      - VOC4CAT:0005056
+
   Temperature:
     is_a: QuantitativeAttribute
     class_uri: qudt:Quantity
     description: A physical quantity that quantitatively expresses the attribute of hotness or coldness.
     exact_mappings:
       - PATO:0000146
-    slot_usage:
-      has_quantity_type:
+    #slot_usage:
+      #has_quantity_type:
         #ifabsent: http://qudt.org/vocab/quantitykind/Temperature
   Mass:
     is_a: QuantitativeAttribute
@@ -78,8 +85,8 @@ classes:
     description: The strength of a body's gravitational attraction to other bodies.
     exact_mappings:
       - PATO:0000125
-    slot_usage:
-      has_quantity_type:
+    #slot_usage:
+      #has_quantity_type:
       #ifabsent: http://qudt.org/vocab/quantitykind/Mass
   Volume:
     is_a: QuantitativeAttribute
@@ -87,74 +94,69 @@ classes:
     description: A measure of regions in three-dimensional space.
     exact_mappings:
       - PATO:0000918
-    slot_usage:
-      has_quantity_type:
+    #slot_usage:
+      #has_quantity_type:
       #ifabsent: http://qudt.org/vocab/quantitykind/Volume
-  AmountConcentration:
-    is_a: QuantitativeAttribute
-    class_uri: qudt:Quantity
-    description: Amount of Substance of Concentration is defined as the amount of a constituent divided by the volume of the mixture.
-    exact_mappings:
-      - PATO:0000033
-    slot_usage:
-      has_quantity_type:
-      #ifabsent: http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration
-  PHValue:
-    is_a: QuantitativeAttribute
-    class_uri: qudt:Quantity
-    exact_mappings:
-      - PATO:0001842
-    slot_usage:
-      has_quantity_type:
-      #ifabsent: http://qudt.org/vocab/quantitykind/Acidity
   Pressure:
     is_a: QuantitativeAttribute
     class_uri: qudt:Quantity
     exact_mappings:
       - PATO:0001025
-    slot_usage:
-      has_quantity_type:
+    #slot_usage:
+      #has_quantity_type:
       #ifabsent: http://qudt.org/vocab/quantitykind/Pressure
 
 
 slots:
   alternative_label:
     slot_uri: skos:altLabel
-    description:  The slot to specify an alternative label, name or title for a sample.
-  physical_state:
-    #is_a: has_qualitative_attribute
-    slot_uri: dcterms:relation
-    description: The slot to specify the physical state of a material sample
+    description:  The slot to specify an alternative label, name or title for a MaterialEntity.
+    todos:
+      - "Should probably rather declared on Entity or in some common metadata mixin instead."
+
+  has_physical_state:
+    #is_a: has_qualitative_attribute # cannot be made a subproperty due to its Emum range
+    slot_uri: SIO:000008
+    description: The slot to specify the physical state of a MaterialEntity.
     range: PhysicalStateEnum
     multivalued: false
     inlined: false
     todos:
       - "Find out how to make this a subproperty of has_qualitative_attribute, as it currently throws the error 'physical_state enumerations cannot be inlined' due to the fact that we are using an enum here."
-  temperature:
-    is_a: has_quantitative_attribute
-    slot_uri: dcterms:relation
-    range: Temperature
-  mass:
-    is_a: has_quantitative_attribute
-    slot_uri: dcterms:relation
-    range: Mass
-  volume:
-    is_a: has_quantitative_attribute
-    slot_uri: dcterms:relation
-    range: Volume
-  amount_concentration:
-    is_a: has_quantitative_attribute
-    slot_uri: dcterms:relation
-    range: AmountConcentration
-  pH:
-    is_a: has_quantitative_attribute
-    slot_uri: dcterms:relation
-    range: PHValue
-  pressure:
-    is_a: has_quantitative_attribute
-    slot_uri: dcterms:relation
-    range: Pressure
 
+  has_temperature:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    range: Temperature
+    description: The slot to provide the Temperature of a MaterialEntity.
+
+  has_mass:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    range: Mass
+    description: The slot to provide the Mass of a MaterialEntity.
+
+  has_volume:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    range: Volume
+    description: The slot to provide the Volume of a MaterialEntity.
+
+  has_pressure:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    range: Pressure
+    description: The slot to provide the Pressure of a MaterialEntity.
+
+  derived_from:
+    slot_uri: prov:wasDerivedFrom
+    description: The slot to specify the Entity from which a Sample was derived.
+    range: Entity
+    exact_mappings:
+      - SIO:000244
+    close_mappings:
+      - BFO:0000050
+      - dcterms:partOf
 
 enums:
   PhysicalStateEnum:

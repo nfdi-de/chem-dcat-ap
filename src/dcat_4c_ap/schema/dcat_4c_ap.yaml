@@ -105,50 +105,6 @@ classes:
 # Entities of Interest Types #
 ##############################
 
-  ChemicalSubstance:
-    is_a: EvaluatedEntity
-    class_uri: prov:Entity
-    description: A portion of matter of constant composition, composed of molecular entities of the same type or of different types that is being evaluated in a scientific process.
-    attributes:
-      composed_of:
-        description: The slot to provide the chemical entities of which the chemical substance is composed of.
-        range: ChemicalEntity
-        multivalued: true
-        inlined_as_list: true
-        recommended: true
-        exact_mappings:
-          - BFO:0000051
-      #type:
-        #ifabsent: CHEBI:59999
-
-  ChemicalEntity:
-    class_uri: CHEBI:23367
-    description: Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.
-    attributes:
-      inchi:
-        #slot_uri: CHEMINF:000143
-        range: InChi
-        inlined: true
-        description: The slot to provide the InChi descriptor of a chemical substance.
-      inchikey:
-        #slot_uri: CHEMINF:000143
-        range: InChIKey
-        inlined: true
-        description: The slot to provide the InChiKey of a chemical substance.
-      smiles:
-        #slot_uri: CHEMINF:000143
-        range: SMILES
-        inlined: true
-        description: The slot to provide the canonical SMILES descriptor of a chemical substance.
-      iupac_formula:
-        #slot_uri: CHEMINF:000143
-        range: IUPACChemicalFormula
-        inlined: true
-        description: The slot to provide the IUPAC name of a chemical substance.
-
-  ChemicalSample:
-    is_a: ChemicalSubstance
-    #class_uri: CHEBI:59999
 
   NMRSpectrum:
     is_a: AnalysisSourceData
@@ -182,21 +138,6 @@ classes:
   ###################
   # Attribute Types #
   ###################
-  InChIKey:
-    class_uri: CHEMINF:000059
-    is_a: QualitativeAttribute
-  InChi:
-    class_uri: CHEMINF:000113
-    is_a: QualitativeAttribute
-    description: A structure descriptor which conforms to the InChI format specification.
-  IUPACChemicalFormula:
-    class_uri: CHEMINF:000037
-    is_a: QualitativeAttribute
-    description: A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).
-  SMILES:
-    class_uri: CHEMINF:000018
-    is_a: QualitativeAttribute
-    description: A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
 
 slots:
  # has_role:
