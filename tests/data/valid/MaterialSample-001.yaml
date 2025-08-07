@@ -1,32 +1,25 @@
-# Example MaterialSample object
+# A Dummy-Example MaterialSample object
 ---
-id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-title: "CRS-50440"
+id: https://www.example.com/hardwood3000
+title: "Philip's wood sample"
 other_identifier:
   - notation: https://www.chemotion-repository.net/pid/50440
-derived_from: "the lab"
-physical_state: SOLID
-temperature:
+derived_from: https://de.wikipedia.org/wiki/Schwarzwald
+has_physical_state: SOLID
+has_temperature:
   has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
-  unit: https://qudt.org/vocab/unit/K
-  value: 300.0
-mass:
+  unit: https://qudt.org/vocab/unit/DEG_C
+  value: 20.0
+has_mass:
   has_quantity_type: http://qudt.org/vocab/quantitykind/Mass
   unit: https://qudt.org/vocab/unit/MilliGM
-  value: 30.0
-volume:
+  value: 300.0
+has_volume:
   has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
   unit: https://qudt.org/vocab/unit/L
   value: 0.03
-amount_concentration:
-  has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration
-  unit: https://qudt.org/vocab/unit/MOL-PER-L
-  value: 30.0
-pH:
-  has_quantity_type: https://qudt.org/vocab/quantitykind/Acidity
-  unit: https://qudt.org/vocab/unit/PH
-  value: 11
-pressure:
+has_pressure:
   has_quantity_type: http://qudt.org/vocab/quantitykind/Pressure
   unit: https://qudt.org/vocab/unit/BAR
   value: 2.0
+  description: "well knowing that this value makes no sense for a piece of wood"
