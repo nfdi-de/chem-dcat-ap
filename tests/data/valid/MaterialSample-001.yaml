@@ -4,7 +4,8 @@ id: https://www.example.com/hardwood3000
 title: "Philip's wood sample"
 other_identifier:
   - notation: https://www.chemotion-repository.net/pid/50440
-derived_from: https://de.wikipedia.org/wiki/Schwarzwald
+derived_from:
+  id: https://de.wikipedia.org/wiki/Schwarzwald
 has_physical_state: SOLID
 has_temperature:
   has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature

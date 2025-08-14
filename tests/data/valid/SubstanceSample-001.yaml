@@ -17,7 +17,7 @@ composed_of:
     inchi:
       value: "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3"
     inchikey:
-      value: " UGRXAOUDHZOHPF-UHFFFAOYSA-N"
+      value: "UGRXAOUDHZOHPF-UHFFFAOYSA-N"
     smiles:
       value: "CNCc1csc(n1)c1ccccc1"
     molecular_formula:
