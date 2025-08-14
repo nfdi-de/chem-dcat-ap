@@ -75,9 +75,12 @@ classes:
 
   PolymerSample:
     is_a: SubstanceSample
+    class_uri: SIO:001378
     description: A SubstanceSample derived from a Polymer.
     mixins:
       - Polymer
+    todos:
+      - "Find a better mapping, as it is currently mapped to same ontology class as its parent."
 
   Laboratory:
     is_a: Surrounding
