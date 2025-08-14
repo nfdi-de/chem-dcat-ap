@@ -74,7 +74,7 @@ classes:
     is_a: QuantitativeAttribute
     class_uri: qudt:Quantity
     description: A physical quantity that quantitatively expresses the attribute of hotness or coldness.
-    exact_mappings:
+    close_mappings:
       - PATO:0000146
     #slot_usage:
       #has_quantity_type:
@@ -83,7 +83,7 @@ classes:
     is_a: QuantitativeAttribute
     class_uri: qudt:Quantity
     description: The strength of a body's gravitational attraction to other bodies.
-    exact_mappings:
+    close_mappings:
       - PATO:0000125
     #slot_usage:
       #has_quantity_type:
@@ -92,7 +92,7 @@ classes:
     is_a: QuantitativeAttribute
     class_uri: qudt:Quantity
     description: A measure of regions in three-dimensional space.
-    exact_mappings:
+    close_mappings:
       - PATO:0000918
     #slot_usage:
       #has_quantity_type:
@@ -100,7 +100,7 @@ classes:
   Pressure:
     is_a: QuantitativeAttribute
     class_uri: qudt:Quantity
-    exact_mappings:
+    close_mappings:
       - PATO:0001025
     #slot_usage:
       #has_quantity_type:
@@ -152,6 +152,7 @@ slots:
     slot_uri: prov:wasDerivedFrom
     description: The slot to specify the Entity from which a Sample was derived.
     range: Entity
+    inlined: true
     exact_mappings:
       - SIO:000244
     close_mappings:
