@@ -30,6 +30,7 @@ prefixes:
   AFP: http://purl.allotrope.org/ontologies/process#AFP_
   AFX: http://purl.allotrope.org/ontologies/property#AFX_
   AFR: http://purl.allotrope.org/ontologies/result#AFR_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
   VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
   EDAM: http://edamontology.org/data_
 default_prefix: chemical_entities_ap
@@ -39,24 +40,41 @@ imports:
   - material_entities_ap
 
 classes:
+  Atom:
+    class_uri: CHEBI:33250
+    is_a: MaterialEntity
+    description: A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.
+    slot_usage:
+      rdf_type:
+        description: The slot to provide the Atom as a ChEBI ID from the atom (CHEBI:33250) branch.
+        required: true
 
   ChemicalSubstance:
     class_uri: CHEBI:59999
     is_a: MaterialEntity
     mixin: true
-    description: A portion of matter of constant composition, composed of chemical entities of the same type or of different types.
+    description: A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.
     slots:
       - concentration
       - pH
       - composed_of
-      - dissolved_in
 
   Polymer:
     class_uri: CHEBI:60027
     is_a: ChemicalSubstance
     mixin: true
-    description: A polymer is a mixture, which is composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..
+    description: A ChemicalSubstance that is composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..
     # attributes: # Needed attributes will be defined here
+
+  DissolvingSubstance:
+    class_uri: SIO:010417
+    is_a: AgenticEntity
+    mixins:
+      - ChemicalSubstance
+    description: A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.
+    exact_mappings:
+      - VOC4CAT:0007246
+      - NCIT:C45790
 
   ChemicalEntity:
     is_a: MaterialEntity
@@ -69,7 +87,6 @@ classes:
       - molecular_formula
       - iupac_name
       - molar_mass
-
 
   Concentration:
     is_a: QuantitativeAttribute
@@ -138,8 +155,6 @@ slots:
     recommended: true
     close_mappings:
       - AFX:0000940
-
-  dissolved_in:
 
   concentration:
     is_a: has_quantitative_attribute
