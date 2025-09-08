@@ -17,7 +17,7 @@ to generate two LinkML representations from it:
 
 ## Website
 
-[https://StroemPhi.github.io/dcat-4C-ap](https://StroemPhi.github.io/dcat-4C-ap)
+https://nfdi-de.github.io/chem-dcat-ap
 
 ## Repository Structure
 
