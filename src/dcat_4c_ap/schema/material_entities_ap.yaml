@@ -68,8 +68,6 @@ classes:
       - derived_from
     slot_usage:
       derived_from:
-        slot_uri: SIO:000244
-        range: MaterialEntity
         description: The slot to specify the MaterialEntity or MaterialSample from which the MaterialSample was created.
     exact_mappings:
       - SIO:001050
@@ -158,6 +156,7 @@ slots:
     description: The slot to specify the Entity from which a Sample was derived.
     range: Entity
     inlined: true
+    inlined_as_list: false
     exact_mappings:
       - SIO:000244
     close_mappings:
