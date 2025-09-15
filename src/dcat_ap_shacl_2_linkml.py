@@ -53,8 +53,30 @@ PREFIX_MAP = {
 # using the linkml:Any class as range and the "any_of" metamodel slot to build such range union.
 # TODO: This "any_of" approach is not fully implemented in LinkML yet, see also:
 #  https://github.com/linkml/linkml/issues/1813
-# The shape for 'CataloguedResource' is
-IGNORED_NODES = ['Literal', 'mediaType', 'TemporalLiteral', 'CataloguedResource']
+
+DATATYPES = ['dateTime',
+              'decimal',
+              'duration',
+              'hexBinary',
+              'nonNegativeInteger']
+IGNORED_NODES = ['Literal',
+                 'mediaType',
+                 'TemporalLiteral',
+                 'CataloguedResource']
+MAIN_NODES = ['Agent',
+              'Catalogue',
+              'CatalogueRecord',
+              'CataloguedResource',
+              'Checksum',
+              'DataService',
+              'Dataset',
+              'DatasetSeries',
+              'Distribution',
+              'Kind',
+              'Licence Document',
+              'Location',
+              'Relationship',
+              'Activity' ]
 
 # Manually curated dict with recommended slots for each class, as this info cannot be parsed from the used shapes.
 RECOMMENDED_SLOTS = [{'Agent': ['type']},
@@ -138,23 +160,10 @@ def parse_dcat_ap_shacl_shapes(builder):
         description = f'See [DCAT-AP specs:{node_name}](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#{node_name})'
 
         # Parse node shapes that are considered LinkML classes.
-        if node_name not in ['dateTime', 'decimal', 'duration', 'hexBinary', 'nonNegativeInteger'] + IGNORED_NODES:
+        if node_name not in DATATYPES + IGNORED_NODES:
             # Add DCAT-AP Supportive Entity classes, this is done only to have an easier to read documentation.
             # 'Activity' is considered a main entity here, since we use it to extend DCAT-AP.
-            if node_name not in ['Agent',
-                                 'Catalogue',
-                                 'CatalogueRecord',
-                                 'CataloguedResource',
-                                 'Checksum',
-                                 'DataService',
-                                 'Dataset',
-                                 'DatasetSeries',
-                                 'Distribution',
-                                 'Kind',
-                                 'Licence Document',
-                                 'Location',
-                                 'Relationship',
-                                 'Activity' ]:
+            if node_name not in MAIN_NODES:
                 builder.add_class(ClassDefinition(name='SupportiveEntity',
                                                   description='The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.'))
                 builder.add_class(ClassDefinition(name=node_name,
@@ -547,6 +556,19 @@ def build_dcatap_plus():
                                                  'occurred_in'],
                                           in_subset='domain_agnostic_core'))
 
+
+    def extend_supportive_entites():
+        for supportive_entity in builder.schema.classes.keys():
+            slots = builder.schema.classes[supportive_entity].slots
+            if supportive_entity not in (MAIN_NODES + DATATYPES + ["DataGeneratingActivity"]):
+                if supportive_entity in ['Resource', 'Document', 'LegalResource', 'LicenseDocument']:
+                    builder.schema.classes[supportive_entity].slots = slots + ['id', 'title','description']
+                elif supportive_entity == 'ConceptScheme':
+                    builder.schema.classes[supportive_entity].slots = slots + ['description']
+                else:
+                    builder.schema.classes[supportive_entity].slots = slots + ['title','description']
+
+
     def add_classification_context():
         builder.add_class(ClassDefinition(name='ClassifierMixin',
                                           mixin=True,
@@ -928,6 +950,7 @@ def build_dcatap_plus():
     # Add slots & constraints to DCAT-AP's Dataset class
     extend_dataset()
     extend_activity()
+    extend_supportive_entites()
 
     # Add classes and properties needed to extend DCAT-AP
     add_classification_context()

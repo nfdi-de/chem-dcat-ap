@@ -910,11 +910,17 @@ classes:
     name: Any
     description: This abstract class is needed to create the union of Dataset, DatasetSeries,
       Catalogue and DataService for the range of the slot [primary_topic](https://nfdi-de.github.io/chem-dcat-ap/elements/primary_topic/).
+    slots:
+    - title
+    - description
     class_uri: linkml:Any
   Attribution:
     name: Attribution
     description: See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: prov:Attribution
   Catalogue:
     name: Catalogue
@@ -1235,6 +1241,9 @@ classes:
     name: ChecksumAlgorithm
     description: See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: spdx:ChecksumAlgorithm
   ClassifierMixin:
     name: ClassifierMixin
@@ -1258,6 +1267,8 @@ classes:
     is_a: SupportiveEntity
     slots:
     - preferred_label
+    - title
+    - description
     slot_usage:
       preferred_label:
         name: preferred_label
@@ -1274,6 +1285,7 @@ classes:
     is_a: SupportiveEntity
     slots:
     - title
+    - description
     slot_usage:
       title:
         name: title
@@ -2221,6 +2233,10 @@ classes:
     name: Document
     description: See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)
     is_a: SupportiveEntity
+    slots:
+    - id
+    - title
+    - description
     class_uri: foaf:Document
   Entity:
     name: Entity
@@ -2323,11 +2339,17 @@ classes:
     name: Frequency
     description: See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: dcterms:Frequency
   Geometry:
     name: Geometry
     description: See [DCAT-AP specs:Geometry](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: locn:Geometry
   Identifier:
     name: Identifier
@@ -2335,6 +2357,8 @@ classes:
     is_a: SupportiveEntity
     slots:
     - notation
+    - title
+    - description
     slot_usage:
       notation:
         name: notation
@@ -2354,6 +2378,10 @@ classes:
     name: LegalResource
     description: See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)
     is_a: SupportiveEntity
+    slots:
+    - id
+    - title
+    - description
     class_uri: eli:LegalResource
   LicenseDocument:
     name: LicenseDocument
@@ -2361,6 +2389,9 @@ classes:
     is_a: SupportiveEntity
     slots:
     - type
+    - id
+    - title
+    - description
     slot_usage:
       type:
         name: type
@@ -2377,6 +2408,9 @@ classes:
     name: LinguisticSystem
     description: See [DCAT-AP specs:LinguisticSystem](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: dcterms:LinguisticSystem
   Location:
     name: Location
@@ -2417,11 +2451,17 @@ classes:
     name: MediaType
     description: See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: dcterms:MediaType
   MediaTypeOrExtent:
     name: MediaTypeOrExtent
     description: See [DCAT-AP specs:MediaTypeOrExtent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaTypeOrExtent)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: dcterms:MediaTypeOrExtent
   PeriodOfTime:
     name: PeriodOfTime
@@ -2432,6 +2472,8 @@ classes:
     - end
     - end_date
     - start_date
+    - title
+    - description
     slot_usage:
       beginning:
         name: beginning
@@ -2493,11 +2535,17 @@ classes:
     name: Policy
     description: See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: odrl:Policy
   ProvenanceStatement:
     name: ProvenanceStatement
     description: See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: dcterms:ProvenanceStatement
   QualitativeAttribute:
     name: QualitativeAttribute
@@ -2589,16 +2637,26 @@ classes:
     name: Resource
     description: See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)
     is_a: SupportiveEntity
+    slots:
+    - id
+    - title
+    - description
     class_uri: rdfs:Resource
   RightsStatement:
     name: RightsStatement
     description: See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: dcterms:RightsStatement
   Role:
     name: Role
     description: See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: dcat:Role
   Software:
     name: Software
@@ -2629,12 +2687,18 @@ classes:
     name: Standard
     description: See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: dcterms:Standard
   SupportiveEntity:
     name: SupportiveEntity
     description: The supportive entities are supporting the main entities in the Application
       Profile. They are included in the Application Profile because they form the
       range of properties.
+    slots:
+    - title
+    - description
   Surrounding:
     name: Surrounding
     description: The surrounding in which the dataset creating activity took place
@@ -2651,4 +2715,7 @@ classes:
     name: TimeInstant
     description: See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)
     is_a: SupportiveEntity
+    slots:
+    - title
+    - description
     class_uri: time:Instant
