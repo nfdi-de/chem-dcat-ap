@@ -24,7 +24,10 @@ is_about_entity: # a NMRSample
         unit: https://qudt.org/vocab/unit/K
         value: 300.0
     composed_of:
-      - id: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
+      - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+        description: "compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2"
+        other_identifier:
+          - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
         inchikey:
           value: "UGRXAOUDHZOHPF-UHFFFAOYSA-N"
           title: "assigned InChiKey"
@@ -53,10 +56,12 @@ is_about_entity: # a NMRSample
             description: Molar mass as specified in PubChem.
 was_generated_by: # a NMRSpectralAnalysis
   - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectralAnalysis
+    description: "Analysis of NMR spectra."
     evaluated_entity: # a NMRSpectrum
     - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum
       was_generated_by: # a NMRSpectroscopy
         - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR
+          title: CDCl3_13C_NMR
           rdf_type:
             id: CHMO:0000595
             title: "13C nuclear magnetic resonance spectroscopy"
@@ -74,7 +79,10 @@ was_generated_by: # a NMRSpectralAnalysis
                   unit: https://qudt.org/vocab/unit/K
                   value: 300.0
               composed_of:
-                - id: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
+                - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+                  description: "compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2"
+                  other_identifier:
+                    - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
                   inchikey:
                     value: "UGRXAOUDHZOHPF-UHFFFAOYSA-N"
                     title: "assigned InChiKey"
@@ -82,7 +90,7 @@ was_generated_by: # a NMRSpectralAnalysis
                     value: "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3"
                     title: "assigned InChi"
                   smiles:
-                    value: " CNCc1csc(n1)c1ccccc1"
+                    value: "CNCc1csc(n1)c1ccccc1"
                     title: "assigned SMILES"
                   molecular_formula:
                     value: "C11H12N2S"
@@ -96,11 +104,11 @@ was_generated_by: # a NMRSpectralAnalysis
                     - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
                       unit: https://qudt.org/vocab/unit/GM-PER-MOL
                       value: 204.072119
-                      description: Molar mass as specified in the Chemotion repository.
+                      description: "Molar mass as specified in the Chemotion repository."
                     - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
                       unit: https://qudt.org/vocab/unit/GM-PER-MOL
                       value: 204.29
-                      description: Molar mass as specified in PubChem.
+                      description: "Molar mass as specified in PubChem."
           used_number_of_scans:
               title: "number_of_scans"
               value: 1024
@@ -110,7 +118,7 @@ was_generated_by: # a NMRSpectralAnalysis
             title: "pulse_sequence"
             value: zgpg30
           used_spectrometer:
-            - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectrometer
+            - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrometer
               title: "Bruker 400 MHz"
               has_proton_frequency:
                 title: "proton_frequency"
