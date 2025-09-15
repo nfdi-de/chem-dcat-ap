@@ -3,7 +3,7 @@ id: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 name: dcat-4C-ap
 title: DCAT-4C-AP
 description: |-
-  This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.
+  This is an extension of the DCAT Application Profile PLUS LinkML schema. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles/schemas to provide chemistry specific specific metadata for a dataset.
 license: CC-BY 4.0
 see_also:
   - https://nfdi-de.github.io/chem-dcat-ap/
