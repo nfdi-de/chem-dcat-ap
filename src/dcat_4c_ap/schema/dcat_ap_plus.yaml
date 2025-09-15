@@ -20,7 +20,7 @@ see_also:
 - https://github.com/StroemPhi/dcat-4C-ap
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
-id: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml
+id: https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml
 imports:
 - linkml:types
 license: CC-BY 4.0
@@ -48,7 +48,7 @@ prefixes:
   iana: https://www.iana.org/assignments/
   epos: https://www.epos-eu.org/epos-dcat-ap#
   schema: http://schema.org/
-  dcatap_plus: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#
+  dcatap_plus: https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#
   BFO: http://purl.obolibrary.org/obo/BFO_
   OBI: http://purl.obolibrary.org/obo/OBI_
   NCIT: http://purl.obolibrary.org/obo/NCIT_
@@ -909,7 +909,7 @@ classes:
   Any:
     name: Any
     description: This abstract class is needed to create the union of Dataset, DatasetSeries,
-      Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/).
+      Catalogue and DataService for the range of the slot [primary_topic](https://nfdi-de.github.io/chem-dcat-ap/elements/primary_topic/).
     class_uri: linkml:Any
   Attribution:
     name: Attribution

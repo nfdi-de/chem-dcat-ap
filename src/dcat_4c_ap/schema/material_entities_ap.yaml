@@ -1,12 +1,12 @@
 ---
-id: https://stroemphi.github.io/dcat-4C-ap/material_entities_ap.yaml
+id: https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml
 name: material-entity-ap
 title: Material-Entity-AP
 description: |-
   This is an application profile for material entities to be used for extending the DCAT-AP-PLUS.
 license: CC-BY 4.0
 prefixes:
-  material_entities_ap: https://stroemphi.github.io/dcat-4C-ap/material_entities_ap.yaml#
+  material_entities_ap: https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/

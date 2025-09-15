@@ -119,7 +119,7 @@ def parse_dcat_ap_shacl_shapes(builder):
     builder.add_class(ClassDefinition(name='Any',
                                       class_uri='linkml:Any',
                                       description='This abstract class is needed to create the union of Dataset, '
-                                                  'DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/).'))
+                                                  'DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://nfdi-de.github.io/chem-dcat-ap/elements/primary_topic/).'))
     # Iterate through each SHACL node shape within the loaded JSON-LD to derive the LinkML classes or types from them.
     for node_shape in dcat_ap_shapes['shapes']:
         node_curie = get_curie(node_shape['sh:targetClass'])
@@ -348,11 +348,11 @@ def build_dcatap_linkml():
     print('\n   --- Building the DCAT-AP LinkML representation ---')
 
     builder = SchemaBuilder(name="dcat-ap")
-    builder.schema.id = 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml'
+    builder.schema.id = 'https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_linkml.yaml'
     builder.schema.description = DESCRIPTION1 + '\nNOTE:' + NOTE
     builder.schema.default_prefix = 'dcatap_linkml'
     builder.schema.prefixes = PREFIX_MAP
-    builder.schema.prefixes['dcatap_linkml']='https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml#'
+    builder.schema.prefixes['dcatap_linkml']='https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_linkml.yaml#'
     builder.schema.title = 'LinkML schema representation of DCAT-AP 3.0.0'
     builder.schema.license = 'CC-BY 4.0'
     builder.schema.default_range = 'string'
@@ -897,11 +897,11 @@ def build_dcatap_plus():
     # Initialize the extended DCAT-AP LinkML schema
 
     builder = SchemaBuilder(name="dcat-ap-plus")
-    builder.schema.id = 'https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml'
+    builder.schema.id = 'https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml'
     builder.schema.description = DESCRIPTION2
     builder.schema.default_prefix = 'dcatap_plus'
     builder.schema.prefixes = PREFIX_MAP
-    builder.schema.prefixes['dcatap_plus']='https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#'
+    builder.schema.prefixes['dcatap_plus']='https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#'
     builder.schema.prefixes['BFO']='http://purl.obolibrary.org/obo/BFO_'
     builder.schema.prefixes['OBI']='http://purl.obolibrary.org/obo/OBI_'
     builder.schema.prefixes['NCIT']='http://purl.obolibrary.org/obo/NCIT_'

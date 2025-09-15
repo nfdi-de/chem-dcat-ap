@@ -1,15 +1,15 @@
 ---
-id: https://stroemphi.github.io/dcat-4C-ap/chemical_reaction_ap.yaml
+id: https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml
 name: chemical_reaction_ap
 title: Chemical Reaction Application Profile
 description: |-
   This is an application profile for chemical reactions that is intended to be used as an extension of DCAT-AP-PLUS.
 license: CC-BY 4.0
 prefixes:
-  chemical_reaction_ap: https://stroemphi.github.io/dcat-4C-ap/chemical_reaction_ap.yaml#
-  chemical_entities_ap: https://stroemphi.github.io/dcat-4C-ap/chemical_entities_ap.yaml#
-  material_entities_ap: https://stroemphi.github.io/dcat-4C-ap/material_entities_ap.yaml#
-  dcatap_plus: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#
+  chemical_reaction_ap: https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#
+  chemical_entities_ap: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#
+  material_entities_ap: https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#
+  dcatap_plus: https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/

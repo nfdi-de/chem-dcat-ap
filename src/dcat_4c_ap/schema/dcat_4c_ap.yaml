@@ -1,17 +1,17 @@
 ---
-id: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap.yaml
+id: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 name: dcat-4C-ap
 title: DCAT-4C-AP
 description: |-
   This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset.
 license: CC-BY 4.0
 see_also:
-  - https://StroemPhi.github.io/dcat-NFDI-ap
+  - https://nfdi-de.github.io/chem-dcat-ap/
   - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
   - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
-  dcat_4c_ap: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap.yaml#
-  dcatap_plus: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#
+  dcat_4c_ap: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml#
+  dcatap_plus: https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/

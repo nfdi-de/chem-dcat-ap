@@ -28,7 +28,7 @@ todos:
 - Check if https://github.com/linkml/linkml/issues/1813 is closed and range unions
   are validatable
 source: https://semiceu.github.io/DCAT-AP/releases/3.0.0
-id: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml
+id: https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_linkml.yaml
 imports:
 - linkml:types
 license: CC-BY 4.0
@@ -56,7 +56,7 @@ prefixes:
   iana: https://www.iana.org/assignments/
   epos: https://www.epos-eu.org/epos-dcat-ap#
   schema: https://schema.org/
-  dcatap_linkml: https://stroemphi.github.io/dcat-4C-ap/dcat_ap_linkml.yaml#
+  dcatap_linkml: https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_linkml.yaml#
 default_prefix: dcatap_linkml
 default_range: string
 types:
@@ -590,7 +590,7 @@ classes:
   Any:
     name: Any
     description: This abstract class is needed to create the union of Dataset, DatasetSeries,
-      Catalogue and DataService for the range of the slot [primary_topic](https://stroemphi.github.io/dcat-4C-ap/elements/primary_topic/).
+      Catalogue and DataService for the range of the slot [primary_topic](https://nfdi-de.github.io/chem-dcat-ap/elements/primary_topic/).
     class_uri: linkml:Any
   Attribution:
     name: Attribution
