@@ -40,9 +40,22 @@ imports:
   - material_entities_ap
 
 classes:
+
+  ChemicalEntity:
+    is_a: MaterialEntity
+    class_uri: CHEBI:23367
+    description: Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.
+    slots:
+      - inchi
+      - inchikey
+      - smiles
+      - molecular_formula
+      - iupac_name
+      - molar_mass
+
   Atom:
     class_uri: CHEBI:33250
-    is_a: MaterialEntity
+    is_a: ChemicalEntity
     description: A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.
     slot_usage:
       rdf_type:
@@ -75,18 +88,6 @@ classes:
     exact_mappings:
       - VOC4CAT:0007246
       - NCIT:C45790
-
-  ChemicalEntity:
-    is_a: MaterialEntity
-    class_uri: CHEBI:23367
-    description: Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.
-    slots:
-      - inchi
-      - inchikey
-      - smiles
-      - molecular_formula
-      - iupac_name
-      - molar_mass
 
   Concentration:
     is_a: QuantitativeAttribute
