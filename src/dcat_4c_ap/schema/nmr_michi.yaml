@@ -53,7 +53,8 @@ classes:
         description: The slot to provide the compound(s) of which an NMRSample is composed via the peak assignment of an NMRSpectrum.
         required: true
         range: CharacterizedCompound
-
+      derived_from:
+        description: The slot to specify the MaterialEntity or MaterialSample from which the NMRSample was created.
   NMRAnalysisDataset:
     class_uri: dcat:Dataset
     is_a: AnalysisDataset
