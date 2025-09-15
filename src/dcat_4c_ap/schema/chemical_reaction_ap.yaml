@@ -114,7 +114,7 @@ classes:
     is_a: AgenticEntity
     mixins:
       - ChemicalSubstance
-      - MaterialEntity
+      - MaterialisticEntity
     description: A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.
     exact_mappings:
       - VOC4CAT:0000194
@@ -126,7 +126,7 @@ classes:
     is_a: Device
     class_uri: AFE:0000153
     mixins:
-      - MaterialEntity
+      - MaterialisticEntity
     description: A reactor is a container for controlling a biological or chemical reaction or process.
     exact_mappings:
       - VOC4CAT:0007017

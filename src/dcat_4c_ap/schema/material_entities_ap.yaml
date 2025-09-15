@@ -35,20 +35,8 @@ imports:
   - dcat_ap_plus
 
 classes:
-
-  MaterialEntity:
-    class_uri: BFO:0000040
-    is_a: Entity
+  MaterialisticEntity:
     mixin: true
-    description: A material entity is an Entity that has some portion of matter as proper part.
-    slot_usage:
-      has_part:
-        slot_uri: BFO:0000051
-        description: The slot to provide the parts of a MaterialEntity.
-        range: MaterialEntity
-        multivalued: true
-        inlined_as_list: true
-        recommended: true
     slots:
       - alternative_label
       - has_physical_state
@@ -58,12 +46,27 @@ classes:
       - has_pressure
       # more slots might need to be defined for a MaterialEntity
 
+  MaterialEntity:
+    class_uri: BFO:0000040
+    is_a: Entity
+    mixins:
+      - MaterialisticEntity
+    description: A material is an Entity that has some portion of matter as proper part.
+    slot_usage:
+      has_part:
+        slot_uri: BFO:0000051
+        description: The slot to provide the parts of a MaterialEntity.
+        range: MaterialEntity
+        multivalued: true
+        inlined_as_list: true
+        recommended: true
+
   MaterialSample:
     is_a: EvaluatedEntity
     class_uri: OBI:0000747
     description: A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.
     mixins:
-      - MaterialEntity
+      - MaterialisticEntity
     slots:
       - derived_from
     slot_usage:
