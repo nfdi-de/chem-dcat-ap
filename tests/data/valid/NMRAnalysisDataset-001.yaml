@@ -63,6 +63,16 @@ was_generated_by: # a NMRSpectralAnalysis
           evaluated_entity: # a NMRSample
             - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
               title: "CRS-50440"
+              other_identifier:
+                - notation: https://www.chemotion-repository.net/pid/50440
+              has_quantitative_attribute: # not yet defined more specifically in the NMR MICHI, hence using DAT-AP-PLUS base slot.
+                - rdf_type:
+                    id: NMR:1400025
+                    title: "sample temperature in magnet"
+                  title: "sample temperature in magnet"
+                  has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+                  unit: https://qudt.org/vocab/unit/K
+                  value: 300.0
               composed_of:
                 - id: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
                   inchikey:

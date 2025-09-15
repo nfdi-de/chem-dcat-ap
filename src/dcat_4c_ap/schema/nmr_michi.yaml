@@ -65,7 +65,7 @@ classes:
         multivalued: true
         inlined_as_list: true
       is_about_entity:
-
+        slot_uri: IAO:0000136
         range: NMRSample
         description: The slot to specify the NMRSample being evaluated within a NMRSpectroscopy.
     comments:
