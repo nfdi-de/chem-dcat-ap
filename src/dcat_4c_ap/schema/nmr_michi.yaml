@@ -240,7 +240,8 @@ classes:
     #slot_usage:
       #has_quantity_type:
         #ifabsent: http://qudt.org/vocab/quantitykind/Frequency
-
+      #unit:
+        #ifabsent: https://qudt.org/vocab/unit/MegaHZ
   ChemicalShiftReference:
     class_uri: NMR:1001954
     is_a: QuantitativeAttribute
