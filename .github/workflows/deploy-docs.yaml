@@ -50,6 +50,7 @@ jobs:
 
       - name: Build and deploy documentation
         run: |
+          # copy the schema files to the GH pages as a means of publishing them
           cp src/dcat_4c_ap/schema/*.yaml docs/
           just gen-doc
           poetry run mkdocs gh-deploy
