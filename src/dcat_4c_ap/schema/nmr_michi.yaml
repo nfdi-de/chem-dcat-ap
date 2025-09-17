@@ -281,10 +281,9 @@ slots:
     recommended: true
   has_proton_frequency:
     slot_uri: SIO:000008
-    #is_a: has_quantitative_attribute
+    is_a: has_quantitative_attribute
     description: The slot to specify the NominalProtonFrequency of a NMRSpectrometer.
     range: NominalProtonFrequency
-    multivalued: false
     required: true
   has_shift_reference:
     slot_uri: SIO:000008
