@@ -115,9 +115,26 @@ classes:
       - NCIT:C41185
       - VOC4CAT:0007244
       - AFR:0002036
+    narrow_mappings:
+      - CHMO:0002822
     close_mappings:
       - PATO:0000033
-
+    #slot_usage:
+      #has_quantity_type:
+      # ifabsent: http://qudt.org/vocab/quantitykind/Concentration
+      # ifabsent: http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration
+      # ifabsent: http://qudt.org/vocab/quantitykind/MassConcentration
+  AmountOfSubstance:
+    class_uri: qudt:Quantity
+    is_a: QuantitativeAttribute
+    aliases:
+      - SubstanceAmount
+    description: The total amount of substance used in a ChemicalReaction.
+    close_mappings:
+      - PATO:0000070
+    #slot_usage:
+      #has_quantity_type:
+      # ifabsent: http://qudt.org/vocab/quantitykind/AmountOfSubstance
   PHValue:
     is_a: QuantitativeAttribute
     class_uri: SIO:001089
@@ -147,6 +164,11 @@ slots:
     slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
     range: Concentration
     description: The slot to provide the Concentration of a ChemicalSubstance.
+  has_amount:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
+    range: AmountOfSubstance
+    description: The slot to provide the AmountConcentration of a ChemicalSubstance.
   has_ph_value:
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS

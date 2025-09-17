@@ -43,6 +43,7 @@ classes:
       - has_temperature
       - has_mass
       - has_volume
+      - has_density
       - has_pressure
       # more slots might need to be defined for a MaterialEntity
 
@@ -103,6 +104,15 @@ classes:
     #slot_usage:
       #has_quantity_type:
       #ifabsent: http://qudt.org/vocab/quantitykind/Volume
+  Density:
+    is_a: QuantitativeAttribute
+    class_uri: SIO:001406
+    description: A measure of the mass per unit volume of a substance.
+    close_mappings:
+      - PATO:0001019
+      #slot_usage:
+      #has_quantity_type:
+      #ifabsent: http://qudt.org/vocab/quantitykind/Density
   Pressure:
     is_a: QuantitativeAttribute
     class_uri: qudt:Quantity
@@ -147,6 +157,12 @@ slots:
     slot_uri: SIO:000008
     range: Volume
     description: The slot to provide the Volume of a MaterialEntity.
+
+  has_density:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    range: Density
+    description: The slot to provide the Density of a MaterialEntity.
 
   has_pressure:
     is_a: has_quantitative_attribute

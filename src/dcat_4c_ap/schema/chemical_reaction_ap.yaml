@@ -73,11 +73,19 @@ classes:
       - has_pressure # reused from material_entities_ap.yaml
       - has_yield
       - has_reaction_step
+      - related_resource
     slot_usage:
       has_temperature:
         description: The slot to specify the Temperature at which a ChemicalReaction takes place.
+        inlined_as_list: true
       has_pressure:
-        description: The slot to specify the Pressure at which a ChemicalReaction takes place.r
+        description: The slot to specify the Pressure at which a ChemicalReaction takes place.
+      related_resource:
+        range: Resource
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+        description: The slot to specify any Documents related to a ChemicalReaction.
     exact_mappings:
       - MOP:0000543
       - REX:0000002
@@ -89,6 +97,8 @@ classes:
     class_uri: PROCO:0000029
     is_a: ChemicalSubstance
     description: A ChemicalSubstance with that has a starting material role in a synthesis.
+    slots:
+      - has_molar_equivalent
 
   DissolvingSubstance:
     class_uri: SIO:010417
@@ -109,9 +119,11 @@ classes:
     class_uri: SIO:010411
     is_a: ChemicalSubstance
     description: A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.
+    slots:
+      - has_molar_equivalent
     exact_mappings:
       - NCIT:C802
-      - VOC4CAT:0007005
+      - VOC4CAT:0000101
     close_mappings:
       - OBI:0001879
       - PROCO:0000029
@@ -132,6 +144,8 @@ classes:
       - ChemicalSubstance
       - MaterialisticEntity
     description: A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.
+    slots:
+      - has_molar_equivalent
     exact_mappings:
       - VOC4CAT:0000194
       - NCIT:C48810
@@ -153,6 +167,21 @@ classes:
     description: A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).
     exact_mappings:
       - VOC4CAT:0005005
+
+  MolarEquivalent:
+    class_uri: qudt:Quantity
+    is_a: QuantitativeAttribute
+    description: A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.
+
+  PercentageOfTotal:
+    class_uri: qudt:Quantity
+    is_a: QuantitativeAttribute
+    description: A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.
+      #slot_usage:
+      #has_quantity_type:
+      # ifabsent: http://qudt.org/vocab/quantitykind/Dimensionless
+    #unit:
+    # ifabsent: https://qudt.org/vocab/unit/MilliL
 
 slots:
   used_starting_material:
@@ -210,6 +239,17 @@ slots:
     is_a: has_quantitative_attribute
     description: A slot to provide the percentage of how much of the ChemicalProduct was produced by a ChemicalReaction.
     range: Yield
+  has_molar_equivalent:
+    slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
+    is_a: has_quantitative_attribute
+    range: MolarEquivalent
+    description: A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.
+  has_percentage_of_total:
+    slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
+    is_a: has_quantitative_attribute
+    range: PercentageOfTotal
+    description:
+      A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.
   has_reaction_step:
     is_a: has_part
     slot_uri: BFO:0000051
