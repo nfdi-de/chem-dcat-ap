@@ -62,12 +62,13 @@ classes:
     class_uri: SIO:010345
     description: A process that leads to the transformation of one set of chemical substances to another.
     slots:
-      - has_reagent
-      - has_product
-      - has_catalyst
-      - has_solvent
+      - used_starting_material
+      - used_reactant
+      - generated_product
+      - used_catalyst
+      - used_solvent
       - has_duration
-      - has_reactor
+      - used_reactor
       - has_temperature # reused from material_entities_ap.yaml
       - has_pressure # reused from material_entities_ap.yaml
       - has_yield
@@ -139,7 +140,7 @@ classes:
       - VOC4CAT:0005005
 
 slots:
-  has_starting_material:
+  used_starting_material:
     range: StartingMaterial
     is_a: had_input_entity
     slot_uri: RO:0004009
@@ -147,7 +148,7 @@ slots:
     multivalued: true
     inlined_as_list: true
     recommended: true
-  has_reagent:
+  used_reactant:
     range: Reagent
     is_a: had_input_entity
     slot_uri: RO:0004009
@@ -155,7 +156,7 @@ slots:
     multivalued: true
     inlined_as_list: true
     recommended: true
-  has_product:
+  generated_product:
     range: ChemicalProduct
     is_a: had_output_entity
     slot_uri: RO:0004008
@@ -163,7 +164,7 @@ slots:
     multivalued: true
     inlined_as_list: true
     recommended: true
-  has_catalyst:
+  used_catalyst:
     range: Catalyst
     is_a: carried_out_by
     slot_uri: RXNO:0000425
@@ -171,7 +172,7 @@ slots:
     multivalued: true
     inlined_as_list: true
     recommended: true
-  has_solvent:
+  used_solvent:
     range: DissolvingSubstance
     is_a: carried_out_by
     slot_uri: prov:wasAssociatedWith
@@ -184,7 +185,7 @@ slots:
     is_a: has_quantitative_attribute
     range: duration
     description: A slot to provide the duration of a ChemicalReaction.
-  has_reactor:
+  used_reactor:
     is_a: carried_out_by
     slot_uri: prov:wasAssociatedWith
     description: The slot to specify the reactor used in a ChemicalReaction.

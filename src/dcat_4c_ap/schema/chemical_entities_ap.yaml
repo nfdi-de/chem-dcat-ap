@@ -51,8 +51,7 @@ classes:
       - smiles
       - molecular_formula
       - iupac_name
-      - molar_mass
-
+      - has_molar_mass
   Atom:
     class_uri: CHEBI:33250
     is_a: ChemicalEntity
@@ -94,10 +93,12 @@ classes:
     mixin: true
     description: A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.
     slots:
-      - concentration
-      - pH
+      - has_concentration
+      - has_ph_value
       - composed_of
-
+      - has_molar_equivalent
+      - has_amount
+      - has_percentage_of_total
   Polymer:
     class_uri: CHEBI:60027
     is_a: ChemicalSubstance
@@ -151,14 +152,12 @@ slots:
     recommended: true
     close_mappings:
       - AFX:0000940
-
-  concentration:
+  has_concentration:
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
     range: Concentration
     description: The slot to provide the Concentration of a ChemicalSubstance.
-
-  pH:
+  has_ph_value:
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
     range: PHValue
@@ -194,7 +193,7 @@ slots:
     range: IUPACName
     description: The slot to provide the IUPAC name of a ChemicalEntity.
     recommended: true
-  molar_mass:
+  has_molar_mass:
     slot_uri: SIO:000008
     is_a: has_mass
     range: MolarMass
