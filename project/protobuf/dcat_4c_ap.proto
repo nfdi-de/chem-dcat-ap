@@ -1,6 +1,20 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
+// The nucleus of an Atom that is being studied during an NMR analysis.
+message AcquisitionNucleus
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  agenticEntity hasPart = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+  atom nucleusOf = 0
+ }
 // See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
 message Activity
  {
@@ -34,6 +48,17 @@ message AgenticEntity
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
  repeated  agenticEntity hasPart = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// The total amount of substance used in a ChemicalReaction.
+message AmountOfSubstance
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -94,6 +119,44 @@ message AnalysisSourceData
  repeated  identifier otherIdentifier = 0
  repeated  dataGeneratingActivity wasGeneratedBy = 0
  }
+// This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://nfdi-de.github.io/chem-dcat-ap/elements/primary_topic/).
+message Any
+ {
+  string title = 0
+  string description = 0
+ }
+// A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.
+message Atom
+ {
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+ repeated  materialEntity hasPart = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  inChi inchi = 0
+ repeated  inChIKey inchikey = 0
+ repeated  sMILES smiles = 0
+ repeated  molecularFormula molecularFormula = 0
+ repeated  iUPACName iupacName = 0
+ repeated  molarMass hasMolarMass = 0
+  definedTerm rdfType = 0
+ }
+// See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)
+message Attribution
+ {
+  string title = 0
+  string description = 0
+ }
 // See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
 message Catalogue
  {
@@ -130,75 +193,185 @@ message CatalogueRecord
   catalogueRecord sourceMetadata = 0
  repeated  string title = 0
  }
+// A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.
+message Catalyst
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  agenticEntity hasPart = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  molarEquivalent hasMolarEquivalent = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  concentration hasConcentration = 0
+ repeated  pHValue hasPhValue = 0
+ repeated  chemicalEntity composedOf = 0
+ repeated  amountOfSubstance hasAmount = 0
+ repeated  percentageOfTotal hasPercentageOfTotal = 0
+ }
+// A ChemicalEntity that being characterized in an NMRSample using data acquired from a NMRSpectroscopy.
+message CharacterizedCompound
+ {
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  materialEntity hasPart = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  inChi inchi = 0
+ repeated  inChIKey inchikey = 0
+ repeated  sMILES smiles = 0
+ repeated  molecularFormula molecularFormula = 0
+ repeated  iUPACName iupacName = 0
+ repeated  molarMass hasMolarMass = 0
+ }
 // See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
 message Checksum
  {
   checksumAlgorithm algorithm = 0
   hexBinary checksumValue = 0
  }
+// See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)
+message ChecksumAlgorithm
+ {
+  string title = 0
+  string description = 0
+ }
 // Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.
 message ChemicalEntity
  {
-  inChi inchi = 0
-  inChIKey inchikey = 0
-  sMILES smiles = 0
-  iUPACChemicalFormula iupacFormula = 0
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  materialEntity hasPart = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  inChi inchi = 0
+ repeated  inChIKey inchikey = 0
+ repeated  sMILES smiles = 0
+ repeated  molecularFormula molecularFormula = 0
+ repeated  iUPACName iupacName = 0
+ repeated  molarMass hasMolarMass = 0
  }
-// An experimental procedure with the aim of producing a portion of a given compound or mixture.
+// A chemical substance that is produced by a ChemicalReaction.
+message ChemicalProduct
+ {
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  materialEntity hasPart = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  concentration hasConcentration = 0
+ repeated  pHValue hasPhValue = 0
+ repeated  chemicalEntity composedOf = 0
+ repeated  molarEquivalent hasMolarEquivalent = 0
+ repeated  amountOfSubstance hasAmount = 0
+ repeated  percentageOfTotal hasPercentageOfTotal = 0
+ }
+// A process that leads to the transformation of one set of chemical substances to another.
 message ChemicalReaction
  {
   uriorcurie id = 0
  repeated  string title = 0
  repeated  string description = 0
+ repeated  identifier otherIdentifier = 0
+  activity hasPart = 0
  repeated  entity hadInputEntity = 0
  repeated  entity hadOutputEntity = 0
  repeated  activity hadInputActivity = 0
  repeated  agenticEntity carriedOutBy = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  evaluatedActivity hasPart = 0
- repeated  identifier otherIdentifier = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  startingMaterial usedStartingMaterial = 0
+ repeated  reagent usedReactant = 0
+ repeated  chemicalProduct generatedProduct = 0
+ repeated  catalyst usedCatalyst = 0
+ repeated  dissolvingSubstance usedSolvent = 0
+  duration hasDuration = 0
+ repeated  reactor usedReactor = 0
+ repeated  temperature hasTemperature = 0
+ repeated  pressure hasPressure = 0
+ repeated  yield hasYield = 0
+  chemicalReaction hasReactionStep = 0
+ repeated  resource relatedResource = 0
  }
-message ChemicalSample
+// A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.
+message ChemicalShiftReference
  {
-  uriorcurie id = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- repeated  activity wasGeneratedBy = 0
   string title = 0
   string description = 0
- repeated  evaluatedEntity hasPart = 0
- repeated  identifier otherIdentifier = 0
- repeated  chemicalEntity composedOf = 0
- }
-// A portion of matter of constant composition, composed of molecular entities of the same type or of different types that is being evaluated in a scientific process.
-message ChemicalSubstance
- {
-  uriorcurie id = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
   definedTerm type = 0
   definedTerm rdfType = 0
- repeated  activity wasGeneratedBy = 0
+ }
+// A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume of the mixture.
+message Concentration
+ {
   string title = 0
   string description = 0
- repeated  evaluatedEntity hasPart = 0
- repeated  identifier otherIdentifier = 0
- repeated  chemicalEntity composedOf = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  }
 // See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)
 message Concept
  {
  repeated  string preferredLabel = 0
+  string title = 0
+  string description = 0
  }
 // See [DCAT-AP specs:ConceptScheme](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme)
 message ConceptScheme
  {
  repeated  string title = 0
+  string description = 0
  }
 // An Activity that evaluates the data produced by another Activity.
 message DataAnalysis
@@ -326,6 +499,17 @@ message DefinedTerm
   string title = 0
   uriorcurie fromCV = 0
  }
+// A measure of the mass per unit volume of a substance.
+message Density
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
 // A material instrument that is designed to perform a function primarily by means of its mechanical or electrical nature.
 message Device
  {
@@ -338,6 +522,32 @@ message Device
   definedTerm rdfType = 0
  repeated  device hasPart = 0
  repeated  identifier otherIdentifier = 0
+ }
+// A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.
+message DissolvingSubstance
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  agenticEntity hasPart = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  percentageOfTotal hasPercentageOfTotal = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  concentration hasConcentration = 0
+ repeated  pHValue hasPhValue = 0
+ repeated  chemicalEntity composedOf = 0
+ repeated  molarEquivalent hasMolarEquivalent = 0
+ repeated  amountOfSubstance hasAmount = 0
  }
 // See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)
 message Distribution
@@ -366,6 +576,13 @@ message Distribution
   concept status = 0
   duration temporalResolution = 0
  repeated  string title = 0
+ }
+// See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)
+message Document
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
  }
 // A physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.
 message Entity
@@ -411,10 +628,24 @@ message EvaluatedEntity
  repeated  evaluatedEntity hasPart = 0
  repeated  identifier otherIdentifier = 0
  }
+// See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)
+message Frequency
+ {
+  string title = 0
+  string description = 0
+ }
+// See [DCAT-AP specs:Geometry](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry)
+message Geometry
+ {
+  string title = 0
+  string description = 0
+ }
 // See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)
 message Identifier
  {
   string notation = 0
+  string title = 0
+  string description = 0
  }
 // A structure descriptor which conforms to the InChI format specification.
 message InChi
@@ -434,7 +665,7 @@ message InChIKey
   definedTerm rdfType = 0
  }
 // A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).
-message IUPACChemicalFormula
+message IUPACName
  {
   string title = 0
   string description = 0
@@ -450,10 +681,26 @@ message Laboratory
   definedTerm type = 0
   definedTerm rdfType = 0
  }
+// See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)
+message LegalResource
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ }
 // See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)
 message LicenseDocument
  {
  repeated  concept type = 0
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ }
+// See [DCAT-AP specs:LinguisticSystem](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem)
+message LinguisticSystem
+ {
+  string title = 0
+  string description = 0
  }
 // See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)
 message Location
@@ -462,7 +709,103 @@ message Location
   string centroid = 0
   geometry geometry = 0
  }
-// A dataset that is the result of a NMRSpectralAnalysis of a ChemicalSample.
+// The strength of a body's gravitational attraction to other bodies.
+message Mass
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// A material is an Entity that has some portion of matter as proper part.
+message MaterialEntity
+ {
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  materialEntity hasPart = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ }
+// A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.
+message MaterialSample
+ {
+  uriorcurie id = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  activity wasGeneratedBy = 0
+  string title = 0
+  string description = 0
+ repeated  evaluatedEntity hasPart = 0
+ repeated  identifier otherIdentifier = 0
+  entity derivedFrom = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ }
+// See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)
+message MediaType
+ {
+  string title = 0
+  string description = 0
+ }
+// See [DCAT-AP specs:MediaTypeOrExtent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaTypeOrExtent)
+message MediaTypeOrExtent
+ {
+  string title = 0
+  string description = 0
+ }
+// A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.
+message MolarEquivalent
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.
+message MolarMass
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// A structure descriptor which identifies each constituent element by its chemical symbol and indicates the number of atoms of each element found in each discrete molecule of that compound.
+message MolecularFormula
+ {
+  string title = 0
+  string description = 0
+  string value = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// A dataset that is the result of a NMRSpectralAnalysis of a NMRSample.
 message NMRAnalysisDataset
  {
   rightsStatement accessRights = 0
@@ -503,7 +846,61 @@ message NMRAnalysisDataset
   uriorcurie id = 0
  repeated  evaluatedActivity isAboutActivity = 0
  repeated  nMRSpectralAnalysis wasGeneratedBy = 0
- repeated  chemicalSample isAboutEntity = 0
+ repeated  nMRSample isAboutEntity = 0
+ }
+// A SubstanceSample that has been prepared for chemical analysis by NMR.
+message NMRSample
+ {
+  uriorcurie id = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  activity wasGeneratedBy = 0
+  string title = 0
+  string description = 0
+ repeated  evaluatedEntity hasPart = 0
+ repeated  identifier otherIdentifier = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  concentration hasConcentration = 0
+ repeated  pHValue hasPhValue = 0
+ repeated  molarEquivalent hasMolarEquivalent = 0
+ repeated  amountOfSubstance hasAmount = 0
+ repeated  percentageOfTotal hasPercentageOfTotal = 0
+ repeated  characterizedCompound composedOf = 0
+  entity derivedFrom = 0
+ }
+// A DissolvingSubstance that is used in nuclear magnetic resonance NMRSpectroscopy.
+message NMRSolvent
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  agenticEntity hasPart = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  percentageOfTotal hasPercentageOfTotal = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  concentration hasConcentration = 0
+ repeated  pHValue hasPhValue = 0
+ repeated  chemicalEntity composedOf = 0
+ repeated  molarEquivalent hasMolarEquivalent = 0
+ repeated  amountOfSubstance hasAmount = 0
  }
 // A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectrum generated by a NMRSpectroscopy
 message NMRSpectralAnalysis
@@ -526,6 +923,20 @@ message NMRSpectralAnalysis
   surrounding occurredIn = 0
  repeated  nMRSpectrum evaluatedEntity = 0
  }
+// A Spectrometer used to conduct NMR experiments consisting of a magnet housing a sample space surrounded by two coils which act to transmit radio frequency radiation to the sample and to detect the response of the sample.
+message NMRSpectrometer
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  device hasPart = 0
+ repeated  identifier otherIdentifier = 0
+  nominalProtonFrequency hasProtonFrequency = 0
+ }
 // Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.
 message NMRSpectroscopy
  {
@@ -544,10 +955,17 @@ message NMRSpectroscopy
  repeated  evaluatedActivity evaluatedActivity = 0
   plan realizedPlan = 0
   surrounding occurredIn = 0
- repeated  chemicalSample evaluatedEntity = 0
+ repeated  nMRSpectrometer usedSpectrometer = 0
+ repeated  nMRSolvent usedSolvent = 0
+  numberOfScans usedNumberOfScans = 0
+  pulseSequence usedPulseSequence = 0
+ repeated  acquisitionNucleus probesNucleus = 0
+ repeated  shiftCalibrationCompound usedCalibrationCompound = 0
+ repeated  shiftReferenceCompound usedReferenceCompound = 0
+ repeated  nMRSample evaluatedEntity = 0
   definedTerm rdfType = 0
  }
-// A set of chemical shifts obtained via NMR spectroscopy.
+// Chemical shift data obtained via nuclear magnetic resonance (NMR) spectroscopy.
 message NMRSpectrum
  {
   uriorcurie id = 0
@@ -561,6 +979,39 @@ message NMRSpectrum
  repeated  identifier otherIdentifier = 0
  repeated  nMRSpectroscopy wasGeneratedBy = 0
  }
+// Resonance frequency of 1H at the field strength of the NMR magnet, rounded to 10-fold numbers.
+message NominalProtonFrequency
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// The number of repeat scans performed and summed to create the data set for an NMRSample.
+message NumberOfScans
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.
+message PercentageOfTotal
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
 // See [DCAT-AP specs:PeriodOfTime](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime)
 message PeriodOfTime
  {
@@ -568,12 +1019,83 @@ message PeriodOfTime
   timeInstant end = 0
   date endDate = 0
   date startDate = 0
+  string title = 0
+  string description = 0
+ }
+message PHValue
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  }
 // A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.
 message Plan
  {
   string title = 0
   string description = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)
+message Policy
+ {
+  string title = 0
+  string description = 0
+ }
+// A SubstanceSample derived from a Polymer.
+message PolymerSample
+ {
+  uriorcurie id = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  activity wasGeneratedBy = 0
+  string title = 0
+  string description = 0
+ repeated  evaluatedEntity hasPart = 0
+ repeated  identifier otherIdentifier = 0
+  entity derivedFrom = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  concentration hasConcentration = 0
+ repeated  pHValue hasPhValue = 0
+ repeated  chemicalEntity composedOf = 0
+ repeated  molarEquivalent hasMolarEquivalent = 0
+ repeated  amountOfSubstance hasAmount = 0
+ repeated  percentageOfTotal hasPercentageOfTotal = 0
+ }
+message Pressure
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)
+message ProvenanceStatement
+ {
+  string title = 0
+  string description = 0
+ }
+// A string that denotes sequence of excitation pulses.
+message PulseSequence
+ {
+  string title = 0
+  string description = 0
+  string value = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -597,11 +1119,129 @@ message QuantitativeAttribute
   definedTerm type = 0
   definedTerm rdfType = 0
  }
+// A reactor is a container for controlling a biological or chemical reaction or process.
+message Reactor
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  device hasPart = 0
+ repeated  identifier otherIdentifier = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ }
+// A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.
+message Reagent
+ {
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  materialEntity hasPart = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  concentration hasConcentration = 0
+ repeated  pHValue hasPhValue = 0
+ repeated  chemicalEntity composedOf = 0
+ repeated  amountOfSubstance hasAmount = 0
+ repeated  percentageOfTotal hasPercentageOfTotal = 0
+ repeated  molarEquivalent hasMolarEquivalent = 0
+ }
 // See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)
 message Relationship
  {
  repeated  role hadRole = 0
  repeated  resource relation = 0
+ }
+// See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)
+message Resource
+ {
+  uriorcurie id = 0
+  string title = 0
+  string description = 0
+ }
+// See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)
+message RightsStatement
+ {
+  string title = 0
+  string description = 0
+ }
+// See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)
+message Role
+ {
+  string title = 0
+  string description = 0
+ }
+// A ChemicalEntity that produces one or more peaks used for chemical shift calibration in nuclear magnetic resonance (NMR) spectroscopy.
+message ShiftCalibrationCompound
+ {
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  materialEntity hasPart = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  inChi inchi = 0
+ repeated  inChIKey inchikey = 0
+ repeated  sMILES smiles = 0
+ repeated  molecularFormula molecularFormula = 0
+ repeated  iUPACName iupacName = 0
+ repeated  molarMass hasMolarMass = 0
+ }
+// A ShiftCalibrationCompound that produces a peak used as reference frequency in the delta chemical shift scale in nuclear magnetic resonance (NMR) spectroscopy.
+message ShiftReferenceCompound
+ {
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  materialEntity hasPart = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  inChi inchi = 0
+ repeated  inChIKey inchikey = 0
+ repeated  sMILES smiles = 0
+ repeated  molecularFormula molecularFormula = 0
+ repeated  iUPACName iupacName = 0
+ repeated  molarMass hasMolarMass = 0
+ repeated  chemicalShiftReference hasShiftReference = 0
  }
 // A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
 message SMILES
@@ -625,11 +1265,116 @@ message Software
  repeated  software hasPart = 0
  repeated  identifier otherIdentifier = 0
  }
+// See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)
+message Standard
+ {
+  string title = 0
+  string description = 0
+ }
+// A ChemicalSubstance with that has a starting material role in a synthesis.
+message StartingMaterial
+ {
+  string title = 0
+  string description = 0
+  uriorcurie id = 0
+ repeated  identifier otherIdentifier = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  materialEntity hasPart = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  concentration hasConcentration = 0
+ repeated  pHValue hasPhValue = 0
+ repeated  chemicalEntity composedOf = 0
+ repeated  amountOfSubstance hasAmount = 0
+ repeated  percentageOfTotal hasPercentageOfTotal = 0
+ repeated  molarEquivalent hasMolarEquivalent = 0
+ }
+// A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.
+message SubstanceSample
+ {
+  uriorcurie id = 0
+ repeated  qualitativeAttribute hasQualitativeAttribute = 0
+ repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ repeated  activity wasGeneratedBy = 0
+  string title = 0
+  string description = 0
+ repeated  evaluatedEntity hasPart = 0
+ repeated  identifier otherIdentifier = 0
+  entity derivedFrom = 0
+  string alternativeLabel = 0
+  physicalStateEnum hasPhysicalState = 0
+ repeated  temperature hasTemperature = 0
+ repeated  mass hasMass = 0
+ repeated  volume hasVolume = 0
+ repeated  density hasDensity = 0
+ repeated  pressure hasPressure = 0
+ repeated  concentration hasConcentration = 0
+ repeated  pHValue hasPhValue = 0
+ repeated  chemicalEntity composedOf = 0
+ repeated  molarEquivalent hasMolarEquivalent = 0
+ repeated  amountOfSubstance hasAmount = 0
+ repeated  percentageOfTotal hasPercentageOfTotal = 0
+ }
+// The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.
+message SupportiveEntity
+ {
+  string title = 0
+  string description = 0
+ }
 // The surrounding in which the dataset creating activity took place (e.g. a lab).
 message Surrounding
  {
   string title = 0
   string description = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// A physical quantity that quantitatively expresses the attribute of hotness or coldness.
+message Temperature
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)
+message TimeInstant
+ {
+  string title = 0
+  string description = 0
+ }
+// A measure of regions in three-dimensional space.
+message Volume
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
+// A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).
+message Yield
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
