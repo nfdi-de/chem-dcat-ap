@@ -1,4 +1,4 @@
-# Example SubstanceSample object
+# Example SubstanceSample object conform with dcat_ap_plus.yaml
 ---
 id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
 rdf_type:

@@ -17,7 +17,8 @@ is_about_entity:
       title: "Chemical Substance"
 was_generated_by: # a DataAnalysis
   - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectralAnalysis
-    description: "Analysis of NMR spectra."
+    description:
+      - "Analysis of NMR spectra."
     rdf_type:
       id: NMR:1400042
       title: "NMR data processing"
@@ -25,7 +26,8 @@ was_generated_by: # a DataAnalysis
       - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum
         was_generated_by:
           - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR
-            title: CDCl3_13C_NMR
+            title:
+             - "CDCl3_13C_NMR"
             rdf_type:
               id: CHMO:0000595
               title: "13C nuclear magnetic resonance spectroscopy"
@@ -125,7 +127,8 @@ was_generated_by: # a DataAnalysis
       - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum
         was_generated_by:
           - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR
-            title: DMSO_13C_NMR
+            title:
+              - "DMSO_13C_NMR"
             rdf_type:
               id: CHMO:0000595
               title: "13C nuclear magnetic resonance spectroscopy"
@@ -153,6 +156,9 @@ was_generated_by: # a DataAnalysis
             evaluated_entity:
               - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
                 title: "CRS-50440"
+                has_part:
+                  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+                    description: "compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2"
             carried_out_by:
               - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer
                 title: "Bruker 400 MHz"
