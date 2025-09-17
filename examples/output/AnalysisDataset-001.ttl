@@ -56,40 +56,40 @@ CHEMINF:000113 a schema1:DefinedTerm ;
 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound> a CHEBI:23367,
         prov:Entity ;
     dcterms:description "compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2" ;
-    dcterms:relation [ a CHEMINF:000042,
-                prov:Entity ;
-            dcterms:title "assigned molecular formula" ;
-            prov:value "C11H12N2S" ],
-        [ a CHEMINF:000107,
-                prov:Entity ;
-            dcterms:description "PubChem IUPAC name" ;
-            prov:value "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine" ],
-        [ a CHEMINF:000113,
-                prov:Entity ;
-            dcterms:title "assigned InChi" ;
-            prov:value "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3" ],
-        [ a CHEMINF:000059,
-                prov:Entity ;
-            dcterms:title "assigned InChiKey" ;
-            prov:value "KVOIVNBYNQXCNY-BOCHJOTCSA-N" ],
+    dcterms:relation [ a qudt:Quantity ;
+            dcterms:description "Molar mass as specified in the Chemotion repository." ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
+            prov:value "204.072119"^^xsd:float ],
         [ a qudt:Quantity ;
             dcterms:description "Molar mass as specified in PubChem" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
             qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
             prov:value "204.29"^^xsd:float ],
+        [ a CHEMINF:000059,
+                prov:Entity ;
+            dcterms:title "assigned InChiKey" ;
+            prov:value "KVOIVNBYNQXCNY-BOCHJOTCSA-N" ],
         [ a CHEMINF:000107,
                 prov:Entity ;
             dcterms:description "Chemotion IUPAC name" ;
             prov:value "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine" ],
+        [ a CHEMINF:000042,
+                prov:Entity ;
+            dcterms:title "assigned molecular formula" ;
+            prov:value "C11H12N2S" ],
+        [ a CHEMINF:000113,
+                prov:Entity ;
+            dcterms:title "assigned InChi" ;
+            prov:value "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3" ],
+        [ a CHEMINF:000107,
+                prov:Entity ;
+            dcterms:description "PubChem IUPAC name" ;
+            prov:value "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine" ],
         [ a CHEMINF:000018,
                 prov:Entity ;
             dcterms:title "assigned SMILES" ;
-            prov:value "CNCc1csc(n1)c1ccccc1" ],
-        [ a qudt:Quantity ;
-            dcterms:description "Molar mass as specified in the Chemotion repository." ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
-            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
-            prov:value "204.072119"^^xsd:float ] ;
+            prov:value "CNCc1csc(n1)c1ccccc1" ] ;
     adms:identifier [ a adms:Identifier ;
             skos:notation "https://pubchem.ncbi.nlm.nih.gov/compound/26248854" ] .
 
@@ -99,18 +99,18 @@ CHEMINF:000113 a schema1:DefinedTerm ;
                 prov:Entity ;
             dcterms:title "Puls programme" ;
             prov:value "zgpg30" ],
-        [ a IAO:0000140,
-                qudt:Quantity ;
-            dcterms:title "Temperature" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
-            qudt:unit <https://qudt.org/vocab/unit/K> ;
-            prov:value "300.0"^^xsd:float ],
         [ a NMR:1400087,
                 qudt:Quantity ;
             dcterms:title "Number of scans" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
             qudt:unit <http://qudt.org/vocab/unit/NUM> ;
-            prov:value "1024.0"^^xsd:float ] ;
+            prov:value "1024.0"^^xsd:float ],
+        [ a IAO:0000140,
+                qudt:Quantity ;
+            dcterms:title "Temperature" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <https://qudt.org/vocab/unit/K> ;
+            prov:value "300.0"^^xsd:float ] ;
     dcterms:title "CDCl3_13C_NMR" ;
     prov:used <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> ;
     prov:wasAssociatedWith <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent>,
@@ -134,18 +134,18 @@ CHEMINF:000113 a schema1:DefinedTerm ;
 
 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR> a CHMO:0000595,
         prov:Activity ;
-    dcterms:relation [ a NMR:1400087,
-                qudt:Quantity ;
-            dcterms:title "Number of scans" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
-            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
-            prov:value "1024.0"^^xsd:float ],
-        [ a IAO:0000140,
+    dcterms:relation [ a IAO:0000140,
                 qudt:Quantity ;
             dcterms:title "Temperature" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
             qudt:unit <https://qudt.org/vocab/unit/K> ;
             prov:value "300.0"^^xsd:float ],
+        [ a NMR:1400087,
+                qudt:Quantity ;
+            dcterms:title "Number of scans" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
+            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+            prov:value "1024.0"^^xsd:float ],
         [ a NMR:1400037,
                 prov:Entity ;
             dcterms:title "Puls programme" ;

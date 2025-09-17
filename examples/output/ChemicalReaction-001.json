@@ -1,5 +1,5 @@
 {
-  "id": "https://dx.doi.org/10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ",
+  "id": "doi:10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ",
   "title": [
     "CRR-56408"
   ],
@@ -344,6 +344,14 @@
   "used_solvent": [
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Solvent-1",
+      "has_percentage_of_total": [
+        {
+          "value": 13.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "PercentageOfTotal",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
       "has_volume": [
         {
           "value": 24.0,
@@ -367,18 +375,18 @@
             }
           ]
         }
-      ],
-      "has_percentage_of_total": [
-        {
-          "value": 13.0,
-          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
-          "title": "PercentageOfTotal",
-          "unit": "https://qudt.org/vocab/unit/PERCENT"
-        }
       ]
     },
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Solvent-2",
+      "has_percentage_of_total": [
+        {
+          "value": 2.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "PercentageOfTotal",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
       "has_volume": [
         {
           "value": 3.0,
@@ -402,18 +410,18 @@
             }
           ]
         }
-      ],
-      "has_percentage_of_total": [
-        {
-          "value": 2.0,
-          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
-          "title": "PercentageOfTotal",
-          "unit": "https://qudt.org/vocab/unit/PERCENT"
-        }
       ]
     },
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Solvent-3",
+      "has_percentage_of_total": [
+        {
+          "value": 78.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "PercentageOfTotal",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
       "has_volume": [
         {
           "value": 150.0,
@@ -436,18 +444,18 @@
             }
           ]
         }
-      ],
-      "has_percentage_of_total": [
-        {
-          "value": 78.0,
-          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
-          "title": "PercentageOfTotal",
-          "unit": "https://qudt.org/vocab/unit/PERCENT"
-        }
       ]
     },
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Solvent-4",
+      "has_percentage_of_total": [
+        {
+          "value": 8.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "PercentageOfTotal",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
       "has_volume": [
         {
           "value": 15.0,
@@ -469,14 +477,6 @@
               "value": "Ethanol"
             }
           ]
-        }
-      ],
-      "has_percentage_of_total": [
-        {
-          "value": 8.0,
-          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
-          "title": "PercentageOfTotal",
-          "unit": "https://qudt.org/vocab/unit/PERCENT"
         }
       ]
     }
@@ -506,9 +506,10 @@
     {
       "value": 86.0,
       "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+      "title": "Yield [%]",
       "unit": "http://qudt.org/vocab/unit/PERCENT",
       "type": {
-        "id": "voc4cat_0005005",
+        "id": "VOC4CAT:0005005",
         "title": "yield"
       }
     }
