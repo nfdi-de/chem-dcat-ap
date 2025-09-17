@@ -183,6 +183,8 @@ classes:
     is_a: ChemicalEntity
     class_uri: NMR:0002003
     description: A ChemicalEntity that produces one or more peaks used for chemical shift calibration in nuclear magnetic resonance (NMR) spectroscopy.
+    slots:
+      - has_shift_reference
     comments:
       - This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.
 
@@ -190,8 +192,6 @@ classes:
     is_a: ShiftCalibrationCompound
     class_uri: NMR:1400033
     description: A ShiftCalibrationCompound that produces a peak used as reference frequency in the delta chemical shift scale in nuclear magnetic resonance (NMR) spectroscopy.
-    slots:
-      - has_shift_reference
     comments:
       - This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.
 
@@ -243,7 +243,7 @@ classes:
       #unit:
         #ifabsent: https://qudt.org/vocab/unit/MegaHZ
   ChemicalShiftReference:
-    class_uri: NMR:1001954
+    class_uri: NMR:1002013
     is_a: QuantitativeAttribute
     description: A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.
     comments:
