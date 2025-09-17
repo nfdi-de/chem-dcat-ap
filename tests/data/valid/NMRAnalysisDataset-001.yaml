@@ -142,6 +142,12 @@ was_generated_by: # a NMRSpectralAnalysis
                   rdf_type:
                     id: CHEBI:36928
                     title: "carbon-13 atom"
+            used_reference_compound:
+              - id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
+                title: "Chloroform-D"
+                rdf_type:
+                  id: CHEBI:85365
+                  title: deuterated chloroform
       - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum
         was_generated_by: # a NMRSpectroscopy
           - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR
@@ -225,3 +231,12 @@ was_generated_by: # a NMRSpectralAnalysis
                   rdf_type:
                     id: CHEBI:36928
                     title: "carbon-13 atom"
+            used_reference_compound:
+              - id: https://pubchem.ncbi.nlm.nih.gov/compound/679
+                title: "DMSO"
+                rdf_type:
+                  id: CHEBI:28262
+                  title: dimethyl sulfoxide
+            #used_calibration_compound:
+              #-
+
