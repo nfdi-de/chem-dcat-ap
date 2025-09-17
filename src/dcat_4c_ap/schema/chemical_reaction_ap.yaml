@@ -109,7 +109,7 @@ classes:
       - has_percentage_of_total
     mixins:
       - ChemicalSubstance
-      - MaterialisticEntity
+      - Materialistic
     description: A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.
     exact_mappings:
       - VOC4CAT:0007246
@@ -142,7 +142,7 @@ classes:
     is_a: AgenticEntity
     mixins:
       - ChemicalSubstance
-      - MaterialisticEntity
+      - Materialistic
     description: A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.
     slots:
       - has_molar_equivalent
@@ -156,7 +156,7 @@ classes:
     is_a: Device
     class_uri: AFE:0000153
     mixins:
-      - MaterialisticEntity
+      - Materialistic
     description: A reactor is a container for controlling a biological or chemical reaction or process.
     exact_mappings:
       - VOC4CAT:0007017
