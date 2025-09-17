@@ -62,6 +62,32 @@ classes:
         description: The slot to provide the Atom as a ChEBI ID from the atom (CHEBI:33250) branch.
         required: true
 
+  MolarMass:
+    class_uri: AFR:0002409
+    is_a: Mass
+    description: A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.
+    close_mappings:
+      - PATO:0001681
+  InChIKey:
+    class_uri: CHEMINF:000059
+    is_a: QualitativeAttribute
+  InChi:
+    class_uri: CHEMINF:000113
+    is_a: QualitativeAttribute
+    description: A structure descriptor which conforms to the InChI format specification.
+  MolecularFormula:
+    class_uri: CHEMINF:000042
+    is_a: QualitativeAttribute
+    description: A structure descriptor which identifies each constituent element by its chemical symbol and indicates the number of atoms of each element found in each discrete molecule of that compound.
+  IUPACName:
+    class_uri: CHEMINF:000107
+    is_a: QualitativeAttribute
+    description: A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).
+  SMILES:
+    class_uri: CHEMINF:000018
+    is_a: QualitativeAttribute
+    description: A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
+
   ChemicalSubstance:
     class_uri: CHEBI:59999
     is_a: MaterialEntity
@@ -112,37 +138,6 @@ classes:
       #slot_usage:
       #has_quantity_type:
       #ifabsent: http://qudt.org/vocab/quantitykind/Acidity
-
-  MolarMass:
-    class_uri: AFR:0002409
-    is_a: Mass
-    description: A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.
-    close_mappings:
-      - PATO:0001681
-
-  InChIKey:
-    class_uri: CHEMINF:000059
-    is_a: QualitativeAttribute
-
-  InChi:
-    class_uri: CHEMINF:000113
-    is_a: QualitativeAttribute
-    description: A structure descriptor which conforms to the InChI format specification.
-
-  MolecularFormula:
-    class_uri: CHEMINF:000042
-    is_a: QualitativeAttribute
-    description: A structure descriptor which identifies each constituent element by its chemical symbol and indicates the number of atoms of each element found in each discrete molecule of that compound.
-
-  IUPACName:
-    class_uri: CHEMINF:000107
-    is_a: QualitativeAttribute
-    description: A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).
-
-  SMILES:
-    class_uri: CHEMINF:000018
-    is_a: QualitativeAttribute
-    description: A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
 
 slots:
 
