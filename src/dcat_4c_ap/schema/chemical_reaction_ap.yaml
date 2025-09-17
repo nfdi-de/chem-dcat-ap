@@ -226,7 +226,6 @@ slots:
     inlined_as_list: true
   has_duration:
     slot_uri: schema:duration
-    is_a: has_quantitative_attribute
     range: duration
     description: A slot to provide the duration of a ChemicalReaction.
   used_reactor:
