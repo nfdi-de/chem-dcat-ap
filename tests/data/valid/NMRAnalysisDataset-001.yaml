@@ -219,7 +219,7 @@ was_generated_by: # a NMRSpectralAnalysis
             used_solvent:
               - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent
                 composed_of:
-                  - id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
+                  - id: https://pubchem.ncbi.nlm.nih.gov/compound/679
                     title: "DMSO"
                     rdf_type:
                       id: CHEBI:28262
