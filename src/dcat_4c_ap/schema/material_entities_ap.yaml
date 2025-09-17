@@ -52,7 +52,7 @@ classes:
     class_uri: BFO:0000040
     is_a: Entity
     mixins:
-      - MaterialisticEntity
+      - Materialistic
     description: A material is an Entity that has some portion of matter as proper part.
     slot_usage:
       has_part:
@@ -68,7 +68,7 @@ classes:
     class_uri: OBI:0000747
     description: A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.
     mixins:
-      - MaterialisticEntity
+      - Materialistic
     slots:
       - derived_from
     slot_usage:
