@@ -58,7 +58,7 @@ Requirements (see also https://github.com/dalito/linkml-project-copier?tab=readm
   pipx install rust-just
   ````
 To create a Poetry env with all dependencies you then need to run:
-  * `just setup`
+  * `just install`
 
 To generate project artefacts run:
   * `just gen-project`: generates all other representations
@@ -83,6 +83,18 @@ Validate a single example dataset using LinkML's validator framework:
     ````commandline
     poetry run linkml validate tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C NMRAnalysisDataset
     ````
+  * Validate a ChemicalReaction specific DCAT-AP extension conform example
+    ````commandline
+    poetry run linkml validate tests/data/valid/ChemicalReaction-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C ChemicalReaction
+    ````
+  * Validate a SubstanceSample specific DCAT-AP extension conform example
+    ````commandline
+    poetry run linkml validate tests/data/valid/SubstanceSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C SubstanceSample
+    ````
+  * Validate a MaterialSample specific DCAT-AP extension conform example
+    ````commandline
+    poetry run linkml validate tests/data/valid/MaterialSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C MaterialSample
+    ````
 
 To convert the test datasets of each DCAT-AP profile into a TTL graph run:
   * Convert domain agnostic DCAT-AP extension conform example of an analysis
@@ -92,6 +104,25 @@ To convert the test datasets of each DCAT-AP profile into a TTL graph run:
   * Convert a NMR spectroscopy-specific DCAT-AP extension conform example
     ````commandline
     poetry run linkml-convert -t ttl tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
+    ````
+  * Convert domain agnostic DCAT-AP extension conform example of a MaterialSample
+    ````commandline
+    poetry run linkml-convert -t ttl tests/data/valid/MaterialSample-001.yaml -s src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C MaterialSample
+    ````
+  * Convert domain agnostic DCAT-AP extension conform example of a SubstanceSample
+    ````commandline
+    poetry run linkml-convert -t ttl tests/data/valid/SubstanceSample-001.yaml -s src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C SubstanceSample
+    ````
+  * Convert domain agnostic DCAT-AP extension conform example of a ChemicalReaction
+    ````commandline
+    poetry run linkml-convert -t ttl tests/data/valid/ChemicalReaction-001.yaml -s src/dcat_4C_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ChemicalReaction
+    ````
+### Build GitHub pages docs locally
+    ````commandline
+    poetry run mkdocs serve
+    ````
+    ````commandline
+    rm -rf docs/elements/*.md && poetry run gen-doc  -d docs/elements src/dcat_4c_ap/schema/dcat_4c_ap.yaml
     ````
 
 ## Credits

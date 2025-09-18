@@ -190,6 +190,7 @@ _test-examples: _ensure_examples_output
     poetry run linkml-run-examples \
         --output-formats json \
         --output-formats yaml \
+        --output-formats ttl \
         --counter-example-input-directory tests/data/invalid \
         --input-directory tests/data/valid \
         --output-directory examples/output \

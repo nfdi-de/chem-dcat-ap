@@ -1,0 +1,263 @@
+@prefix AFR: <http://purl.allotrope.org/ontologies/result#AFR_> .
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix CHEMINF: <http://semanticscience.org/resource/CHEMINF_> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix NMR: <http://nmrML.org/nmrCV#NMR:> .
+@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
+@prefix SIO: <http://semanticscience.org/resource/SIO_> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1> a dcat:Dataset ;
+    IAO:0000136 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> ;
+    OBI:0000312 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectralAnalysis> ;
+    dcterms:description "Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)" ;
+    dcterms:title "13C nuclear magnetic resonance spectroscopy (13C NMR)" ;
+    adms:identifier [ a adms:Identifier ;
+            skos:notation "https://www.chemotion-repository.net/pid/50434" ] ;
+    dcat:theme [ a skos:Concept ;
+            skos:prefLabel "Science and technology" ] .
+
+CHEBI:28262 a schema1:DefinedTerm ;
+    schema1:name "dimethyl sulfoxide" .
+
+CHEBI:85365 a schema1:DefinedTerm ;
+    schema1:name "deuterated chloroform" .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound> a NMR:0002001 ;
+    dcterms:description "compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2" ;
+    SIO:000008 [ a CHEMINF:000107 ;
+            dcterms:description "PubChem IUPAC name" ;
+            prov:value "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine" ],
+        [ a CHEMINF:000042 ;
+            dcterms:title "assigned molecular formula" ;
+            prov:value "C11H12N2S" ],
+        [ a CHEMINF:000107 ;
+            dcterms:description "Chemotion IUPAC name" ;
+            prov:value "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine" ],
+        [ a AFR:0002409 ;
+            dcterms:description "Molar mass as specified in PubChem." ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
+            prov:value "204.29"^^xsd:float ],
+        [ a AFR:0002409 ;
+            dcterms:description "Molar mass as specified in the Chemotion repository." ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
+            prov:value "204.072119"^^xsd:float ],
+        [ a CHEMINF:000059 ;
+            dcterms:title "assigned InChiKey" ;
+            prov:value "UGRXAOUDHZOHPF-UHFFFAOYSA-N" ],
+        [ a CHEMINF:000042 ;
+            dcterms:title "assigned molecular formula" ;
+            prov:value "C11H12N2S" ],
+        [ a AFR:0002409 ;
+            dcterms:description "Molar mass as specified in the Chemotion repository." ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
+            prov:value "204.072119"^^xsd:float ],
+        [ a CHEMINF:000113 ;
+            dcterms:title "assigned InChi" ;
+            prov:value "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3" ],
+        [ a CHEMINF:000113 ;
+            dcterms:title "assigned InChi" ;
+            prov:value "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3" ],
+        [ a CHEMINF:000059 ;
+            dcterms:title "assigned InChiKey" ;
+            prov:value "UGRXAOUDHZOHPF-UHFFFAOYSA-N" ],
+        [ a CHEMINF:000107 ;
+            dcterms:description "PubChem IUPAC name" ;
+            prov:value "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine" ],
+        [ a CHEMINF:000042 ;
+            dcterms:title "assigned molecular formula" ;
+            prov:value "C11H12N2S" ],
+        [ a CHEMINF:000107 ;
+            dcterms:description "PubChem IUPAC name" ;
+            prov:value "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine" ],
+        [ a AFR:0002409 ;
+            dcterms:description "Molar mass as specified in the Chemotion repository." ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
+            prov:value "204.072119"^^xsd:float ],
+        [ a CHEMINF:000107 ;
+            dcterms:description "Chemotion IUPAC name" ;
+            prov:value "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine" ],
+        [ a CHEMINF:000059 ;
+            dcterms:title "assigned InChiKey" ;
+            prov:value "UGRXAOUDHZOHPF-UHFFFAOYSA-N" ],
+        [ a CHEMINF:000018 ;
+            dcterms:title "assigned SMILES" ;
+            prov:value "CNCc1csc(n1)c1ccccc1" ],
+        [ a CHEMINF:000113 ;
+            dcterms:title "assigned InChi" ;
+            prov:value "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3" ],
+        [ a CHEMINF:000018 ;
+            dcterms:title "assigned SMILES" ;
+            prov:value "CNCc1csc(n1)c1ccccc1" ],
+        [ a AFR:0002409 ;
+            dcterms:description "Molar mass as specified in PubChem." ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
+            prov:value "204.29"^^xsd:float ],
+        [ a AFR:0002409 ;
+            dcterms:description "Molar mass as specified in PubChem." ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
+            prov:value "204.29"^^xsd:float ],
+        [ a CHEMINF:000018 ;
+            dcterms:title "assigned SMILES" ;
+            prov:value " CNCc1csc(n1)c1ccccc1" ],
+        [ a CHEMINF:000107 ;
+            dcterms:description "Chemotion IUPAC name" ;
+            prov:value "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine" ] ;
+    adms:identifier [ a adms:Identifier ;
+            skos:notation "https://pubchem.ncbi.nlm.nih.gov/compound/26248854" ],
+        [ a adms:Identifier ;
+            skos:notation "https://pubchem.ncbi.nlm.nih.gov/compound/26248854" ],
+        [ a adms:Identifier ;
+            skos:notation "https://pubchem.ncbi.nlm.nih.gov/compound/26248854" ] .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR> a CHMO:0000595,
+        CHMO:0000613 ;
+    OBI:0000293 [ a NMR:1400087 ;
+            dcterms:title "number_of_scans" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
+            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+            prov:value "1024.0"^^xsd:float ],
+        [ a NMR:1400037 ;
+            dcterms:title "pulse_sequence" ;
+            prov:value "zgpg30" ],
+        <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2>,
+        <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_AcquisitionNucleus>,
+        <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent>,
+        <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrometer>,
+        <https://pubchem.ncbi.nlm.nih.gov/compound/71583> ;
+    dcterms:title "CDCl3_13C_NMR" .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_AcquisitionNucleus> a NMR:1400083 ;
+    BFO:0000050 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_AcquisitionNucleusAtom> .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_AcquisitionNucleusAtom> a CHEBI:33250,
+        CHEBI:36928 .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent> a NMR:1000330 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/71583> .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrometer> a CHMO:0001807 ;
+    dcterms:title "Bruker 400 MHz" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "proton_frequency" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Frequency> ;
+            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+            prov:value "100.623835930538"^^xsd:float ] .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum> a NMR:1002007 ;
+    OBI:0000312 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR> .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR> a CHMO:0000595,
+        CHMO:0000613 ;
+    OBI:0000293 [ a NMR:1400087 ;
+            dcterms:title "number_of_scans" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
+            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+            prov:value "1024.0"^^xsd:float ],
+        [ a NMR:1400037 ;
+            dcterms:title "pulse_sequence" ;
+            prov:value "zgpg30" ],
+        <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2>,
+        <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleus>,
+        <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent>,
+        <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer>,
+        <https://pubchem.ncbi.nlm.nih.gov/compound/679> ;
+    dcterms:title "DMSO_13C_NMR" .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleus> a NMR:1400083 ;
+    BFO:0000050 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleusAtom> .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleusAtom> a CHEBI:33250,
+        CHEBI:36928 .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent> a NMR:1000330 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/679> .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer> a CHMO:0001807 ;
+    dcterms:title "Bruker 400 MHz" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "proton_frequency" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Frequency> ;
+            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+            prov:value "100.623835930538"^^xsd:float ] .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum> a NMR:1002007 ;
+    OBI:0000312 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR> .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectralAnalysis> a NMR:1400042 ;
+    OBI:0000293 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum>,
+        <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum> ;
+    dcterms:description "Analysis of NMR spectra." .
+
+CHEBI:36928 a schema1:DefinedTerm ;
+    schema1:name "carbon-13 atom" .
+
+CHMO:0000595 a schema1:DefinedTerm ;
+    schema1:name "13C nuclear magnetic resonance spectroscopy" .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/679> a NMR:0002003,
+        CHEBI:23367,
+        CHEBI:28262 ;
+    dcterms:title "DMSO" ;
+    SIO:000008 [ a NMR:1002013 ;
+            dcterms:title "The chemical shift of the peak used for chemical shift calibration." ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+            qudt:unit <https://qudt.org/vocab/unit/PPM> ;
+            prov:value "39.52"^^xsd:float ] .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/71583> a NMR:0002003,
+        CHEBI:23367,
+        CHEBI:85365 ;
+    dcterms:title "Chloroform-D" ;
+    SIO:000008 [ a NMR:1002013 ;
+            dcterms:title "The chemical shift of the peak used for chemical shift calibration." ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+            qudt:unit <https://qudt.org/vocab/unit/PPM> ;
+            prov:value "77.16"^^xsd:float ] .
+
+NMR:1400025 a schema1:DefinedTerm ;
+    schema1:name "sample temperature in magnet" .
+
+<https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2> a NMR:1400128 ;
+    BFO:0000051 <https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound> ;
+    dcterms:relation [ a NMR:1400025,
+                qudt:Quantity ;
+            dcterms:title "sample temperature in magnet" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <https://qudt.org/vocab/unit/K> ;
+            prov:value "300.0"^^xsd:float ],
+        [ a NMR:1400025,
+                qudt:Quantity ;
+            dcterms:title "sample temperature in magnet" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <https://qudt.org/vocab/unit/K> ;
+            prov:value "300.0"^^xsd:float ],
+        [ a NMR:1400025,
+                qudt:Quantity ;
+            dcterms:title "sample temperature in magnet" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <https://qudt.org/vocab/unit/K> ;
+            prov:value "300.0"^^xsd:float ] ;
+    dcterms:title "CRS-50440" ;
+    adms:identifier [ a adms:Identifier ;
+            skos:notation "https://www.chemotion-repository.net/pid/50440" ],
+        [ a adms:Identifier ;
+            skos:notation "https://www.chemotion-repository.net/pid/50440" ],
+        [ a adms:Identifier ;
+            skos:notation "https://www.chemotion-repository.net/pid/50440" ] .
+

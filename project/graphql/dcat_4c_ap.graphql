@@ -22,6 +22,14 @@ enum NMRAssayEnum
     CHMO__COLON__0000595
   }
 
+enum PhysicalStateEnum
+  {
+    SOLID
+    CRYSTAL
+    LIQUID
+    GASEOUS
+  }
+
 enum TopLevelMediaTypes
   {
     application
@@ -35,6 +43,20 @@ enum TopLevelMediaTypes
     multipart
     text
     video
+  }
+
+type AcquisitionNucleus
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [AgenticEntity]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    nucleusOf: Atom!
   }
 
 type Activity implements ClassifierMixin
@@ -69,6 +91,17 @@ type AgenticEntity implements ClassifierMixin
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
     hasPart: [AgenticEntity]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
+type AmountOfSubstance
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -132,10 +165,40 @@ type AnalysisSourceData
 
 type Any
   {
+    title: String
+    description: String
+  }
+
+type Atom
+  {
+    title: String
+    description: String
+    id: Uriorcurie!
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    inchi: [InChi]
+    inchikey: [InChIKey]
+    smiles: [SMILES]
+    molecularFormula: [MolecularFormula]
+    iupacName: [IUPACName]
+    hasMolarMass: [MolarMass]
+    rdfType: DefinedTerm!
   }
 
 type Attribution
   {
+    title: String
+    description: String
   }
 
 type Catalogue
@@ -174,6 +237,58 @@ type CatalogueRecord
     title: [String]
   }
 
+type Catalyst implements ChemicalSubstance, Materialistic
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [AgenticEntity]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasMolarEquivalent: [MolarEquivalent]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
+    composedOf: [ChemicalEntity]
+    hasAmount: [AmountOfSubstance]
+    hasPercentageOfTotal: [PercentageOfTotal]
+  }
+
+type CharacterizedCompound
+  {
+    title: String
+    description: String
+    id: Uriorcurie!
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    inchi: [InChi]
+    inchikey: [InChIKey]
+    smiles: [SMILES]
+    molecularFormula: [MolecularFormula]
+    iupacName: [IUPACName]
+    hasMolarMass: [MolarMass]
+  }
+
 type Checksum
   {
     algorithm: ChecksumAlgorithm!
@@ -182,14 +297,60 @@ type Checksum
 
 type ChecksumAlgorithm
   {
+    title: String
+    description: String
   }
 
 type ChemicalEntity
   {
-    inchi: InChi
-    inchikey: InChIKey
-    smiles: SMILES
-    iupacFormula: IUPACChemicalFormula
+    title: String
+    description: String
+    id: Uriorcurie!
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    inchi: [InChi]
+    inchikey: [InChIKey]
+    smiles: [SMILES]
+    molecularFormula: [MolecularFormula]
+    iupacName: [IUPACName]
+    hasMolarMass: [MolarMass]
+  }
+
+type ChemicalProduct
+  {
+    title: String
+    description: String
+    id: Uriorcurie!
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
+    composedOf: [ChemicalEntity]
+    hasMolarEquivalent: [MolarEquivalent]
+    hasAmount: [AmountOfSubstance]
+    hasPercentageOfTotal: [PercentageOfTotal]
   }
 
 type ChemicalReaction
@@ -197,46 +358,65 @@ type ChemicalReaction
     id: Uriorcurie!
     title: [String]
     description: [String]
+    otherIdentifier: [Identifier]
+    hasPart: Activity
     hadInputEntity: [Entity]
     hadOutputEntity: [Entity]
     hadInputActivity: [Activity]
     carriedOutBy: [AgenticEntity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [EvaluatedActivity]
-    otherIdentifier: [Identifier]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    usedStartingMaterial: [StartingMaterial]
+    usedReactant: [Reagent]
+    generatedProduct: [ChemicalProduct]
+    usedCatalyst: [Catalyst]
+    usedSolvent: [DissolvingSubstance]
+    hasDuration: Duration
+    usedReactor: [Reactor]
+    hasTemperature: [Temperature]
+    hasPressure: [Pressure]
+    hasYield: [Yield]
+    hasReactionStep: ChemicalReaction
+    relatedResource: [Resource]
   }
 
-type ChemicalSample
+type ChemicalShiftReference
   {
-    id: Uriorcurie!
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    type: DefinedTerm
-    rdfType: DefinedTerm
-    wasGeneratedBy: [Activity]
     title: String
     description: String
-    hasPart: [EvaluatedEntity]
-    otherIdentifier: [Identifier]
-    composedOf: [ChemicalEntity]
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
   }
 
-type ChemicalSubstance
+interface ChemicalSubstance
   {
+    title: String
+    description: String
     id: Uriorcurie!
+    otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
     type: DefinedTerm
     rdfType: DefinedTerm
-    wasGeneratedBy: [Activity]
-    title: String
-    description: String
-    hasPart: [EvaluatedEntity]
-    otherIdentifier: [Identifier]
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
     composedOf: [ChemicalEntity]
+    hasMolarEquivalent: [MolarEquivalent]
+    hasAmount: [AmountOfSubstance]
+    hasPercentageOfTotal: [PercentageOfTotal]
   }
 
 interface ClassifierMixin
@@ -245,14 +425,28 @@ interface ClassifierMixin
     rdfType: DefinedTerm
   }
 
+type Concentration
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
 type Concept
   {
     preferredLabel: [String]!
+    title: String
+    description: String
   }
 
 type ConceptScheme
   {
     title: [String]!
+    description: String
   }
 
 type DataAnalysis
@@ -381,6 +575,17 @@ type DefinedTerm
     fromCV: Uriorcurie
   }
 
+type Density
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
 type Device
   {
     id: Uriorcurie!
@@ -392,6 +597,32 @@ type Device
     rdfType: DefinedTerm
     hasPart: [Device]
     otherIdentifier: [Identifier]
+  }
+
+type DissolvingSubstance implements ChemicalSubstance, Materialistic
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [AgenticEntity]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPercentageOfTotal: [PercentageOfTotal]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
+    composedOf: [ChemicalEntity]
+    hasMolarEquivalent: [MolarEquivalent]
+    hasAmount: [AmountOfSubstance]
   }
 
 type Distribution
@@ -424,6 +655,9 @@ type Distribution
 
 type Document
   {
+    id: Uriorcurie!
+    title: String
+    description: String
   }
 
 type Entity implements ClassifierMixin
@@ -472,15 +706,21 @@ type EvaluatedEntity
 
 type Frequency
   {
+    title: String
+    description: String
   }
 
 type Geometry
   {
+    title: String
+    description: String
   }
 
 type Identifier
   {
     notation: String!
+    title: String
+    description: String
   }
 
 type InChi
@@ -501,7 +741,7 @@ type InChIKey
     rdfType: DefinedTerm
   }
 
-type IUPACChemicalFormula
+type IUPACName
   {
     title: String
     description: String
@@ -524,15 +764,23 @@ type Laboratory
 
 type LegalResource
   {
+    id: Uriorcurie!
+    title: String
+    description: String
   }
 
 type LicenseDocument
   {
     type: [Concept]
+    id: Uriorcurie!
+    title: String
+    description: String
   }
 
 type LinguisticSystem
   {
+    title: String
+    description: String
   }
 
 type Location
@@ -542,12 +790,111 @@ type Location
     geometry: Geometry
   }
 
+type Mass
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
+type MaterialEntity implements Materialistic
+  {
+    title: String
+    description: String
+    id: Uriorcurie!
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+  }
+
+interface Materialistic
+  {
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+  }
+
+type MaterialSample implements Materialistic
+  {
+    id: Uriorcurie!
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    wasGeneratedBy: [Activity]
+    title: String
+    description: String
+    hasPart: [EvaluatedEntity]
+    otherIdentifier: [Identifier]
+    derivedFrom: Entity
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+  }
+
 type MediaType
   {
+    title: String
+    description: String
   }
 
 type MediaTypeOrExtent
   {
+    title: String
+    description: String
+  }
+
+type MolarEquivalent
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
+type MolarMass
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
+type MolecularFormula
+  {
+    title: String
+    description: String
+    value: String!
+    type: DefinedTerm
+    rdfType: DefinedTerm
   }
 
 type NMRAnalysisDataset
@@ -590,7 +937,61 @@ type NMRAnalysisDataset
     id: Uriorcurie!
     isAboutActivity: [EvaluatedActivity]
     wasGeneratedBy: [NMRSpectralAnalysis]
-    isAboutEntity: [ChemicalSample]
+    isAboutEntity: [NMRSample]
+  }
+
+type NMRSample
+  {
+    id: Uriorcurie!
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    wasGeneratedBy: [Activity]
+    title: String
+    description: String
+    hasPart: [EvaluatedEntity]
+    otherIdentifier: [Identifier]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
+    hasMolarEquivalent: [MolarEquivalent]
+    hasAmount: [AmountOfSubstance]
+    hasPercentageOfTotal: [PercentageOfTotal]
+    composedOf: [CharacterizedCompound]!
+    derivedFrom: Entity
+  }
+
+type NMRSolvent
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [AgenticEntity]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPercentageOfTotal: [PercentageOfTotal]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
+    composedOf: [ChemicalEntity]
+    hasMolarEquivalent: [MolarEquivalent]
+    hasAmount: [AmountOfSubstance]
   }
 
 type NMRSpectralAnalysis
@@ -614,6 +1015,20 @@ type NMRSpectralAnalysis
     evaluatedEntity: [NMRSpectrum]
   }
 
+type NMRSpectrometer
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [Device]
+    otherIdentifier: [Identifier]
+    hasProtonFrequency: [NominalProtonFrequency]!
+  }
+
 type NMRSpectroscopy
   {
     id: Uriorcurie!
@@ -631,7 +1046,14 @@ type NMRSpectroscopy
     evaluatedActivity: [EvaluatedActivity]
     realizedPlan: Plan
     occurredIn: Surrounding
-    evaluatedEntity: [ChemicalSample]
+    usedSpectrometer: [NMRSpectrometer]!
+    usedSolvent: [NMRSolvent]!
+    usedPulseSequence: PulseSequence!
+    usedNumberOfScans: NumberOfScans
+    probesNucleus: [AcquisitionNucleus]!
+    usedCalibrationCompound: [ShiftCalibrationCompound]
+    usedReferenceCompound: [ShiftReferenceCompound]
+    evaluatedEntity: [NMRSample]
     rdfType: DefinedTerm
   }
 
@@ -649,12 +1071,58 @@ type NMRSpectrum
     wasGeneratedBy: [NMRSpectroscopy]
   }
 
+type NominalProtonFrequency
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
+type NumberOfScans
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
+type PercentageOfTotal
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
 type PeriodOfTime
   {
     beginning: TimeInstant
     end: TimeInstant
     endDate: Date
     startDate: Date
+    title: String
+    description: String
+  }
+
+type PHValue
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
   }
 
 type Plan implements ClassifierMixin
@@ -667,10 +1135,88 @@ type Plan implements ClassifierMixin
 
 type Policy
   {
+    title: String
+    description: String
+  }
+
+interface Polymer
+  {
+    title: String
+    description: String
+    id: Uriorcurie!
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
+    composedOf: [ChemicalEntity]
+    hasMolarEquivalent: [MolarEquivalent]
+    hasAmount: [AmountOfSubstance]
+    hasPercentageOfTotal: [PercentageOfTotal]
+  }
+
+type PolymerSample implements Polymer
+  {
+    id: Uriorcurie!
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    wasGeneratedBy: [Activity]
+    title: String
+    description: String
+    hasPart: [EvaluatedEntity]
+    otherIdentifier: [Identifier]
+    derivedFrom: Entity
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
+    composedOf: [ChemicalEntity]
+    hasMolarEquivalent: [MolarEquivalent]
+    hasAmount: [AmountOfSubstance]
+    hasPercentageOfTotal: [PercentageOfTotal]
+  }
+
+type Pressure
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
   }
 
 type ProvenanceStatement
   {
+    title: String
+    description: String
+  }
+
+type PulseSequence
+  {
+    title: String
+    description: String
+    value: String!
+    type: DefinedTerm
+    rdfType: DefinedTerm
   }
 
 type QualitativeAttribute implements ClassifierMixin
@@ -693,6 +1239,52 @@ type QuantitativeAttribute implements ClassifierMixin
     rdfType: DefinedTerm
   }
 
+type Reactor implements Materialistic
+  {
+    id: Uriorcurie!
+    title: String
+    description: String
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [Device]
+    otherIdentifier: [Identifier]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+  }
+
+type Reagent
+  {
+    title: String
+    description: String
+    id: Uriorcurie!
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
+    composedOf: [ChemicalEntity]
+    hasAmount: [AmountOfSubstance]
+    hasPercentageOfTotal: [PercentageOfTotal]
+    hasMolarEquivalent: [MolarEquivalent]
+  }
+
 type Relationship
   {
     hadRole: [Role]!
@@ -701,14 +1293,75 @@ type Relationship
 
 type Resource
   {
+    id: Uriorcurie!
+    title: String
+    description: String
   }
 
 type RightsStatement
   {
+    title: String
+    description: String
   }
 
 type Role
   {
+    title: String
+    description: String
+  }
+
+type ShiftCalibrationCompound
+  {
+    title: String
+    description: String
+    id: Uriorcurie!
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    inchi: [InChi]
+    inchikey: [InChIKey]
+    smiles: [SMILES]
+    molecularFormula: [MolecularFormula]
+    iupacName: [IUPACName]
+    hasMolarMass: [MolarMass]
+    hasShiftReference: [ChemicalShiftReference]
+  }
+
+type ShiftReferenceCompound
+  {
+    title: String
+    description: String
+    id: Uriorcurie!
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    inchi: [InChi]
+    inchikey: [InChIKey]
+    smiles: [SMILES]
+    molecularFormula: [MolecularFormula]
+    iupacName: [IUPACName]
+    hasMolarMass: [MolarMass]
+    hasShiftReference: [ChemicalShiftReference]
   }
 
 type SMILES
@@ -735,10 +1388,68 @@ type Software
 
 type Standard
   {
+    title: String
+    description: String
+  }
+
+type StartingMaterial
+  {
+    title: String
+    description: String
+    id: Uriorcurie!
+    otherIdentifier: [Identifier]
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    hasPart: [MaterialEntity]
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
+    composedOf: [ChemicalEntity]
+    hasAmount: [AmountOfSubstance]
+    hasPercentageOfTotal: [PercentageOfTotal]
+    hasMolarEquivalent: [MolarEquivalent]
+  }
+
+type SubstanceSample implements ChemicalSubstance
+  {
+    id: Uriorcurie!
+    hasQualitativeAttribute: [QualitativeAttribute]
+    hasQuantitativeAttribute: [QuantitativeAttribute]
+    type: DefinedTerm
+    rdfType: DefinedTerm
+    wasGeneratedBy: [Activity]
+    title: String
+    description: String
+    hasPart: [EvaluatedEntity]
+    otherIdentifier: [Identifier]
+    derivedFrom: Entity
+    alternativeLabel: String
+    hasPhysicalState: PhysicalStateEnum
+    hasTemperature: [Temperature]
+    hasMass: [Mass]
+    hasVolume: [Volume]
+    hasDensity: [Density]
+    hasPressure: [Pressure]
+    hasConcentration: [Concentration]
+    hasPhValue: [PHValue]
+    composedOf: [ChemicalEntity]
+    hasMolarEquivalent: [MolarEquivalent]
+    hasAmount: [AmountOfSubstance]
+    hasPercentageOfTotal: [PercentageOfTotal]
   }
 
 type SupportiveEntity
   {
+    title: String
+    description: String
   }
 
 type Surrounding implements ClassifierMixin
@@ -749,7 +1460,41 @@ type Surrounding implements ClassifierMixin
     rdfType: DefinedTerm
   }
 
-type TimeInstant
+type Temperature
   {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
   }
 
+type TimeInstant
+  {
+    title: String
+    description: String
+  }
+
+type Volume
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
+type Yield
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }

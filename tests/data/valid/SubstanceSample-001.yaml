@@ -1,0 +1,58 @@
+# Example SubstanceSample object conform with dcat_ap_plus.yaml
+---
+id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+rdf_type:
+  id: CHEBI:59999
+  title: "Chemical Substance"
+title: "CRS-50440"
+description: "The analysed chemical substance sample CRS-50440."
+other_identifier:
+  - notation: https://www.chemotion-repository.net/pid/50440
+has_part:
+  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+    description: "compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2"
+    other_identifier:
+      - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
+    rdf_type:
+      id: CHEBI:23367
+      title: molecular entity
+    has_qualitative_attribute:
+      - rdf_type:
+          id: CHEMINF:000059
+          title: "InChiKey"
+        value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
+        title: "assigned InChiKey"
+      - rdf_type:
+          id: CHEMINF:000113
+          title: "InChi"
+        value: "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3"
+        title: "assigned InChi"
+      - rdf_type:
+          id: CHEMINF:000018
+          title: "SMILES descriptor"
+        value: "CNCc1csc(n1)c1ccccc1"
+        title: "assigned SMILES"
+      - rdf_type:
+          id: CHEMINF:000042
+          title: "molecular formula"
+        value: "C11H12N2S"
+        title: "assigned molecular formula"
+      - rdf_type:
+          id: CHEMINF:000107
+          title: "IUPAC name"
+        value: "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine"
+        description: Chemotion IUPAC name
+      - rdf_type:
+          id: CHEMINF:000107
+          title: "IUPAC name"
+        value: "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine"
+        description: PubChem IUPAC name
+    has_quantitative_attribute:
+      - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+        unit: https://qudt.org/vocab/unit/GM-PER-MOL
+        value: 204.072119
+        description: "Molar mass as specified in the Chemotion repository."
+      - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+        unit: https://qudt.org/vocab/unit/GM-PER-MOL
+        value: 204.29
+        description: "Molar mass as specified in PubChem"

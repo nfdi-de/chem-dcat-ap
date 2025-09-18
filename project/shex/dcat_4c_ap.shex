@@ -1,5 +1,5 @@
 # metamodel_version: 1.7.0
-BASE <https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/>
+BASE <https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -10,17 +10,21 @@ PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcatap_plus: <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX NMR: <http://nmrML.org/nmrCV#NMR:>
 PREFIX spdx: <http://spdx.org/rdf/terms#>
 PREFIX eli: <http://data.europa.eu/eli/ontology#>
 PREFIX locn: <http://www.w3.org/ns/locn#>
-PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dcatap: <http://data.europa.eu/r5r/>
-PREFIX dcatap_plus: <https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#>
+PREFIX chemical_entities_ap: <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#>
+PREFIX material_entities_ap: <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#>
+PREFIX chemical_reaction_ap: <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#>
+PREFIX nmr_michi: <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#>
 
 
 linkml:String xsd:string
@@ -67,6 +71,15 @@ dcatap_plus:HexBinary xsd:hexBinary
 
 dcatap_plus:NonNegativeInteger xsd:nonNegativeInteger
 
+nmr_michi:AcquisitionNucleus CLOSED {
+    (  $nmr_michi:AcquisitionNucleus_tes (  &dcatap_plus:AgenticEntity_tes ;
+          rdf:type [ prov:Agent ] ? ;
+          <http://purl.obolibrary.org/obo/BFO_0000050> @chemical_entities_ap:Atom
+       ) ;
+       rdf:type [ NMR:1400083 ]
+    )
+}
+
 dcatap_plus:Activity  (
     CLOSED {
        (  $dcatap_plus:Activity_tes (  &dcatap_plus:ClassifierMixin_tes ;
@@ -86,7 +99,7 @@ dcatap_plus:Activity  (
           ) ;
           rdf:type [ prov:Activity ]
        )
-    } OR @dcatap_plus:DataGeneratingActivity OR @dcatap_plus:EvaluatedActivity
+    } OR @chemical_reaction_ap:ChemicalReaction OR @dcatap_plus:DataGeneratingActivity OR @dcatap_plus:EvaluatedActivity
 )
 
 dcatap_plus:Agent CLOSED {
@@ -112,8 +125,17 @@ dcatap_plus:AgenticEntity  (
           ) ;
           rdf:type [ prov:Agent ]
        )
-    } OR @dcatap_plus:Device OR @dcatap_plus:Software
+    } OR @nmr_michi:AcquisitionNucleus OR @chemical_reaction_ap:Catalyst OR @dcatap_plus:Device OR
+    @chemical_reaction_ap:DissolvingSubstance OR @dcatap_plus:Software
 )
+
+chemical_entities_ap:AmountOfSubstance CLOSED {
+    (  $chemical_entities_ap:AmountOfSubstance_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ qudt:Quantity ] ?
+    )
+}
 
 dcatap_plus:AnalysisDataset  (
     CLOSED {
@@ -123,7 +145,7 @@ dcatap_plus:AnalysisDataset  (
           ) ;
           rdf:type [ dcat:Dataset ]
        )
-    } OR @<NMRAnalysisDataset>
+    } OR @nmr_michi:NMRAnalysisDataset
 )
 
 dcatap_plus:AnalysisSourceData  (
@@ -134,12 +156,23 @@ dcatap_plus:AnalysisSourceData  (
           ) ;
           rdf:type [ prov:Entity ]
        )
-    } OR @<NMRSpectrum>
+    } OR @nmr_michi:NMRSpectrum
 )
 
 dcatap_plus:Any CLOSED {
-    (  $dcatap_plus:Any_tes rdf:type . * ;
+    (  $dcatap_plus:Any_tes (  dcterms:title @linkml:String ? ;
+          dcterms:description @linkml:String ?
+       ) ;
        rdf:type [ linkml:Any ] ?
+    )
+}
+
+chemical_entities_ap:Atom CLOSED {
+    (  $chemical_entities_ap:Atom_tes (  &chemical_entities_ap:ChemicalEntity_tes ;
+          rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_23367> ] ? ;
+          rdf:type @dcatap_plus:DefinedTerm
+       ) ;
+       rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_33250> ]
     )
 }
 
@@ -191,6 +224,41 @@ dcatap_plus:CatalogueRecord CLOSED {
     )
 }
 
+chemical_reaction_ap:Catalyst CLOSED {
+    (  $chemical_reaction_ap:Catalyst_tes (  &dcatap_plus:AgenticEntity_tes ;
+          rdf:type [ prov:Agent ] ? ;
+          &chemical_entities_ap:ChemicalSubstance_tes ;
+          rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ] ? ;
+          &material_entities_ap:Materialistic_tes ;
+          rdf:type [ material_entities_ap:Materialistic ] ? ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:MolarEquivalent * ;
+          skos:altLabel @linkml:String ? ;
+          <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
+             <http://purl.obolibrary.org/obo/PATO_0002066> <http://purl.obolibrary.org/obo/PATO_0001735>
+             <http://purl.obolibrary.org/obo/PATO_0001737> ] ? ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Temperature * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Mass * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Volume * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Density * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Pressure * ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:Concentration * ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:PHValue * ;
+          <http://purl.obolibrary.org/obo/BFO_0000051> @chemical_entities_ap:ChemicalEntity * ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:AmountOfSubstance * ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:PercentageOfTotal *
+       ) ;
+       rdf:type [ <http://semanticscience.org/resource/SIO_010344> ]
+    )
+}
+
+nmr_michi:CharacterizedCompound CLOSED {
+    (  $nmr_michi:CharacterizedCompound_tes (  &chemical_entities_ap:ChemicalEntity_tes ;
+          rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_23367> ] ?
+       ) ;
+       rdf:type [ NMR:0002001 ]
+    )
+}
+
 dcatap_plus:Checksum CLOSED {
     (  $dcatap_plus:Checksum_tes (  spdx:algorithm @dcatap_plus:ChecksumAlgorithm ;
           spdx:checksumValue @dcatap_plus:HexBinary
@@ -207,48 +275,90 @@ dcatap_plus:ChecksumAlgorithm CLOSED {
     )
 }
 
-<ChemicalEntity> CLOSED {
-    (  $<ChemicalEntity_tes> (  <inchi> @<InChi> ? ;
-          <inchikey> @<InChIKey> ? ;
-          <smiles> @<SMILES> ? ;
-          <iupac_formula> @<IUPACChemicalFormula> ?
-       ) ;
-       rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_23367> ] ?
-    )
-}
-
-<ChemicalReaction> CLOSED {
-    (  $<ChemicalReaction_tes> (  &dcatap_plus:EvaluatedActivity_tes ;
-          rdf:type [ prov:Activity ] ?
-       ) ;
-       rdf:type [ <http://purl.obolibrary.org/obo/RXNO_0000329> ]
-    )
-}
-
-<ChemicalSample> CLOSED {
-    (  $<ChemicalSample_tes> (  &<ChemicalSubstance_tes> ;
-          rdf:type [ prov:Entity ] ?
-       ) ;
-       rdf:type [ <ChemicalSample> ]
-    )
-}
-
-<ChemicalSubstance>  (
+chemical_entities_ap:ChemicalEntity  (
     CLOSED {
-       (  $<ChemicalSubstance_tes> (  &dcatap_plus:EvaluatedEntity_tes ;
-             rdf:type [ prov:Entity ] ? ;
-             <composed_of> @<ChemicalEntity> *
+       (  $chemical_entities_ap:ChemicalEntity_tes (  &material_entities_ap:MaterialEntity_tes ;
+             rdf:type [ <http://purl.obolibrary.org/obo/BFO_0000040> ] ? ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:InChi * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:InChIKey * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:SMILES * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:MolecularFormula * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:IUPACName * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:MolarMass *
           ) ;
-          rdf:type [ prov:Entity ]
+          rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_23367> ]
        )
-    } OR @<ChemicalSample>
+    } OR @chemical_entities_ap:Atom OR @nmr_michi:CharacterizedCompound OR @nmr_michi:ShiftCalibrationCompound
 )
+
+chemical_reaction_ap:ChemicalProduct CLOSED {
+    (  $chemical_reaction_ap:ChemicalProduct_tes (  &chemical_entities_ap:ChemicalSubstance_tes ;
+          rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ] ?
+       ) ;
+       rdf:type [ <http://purl.obolibrary.org/obo/NCIT_C48810> ]
+    )
+}
+
+chemical_reaction_ap:ChemicalReaction CLOSED {
+    (  $chemical_reaction_ap:ChemicalReaction_tes (  &dcatap_plus:Activity_tes ;
+          rdf:type [ prov:Activity ] ? ;
+          <http://purl.obolibrary.org/obo/RO_0004009> @chemical_reaction_ap:StartingMaterial * ;
+          <http://purl.obolibrary.org/obo/RO_0004009> @chemical_reaction_ap:Reagent * ;
+          <http://purl.obolibrary.org/obo/RO_0004008> @chemical_reaction_ap:ChemicalProduct * ;
+          <http://purl.obolibrary.org/obo/RXNO_0000425> @chemical_reaction_ap:Catalyst * ;
+          prov:wasAssociatedWith @chemical_reaction_ap:DissolvingSubstance * ;
+          schema1:duration @dcatap_plus:Duration ? ;
+          prov:wasAssociatedWith @chemical_reaction_ap:Reactor * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Temperature * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Pressure * ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:Yield * ;
+          <http://purl.obolibrary.org/obo/BFO_0000051> @chemical_reaction_ap:ChemicalReaction ? ;
+          dcterms:relation @dcatap_plus:Resource *
+       ) ;
+       rdf:type [ <http://semanticscience.org/resource/SIO_010345> ]
+    )
+}
+
+nmr_michi:ChemicalShiftReference CLOSED {
+    (  $nmr_michi:ChemicalShiftReference_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ NMR:1002013 ] ?
+    )
+}
+
+chemical_entities_ap:ChemicalSubstance  (
+    @chemical_reaction_ap:ChemicalProduct OR @chemical_entities_ap:Polymer OR @chemical_reaction_ap:Reagent OR
+    @chemical_reaction_ap:StartingMaterial
+)
+
+chemical_entities_ap:ChemicalSubstance_struct {
+    (  $chemical_entities_ap:ChemicalSubstance_tes (  &material_entities_ap:MaterialEntity_tes ;
+          rdf:type [ <http://purl.obolibrary.org/obo/BFO_0000040> ] ? ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:Concentration * ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:PHValue * ;
+          <http://purl.obolibrary.org/obo/BFO_0000051> @chemical_entities_ap:ChemicalEntity * ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:MolarEquivalent * ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:AmountOfSubstance * ;
+          <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:PercentageOfTotal *
+       ) ;
+       rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ]
+    )
+}
 
 dcatap_plus:ClassifierMixin {
     (  $dcatap_plus:ClassifierMixin_tes (  dcterms:type @dcatap_plus:DefinedTerm ? ;
           rdf:type @dcatap_plus:DefinedTerm ?
        ) ;
        rdf:type [ dcatap_plus:ClassifierMixin ] ?
+    )
+}
+
+chemical_entities_ap:Concentration CLOSED {
+    (  $chemical_entities_ap:Concentration_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ <http://purl.obolibrary.org/obo/CHMO_0002820> ] ?
     )
 }
 
@@ -278,7 +388,7 @@ dcatap_plus:DataAnalysis  (
           ) ;
           rdf:type [ prov:Activity ]
        )
-    } OR @<NMRSpectralAnalysis>
+    } OR @nmr_michi:NMRSpectralAnalysis
 )
 
 dcatap_plus:DataGeneratingActivity  (
@@ -292,7 +402,7 @@ dcatap_plus:DataGeneratingActivity  (
           ) ;
           rdf:type [ prov:Activity ]
        )
-    } OR @dcatap_plus:DataAnalysis OR @<NMRSpectroscopy>
+    } OR @dcatap_plus:DataAnalysis OR @nmr_michi:NMRSpectroscopy
 )
 
 dcatap_plus:DataService CLOSED {
@@ -387,15 +497,54 @@ dcatap_plus:DefinedTerm CLOSED {
     )
 }
 
-dcatap_plus:Device CLOSED {
-    (  $dcatap_plus:Device_tes (  &dcatap_plus:AgenticEntity_tes ;
-          rdf:type [ prov:Agent ] ? ;
-          dcterms:hasPart @dcatap_plus:Device * ;
-          adms:identifier @dcatap_plus:Identifier *
+material_entities_ap:Density CLOSED {
+    (  $material_entities_ap:Density_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
        ) ;
-       rdf:type [ prov:Agent ]
+       rdf:type [ <http://semanticscience.org/resource/SIO_001406> ] ?
     )
 }
+
+dcatap_plus:Device  (
+    CLOSED {
+       (  $dcatap_plus:Device_tes (  &dcatap_plus:AgenticEntity_tes ;
+             rdf:type [ prov:Agent ] ? ;
+             dcterms:hasPart @dcatap_plus:Device * ;
+             adms:identifier @dcatap_plus:Identifier *
+          ) ;
+          rdf:type [ prov:Agent ]
+       )
+    } OR @nmr_michi:NMRSpectrometer OR @chemical_reaction_ap:Reactor
+)
+
+chemical_reaction_ap:DissolvingSubstance  (
+    CLOSED {
+       (  $chemical_reaction_ap:DissolvingSubstance_tes (  &dcatap_plus:AgenticEntity_tes ;
+             rdf:type [ prov:Agent ] ? ;
+             &chemical_entities_ap:ChemicalSubstance_tes ;
+             rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ] ? ;
+             &material_entities_ap:Materialistic_tes ;
+             rdf:type [ material_entities_ap:Materialistic ] ? ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:PercentageOfTotal * ;
+             skos:altLabel @linkml:String ? ;
+             <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
+                <http://purl.obolibrary.org/obo/PATO_0002066> <http://purl.obolibrary.org/obo/PATO_0001735>
+                <http://purl.obolibrary.org/obo/PATO_0001737> ] ? ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Temperature * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Mass * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Volume * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Density * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Pressure * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:Concentration * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:PHValue * ;
+             <http://purl.obolibrary.org/obo/BFO_0000051> @chemical_entities_ap:ChemicalEntity * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:MolarEquivalent * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:AmountOfSubstance *
+          ) ;
+          rdf:type [ <http://semanticscience.org/resource/SIO_010417> ]
+       )
+    } OR @nmr_michi:NMRSolvent
+)
 
 dcatap_plus:Distribution CLOSED {
     (  $dcatap_plus:Distribution_tes (  dcat:accessURL @dcatap_plus:Resource + ;
@@ -431,7 +580,7 @@ dcatap_plus:Document CLOSED {
     (  $dcatap_plus:Document_tes (  &dcatap_plus:SupportiveEntity_tes ;
           rdf:type [ dcatap_plus:SupportiveEntity ] ?
        ) ;
-       rdf:type [ foaf:Document ] ?
+       rdf:type [ foaf:Document ]
     )
 }
 
@@ -450,22 +599,20 @@ dcatap_plus:Entity  (
           ) ;
           rdf:type [ prov:Entity ]
        )
-    } OR @dcatap_plus:EvaluatedEntity
+    } OR @dcatap_plus:EvaluatedEntity OR @material_entities_ap:MaterialEntity
 )
 
-dcatap_plus:EvaluatedActivity  (
-    CLOSED {
-       (  $dcatap_plus:EvaluatedActivity_tes (  &dcatap_plus:Activity_tes ;
-             rdf:type [ prov:Activity ] ? ;
-             dcterms:relation @dcatap_plus:QualitativeAttribute * ;
-             dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
-             dcterms:hasPart @linkml:String ? ;
-             adms:identifier @dcatap_plus:Identifier *
-          ) ;
-          rdf:type [ prov:Activity ]
-       )
-    } OR @<ChemicalReaction>
-)
+dcatap_plus:EvaluatedActivity CLOSED {
+    (  $dcatap_plus:EvaluatedActivity_tes (  &dcatap_plus:Activity_tes ;
+          rdf:type [ prov:Activity ] ? ;
+          dcterms:relation @dcatap_plus:QualitativeAttribute * ;
+          dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
+          dcterms:hasPart @linkml:String ? ;
+          adms:identifier @dcatap_plus:Identifier *
+       ) ;
+       rdf:type [ prov:Activity ]
+    )
+}
 
 dcatap_plus:EvaluatedEntity  (
     CLOSED {
@@ -479,7 +626,7 @@ dcatap_plus:EvaluatedEntity  (
           ) ;
           rdf:type [ prov:Entity ]
        )
-    } OR @dcatap_plus:AnalysisSourceData OR @<ChemicalSubstance>
+    } OR @dcatap_plus:AnalysisSourceData OR @material_entities_ap:MaterialSample
 )
 
 dcatap_plus:Frequency CLOSED {
@@ -507,27 +654,27 @@ dcatap_plus:Identifier CLOSED {
     )
 }
 
-<InChi> CLOSED {
-    (  $<InChi_tes> (  &dcatap_plus:QualitativeAttribute_tes ;
+chemical_entities_ap:InChi CLOSED {
+    (  $chemical_entities_ap:InChi_tes (  &dcatap_plus:QualitativeAttribute_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
        rdf:type [ <http://semanticscience.org/resource/CHEMINF_000113> ] ?
     )
 }
 
-<InChIKey> CLOSED {
-    (  $<InChIKey_tes> (  &dcatap_plus:QualitativeAttribute_tes ;
+chemical_entities_ap:InChIKey CLOSED {
+    (  $chemical_entities_ap:InChIKey_tes (  &dcatap_plus:QualitativeAttribute_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
        rdf:type [ <http://semanticscience.org/resource/CHEMINF_000059> ] ?
     )
 }
 
-<IUPACChemicalFormula> CLOSED {
-    (  $<IUPACChemicalFormula_tes> (  &dcatap_plus:QualitativeAttribute_tes ;
+chemical_entities_ap:IUPACName CLOSED {
+    (  $chemical_entities_ap:IUPACName_tes (  &dcatap_plus:QualitativeAttribute_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
-       rdf:type [ <http://semanticscience.org/resource/CHEMINF_000037> ] ?
+       rdf:type [ <http://semanticscience.org/resource/CHEMINF_000107> ] ?
     )
 }
 
@@ -541,7 +688,7 @@ dcatap_plus:Kind CLOSED {
     (  $<Laboratory_tes> (  &dcatap_plus:Surrounding_tes ;
           rdf:type [ prov:Location ] ?
        ) ;
-       rdf:type [ prov:Location ] ?
+       rdf:type [ <http://purl.obolibrary.org/obo/ENVO_01001405> ] ?
     )
 }
 
@@ -549,7 +696,7 @@ dcatap_plus:LegalResource CLOSED {
     (  $dcatap_plus:LegalResource_tes (  &dcatap_plus:SupportiveEntity_tes ;
           rdf:type [ dcatap_plus:SupportiveEntity ] ?
        ) ;
-       rdf:type [ eli:LegalResource ] ?
+       rdf:type [ eli:LegalResource ]
     )
 }
 
@@ -558,7 +705,7 @@ dcatap_plus:LicenseDocument CLOSED {
           rdf:type [ dcatap_plus:SupportiveEntity ] ? ;
           dcterms:type @dcatap_plus:Concept *
        ) ;
-       rdf:type [ dcterms:LicenseDocument ] ?
+       rdf:type [ dcterms:LicenseDocument ]
     )
 }
 
@@ -579,6 +726,75 @@ dcatap_plus:Location CLOSED {
     )
 }
 
+material_entities_ap:Mass  (
+    CLOSED {
+       (  $material_entities_ap:Mass_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+             rdf:type [ qudt:Quantity ] ?
+          ) ;
+          rdf:type [ qudt:Quantity ] ?
+       )
+    } OR @chemical_entities_ap:MolarMass
+)
+
+material_entities_ap:MaterialEntity  (
+    CLOSED {
+       (  $material_entities_ap:MaterialEntity_tes (  &dcatap_plus:Entity_tes ;
+             rdf:type [ prov:Entity ] ? ;
+             &material_entities_ap:Materialistic_tes ;
+             rdf:type [ material_entities_ap:Materialistic ] ? ;
+             <http://purl.obolibrary.org/obo/BFO_0000051> @material_entities_ap:MaterialEntity * ;
+             skos:altLabel @linkml:String ? ;
+             <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
+                <http://purl.obolibrary.org/obo/PATO_0002066> <http://purl.obolibrary.org/obo/PATO_0001735>
+                <http://purl.obolibrary.org/obo/PATO_0001737> ] ? ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Temperature * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Mass * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Volume * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Density * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Pressure *
+          ) ;
+          rdf:type [ <http://purl.obolibrary.org/obo/BFO_0000040> ]
+       )
+    } OR @chemical_entities_ap:ChemicalEntity OR @chemical_entities_ap:ChemicalSubstance
+)
+
+material_entities_ap:Materialistic {
+    (  $material_entities_ap:Materialistic_tes (  skos:altLabel @linkml:String ? ;
+          <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
+             <http://purl.obolibrary.org/obo/PATO_0002066> <http://purl.obolibrary.org/obo/PATO_0001735>
+             <http://purl.obolibrary.org/obo/PATO_0001737> ] ? ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Temperature * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Mass * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Volume * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Density * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Pressure *
+       ) ;
+       rdf:type [ material_entities_ap:Materialistic ] ?
+    )
+}
+
+material_entities_ap:MaterialSample  (
+    CLOSED {
+       (  $material_entities_ap:MaterialSample_tes (  &dcatap_plus:EvaluatedEntity_tes ;
+             rdf:type [ prov:Entity ] ? ;
+             &material_entities_ap:Materialistic_tes ;
+             rdf:type [ material_entities_ap:Materialistic ] ? ;
+             prov:wasDerivedFrom @dcatap_plus:Entity ? ;
+             skos:altLabel @linkml:String ? ;
+             <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
+                <http://purl.obolibrary.org/obo/PATO_0002066> <http://purl.obolibrary.org/obo/PATO_0001735>
+                <http://purl.obolibrary.org/obo/PATO_0001737> ] ? ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Temperature * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Mass * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Volume * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Density * ;
+             <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Pressure *
+          ) ;
+          rdf:type [ <http://purl.obolibrary.org/obo/OBI_0000747> ]
+       )
+    } OR @<SubstanceSample>
+)
+
 dcatap_plus:MediaType CLOSED {
     (  $dcatap_plus:MediaType_tes (  &dcatap_plus:SupportiveEntity_tes ;
           rdf:type [ dcatap_plus:SupportiveEntity ] ?
@@ -595,41 +811,123 @@ dcatap_plus:MediaTypeOrExtent CLOSED {
     )
 }
 
-<NMRAnalysisDataset> CLOSED {
-    (  $<NMRAnalysisDataset_tes> (  &dcatap_plus:AnalysisDataset_tes ;
+chemical_reaction_ap:MolarEquivalent CLOSED {
+    (  $chemical_reaction_ap:MolarEquivalent_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ qudt:Quantity ] ?
+    )
+}
+
+chemical_entities_ap:MolarMass CLOSED {
+    (  $chemical_entities_ap:MolarMass_tes (  &material_entities_ap:Mass_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ <http://purl.allotrope.org/ontologies/result#AFR_0002409> ] ?
+    )
+}
+
+chemical_entities_ap:MolecularFormula CLOSED {
+    (  $chemical_entities_ap:MolecularFormula_tes (  &dcatap_plus:QualitativeAttribute_tes ;
+          rdf:type [ prov:Entity ] ?
+       ) ;
+       rdf:type [ <http://semanticscience.org/resource/CHEMINF_000042> ] ?
+    )
+}
+
+nmr_michi:NMRAnalysisDataset CLOSED {
+    (  $nmr_michi:NMRAnalysisDataset_tes (  &dcatap_plus:AnalysisDataset_tes ;
           rdf:type [ dcat:Dataset ] ? ;
-          prov:wasGeneratedBy @<NMRSpectralAnalysis> * ;
-          dcterms:subject @<ChemicalSample> *
+          <http://purl.obolibrary.org/obo/OBI_0000312> @nmr_michi:NMRSpectralAnalysis * ;
+          <http://purl.obolibrary.org/obo/IAO_0000136> @nmr_michi:NMRSample *
        ) ;
        rdf:type [ dcat:Dataset ]
     )
 }
 
-<NMRSpectralAnalysis> CLOSED {
-    (  $<NMRSpectralAnalysis_tes> (  &dcatap_plus:DataAnalysis_tes ;
-          rdf:type [ prov:Activity ] ? ;
-          prov:used @<NMRSpectrum> *
+nmr_michi:NMRSample CLOSED {
+    (  $nmr_michi:NMRSample_tes (  &<SubstanceSample_tes> ;
+          rdf:type [ <http://semanticscience.org/resource/SIO_001378> ] ? ;
+          <http://purl.obolibrary.org/obo/BFO_0000051> @nmr_michi:CharacterizedCompound + ;
+          prov:wasDerivedFrom @dcatap_plus:Entity ?
        ) ;
-       rdf:type [ NMR:1000259 ]
+       rdf:type [ NMR:1400128 ]
     )
 }
 
-<NMRSpectroscopy> CLOSED {
-    (  $<NMRSpectroscopy_tes> (  &dcatap_plus:DataGeneratingActivity_tes ;
+nmr_michi:NMRSolvent CLOSED {
+    (  $nmr_michi:NMRSolvent_tes (  &chemical_reaction_ap:DissolvingSubstance_tes ;
+          rdf:type [ <http://semanticscience.org/resource/SIO_010417> ] ?
+       ) ;
+       rdf:type [ NMR:1000330 ]
+    )
+}
+
+nmr_michi:NMRSpectralAnalysis CLOSED {
+    (  $nmr_michi:NMRSpectralAnalysis_tes (  &dcatap_plus:DataAnalysis_tes ;
           rdf:type [ prov:Activity ] ? ;
-          prov:used @<ChemicalSample> * ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NMRSpectrum *
+       ) ;
+       rdf:type [ NMR:1400042 ]
+    )
+}
+
+nmr_michi:NMRSpectrometer CLOSED {
+    (  $nmr_michi:NMRSpectrometer_tes (  &dcatap_plus:Device_tes ;
+          rdf:type [ prov:Agent ] ? ;
+          <http://semanticscience.org/resource/SIO_000008> @nmr_michi:NominalProtonFrequency +
+       ) ;
+       rdf:type [ <http://purl.obolibrary.org/obo/CHMO_0001807> ]
+    )
+}
+
+nmr_michi:NMRSpectroscopy CLOSED {
+    (  $nmr_michi:NMRSpectroscopy_tes (  &dcatap_plus:DataGeneratingActivity_tes ;
+          rdf:type [ prov:Activity ] ? ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NMRSpectrometer + ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NMRSolvent + ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:PulseSequence ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NumberOfScans ? ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:AcquisitionNucleus + ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:ShiftCalibrationCompound * ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:ShiftReferenceCompound * ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NMRSample * ;
           rdf:type @dcatap_plus:DefinedTerm ?
        ) ;
-       rdf:type [ <NMRSpectroscopy> ]
+       rdf:type [ <http://purl.obolibrary.org/obo/CHMO_0000613> ]
     )
 }
 
-<NMRSpectrum> CLOSED {
-    (  $<NMRSpectrum_tes> (  &dcatap_plus:AnalysisSourceData_tes ;
+nmr_michi:NMRSpectrum CLOSED {
+    (  $nmr_michi:NMRSpectrum_tes (  &dcatap_plus:AnalysisSourceData_tes ;
           rdf:type [ prov:Entity ] ? ;
-          prov:wasGeneratedBy @<NMRSpectroscopy> *
+          <http://purl.obolibrary.org/obo/OBI_0000312> @nmr_michi:NMRSpectroscopy *
        ) ;
        rdf:type [ NMR:1002007 ]
+    )
+}
+
+nmr_michi:NominalProtonFrequency CLOSED {
+    (  $nmr_michi:NominalProtonFrequency_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ qudt:Quantity ] ?
+    )
+}
+
+nmr_michi:NumberOfScans CLOSED {
+    (  $nmr_michi:NumberOfScans_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ NMR:1400087 ] ?
+    )
+}
+
+chemical_reaction_ap:PercentageOfTotal CLOSED {
+    (  $chemical_reaction_ap:PercentageOfTotal_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ qudt:Quantity ] ?
     )
 }
 
@@ -642,6 +940,14 @@ dcatap_plus:PeriodOfTime CLOSED {
           dcat:startDate @linkml:Date ?
        ) ;
        rdf:type [ dcterms:PeriodOfTime ] ?
+    )
+}
+
+chemical_entities_ap:PHValue CLOSED {
+    (  $chemical_entities_ap:PHValue_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ <http://semanticscience.org/resource/SIO_001089> ] ?
     )
 }
 
@@ -665,11 +971,45 @@ dcatap_plus:Policy CLOSED {
     )
 }
 
+chemical_entities_ap:Polymer {
+    (  $chemical_entities_ap:Polymer_tes (  &chemical_entities_ap:ChemicalSubstance_tes ;
+          rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ] ?
+       ) ;
+       rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_60027> ]
+    )
+}
+
+<PolymerSample> CLOSED {
+    (  $<PolymerSample_tes> (  &<SubstanceSample_tes> ;
+          rdf:type [ <http://semanticscience.org/resource/SIO_001378> ] ? ;
+          &chemical_entities_ap:Polymer_tes ;
+          rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_60027> ] ?
+       ) ;
+       rdf:type [ <http://semanticscience.org/resource/SIO_001378> ]
+    )
+}
+
+material_entities_ap:Pressure CLOSED {
+    (  $material_entities_ap:Pressure_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ qudt:Quantity ] ?
+    )
+}
+
 dcatap_plus:ProvenanceStatement CLOSED {
     (  $dcatap_plus:ProvenanceStatement_tes (  &dcatap_plus:SupportiveEntity_tes ;
           rdf:type [ dcatap_plus:SupportiveEntity ] ?
        ) ;
        rdf:type [ dcterms:ProvenanceStatement ] ?
+    )
+}
+
+nmr_michi:PulseSequence CLOSED {
+    (  $nmr_michi:PulseSequence_tes (  &dcatap_plus:QualitativeAttribute_tes ;
+          rdf:type [ prov:Entity ] ?
+       ) ;
+       rdf:type [ NMR:1400037 ] ?
     )
 }
 
@@ -685,21 +1025,55 @@ dcatap_plus:QualitativeAttribute  (
           ) ;
           rdf:type [ prov:Entity ] ?
        )
-    } OR @<IUPACChemicalFormula> OR @<InChIKey> OR @<InChi> OR @<SMILES>
+    } OR @chemical_entities_ap:IUPACName OR @chemical_entities_ap:InChIKey OR @chemical_entities_ap:InChi OR
+    @chemical_entities_ap:MolecularFormula OR @nmr_michi:PulseSequence OR @chemical_entities_ap:SMILES
 )
 
-dcatap_plus:QuantitativeAttribute CLOSED {
-    (  $dcatap_plus:QuantitativeAttribute_tes (  &dcatap_plus:ClassifierMixin_tes ;
-          rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
-          dcterms:title @linkml:String ? ;
-          dcterms:description @linkml:String ? ;
-          prov:value @linkml:Float ;
-          qudt:hasQuantityKind @dcatap_plus:DefinedTerm ;
-          qudt:unit @dcatap_plus:DefinedTerm ? ;
-          dcterms:type @dcatap_plus:DefinedTerm ? ;
-          rdf:type @dcatap_plus:DefinedTerm ?
+dcatap_plus:QuantitativeAttribute  (
+    CLOSED {
+       (  $dcatap_plus:QuantitativeAttribute_tes (  &dcatap_plus:ClassifierMixin_tes ;
+             rdf:type [ dcatap_plus:ClassifierMixin ] ? ;
+             dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ? ;
+             prov:value @linkml:Float ;
+             qudt:hasQuantityKind @dcatap_plus:DefinedTerm ;
+             qudt:unit @dcatap_plus:DefinedTerm ? ;
+             dcterms:type @dcatap_plus:DefinedTerm ? ;
+             rdf:type @dcatap_plus:DefinedTerm ?
+          ) ;
+          rdf:type [ qudt:Quantity ] ?
+       )
+    } OR @chemical_entities_ap:AmountOfSubstance OR @nmr_michi:ChemicalShiftReference OR @chemical_entities_ap:Concentration OR
+    @material_entities_ap:Density OR @material_entities_ap:Mass OR @chemical_reaction_ap:MolarEquivalent OR
+    @nmr_michi:NominalProtonFrequency OR @nmr_michi:NumberOfScans OR @chemical_entities_ap:PHValue OR
+    @chemical_reaction_ap:PercentageOfTotal OR @material_entities_ap:Pressure OR @material_entities_ap:Temperature OR
+    @material_entities_ap:Volume OR @chemical_reaction_ap:Yield
+)
+
+chemical_reaction_ap:Reactor CLOSED {
+    (  $chemical_reaction_ap:Reactor_tes (  &dcatap_plus:Device_tes ;
+          rdf:type [ prov:Agent ] ? ;
+          &material_entities_ap:Materialistic_tes ;
+          rdf:type [ material_entities_ap:Materialistic ] ? ;
+          skos:altLabel @linkml:String ? ;
+          <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
+             <http://purl.obolibrary.org/obo/PATO_0002066> <http://purl.obolibrary.org/obo/PATO_0001735>
+             <http://purl.obolibrary.org/obo/PATO_0001737> ] ? ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Temperature * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Mass * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Volume * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Density * ;
+          <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Pressure *
        ) ;
-       rdf:type [ qudt:Quantity ] ?
+       rdf:type [ <http://purl.allotrope.org/ontologies/equipment#AFE_0000153> ]
+    )
+}
+
+chemical_reaction_ap:Reagent CLOSED {
+    (  $chemical_reaction_ap:Reagent_tes (  &chemical_entities_ap:ChemicalSubstance_tes ;
+          rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ] ?
+       ) ;
+       rdf:type [ <http://semanticscience.org/resource/SIO_010411> ]
     )
 }
 
@@ -715,7 +1089,7 @@ dcatap_plus:Resource CLOSED {
     (  $dcatap_plus:Resource_tes (  &dcatap_plus:SupportiveEntity_tes ;
           rdf:type [ dcatap_plus:SupportiveEntity ] ?
        ) ;
-       rdf:type [ rdfs:Resource ] ?
+       rdf:type [ rdfs:Resource ]
     )
 }
 
@@ -735,8 +1109,27 @@ dcatap_plus:Role CLOSED {
     )
 }
 
-<SMILES> CLOSED {
-    (  $<SMILES_tes> (  &dcatap_plus:QualitativeAttribute_tes ;
+nmr_michi:ShiftCalibrationCompound  (
+    CLOSED {
+       (  $nmr_michi:ShiftCalibrationCompound_tes (  &chemical_entities_ap:ChemicalEntity_tes ;
+             rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_23367> ] ? ;
+             <http://semanticscience.org/resource/SIO_000008> @nmr_michi:ChemicalShiftReference *
+          ) ;
+          rdf:type [ NMR:0002003 ]
+       )
+    } OR @nmr_michi:ShiftReferenceCompound
+)
+
+nmr_michi:ShiftReferenceCompound CLOSED {
+    (  $nmr_michi:ShiftReferenceCompound_tes (  &nmr_michi:ShiftCalibrationCompound_tes ;
+          rdf:type [ NMR:0002003 ] ?
+       ) ;
+       rdf:type [ NMR:1400033 ]
+    )
+}
+
+chemical_entities_ap:SMILES CLOSED {
+    (  $chemical_entities_ap:SMILES_tes (  &dcatap_plus:QualitativeAttribute_tes ;
           rdf:type [ prov:Entity ] ?
        ) ;
        rdf:type [ <http://semanticscience.org/resource/CHEMINF_000018> ] ?
@@ -761,9 +1154,37 @@ dcatap_plus:Standard CLOSED {
     )
 }
 
+chemical_reaction_ap:StartingMaterial CLOSED {
+    (  $chemical_reaction_ap:StartingMaterial_tes (  &chemical_entities_ap:ChemicalSubstance_tes ;
+          rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ] ?
+       ) ;
+       rdf:type [ <http://purl.obolibrary.org/obo/PROCO_0000029> ]
+    )
+}
+
+<SubstanceSample>  (
+    CLOSED {
+       (  $<SubstanceSample_tes> (  &material_entities_ap:MaterialSample_tes ;
+             rdf:type [ <http://purl.obolibrary.org/obo/OBI_0000747> ] ? ;
+             &chemical_entities_ap:ChemicalSubstance_tes ;
+             rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ] ? ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:Concentration * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:PHValue * ;
+             <http://purl.obolibrary.org/obo/BFO_0000051> @chemical_entities_ap:ChemicalEntity * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:MolarEquivalent * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_entities_ap:AmountOfSubstance * ;
+             <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:PercentageOfTotal *
+          ) ;
+          rdf:type [ <http://semanticscience.org/resource/SIO_001378> ]
+       )
+    } OR @nmr_michi:NMRSample OR @<PolymerSample>
+)
+
 dcatap_plus:SupportiveEntity  (
     CLOSED {
-       (  $dcatap_plus:SupportiveEntity_tes rdf:type . * ;
+       (  $dcatap_plus:SupportiveEntity_tes (  dcterms:title @linkml:String ? ;
+             dcterms:description @linkml:String ?
+          ) ;
           rdf:type [ dcatap_plus:SupportiveEntity ] ?
        )
     } OR @dcatap_plus:Attribution OR @dcatap_plus:ChecksumAlgorithm OR @dcatap_plus:Concept OR @dcatap_plus:ConceptScheme OR
@@ -787,6 +1208,14 @@ dcatap_plus:Surrounding  (
     } OR @<Laboratory>
 )
 
+material_entities_ap:Temperature CLOSED {
+    (  $material_entities_ap:Temperature_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ qudt:Quantity ] ?
+    )
+}
+
 dcatap_plus:TimeInstant CLOSED {
     (  $dcatap_plus:TimeInstant_tes (  &dcatap_plus:SupportiveEntity_tes ;
           rdf:type [ dcatap_plus:SupportiveEntity ] ?
@@ -795,3 +1224,18 @@ dcatap_plus:TimeInstant CLOSED {
     )
 }
 
+material_entities_ap:Volume CLOSED {
+    (  $material_entities_ap:Volume_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ qudt:Quantity ] ?
+    )
+}
+
+chemical_reaction_ap:Yield CLOSED {
+    (  $chemical_reaction_ap:Yield_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ qudt:Quantity ] ?
+    )
+}

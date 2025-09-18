@@ -1,0 +1,55 @@
+{
+  "id": "https://www.example.com/wood3000",
+  "title": "Philip's wood sample",
+  "other_identifier": [
+    {
+      "notation": "https://www.chemotion-repository.net/pid/50440"
+    }
+  ],
+  "rdf_type": {
+    "id": "ENVO:00002040",
+    "title": "wood"
+  },
+  "derived_from": {
+    "id": "https://www.wikidata.org/wiki/Q4204",
+    "rdf_type": {
+      "id": "ENVO:01000174",
+      "title": "forest biome"
+    }
+  },
+  "has_physical_state": "SOLID",
+  "has_temperature": [
+    {
+      "value": 20.0,
+      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Temperature",
+      "title": "Temperature",
+      "unit": "https://qudt.org/vocab/unit/DEG_C"
+    }
+  ],
+  "has_mass": [
+    {
+      "value": 300.0,
+      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Mass",
+      "title": "Mass in mg",
+      "unit": "https://qudt.org/vocab/unit/MilliGM"
+    }
+  ],
+  "has_volume": [
+    {
+      "value": 0.03,
+      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Volume",
+      "title": "Volume in L",
+      "unit": "https://qudt.org/vocab/unit/L"
+    }
+  ],
+  "has_pressure": [
+    {
+      "value": 2.0,
+      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Pressure",
+      "title": "Pressure in Bar",
+      "description": "This is just a test value for this attribute, well knowing that this value makes no sense for a piece of wood",
+      "unit": "https://qudt.org/vocab/unit/BAR"
+    }
+  ],
+  "@type": "MaterialSample"
+}

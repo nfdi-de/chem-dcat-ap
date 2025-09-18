@@ -1,23 +1,35 @@
 {
+   "AFE": "http://purl.allotrope.org/ontologies/equipment#AFE_",
+   "AFP": "http://purl.allotrope.org/ontologies/process#AFP_",
+   "AFR": "http://purl.allotrope.org/ontologies/result#AFR_",
+   "AFRL": "http://purl.allotrope.org/ontologies/role#AFRL_",
+   "AFX": "http://purl.allotrope.org/ontologies/property#AFX_",
    "BFO": "http://purl.obolibrary.org/obo/BFO_",
    "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_",
    "CHEMINF": "http://semanticscience.org/resource/CHEMINF_",
    "CHMO": "http://purl.obolibrary.org/obo/CHMO_",
+   "EDAM": "http://edamontology.org/data_",
+   "ENVO": "http://purl.obolibrary.org/obo/ENVO_",
    "FOODON": "http://purl.obolibrary.org/obo/FOODON_",
    "IAO": "http://purl.obolibrary.org/obo/IAO_",
+   "MOP": "http://purl.obolibrary.org/obo/MOP_",
    "NCIT": "http://purl.obolibrary.org/obo/NCIT_",
    "NMR": "http://nmrML.org/nmrCV#NMR:",
    "OBI": "http://purl.obolibrary.org/obo/OBI_",
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
+   "PROCO": "http://purl.obolibrary.org/obo/PROCO_",
+   "REX": "http://purl.obolibrary.org/obo/REX_",
    "RO": "http://purl.obolibrary.org/obo/RO_",
    "RXNO": "http://purl.obolibrary.org/obo/RXNO_",
    "SIO": "http://semanticscience.org/resource/SIO_",
    "T4FS": "http://purl.obolibrary.org/obo/T4FS_",
+   "VOC4CAT": "https://w3id.org/nfdi4cat/voc4cat_",
    "adms": "http://www.w3.org/ns/adms#",
    "biolink": "https://w3id.org/biolink/vocab/",
    "dcat": "http://www.w3.org/ns/dcat#",
+   "dcat_4c_ap": "https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml#",
    "dcatap": "http://data.europa.eu/r5r/",
-   "dcatap_plus": "https://stroemphi.github.io/dcat-4C-ap/dcat_ap_plus.yaml#",
+   "dcatap_plus": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#",
    "dcterms": "http://purl.org/dc/terms/",
    "doi": "https://doi.org/",
    "eli": "http://data.europa.eu/eli/ontology#",
@@ -26,8 +38,7 @@
    "foaf": "http://xmlns.com/foaf/0.1/",
    "linkml": "https://w3id.org/linkml/",
    "locn": "http://www.w3.org/ns/locn#",
-   "nfdi": "https://stroemphi.github.io/dcat-4C-ap/dcat_4nfdi_ap/",
-   "nfdi4c": "https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap/",
+   "material_entities_ap": "https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#",
    "odrl": "http://www.w3.org/ns/odrl/2/",
    "owl": "http://www.w3.org/2002/07/owl#",
    "prov": "http://www.w3.org/ns/prov#",
@@ -40,6 +51,9 @@
    "spdx": "http://spdx.org/rdf/terms#",
    "time": "http://www.w3.org/2006/time#",
    "vcard": "http://www.w3.org/2006/vcard/ns#",
+   "AcquisitionNucleus": {
+      "@id": "NMR:1400083"
+   },
    "Activity": {
       "@id": "prov:Activity"
    },
@@ -48,6 +62,9 @@
    },
    "AgenticEntity": {
       "@id": "prov:Agent"
+   },
+   "AmountOfSubstance": {
+      "@id": "qudt:Quantity"
    },
    "AnalysisDataset": {
       "@id": "dcat:Dataset"
@@ -58,6 +75,9 @@
    "Any": {
       "@id": "linkml:Any"
    },
+   "Atom": {
+      "@id": "CHEBI:33250"
+   },
    "Attribution": {
       "@id": "prov:Attribution"
    },
@@ -66,6 +86,12 @@
    },
    "CatalogueRecord": {
       "@id": "dcat:CatalogRecord"
+   },
+   "Catalyst": {
+      "@id": "SIO:010344"
+   },
+   "CharacterizedCompound": {
+      "@id": "NMR:0002001"
    },
    "Checksum": {
       "@id": "spdx:Checksum"
@@ -76,14 +102,23 @@
    "ChemicalEntity": {
       "@id": "CHEBI:23367"
    },
+   "ChemicalProduct": {
+      "@id": "NCIT:C48810"
+   },
    "ChemicalReaction": {
-      "@id": "RXNO:0000329"
+      "@id": "SIO:010345"
+   },
+   "ChemicalShiftReference": {
+      "@id": "NMR:1002013"
    },
    "ChemicalSubstance": {
-      "@id": "prov:Entity"
+      "@id": "CHEBI:59999"
    },
    "ClassifierMixin": {
       "@id": "dcatap_plus:ClassifierMixin"
+   },
+   "Concentration": {
+      "@id": "CHMO:0002820"
    },
    "Concept": {
       "@id": "skos:Concept"
@@ -109,8 +144,14 @@
    "DefinedTerm": {
       "@id": "schema:DefinedTerm"
    },
+   "Density": {
+      "@id": "SIO:001406"
+   },
    "Device": {
       "@id": "prov:Agent"
+   },
+   "DissolvingSubstance": {
+      "@id": "SIO:010417"
    },
    "Distribution": {
       "@id": "dcat:Distribution"
@@ -142,14 +183,14 @@
    "InChIKey": {
       "@id": "CHEMINF:000059"
    },
-   "IUPACChemicalFormula": {
-      "@id": "CHEMINF:000037"
+   "IUPACName": {
+      "@id": "CHEMINF:000107"
    },
    "Kind": {
       "@id": "vcard:Kind"
    },
    "Laboratory": {
-      "@id": "prov:Location"
+      "@id": "ENVO:01001405"
    },
    "LegalResource": {
       "@id": "eli:LegalResource"
@@ -163,23 +204,68 @@
    "Location": {
       "@id": "dcterms:Location"
    },
+   "Mass": {
+      "@id": "qudt:Quantity"
+   },
+   "MaterialEntity": {
+      "@id": "BFO:0000040"
+   },
+   "Materialistic": {
+      "@id": "material_entities_ap:Materialistic"
+   },
+   "MaterialSample": {
+      "@id": "OBI:0000747"
+   },
    "MediaType": {
       "@id": "dcterms:MediaType"
    },
    "MediaTypeOrExtent": {
       "@id": "dcterms:MediaTypeOrExtent"
    },
+   "MolarEquivalent": {
+      "@id": "qudt:Quantity"
+   },
+   "MolarMass": {
+      "@id": "AFR:0002409"
+   },
+   "MolecularFormula": {
+      "@id": "CHEMINF:000042"
+   },
    "NMRAnalysisDataset": {
       "@id": "dcat:Dataset"
    },
+   "NMRSample": {
+      "@id": "NMR:1400128"
+   },
+   "NMRSolvent": {
+      "@id": "NMR:1000330"
+   },
    "NMRSpectralAnalysis": {
-      "@id": "NMR:1000259"
+      "@id": "NMR:1400042"
+   },
+   "NMRSpectrometer": {
+      "@id": "CHMO:0001807"
+   },
+   "NMRSpectroscopy": {
+      "@id": "CHMO:0000613"
    },
    "NMRSpectrum": {
       "@id": "NMR:1002007"
    },
+   "NominalProtonFrequency": {
+      "@id": "qudt:Quantity"
+   },
+   "NumberOfScans": {
+      "@id": "NMR:1400087"
+   },
+   "PercentageOfTotal": {
+      "@id": "qudt:Quantity"
+   },
    "PeriodOfTime": {
       "@id": "dcterms:PeriodOfTime"
+   },
+   "PHValue": {
+      "@id": "SIO:001089"
    },
    "Plan": {
       "@id": "prov:Plan"
@@ -187,14 +273,32 @@
    "Policy": {
       "@id": "odrl:Policy"
    },
+   "Polymer": {
+      "@id": "CHEBI:60027"
+   },
+   "PolymerSample": {
+      "@id": "SIO:001378"
+   },
+   "Pressure": {
+      "@id": "qudt:Quantity"
+   },
    "ProvenanceStatement": {
       "@id": "dcterms:ProvenanceStatement"
+   },
+   "PulseSequence": {
+      "@id": "NMR:1400037"
    },
    "QualitativeAttribute": {
       "@id": "prov:Entity"
    },
    "QuantitativeAttribute": {
       "@id": "qudt:Quantity"
+   },
+   "Reactor": {
+      "@id": "AFE:0000153"
+   },
+   "Reagent": {
+      "@id": "SIO:010411"
    },
    "Relationship": {
       "@id": "dcat:Relationship"
@@ -208,6 +312,12 @@
    "Role": {
       "@id": "dcat:Role"
    },
+   "ShiftCalibrationCompound": {
+      "@id": "NMR:0002003"
+   },
+   "ShiftReferenceCompound": {
+      "@id": "NMR:1400033"
+   },
    "SMILES": {
       "@id": "CHEMINF:000018"
    },
@@ -217,13 +327,28 @@
    "Standard": {
       "@id": "dcterms:Standard"
    },
+   "StartingMaterial": {
+      "@id": "PROCO:0000029"
+   },
+   "SubstanceSample": {
+      "@id": "SIO:001378"
+   },
    "SupportiveEntity": {
       "@id": "dcatap_plus:SupportiveEntity"
    },
    "Surrounding": {
       "@id": "prov:Location"
    },
+   "Temperature": {
+      "@id": "qudt:Quantity"
+   },
    "TimeInstant": {
       "@id": "time:Instant"
+   },
+   "Volume": {
+      "@id": "qudt:Quantity"
+   },
+   "Yield": {
+      "@id": "qudt:Quantity"
    }
 }

@@ -1,0 +1,536 @@
+{
+  "id": "doi:10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ",
+  "title": [
+    "CRR-56408"
+  ],
+  "description": [
+    "The reaction has been conducted in dry glass ware under argon atmosphere. A solution of 1-bromo-2-fluorobenzene (1.76 g, 1.10 mL, 9.86 mmol, 1.08 equiv) in anhydrous THF (24.0 mL) was cooled to -78 °C, and n-BuLi (689 mg, 4.30 mL, 10.8 mmol, 2.50M in hexane, 1.18 equiv) was added drop-wise over 10 min. After stirring for further 50 min, a solution of chloro(diphenyl)phosphine (2.09 g, 1.70 mL, 9.09 mmol, 1.00 equiv) in anhydrous THF (3.00 mL) was added drop-wise over 10 min, and the reaction mixture was stirred for 8 h at -78 °C. The reaction mixture was allowed to warm up to 25 °C over 8 h, and was then quenched by the addition of 1 M HCl (10.0 mL). The phases were separated, and the aqueous phase was extracted with diethyl ether (3 × 50.0 mL). Then, the combined organic layers were washed with sat. aq. NaHCO3-solution (50.0 mL), water (50.0 mL), and with brine (50.0 mL). The organic phase was dried over Na2SO4, filtered, and the solvent was evaporated under reduced pressure to afford the phosphine intermediate as a pale yellow oil.\n- The crude phosphine intermediate was dissolved in ethanol (150 mL), and cooled to 0 °C. Under vigorous stirring, a solution of hydrogen peroxide (3.95 g, 3.50 mL, 40.7 mmol, 35%, 4.48 equiv), and glacial acetic acid (1.91 g, 1.80 mL, 30.5 mmol, 3.36 equiv) in ethanol (15.0 mL) was added drop-wise over 15 min. The mixture was stirred for 2 h at 0 °C, and was then refluxed for 2 h. After evaporating the solvent under reduced pressure, the crude was dissolved in dichloromethane (50.0 mL), washed with sat. aq. NaHCO3-solution (2 × 25.0 mL), water (25.0 mL), and brine (25.0 mL). The organic layer was dried over Na2SO4, before evaporating the solvent under reduced pressure.\n- Additional information for publication and purification details: - The crude product was purified via flash-chromatography (Interchim® puriFLASH XS520) on silica gel (PF-30SIHP-F0040) using cyclohexane/ethyl acetate 35:65 to 30:70 in 10 CV (1 CV = 52.7 mL; flowrate = 26.0 mL/min). The product 1-diphenylphosphoryl-2-fluorobenzene (2.33 g, 7.78 mmol, 86% yield) was obtained as a colorless solid."
+  ],
+  "other_identifier": [
+    {
+      "notation": "https://www.chemotion-repository.net/pid/56408"
+    }
+  ],
+  "used_starting_material": [
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_StartMat-1",
+      "has_mass": [
+        {
+          "value": 1761.1,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Mass",
+          "title": "Mass [mg]",
+          "unit": "https://qudt.org/vocab/unit/MilliGM"
+        }
+      ],
+      "has_volume": [
+        {
+          "value": 1.1,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Volume",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "has_density": [
+        {
+          "value": 1.601,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Density",
+          "title": "Density [g/mL]",
+          "unit": "https://qudt.org/vocab/unit/GM-PER-MilliL"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://www.chemotion-repository.net/pid/56408_StartMat-1.comp",
+          "molecular_formula": [
+            {
+              "value": "C6H4BrF"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "1-bromo-2-fluorobenzene"
+            }
+          ]
+        }
+      ],
+      "has_molar_equivalent": [
+        {
+          "value": 1.085,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "Molar Equivalent",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "has_amount": [
+        {
+          "value": 9.862,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/AmountOfSubstance",
+          "title": "Amount [mmol]",
+          "unit": "https://qudt.org/vocab/unit/MilliMOL"
+        }
+      ]
+    },
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_StartMat-2",
+      "has_mass": [
+        {
+          "value": 2089.3,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Mass",
+          "title": "Mass [mg]",
+          "unit": "https://qudt.org/vocab/unit/MilliGM"
+        }
+      ],
+      "has_volume": [
+        {
+          "value": 1.7,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Volume",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "has_density": [
+        {
+          "value": 1.229,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Density",
+          "title": "Density [g/mL]",
+          "unit": "https://qudt.org/vocab/unit/GM-PER-MilliL"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://www.chemotion-repository.net/pid/56408_StartMat-2.comp",
+          "molecular_formula": [
+            {
+              "value": "C12H10ClP"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "chloro(diphenyl)phosphine"
+            }
+          ]
+        }
+      ],
+      "has_molar_equivalent": [
+        {
+          "value": 1.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "Molar Equivalent",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "has_amount": [
+        {
+          "value": 9.091,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/AmountOfSubstance",
+          "title": "Amount [mmol]",
+          "unit": "https://qudt.org/vocab/unit/MilliMOL"
+        }
+      ]
+    }
+  ],
+  "used_reactant": [
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_Reactant-1",
+      "has_mass": [
+        {
+          "value": 688.594,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Mass",
+          "title": "Mass [mg]",
+          "unit": "https://qudt.org/vocab/unit/MilliGM"
+        }
+      ],
+      "has_volume": [
+        {
+          "value": 4.3,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Volume",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "has_concentration": [
+        {
+          "value": 2.5,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration",
+          "title": "Molarity [M]",
+          "unit": "https://qudt.org/vocab/unit/MOL-PER-L"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://www.chemotion-repository.net/pid/56408_Reactant-1.comp",
+          "molecular_formula": [
+            {
+              "value": "C4H9Li"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "n-BuLi"
+            }
+          ]
+        }
+      ],
+      "has_molar_equivalent": [
+        {
+          "value": 1.183,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "Molar Equivalent",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "has_amount": [
+        {
+          "value": 10.75,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/AmountOfSubstance",
+          "title": "Amount [mmol]",
+          "unit": "https://qudt.org/vocab/unit/MilliMOL"
+        }
+      ]
+    },
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_Reactant-2",
+      "has_mass": [
+        {
+          "value": 3955.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Mass",
+          "title": "Mass [mg]",
+          "unit": "https://qudt.org/vocab/unit/MilliGM"
+        }
+      ],
+      "has_volume": [
+        {
+          "value": 3.5,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Volume",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "has_density": [
+        {
+          "value": 1.13,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Density",
+          "title": "Density [g/mL]",
+          "unit": "https://qudt.org/vocab/unit/GM-PER-MilliL"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://www.chemotion-repository.net/pid/56408_Reactant-2.comp",
+          "molecular_formula": [
+            {
+              "value": "H2O2"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "Hydrogen Peroxide"
+            }
+          ]
+        }
+      ],
+      "has_molar_equivalent": [
+        {
+          "value": 4.477,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "Molar Equivalent",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "has_amount": [
+        {
+          "value": 40.696,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/AmountOfSubstance",
+          "title": "Amount [mmol]",
+          "unit": "https://qudt.org/vocab/unit/MilliMOL"
+        }
+      ]
+    },
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_Reactant-3",
+      "has_mass": [
+        {
+          "value": 1908.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Mass",
+          "title": "Mass [mg]",
+          "unit": "https://qudt.org/vocab/unit/MilliGM"
+        }
+      ],
+      "has_volume": [
+        {
+          "value": 1.8,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Volume",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "has_density": [
+        {
+          "value": 1.06,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Density",
+          "title": "Density [g/mL]",
+          "unit": "https://qudt.org/vocab/unit/GM-PER-MilliL"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://www.chemotion-repository.net/pid/56408_Reactant-3.comp",
+          "molecular_formula": [
+            {
+              "value": "C2H4O2"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "glacial acetic acid"
+            }
+          ]
+        }
+      ],
+      "has_molar_equivalent": [
+        {
+          "value": 3.355,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "Molar Equivalent",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "has_amount": [
+        {
+          "value": 30.502,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/AmountOfSubstance",
+          "title": "Amount [mmol]",
+          "unit": "https://qudt.org/vocab/unit/MilliMOL"
+        }
+      ]
+    }
+  ],
+  "generated_product": [
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_Product-1",
+      "has_mass": [
+        {
+          "value": 2328.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Mass",
+          "title": "Mass [mg]",
+          "unit": "https://qudt.org/vocab/unit/MilliGM"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://www.chemotion-repository.net/pid/56408_Product-1.comp",
+          "molecular_formula": [
+            {
+              "value": "C18H14FOP"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "1-diphenylphosphoryl-2-fluorobenzene"
+            }
+          ]
+        }
+      ],
+      "has_amount": [
+        {
+          "value": 7.779,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/AmountOfSubstance",
+          "title": "Amount [mmol]",
+          "unit": "https://qudt.org/vocab/unit/MilliMOL"
+        }
+      ]
+    }
+  ],
+  "used_solvent": [
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_Solvent-1",
+      "has_percentage_of_total": [
+        {
+          "value": 13.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "PercentageOfTotal",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "has_volume": [
+        {
+          "value": 24.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Volume",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://www.chemotion-repository.net/pid/56408_Solvent-1.comp",
+          "title": "THF",
+          "molecular_formula": [
+            {
+              "value": "C4H8O"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "Tetrahydrofuran"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_Solvent-2",
+      "has_percentage_of_total": [
+        {
+          "value": 2.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "PercentageOfTotal",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "has_volume": [
+        {
+          "value": 3.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Volume",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://www.chemotion-repository.net/pid/56408_Solvent-2.comp",
+          "title": "THF",
+          "molecular_formula": [
+            {
+              "value": "C4H8O"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "Tetrahydrofuran"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_Solvent-3",
+      "has_percentage_of_total": [
+        {
+          "value": 78.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "PercentageOfTotal",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "has_volume": [
+        {
+          "value": 150.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Volume",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://www.chemotion-repository.net/pid/56408_Solvent-3.comp",
+          "molecular_formula": [
+            {
+              "value": "C2H6O"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "Ethanol"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_Solvent-4",
+      "has_percentage_of_total": [
+        {
+          "value": 8.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "PercentageOfTotal",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "has_volume": [
+        {
+          "value": 15.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://www.chemotion-repository.net/pid/56408_Solvent-4.comp",
+          "molecular_formula": [
+            {
+              "value": "C2H6O"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "Ethanol"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "has_duration": "PT22H",
+  "has_temperature": [
+    {
+      "value": -78.0,
+      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Temperature",
+      "title": "Temperature of reaction step 1",
+      "unit": "http://qudt.org/vocab/unit/DEG_C"
+    },
+    {
+      "value": 0.0,
+      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Temperature",
+      "title": "Temperature of reaction step 2",
+      "unit": "http://qudt.org/vocab/unit/DEG_C"
+    },
+    {
+      "value": 80.0,
+      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Temperature",
+      "title": "Temperature of reaction step 3",
+      "unit": "http://qudt.org/vocab/unit/DEG_C"
+    }
+  ],
+  "has_yield": [
+    {
+      "value": 86.0,
+      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+      "title": "Yield [%]",
+      "unit": "http://qudt.org/vocab/unit/PERCENT",
+      "type": {
+        "id": "VOC4CAT:0005005",
+        "title": "yield"
+      }
+    }
+  ],
+  "related_resource": [
+    {
+      "title": "SYNTHESE UND NMR-UNTERSUCHUNGEN VON 2-FLUOR-TRIPHENYLPHOSPHINEN UND IHREN DERIVATEN",
+      "id": "doi:10.1080/03086648208081193"
+    },
+    {
+      "title": "Synthesis and thermal behavior of dimethyl scandium complexes featuring anilido-phosphinimine ancillary ligands",
+      "id": "doi:10.1016/j.jorganchem.2007.08.037"
+    },
+    {
+      "title": "Role of through space 2p-3d overlap in the alkylation of phosphines",
+      "id": "doi:10.1021/ja00491a030"
+    },
+    {
+      "title": "Arylation of Secondary Phosphines with Diaryliodonium Salts under Metal-Free and Non-Photochemical Conditions",
+      "id": "doi:10.1002/adsc.202400919"
+    }
+  ],
+  "@type": "ChemicalReaction"
+}
