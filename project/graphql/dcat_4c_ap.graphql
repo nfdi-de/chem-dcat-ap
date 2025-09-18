@@ -237,7 +237,7 @@ type CatalogueRecord
     title: [String]
   }
 
-type Catalyst implements ChemicalSubstance, MaterialisticEntity
+type Catalyst implements ChemicalSubstance, Materialistic
   {
     id: Uriorcurie!
     title: String
@@ -599,7 +599,7 @@ type Device
     otherIdentifier: [Identifier]
   }
 
-type DissolvingSubstance implements ChemicalSubstance, MaterialisticEntity
+type DissolvingSubstance implements ChemicalSubstance, Materialistic
   {
     id: Uriorcurie!
     title: String
@@ -801,7 +801,7 @@ type Mass
     rdfType: DefinedTerm
   }
 
-type MaterialEntity implements MaterialisticEntity
+type MaterialEntity implements Materialistic
   {
     title: String
     description: String
@@ -821,7 +821,7 @@ type MaterialEntity implements MaterialisticEntity
     hasPressure: [Pressure]
   }
 
-interface MaterialisticEntity
+interface Materialistic
   {
     alternativeLabel: String
     hasPhysicalState: PhysicalStateEnum
@@ -832,7 +832,7 @@ interface MaterialisticEntity
     hasPressure: [Pressure]
   }
 
-type MaterialSample implements MaterialisticEntity
+type MaterialSample implements Materialistic
   {
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
@@ -1026,7 +1026,7 @@ type NMRSpectrometer
     rdfType: DefinedTerm
     hasPart: [Device]
     otherIdentifier: [Identifier]
-    hasProtonFrequency: NominalProtonFrequency!
+    hasProtonFrequency: [NominalProtonFrequency]!
   }
 
 type NMRSpectroscopy
@@ -1048,8 +1048,8 @@ type NMRSpectroscopy
     occurredIn: Surrounding
     usedSpectrometer: [NMRSpectrometer]!
     usedSolvent: [NMRSolvent]!
-    usedNumberOfScans: NumberOfScans
     usedPulseSequence: PulseSequence!
+    usedNumberOfScans: NumberOfScans
     probesNucleus: [AcquisitionNucleus]!
     usedCalibrationCompound: [ShiftCalibrationCompound]
     usedReferenceCompound: [ShiftReferenceCompound]
@@ -1239,7 +1239,7 @@ type QuantitativeAttribute implements ClassifierMixin
     rdfType: DefinedTerm
   }
 
-type Reactor implements MaterialisticEntity
+type Reactor implements Materialistic
   {
     id: Uriorcurie!
     title: String
@@ -1334,6 +1334,7 @@ type ShiftCalibrationCompound
     molecularFormula: [MolecularFormula]
     iupacName: [IUPACName]
     hasMolarMass: [MolarMass]
+    hasShiftReference: [ChemicalShiftReference]
   }
 
 type ShiftReferenceCompound

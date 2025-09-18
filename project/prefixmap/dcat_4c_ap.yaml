@@ -109,7 +109,7 @@
       "@id": "SIO:010345"
    },
    "ChemicalShiftReference": {
-      "@id": "NMR:1001954"
+      "@id": "NMR:1002013"
    },
    "ChemicalSubstance": {
       "@id": "CHEBI:59999"
@@ -210,8 +210,8 @@
    "MaterialEntity": {
       "@id": "BFO:0000040"
    },
-   "MaterialisticEntity": {
-      "@id": "material_entities_ap:MaterialisticEntity"
+   "Materialistic": {
+      "@id": "material_entities_ap:Materialistic"
    },
    "MaterialSample": {
       "@id": "OBI:0000747"

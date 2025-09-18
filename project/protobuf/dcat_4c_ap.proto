@@ -935,7 +935,7 @@ message NMRSpectrometer
   definedTerm rdfType = 0
  repeated  device hasPart = 0
  repeated  identifier otherIdentifier = 0
-  nominalProtonFrequency hasProtonFrequency = 0
+ repeated  nominalProtonFrequency hasProtonFrequency = 0
  }
 // Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.
 message NMRSpectroscopy
@@ -957,8 +957,8 @@ message NMRSpectroscopy
   surrounding occurredIn = 0
  repeated  nMRSpectrometer usedSpectrometer = 0
  repeated  nMRSolvent usedSolvent = 0
-  numberOfScans usedNumberOfScans = 0
   pulseSequence usedPulseSequence = 0
+  numberOfScans usedNumberOfScans = 0
  repeated  acquisitionNucleus probesNucleus = 0
  repeated  shiftCalibrationCompound usedCalibrationCompound = 0
  repeated  shiftReferenceCompound usedReferenceCompound = 0
@@ -1215,6 +1215,7 @@ message ShiftCalibrationCompound
  repeated  molecularFormula molecularFormula = 0
  repeated  iUPACName iupacName = 0
  repeated  molarMass hasMolarMass = 0
+ repeated  chemicalShiftReference hasShiftReference = 0
  }
 // A ShiftCalibrationCompound that produces a peak used as reference frequency in the delta chemical shift scale in nuclear magnetic resonance (NMR) spectroscopy.
 message ShiftReferenceCompound

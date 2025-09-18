@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-09-17T14:03:17
+# Generation date: 2025-09-18T08:07:37
 # Schema: dcat-4C-ap
 #
 # id: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
@@ -3010,7 +3010,7 @@ class NMRSpectrometer(Device):
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRSpectrometer
 
     id: Union[str, NMRSpectrometerId] = None
-    has_proton_frequency: Union[dict, "NominalProtonFrequency"] = None
+    has_proton_frequency: Union[Union[dict, "NominalProtonFrequency"], list[Union[dict, "NominalProtonFrequency"]]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3020,8 +3020,9 @@ class NMRSpectrometer(Device):
 
         if self._is_empty(self.has_proton_frequency):
             self.MissingRequiredField("has_proton_frequency")
-        if not isinstance(self.has_proton_frequency, NominalProtonFrequency):
-            self.has_proton_frequency = NominalProtonFrequency(**as_dict(self.has_proton_frequency))
+        if not isinstance(self.has_proton_frequency, list):
+            self.has_proton_frequency = [self.has_proton_frequency] if self.has_proton_frequency is not None else []
+        self.has_proton_frequency = [v if isinstance(v, NominalProtonFrequency) else NominalProtonFrequency(**as_dict(v)) for v in self.has_proton_frequency]
 
         super().__post_init__(**kwargs)
 
@@ -3114,8 +3115,8 @@ class ChemicalShiftReference(QuantitativeAttribute):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMR["1001954"]
-    class_class_curie: ClassVar[str] = "NMR:1001954"
+    class_class_uri: ClassVar[URIRef] = NMR["1002013"]
+    class_class_curie: ClassVar[str] = "NMR:1002013"
     class_name: ClassVar[str] = "ChemicalShiftReference"
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.ChemicalShiftReference
 
@@ -3138,13 +3139,18 @@ class NumberOfScans(QuantitativeAttribute):
     has_quantity_type: Union[str, DefinedTermId] = None
 
 @dataclass(repr=False)
-class MaterialisticEntity(YAMLRoot):
+class Materialistic(YAMLRoot):
+    """
+    A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have
+    MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of
+    EvaluatedEntity.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = MATERIAL_ENTITIES_AP["MaterialisticEntity"]
-    class_class_curie: ClassVar[str] = "material_entities_ap:MaterialisticEntity"
-    class_name: ClassVar[str] = "MaterialisticEntity"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.MaterialisticEntity
+    class_class_uri: ClassVar[URIRef] = MATERIAL_ENTITIES_AP["Materialistic"]
+    class_class_curie: ClassVar[str] = "material_entities_ap:Materialistic"
+    class_name: ClassVar[str] = "Materialistic"
+    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.Materialistic
 
     alternative_label: Optional[str] = None
     has_physical_state: Optional[Union[str, "PhysicalStateEnum"]] = None
@@ -3480,12 +3486,17 @@ class ShiftCalibrationCompound(ChemicalEntity):
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.ShiftCalibrationCompound
 
     id: Union[str, ShiftCalibrationCompoundId] = None
+    has_shift_reference: Optional[Union[Union[dict, ChemicalShiftReference], list[Union[dict, ChemicalShiftReference]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ShiftCalibrationCompoundId):
             self.id = ShiftCalibrationCompoundId(self.id)
+
+        if not isinstance(self.has_shift_reference, list):
+            self.has_shift_reference = [self.has_shift_reference] if self.has_shift_reference is not None else []
+        self.has_shift_reference = [v if isinstance(v, ChemicalShiftReference) else ChemicalShiftReference(**as_dict(v)) for v in self.has_shift_reference]
 
         super().__post_init__(**kwargs)
 
@@ -3504,17 +3515,12 @@ class ShiftReferenceCompound(ShiftCalibrationCompound):
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.ShiftReferenceCompound
 
     id: Union[str, ShiftReferenceCompoundId] = None
-    has_shift_reference: Optional[Union[Union[dict, ChemicalShiftReference], list[Union[dict, ChemicalShiftReference]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ShiftReferenceCompoundId):
             self.id = ShiftReferenceCompoundId(self.id)
-
-        if not isinstance(self.has_shift_reference, list):
-            self.has_shift_reference = [self.has_shift_reference] if self.has_shift_reference is not None else []
-        self.has_shift_reference = [v if isinstance(v, ChemicalShiftReference) else ChemicalShiftReference(**as_dict(v)) for v in self.has_shift_reference]
 
         super().__post_init__(**kwargs)
 
@@ -4339,11 +4345,8 @@ slots.has_reaction_step = Slot(uri=BFO['0000051'], name="has_reaction_step", cur
 slots.used_spectrometer = Slot(uri=OBI['0000293'], name="used_spectrometer", curie=OBI.curie('0000293'),
                    model_uri=DCAT_4C_AP.used_spectrometer, domain=None, range=Union[dict[Union[str, NMRSpectrometerId], Union[dict, NMRSpectrometer]], list[Union[dict, NMRSpectrometer]]])
 
-slots.used_number_of_scans = Slot(uri=OBI['0000293'], name="used_number_of_scans", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.used_number_of_scans, domain=None, range=Optional[Union[dict, NumberOfScans]])
-
 slots.has_proton_frequency = Slot(uri=SIO['000008'], name="has_proton_frequency", curie=SIO.curie('000008'),
-                   model_uri=DCAT_4C_AP.has_proton_frequency, domain=None, range=Union[dict, NominalProtonFrequency])
+                   model_uri=DCAT_4C_AP.has_proton_frequency, domain=None, range=Union[Union[dict, NominalProtonFrequency], list[Union[dict, NominalProtonFrequency]]])
 
 slots.has_shift_reference = Slot(uri=SIO['000008'], name="has_shift_reference", curie=SIO.curie('000008'),
                    model_uri=DCAT_4C_AP.has_shift_reference, domain=None, range=Optional[Union[Union[dict, ChemicalShiftReference], list[Union[dict, ChemicalShiftReference]]]])
@@ -4383,6 +4386,9 @@ slots.quantitativeAttribute__unit = Slot(uri=QUDT.unit, name="quantitativeAttrib
 
 slots.nMRSpectroscopy__used_pulse_sequence = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__used_pulse_sequence", curie=OBI.curie('0000293'),
                    model_uri=DCAT_4C_AP.nMRSpectroscopy__used_pulse_sequence, domain=None, range=Union[dict, PulseSequence])
+
+slots.nMRSpectroscopy__used_number_of_scans = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__used_number_of_scans", curie=OBI.curie('0000293'),
+                   model_uri=DCAT_4C_AP.nMRSpectroscopy__used_number_of_scans, domain=None, range=Optional[Union[dict, NumberOfScans]])
 
 slots.nMRSpectroscopy__probes_nucleus = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__probes_nucleus", curie=OBI.curie('0000293'),
                    model_uri=DCAT_4C_AP.nMRSpectroscopy__probes_nucleus, domain=None, range=Union[dict[Union[str, AcquisitionNucleusId], Union[dict, AcquisitionNucleus]], list[Union[dict, AcquisitionNucleus]]])

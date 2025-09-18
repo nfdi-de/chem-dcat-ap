@@ -676,6 +676,17 @@ was_generated_by:
         title: 13C nuclear magnetic resonance spectroscopy
       title:
       - CDCl3_13C_NMR
+      used_calibration_compound:
+      - has_shift_reference:
+        - has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
+          title: The chemical shift of the peak used for chemical shift calibration.
+          unit: https://qudt.org/vocab/unit/PPM
+          value: 77.16
+        id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
+        rdf_type:
+          id: CHEBI:85365
+          title: deuterated chloroform
+        title: Chloroform-D
       used_number_of_scans:
         has_quantity_type: http://qudt.org/vocab/quantitykind/Count
         title: number_of_scans
@@ -694,7 +705,7 @@ was_generated_by:
         id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent
       used_spectrometer:
       - has_proton_frequency:
-          has_quantity_type: http://qudt.org/vocab/quantitykind/Frequency
+        - has_quantity_type: http://qudt.org/vocab/quantitykind/Frequency
           title: proton_frequency
           unit: http://qudt.org/vocab/unit/NUM
           value: 100.623835930538
@@ -759,6 +770,17 @@ was_generated_by:
         title: 13C nuclear magnetic resonance spectroscopy
       title:
       - DMSO_13C_NMR
+      used_calibration_compound:
+      - has_shift_reference:
+        - has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
+          title: The chemical shift of the peak used for chemical shift calibration.
+          unit: https://qudt.org/vocab/unit/PPM
+          value: 39.52
+        id: https://pubchem.ncbi.nlm.nih.gov/compound/679
+        rdf_type:
+          id: CHEBI:28262
+          title: dimethyl sulfoxide
+        title: DMSO
       used_number_of_scans:
         has_quantity_type: http://qudt.org/vocab/quantitykind/Count
         title: number_of_scans
@@ -769,7 +791,7 @@ was_generated_by:
         value: zgpg30
       used_solvent:
       - composed_of:
-        - id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
+        - id: https://pubchem.ncbi.nlm.nih.gov/compound/679
           rdf_type:
             id: CHEBI:28262
             title: dimethyl sulfoxide
@@ -777,7 +799,7 @@ was_generated_by:
         id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent
       used_spectrometer:
       - has_proton_frequency:
-          has_quantity_type: http://qudt.org/vocab/quantitykind/Frequency
+        - has_quantity_type: http://qudt.org/vocab/quantitykind/Frequency
           title: proton_frequency
           unit: http://qudt.org/vocab/unit/NUM
           value: 100.623835930538

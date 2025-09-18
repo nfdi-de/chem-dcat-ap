@@ -6848,8 +6848,11 @@
                     ]
                 },
                 "has_proton_frequency": {
-                    "$ref": "#/$defs/NominalProtonFrequency",
-                    "description": "The slot to specify the NominalProtonFrequency of a NMRSpectrometer."
+                    "description": "The slot to specify the NominalProtonFrequency of a NMRSpectrometer.",
+                    "items": {
+                        "$ref": "#/$defs/NominalProtonFrequency"
+                    },
+                    "type": "array"
                 },
                 "has_qualitative_attribute": {
                     "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
@@ -8739,6 +8742,16 @@
                     "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_shift_reference": {
+                    "description": "The slot to specify the ChemicalShiftReference value.",
+                    "items": {
+                        "$ref": "#/$defs/ChemicalShiftReference"
                     },
                     "type": [
                         "array",

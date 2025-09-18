@@ -7579,12 +7579,12 @@ class ChemicalReaction(Activity):
          'recommended': True,
          'slot_uri': 'prov:wasAssociatedWith'} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to specify the Temperature at which a ChemicalReaction takes place.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to specify the Pressure at which a ChemicalReaction takes place.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -8097,92 +8097,95 @@ class PercentageOfTotal(QuantitativeAttribute):
          'slot_uri': 'rdf:type'} })
 
 
-class MaterialisticEntity(ConfiguredBaseModel):
+class Materialistic(ConfiguredBaseModel):
+    """
+    A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml',
          'mixin': True})
 
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
 
 
-class Reactor(MaterialisticEntity, Device):
+class Reactor(Materialistic, Device):
     """
     A reactor is a container for controlling a biological or chemical reaction or process.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'AFE:0000153',
          'exact_mappings': ['VOC4CAT:0007017'],
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml',
-         'mixins': ['MaterialisticEntity']})
+         'mixins': ['Materialistic']})
 
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -8304,13 +8307,13 @@ class Reactor(MaterialisticEntity, Device):
          'slot_uri': 'rdf:type'} })
 
 
-class MaterialEntity(MaterialisticEntity, Entity):
+class MaterialEntity(Materialistic, Entity):
     """
     A material is an Entity that has some portion of matter as proper part.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'BFO:0000040',
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml',
-         'mixins': ['MaterialisticEntity'],
+         'mixins': ['Materialistic'],
          'slot_usage': {'has_part': {'description': 'The slot to provide the parts of '
                                                     'a MaterialEntity.',
                                      'inlined_as_list': True,
@@ -8321,39 +8324,39 @@ class MaterialEntity(MaterialisticEntity, Entity):
                                      'slot_uri': 'BFO:0000051'}}})
 
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -8514,39 +8517,39 @@ class ChemicalEntity(MaterialEntity):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -8712,39 +8715,39 @@ class Atom(ChemicalEntity):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -8907,39 +8910,39 @@ class ChemicalSubstance(MaterialEntity):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -9102,39 +9105,39 @@ class Polymer(ChemicalSubstance):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -9296,39 +9299,39 @@ class StartingMaterial(ChemicalSubstance):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -9451,7 +9454,7 @@ class StartingMaterial(ChemicalSubstance):
          'slot_uri': 'rdf:type'} })
 
 
-class DissolvingSubstance(ChemicalSubstance, MaterialisticEntity, AgenticEntity):
+class DissolvingSubstance(ChemicalSubstance, Materialistic, AgenticEntity):
     """
     A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.
     """
@@ -9459,7 +9462,7 @@ class DissolvingSubstance(ChemicalSubstance, MaterialisticEntity, AgenticEntity)
          'class_uri': 'SIO:010417',
          'exact_mappings': ['VOC4CAT:0007246', 'NCIT:C45790'],
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml',
-         'mixins': ['ChemicalSubstance', 'MaterialisticEntity']})
+         'mixins': ['ChemicalSubstance', 'Materialistic']})
 
     has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=None, description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'alias': 'has_percentage_of_total',
          'domain_of': ['ChemicalSubstance', 'DissolvingSubstance'],
@@ -9493,39 +9496,39 @@ class DissolvingSubstance(ChemicalSubstance, MaterialisticEntity, AgenticEntity)
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -9689,39 +9692,39 @@ class Reagent(ChemicalSubstance):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -9885,39 +9888,39 @@ class ChemicalProduct(ChemicalSubstance):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -10040,7 +10043,7 @@ class ChemicalProduct(ChemicalSubstance):
          'slot_uri': 'rdf:type'} })
 
 
-class Catalyst(ChemicalSubstance, MaterialisticEntity, AgenticEntity):
+class Catalyst(ChemicalSubstance, Materialistic, AgenticEntity):
     """
     A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.
     """
@@ -10048,7 +10051,7 @@ class Catalyst(ChemicalSubstance, MaterialisticEntity, AgenticEntity):
          'close_mappings': ['CHEBI:35223'],
          'exact_mappings': ['VOC4CAT:0000194', 'NCIT:C48810'],
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml',
-         'mixins': ['ChemicalSubstance', 'MaterialisticEntity']})
+         'mixins': ['ChemicalSubstance', 'Materialistic']})
 
     has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=None, description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'alias': 'has_molar_equivalent',
          'domain_of': ['ChemicalSubstance', 'StartingMaterial', 'Reagent', 'Catalyst'],
@@ -10082,39 +10085,39 @@ class Catalyst(ChemicalSubstance, MaterialisticEntity, AgenticEntity):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -10237,14 +10240,14 @@ class Catalyst(ChemicalSubstance, MaterialisticEntity, AgenticEntity):
          'slot_uri': 'rdf:type'} })
 
 
-class MaterialSample(MaterialisticEntity, EvaluatedEntity):
+class MaterialSample(Materialistic, EvaluatedEntity):
     """
     A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'OBI:0000747',
          'exact_mappings': ['SIO:001050', 'VOC4CAT:0005056'],
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml',
-         'mixins': ['MaterialisticEntity'],
+         'mixins': ['Materialistic'],
          'slot_usage': {'derived_from': {'description': 'The slot to specify the '
                                                         'MaterialEntity or '
                                                         'MaterialSample from which the '
@@ -10257,39 +10260,39 @@ class MaterialSample(MaterialisticEntity, EvaluatedEntity):
          'exact_mappings': ['SIO:000244'],
          'slot_uri': 'prov:wasDerivedFrom'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -11713,13 +11716,14 @@ class NMRSpectroscopy(DataGeneratingActivity):
          'is_a': 'carried_out_by',
          'recommended': True,
          'slot_uri': 'OBI:0000293'} })
-    used_number_of_scans: Optional[NumberOfScans] = Field(default=None, description="""The slot to specify the NumberOfScans used in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'used_number_of_scans',
-         'domain_of': ['NMRSpectroscopy'],
-         'recommended': True,
-         'slot_uri': 'OBI:0000293'} })
     used_pulse_sequence: PulseSequence = Field(default=..., description="""The slot to specify the PulseSequence used in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'used_pulse_sequence',
          'domain_of': ['NMRSpectroscopy'],
          'is_a': 'has_qualitative_attribute',
+         'slot_uri': 'OBI:0000293'} })
+    used_number_of_scans: Optional[NumberOfScans] = Field(default=None, description="""The slot to specify the NumberOfScans used in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'used_number_of_scans',
+         'domain_of': ['NMRSpectroscopy'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
          'slot_uri': 'OBI:0000293'} })
     probes_nucleus: list[AcquisitionNucleus] = Field(default=..., description="""The slot to specify the AcquisitionNucleus used in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'probes_nucleus',
          'domain_of': ['NMRSpectroscopy'],
@@ -11920,8 +11924,10 @@ class NMRSpectrometer(Device):
          'exact_mappings': ['OBI:0000566', 'NMR:1400059', 'AFE:0002280'],
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml'})
 
-    has_proton_frequency: NominalProtonFrequency = Field(default=..., description="""The slot to specify the NominalProtonFrequency of a NMRSpectrometer.""", json_schema_extra = { "linkml_meta": {'alias': 'has_proton_frequency',
+    has_proton_frequency: list[NominalProtonFrequency] = Field(default=..., description="""The slot to specify the NominalProtonFrequency of a NMRSpectrometer.""", json_schema_extra = { "linkml_meta": {'alias': 'has_proton_frequency',
          'domain_of': ['NMRSpectrometer'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
          'slot_uri': 'SIO:000008'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['Activity',
@@ -12051,6 +12057,11 @@ class ShiftCalibrationCompound(ChemicalEntity):
                       'a more appropriate location in the future.'],
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml'})
 
+    has_shift_reference: Optional[list[ChemicalShiftReference]] = Field(default=None, description="""The slot to specify the ChemicalShiftReference value.""", json_schema_extra = { "linkml_meta": {'alias': 'has_shift_reference',
+         'domain_of': ['ShiftCalibrationCompound'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
     inchi: Optional[list[InChi]] = Field(default=None, description="""The slot to provide the InChi descriptor of a ChemicalEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'inchi',
          'domain_of': ['ChemicalEntity'],
          'is_a': 'has_qualitative_attribute',
@@ -12082,39 +12093,39 @@ class ShiftCalibrationCompound(ChemicalEntity):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -12248,7 +12259,7 @@ class ShiftReferenceCompound(ShiftCalibrationCompound):
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml'})
 
     has_shift_reference: Optional[list[ChemicalShiftReference]] = Field(default=None, description="""The slot to specify the ChemicalShiftReference value.""", json_schema_extra = { "linkml_meta": {'alias': 'has_shift_reference',
-         'domain_of': ['ShiftReferenceCompound'],
+         'domain_of': ['ShiftCalibrationCompound'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -12283,39 +12294,39 @@ class ShiftReferenceCompound(ShiftCalibrationCompound):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -12479,39 +12490,39 @@ class CharacterizedCompound(ChemicalEntity):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -12807,39 +12818,39 @@ class NMRSolvent(DissolvingSubstance):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -13186,7 +13197,7 @@ class ChemicalShiftReference(QuantitativeAttribute):
     """
     A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'NMR:1001954',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'NMR:1002013',
          'comments': ['This class serves as an example for the way in which we want to '
                       'build domain specific schema profiles. It will be outsourced to '
                       'a more appropriate location in the future.'],
@@ -13463,39 +13474,39 @@ class SubstanceSample(MaterialSample, ChemicalSubstance):
          'exact_mappings': ['SIO:000244'],
          'slot_uri': 'prov:wasDerivedFrom'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -13682,39 +13693,39 @@ class NMRSample(SubstanceSample):
          'exact_mappings': ['SIO:000244'],
          'slot_uri': 'prov:wasDerivedFrom'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -13887,39 +13898,39 @@ class PolymerSample(SubstanceSample, Polymer):
          'exact_mappings': ['SIO:000244'],
          'slot_uri': 'prov:wasDerivedFrom'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_label',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
                    'metadata mixin instead.']} })
     has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_physical_state',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'slot_uri': 'SIO:000008',
          'todos': ['Find out how to make this a subproperty of '
                    'has_qualitative_attribute, as it currently throws the error '
                    "'physical_state enumerations cannot be inlined' due to the fact "
                    'that we are using an enum here.']} })
     has_temperature: Optional[list[Temperature]] = Field(default=None, description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_temperature',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_mass: Optional[list[Mass]] = Field(default=None, description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_volume: Optional[list[Volume]] = Field(default=None, description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_volume',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_density: Optional[list[Density]] = Field(default=None, description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_density',
-         'domain_of': ['MaterialisticEntity'],
+         'domain_of': ['Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_pressure: Optional[list[Pressure]] = Field(default=None, description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'has_pressure',
-         'domain_of': ['ChemicalReaction', 'MaterialisticEntity'],
+         'domain_of': ['ChemicalReaction', 'Materialistic'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -14203,7 +14214,7 @@ ChemicalReaction.model_rebuild()
 Yield.model_rebuild()
 MolarEquivalent.model_rebuild()
 PercentageOfTotal.model_rebuild()
-MaterialisticEntity.model_rebuild()
+Materialistic.model_rebuild()
 Reactor.model_rebuild()
 MaterialEntity.model_rebuild()
 ChemicalEntity.model_rebuild()

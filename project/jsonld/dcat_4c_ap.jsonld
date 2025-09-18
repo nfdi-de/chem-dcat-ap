@@ -2975,24 +2975,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "used_number_of_scans",
-      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_number_of_scans",
-      "description": "The slot to specify the NumberOfScans used in the NMRSpectroscopy.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml",
-      "mappings": [
-        "http://purl.obolibrary.org/obo/OBI_0000293"
-      ],
-      "slot_uri": "http://purl.obolibrary.org/obo/OBI_0000293",
-      "owner": "NMRSpectroscopy",
-      "domain_of": [
-        "NMRSpectroscopy"
-      ],
-      "range": "NumberOfScans",
-      "recommended": true,
-      "inlined": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "has_proton_frequency",
       "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_proton_frequency",
       "description": "The slot to specify the NominalProtonFrequency of a NMRSpectrometer.",
@@ -3000,6 +2982,7 @@
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
+      "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
       "owner": "NMRSpectrometer",
       "domain_of": [
@@ -3007,7 +2990,10 @@
       ],
       "range": "NominalProtonFrequency",
       "required": true,
+      "recommended": true,
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3020,9 +3006,9 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "ShiftReferenceCompound",
+      "owner": "ShiftCalibrationCompound",
       "domain_of": [
-        "ShiftReferenceCompound"
+        "ShiftCalibrationCompound"
       ],
       "range": "ChemicalShiftReference",
       "recommended": true,
@@ -3043,9 +3029,9 @@
         "http://www.w3.org/2004/02/skos/core#altLabel"
       ],
       "slot_uri": "http://www.w3.org/2004/02/skos/core#altLabel",
-      "owner": "MaterialisticEntity",
+      "owner": "Materialistic",
       "domain_of": [
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -3062,9 +3048,9 @@
         "http://semanticscience.org/resource/SIO_000008"
       ],
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "MaterialisticEntity",
+      "owner": "Materialistic",
       "domain_of": [
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "range": "PhysicalStateEnum",
       "@type": "SlotDefinition"
@@ -3079,10 +3065,10 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "MaterialisticEntity",
+      "owner": "Materialistic",
       "domain_of": [
         "ChemicalReaction",
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "range": "Temperature",
       "recommended": true,
@@ -3101,9 +3087,9 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "MaterialisticEntity",
+      "owner": "Materialistic",
       "domain_of": [
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "range": "Mass",
       "recommended": true,
@@ -3122,9 +3108,9 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "MaterialisticEntity",
+      "owner": "Materialistic",
       "domain_of": [
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "range": "Volume",
       "recommended": true,
@@ -3143,9 +3129,9 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "MaterialisticEntity",
+      "owner": "Materialistic",
       "domain_of": [
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "range": "Density",
       "recommended": true,
@@ -3164,10 +3150,10 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "MaterialisticEntity",
+      "owner": "Materialistic",
       "domain_of": [
         "ChemicalReaction",
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "range": "Pressure",
       "recommended": true,
@@ -3291,6 +3277,26 @@
       ],
       "range": "PulseSequence",
       "required": true,
+      "recommended": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nMRSpectroscopy__used_number_of_scans",
+      "description": "The slot to specify the NumberOfScans used in the NMRSpectroscopy.",
+      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml",
+      "mappings": [
+        "http://purl.obolibrary.org/obo/OBI_0000293"
+      ],
+      "is_a": "has_quantitative_attribute",
+      "slot_uri": "http://purl.obolibrary.org/obo/OBI_0000293",
+      "alias": "used_number_of_scans",
+      "owner": "NMRSpectroscopy",
+      "domain_of": [
+        "NMRSpectroscopy"
+      ],
+      "range": "NumberOfScans",
       "recommended": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -9580,7 +9586,7 @@
       "is_a": "AgenticEntity",
       "mixins": [
         "ChemicalSubstance",
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "slots": [
         "id",
@@ -9716,7 +9722,7 @@
       "is_a": "AgenticEntity",
       "mixins": [
         "ChemicalSubstance",
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "slots": [
         "id",
@@ -9759,7 +9765,7 @@
       ],
       "is_a": "Device",
       "mixins": [
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "slots": [
         "id",
@@ -10047,8 +10053,8 @@
         "occurred_in",
         "used_spectrometer",
         "NMRSpectroscopy_used_solvent",
-        "used_number_of_scans",
         "nMRSpectroscopy__used_pulse_sequence",
+        "nMRSpectroscopy__used_number_of_scans",
         "nMRSpectroscopy__probes_nucleus",
         "nMRSpectroscopy__used_calibration_compound",
         "nMRSpectroscopy__used_reference_compound",
@@ -10064,6 +10070,16 @@
           "slot_uri": "OBI:0000293",
           "range": "PulseSequence",
           "required": true,
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "used_number_of_scans",
+          "description": "The slot to specify the NumberOfScans used in the NMRSpectroscopy.",
+          "is_a": "has_quantitative_attribute",
+          "slot_uri": "OBI:0000293",
+          "range": "NumberOfScans",
+          "recommended": true,
           "inlined": true,
           "@type": "SlotDefinition"
         },
@@ -10171,7 +10187,8 @@
         "smiles",
         "molecular_formula",
         "iupac_name",
-        "has_molar_mass"
+        "has_molar_mass",
+        "has_shift_reference"
       ],
       "slot_usage": {},
       "class_uri": "http://nmrML.org/nmrCV#NMR:0002003",
@@ -10394,7 +10411,7 @@
       ],
       "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml",
       "mappings": [
-        "NMR:1001954"
+        "NMR:1002013"
       ],
       "is_a": "QuantitativeAttribute",
       "slots": [
@@ -10407,7 +10424,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
-      "class_uri": "http://nmrML.org/nmrCV#NMR:1001954",
+      "class_uri": "http://nmrML.org/nmrCV#NMR:1002013",
       "@type": "ClassDefinition"
     },
     {
@@ -10433,8 +10450,9 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "MaterialisticEntity",
-      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#MaterialisticEntity",
+      "name": "Materialistic",
+      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Materialistic",
+      "description": "A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.",
       "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml",
       "mixin": true,
       "slots": [
@@ -10447,7 +10465,7 @@
         "has_pressure"
       ],
       "slot_usage": {},
-      "class_uri": "https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#MaterialisticEntity",
+      "class_uri": "https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Materialistic",
       "@type": "ClassDefinition"
     },
     {
@@ -10460,7 +10478,7 @@
       ],
       "is_a": "Entity",
       "mixins": [
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "slots": [
         "Entity_title",
@@ -10498,7 +10516,7 @@
       ],
       "is_a": "EvaluatedEntity",
       "mixins": [
-        "MaterialisticEntity"
+        "Materialistic"
       ],
       "slots": [
         "id",
@@ -10653,7 +10671,7 @@
   "source_file": "dcat_4c_ap.yaml",
   "source_file_date": "2025-09-15T11:52:02",
   "source_file_size": 3596,
-  "generation_date": "2025-09-17T14:03:15",
+  "generation_date": "2025-09-18T08:07:35",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

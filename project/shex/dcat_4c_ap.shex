@@ -229,8 +229,8 @@ chemical_reaction_ap:Catalyst CLOSED {
           rdf:type [ prov:Agent ] ? ;
           &chemical_entities_ap:ChemicalSubstance_tes ;
           rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ] ? ;
-          &material_entities_ap:MaterialisticEntity_tes ;
-          rdf:type [ material_entities_ap:MaterialisticEntity ] ? ;
+          &material_entities_ap:Materialistic_tes ;
+          rdf:type [ material_entities_ap:Materialistic ] ? ;
           <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:MolarEquivalent * ;
           skos:altLabel @linkml:String ? ;
           <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
@@ -323,7 +323,7 @@ nmr_michi:ChemicalShiftReference CLOSED {
     (  $nmr_michi:ChemicalShiftReference_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
           rdf:type [ qudt:Quantity ] ?
        ) ;
-       rdf:type [ NMR:1001954 ] ?
+       rdf:type [ NMR:1002013 ] ?
     )
 }
 
@@ -523,8 +523,8 @@ chemical_reaction_ap:DissolvingSubstance  (
              rdf:type [ prov:Agent ] ? ;
              &chemical_entities_ap:ChemicalSubstance_tes ;
              rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_59999> ] ? ;
-             &material_entities_ap:MaterialisticEntity_tes ;
-             rdf:type [ material_entities_ap:MaterialisticEntity ] ? ;
+             &material_entities_ap:Materialistic_tes ;
+             rdf:type [ material_entities_ap:Materialistic ] ? ;
              <http://semanticscience.org/resource/SIO_000008> @chemical_reaction_ap:PercentageOfTotal * ;
              skos:altLabel @linkml:String ? ;
              <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
@@ -740,8 +740,8 @@ material_entities_ap:MaterialEntity  (
     CLOSED {
        (  $material_entities_ap:MaterialEntity_tes (  &dcatap_plus:Entity_tes ;
              rdf:type [ prov:Entity ] ? ;
-             &material_entities_ap:MaterialisticEntity_tes ;
-             rdf:type [ material_entities_ap:MaterialisticEntity ] ? ;
+             &material_entities_ap:Materialistic_tes ;
+             rdf:type [ material_entities_ap:Materialistic ] ? ;
              <http://purl.obolibrary.org/obo/BFO_0000051> @material_entities_ap:MaterialEntity * ;
              skos:altLabel @linkml:String ? ;
              <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
@@ -758,8 +758,8 @@ material_entities_ap:MaterialEntity  (
     } OR @chemical_entities_ap:ChemicalEntity OR @chemical_entities_ap:ChemicalSubstance
 )
 
-material_entities_ap:MaterialisticEntity {
-    (  $material_entities_ap:MaterialisticEntity_tes (  skos:altLabel @linkml:String ? ;
+material_entities_ap:Materialistic {
+    (  $material_entities_ap:Materialistic_tes (  skos:altLabel @linkml:String ? ;
           <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
              <http://purl.obolibrary.org/obo/PATO_0002066> <http://purl.obolibrary.org/obo/PATO_0001735>
              <http://purl.obolibrary.org/obo/PATO_0001737> ] ? ;
@@ -769,7 +769,7 @@ material_entities_ap:MaterialisticEntity {
           <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Density * ;
           <http://semanticscience.org/resource/SIO_000008> @material_entities_ap:Pressure *
        ) ;
-       rdf:type [ material_entities_ap:MaterialisticEntity ] ?
+       rdf:type [ material_entities_ap:Materialistic ] ?
     )
 }
 
@@ -777,8 +777,8 @@ material_entities_ap:MaterialSample  (
     CLOSED {
        (  $material_entities_ap:MaterialSample_tes (  &dcatap_plus:EvaluatedEntity_tes ;
              rdf:type [ prov:Entity ] ? ;
-             &material_entities_ap:MaterialisticEntity_tes ;
-             rdf:type [ material_entities_ap:MaterialisticEntity ] ? ;
+             &material_entities_ap:Materialistic_tes ;
+             rdf:type [ material_entities_ap:Materialistic ] ? ;
              prov:wasDerivedFrom @dcatap_plus:Entity ? ;
              skos:altLabel @linkml:String ? ;
              <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
@@ -875,7 +875,7 @@ nmr_michi:NMRSpectralAnalysis CLOSED {
 nmr_michi:NMRSpectrometer CLOSED {
     (  $nmr_michi:NMRSpectrometer_tes (  &dcatap_plus:Device_tes ;
           rdf:type [ prov:Agent ] ? ;
-          <http://semanticscience.org/resource/SIO_000008> @nmr_michi:NominalProtonFrequency
+          <http://semanticscience.org/resource/SIO_000008> @nmr_michi:NominalProtonFrequency +
        ) ;
        rdf:type [ <http://purl.obolibrary.org/obo/CHMO_0001807> ]
     )
@@ -886,8 +886,8 @@ nmr_michi:NMRSpectroscopy CLOSED {
           rdf:type [ prov:Activity ] ? ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NMRSpectrometer + ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NMRSolvent + ;
-          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NumberOfScans ? ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:PulseSequence ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NumberOfScans ? ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:AcquisitionNucleus + ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:ShiftCalibrationCompound * ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:ShiftReferenceCompound * ;
@@ -1053,8 +1053,8 @@ dcatap_plus:QuantitativeAttribute  (
 chemical_reaction_ap:Reactor CLOSED {
     (  $chemical_reaction_ap:Reactor_tes (  &dcatap_plus:Device_tes ;
           rdf:type [ prov:Agent ] ? ;
-          &material_entities_ap:MaterialisticEntity_tes ;
-          rdf:type [ material_entities_ap:MaterialisticEntity ] ? ;
+          &material_entities_ap:Materialistic_tes ;
+          rdf:type [ material_entities_ap:Materialistic ] ? ;
           skos:altLabel @linkml:String ? ;
           <http://semanticscience.org/resource/SIO_000008> [ <http://purl.obolibrary.org/obo/PATO_0001736>
              <http://purl.obolibrary.org/obo/PATO_0002066> <http://purl.obolibrary.org/obo/PATO_0001735>
@@ -1112,7 +1112,8 @@ dcatap_plus:Role CLOSED {
 nmr_michi:ShiftCalibrationCompound  (
     CLOSED {
        (  $nmr_michi:ShiftCalibrationCompound_tes (  &chemical_entities_ap:ChemicalEntity_tes ;
-             rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_23367> ] ?
+             rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_23367> ] ? ;
+             <http://semanticscience.org/resource/SIO_000008> @nmr_michi:ChemicalShiftReference *
           ) ;
           rdf:type [ NMR:0002003 ]
        )
@@ -1121,8 +1122,7 @@ nmr_michi:ShiftCalibrationCompound  (
 
 nmr_michi:ShiftReferenceCompound CLOSED {
     (  $nmr_michi:ShiftReferenceCompound_tes (  &nmr_michi:ShiftCalibrationCompound_tes ;
-          rdf:type [ NMR:0002003 ] ? ;
-          <http://semanticscience.org/resource/SIO_000008> @nmr_michi:ChemicalShiftReference *
+          rdf:type [ NMR:0002003 ] ?
        ) ;
        rdf:type [ NMR:1400033 ]
     )
