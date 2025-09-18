@@ -300,6 +300,17 @@
 
 
 
+      Entity : part_of
+
+
+
+
+
+        Entity --&gt; "*" Entity : part_of
+        click Entity href "../Entity/"
+
+
+
       Entity : rdf_type
 
 
@@ -384,7 +395,13 @@
 <tr>
 <td><a href="../has_part/">has_part</a></td>
 <td>* <br/> <a href="./">Entity</a></td>
-<td>A slot to provide a part of the EvaluatedEntity</td>
+<td>A slot to provide a part of the Entity</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../part_of/">part_of</a></td>
+<td>* <br/> <a href="./">Entity</a></td>
+<td>The slot to specify an Entity of which the Entity is a part</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -419,8 +436,32 @@
 <td><a href="./">Entity</a></td>
 </tr>
 <tr>
+<td><a href="../SubstanceSample/">SubstanceSample</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../SubstanceSample/">SubstanceSample</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
 <td><a href="../PolymerSample/">PolymerSample</a></td>
 <td><a href="../derived_from/">derived_from</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../PolymerSample/">PolymerSample</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../PolymerSample/">PolymerSample</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">Entity</a></td>
 </tr>
@@ -433,6 +474,18 @@
 <tr>
 <td><a href="../Activity/">Activity</a></td>
 <td><a href="../had_output_entity/">had_output_entity</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">Entity</a></td>
 </tr>
@@ -467,6 +520,12 @@
 <td><a href="./">Entity</a></td>
 </tr>
 <tr>
+<td><a href="./">Entity</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
 <td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
 <td><a href="../had_input_entity/">had_input_entity</a></td>
 <td>range</td>
@@ -479,6 +538,42 @@
 <td><a href="./">Entity</a></td>
 </tr>
 <tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../Atom/">Atom</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../Polymer/">Polymer</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td><a href="../had_input_entity/">had_input_entity</a></td>
 <td>range</td>
@@ -487,6 +582,30 @@
 <tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td><a href="../had_output_entity/">had_output_entity</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../StartingMaterial/">StartingMaterial</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../Reagent/">Reagent</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialEntity/">MaterialEntity</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">Entity</a></td>
 </tr>
@@ -497,12 +616,36 @@
 <td><a href="./">Entity</a></td>
 </tr>
 <tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
 <td><a href="../NMRSample/">NMRSample</a></td>
 <td><a href="../derived_from/">derived_from</a></td>
 <td>range</td>
 <td><a href="./">Entity</a></td>
 </tr>
 <tr>
+<td><a href="../NMRSample/">NMRSample</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../NMRSample/">NMRSample</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
 <td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
 <td><a href="../had_input_entity/">had_input_entity</a></td>
 <td>range</td>
@@ -515,6 +658,18 @@
 <td><a href="./">Entity</a></td>
 </tr>
 <tr>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
 <td><a href="../had_input_entity/">had_input_entity</a></td>
 <td>range</td>
@@ -523,6 +678,24 @@
 <tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
 <td><a href="../had_output_entity/">had_output_entity</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../ShiftReferenceCompound/">ShiftReferenceCompound</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../CharacterizedCompound/">CharacterizedCompound</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">Entity</a></td>
 </tr>
@@ -572,6 +745,7 @@ slots:
 - has_qualitative_attribute
 - has_quantitative_attribute
 - has_part
+- part_of
 slot_usage:
   title:
     name: title
@@ -588,7 +762,15 @@ slot_usage:
     inlined_as_list: true
   has_part:
     name: has_part
-    description: A slot to provide a part of the EvaluatedEntity.
+    description: A slot to provide a part of the Entity.
+    range: Entity
+    multivalued: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to specify an Entity of which the Entity is a part.
+    notes:
+    - not in DCAT-AP
     range: Entity
     multivalued: true
     inlined_as_list: true
@@ -622,7 +804,15 @@ slot_usage:
     inlined_as_list: true
   has_part:
     name: has_part
-    description: A slot to provide a part of the EvaluatedEntity.
+    description: A slot to provide a part of the Entity.
+    range: Entity
+    multivalued: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to specify an Entity of which the Entity is a part.
+    notes:
+    - not in DCAT-AP
     range: Entity
     multivalued: true
     inlined_as_list: true
@@ -774,7 +964,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -795,7 +984,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -803,7 +991,7 @@ attributes:
     inlined_as_list: true
   has_part:
     name: has_part
-    description: A slot to provide a part of the EvaluatedEntity.
+    description: A slot to provide a part of the Entity.
     from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: dcterms:hasPart
@@ -814,7 +1002,26 @@ attributes:
     - AgenticEntity
     - Catalogue
     - Entity
-    - EvaluatedActivity
+    range: Entity
+    multivalued: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to specify an Entity of which the Entity is a part.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:isPartOf
+    alias: part_of
+    owner: Entity
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    inverse: has_part
     range: Entity
     multivalued: true
     inlined_as_list: true

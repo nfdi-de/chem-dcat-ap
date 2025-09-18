@@ -432,6 +432,17 @@
 
 
 
+      Polymer : part_of
+
+
+
+
+
+        Polymer --&gt; "*" Entity : part_of
+        click Entity href "../Entity/"
+
+
+
       Polymer : rdf_type
 
 
@@ -600,6 +611,12 @@
 <td><a href="../has_part/">has_part</a></td>
 <td>* <em>recommended</em> <br/> <a href="../MaterialEntity/">MaterialEntity</a></td>
 <td>The slot to provide the parts of a MaterialEntity</td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../part_of/">part_of</a></td>
+<td>* <br/> <a href="../Entity/">Entity</a></td>
+<td>The slot to specify an Entity of which the Entity is a part</td>
 <td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
@@ -1044,7 +1061,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -1065,7 +1081,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -1084,9 +1099,28 @@ attributes:
     - AgenticEntity
     - Catalogue
     - Entity
-    - EvaluatedActivity
     range: MaterialEntity
     recommended: true
+    multivalued: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to specify an Entity of which the Entity is a part.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:isPartOf
+    alias: part_of
+    owner: Polymer
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    inverse: has_part
+    range: Entity
     multivalued: true
     inlined_as_list: true
   type:

@@ -324,7 +324,7 @@
 
 
 
-        DataAnalysis --&gt; "0..1" Activity : has_part
+        DataAnalysis --&gt; "*" Activity : has_part
         click Activity href "../Activity/"
 
 
@@ -372,6 +372,17 @@
 
         DataAnalysis --&gt; "*" Identifier : other_identifier
         click Identifier href "../Identifier/"
+
+
+
+      DataAnalysis : part_of
+
+
+
+
+
+        DataAnalysis --&gt; "*" Activity : part_of
+        click Activity href "../Activity/"
 
 
 
@@ -486,7 +497,7 @@
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>0..1 <br/> <a href="../Activity/">Activity</a></td>
+<td>* <br/> <a href="../Activity/">Activity</a></td>
 <td>The slot to provide an Activity that is part of the Activity</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
@@ -524,6 +535,12 @@
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
 <td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../part_of/">part_of</a></td>
+<td>* <br/> <a href="../Activity/">Activity</a></td>
+<td>The slot to provide an Activity of which the Activity is a part</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
@@ -856,9 +873,9 @@ attributes:
     - AgenticEntity
     - Catalogue
     - Entity
-    - EvaluatedActivity
     range: Activity
-    inlined: true
+    multivalued: true
+    inlined_as_list: true
   had_input_entity:
     name: had_input_entity
     description: The slot to specify the Entity that was used as an input of an Activity
@@ -957,7 +974,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -980,11 +996,30 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
     inlined: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to provide an Activity of which the Activity is a part.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:isPartOf
+    alias: part_of
+    owner: DataAnalysis
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    inverse: has_part
+    range: Activity
+    multivalued: true
     inlined_as_list: true
   type:
     name: type

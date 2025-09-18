@@ -431,6 +431,17 @@
 
 
 
+      Catalyst : part_of
+
+
+
+
+
+        Catalyst --&gt; "*" AgenticEntity : part_of
+        click AgenticEntity href "../AgenticEntity/"
+
+
+
       Catalyst : rdf_type
 
 
@@ -557,43 +568,49 @@
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema</td>
-<td><a href="../AgenticEntity/">AgenticEntity</a>, <a href="../Entity/">Entity</a></td>
+<td><a href="../Entity/">Entity</a>, <a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../title/">title</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The slot to provide a title for the Entity</td>
-<td><a href="../AgenticEntity/">AgenticEntity</a>, <a href="../Entity/">Entity</a></td>
+<td><a href="../Entity/">Entity</a>, <a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The slot to provide a description for the Entity</td>
-<td><a href="../AgenticEntity/">AgenticEntity</a>, <a href="../Entity/">Entity</a></td>
+<td><a href="../Entity/">Entity</a>, <a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
 <td>A slot to provide a secondary identifier for an Instrument</td>
-<td><a href="../AgenticEntity/">AgenticEntity</a>, <a href="../Entity/">Entity</a></td>
+<td><a href="../Entity/">Entity</a>, <a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 <td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
-<td><a href="../AgenticEntity/">AgenticEntity</a>, <a href="../Entity/">Entity</a></td>
+<td><a href="../Entity/">Entity</a>, <a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
 <td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
-<td><a href="../AgenticEntity/">AgenticEntity</a>, <a href="../Entity/">Entity</a></td>
+<td><a href="../Entity/">Entity</a>, <a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
 <td>* <em>recommended</em> <br/> <a href="../AgenticEntity/">AgenticEntity</a></td>
-<td>The slot to specify parts of an Instrument that are themselves Instruments</td>
-<td><a href="../AgenticEntity/">AgenticEntity</a>, <a href="../Entity/">Entity</a></td>
+<td>The slot to specify parts of an AgenticEntity that are themselves AgenticEnti...</td>
+<td><a href="../Entity/">Entity</a>, <a href="../AgenticEntity/">AgenticEntity</a></td>
+</tr>
+<tr>
+<td><a href="../part_of/">part_of</a></td>
+<td>* <br/> <a href="../AgenticEntity/">AgenticEntity</a></td>
+<td>The slot to provide the AgenticEntity of which theAgenticEntity is a part</td>
+<td><a href="../Entity/">Entity</a>, <a href="../AgenticEntity/">AgenticEntity</a></td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
@@ -1065,7 +1082,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -1086,7 +1102,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -1094,7 +1109,8 @@ attributes:
     inlined_as_list: true
   has_part:
     name: has_part
-    description: The slot to specify parts of an Instrument that are themselves Instruments.
+    description: The slot to specify parts of an AgenticEntity that are themselves
+      AgenticEntities.
     from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: BFO:0000051
@@ -1105,11 +1121,31 @@ attributes:
     - AgenticEntity
     - Catalogue
     - Entity
-    - EvaluatedActivity
     range: AgenticEntity
     recommended: true
     multivalued: true
     inlined: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to provide the AgenticEntity of which theAgenticEntity is
+      a part.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:isPartOf
+    alias: part_of
+    owner: Catalyst
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    inverse: has_part
+    range: AgenticEntity
+    multivalued: true
     inlined_as_list: true
   type:
     name: type

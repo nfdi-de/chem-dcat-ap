@@ -297,8 +297,8 @@
 
 
 
-        EvaluatedActivity --&gt; "*" EvaluatedActivity : has_part
-        click EvaluatedActivity href "../EvaluatedActivity/"
+        EvaluatedActivity --&gt; "*" Activity : has_part
+        click Activity href "../Activity/"
 
 
 
@@ -334,6 +334,17 @@
 
         EvaluatedActivity --&gt; "*" Identifier : other_identifier
         click Identifier href "../Identifier/"
+
+
+
+      EvaluatedActivity : part_of
+
+
+
+
+
+        EvaluatedActivity --&gt; "*" Activity : part_of
+        click Activity href "../Activity/"
 
 
 
@@ -382,24 +393,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_part/">has_part</a></td>
-<td>* <br/> <a href="./">EvaluatedActivity</a></td>
-<td>A slot to provide a part of the EvaluatedActivity</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema</td>
@@ -424,6 +417,12 @@
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
+<td><a href="../has_part/">has_part</a></td>
+<td>* <br/> <a href="../Activity/">Activity</a></td>
+<td>The slot to provide an Activity that is part of the Activity</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
 <td><a href="../had_input_entity/">had_input_entity</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Entity/">Entity</a></td>
 <td>The slot to specify the Entity that was used as an input of an Activity that ...</td>
@@ -445,6 +444,24 @@
 <td><a href="../carried_out_by/">carried_out_by</a></td>
 <td>* <em>recommended</em> <br/> <a href="../AgenticEntity/">AgenticEntity</a></td>
 <td>The slot to specify the AgenticEntity that played a certain part in carrying ...</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
+<td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedAc...</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../part_of/">part_of</a></td>
+<td>* <br/> <a href="../Activity/">Activity</a></td>
+<td>The slot to provide an Activity of which the Activity is a part</td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
@@ -493,12 +510,6 @@
 <tr>
 <td><a href="../Dataset/">Dataset</a></td>
 <td><a href="../is_about_activity/">is_about_activity</a></td>
-<td>range</td>
-<td><a href="./">EvaluatedActivity</a></td>
-</tr>
-<tr>
-<td><a href="./">EvaluatedActivity</a></td>
-<td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">EvaluatedActivity</a></td>
 </tr>
@@ -556,17 +567,7 @@ in_subset:
 - domain_agnostic_core
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 is_a: Activity
-slots:
-- has_qualitative_attribute
-- has_quantitative_attribute
-- has_part
 slot_usage:
-  has_part:
-    name: has_part
-    description: A slot to provide a part of the EvaluatedActivity.
-    range: EvaluatedActivity
-    multivalued: true
-    inlined_as_list: true
   other_identifier:
     name: other_identifier
     description: A slot to provide a secondary identifier of the EvaluatedActivity.
@@ -587,12 +588,6 @@ in_subset:
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 is_a: Activity
 slot_usage:
-  has_part:
-    name: has_part
-    description: A slot to provide a part of the EvaluatedActivity.
-    range: EvaluatedActivity
-    multivalued: true
-    inlined_as_list: true
   other_identifier:
     name: other_identifier
     description: A slot to provide a secondary identifier of the EvaluatedActivity.
@@ -601,72 +596,6 @@ slot_usage:
     multivalued: true
     inlined_as_list: true
 attributes:
-  has_qualitative_attribute:
-    name: has_qualitative_attribute
-    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or AgenticEntity
-    notes:
-    - not in DCAT-AP
-    in_subset:
-    - domain_agnostic_core
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
-    rank: 1000
-    slot_uri: dcterms:relation
-    alias: has_qualitative_attribute
-    owner: EvaluatedActivity
-    domain_of:
-    - Activity
-    - AgenticEntity
-    - Entity
-    - EvaluatedActivity
-    range: QualitativeAttribute
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  has_quantitative_attribute:
-    name: has_quantitative_attribute
-    description: The slot to relate a quantitative attribute to an EvaluatedEntity,
-      EvaluatedActivity or AgenticEntity
-    notes:
-    - not in DCAT-AP
-    in_subset:
-    - domain_agnostic_core
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
-    rank: 1000
-    slot_uri: dcterms:relation
-    alias: has_quantitative_attribute
-    owner: EvaluatedActivity
-    domain_of:
-    - Activity
-    - AgenticEntity
-    - Entity
-    - EvaluatedActivity
-    range: QuantitativeAttribute
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  has_part:
-    name: has_part
-    description: A slot to provide a part of the EvaluatedActivity.
-    notes:
-    - not in DCAT-AP
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
-    rank: 1000
-    slot_uri: dcterms:hasPart
-    alias: has_part
-    owner: EvaluatedActivity
-    domain_of:
-    - Activity
-    - AgenticEntity
-    - Catalogue
-    - Entity
-    - EvaluatedActivity
-    range: EvaluatedActivity
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   id:
     name: id
     description: A slot to provide an URI for an entity within this schema.
@@ -809,6 +738,24 @@ attributes:
     required: false
     multivalued: true
     inlined_as_list: true
+  has_part:
+    name: has_part
+    description: The slot to provide an Activity that is part of the Activity.
+    notes:
+    - not in DCAT-AP
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:hasPart
+    alias: has_part
+    owner: EvaluatedActivity
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Catalogue
+    - Entity
+    range: Activity
+    multivalued: true
+    inlined_as_list: true
   had_input_entity:
     name: had_input_entity
     description: The slot to specify the Entity that was used as an input of an Activity
@@ -889,6 +836,70 @@ attributes:
     recommended: true
     multivalued: true
     inlined: true
+    inlined_as_list: true
+  has_qualitative_attribute:
+    name: has_qualitative_attribute
+    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or AgenticEntity
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:relation
+    alias: has_qualitative_attribute
+    owner: EvaluatedActivity
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    range: QualitativeAttribute
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  has_quantitative_attribute:
+    name: has_quantitative_attribute
+    description: The slot to relate a quantitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or AgenticEntity
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:relation
+    alias: has_quantitative_attribute
+    owner: EvaluatedActivity
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    range: QuantitativeAttribute
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to provide an Activity of which the Activity is a part.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:isPartOf
+    alias: part_of
+    owner: EvaluatedActivity
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    inverse: has_part
+    range: Activity
+    multivalued: true
     inlined_as_list: true
   type:
     name: type

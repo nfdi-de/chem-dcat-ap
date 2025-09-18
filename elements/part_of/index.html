@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/elements/has_mass/">
+        <link rel="canonical" href="https://StroemPhi.github.io/dcat-4C-ap/elements/part_of/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: has_mass - dcat-4C-ap</title>
+        <title>Slot: part_of - dcat-4C-ap</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-has_mass" class="md-skip">
+        <a href="#slot-part_of" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: has_mass
+              Slot: part_of
             
           </span>
         </div>
@@ -308,15 +308,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -395,20 +386,12 @@
   
 
 
-<h1 id="slot-has_mass">Slot: has_mass</h1>
-<p><em>The slot to provide the Mass of a MaterialEntity.</em></p>
-<p>URI: <a href="http://semanticscience.org/resource/SIO_000008">SIO:000008</a>
-Alias: has_mass</p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../has_quantitative_attribute/">has_quantitative_attribute</a><ul>
-<li><strong>has_mass</strong><ul>
-<li><a href="../has_molar_mass/">has_molar_mass</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<h1 id="slot-part_of">Slot: part_of</h1>
+<p><em>A slot to specify a related resource in which the described resource is physically or logically included.</em></p>
+<p>URI: <a href="http://purl.org/dc/terms/isPartOf">dcterms:isPartOf</a>
+Alias: part_of</p>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -420,18 +403,28 @@ Alias: has_mass</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or proces that is being evaluated in a DataGeneratingActivity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>An Entity that is being evaluated in a DataGeneratingActivity</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
 <td>A ChemicalEntity that produces one or more peaks used for chemical shift cali...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NMRSample/">NMRSample</a></td>
-<td>A SubstanceSample that has been prepared for chemical analysis by NMR</td>
-<td>no</td>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
+<td>An entity that is somehow responsible for an Activity to take place</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="../Materialistic/">Materialistic</a></td>
-<td>A LinkML mixin used to pass down properties common to all material entities</td>
+<td><a href="../NMRSample/">NMRSample</a></td>
+<td>A SubstanceSample that has been prepared for chemical analysis by NMR</td>
 <td>no</td>
 </tr>
 <tr>
@@ -442,6 +435,11 @@ Alias: has_mass</p>
 <tr>
 <td><a href="../ShiftReferenceCompound/">ShiftReferenceCompound</a></td>
 <td>A ShiftCalibrationCompound that produces a peak used as reference frequency i...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -460,6 +458,16 @@ Alias: has_mass</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../NMRSpectrometer/">NMRSpectrometer</a></td>
+<td>A Spectrometer used to conduct NMR experiments consisting of a magnet housing...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>Information that was evaluated within a DataAnalysis</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
 <td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, ...</td>
 <td>no</td>
@@ -468,6 +476,16 @@ Alias: has_mass</p>
 <td><a href="../Atom/">Atom</a></td>
 <td>A MaterialEntity constituting the smallest component of an element having the...</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../Entity/">Entity</a></td>
+<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Activity/">Activity</a></td>
+<td>See [DCAT-AP specs:Activity](https://semiceu</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Catalyst/">Catalyst</a></td>
@@ -480,13 +498,43 @@ Alias: has_mass</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+<td>An Activity (process) that has the objective to produce information (in form ...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../DissolvingSubstance/">DissolvingSubstance</a></td>
 <td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ...</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
+<td>A process that leads to the transformation of one set of chemical substances ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td>An Activity that evaluates the data produced by another Activity</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
 <td>A chemical substance that is produced by a ChemicalReaction</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td>Chemical shift data obtained via nuclear magnetic resonance (NMR) spectroscop...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Device/">Device</a></td>
+<td>A material instrument that is designed to perform a function primarily by mea...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Software/">Software</a></td>
+<td>An instrument composed of a series of instructions that can be interpreted by...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -505,8 +553,18 @@ Alias: has_mass</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../AcquisitionNucleus/">AcquisitionNucleus</a></td>
+<td>The nucleus of an Atom that is being studied during an NMR analysis</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Polymer/">Polymer</a></td>
 <td>A ChemicalSubstance that is composed of macromolecules of different kinds and...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td>Spectroscopy where the energy states of spin-active nuclei placed in a static...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -523,15 +581,7 @@ Alias: has_mass</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Mass/">Mass</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
-<li>
-<p>Recommended: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -549,31 +599,32 @@ Alias: has_mass</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>SIO:000008</td>
+<td>dcterms:isPartOf</td>
 </tr>
 <tr>
 <td>native</td>
-<td>dcat_4c_ap:has_mass</td>
+<td>dcat_4c_ap:part_of</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: has_mass
-description: The slot to provide the Mass of a MaterialEntity.
+<pre><code class="language-yaml">name: part_of
+description: A slot to specify a related resource in which the described resource
+  is physically or logically included.
+in_subset:
+- domain_agnostic_core
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 rank: 1000
-is_a: has_quantitative_attribute
-slot_uri: SIO:000008
-alias: has_mass
+slot_uri: dcterms:isPartOf
+alias: part_of
 domain_of:
-- Materialistic
-range: Mass
-recommended: true
-multivalued: true
-inlined: true
-inlined_as_list: true
+- Activity
+- AgenticEntity
+- Entity
+inverse: has_part
+range: string
 
 </code></pre>
 

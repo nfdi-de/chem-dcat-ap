@@ -306,6 +306,17 @@
 
 
 
+      AgenticEntity : part_of
+
+
+
+
+
+        AgenticEntity --&gt; "*" AgenticEntity : part_of
+        click AgenticEntity href "../AgenticEntity/"
+
+
+
       AgenticEntity : rdf_type
 
 
@@ -393,7 +404,13 @@
 <tr>
 <td><a href="../has_part/">has_part</a></td>
 <td>* <br/> <a href="./">AgenticEntity</a></td>
-<td>The slot to specify parts of an Instrument that are themselves Instruments</td>
+<td>The slot to specify parts of an AgenticEntity that are themselves AgenticEnti...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../part_of/">part_of</a></td>
+<td>* <br/> <a href="./">AgenticEntity</a></td>
+<td>The slot to provide the AgenticEntity of which theAgenticEntity is a part</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -434,6 +451,12 @@
 <td><a href="./">AgenticEntity</a></td>
 </tr>
 <tr>
+<td><a href="./">AgenticEntity</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">AgenticEntity</a></td>
+</tr>
+<tr>
 <td><a href="../DataAnalysis/">DataAnalysis</a></td>
 <td><a href="../carried_out_by/">carried_out_by</a></td>
 <td>range</td>
@@ -446,8 +469,20 @@
 <td><a href="./">AgenticEntity</a></td>
 </tr>
 <tr>
+<td><a href="../Device/">Device</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">AgenticEntity</a></td>
+</tr>
+<tr>
 <td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
 <td><a href="../carried_out_by/">carried_out_by</a></td>
+<td>range</td>
+<td><a href="./">AgenticEntity</a></td>
+</tr>
+<tr>
+<td><a href="../Software/">Software</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">AgenticEntity</a></td>
 </tr>
@@ -464,8 +499,26 @@
 <td><a href="./">AgenticEntity</a></td>
 </tr>
 <tr>
+<td><a href="../DissolvingSubstance/">DissolvingSubstance</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">AgenticEntity</a></td>
+</tr>
+<tr>
 <td><a href="../Catalyst/">Catalyst</a></td>
 <td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">AgenticEntity</a></td>
+</tr>
+<tr>
+<td><a href="../Catalyst/">Catalyst</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">AgenticEntity</a></td>
+</tr>
+<tr>
+<td><a href="../Reactor/">Reactor</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">AgenticEntity</a></td>
 </tr>
@@ -482,14 +535,32 @@
 <td><a href="./">AgenticEntity</a></td>
 </tr>
 <tr>
+<td><a href="../NMRSpectrometer/">NMRSpectrometer</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">AgenticEntity</a></td>
+</tr>
+<tr>
 <td><a href="../AcquisitionNucleus/">AcquisitionNucleus</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">AgenticEntity</a></td>
 </tr>
 <tr>
+<td><a href="../AcquisitionNucleus/">AcquisitionNucleus</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">AgenticEntity</a></td>
+</tr>
+<tr>
 <td><a href="../NMRSolvent/">NMRSolvent</a></td>
 <td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">AgenticEntity</a></td>
+</tr>
+<tr>
+<td><a href="../NMRSolvent/">NMRSolvent</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">AgenticEntity</a></td>
 </tr>
@@ -538,13 +609,24 @@ slots:
 - has_qualitative_attribute
 - has_quantitative_attribute
 - has_part
+- part_of
 slot_usage:
   has_part:
     name: has_part
-    description: The slot to specify parts of an Instrument that are themselves Instruments.
+    description: The slot to specify parts of an AgenticEntity that are themselves
+      AgenticEntities.
     range: AgenticEntity
     multivalued: true
     inlined: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to provide the AgenticEntity of which theAgenticEntity is
+      a part.
+    notes:
+    - not in DCAT-AP
+    range: AgenticEntity
+    multivalued: true
     inlined_as_list: true
   other_identifier:
     name: other_identifier
@@ -569,10 +651,20 @@ mixins:
 slot_usage:
   has_part:
     name: has_part
-    description: The slot to specify parts of an Instrument that are themselves Instruments.
+    description: The slot to specify parts of an AgenticEntity that are themselves
+      AgenticEntities.
     range: AgenticEntity
     multivalued: true
     inlined: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to provide the AgenticEntity of which theAgenticEntity is
+      a part.
+    notes:
+    - not in DCAT-AP
+    range: AgenticEntity
+    multivalued: true
     inlined_as_list: true
   other_identifier:
     name: other_identifier
@@ -731,7 +823,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -752,7 +843,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -760,7 +850,8 @@ attributes:
     inlined_as_list: true
   has_part:
     name: has_part
-    description: The slot to specify parts of an Instrument that are themselves Instruments.
+    description: The slot to specify parts of an AgenticEntity that are themselves
+      AgenticEntities.
     from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: dcterms:hasPart
@@ -771,10 +862,30 @@ attributes:
     - AgenticEntity
     - Catalogue
     - Entity
-    - EvaluatedActivity
     range: AgenticEntity
     multivalued: true
     inlined: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to provide the AgenticEntity of which theAgenticEntity is
+      a part.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:isPartOf
+    alias: part_of
+    owner: AgenticEntity
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    inverse: has_part
+    range: AgenticEntity
+    multivalued: true
     inlined_as_list: true
   type:
     name: type

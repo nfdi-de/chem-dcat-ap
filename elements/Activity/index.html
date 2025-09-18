@@ -306,7 +306,7 @@
 
 
 
-        Activity --&gt; "0..1" Activity : has_part
+        Activity --&gt; "*" Activity : has_part
         click Activity href "../Activity/"
 
 
@@ -343,6 +343,17 @@
 
         Activity --&gt; "*" Identifier : other_identifier
         click Identifier href "../Identifier/"
+
+
+
+      Activity : part_of
+
+
+
+
+
+        Activity --&gt; "*" Activity : part_of
+        click Activity href "../Activity/"
 
 
 
@@ -418,7 +429,7 @@
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>0..1 <br/> <a href="./">Activity</a></td>
+<td>* <br/> <a href="./">Activity</a></td>
 <td>The slot to provide an Activity that is part of the Activity</td>
 <td>direct</td>
 </tr>
@@ -456,6 +467,12 @@
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
 <td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedA...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../part_of/">part_of</a></td>
+<td>* <br/> <a href="./">Activity</a></td>
+<td>The slot to provide an Activity of which the Activity is a part</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -508,6 +525,12 @@
 <td><a href="./">Activity</a></td>
 </tr>
 <tr>
+<td><a href="./">Activity</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
 <td><a href="../DataAnalysis/">DataAnalysis</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
@@ -520,6 +543,12 @@
 <td><a href="./">Activity</a></td>
 </tr>
 <tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
 <td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
@@ -528,12 +557,30 @@
 <tr>
 <td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
 <td><a href="../had_input_activity/">had_input_activity</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
 <td><a href="../had_input_activity/">had_input_activity</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">Activity</a></td>
 </tr>
@@ -552,6 +599,12 @@
 <tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td><a href="../had_input_activity/">had_input_activity</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">Activity</a></td>
 </tr>
@@ -580,6 +633,12 @@
 <td><a href="./">Activity</a></td>
 </tr>
 <tr>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
@@ -588,6 +647,12 @@
 <tr>
 <td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
 <td><a href="../had_input_activity/">had_input_activity</a></td>
+<td>range</td>
+<td><a href="./">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">Activity</a></td>
 </tr>
@@ -643,6 +708,7 @@ slots:
 - carried_out_by
 - has_qualitative_attribute
 - has_quantitative_attribute
+- part_of
 slot_usage:
   title:
     name: title
@@ -664,7 +730,16 @@ slot_usage:
     notes:
     - not in DCAT-AP
     range: Activity
-    inlined: true
+    multivalued: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to provide an Activity of which the Activity is a part.
+    notes:
+    - not in DCAT-AP
+    range: Activity
+    multivalued: true
+    inlined_as_list: true
   other_identifier:
     name: other_identifier
     description: The slot to provide a secondary identifier of the Activity.
@@ -734,7 +809,16 @@ slot_usage:
     notes:
     - not in DCAT-AP
     range: Activity
-    inlined: true
+    multivalued: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to provide an Activity of which the Activity is a part.
+    notes:
+    - not in DCAT-AP
+    range: Activity
+    multivalued: true
+    inlined_as_list: true
   other_identifier:
     name: other_identifier
     description: The slot to provide a secondary identifier of the Activity.
@@ -924,9 +1008,9 @@ attributes:
     - AgenticEntity
     - Catalogue
     - Entity
-    - EvaluatedActivity
     range: Activity
-    inlined: true
+    multivalued: true
+    inlined_as_list: true
   had_input_entity:
     name: had_input_entity
     description: The slot to specify the Entity that was used as an input of an Activity
@@ -1025,7 +1109,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -1048,11 +1131,30 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
     inlined: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to provide an Activity of which the Activity is a part.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:isPartOf
+    alias: part_of
+    owner: Activity
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    inverse: has_part
+    range: Activity
+    multivalued: true
     inlined_as_list: true
   type:
     name: type

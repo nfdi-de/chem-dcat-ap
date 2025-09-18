@@ -334,8 +334,8 @@
 
 
 
-        PolymerSample --&gt; "* _recommended_" EvaluatedEntity : has_part
-        click EvaluatedEntity href "../EvaluatedEntity/"
+        PolymerSample --&gt; "* _recommended_" Entity : has_part
+        click Entity href "../Entity/"
 
 
 
@@ -437,6 +437,17 @@
 
         PolymerSample --&gt; "*" Identifier : other_identifier
         click Identifier href "../Identifier/"
+
+
+
+      PolymerSample : part_of
+
+
+
+
+
+        PolymerSample --&gt; "*" Entity : part_of
+        click Entity href "../Entity/"
 
 
 
@@ -632,8 +643,14 @@
 </tr>
 <tr>
 <td><a href="../has_part/">has_part</a></td>
-<td>* <em>recommended</em> <br/> <a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>A slot to provide a part of the EvaluatedEntity</td>
+<td>* <em>recommended</em> <br/> <a href="../Entity/">Entity</a></td>
+<td>A slot to provide a part of the Entity</td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../part_of/">part_of</a></td>
+<td>* <br/> <a href="../Entity/">Entity</a></td>
+<td>The slot to specify an Entity of which the Entity is a part</td>
 <td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
@@ -1104,7 +1121,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QualitativeAttribute
     recommended: true
     multivalued: true
@@ -1125,7 +1141,6 @@ attributes:
     - Activity
     - AgenticEntity
     - Entity
-    - EvaluatedActivity
     range: QuantitativeAttribute
     recommended: true
     multivalued: true
@@ -1133,7 +1148,7 @@ attributes:
     inlined_as_list: true
   has_part:
     name: has_part
-    description: A slot to provide a part of the EvaluatedEntity.
+    description: A slot to provide a part of the Entity.
     from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: BFO:0000051
@@ -1144,9 +1159,28 @@ attributes:
     - AgenticEntity
     - Catalogue
     - Entity
-    - EvaluatedActivity
-    range: EvaluatedEntity
+    range: Entity
     recommended: true
+    multivalued: true
+    inlined_as_list: true
+  part_of:
+    name: part_of
+    description: The slot to specify an Entity of which the Entity is a part.
+    notes:
+    - not in DCAT-AP
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    slot_uri: dcterms:isPartOf
+    alias: part_of
+    owner: PolymerSample
+    domain_of:
+    - Activity
+    - AgenticEntity
+    - Entity
+    inverse: has_part
+    range: Entity
     multivalued: true
     inlined_as_list: true
   type:
