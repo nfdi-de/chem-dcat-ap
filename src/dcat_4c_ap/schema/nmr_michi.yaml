@@ -107,7 +107,6 @@ classes:
     slots:
       - used_spectrometer
       - used_solvent
-      - used_number_of_scans
     attributes:
       used_pulse_sequence:
         is_a: has_qualitative_attribute
@@ -117,6 +116,14 @@ classes:
         multivalued: false
         inlined: true
         required: true
+      used_number_of_scans:
+        is_a: has_quantitative_attribute
+        slot_uri: OBI:0000293
+        description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
+        range: NumberOfScans
+        multivalued: false
+        inlined: true
+        recommended: true
       probes_nucleus:
         is_a: carried_out_by
         slot_uri: OBI:0000293
@@ -271,14 +278,6 @@ slots:
     range: NMRSpectrometer
     inlined_as_list: true
     required: true
-  used_number_of_scans:
-    #is_a: has_quantitative_attribute
-    slot_uri: OBI:0000293
-    description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
-    range: NumberOfScans
-    multivalued: false
-    inlined: true
-    recommended: true
   has_proton_frequency:
     slot_uri: SIO:000008
     is_a: has_quantitative_attribute
