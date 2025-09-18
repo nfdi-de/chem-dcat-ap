@@ -672,11 +672,6 @@ def build_dcatap_plus():
                                                   'range':'Activity',
                                                   'multivalued': 'true',
                                                   'inlined_as_list': 'true'},
-                                              'has_part':{
-                                                  'description': 'A slot to provide a part of the EvaluatedEntity.',
-                                                  'range':'EvaluatedEntity',
-                                                  'multivalued': 'true',
-                                                  'inlined_as_list': 'true'},
                                               'other_identifier':{
                                                   'description': 'A slot to provide a secondary identifier of the EvaluatedEntity.',
                                                   'range': 'Identifier',
@@ -689,15 +684,7 @@ def build_dcatap_plus():
                                           class_uri='prov:Activity',
                                           description='An activity or proces that is being evaluated in a '
                                                       'DataGeneratingActivity.',
-                                          slots = ['has_qualitative_attribute',
-                                                   'has_quantitative_attribute',
-                                                   'has_part'],
                                           slot_usage={
-                                              'has_part':{
-                                                  'description': 'A slot to provide a part of the EvaluatedActivity.',
-                                                  'range':'EvaluatedActivity',
-                                                  'multivalued': 'true',
-                                                  'inlined_as_list': 'true'},
                                               'other_identifier':{
                                                   'description': 'A slot to provide a secondary identifier of the EvaluatedActivity.',
                                                   'range': 'Identifier',
