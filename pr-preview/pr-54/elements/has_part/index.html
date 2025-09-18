@@ -418,73 +418,8 @@ Alias: has_part</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../CharacterizedCompound/">CharacterizedCompound</a></td>
-<td>A ChemicalEntity that being characterized in an NMRSample using data acquired...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
-<td>An Activity (process) that has the objective to produce information (in form ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Software/">Software</a></td>
-<td>An instrument composed of a series of instructions that can be interpreted by...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td>A Sample that was derived from a previous MaterialSample or some other kind o...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>An Entity that is being evaluated in a DataGeneratingActivity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Catalogue/">Catalogue</a></td>
-<td>See [DCAT-AP specs:Catalogue](https://semiceu</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>An activity or proces that is being evaluated in a DataGeneratingActivity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Atom/">Atom</a></td>
-<td>A MaterialEntity constituting the smallest component of an element having the...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../StartingMaterial/">StartingMaterial</a></td>
-<td>A ChemicalSubstance with that has a starting material role in a synthesis</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
-<td>A chemical substance that is produced by a ChemicalReaction</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
-<td>Information that was evaluated within a DataAnalysis</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Polymer/">Polymer</a></td>
-<td>A ChemicalSubstance that is composed of macromolecules of different kinds and...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
-<td>A ChemicalEntity that produces one or more peaks used for chemical shift cali...</td>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td>A MaterialEntity of constant composition, composed of chemical entities of th...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -493,13 +428,123 @@ Alias: has_part</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or proces that is being evaluated in a DataGeneratingActivity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../StartingMaterial/">StartingMaterial</a></td>
+<td>A ChemicalSubstance with that has a starting material role in a synthesis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td>An Activity that evaluates the data produced by another Activity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Catalyst/">Catalyst</a></td>
+<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a Chemica...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
+<td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CharacterizedCompound/">CharacterizedCompound</a></td>
+<td>A ChemicalEntity that being characterized in an NMRSample using data acquired...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AgenticEntity/">AgenticEntity</a></td>
+<td>An entity that is somehow responsible for an Activity to take place</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>An Entity that is being evaluated in a DataGeneratingActivity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>Information that was evaluated within a DataAnalysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Catalogue/">Catalogue</a></td>
+<td>See [DCAT-AP specs:Catalogue](https://semiceu</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
+<td>A chemical substance that is produced by a ChemicalReaction</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../DissolvingSubstance/">DissolvingSubstance</a></td>
 <td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ...</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Atom/">Atom</a></td>
+<td>A MaterialEntity constituting the smallest component of an element having the...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSolvent/">NMRSolvent</a></td>
+<td>A DissolvingSubstance that is used in nuclear magnetic resonance NMRSpectrosc...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Device/">Device</a></td>
+<td>A material instrument that is designed to perform a function primarily by mea...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Reactor/">Reactor</a></td>
+<td>A reactor is a container for controlling a biological or chemical reaction or...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Polymer/">Polymer</a></td>
+<td>A ChemicalSubstance that is composed of macromolecules of different kinds and...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../SubstanceSample/">SubstanceSample</a></td>
 <td>A MaterialSample derived from a ChemicalSubstance that is of interest in an a...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MaterialEntity/">MaterialEntity</a></td>
+<td>A material is an Entity that has some portion of matter as proper part</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td>A Sample that was derived from a previous MaterialSample or some other kind o...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSpectrometer/">NMRSpectrometer</a></td>
+<td>A Spectrometer used to conduct NMR experiments consisting of a magnet housing...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Entity/">Entity</a></td>
+<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+<td>An Activity (process) that has the objective to produce information (in form ...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -513,24 +558,19 @@ Alias: has_part</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Reagent/">Reagent</a></td>
-<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction</td>
+<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
+<td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Catalyst/">Catalyst</a></td>
-<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a Chemica...</td>
+<td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
+<td>A ChemicalEntity that produces one or more peaks used for chemical shift cali...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Reactor/">Reactor</a></td>
-<td>A reactor is a container for controlling a biological or chemical reaction or...</td>
+<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
+<td>Chemical shift data obtained via nuclear magnetic resonance (NMR) spectroscop...</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../Device/">Device</a></td>
-<td>A material instrument that is designed to perform a function primarily by mea...</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
@@ -538,33 +578,13 @@ Alias: has_part</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DataAnalysis/">DataAnalysis</a></td>
-<td>An Activity that evaluates the data produced by another Activity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PolymerSample/">PolymerSample</a></td>
-<td>A SubstanceSample derived from a Polymer</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
-<td>A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectr...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NMRSpectrometer/">NMRSpectrometer</a></td>
-<td>A Spectrometer used to conduct NMR experiments consisting of a magnet housing...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AgenticEntity/">AgenticEntity</a></td>
-<td>An entity that is somehow responsible for an Activity to take place</td>
+<td><a href="../Software/">Software</a></td>
+<td>An instrument composed of a series of instructions that can be interpreted by...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
-<td>Chemical shift data obtained via nuclear magnetic resonance (NMR) spectroscop...</td>
+<td><a href="../NMRSample/">NMRSample</a></td>
+<td>A SubstanceSample that has been prepared for chemical analysis by NMR</td>
 <td>no</td>
 </tr>
 <tr>
@@ -573,29 +593,9 @@ Alias: has_part</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NMRSample/">NMRSample</a></td>
-<td>A SubstanceSample that has been prepared for chemical analysis by NMR</td>
+<td><a href="../Reagent/">Reagent</a></td>
+<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../Entity/">Entity</a></td>
-<td>A physical, digital, conceptual, or other kind of thing with some fixed aspec...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A MaterialEntity of constant composition, composed of chemical entities of th...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NMRSolvent/">NMRSolvent</a></td>
-<td>A DissolvingSubstance that is used in nuclear magnetic resonance NMRSpectrosc...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td>A material is an Entity that has some portion of matter as proper part</td>
-<td>yes</td>
 </tr>
 </tbody>
 </table>

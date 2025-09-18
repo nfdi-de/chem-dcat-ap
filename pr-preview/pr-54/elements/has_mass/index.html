@@ -420,23 +420,33 @@ Alias: has_mass</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../CharacterizedCompound/">CharacterizedCompound</a></td>
-<td>A ChemicalEntity that being characterized in an NMRSample using data acquired...</td>
+<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td>A MaterialEntity of constant composition, composed of chemical entities of th...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td>A Sample that was derived from a previous MaterialSample or some other kind o...</td>
+<td><a href="../ShiftReferenceCompound/">ShiftReferenceCompound</a></td>
+<td>A ShiftCalibrationCompound that produces a peak used as reference frequency i...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Atom/">Atom</a></td>
-<td>A MaterialEntity constituting the smallest component of an element having the...</td>
+<td><a href="../Materialistic/">Materialistic</a></td>
+<td>A LinkML mixin used to pass down properties common to all material entities</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../StartingMaterial/">StartingMaterial</a></td>
 <td>A ChemicalSubstance with that has a starting material role in a synthesis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Catalyst/">Catalyst</a></td>
+<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a Chemica...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../CharacterizedCompound/">CharacterizedCompound</a></td>
+<td>A ChemicalEntity that being characterized in an NMRSample using data acquired...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -450,63 +460,13 @@ Alias: has_mass</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Polymer/">Polymer</a></td>
-<td>A ChemicalSubstance that is composed of macromolecules of different kinds and...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
-<td>A ChemicalEntity that produces one or more peaks used for chemical shift cali...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ShiftReferenceCompound/">ShiftReferenceCompound</a></td>
-<td>A ShiftCalibrationCompound that produces a peak used as reference frequency i...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../DissolvingSubstance/">DissolvingSubstance</a></td>
 <td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubstanceSample/">SubstanceSample</a></td>
-<td>A MaterialSample derived from a ChemicalSubstance that is of interest in an a...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Materialistic/">Materialistic</a></td>
-<td>A LinkML mixin used to pass down properties common to all material entities</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Reagent/">Reagent</a></td>
-<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Catalyst/">Catalyst</a></td>
-<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a Chemica...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Reactor/">Reactor</a></td>
-<td>A reactor is a container for controlling a biological or chemical reaction or...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PolymerSample/">PolymerSample</a></td>
-<td>A SubstanceSample derived from a Polymer</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NMRSample/">NMRSample</a></td>
-<td>A SubstanceSample that has been prepared for chemical analysis by NMR</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A MaterialEntity of constant composition, composed of chemical entities of th...</td>
+<td><a href="../Atom/">Atom</a></td>
+<td>A MaterialEntity constituting the smallest component of an element having the...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -515,8 +475,48 @@ Alias: has_mass</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Reactor/">Reactor</a></td>
+<td>A reactor is a container for controlling a biological or chemical reaction or...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Polymer/">Polymer</a></td>
+<td>A ChemicalSubstance that is composed of macromolecules of different kinds and...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SubstanceSample/">SubstanceSample</a></td>
+<td>A MaterialSample derived from a ChemicalSubstance that is of interest in an a...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../MaterialEntity/">MaterialEntity</a></td>
 <td>A material is an Entity that has some portion of matter as proper part</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td>A Sample that was derived from a previous MaterialSample or some other kind o...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
+<td>A ChemicalEntity that produces one or more peaks used for chemical shift cali...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NMRSample/">NMRSample</a></td>
+<td>A SubstanceSample that has been prepared for chemical analysis by NMR</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Reagent/">Reagent</a></td>
+<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction</td>
 <td>no</td>
 </tr>
 </tbody>
