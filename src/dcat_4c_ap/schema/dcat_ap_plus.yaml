@@ -587,6 +587,14 @@ slots:
     description: This slot is described in more detail within the class in which it
       is used.
     slot_uri: dcat:packageFormat
+  part_of:
+    name: part_of
+    description: A slot to specify a related resource in which the described resource
+      is physically or logically included.
+    in_subset:
+    - domain_agnostic_core
+    slot_uri: dcterms:isPartOf
+    inverse: has_part
   preferred_label:
     name: preferred_label
     description: This slot is described in more detail within the class in which it
@@ -774,6 +782,7 @@ classes:
     - carried_out_by
     - has_qualitative_attribute
     - has_quantitative_attribute
+    - part_of
     slot_usage:
       title:
         description: The slot to provide a title for the Activity.
@@ -790,7 +799,15 @@ classes:
       has_part:
         range: Activity
         description: The slot to provide an Activity that is part of the Activity.
-        inlined: true
+        multivalued: true
+        inlined_as_list: true
+        notes:
+        - not in DCAT-AP
+      part_of:
+        range: Activity
+        description: The slot to provide an Activity of which the Activity is a part.
+        multivalued: true
+        inlined_as_list: true
         notes:
         - not in DCAT-AP
       other_identifier:
@@ -859,14 +876,24 @@ classes:
     - has_qualitative_attribute
     - has_quantitative_attribute
     - has_part
+    - part_of
     slot_usage:
       has_part:
         name: has_part
-        description: The slot to specify parts of an Instrument that are themselves
-          Instruments.
+        description: The slot to specify parts of an AgenticEntity that are themselves
+          AgenticEntities.
         range: AgenticEntity
         multivalued: true
         inlined: true
+        inlined_as_list: true
+      part_of:
+        name: part_of
+        description: The slot to provide the AgenticEntity of which theAgenticEntity
+          is a part.
+        notes:
+        - not in DCAT-AP
+        range: AgenticEntity
+        multivalued: true
         inlined_as_list: true
       other_identifier:
         name: other_identifier
@@ -2254,6 +2281,7 @@ classes:
     - has_qualitative_attribute
     - has_quantitative_attribute
     - has_part
+    - part_of
     slot_usage:
       title:
         name: title
@@ -2270,7 +2298,15 @@ classes:
         inlined_as_list: true
       has_part:
         name: has_part
-        description: A slot to provide a part of the EvaluatedEntity.
+        description: A slot to provide a part of the Entity.
+        range: Entity
+        multivalued: true
+        inlined_as_list: true
+      part_of:
+        name: part_of
+        description: The slot to specify an Entity of which the Entity is a part.
+        notes:
+        - not in DCAT-AP
         range: Entity
         multivalued: true
         inlined_as_list: true
@@ -2281,17 +2317,7 @@ classes:
     in_subset:
     - domain_agnostic_core
     is_a: Activity
-    slots:
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - has_part
     slot_usage:
-      has_part:
-        name: has_part
-        description: A slot to provide a part of the EvaluatedActivity.
-        range: EvaluatedActivity
-        multivalued: true
-        inlined_as_list: true
       other_identifier:
         name: other_identifier
         description: A slot to provide a secondary identifier of the EvaluatedActivity.
@@ -2319,12 +2345,6 @@ classes:
         name: was_generated_by
         description: A slot to provide the Activity which created the EvaluatedEntity.
         range: Activity
-        multivalued: true
-        inlined_as_list: true
-      has_part:
-        name: has_part
-        description: A slot to provide a part of the EvaluatedEntity.
-        range: EvaluatedEntity
         multivalued: true
         inlined_as_list: true
       other_identifier:

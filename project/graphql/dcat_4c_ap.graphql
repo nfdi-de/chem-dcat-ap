@@ -54,6 +54,7 @@ type AcquisitionNucleus
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
     hasPart: [AgenticEntity]
+    partOf: [AgenticEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
     nucleusOf: Atom!
@@ -65,13 +66,14 @@ type Activity implements ClassifierMixin
     title: [String]
     description: [String]
     otherIdentifier: [Identifier]
-    hasPart: Activity
+    hasPart: [Activity]
     hadInputEntity: [Entity]
     hadOutputEntity: [Entity]
     hadInputActivity: [Activity]
     carriedOutBy: [AgenticEntity]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Activity]
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -91,6 +93,7 @@ type AgenticEntity implements ClassifierMixin
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
     hasPart: [AgenticEntity]
+    partOf: [AgenticEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -154,11 +157,12 @@ type AnalysisSourceData
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [Entity]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     title: String
     description: String
-    hasPart: [EvaluatedEntity]
     otherIdentifier: [Identifier]
     wasGeneratedBy: [DataGeneratingActivity]
   }
@@ -177,6 +181,7 @@ type Atom
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     hasPart: [MaterialEntity]
     alternativeLabel: String
@@ -246,6 +251,7 @@ type Catalyst implements ChemicalSubstance, Materialistic
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
     hasPart: [AgenticEntity]
+    partOf: [AgenticEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasMolarEquivalent: [MolarEquivalent]
@@ -271,6 +277,7 @@ type CharacterizedCompound
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [MaterialEntity]
@@ -309,6 +316,7 @@ type ChemicalEntity
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [MaterialEntity]
@@ -335,6 +343,7 @@ type ChemicalProduct
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [MaterialEntity]
@@ -359,13 +368,14 @@ type ChemicalReaction
     title: [String]
     description: [String]
     otherIdentifier: [Identifier]
-    hasPart: Activity
+    hasPart: [Activity]
     hadInputEntity: [Entity]
     hadOutputEntity: [Entity]
     hadInputActivity: [Activity]
     carriedOutBy: [AgenticEntity]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Activity]
     type: DefinedTerm
     rdfType: DefinedTerm
     usedStartingMaterial: [StartingMaterial]
@@ -401,6 +411,7 @@ interface ChemicalSubstance
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [MaterialEntity]
@@ -455,13 +466,14 @@ type DataAnalysis
     title: [String]
     description: [String]
     otherIdentifier: [Identifier]
-    hasPart: Activity
+    hasPart: [Activity]
     hadInputEntity: [Entity]
     hadOutputEntity: [Entity]
     hadInputActivity: [Activity]
     carriedOutBy: [AgenticEntity]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Activity]
     type: DefinedTerm
     rdfType: DefinedTerm
     evaluatedActivity: [EvaluatedActivity]
@@ -476,13 +488,14 @@ type DataGeneratingActivity
     title: [String]
     description: [String]
     otherIdentifier: [Identifier]
-    hasPart: Activity
+    hasPart: [Activity]
     hadInputEntity: [Entity]
     hadOutputEntity: [Entity]
     hadInputActivity: [Activity]
     carriedOutBy: [AgenticEntity]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Activity]
     type: DefinedTerm
     rdfType: DefinedTerm
     evaluatedEntity: [EvaluatedEntity]
@@ -593,6 +606,7 @@ type Device
     description: String
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [AgenticEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [Device]
@@ -608,6 +622,7 @@ type DissolvingSubstance implements ChemicalSubstance, Materialistic
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
     hasPart: [AgenticEntity]
+    partOf: [AgenticEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPercentageOfTotal: [PercentageOfTotal]
@@ -669,6 +684,7 @@ type Entity implements ClassifierMixin
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
     hasPart: [Entity]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
   }
@@ -678,15 +694,16 @@ type EvaluatedActivity
     id: Uriorcurie!
     title: [String]
     description: [String]
+    hasPart: [Activity]
     hadInputEntity: [Entity]
     hadOutputEntity: [Entity]
     hadInputActivity: [Activity]
     carriedOutBy: [AgenticEntity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: String
+    partOf: [Activity]
+    type: DefinedTerm
+    rdfType: DefinedTerm
     otherIdentifier: [Identifier]
   }
 
@@ -695,12 +712,13 @@ type EvaluatedEntity
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [Entity]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     wasGeneratedBy: [Activity]
     title: String
     description: String
-    hasPart: [EvaluatedEntity]
     otherIdentifier: [Identifier]
   }
 
@@ -809,6 +827,7 @@ type MaterialEntity implements Materialistic
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [MaterialEntity]
@@ -837,12 +856,13 @@ type MaterialSample implements Materialistic
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [Entity]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     wasGeneratedBy: [Activity]
     title: String
     description: String
-    hasPart: [EvaluatedEntity]
     otherIdentifier: [Identifier]
     derivedFrom: Entity
     alternativeLabel: String
@@ -945,12 +965,13 @@ type NMRSample
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [Entity]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     wasGeneratedBy: [Activity]
     title: String
     description: String
-    hasPart: [EvaluatedEntity]
     otherIdentifier: [Identifier]
     alternativeLabel: String
     hasPhysicalState: PhysicalStateEnum
@@ -977,6 +998,7 @@ type NMRSolvent
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
     hasPart: [AgenticEntity]
+    partOf: [AgenticEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPercentageOfTotal: [PercentageOfTotal]
@@ -1000,13 +1022,14 @@ type NMRSpectralAnalysis
     title: [String]
     description: [String]
     otherIdentifier: [Identifier]
-    hasPart: Activity
+    hasPart: [Activity]
     hadInputEntity: [Entity]
     hadOutputEntity: [Entity]
     hadInputActivity: [Activity]
     carriedOutBy: [AgenticEntity]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Activity]
     type: DefinedTerm
     rdfType: DefinedTerm
     evaluatedActivity: [EvaluatedActivity]
@@ -1022,6 +1045,7 @@ type NMRSpectrometer
     description: String
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [AgenticEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [Device]
@@ -1035,13 +1059,14 @@ type NMRSpectroscopy
     title: [String]
     description: [String]
     otherIdentifier: [Identifier]
-    hasPart: Activity
+    hasPart: [Activity]
     hadInputEntity: [Entity]
     hadOutputEntity: [Entity]
     hadInputActivity: [Activity]
     carriedOutBy: [AgenticEntity]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Activity]
     type: DefinedTerm
     evaluatedActivity: [EvaluatedActivity]
     realizedPlan: Plan
@@ -1062,11 +1087,12 @@ type NMRSpectrum
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [Entity]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     title: String
     description: String
-    hasPart: [EvaluatedEntity]
     otherIdentifier: [Identifier]
     wasGeneratedBy: [NMRSpectroscopy]
   }
@@ -1147,6 +1173,7 @@ interface Polymer
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [MaterialEntity]
@@ -1170,12 +1197,13 @@ type PolymerSample implements Polymer
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [Entity]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     wasGeneratedBy: [Activity]
     title: String
     description: String
-    hasPart: [EvaluatedEntity]
     otherIdentifier: [Identifier]
     derivedFrom: Entity
     alternativeLabel: String
@@ -1246,6 +1274,7 @@ type Reactor implements Materialistic
     description: String
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [AgenticEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [Device]
@@ -1267,6 +1296,7 @@ type Reagent
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [MaterialEntity]
@@ -1318,6 +1348,7 @@ type ShiftCalibrationCompound
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [MaterialEntity]
@@ -1345,6 +1376,7 @@ type ShiftReferenceCompound
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [MaterialEntity]
@@ -1380,6 +1412,7 @@ type Software
     description: String
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [AgenticEntity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [Software]
@@ -1400,6 +1433,7 @@ type StartingMaterial
     otherIdentifier: [Identifier]
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     hasPart: [MaterialEntity]
@@ -1423,12 +1457,13 @@ type SubstanceSample implements ChemicalSubstance
     id: Uriorcurie!
     hasQualitativeAttribute: [QualitativeAttribute]
     hasQuantitativeAttribute: [QuantitativeAttribute]
+    hasPart: [Entity]
+    partOf: [Entity]
     type: DefinedTerm
     rdfType: DefinedTerm
     wasGeneratedBy: [Activity]
     title: String
     description: String
-    hasPart: [EvaluatedEntity]
     otherIdentifier: [Identifier]
     derivedFrom: Entity
     alternativeLabel: String

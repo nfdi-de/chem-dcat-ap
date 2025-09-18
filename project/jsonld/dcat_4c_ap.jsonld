@@ -1487,15 +1487,15 @@
         "http://purl.org/dc/terms/hasPart"
       ],
       "slot_uri": "http://purl.org/dc/terms/hasPart",
-      "owner": "EvaluatedActivity",
+      "owner": "Entity",
       "domain_of": [
         "Activity",
         "AgenticEntity",
         "Catalogue",
-        "Entity",
-        "EvaluatedActivity"
+        "Entity"
       ],
-      "range": "string",
+      "inverse": "part_of",
+      "range": "Activity",
       "@type": "SlotDefinition"
     },
     {
@@ -1526,12 +1526,11 @@
         "http://purl.org/dc/terms/relation"
       ],
       "slot_uri": "http://purl.org/dc/terms/relation",
-      "owner": "EvaluatedActivity",
+      "owner": "Entity",
       "domain_of": [
         "Activity",
         "AgenticEntity",
-        "Entity",
-        "EvaluatedActivity"
+        "Entity"
       ],
       "range": "QualitativeAttribute",
       "recommended": true,
@@ -1552,12 +1551,11 @@
         "http://purl.org/dc/terms/relation"
       ],
       "slot_uri": "http://purl.org/dc/terms/relation",
-      "owner": "EvaluatedActivity",
+      "owner": "Entity",
       "domain_of": [
         "Activity",
         "AgenticEntity",
-        "Entity",
-        "EvaluatedActivity"
+        "Entity"
       ],
       "range": "QuantitativeAttribute",
       "recommended": true,
@@ -1948,6 +1946,28 @@
         "Distribution"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "part_of",
+      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#part_of",
+      "description": "A slot to specify a related resource in which the described resource is physically or logically included.",
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
+      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "http://purl.org/dc/terms/isPartOf"
+      ],
+      "slot_uri": "http://purl.org/dc/terms/isPartOf",
+      "owner": "Entity",
+      "domain_of": [
+        "Activity",
+        "AgenticEntity",
+        "Entity"
+      ],
+      "inverse": "has_part",
+      "range": "Activity",
       "@type": "SlotDefinition"
     },
     {
@@ -3458,7 +3478,39 @@
       "is_usage_slot": true,
       "usage_slot_name": "has_part",
       "range": "Activity",
+      "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Activity_part_of",
+      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#part_of",
+      "description": "The slot to provide an Activity of which the Activity is a part.",
+      "notes": [
+        "not in DCAT-AP"
+      ],
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
+      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "http://purl.org/dc/terms/isPartOf"
+      ],
+      "is_a": "part_of",
+      "domain": "Activity",
+      "slot_uri": "http://purl.org/dc/terms/isPartOf",
+      "alias": "part_of",
+      "owner": "Activity",
+      "domain_of": [
+        "Activity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "part_of",
+      "range": "Activity",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -3725,7 +3777,7 @@
     {
       "name": "AgenticEntity_has_part",
       "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#has_part",
-      "description": "The slot to specify parts of an Instrument that are themselves Instruments.",
+      "description": "The slot to specify parts of an AgenticEntity that are themselves AgenticEntities.",
       "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
@@ -3740,6 +3792,36 @@
       ],
       "is_usage_slot": true,
       "usage_slot_name": "has_part",
+      "range": "AgenticEntity",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AgenticEntity_part_of",
+      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#part_of",
+      "description": "The slot to provide the AgenticEntity of which theAgenticEntity is a part.",
+      "notes": [
+        "not in DCAT-AP"
+      ],
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
+      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml",
+      "mappings": [
+        "http://purl.org/dc/terms/isPartOf"
+      ],
+      "is_a": "part_of",
+      "domain": "AgenticEntity",
+      "slot_uri": "http://purl.org/dc/terms/isPartOf",
+      "alias": "part_of",
+      "owner": "AgenticEntity",
+      "domain_of": [
+        "AgenticEntity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "part_of",
       "range": "AgenticEntity",
       "multivalued": true,
       "inlined": true,
@@ -6799,7 +6881,7 @@
     {
       "name": "Entity_has_part",
       "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#has_part",
-      "description": "A slot to provide a part of the EvaluatedEntity.",
+      "description": "A slot to provide a part of the Entity.",
       "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml",
       "mappings": [
         "http://purl.org/dc/terms/hasPart"
@@ -6821,24 +6903,30 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "EvaluatedActivity_has_part",
-      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#has_part",
-      "description": "A slot to provide a part of the EvaluatedActivity.",
+      "name": "Entity_part_of",
+      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#part_of",
+      "description": "The slot to specify an Entity of which the Entity is a part.",
+      "notes": [
+        "not in DCAT-AP"
+      ],
+      "in_subset": [
+        "domain_agnostic_core"
+      ],
       "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml",
       "mappings": [
-        "http://purl.org/dc/terms/hasPart"
+        "http://purl.org/dc/terms/isPartOf"
       ],
-      "is_a": "Activity_has_part",
-      "domain": "EvaluatedActivity",
-      "slot_uri": "http://purl.org/dc/terms/hasPart",
-      "alias": "has_part",
-      "owner": "EvaluatedActivity",
+      "is_a": "part_of",
+      "domain": "Entity",
+      "slot_uri": "http://purl.org/dc/terms/isPartOf",
+      "alias": "part_of",
+      "owner": "Entity",
       "domain_of": [
-        "EvaluatedActivity"
+        "Entity"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "has_part",
-      "range": "EvaluatedActivity",
+      "usage_slot_name": "part_of",
+      "range": "Entity",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -6929,30 +7017,6 @@
       "is_usage_slot": true,
       "usage_slot_name": "was_generated_by",
       "range": "Activity",
-      "multivalued": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "EvaluatedEntity_has_part",
-      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#has_part",
-      "description": "A slot to provide a part of the EvaluatedEntity.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml",
-      "mappings": [
-        "http://purl.org/dc/terms/hasPart"
-      ],
-      "is_a": "Entity_has_part",
-      "domain": "EvaluatedEntity",
-      "slot_uri": "http://purl.org/dc/terms/hasPart",
-      "alias": "has_part",
-      "owner": "EvaluatedEntity",
-      "domain_of": [
-        "EvaluatedEntity"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "has_part",
-      "range": "EvaluatedEntity",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -7768,12 +7832,13 @@
         "id",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_has_part",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "EvaluatedEntity_was_generated_by",
         "EvaluatedEntity_title",
         "EvaluatedEntity_description",
-        "EvaluatedEntity_has_part",
         "EvaluatedEntity_other_identifier",
         "MaterialSample_derived_from",
         "alternative_label",
@@ -7813,12 +7878,13 @@
         "id",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_has_part",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "EvaluatedEntity_was_generated_by",
         "EvaluatedEntity_title",
         "EvaluatedEntity_description",
-        "EvaluatedEntity_has_part",
         "EvaluatedEntity_other_identifier",
         "MaterialSample_derived_from",
         "alternative_label",
@@ -7887,6 +7953,7 @@
         "Activity_carried_out_by",
         "Activity_has_qualitative_attribute",
         "Activity_has_quantitative_attribute",
+        "Activity_part_of",
         "ClassifierMixin_type",
         "rdf_type"
       ],
@@ -7932,6 +7999,7 @@
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "AgenticEntity_has_part",
+        "AgenticEntity_part_of",
         "ClassifierMixin_type",
         "rdf_type"
       ],
@@ -8012,11 +8080,12 @@
         "id",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_has_part",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "EvaluatedEntity_title",
         "EvaluatedEntity_description",
-        "EvaluatedEntity_has_part",
         "EvaluatedEntity_other_identifier",
         "AnalysisSourceData_was_generated_by"
       ],
@@ -8229,6 +8298,7 @@
         "Activity_carried_out_by",
         "Activity_has_qualitative_attribute",
         "Activity_has_quantitative_attribute",
+        "Activity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "evaluated_activity",
@@ -8264,6 +8334,7 @@
         "Activity_carried_out_by",
         "Activity_has_qualitative_attribute",
         "Activity_has_quantitative_attribute",
+        "Activity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "evaluated_entity",
@@ -8442,6 +8513,7 @@
         "description",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "AgenticEntity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "Device_has_part",
@@ -8529,6 +8601,7 @@
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "Entity_has_part",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type"
       ],
@@ -8552,16 +8625,16 @@
         "id",
         "Activity_title",
         "Activity_description",
+        "Activity_has_part",
         "Activity_had_input_entity",
         "Activity_had_output_entity",
         "Activity_had_input_activity",
         "Activity_carried_out_by",
+        "Activity_has_qualitative_attribute",
+        "Activity_has_quantitative_attribute",
+        "Activity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
-        "has_qualitative_attribute",
-        "has_quantitative_attribute",
-        "has_part",
-        "EvaluatedActivity_has_part",
         "EvaluatedActivity_other_identifier"
       ],
       "slot_usage": {},
@@ -8584,12 +8657,13 @@
         "id",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_has_part",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "EvaluatedEntity_was_generated_by",
         "EvaluatedEntity_title",
         "EvaluatedEntity_description",
-        "EvaluatedEntity_has_part",
         "EvaluatedEntity_other_identifier"
       ],
       "slot_usage": {},
@@ -9039,6 +9113,7 @@
         "description",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "AgenticEntity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "Software_has_part",
@@ -9135,6 +9210,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "MaterialEntity_has_part",
@@ -9172,6 +9248,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "MaterialEntity_has_part",
         "alternative_label",
@@ -9334,6 +9411,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "MaterialEntity_has_part",
@@ -9372,6 +9450,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "MaterialEntity_has_part",
@@ -9512,6 +9591,7 @@
         "Activity_carried_out_by",
         "Activity_has_qualitative_attribute",
         "Activity_has_quantitative_attribute",
+        "Activity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "used_starting_material",
@@ -9547,6 +9627,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "MaterialEntity_has_part",
@@ -9596,6 +9677,7 @@
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "AgenticEntity_has_part",
+        "AgenticEntity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "has_percentage_of_total",
@@ -9640,6 +9722,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "MaterialEntity_has_part",
@@ -9683,6 +9766,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "MaterialEntity_has_part",
@@ -9732,6 +9816,7 @@
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "AgenticEntity_has_part",
+        "AgenticEntity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "has_molar_equivalent",
@@ -9773,6 +9858,7 @@
         "description",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "AgenticEntity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "Device_has_part",
@@ -9874,12 +9960,13 @@
         "id",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_has_part",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "EvaluatedEntity_was_generated_by",
         "EvaluatedEntity_title",
         "EvaluatedEntity_description",
-        "EvaluatedEntity_has_part",
         "EvaluatedEntity_other_identifier",
         "alternative_label",
         "has_physical_state",
@@ -9981,6 +10068,7 @@
         "Activity_carried_out_by",
         "Activity_has_qualitative_attribute",
         "Activity_has_quantitative_attribute",
+        "Activity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "evaluated_activity",
@@ -10008,11 +10096,12 @@
         "id",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_has_part",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "EvaluatedEntity_title",
         "EvaluatedEntity_description",
-        "EvaluatedEntity_has_part",
         "EvaluatedEntity_other_identifier",
         "NMRSpectrum_was_generated_by"
       ],
@@ -10047,6 +10136,7 @@
         "Activity_carried_out_by",
         "Activity_has_qualitative_attribute",
         "Activity_has_quantitative_attribute",
+        "Activity_part_of",
         "ClassifierMixin_type",
         "evaluated_activity",
         "realized_plan",
@@ -10143,6 +10233,7 @@
         "description",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "AgenticEntity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "Device_has_part",
@@ -10172,6 +10263,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "MaterialEntity_has_part",
@@ -10213,6 +10305,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "MaterialEntity_has_part",
@@ -10254,6 +10347,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "MaterialEntity_has_part",
@@ -10295,6 +10389,7 @@
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "AgenticEntity_has_part",
+        "AgenticEntity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "acquisitionNucleus__nucleus_of"
@@ -10334,6 +10429,7 @@
         "has_qualitative_attribute",
         "has_quantitative_attribute",
         "AgenticEntity_has_part",
+        "AgenticEntity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "has_percentage_of_total",
@@ -10487,6 +10583,7 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "MaterialEntity_has_part",
@@ -10522,12 +10619,13 @@
         "id",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_has_part",
+        "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
         "EvaluatedEntity_was_generated_by",
         "EvaluatedEntity_title",
         "EvaluatedEntity_description",
-        "EvaluatedEntity_has_part",
         "EvaluatedEntity_other_identifier",
         "MaterialSample_derived_from",
         "alternative_label",
@@ -10669,9 +10767,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "dcat_4c_ap.yaml",
-  "source_file_date": "2025-09-15T11:52:02",
+  "source_file_date": "2025-09-18T14:10:39",
   "source_file_size": 3596,
-  "generation_date": "2025-09-18T08:07:35",
+  "generation_date": "2025-09-18T15:28:59",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

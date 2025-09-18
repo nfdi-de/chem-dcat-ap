@@ -473,6 +473,11 @@ def build_dcatap_plus():
                                         description= 'The slot to specify the Surrounding in which an Activity '
                                                      'took place.',
                                         in_subset='domain_agnostic_core'))
+        builder.add_slot(SlotDefinition(name='part_of',
+                                        slot_uri='dcterms:isPartOf',
+                                        description='A slot to specify a related resource in which the described resource is physically or logically included.',
+                                        inverse='has_part',
+                                        in_subset='domain_agnostic_core'))
 
         activity = builder.schema.classes['Activity']
         activity.slots = ['id',
@@ -485,7 +490,8 @@ def build_dcatap_plus():
                           'had_input_activity',
                           'carried_out_by',
                           'has_qualitative_attribute',
-                          'has_quantitative_attribute',]
+                          'has_quantitative_attribute',
+                          'part_of']
         activity.slot_usage = {
             'title': {
                 'description': 'The slot to provide a title for the Activity.',
@@ -500,8 +506,15 @@ def build_dcatap_plus():
             'has_part': {
                 'range': 'Activity',
                 'description': 'The slot to provide an Activity that is part of the Activity.',
-                'inlined': True,
+                'multivalued': True,
+                'inlined_as_list': True,
                 'notes':['not in DCAT-AP']},
+            'part_of': {
+                'range': 'Activity',
+                'description': 'The slot to provide an Activity of which the Activity is a part.',
+                'multivalued': True,
+                'inlined_as_list': True,
+                'notes': ['not in DCAT-AP']},
             'other_identifier':{
                 'range': 'Identifier',
                 'description': 'The slot to provide a secondary identifier of the Activity.',
@@ -618,7 +631,8 @@ def build_dcatap_plus():
                                                  'other_identifier',
                                                  'has_qualitative_attribute',
                                                  'has_quantitative_attribute',
-                                                 'has_part',],
+                                                 'has_part',
+                                                 'part_of'],
                                           slot_usage={
                                               'title': {
                                                   'description': 'The slot to provide a title for the Entity.'},
@@ -631,10 +645,16 @@ def build_dcatap_plus():
                                                   'multivalued': 'true',
                                                   'inlined_as_list': 'true'},
                                               'has_part':{
-                                                  'description': 'A slot to provide a part of the EvaluatedEntity.',
+                                                  'description': 'A slot to provide a part of the Entity.',
                                                   'range':'Entity',
                                                   'multivalued': 'true',
-                                                  'inlined_as_list': 'true'}},
+                                                  'inlined_as_list': 'true'},
+                                              'part_of': {
+                                                  'range': 'Entity',
+                                                  'description': 'The slot to specify an Entity of which the Entity is a part.',
+                                                  'multivalued': True,
+                                                  'inlined_as_list': True,
+                                                  'notes': ['not in DCAT-AP']}},
                                           in_subset='domain_agnostic_core'))
         builder.add_class(ClassDefinition(name='EvaluatedEntity',
                                           is_a= 'Entity',
@@ -652,11 +672,6 @@ def build_dcatap_plus():
                                                   'range':'Activity',
                                                   'multivalued': 'true',
                                                   'inlined_as_list': 'true'},
-                                              'has_part':{
-                                                  'description': 'A slot to provide a part of the EvaluatedEntity.',
-                                                  'range':'EvaluatedEntity',
-                                                  'multivalued': 'true',
-                                                  'inlined_as_list': 'true'},
                                               'other_identifier':{
                                                   'description': 'A slot to provide a secondary identifier of the EvaluatedEntity.',
                                                   'range': 'Identifier',
@@ -669,15 +684,7 @@ def build_dcatap_plus():
                                           class_uri='prov:Activity',
                                           description='An activity or proces that is being evaluated in a '
                                                       'DataGeneratingActivity.',
-                                          slots = ['has_qualitative_attribute',
-                                                   'has_quantitative_attribute',
-                                                   'has_part'],
                                           slot_usage={
-                                              'has_part':{
-                                                  'description': 'A slot to provide a part of the EvaluatedActivity.',
-                                                  'range':'EvaluatedActivity',
-                                                  'multivalued': 'true',
-                                                  'inlined_as_list': 'true'},
                                               'other_identifier':{
                                                   'description': 'A slot to provide a secondary identifier of the EvaluatedActivity.',
                                                   'range': 'Identifier',
@@ -699,15 +706,23 @@ def build_dcatap_plus():
                                                    'other_identifier',
                                                    'has_qualitative_attribute',
                                                    'has_quantitative_attribute',
-                                                   'has_part'],
+                                                   'has_part',
+                                                   'part_of'],
                                           slot_usage={
                                               'has_part':{
-                                                  'description': 'The slot to specify parts of an Instrument that are '
-                                                                 'themselves Instruments.',
+                                                  'description': 'The slot to specify parts of an AgenticEntity that are '
+                                                                 'themselves AgenticEntities.',
                                                   'range':'AgenticEntity',
                                                   'inlined': True,
                                                   'multivalued': True,
                                                   'inlined_as_list': True},
+                                              'part_of': {
+                                                  'range': 'AgenticEntity',
+                                                  'description': 'The slot to provide the AgenticEntity of which the'
+                                                                 'AgenticEntity is a part.',
+                                                  'multivalued': True,
+                                                  'inlined_as_list': True,
+                                                  'notes': ['not in DCAT-AP']},
                                               'other_identifier':{
                                                   'description': 'A slot to provide a secondary identifier for an Instrument.',
                                                   'range': 'Identifier',

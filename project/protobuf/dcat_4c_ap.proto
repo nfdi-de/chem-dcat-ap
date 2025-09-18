@@ -11,6 +11,7 @@ message AcquisitionNucleus
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
  repeated  agenticEntity hasPart = 0
+ repeated  agenticEntity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
   atom nucleusOf = 0
@@ -22,13 +23,14 @@ message Activity
  repeated  string title = 0
  repeated  string description = 0
  repeated  identifier otherIdentifier = 0
-  activity hasPart = 0
+ repeated  activity hasPart = 0
  repeated  entity hadInputEntity = 0
  repeated  entity hadOutputEntity = 0
  repeated  activity hadInputActivity = 0
  repeated  agenticEntity carriedOutBy = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  activity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -48,6 +50,7 @@ message AgenticEntity
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
  repeated  agenticEntity hasPart = 0
+ repeated  agenticEntity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -111,11 +114,12 @@ message AnalysisSourceData
   uriorcurie id = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity hasPart = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
   string title = 0
   string description = 0
- repeated  evaluatedEntity hasPart = 0
  repeated  identifier otherIdentifier = 0
  repeated  dataGeneratingActivity wasGeneratedBy = 0
  }
@@ -134,6 +138,7 @@ message Atom
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
  repeated  materialEntity hasPart = 0
   string alternativeLabel = 0
@@ -203,6 +208,7 @@ message Catalyst
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
  repeated  agenticEntity hasPart = 0
+ repeated  agenticEntity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  molarEquivalent hasMolarEquivalent = 0
@@ -228,6 +234,7 @@ message CharacterizedCompound
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  materialEntity hasPart = 0
@@ -266,6 +273,7 @@ message ChemicalEntity
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  materialEntity hasPart = 0
@@ -292,6 +300,7 @@ message ChemicalProduct
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  materialEntity hasPart = 0
@@ -316,13 +325,14 @@ message ChemicalReaction
  repeated  string title = 0
  repeated  string description = 0
  repeated  identifier otherIdentifier = 0
-  activity hasPart = 0
+ repeated  activity hasPart = 0
  repeated  entity hadInputEntity = 0
  repeated  entity hadOutputEntity = 0
  repeated  activity hadInputActivity = 0
  repeated  agenticEntity carriedOutBy = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  activity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  startingMaterial usedStartingMaterial = 0
@@ -380,13 +390,14 @@ message DataAnalysis
  repeated  string title = 0
  repeated  string description = 0
  repeated  identifier otherIdentifier = 0
-  activity hasPart = 0
+ repeated  activity hasPart = 0
  repeated  entity hadInputEntity = 0
  repeated  entity hadOutputEntity = 0
  repeated  activity hadInputActivity = 0
  repeated  agenticEntity carriedOutBy = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  activity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  evaluatedActivity evaluatedActivity = 0
@@ -401,13 +412,14 @@ message DataGeneratingActivity
  repeated  string title = 0
  repeated  string description = 0
  repeated  identifier otherIdentifier = 0
-  activity hasPart = 0
+ repeated  activity hasPart = 0
  repeated  entity hadInputEntity = 0
  repeated  entity hadOutputEntity = 0
  repeated  activity hadInputActivity = 0
  repeated  agenticEntity carriedOutBy = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  activity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  evaluatedEntity evaluatedEntity = 0
@@ -518,6 +530,7 @@ message Device
   string description = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  agenticEntity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  device hasPart = 0
@@ -533,6 +546,7 @@ message DissolvingSubstance
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
  repeated  agenticEntity hasPart = 0
+ repeated  agenticEntity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  percentageOfTotal hasPercentageOfTotal = 0
@@ -594,6 +608,7 @@ message Entity
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
  repeated  entity hasPart = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  }
@@ -603,15 +618,16 @@ message EvaluatedActivity
   uriorcurie id = 0
  repeated  string title = 0
  repeated  string description = 0
+ repeated  activity hasPart = 0
  repeated  entity hadInputEntity = 0
  repeated  entity hadOutputEntity = 0
  repeated  activity hadInputActivity = 0
  repeated  agenticEntity carriedOutBy = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
-  string hasPart = 0
+ repeated  activity partOf = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
  repeated  identifier otherIdentifier = 0
  }
 // An Entity that is being evaluated in a DataGeneratingActivity.
@@ -620,12 +636,13 @@ message EvaluatedEntity
   uriorcurie id = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity hasPart = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  activity wasGeneratedBy = 0
   string title = 0
   string description = 0
- repeated  evaluatedEntity hasPart = 0
  repeated  identifier otherIdentifier = 0
  }
 // See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)
@@ -729,6 +746,7 @@ message MaterialEntity
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  materialEntity hasPart = 0
@@ -746,12 +764,13 @@ message MaterialSample
   uriorcurie id = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity hasPart = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  activity wasGeneratedBy = 0
   string title = 0
   string description = 0
- repeated  evaluatedEntity hasPart = 0
  repeated  identifier otherIdentifier = 0
   entity derivedFrom = 0
   string alternativeLabel = 0
@@ -854,12 +873,13 @@ message NMRSample
   uriorcurie id = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity hasPart = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  activity wasGeneratedBy = 0
   string title = 0
   string description = 0
- repeated  evaluatedEntity hasPart = 0
  repeated  identifier otherIdentifier = 0
   string alternativeLabel = 0
   physicalStateEnum hasPhysicalState = 0
@@ -886,6 +906,7 @@ message NMRSolvent
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
  repeated  agenticEntity hasPart = 0
+ repeated  agenticEntity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  percentageOfTotal hasPercentageOfTotal = 0
@@ -909,13 +930,14 @@ message NMRSpectralAnalysis
  repeated  string title = 0
  repeated  string description = 0
  repeated  identifier otherIdentifier = 0
-  activity hasPart = 0
+ repeated  activity hasPart = 0
  repeated  entity hadInputEntity = 0
  repeated  entity hadOutputEntity = 0
  repeated  activity hadInputActivity = 0
  repeated  agenticEntity carriedOutBy = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  activity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  evaluatedActivity evaluatedActivity = 0
@@ -931,6 +953,7 @@ message NMRSpectrometer
   string description = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  agenticEntity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  device hasPart = 0
@@ -944,13 +967,14 @@ message NMRSpectroscopy
  repeated  string title = 0
  repeated  string description = 0
  repeated  identifier otherIdentifier = 0
-  activity hasPart = 0
+ repeated  activity hasPart = 0
  repeated  entity hadInputEntity = 0
  repeated  entity hadOutputEntity = 0
  repeated  activity hadInputActivity = 0
  repeated  agenticEntity carriedOutBy = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  activity partOf = 0
   definedTerm type = 0
  repeated  evaluatedActivity evaluatedActivity = 0
   plan realizedPlan = 0
@@ -971,11 +995,12 @@ message NMRSpectrum
   uriorcurie id = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity hasPart = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
   string title = 0
   string description = 0
- repeated  evaluatedEntity hasPart = 0
  repeated  identifier otherIdentifier = 0
  repeated  nMRSpectroscopy wasGeneratedBy = 0
  }
@@ -1052,12 +1077,13 @@ message PolymerSample
   uriorcurie id = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity hasPart = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  activity wasGeneratedBy = 0
   string title = 0
   string description = 0
- repeated  evaluatedEntity hasPart = 0
  repeated  identifier otherIdentifier = 0
   entity derivedFrom = 0
   string alternativeLabel = 0
@@ -1127,6 +1153,7 @@ message Reactor
   string description = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  agenticEntity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  device hasPart = 0
@@ -1148,6 +1175,7 @@ message Reagent
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  materialEntity hasPart = 0
@@ -1199,6 +1227,7 @@ message ShiftCalibrationCompound
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  materialEntity hasPart = 0
@@ -1226,6 +1255,7 @@ message ShiftReferenceCompound
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  materialEntity hasPart = 0
@@ -1261,6 +1291,7 @@ message Software
   string description = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  agenticEntity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  software hasPart = 0
@@ -1281,6 +1312,7 @@ message StartingMaterial
  repeated  identifier otherIdentifier = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  materialEntity hasPart = 0
@@ -1304,12 +1336,13 @@ message SubstanceSample
   uriorcurie id = 0
  repeated  qualitativeAttribute hasQualitativeAttribute = 0
  repeated  quantitativeAttribute hasQuantitativeAttribute = 0
+ repeated  entity hasPart = 0
+ repeated  entity partOf = 0
   definedTerm type = 0
   definedTerm rdfType = 0
  repeated  activity wasGeneratedBy = 0
   string title = 0
   string description = 0
- repeated  evaluatedEntity hasPart = 0
  repeated  identifier otherIdentifier = 0
   entity derivedFrom = 0
   string alternativeLabel = 0

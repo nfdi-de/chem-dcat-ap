@@ -87,13 +87,14 @@ dcatap_plus:Activity  (
              dcterms:title @linkml:String * ;
              dcterms:description @linkml:String * ;
              adms:identifier @dcatap_plus:Identifier * ;
-             dcterms:hasPart @dcatap_plus:Activity ? ;
+             dcterms:hasPart @dcatap_plus:Activity * ;
              prov:used @dcatap_plus:Entity * ;
              prov:generated @dcatap_plus:Entity * ;
              prov:wasInformedBy @dcatap_plus:Activity * ;
              prov:wasAssociatedWith @dcatap_plus:AgenticEntity * ;
              dcterms:relation @dcatap_plus:QualitativeAttribute * ;
              dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
+             dcterms:isPartOf @dcatap_plus:Activity * ;
              dcterms:type @dcatap_plus:DefinedTerm ? ;
              rdf:type @dcatap_plus:DefinedTerm ?
           ) ;
@@ -120,6 +121,7 @@ dcatap_plus:AgenticEntity  (
              dcterms:relation @dcatap_plus:QualitativeAttribute * ;
              dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
              dcterms:hasPart @dcatap_plus:AgenticEntity * ;
+             dcterms:isPartOf @dcatap_plus:AgenticEntity * ;
              dcterms:type @dcatap_plus:DefinedTerm ? ;
              rdf:type @dcatap_plus:DefinedTerm ?
           ) ;
@@ -594,6 +596,7 @@ dcatap_plus:Entity  (
              dcterms:relation @dcatap_plus:QualitativeAttribute * ;
              dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
              dcterms:hasPart @dcatap_plus:Entity * ;
+             dcterms:isPartOf @dcatap_plus:Entity * ;
              dcterms:type @dcatap_plus:DefinedTerm ? ;
              rdf:type @dcatap_plus:DefinedTerm ?
           ) ;
@@ -605,9 +608,6 @@ dcatap_plus:Entity  (
 dcatap_plus:EvaluatedActivity CLOSED {
     (  $dcatap_plus:EvaluatedActivity_tes (  &dcatap_plus:Activity_tes ;
           rdf:type [ prov:Activity ] ? ;
-          dcterms:relation @dcatap_plus:QualitativeAttribute * ;
-          dcterms:relation @dcatap_plus:QuantitativeAttribute * ;
-          dcterms:hasPart @linkml:String ? ;
           adms:identifier @dcatap_plus:Identifier *
        ) ;
        rdf:type [ prov:Activity ]
@@ -621,7 +621,6 @@ dcatap_plus:EvaluatedEntity  (
              prov:wasGeneratedBy @dcatap_plus:Activity * ;
              dcterms:title @linkml:String ? ;
              dcterms:description @linkml:String ? ;
-             dcterms:hasPart @dcatap_plus:EvaluatedEntity * ;
              adms:identifier @dcatap_plus:Identifier *
           ) ;
           rdf:type [ prov:Entity ]

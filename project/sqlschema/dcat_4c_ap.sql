@@ -36,7 +36,6 @@
 --     * Slot: NMRSample_id Description: Autocreated FK slot
 --     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
 --     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
---     * Slot: has_part_id Description: The slot to provide an Activity that is part of the Activity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: Agent Description: See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)
@@ -53,12 +52,16 @@
 --     * Slot: AgenticEntity_id Description: Autocreated FK slot
 --     * Slot: DataAnalysis_id Description: Autocreated FK slot
 --     * Slot: DataGeneratingActivity_id Description: Autocreated FK slot
+--     * Slot: Device_id Description: Autocreated FK slot
 --     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
+--     * Slot: Software_id Description: Autocreated FK slot
 --     * Slot: ChemicalReaction_id Description: Autocreated FK slot
 --     * Slot: DissolvingSubstance_id Description: Autocreated FK slot
 --     * Slot: Catalyst_id Description: Autocreated FK slot
+--     * Slot: Reactor_id Description: Autocreated FK slot
 --     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
 --     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
+--     * Slot: NMRSpectrometer_id Description: Autocreated FK slot
 --     * Slot: AcquisitionNucleus_id Description: Autocreated FK slot
 --     * Slot: NMRSolvent_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
@@ -139,7 +142,6 @@
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: realized_plan_id Description: The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.
 --     * Slot: occurred_in_id Description: The slot to specify the Surrounding in which an Activity took place.
---     * Slot: has_part_id Description: The slot to provide an Activity that is part of the Activity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: DataGeneratingActivity Description: An Activity (process) that has the objective to produce information (in form of a dataset) about another Activity or Entity.
@@ -148,7 +150,6 @@
 --     * Slot: Dataset_id Description: Autocreated FK slot
 --     * Slot: realized_plan_id Description: The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.
 --     * Slot: occurred_in_id Description: The slot to specify the Surrounding in which an Activity took place.
---     * Slot: has_part_id Description: The slot to provide an Activity that is part of the Activity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: DataService Description: See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)
@@ -228,14 +229,32 @@
 --     * Slot: title Description: The slot to provide a title for the Entity.
 --     * Slot: description Description: The slot to provide a description for the Entity.
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
+--     * Slot: SubstanceSample_id Description: Autocreated FK slot
+--     * Slot: PolymerSample_id Description: Autocreated FK slot
 --     * Slot: Activity_id Description: Autocreated FK slot
+--     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
 --     * Slot: DataAnalysis_id Description: Autocreated FK slot
 --     * Slot: DataGeneratingActivity_id Description: Autocreated FK slot
 --     * Slot: Entity_id Description: Autocreated FK slot
 --     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
+--     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
+--     * Slot: ChemicalEntity_id Description: Autocreated FK slot
+--     * Slot: Atom_id Description: Autocreated FK slot
+--     * Slot: ChemicalSubstance_id Description: Autocreated FK slot
+--     * Slot: Polymer_id Description: Autocreated FK slot
 --     * Slot: ChemicalReaction_id Description: Autocreated FK slot
+--     * Slot: StartingMaterial_id Description: Autocreated FK slot
+--     * Slot: Reagent_id Description: Autocreated FK slot
+--     * Slot: ChemicalProduct_id Description: Autocreated FK slot
+--     * Slot: MaterialEntity_id Description: Autocreated FK slot
+--     * Slot: MaterialSample_id Description: Autocreated FK slot
+--     * Slot: NMRSample_id Description: Autocreated FK slot
 --     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
+--     * Slot: NMRSpectrum_id Description: Autocreated FK slot
 --     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
+--     * Slot: ShiftCalibrationCompound_id Description: Autocreated FK slot
+--     * Slot: ShiftReferenceCompound_id Description: Autocreated FK slot
+--     * Slot: CharacterizedCompound_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: EvaluatedActivity Description: An activity or proces that is being evaluated in a DataGeneratingActivity.
@@ -244,7 +263,6 @@
 --     * Slot: DataAnalysis_id Description: Autocreated FK slot
 --     * Slot: DataGeneratingActivity_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: EvaluatedActivity_id Description: Autocreated FK slot
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: NMRSpectralAnalysis_id Description: Autocreated FK slot
 --     * Slot: NMRSpectroscopy_id Description: Autocreated FK slot
@@ -254,16 +272,9 @@
 --     * Slot: title Description: The slot to provide a title for the EvaluatedEntity.
 --     * Slot: description Description: The slot to provide a description for the EvaluatedEntity.
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: SubstanceSample_id Description: Autocreated FK slot
---     * Slot: PolymerSample_id Description: Autocreated FK slot
 --     * Slot: AnalysisDataset_id Description: Autocreated FK slot
---     * Slot: AnalysisSourceData_id Description: Autocreated FK slot
 --     * Slot: DataGeneratingActivity_id Description: Autocreated FK slot
 --     * Slot: Dataset_id Description: Autocreated FK slot
---     * Slot: EvaluatedEntity_id Description: Autocreated FK slot
---     * Slot: MaterialSample_id Description: Autocreated FK slot
---     * Slot: NMRSample_id Description: Autocreated FK slot
---     * Slot: NMRSpectrum_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: Frequency Description: See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)
@@ -720,7 +731,6 @@
 --     * Slot: has_duration Description: A slot to provide the duration of a ChemicalReaction.
 --     * Slot: has_reaction_step Description: A slot to specify a step (part) of a ChemicalReaction that is itself a ChemicalReaction.
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
---     * Slot: has_part_id Description: The slot to provide an Activity that is part of the Activity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: StartingMaterial Description: A ChemicalSubstance with that has a starting material role in a synthesis.
@@ -1032,7 +1042,6 @@
 --     * Slot: NMRAnalysisDataset_id Description: Autocreated FK slot
 --     * Slot: realized_plan_id Description: The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.
 --     * Slot: occurred_in_id Description: The slot to specify the Surrounding in which an Activity took place.
---     * Slot: has_part_id Description: The slot to provide an Activity that is part of the Activity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: NMRSpectrum Description: Chemical shift data obtained via nuclear magnetic resonance (NMR) spectroscopy.
@@ -1049,7 +1058,6 @@
 --     * Slot: used_number_of_scans_id Description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
 --     * Slot: realized_plan_id Description: The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.
 --     * Slot: occurred_in_id Description: The slot to specify the Surrounding in which an Activity took place.
---     * Slot: has_part_id Description: The slot to provide an Activity that is part of the Activity.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613.
 -- # Class: NMRSpectrometer Description: A Spectrometer used to conduct NMR experiments consisting of a magnet housing a sample space surrounded by two coils which act to transmit radio frequency radiation to the sample and to detect the response of the sample.
@@ -1312,7 +1320,6 @@ CREATE TABLE "Activity" (
 	"NMRSample_id" TEXT,
 	"NMRSpectralAnalysis_id" TEXT,
 	"NMRSpectroscopy_id" TEXT,
-	has_part_id TEXT,
 	type_id TEXT,
 	rdf_type_id TEXT,
 	PRIMARY KEY (id),
@@ -1328,7 +1335,6 @@ CREATE TABLE "Activity" (
 	FOREIGN KEY("NMRSample_id") REFERENCES "NMRSample" (id),
 	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
 	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id),
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );CREATE INDEX "ix_Activity_id" ON "Activity" (id);
@@ -1359,18 +1365,6 @@ CREATE TABLE "AnalysisDataset" (
 	FOREIGN KEY(frequency_id) REFERENCES "Frequency" (id),
 	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id)
 );CREATE INDEX "ix_AnalysisDataset_id" ON "AnalysisDataset" (id);
-CREATE TABLE "AnalysisSourceData" (
-	title TEXT,
-	description TEXT,
-	id TEXT NOT NULL,
-	"DataAnalysis_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_AnalysisSourceData_id" ON "AnalysisSourceData" (id);
 CREATE TABLE "Any" (
 	id INTEGER NOT NULL,
 	title TEXT,
@@ -1417,40 +1411,6 @@ CREATE TABLE "Concept" (
 	FOREIGN KEY("LicenseDocument_id") REFERENCES "LicenseDocument" (id),
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id)
 );CREATE INDEX "ix_Concept_id" ON "Concept" (id);
-CREATE TABLE "DataAnalysis" (
-	id TEXT NOT NULL,
-	"AnalysisDataset_id" TEXT,
-	realized_plan_id INTEGER,
-	occurred_in_id INTEGER,
-	has_part_id TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id),
-	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id),
-	FOREIGN KEY(occurred_in_id) REFERENCES "Surrounding" (id),
-	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_DataAnalysis_id" ON "DataAnalysis" (id);
-CREATE TABLE "DataGeneratingActivity" (
-	id TEXT NOT NULL,
-	"AnalysisSourceData_id" TEXT,
-	"Dataset_id" TEXT,
-	realized_plan_id INTEGER,
-	occurred_in_id INTEGER,
-	has_part_id TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id),
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
-	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id),
-	FOREIGN KEY(occurred_in_id) REFERENCES "Surrounding" (id),
-	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_DataGeneratingActivity_id" ON "DataGeneratingActivity" (id);
 CREATE TABLE "DataService" (
 	id INTEGER NOT NULL,
 	licence TEXT,
@@ -1551,82 +1511,64 @@ CREATE TABLE "Entity" (
 	title TEXT,
 	description TEXT,
 	id TEXT NOT NULL,
+	"SubstanceSample_id" TEXT,
+	"PolymerSample_id" TEXT,
 	"Activity_id" TEXT,
+	"AnalysisSourceData_id" TEXT,
 	"DataAnalysis_id" TEXT,
 	"DataGeneratingActivity_id" TEXT,
 	"Entity_id" TEXT,
 	"EvaluatedActivity_id" TEXT,
-	"ChemicalReaction_id" TEXT,
-	"NMRSpectralAnalysis_id" TEXT,
-	"NMRSpectroscopy_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id),
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
-	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
-	FOREIGN KEY("Entity_id") REFERENCES "Entity" (id),
-	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_Entity_id" ON "Entity" (id);
-CREATE TABLE "EvaluatedActivity" (
-	id TEXT NOT NULL,
-	"AnalysisDataset_id" TEXT,
-	"DataAnalysis_id" TEXT,
-	"DataGeneratingActivity_id" TEXT,
-	"Dataset_id" TEXT,
-	"EvaluatedActivity_id" TEXT,
-	"NMRAnalysisDataset_id" TEXT,
-	"NMRSpectralAnalysis_id" TEXT,
-	"NMRSpectroscopy_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id),
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
-	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
-	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
-	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id),
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_EvaluatedActivity_id" ON "EvaluatedActivity" (id);
-CREATE TABLE "EvaluatedEntity" (
-	title TEXT,
-	description TEXT,
-	id TEXT NOT NULL,
-	"SubstanceSample_id" TEXT,
-	"PolymerSample_id" TEXT,
-	"AnalysisDataset_id" TEXT,
-	"AnalysisSourceData_id" TEXT,
-	"DataGeneratingActivity_id" TEXT,
-	"Dataset_id" TEXT,
 	"EvaluatedEntity_id" TEXT,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ChemicalSubstance_id" TEXT,
+	"Polymer_id" TEXT,
+	"ChemicalReaction_id" TEXT,
+	"StartingMaterial_id" TEXT,
+	"Reagent_id" TEXT,
+	"ChemicalProduct_id" TEXT,
+	"MaterialEntity_id" TEXT,
 	"MaterialSample_id" TEXT,
 	"NMRSample_id" TEXT,
+	"NMRSpectralAnalysis_id" TEXT,
 	"NMRSpectrum_id" TEXT,
+	"NMRSpectroscopy_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
 	type_id TEXT,
 	rdf_type_id TEXT,
 	PRIMARY KEY (id),
 	FOREIGN KEY("SubstanceSample_id") REFERENCES "SubstanceSample" (id),
 	FOREIGN KEY("PolymerSample_id") REFERENCES "PolymerSample" (id),
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id),
+	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id),
 	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id),
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
 	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
+	FOREIGN KEY("Entity_id") REFERENCES "Entity" (id),
+	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
 	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
+	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
+	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
+	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
+	FOREIGN KEY("MaterialEntity_id") REFERENCES "MaterialEntity" (id),
 	FOREIGN KEY("MaterialSample_id") REFERENCES "MaterialSample" (id),
 	FOREIGN KEY("NMRSample_id") REFERENCES "NMRSample" (id),
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_EvaluatedEntity_id" ON "EvaluatedEntity" (id);
+);CREATE INDEX "ix_Entity_id" ON "Entity" (id);
 CREATE TABLE "Frequency" (
 	id INTEGER NOT NULL,
 	title TEXT,
@@ -1683,25 +1625,78 @@ CREATE TABLE "TimeInstant" (
 	description TEXT,
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_TimeInstant_id" ON "TimeInstant" (id);
-CREATE TABLE "ChemicalReaction" (
-	has_duration TEXT,
-	has_reaction_step TEXT,
+CREATE TABLE "ChemicalEntity" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
+	title TEXT,
+	description TEXT,
 	id TEXT NOT NULL,
-	has_part_id TEXT,
+	"SubstanceSample_id" TEXT,
+	"PolymerSample_id" TEXT,
+	"ChemicalSubstance_id" TEXT,
+	"Polymer_id" TEXT,
+	"StartingMaterial_id" TEXT,
+	"DissolvingSubstance_id" TEXT,
+	"Reagent_id" TEXT,
+	"ChemicalProduct_id" TEXT,
+	"Catalyst_id" TEXT,
+	"NMRSolvent_id" TEXT,
 	type_id TEXT,
 	rdf_type_id TEXT,
 	PRIMARY KEY (id),
-	FOREIGN KEY(has_reaction_step) REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id),
+	FOREIGN KEY("SubstanceSample_id") REFERENCES "SubstanceSample" (id),
+	FOREIGN KEY("PolymerSample_id") REFERENCES "PolymerSample" (id),
+	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
+	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
+	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
+	FOREIGN KEY("DissolvingSubstance_id") REFERENCES "DissolvingSubstance" (id),
+	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
+	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
+	FOREIGN KEY("Catalyst_id") REFERENCES "Catalyst" (id),
+	FOREIGN KEY("NMRSolvent_id") REFERENCES "NMRSolvent" (id),
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_ChemicalReaction_id" ON "ChemicalReaction" (id);
+);CREATE INDEX "ix_ChemicalEntity_id" ON "ChemicalEntity" (id);
 CREATE TABLE "Materialistic" (
 	id INTEGER NOT NULL,
 	alternative_label TEXT,
 	has_physical_state VARCHAR(7),
 	PRIMARY KEY (id)
 );CREATE INDEX "ix_Materialistic_id" ON "Materialistic" (id);
+CREATE TABLE "MaterialEntity" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
+	title TEXT,
+	description TEXT,
+	id TEXT NOT NULL,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ChemicalSubstance_id" TEXT,
+	"Polymer_id" TEXT,
+	"StartingMaterial_id" TEXT,
+	"Reagent_id" TEXT,
+	"ChemicalProduct_id" TEXT,
+	"MaterialEntity_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
+	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
+	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
+	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
+	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
+	FOREIGN KEY("MaterialEntity_id") REFERENCES "MaterialEntity" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_MaterialEntity_id" ON "MaterialEntity" (id);
 CREATE TABLE "MaterialSample" (
 	alternative_label TEXT,
 	has_physical_state VARCHAR(7),
@@ -1749,54 +1744,20 @@ CREATE TABLE "NMRAnalysisDataset" (
 	FOREIGN KEY(frequency_id) REFERENCES "Frequency" (id),
 	FOREIGN KEY(publisher_id) REFERENCES "Agent" (id)
 );CREATE INDEX "ix_NMRAnalysisDataset_id" ON "NMRAnalysisDataset" (id);
-CREATE TABLE "NMRSpectralAnalysis" (
-	id TEXT NOT NULL,
-	"NMRAnalysisDataset_id" TEXT,
-	realized_plan_id INTEGER,
-	occurred_in_id INTEGER,
-	has_part_id TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id),
-	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id),
-	FOREIGN KEY(occurred_in_id) REFERENCES "Surrounding" (id),
-	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_NMRSpectralAnalysis_id" ON "NMRSpectralAnalysis" (id);
-CREATE TABLE "NMRSpectrum" (
+CREATE TABLE "CharacterizedCompound" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
 	title TEXT,
 	description TEXT,
 	id TEXT NOT NULL,
-	"NMRSpectralAnalysis_id" TEXT,
+	"NMRSample_id" TEXT,
 	type_id TEXT,
 	rdf_type_id TEXT,
 	PRIMARY KEY (id),
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
+	FOREIGN KEY("NMRSample_id") REFERENCES "NMRSample" (id),
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_NMRSpectrum_id" ON "NMRSpectrum" (id);
-CREATE TABLE "NMRSpectroscopy" (
-	id TEXT NOT NULL,
-	"NMRSpectrum_id" TEXT,
-	used_pulse_sequence_id INTEGER NOT NULL,
-	used_number_of_scans_id INTEGER,
-	realized_plan_id INTEGER,
-	occurred_in_id INTEGER,
-	has_part_id TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id),
-	FOREIGN KEY(used_pulse_sequence_id) REFERENCES "PulseSequence" (id),
-	FOREIGN KEY(used_number_of_scans_id) REFERENCES "NumberOfScans" (id),
-	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id),
-	FOREIGN KEY(occurred_in_id) REFERENCES "Surrounding" (id),
-	FOREIGN KEY(has_part_id) REFERENCES "Activity" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_NMRSpectroscopy_id" ON "NMRSpectroscopy" (id);
+);CREATE INDEX "ix_CharacterizedCompound_id" ON "CharacterizedCompound" (id);
 CREATE TABLE "Laboratory" (
 	id INTEGER NOT NULL,
 	title TEXT,
@@ -1961,175 +1922,17 @@ CREATE TABLE "Polymer" (
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );CREATE INDEX "ix_Polymer_id" ON "Polymer" (id);
-CREATE TABLE "StartingMaterial" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	title TEXT,
-	description TEXT,
+CREATE TABLE "ChemicalReaction" (
+	has_duration TEXT,
+	has_reaction_step TEXT,
 	id TEXT NOT NULL,
-	"ChemicalReaction_id" TEXT,
 	type_id TEXT,
 	rdf_type_id TEXT,
 	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY(has_reaction_step) REFERENCES "ChemicalReaction" (id),
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_StartingMaterial_id" ON "StartingMaterial" (id);
-CREATE TABLE "DissolvingSubstance" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	"ChemicalReaction_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_DissolvingSubstance_id" ON "DissolvingSubstance" (id);
-CREATE TABLE "Reagent" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	title TEXT,
-	description TEXT,
-	id TEXT NOT NULL,
-	"ChemicalReaction_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_Reagent_id" ON "Reagent" (id);
-CREATE TABLE "ChemicalProduct" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	title TEXT,
-	description TEXT,
-	id TEXT NOT NULL,
-	"ChemicalReaction_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_ChemicalProduct_id" ON "ChemicalProduct" (id);
-CREATE TABLE "Catalyst" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	"ChemicalReaction_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_Catalyst_id" ON "Catalyst" (id);
-CREATE TABLE "Reactor" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	"ChemicalReaction_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_Reactor_id" ON "Reactor" (id);
-CREATE TABLE "Yield" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value FLOAT NOT NULL,
-	has_quantity_type TEXT NOT NULL,
-	unit TEXT,
-	"ChemicalReaction_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_Yield_id" ON "Yield" (id);
-CREATE TABLE "NMRSpectrometer" (
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	"NMRSpectroscopy_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_NMRSpectrometer_id" ON "NMRSpectrometer" (id);
-CREATE TABLE "ShiftCalibrationCompound" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	title TEXT,
-	description TEXT,
-	id TEXT NOT NULL,
-	"NMRSpectroscopy_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_ShiftCalibrationCompound_id" ON "ShiftCalibrationCompound" (id);
-CREATE TABLE "ShiftReferenceCompound" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	title TEXT,
-	description TEXT,
-	id TEXT NOT NULL,
-	"NMRSpectroscopy_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_ShiftReferenceCompound_id" ON "ShiftReferenceCompound" (id);
-CREATE TABLE "CharacterizedCompound" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	title TEXT,
-	description TEXT,
-	id TEXT NOT NULL,
-	"NMRSample_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("NMRSample_id") REFERENCES "NMRSample" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_CharacterizedCompound_id" ON "CharacterizedCompound" (id);
-CREATE TABLE "NMRSolvent" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	"NMRSpectroscopy_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_NMRSolvent_id" ON "NMRSolvent" (id);
+);CREATE INDEX "ix_ChemicalReaction_id" ON "ChemicalReaction" (id);
 CREATE TABLE "PulseSequence" (
 	id INTEGER NOT NULL,
 	title TEXT,
@@ -2161,19 +1964,19 @@ CREATE TABLE "Activity_title" (
 	title TEXT,
 	PRIMARY KEY ("Activity_id", title),
 	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id)
-);CREATE INDEX "ix_Activity_title_Activity_id" ON "Activity_title" ("Activity_id");CREATE INDEX "ix_Activity_title_title" ON "Activity_title" (title);
+);CREATE INDEX "ix_Activity_title_title" ON "Activity_title" (title);CREATE INDEX "ix_Activity_title_Activity_id" ON "Activity_title" ("Activity_id");
 CREATE TABLE "Activity_description" (
 	"Activity_id" TEXT,
 	description TEXT,
 	PRIMARY KEY ("Activity_id", description),
 	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id)
-);CREATE INDEX "ix_Activity_description_description" ON "Activity_description" (description);CREATE INDEX "ix_Activity_description_Activity_id" ON "Activity_description" ("Activity_id");
+);CREATE INDEX "ix_Activity_description_Activity_id" ON "Activity_description" ("Activity_id");CREATE INDEX "ix_Activity_description_description" ON "Activity_description" (description);
 CREATE TABLE "Agent_name" (
 	"Agent_id" INTEGER,
 	name TEXT NOT NULL,
 	PRIMARY KEY ("Agent_id", name),
 	FOREIGN KEY("Agent_id") REFERENCES "Agent" (id)
-);CREATE INDEX "ix_Agent_name_Agent_id" ON "Agent_name" ("Agent_id");CREATE INDEX "ix_Agent_name_name" ON "Agent_name" (name);
+);CREATE INDEX "ix_Agent_name_name" ON "Agent_name" (name);CREATE INDEX "ix_Agent_name_Agent_id" ON "Agent_name" ("Agent_id");
 CREATE TABLE "AnalysisDataset_description" (
 	"AnalysisDataset_id" TEXT,
 	description TEXT NOT NULL,
@@ -2185,7 +1988,7 @@ CREATE TABLE "AnalysisDataset_identifier" (
 	identifier TEXT,
 	PRIMARY KEY ("AnalysisDataset_id", identifier),
 	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
-);CREATE INDEX "ix_AnalysisDataset_identifier_identifier" ON "AnalysisDataset_identifier" (identifier);CREATE INDEX "ix_AnalysisDataset_identifier_AnalysisDataset_id" ON "AnalysisDataset_identifier" ("AnalysisDataset_id");
+);CREATE INDEX "ix_AnalysisDataset_identifier_AnalysisDataset_id" ON "AnalysisDataset_identifier" ("AnalysisDataset_id");CREATE INDEX "ix_AnalysisDataset_identifier_identifier" ON "AnalysisDataset_identifier" (identifier);
 CREATE TABLE "AnalysisDataset_keyword" (
 	"AnalysisDataset_id" TEXT,
 	keyword TEXT,
@@ -2209,43 +2012,19 @@ CREATE TABLE "Catalogue_description" (
 	description TEXT NOT NULL,
 	PRIMARY KEY ("Catalogue_id", description),
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id)
-);CREATE INDEX "ix_Catalogue_description_description" ON "Catalogue_description" (description);CREATE INDEX "ix_Catalogue_description_Catalogue_id" ON "Catalogue_description" ("Catalogue_id");
+);CREATE INDEX "ix_Catalogue_description_Catalogue_id" ON "Catalogue_description" ("Catalogue_id");CREATE INDEX "ix_Catalogue_description_description" ON "Catalogue_description" (description);
 CREATE TABLE "Catalogue_title" (
 	"Catalogue_id" INTEGER,
 	title TEXT NOT NULL,
 	PRIMARY KEY ("Catalogue_id", title),
 	FOREIGN KEY("Catalogue_id") REFERENCES "Catalogue" (id)
-);CREATE INDEX "ix_Catalogue_title_title" ON "Catalogue_title" (title);CREATE INDEX "ix_Catalogue_title_Catalogue_id" ON "Catalogue_title" ("Catalogue_id");
+);CREATE INDEX "ix_Catalogue_title_Catalogue_id" ON "Catalogue_title" ("Catalogue_id");CREATE INDEX "ix_Catalogue_title_title" ON "Catalogue_title" (title);
 CREATE TABLE "Concept_preferred_label" (
 	"Concept_id" INTEGER,
 	preferred_label TEXT NOT NULL,
 	PRIMARY KEY ("Concept_id", preferred_label),
 	FOREIGN KEY("Concept_id") REFERENCES "Concept" (id)
 );CREATE INDEX "ix_Concept_preferred_label_Concept_id" ON "Concept_preferred_label" ("Concept_id");CREATE INDEX "ix_Concept_preferred_label_preferred_label" ON "Concept_preferred_label" (preferred_label);
-CREATE TABLE "DataAnalysis_title" (
-	"DataAnalysis_id" TEXT,
-	title TEXT,
-	PRIMARY KEY ("DataAnalysis_id", title),
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id)
-);CREATE INDEX "ix_DataAnalysis_title_DataAnalysis_id" ON "DataAnalysis_title" ("DataAnalysis_id");CREATE INDEX "ix_DataAnalysis_title_title" ON "DataAnalysis_title" (title);
-CREATE TABLE "DataAnalysis_description" (
-	"DataAnalysis_id" TEXT,
-	description TEXT,
-	PRIMARY KEY ("DataAnalysis_id", description),
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id)
-);CREATE INDEX "ix_DataAnalysis_description_DataAnalysis_id" ON "DataAnalysis_description" ("DataAnalysis_id");CREATE INDEX "ix_DataAnalysis_description_description" ON "DataAnalysis_description" (description);
-CREATE TABLE "DataGeneratingActivity_title" (
-	"DataGeneratingActivity_id" TEXT,
-	title TEXT,
-	PRIMARY KEY ("DataGeneratingActivity_id", title),
-	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id)
-);CREATE INDEX "ix_DataGeneratingActivity_title_title" ON "DataGeneratingActivity_title" (title);CREATE INDEX "ix_DataGeneratingActivity_title_DataGeneratingActivity_id" ON "DataGeneratingActivity_title" ("DataGeneratingActivity_id");
-CREATE TABLE "DataGeneratingActivity_description" (
-	"DataGeneratingActivity_id" TEXT,
-	description TEXT,
-	PRIMARY KEY ("DataGeneratingActivity_id", description),
-	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id)
-);CREATE INDEX "ix_DataGeneratingActivity_description_description" ON "DataGeneratingActivity_description" (description);CREATE INDEX "ix_DataGeneratingActivity_description_DataGeneratingActivity_id" ON "DataGeneratingActivity_description" ("DataGeneratingActivity_id");
 CREATE TABLE "DataService_description" (
 	"DataService_id" INTEGER,
 	description TEXT,
@@ -2269,7 +2048,7 @@ CREATE TABLE "Dataset_description" (
 	description TEXT NOT NULL,
 	PRIMARY KEY ("Dataset_id", description),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
-);CREATE INDEX "ix_Dataset_description_description" ON "Dataset_description" (description);CREATE INDEX "ix_Dataset_description_Dataset_id" ON "Dataset_description" ("Dataset_id");
+);CREATE INDEX "ix_Dataset_description_Dataset_id" ON "Dataset_description" ("Dataset_id");CREATE INDEX "ix_Dataset_description_description" ON "Dataset_description" (description);
 CREATE TABLE "Dataset_identifier" (
 	"Dataset_id" TEXT,
 	identifier TEXT,
@@ -2299,37 +2078,13 @@ CREATE TABLE "Distribution_description" (
 	description TEXT,
 	PRIMARY KEY ("Distribution_id", description),
 	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id)
-);CREATE INDEX "ix_Distribution_description_description" ON "Distribution_description" (description);CREATE INDEX "ix_Distribution_description_Distribution_id" ON "Distribution_description" ("Distribution_id");
+);CREATE INDEX "ix_Distribution_description_Distribution_id" ON "Distribution_description" ("Distribution_id");CREATE INDEX "ix_Distribution_description_description" ON "Distribution_description" (description);
 CREATE TABLE "Distribution_title" (
 	"Distribution_id" INTEGER,
 	title TEXT,
 	PRIMARY KEY ("Distribution_id", title),
 	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id)
 );CREATE INDEX "ix_Distribution_title_title" ON "Distribution_title" (title);CREATE INDEX "ix_Distribution_title_Distribution_id" ON "Distribution_title" ("Distribution_id");
-CREATE TABLE "EvaluatedActivity_title" (
-	"EvaluatedActivity_id" TEXT,
-	title TEXT,
-	PRIMARY KEY ("EvaluatedActivity_id", title),
-	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id)
-);CREATE INDEX "ix_EvaluatedActivity_title_title" ON "EvaluatedActivity_title" (title);CREATE INDEX "ix_EvaluatedActivity_title_EvaluatedActivity_id" ON "EvaluatedActivity_title" ("EvaluatedActivity_id");
-CREATE TABLE "EvaluatedActivity_description" (
-	"EvaluatedActivity_id" TEXT,
-	description TEXT,
-	PRIMARY KEY ("EvaluatedActivity_id", description),
-	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id)
-);CREATE INDEX "ix_EvaluatedActivity_description_description" ON "EvaluatedActivity_description" (description);CREATE INDEX "ix_EvaluatedActivity_description_EvaluatedActivity_id" ON "EvaluatedActivity_description" ("EvaluatedActivity_id");
-CREATE TABLE "ChemicalReaction_title" (
-	"ChemicalReaction_id" TEXT,
-	title TEXT,
-	PRIMARY KEY ("ChemicalReaction_id", title),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id)
-);CREATE INDEX "ix_ChemicalReaction_title_ChemicalReaction_id" ON "ChemicalReaction_title" ("ChemicalReaction_id");CREATE INDEX "ix_ChemicalReaction_title_title" ON "ChemicalReaction_title" (title);
-CREATE TABLE "ChemicalReaction_description" (
-	"ChemicalReaction_id" TEXT,
-	description TEXT,
-	PRIMARY KEY ("ChemicalReaction_id", description),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id)
-);CREATE INDEX "ix_ChemicalReaction_description_description" ON "ChemicalReaction_description" (description);CREATE INDEX "ix_ChemicalReaction_description_ChemicalReaction_id" ON "ChemicalReaction_description" ("ChemicalReaction_id");
 CREATE TABLE "NMRAnalysisDataset_description" (
 	"NMRAnalysisDataset_id" TEXT,
 	description TEXT NOT NULL,
@@ -2341,7 +2096,7 @@ CREATE TABLE "NMRAnalysisDataset_identifier" (
 	identifier TEXT,
 	PRIMARY KEY ("NMRAnalysisDataset_id", identifier),
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id)
-);CREATE INDEX "ix_NMRAnalysisDataset_identifier_identifier" ON "NMRAnalysisDataset_identifier" (identifier);CREATE INDEX "ix_NMRAnalysisDataset_identifier_NMRAnalysisDataset_id" ON "NMRAnalysisDataset_identifier" ("NMRAnalysisDataset_id");
+);CREATE INDEX "ix_NMRAnalysisDataset_identifier_NMRAnalysisDataset_id" ON "NMRAnalysisDataset_identifier" ("NMRAnalysisDataset_id");CREATE INDEX "ix_NMRAnalysisDataset_identifier_identifier" ON "NMRAnalysisDataset_identifier" (identifier);
 CREATE TABLE "NMRAnalysisDataset_keyword" (
 	"NMRAnalysisDataset_id" TEXT,
 	keyword TEXT,
@@ -2353,53 +2108,27 @@ CREATE TABLE "NMRAnalysisDataset_title" (
 	title TEXT NOT NULL,
 	PRIMARY KEY ("NMRAnalysisDataset_id", title),
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id)
-);CREATE INDEX "ix_NMRAnalysisDataset_title_title" ON "NMRAnalysisDataset_title" (title);CREATE INDEX "ix_NMRAnalysisDataset_title_NMRAnalysisDataset_id" ON "NMRAnalysisDataset_title" ("NMRAnalysisDataset_id");
+);CREATE INDEX "ix_NMRAnalysisDataset_title_NMRAnalysisDataset_id" ON "NMRAnalysisDataset_title" ("NMRAnalysisDataset_id");CREATE INDEX "ix_NMRAnalysisDataset_title_title" ON "NMRAnalysisDataset_title" (title);
 CREATE TABLE "NMRAnalysisDataset_version_notes" (
 	"NMRAnalysisDataset_id" TEXT,
 	version_notes TEXT,
 	PRIMARY KEY ("NMRAnalysisDataset_id", version_notes),
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id)
-);CREATE INDEX "ix_NMRAnalysisDataset_version_notes_version_notes" ON "NMRAnalysisDataset_version_notes" (version_notes);CREATE INDEX "ix_NMRAnalysisDataset_version_notes_NMRAnalysisDataset_id" ON "NMRAnalysisDataset_version_notes" ("NMRAnalysisDataset_id");
-CREATE TABLE "NMRSpectralAnalysis_title" (
-	"NMRSpectralAnalysis_id" TEXT,
-	title TEXT,
-	PRIMARY KEY ("NMRSpectralAnalysis_id", title),
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id)
-);CREATE INDEX "ix_NMRSpectralAnalysis_title_title" ON "NMRSpectralAnalysis_title" (title);CREATE INDEX "ix_NMRSpectralAnalysis_title_NMRSpectralAnalysis_id" ON "NMRSpectralAnalysis_title" ("NMRSpectralAnalysis_id");
-CREATE TABLE "NMRSpectralAnalysis_description" (
-	"NMRSpectralAnalysis_id" TEXT,
-	description TEXT,
-	PRIMARY KEY ("NMRSpectralAnalysis_id", description),
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id)
-);CREATE INDEX "ix_NMRSpectralAnalysis_description_NMRSpectralAnalysis_id" ON "NMRSpectralAnalysis_description" ("NMRSpectralAnalysis_id");CREATE INDEX "ix_NMRSpectralAnalysis_description_description" ON "NMRSpectralAnalysis_description" (description);
-CREATE TABLE "NMRSpectroscopy_title" (
-	"NMRSpectroscopy_id" TEXT,
-	title TEXT,
-	PRIMARY KEY ("NMRSpectroscopy_id", title),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id)
-);CREATE INDEX "ix_NMRSpectroscopy_title_title" ON "NMRSpectroscopy_title" (title);CREATE INDEX "ix_NMRSpectroscopy_title_NMRSpectroscopy_id" ON "NMRSpectroscopy_title" ("NMRSpectroscopy_id");
-CREATE TABLE "NMRSpectroscopy_description" (
-	"NMRSpectroscopy_id" TEXT,
-	description TEXT,
-	PRIMARY KEY ("NMRSpectroscopy_id", description),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id)
-);CREATE INDEX "ix_NMRSpectroscopy_description_description" ON "NMRSpectroscopy_description" (description);CREATE INDEX "ix_NMRSpectroscopy_description_NMRSpectroscopy_id" ON "NMRSpectroscopy_description" ("NMRSpectroscopy_id");
-CREATE TABLE "Device" (
+);CREATE INDEX "ix_NMRAnalysisDataset_version_notes_NMRAnalysisDataset_id" ON "NMRAnalysisDataset_version_notes" ("NMRAnalysisDataset_id");CREATE INDEX "ix_NMRAnalysisDataset_version_notes_version_notes" ON "NMRAnalysisDataset_version_notes" (version_notes);
+CREATE TABLE "DataAnalysis" (
 	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	"Device_id" TEXT,
-	"Reactor_id" TEXT,
-	"NMRSpectrometer_id" TEXT,
+	"AnalysisDataset_id" TEXT,
+	realized_plan_id INTEGER,
+	occurred_in_id INTEGER,
 	type_id TEXT,
 	rdf_type_id TEXT,
 	PRIMARY KEY (id),
-	FOREIGN KEY("Device_id") REFERENCES "Device" (id),
-	FOREIGN KEY("Reactor_id") REFERENCES "Reactor" (id),
-	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id),
+	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id),
+	FOREIGN KEY(occurred_in_id) REFERENCES "Surrounding" (id),
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_Device_id" ON "Device" (id);
+);CREATE INDEX "ix_DataAnalysis_id" ON "DataAnalysis" (id);
 CREATE TABLE "Kind" (
 	id INTEGER NOT NULL,
 	"AnalysisDataset_id" TEXT,
@@ -2538,38 +2267,521 @@ CREATE TABLE "Standard" (
 	FOREIGN KEY("Distribution_id") REFERENCES "Distribution" (id),
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id)
 );CREATE INDEX "ix_Standard_id" ON "Standard" (id);
-CREATE TABLE "ChemicalEntity" (
+CREATE TABLE "StartingMaterial" (
 	alternative_label TEXT,
 	has_physical_state VARCHAR(7),
 	title TEXT,
 	description TEXT,
 	id TEXT NOT NULL,
-	"SubstanceSample_id" TEXT,
-	"PolymerSample_id" TEXT,
-	"ChemicalSubstance_id" TEXT,
-	"Polymer_id" TEXT,
-	"StartingMaterial_id" TEXT,
-	"DissolvingSubstance_id" TEXT,
-	"Reagent_id" TEXT,
-	"ChemicalProduct_id" TEXT,
-	"Catalyst_id" TEXT,
-	"NMRSolvent_id" TEXT,
+	"ChemicalReaction_id" TEXT,
 	type_id TEXT,
 	rdf_type_id TEXT,
 	PRIMARY KEY (id),
-	FOREIGN KEY("SubstanceSample_id") REFERENCES "SubstanceSample" (id),
-	FOREIGN KEY("PolymerSample_id") REFERENCES "PolymerSample" (id),
-	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
-	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
-	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
-	FOREIGN KEY("DissolvingSubstance_id") REFERENCES "DissolvingSubstance" (id),
-	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
-	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
-	FOREIGN KEY("Catalyst_id") REFERENCES "Catalyst" (id),
-	FOREIGN KEY("NMRSolvent_id") REFERENCES "NMRSolvent" (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_ChemicalEntity_id" ON "ChemicalEntity" (id);
+);CREATE INDEX "ix_StartingMaterial_id" ON "StartingMaterial" (id);
+CREATE TABLE "DissolvingSubstance" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"ChemicalReaction_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_DissolvingSubstance_id" ON "DissolvingSubstance" (id);
+CREATE TABLE "Reagent" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
+	title TEXT,
+	description TEXT,
+	id TEXT NOT NULL,
+	"ChemicalReaction_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_Reagent_id" ON "Reagent" (id);
+CREATE TABLE "ChemicalProduct" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
+	title TEXT,
+	description TEXT,
+	id TEXT NOT NULL,
+	"ChemicalReaction_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_ChemicalProduct_id" ON "ChemicalProduct" (id);
+CREATE TABLE "Catalyst" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"ChemicalReaction_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_Catalyst_id" ON "Catalyst" (id);
+CREATE TABLE "Reactor" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"ChemicalReaction_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_Reactor_id" ON "Reactor" (id);
+CREATE TABLE "Yield" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value FLOAT NOT NULL,
+	has_quantity_type TEXT NOT NULL,
+	unit TEXT,
+	"ChemicalReaction_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_Yield_id" ON "Yield" (id);
+CREATE TABLE "NMRSpectralAnalysis" (
+	id TEXT NOT NULL,
+	"NMRAnalysisDataset_id" TEXT,
+	realized_plan_id INTEGER,
+	occurred_in_id INTEGER,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id),
+	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id),
+	FOREIGN KEY(occurred_in_id) REFERENCES "Surrounding" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_NMRSpectralAnalysis_id" ON "NMRSpectralAnalysis" (id);
+CREATE TABLE "CatalogueRecord_description" (
+	"CatalogueRecord_id" INTEGER,
+	description TEXT,
+	PRIMARY KEY ("CatalogueRecord_id", description),
+	FOREIGN KEY("CatalogueRecord_id") REFERENCES "CatalogueRecord" (id)
+);CREATE INDEX "ix_CatalogueRecord_description_description" ON "CatalogueRecord_description" (description);CREATE INDEX "ix_CatalogueRecord_description_CatalogueRecord_id" ON "CatalogueRecord_description" ("CatalogueRecord_id");
+CREATE TABLE "CatalogueRecord_title" (
+	"CatalogueRecord_id" INTEGER,
+	title TEXT,
+	PRIMARY KEY ("CatalogueRecord_id", title),
+	FOREIGN KEY("CatalogueRecord_id") REFERENCES "CatalogueRecord" (id)
+);CREATE INDEX "ix_CatalogueRecord_title_title" ON "CatalogueRecord_title" (title);CREATE INDEX "ix_CatalogueRecord_title_CatalogueRecord_id" ON "CatalogueRecord_title" ("CatalogueRecord_id");
+CREATE TABLE "ConceptScheme_title" (
+	"ConceptScheme_id" INTEGER,
+	title TEXT NOT NULL,
+	PRIMARY KEY ("ConceptScheme_id", title),
+	FOREIGN KEY("ConceptScheme_id") REFERENCES "ConceptScheme" (id)
+);CREATE INDEX "ix_ConceptScheme_title_ConceptScheme_id" ON "ConceptScheme_title" ("ConceptScheme_id");CREATE INDEX "ix_ConceptScheme_title_title" ON "ConceptScheme_title" (title);
+CREATE TABLE "DatasetSeries_description" (
+	"DatasetSeries_id" INTEGER,
+	description TEXT NOT NULL,
+	PRIMARY KEY ("DatasetSeries_id", description),
+	FOREIGN KEY("DatasetSeries_id") REFERENCES "DatasetSeries" (id)
+);CREATE INDEX "ix_DatasetSeries_description_description" ON "DatasetSeries_description" (description);CREATE INDEX "ix_DatasetSeries_description_DatasetSeries_id" ON "DatasetSeries_description" ("DatasetSeries_id");
+CREATE TABLE "DatasetSeries_title" (
+	"DatasetSeries_id" INTEGER,
+	title TEXT NOT NULL,
+	PRIMARY KEY ("DatasetSeries_id", title),
+	FOREIGN KEY("DatasetSeries_id") REFERENCES "DatasetSeries" (id)
+);CREATE INDEX "ix_DatasetSeries_title_title" ON "DatasetSeries_title" (title);CREATE INDEX "ix_DatasetSeries_title_DatasetSeries_id" ON "DatasetSeries_title" ("DatasetSeries_id");
+CREATE TABLE "ChemicalReaction_title" (
+	"ChemicalReaction_id" TEXT,
+	title TEXT,
+	PRIMARY KEY ("ChemicalReaction_id", title),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id)
+);CREATE INDEX "ix_ChemicalReaction_title_title" ON "ChemicalReaction_title" (title);CREATE INDEX "ix_ChemicalReaction_title_ChemicalReaction_id" ON "ChemicalReaction_title" ("ChemicalReaction_id");
+CREATE TABLE "ChemicalReaction_description" (
+	"ChemicalReaction_id" TEXT,
+	description TEXT,
+	PRIMARY KEY ("ChemicalReaction_id", description),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id)
+);CREATE INDEX "ix_ChemicalReaction_description_ChemicalReaction_id" ON "ChemicalReaction_description" ("ChemicalReaction_id");CREATE INDEX "ix_ChemicalReaction_description_description" ON "ChemicalReaction_description" (description);
+CREATE TABLE "AnalysisSourceData" (
+	title TEXT,
+	description TEXT,
+	id TEXT NOT NULL,
+	"DataAnalysis_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_AnalysisSourceData_id" ON "AnalysisSourceData" (id);
+CREATE TABLE "NMRSpectrum" (
+	title TEXT,
+	description TEXT,
+	id TEXT NOT NULL,
+	"NMRSpectralAnalysis_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_NMRSpectrum_id" ON "NMRSpectrum" (id);
+CREATE TABLE "DataAnalysis_title" (
+	"DataAnalysis_id" TEXT,
+	title TEXT,
+	PRIMARY KEY ("DataAnalysis_id", title),
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id)
+);CREATE INDEX "ix_DataAnalysis_title_title" ON "DataAnalysis_title" (title);CREATE INDEX "ix_DataAnalysis_title_DataAnalysis_id" ON "DataAnalysis_title" ("DataAnalysis_id");
+CREATE TABLE "DataAnalysis_description" (
+	"DataAnalysis_id" TEXT,
+	description TEXT,
+	PRIMARY KEY ("DataAnalysis_id", description),
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id)
+);CREATE INDEX "ix_DataAnalysis_description_description" ON "DataAnalysis_description" (description);CREATE INDEX "ix_DataAnalysis_description_DataAnalysis_id" ON "DataAnalysis_description" ("DataAnalysis_id");
+CREATE TABLE "NMRSpectralAnalysis_title" (
+	"NMRSpectralAnalysis_id" TEXT,
+	title TEXT,
+	PRIMARY KEY ("NMRSpectralAnalysis_id", title),
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id)
+);CREATE INDEX "ix_NMRSpectralAnalysis_title_NMRSpectralAnalysis_id" ON "NMRSpectralAnalysis_title" ("NMRSpectralAnalysis_id");CREATE INDEX "ix_NMRSpectralAnalysis_title_title" ON "NMRSpectralAnalysis_title" (title);
+CREATE TABLE "NMRSpectralAnalysis_description" (
+	"NMRSpectralAnalysis_id" TEXT,
+	description TEXT,
+	PRIMARY KEY ("NMRSpectralAnalysis_id", description),
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id)
+);CREATE INDEX "ix_NMRSpectralAnalysis_description_description" ON "NMRSpectralAnalysis_description" (description);CREATE INDEX "ix_NMRSpectralAnalysis_description_NMRSpectralAnalysis_id" ON "NMRSpectralAnalysis_description" ("NMRSpectralAnalysis_id");
+CREATE TABLE "DataGeneratingActivity" (
+	id TEXT NOT NULL,
+	"AnalysisSourceData_id" TEXT,
+	"Dataset_id" TEXT,
+	realized_plan_id INTEGER,
+	occurred_in_id INTEGER,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
+	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id),
+	FOREIGN KEY(occurred_in_id) REFERENCES "Surrounding" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_DataGeneratingActivity_id" ON "DataGeneratingActivity" (id);
+CREATE TABLE "NMRSpectroscopy" (
+	id TEXT NOT NULL,
+	"NMRSpectrum_id" TEXT,
+	used_pulse_sequence_id INTEGER NOT NULL,
+	used_number_of_scans_id INTEGER,
+	realized_plan_id INTEGER,
+	occurred_in_id INTEGER,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id),
+	FOREIGN KEY(used_pulse_sequence_id) REFERENCES "PulseSequence" (id),
+	FOREIGN KEY(used_number_of_scans_id) REFERENCES "NumberOfScans" (id),
+	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id),
+	FOREIGN KEY(occurred_in_id) REFERENCES "Surrounding" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_NMRSpectroscopy_id" ON "NMRSpectroscopy" (id);
+CREATE TABLE "EvaluatedActivity" (
+	id TEXT NOT NULL,
+	"AnalysisDataset_id" TEXT,
+	"DataAnalysis_id" TEXT,
+	"DataGeneratingActivity_id" TEXT,
+	"Dataset_id" TEXT,
+	"NMRAnalysisDataset_id" TEXT,
+	"NMRSpectralAnalysis_id" TEXT,
+	"NMRSpectroscopy_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id),
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
+	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
+	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id),
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_EvaluatedActivity_id" ON "EvaluatedActivity" (id);
+CREATE TABLE "EvaluatedEntity" (
+	title TEXT,
+	description TEXT,
+	id TEXT NOT NULL,
+	"AnalysisDataset_id" TEXT,
+	"DataGeneratingActivity_id" TEXT,
+	"Dataset_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id),
+	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_EvaluatedEntity_id" ON "EvaluatedEntity" (id);
+CREATE TABLE "NMRSpectrometer" (
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"NMRSpectroscopy_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_NMRSpectrometer_id" ON "NMRSpectrometer" (id);
+CREATE TABLE "ShiftCalibrationCompound" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
+	title TEXT,
+	description TEXT,
+	id TEXT NOT NULL,
+	"NMRSpectroscopy_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_ShiftCalibrationCompound_id" ON "ShiftCalibrationCompound" (id);
+CREATE TABLE "ShiftReferenceCompound" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
+	title TEXT,
+	description TEXT,
+	id TEXT NOT NULL,
+	"NMRSpectroscopy_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_ShiftReferenceCompound_id" ON "ShiftReferenceCompound" (id);
+CREATE TABLE "AcquisitionNucleus" (
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"NMRSpectroscopy_id" TEXT,
+	nucleus_of_id TEXT NOT NULL,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY(nucleus_of_id) REFERENCES "Atom" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_AcquisitionNucleus_id" ON "AcquisitionNucleus" (id);
+CREATE TABLE "NMRSolvent" (
+	alternative_label TEXT,
+	has_physical_state VARCHAR(7),
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"NMRSpectroscopy_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_NMRSolvent_id" ON "NMRSolvent" (id);
+CREATE TABLE "DataGeneratingActivity_title" (
+	"DataGeneratingActivity_id" TEXT,
+	title TEXT,
+	PRIMARY KEY ("DataGeneratingActivity_id", title),
+	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id)
+);CREATE INDEX "ix_DataGeneratingActivity_title_title" ON "DataGeneratingActivity_title" (title);CREATE INDEX "ix_DataGeneratingActivity_title_DataGeneratingActivity_id" ON "DataGeneratingActivity_title" ("DataGeneratingActivity_id");
+CREATE TABLE "DataGeneratingActivity_description" (
+	"DataGeneratingActivity_id" TEXT,
+	description TEXT,
+	PRIMARY KEY ("DataGeneratingActivity_id", description),
+	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id)
+);CREATE INDEX "ix_DataGeneratingActivity_description_description" ON "DataGeneratingActivity_description" (description);CREATE INDEX "ix_DataGeneratingActivity_description_DataGeneratingActivity_id" ON "DataGeneratingActivity_description" ("DataGeneratingActivity_id");
+CREATE TABLE "NMRSpectroscopy_title" (
+	"NMRSpectroscopy_id" TEXT,
+	title TEXT,
+	PRIMARY KEY ("NMRSpectroscopy_id", title),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id)
+);CREATE INDEX "ix_NMRSpectroscopy_title_title" ON "NMRSpectroscopy_title" (title);CREATE INDEX "ix_NMRSpectroscopy_title_NMRSpectroscopy_id" ON "NMRSpectroscopy_title" ("NMRSpectroscopy_id");
+CREATE TABLE "NMRSpectroscopy_description" (
+	"NMRSpectroscopy_id" TEXT,
+	description TEXT,
+	PRIMARY KEY ("NMRSpectroscopy_id", description),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id)
+);CREATE INDEX "ix_NMRSpectroscopy_description_description" ON "NMRSpectroscopy_description" (description);CREATE INDEX "ix_NMRSpectroscopy_description_NMRSpectroscopy_id" ON "NMRSpectroscopy_description" ("NMRSpectroscopy_id");
+CREATE TABLE "Device" (
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"Device_id" TEXT,
+	"Reactor_id" TEXT,
+	"NMRSpectrometer_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("Device_id") REFERENCES "Device" (id),
+	FOREIGN KEY("Reactor_id") REFERENCES "Reactor" (id),
+	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_Device_id" ON "Device" (id);
+CREATE TABLE "MolarMass" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value FLOAT NOT NULL,
+	has_quantity_type TEXT NOT NULL,
+	unit TEXT,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_MolarMass_id" ON "MolarMass" (id);
+CREATE TABLE "InChIKey" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value TEXT NOT NULL,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_InChIKey_id" ON "InChIKey" (id);
+CREATE TABLE "InChi" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value TEXT NOT NULL,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_InChi_id" ON "InChi" (id);
+CREATE TABLE "MolecularFormula" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value TEXT NOT NULL,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_MolecularFormula_id" ON "MolecularFormula" (id);
+CREATE TABLE "IUPACName" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value TEXT NOT NULL,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_IUPACName_id" ON "IUPACName" (id);
+CREATE TABLE "SMILES" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value TEXT NOT NULL,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_SMILES_id" ON "SMILES" (id);
 CREATE TABLE "Concentration" (
 	id INTEGER NOT NULL,
 	title TEXT,
@@ -2755,533 +2967,6 @@ CREATE TABLE "PercentageOfTotal" (
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );CREATE INDEX "ix_PercentageOfTotal_id" ON "PercentageOfTotal" (id);
-CREATE TABLE "AcquisitionNucleus" (
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	"NMRSpectroscopy_id" TEXT,
-	nucleus_of_id TEXT NOT NULL,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY(nucleus_of_id) REFERENCES "Atom" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_AcquisitionNucleus_id" ON "AcquisitionNucleus" (id);
-CREATE TABLE "NominalProtonFrequency" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value FLOAT NOT NULL,
-	has_quantity_type TEXT NOT NULL,
-	unit TEXT,
-	"NMRSpectrometer_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_NominalProtonFrequency_id" ON "NominalProtonFrequency" (id);
-CREATE TABLE "ChemicalShiftReference" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value FLOAT NOT NULL,
-	has_quantity_type TEXT NOT NULL,
-	unit TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_ChemicalShiftReference_id" ON "ChemicalShiftReference" (id);
-CREATE TABLE "CatalogueRecord_description" (
-	"CatalogueRecord_id" INTEGER,
-	description TEXT,
-	PRIMARY KEY ("CatalogueRecord_id", description),
-	FOREIGN KEY("CatalogueRecord_id") REFERENCES "CatalogueRecord" (id)
-);CREATE INDEX "ix_CatalogueRecord_description_description" ON "CatalogueRecord_description" (description);CREATE INDEX "ix_CatalogueRecord_description_CatalogueRecord_id" ON "CatalogueRecord_description" ("CatalogueRecord_id");
-CREATE TABLE "CatalogueRecord_title" (
-	"CatalogueRecord_id" INTEGER,
-	title TEXT,
-	PRIMARY KEY ("CatalogueRecord_id", title),
-	FOREIGN KEY("CatalogueRecord_id") REFERENCES "CatalogueRecord" (id)
-);CREATE INDEX "ix_CatalogueRecord_title_title" ON "CatalogueRecord_title" (title);CREATE INDEX "ix_CatalogueRecord_title_CatalogueRecord_id" ON "CatalogueRecord_title" ("CatalogueRecord_id");
-CREATE TABLE "ConceptScheme_title" (
-	"ConceptScheme_id" INTEGER,
-	title TEXT NOT NULL,
-	PRIMARY KEY ("ConceptScheme_id", title),
-	FOREIGN KEY("ConceptScheme_id") REFERENCES "ConceptScheme" (id)
-);CREATE INDEX "ix_ConceptScheme_title_title" ON "ConceptScheme_title" (title);CREATE INDEX "ix_ConceptScheme_title_ConceptScheme_id" ON "ConceptScheme_title" ("ConceptScheme_id");
-CREATE TABLE "DatasetSeries_description" (
-	"DatasetSeries_id" INTEGER,
-	description TEXT NOT NULL,
-	PRIMARY KEY ("DatasetSeries_id", description),
-	FOREIGN KEY("DatasetSeries_id") REFERENCES "DatasetSeries" (id)
-);CREATE INDEX "ix_DatasetSeries_description_description" ON "DatasetSeries_description" (description);CREATE INDEX "ix_DatasetSeries_description_DatasetSeries_id" ON "DatasetSeries_description" ("DatasetSeries_id");
-CREATE TABLE "DatasetSeries_title" (
-	"DatasetSeries_id" INTEGER,
-	title TEXT NOT NULL,
-	PRIMARY KEY ("DatasetSeries_id", title),
-	FOREIGN KEY("DatasetSeries_id") REFERENCES "DatasetSeries" (id)
-);CREATE INDEX "ix_DatasetSeries_title_DatasetSeries_id" ON "DatasetSeries_title" ("DatasetSeries_id");CREATE INDEX "ix_DatasetSeries_title_title" ON "DatasetSeries_title" (title);
-CREATE TABLE "AgenticEntity" (
-	id TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	"Activity_id" TEXT,
-	"AgenticEntity_id" TEXT,
-	"DataAnalysis_id" TEXT,
-	"DataGeneratingActivity_id" TEXT,
-	"EvaluatedActivity_id" TEXT,
-	"ChemicalReaction_id" TEXT,
-	"DissolvingSubstance_id" TEXT,
-	"Catalyst_id" TEXT,
-	"NMRSpectralAnalysis_id" TEXT,
-	"NMRSpectroscopy_id" TEXT,
-	"AcquisitionNucleus_id" TEXT,
-	"NMRSolvent_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id),
-	FOREIGN KEY("AgenticEntity_id") REFERENCES "AgenticEntity" (id),
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
-	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
-	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY("DissolvingSubstance_id") REFERENCES "DissolvingSubstance" (id),
-	FOREIGN KEY("Catalyst_id") REFERENCES "Catalyst" (id),
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY("AcquisitionNucleus_id") REFERENCES "AcquisitionNucleus" (id),
-	FOREIGN KEY("NMRSolvent_id") REFERENCES "NMRSolvent" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_AgenticEntity_id" ON "AgenticEntity" (id);
-CREATE TABLE "MolarMass" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value FLOAT NOT NULL,
-	has_quantity_type TEXT NOT NULL,
-	unit TEXT,
-	"ChemicalEntity_id" TEXT,
-	"Atom_id" TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	"CharacterizedCompound_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
-	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_MolarMass_id" ON "MolarMass" (id);
-CREATE TABLE "InChIKey" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value TEXT NOT NULL,
-	"ChemicalEntity_id" TEXT,
-	"Atom_id" TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	"CharacterizedCompound_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
-	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_InChIKey_id" ON "InChIKey" (id);
-CREATE TABLE "InChi" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value TEXT NOT NULL,
-	"ChemicalEntity_id" TEXT,
-	"Atom_id" TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	"CharacterizedCompound_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
-	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_InChi_id" ON "InChi" (id);
-CREATE TABLE "MolecularFormula" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value TEXT NOT NULL,
-	"ChemicalEntity_id" TEXT,
-	"Atom_id" TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	"CharacterizedCompound_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
-	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_MolecularFormula_id" ON "MolecularFormula" (id);
-CREATE TABLE "IUPACName" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value TEXT NOT NULL,
-	"ChemicalEntity_id" TEXT,
-	"Atom_id" TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	"CharacterizedCompound_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
-	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_IUPACName_id" ON "IUPACName" (id);
-CREATE TABLE "SMILES" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value TEXT NOT NULL,
-	"ChemicalEntity_id" TEXT,
-	"Atom_id" TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	"CharacterizedCompound_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
-	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_SMILES_id" ON "SMILES" (id);
-CREATE TABLE "MaterialEntity" (
-	alternative_label TEXT,
-	has_physical_state VARCHAR(7),
-	title TEXT,
-	description TEXT,
-	id TEXT NOT NULL,
-	"ChemicalEntity_id" TEXT,
-	"Atom_id" TEXT,
-	"ChemicalSubstance_id" TEXT,
-	"Polymer_id" TEXT,
-	"StartingMaterial_id" TEXT,
-	"Reagent_id" TEXT,
-	"ChemicalProduct_id" TEXT,
-	"MaterialEntity_id" TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	"CharacterizedCompound_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
-	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
-	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
-	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
-	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
-	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
-	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
-	FOREIGN KEY("MaterialEntity_id") REFERENCES "MaterialEntity" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_MaterialEntity_id" ON "MaterialEntity" (id);
-CREATE TABLE "Identifier" (
-	id INTEGER NOT NULL,
-	notation TEXT NOT NULL,
-	title TEXT,
-	description TEXT,
-	"SubstanceSample_id" TEXT,
-	"PolymerSample_id" TEXT,
-	"Activity_id" TEXT,
-	"AgenticEntity_id" TEXT,
-	"AnalysisDataset_id" TEXT,
-	"AnalysisSourceData_id" TEXT,
-	"DataAnalysis_id" TEXT,
-	"DataGeneratingActivity_id" TEXT,
-	"Dataset_id" TEXT,
-	"Device_id" TEXT,
-	"Entity_id" TEXT,
-	"EvaluatedActivity_id" TEXT,
-	"EvaluatedEntity_id" TEXT,
-	"Software_id" TEXT,
-	"ChemicalEntity_id" TEXT,
-	"Atom_id" TEXT,
-	"ChemicalSubstance_id" TEXT,
-	"Polymer_id" TEXT,
-	"ChemicalReaction_id" TEXT,
-	"StartingMaterial_id" TEXT,
-	"DissolvingSubstance_id" TEXT,
-	"Reagent_id" TEXT,
-	"ChemicalProduct_id" TEXT,
-	"Catalyst_id" TEXT,
-	"Reactor_id" TEXT,
-	"MaterialEntity_id" TEXT,
-	"MaterialSample_id" TEXT,
-	"NMRSample_id" TEXT,
-	"NMRAnalysisDataset_id" TEXT,
-	"NMRSpectralAnalysis_id" TEXT,
-	"NMRSpectrum_id" TEXT,
-	"NMRSpectroscopy_id" TEXT,
-	"NMRSpectrometer_id" TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	"CharacterizedCompound_id" TEXT,
-	"AcquisitionNucleus_id" TEXT,
-	"NMRSolvent_id" TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("SubstanceSample_id") REFERENCES "SubstanceSample" (id),
-	FOREIGN KEY("PolymerSample_id") REFERENCES "PolymerSample" (id),
-	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id),
-	FOREIGN KEY("AgenticEntity_id") REFERENCES "AgenticEntity" (id),
-	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id),
-	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id),
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
-	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
-	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
-	FOREIGN KEY("Device_id") REFERENCES "Device" (id),
-	FOREIGN KEY("Entity_id") REFERENCES "Entity" (id),
-	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
-	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id),
-	FOREIGN KEY("Software_id") REFERENCES "Software" (id),
-	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
-	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
-	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
-	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
-	FOREIGN KEY("DissolvingSubstance_id") REFERENCES "DissolvingSubstance" (id),
-	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
-	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
-	FOREIGN KEY("Catalyst_id") REFERENCES "Catalyst" (id),
-	FOREIGN KEY("Reactor_id") REFERENCES "Reactor" (id),
-	FOREIGN KEY("MaterialEntity_id") REFERENCES "MaterialEntity" (id),
-	FOREIGN KEY("MaterialSample_id") REFERENCES "MaterialSample" (id),
-	FOREIGN KEY("NMRSample_id") REFERENCES "NMRSample" (id),
-	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id),
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
-	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
-	FOREIGN KEY("AcquisitionNucleus_id") REFERENCES "AcquisitionNucleus" (id),
-	FOREIGN KEY("NMRSolvent_id") REFERENCES "NMRSolvent" (id)
-);CREATE INDEX "ix_Identifier_id" ON "Identifier" (id);
-CREATE TABLE "QualitativeAttribute" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value TEXT NOT NULL,
-	"SubstanceSample_id" TEXT,
-	"PolymerSample_id" TEXT,
-	"Activity_id" TEXT,
-	"AgenticEntity_id" TEXT,
-	"AnalysisSourceData_id" TEXT,
-	"DataAnalysis_id" TEXT,
-	"DataGeneratingActivity_id" TEXT,
-	"Device_id" TEXT,
-	"Entity_id" TEXT,
-	"EvaluatedActivity_id" TEXT,
-	"EvaluatedEntity_id" TEXT,
-	"Software_id" TEXT,
-	"ChemicalEntity_id" TEXT,
-	"Atom_id" TEXT,
-	"ChemicalSubstance_id" TEXT,
-	"Polymer_id" TEXT,
-	"ChemicalReaction_id" TEXT,
-	"StartingMaterial_id" TEXT,
-	"DissolvingSubstance_id" TEXT,
-	"Reagent_id" TEXT,
-	"ChemicalProduct_id" TEXT,
-	"Catalyst_id" TEXT,
-	"Reactor_id" TEXT,
-	"MaterialEntity_id" TEXT,
-	"MaterialSample_id" TEXT,
-	"NMRSample_id" TEXT,
-	"NMRSpectralAnalysis_id" TEXT,
-	"NMRSpectrum_id" TEXT,
-	"NMRSpectroscopy_id" TEXT,
-	"NMRSpectrometer_id" TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	"CharacterizedCompound_id" TEXT,
-	"AcquisitionNucleus_id" TEXT,
-	"NMRSolvent_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY("SubstanceSample_id") REFERENCES "SubstanceSample" (id),
-	FOREIGN KEY("PolymerSample_id") REFERENCES "PolymerSample" (id),
-	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id),
-	FOREIGN KEY("AgenticEntity_id") REFERENCES "AgenticEntity" (id),
-	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id),
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
-	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
-	FOREIGN KEY("Device_id") REFERENCES "Device" (id),
-	FOREIGN KEY("Entity_id") REFERENCES "Entity" (id),
-	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
-	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id),
-	FOREIGN KEY("Software_id") REFERENCES "Software" (id),
-	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
-	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
-	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
-	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
-	FOREIGN KEY("DissolvingSubstance_id") REFERENCES "DissolvingSubstance" (id),
-	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
-	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
-	FOREIGN KEY("Catalyst_id") REFERENCES "Catalyst" (id),
-	FOREIGN KEY("Reactor_id") REFERENCES "Reactor" (id),
-	FOREIGN KEY("MaterialEntity_id") REFERENCES "MaterialEntity" (id),
-	FOREIGN KEY("MaterialSample_id") REFERENCES "MaterialSample" (id),
-	FOREIGN KEY("NMRSample_id") REFERENCES "NMRSample" (id),
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
-	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
-	FOREIGN KEY("AcquisitionNucleus_id") REFERENCES "AcquisitionNucleus" (id),
-	FOREIGN KEY("NMRSolvent_id") REFERENCES "NMRSolvent" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_QualitativeAttribute_id" ON "QualitativeAttribute" (id);
-CREATE TABLE "QuantitativeAttribute" (
-	id INTEGER NOT NULL,
-	title TEXT,
-	description TEXT,
-	value FLOAT NOT NULL,
-	has_quantity_type TEXT NOT NULL,
-	unit TEXT,
-	"SubstanceSample_id" TEXT,
-	"PolymerSample_id" TEXT,
-	"Activity_id" TEXT,
-	"AgenticEntity_id" TEXT,
-	"AnalysisSourceData_id" TEXT,
-	"DataAnalysis_id" TEXT,
-	"DataGeneratingActivity_id" TEXT,
-	"Device_id" TEXT,
-	"Entity_id" TEXT,
-	"EvaluatedActivity_id" TEXT,
-	"EvaluatedEntity_id" TEXT,
-	"Software_id" TEXT,
-	"ChemicalEntity_id" TEXT,
-	"Atom_id" TEXT,
-	"ChemicalSubstance_id" TEXT,
-	"Polymer_id" TEXT,
-	"ChemicalReaction_id" TEXT,
-	"StartingMaterial_id" TEXT,
-	"DissolvingSubstance_id" TEXT,
-	"Reagent_id" TEXT,
-	"ChemicalProduct_id" TEXT,
-	"Catalyst_id" TEXT,
-	"Reactor_id" TEXT,
-	"MaterialEntity_id" TEXT,
-	"MaterialSample_id" TEXT,
-	"NMRSample_id" TEXT,
-	"NMRSpectralAnalysis_id" TEXT,
-	"NMRSpectrum_id" TEXT,
-	"NMRSpectroscopy_id" TEXT,
-	"NMRSpectrometer_id" TEXT,
-	"ShiftCalibrationCompound_id" TEXT,
-	"ShiftReferenceCompound_id" TEXT,
-	"CharacterizedCompound_id" TEXT,
-	"AcquisitionNucleus_id" TEXT,
-	"NMRSolvent_id" TEXT,
-	type_id TEXT,
-	rdf_type_id TEXT,
-	PRIMARY KEY (id),
-	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY("SubstanceSample_id") REFERENCES "SubstanceSample" (id),
-	FOREIGN KEY("PolymerSample_id") REFERENCES "PolymerSample" (id),
-	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id),
-	FOREIGN KEY("AgenticEntity_id") REFERENCES "AgenticEntity" (id),
-	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id),
-	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
-	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
-	FOREIGN KEY("Device_id") REFERENCES "Device" (id),
-	FOREIGN KEY("Entity_id") REFERENCES "Entity" (id),
-	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
-	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id),
-	FOREIGN KEY("Software_id") REFERENCES "Software" (id),
-	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
-	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
-	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
-	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
-	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
-	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
-	FOREIGN KEY("DissolvingSubstance_id") REFERENCES "DissolvingSubstance" (id),
-	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
-	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
-	FOREIGN KEY("Catalyst_id") REFERENCES "Catalyst" (id),
-	FOREIGN KEY("Reactor_id") REFERENCES "Reactor" (id),
-	FOREIGN KEY("MaterialEntity_id") REFERENCES "MaterialEntity" (id),
-	FOREIGN KEY("MaterialSample_id") REFERENCES "MaterialSample" (id),
-	FOREIGN KEY("NMRSample_id") REFERENCES "NMRSample" (id),
-	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
-	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id),
-	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
-	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
-	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
-	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
-	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
-	FOREIGN KEY("AcquisitionNucleus_id") REFERENCES "AcquisitionNucleus" (id),
-	FOREIGN KEY("NMRSolvent_id") REFERENCES "NMRSolvent" (id),
-	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
-	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_QuantitativeAttribute_id" ON "QuantitativeAttribute" (id);
 CREATE TABLE "Temperature" (
 	id INTEGER NOT NULL,
 	title TEXT,
@@ -3561,3 +3246,342 @@ CREATE TABLE "Pressure" (
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );CREATE INDEX "ix_Pressure_id" ON "Pressure" (id);
+CREATE TABLE "NominalProtonFrequency" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value FLOAT NOT NULL,
+	has_quantity_type TEXT NOT NULL,
+	unit TEXT,
+	"NMRSpectrometer_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_NominalProtonFrequency_id" ON "NominalProtonFrequency" (id);
+CREATE TABLE "ChemicalShiftReference" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value FLOAT NOT NULL,
+	has_quantity_type TEXT NOT NULL,
+	unit TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_ChemicalShiftReference_id" ON "ChemicalShiftReference" (id);
+CREATE TABLE "EvaluatedActivity_title" (
+	"EvaluatedActivity_id" TEXT,
+	title TEXT,
+	PRIMARY KEY ("EvaluatedActivity_id", title),
+	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id)
+);CREATE INDEX "ix_EvaluatedActivity_title_EvaluatedActivity_id" ON "EvaluatedActivity_title" ("EvaluatedActivity_id");CREATE INDEX "ix_EvaluatedActivity_title_title" ON "EvaluatedActivity_title" (title);
+CREATE TABLE "EvaluatedActivity_description" (
+	"EvaluatedActivity_id" TEXT,
+	description TEXT,
+	PRIMARY KEY ("EvaluatedActivity_id", description),
+	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id)
+);CREATE INDEX "ix_EvaluatedActivity_description_EvaluatedActivity_id" ON "EvaluatedActivity_description" ("EvaluatedActivity_id");CREATE INDEX "ix_EvaluatedActivity_description_description" ON "EvaluatedActivity_description" (description);
+CREATE TABLE "AgenticEntity" (
+	id TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"Activity_id" TEXT,
+	"AgenticEntity_id" TEXT,
+	"DataAnalysis_id" TEXT,
+	"DataGeneratingActivity_id" TEXT,
+	"Device_id" TEXT,
+	"EvaluatedActivity_id" TEXT,
+	"Software_id" TEXT,
+	"ChemicalReaction_id" TEXT,
+	"DissolvingSubstance_id" TEXT,
+	"Catalyst_id" TEXT,
+	"Reactor_id" TEXT,
+	"NMRSpectralAnalysis_id" TEXT,
+	"NMRSpectroscopy_id" TEXT,
+	"NMRSpectrometer_id" TEXT,
+	"AcquisitionNucleus_id" TEXT,
+	"NMRSolvent_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id),
+	FOREIGN KEY("AgenticEntity_id") REFERENCES "AgenticEntity" (id),
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
+	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
+	FOREIGN KEY("Device_id") REFERENCES "Device" (id),
+	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
+	FOREIGN KEY("Software_id") REFERENCES "Software" (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY("DissolvingSubstance_id") REFERENCES "DissolvingSubstance" (id),
+	FOREIGN KEY("Catalyst_id") REFERENCES "Catalyst" (id),
+	FOREIGN KEY("Reactor_id") REFERENCES "Reactor" (id),
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
+	FOREIGN KEY("AcquisitionNucleus_id") REFERENCES "AcquisitionNucleus" (id),
+	FOREIGN KEY("NMRSolvent_id") REFERENCES "NMRSolvent" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_AgenticEntity_id" ON "AgenticEntity" (id);
+CREATE TABLE "Identifier" (
+	id INTEGER NOT NULL,
+	notation TEXT NOT NULL,
+	title TEXT,
+	description TEXT,
+	"SubstanceSample_id" TEXT,
+	"PolymerSample_id" TEXT,
+	"Activity_id" TEXT,
+	"AgenticEntity_id" TEXT,
+	"AnalysisDataset_id" TEXT,
+	"AnalysisSourceData_id" TEXT,
+	"DataAnalysis_id" TEXT,
+	"DataGeneratingActivity_id" TEXT,
+	"Dataset_id" TEXT,
+	"Device_id" TEXT,
+	"Entity_id" TEXT,
+	"EvaluatedActivity_id" TEXT,
+	"EvaluatedEntity_id" TEXT,
+	"Software_id" TEXT,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ChemicalSubstance_id" TEXT,
+	"Polymer_id" TEXT,
+	"ChemicalReaction_id" TEXT,
+	"StartingMaterial_id" TEXT,
+	"DissolvingSubstance_id" TEXT,
+	"Reagent_id" TEXT,
+	"ChemicalProduct_id" TEXT,
+	"Catalyst_id" TEXT,
+	"Reactor_id" TEXT,
+	"MaterialEntity_id" TEXT,
+	"MaterialSample_id" TEXT,
+	"NMRSample_id" TEXT,
+	"NMRAnalysisDataset_id" TEXT,
+	"NMRSpectralAnalysis_id" TEXT,
+	"NMRSpectrum_id" TEXT,
+	"NMRSpectroscopy_id" TEXT,
+	"NMRSpectrometer_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
+	"AcquisitionNucleus_id" TEXT,
+	"NMRSolvent_id" TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("SubstanceSample_id") REFERENCES "SubstanceSample" (id),
+	FOREIGN KEY("PolymerSample_id") REFERENCES "PolymerSample" (id),
+	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id),
+	FOREIGN KEY("AgenticEntity_id") REFERENCES "AgenticEntity" (id),
+	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id),
+	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id),
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
+	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
+	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id),
+	FOREIGN KEY("Device_id") REFERENCES "Device" (id),
+	FOREIGN KEY("Entity_id") REFERENCES "Entity" (id),
+	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
+	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id),
+	FOREIGN KEY("Software_id") REFERENCES "Software" (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
+	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
+	FOREIGN KEY("DissolvingSubstance_id") REFERENCES "DissolvingSubstance" (id),
+	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
+	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
+	FOREIGN KEY("Catalyst_id") REFERENCES "Catalyst" (id),
+	FOREIGN KEY("Reactor_id") REFERENCES "Reactor" (id),
+	FOREIGN KEY("MaterialEntity_id") REFERENCES "MaterialEntity" (id),
+	FOREIGN KEY("MaterialSample_id") REFERENCES "MaterialSample" (id),
+	FOREIGN KEY("NMRSample_id") REFERENCES "NMRSample" (id),
+	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id),
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
+	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
+	FOREIGN KEY("AcquisitionNucleus_id") REFERENCES "AcquisitionNucleus" (id),
+	FOREIGN KEY("NMRSolvent_id") REFERENCES "NMRSolvent" (id)
+);CREATE INDEX "ix_Identifier_id" ON "Identifier" (id);
+CREATE TABLE "QualitativeAttribute" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value TEXT NOT NULL,
+	"SubstanceSample_id" TEXT,
+	"PolymerSample_id" TEXT,
+	"Activity_id" TEXT,
+	"AgenticEntity_id" TEXT,
+	"AnalysisSourceData_id" TEXT,
+	"DataAnalysis_id" TEXT,
+	"DataGeneratingActivity_id" TEXT,
+	"Device_id" TEXT,
+	"Entity_id" TEXT,
+	"EvaluatedActivity_id" TEXT,
+	"EvaluatedEntity_id" TEXT,
+	"Software_id" TEXT,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ChemicalSubstance_id" TEXT,
+	"Polymer_id" TEXT,
+	"ChemicalReaction_id" TEXT,
+	"StartingMaterial_id" TEXT,
+	"DissolvingSubstance_id" TEXT,
+	"Reagent_id" TEXT,
+	"ChemicalProduct_id" TEXT,
+	"Catalyst_id" TEXT,
+	"Reactor_id" TEXT,
+	"MaterialEntity_id" TEXT,
+	"MaterialSample_id" TEXT,
+	"NMRSample_id" TEXT,
+	"NMRSpectralAnalysis_id" TEXT,
+	"NMRSpectrum_id" TEXT,
+	"NMRSpectroscopy_id" TEXT,
+	"NMRSpectrometer_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
+	"AcquisitionNucleus_id" TEXT,
+	"NMRSolvent_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY("SubstanceSample_id") REFERENCES "SubstanceSample" (id),
+	FOREIGN KEY("PolymerSample_id") REFERENCES "PolymerSample" (id),
+	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id),
+	FOREIGN KEY("AgenticEntity_id") REFERENCES "AgenticEntity" (id),
+	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id),
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
+	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
+	FOREIGN KEY("Device_id") REFERENCES "Device" (id),
+	FOREIGN KEY("Entity_id") REFERENCES "Entity" (id),
+	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
+	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id),
+	FOREIGN KEY("Software_id") REFERENCES "Software" (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
+	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
+	FOREIGN KEY("DissolvingSubstance_id") REFERENCES "DissolvingSubstance" (id),
+	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
+	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
+	FOREIGN KEY("Catalyst_id") REFERENCES "Catalyst" (id),
+	FOREIGN KEY("Reactor_id") REFERENCES "Reactor" (id),
+	FOREIGN KEY("MaterialEntity_id") REFERENCES "MaterialEntity" (id),
+	FOREIGN KEY("MaterialSample_id") REFERENCES "MaterialSample" (id),
+	FOREIGN KEY("NMRSample_id") REFERENCES "NMRSample" (id),
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
+	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
+	FOREIGN KEY("AcquisitionNucleus_id") REFERENCES "AcquisitionNucleus" (id),
+	FOREIGN KEY("NMRSolvent_id") REFERENCES "NMRSolvent" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_QualitativeAttribute_id" ON "QualitativeAttribute" (id);
+CREATE TABLE "QuantitativeAttribute" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value FLOAT NOT NULL,
+	has_quantity_type TEXT NOT NULL,
+	unit TEXT,
+	"SubstanceSample_id" TEXT,
+	"PolymerSample_id" TEXT,
+	"Activity_id" TEXT,
+	"AgenticEntity_id" TEXT,
+	"AnalysisSourceData_id" TEXT,
+	"DataAnalysis_id" TEXT,
+	"DataGeneratingActivity_id" TEXT,
+	"Device_id" TEXT,
+	"Entity_id" TEXT,
+	"EvaluatedActivity_id" TEXT,
+	"EvaluatedEntity_id" TEXT,
+	"Software_id" TEXT,
+	"ChemicalEntity_id" TEXT,
+	"Atom_id" TEXT,
+	"ChemicalSubstance_id" TEXT,
+	"Polymer_id" TEXT,
+	"ChemicalReaction_id" TEXT,
+	"StartingMaterial_id" TEXT,
+	"DissolvingSubstance_id" TEXT,
+	"Reagent_id" TEXT,
+	"ChemicalProduct_id" TEXT,
+	"Catalyst_id" TEXT,
+	"Reactor_id" TEXT,
+	"MaterialEntity_id" TEXT,
+	"MaterialSample_id" TEXT,
+	"NMRSample_id" TEXT,
+	"NMRSpectralAnalysis_id" TEXT,
+	"NMRSpectrum_id" TEXT,
+	"NMRSpectroscopy_id" TEXT,
+	"NMRSpectrometer_id" TEXT,
+	"ShiftCalibrationCompound_id" TEXT,
+	"ShiftReferenceCompound_id" TEXT,
+	"CharacterizedCompound_id" TEXT,
+	"AcquisitionNucleus_id" TEXT,
+	"NMRSolvent_id" TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY("SubstanceSample_id") REFERENCES "SubstanceSample" (id),
+	FOREIGN KEY("PolymerSample_id") REFERENCES "PolymerSample" (id),
+	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id),
+	FOREIGN KEY("AgenticEntity_id") REFERENCES "AgenticEntity" (id),
+	FOREIGN KEY("AnalysisSourceData_id") REFERENCES "AnalysisSourceData" (id),
+	FOREIGN KEY("DataAnalysis_id") REFERENCES "DataAnalysis" (id),
+	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id),
+	FOREIGN KEY("Device_id") REFERENCES "Device" (id),
+	FOREIGN KEY("Entity_id") REFERENCES "Entity" (id),
+	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id),
+	FOREIGN KEY("EvaluatedEntity_id") REFERENCES "EvaluatedEntity" (id),
+	FOREIGN KEY("Software_id") REFERENCES "Software" (id),
+	FOREIGN KEY("ChemicalEntity_id") REFERENCES "ChemicalEntity" (id),
+	FOREIGN KEY("Atom_id") REFERENCES "Atom" (id),
+	FOREIGN KEY("ChemicalSubstance_id") REFERENCES "ChemicalSubstance" (id),
+	FOREIGN KEY("Polymer_id") REFERENCES "Polymer" (id),
+	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id),
+	FOREIGN KEY("StartingMaterial_id") REFERENCES "StartingMaterial" (id),
+	FOREIGN KEY("DissolvingSubstance_id") REFERENCES "DissolvingSubstance" (id),
+	FOREIGN KEY("Reagent_id") REFERENCES "Reagent" (id),
+	FOREIGN KEY("ChemicalProduct_id") REFERENCES "ChemicalProduct" (id),
+	FOREIGN KEY("Catalyst_id") REFERENCES "Catalyst" (id),
+	FOREIGN KEY("Reactor_id") REFERENCES "Reactor" (id),
+	FOREIGN KEY("MaterialEntity_id") REFERENCES "MaterialEntity" (id),
+	FOREIGN KEY("MaterialSample_id") REFERENCES "MaterialSample" (id),
+	FOREIGN KEY("NMRSample_id") REFERENCES "NMRSample" (id),
+	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id),
+	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id),
+	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id),
+	FOREIGN KEY("NMRSpectrometer_id") REFERENCES "NMRSpectrometer" (id),
+	FOREIGN KEY("ShiftCalibrationCompound_id") REFERENCES "ShiftCalibrationCompound" (id),
+	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
+	FOREIGN KEY("CharacterizedCompound_id") REFERENCES "CharacterizedCompound" (id),
+	FOREIGN KEY("AcquisitionNucleus_id") REFERENCES "AcquisitionNucleus" (id),
+	FOREIGN KEY("NMRSolvent_id") REFERENCES "NMRSolvent" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_QuantitativeAttribute_id" ON "QuantitativeAttribute" (id);
