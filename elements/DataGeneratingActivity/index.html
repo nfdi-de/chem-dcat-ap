@@ -7,19 +7,18 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://StroemPhi.github.io/dcat-4C-ap/elements/DataGeneratingActivity/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-8.5.10" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.20" name="generator"/>
 <title>Class: DataGeneratingActivity - dcat-4C-ap</title>
-<link href="../../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/main.e53b48f4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
 <link href="../../css/ansi-colours.css" rel="stylesheet"/>
 <link href="../../css/jupyter-cells.css" rel="stylesheet"/>
 <link href="../../css/pandas-dataframe.css" rel="stylesheet"/>
-<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
-<body data-md-color-accent="None" data-md-color-primary="None" data-md-color-scheme="default" dir="ltr">
+<body dir="ltr">
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
@@ -30,13 +29,13 @@
 </div>
 <div data-md-component="announce">
 </div>
-<header class="md-header" data-md-component="header">
+<header class="md-header md-header--shadow" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
 <a aria-label="dcat-4C-ap" class="md-header__button md-logo" data-md-component="logo" href="../.." title="dcat-4C-ap">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
 </label>
 <div class="md-header__title" data-md-component="header-title">
 <div class="md-header__ellipsis">
@@ -54,8 +53,9 @@
 </div>
 </div>
 </div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
 <label class="md-header__button md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
 </label>
 <div class="md-search" data-md-component="search" role="dialog">
 <label class="md-search__overlay" for="__search"></label>
@@ -63,22 +63,22 @@
 <form class="md-search__form" name="search">
 <input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
 <label class="md-search__icon md-icon" for="__search">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </label>
 <nav aria-label="Search" class="md-search__options">
 <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
 </button>
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
           </div>
-<ol class="md-search-result__list"></ol>
+<ol class="md-search-result__list" role="presentation"></ol>
 </div>
 </div>
 </div>
@@ -87,7 +87,7 @@
 <div class="md-header__source">
 <a class="md-source" data-md-component="source" href="https://github.com/StroemPhi/dcat-4C-ap" title="Go to repository">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
 </div>
 <div class="md-source__repository">
     GitHub
@@ -105,14 +105,14 @@
 <nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
 <a aria-label="dcat-4C-ap" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="dcat-4C-ap">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 </a>
     dcat-4C-ap
   </label>
 <div class="md-nav__source">
 <a class="md-source" data-md-component="source" href="https://github.com/StroemPhi/dcat-4C-ap" title="Go to repository">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
 </div>
 <div class="md-source__repository">
     GitHub
@@ -122,18 +122,27 @@
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../..">
-        Home
-      </a>
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../">
-        Schema
-      </a>
+<span class="md-ellipsis">
+    Schema
+    
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../about/">
-        About
-      </a>
+<span class="md-ellipsis">
+    About
+    
+  </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -151,53 +160,71 @@
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#inheritance">
-    Inheritance
-  </a>
+<span class="md-ellipsis">
+      Inheritance
+    </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
-    Slots
-  </a>
+<span class="md-ellipsis">
+      Slots
+    </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#usages">
-    Usages
-  </a>
+<span class="md-ellipsis">
+      Usages
+    </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
-    Identifier and Mapping Information
-  </a>
+<span class="md-ellipsis">
+      Identifier and Mapping Information
+    </span>
+</a>
 <nav aria-label="Identifier and Mapping Information" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#schema-source">
-    Schema Source
-  </a>
+<span class="md-ellipsis">
+      Schema Source
+    </span>
+</a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#mappings">
-    Mappings
-  </a>
+<span class="md-ellipsis">
+      Mappings
+    </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#linkml-source">
-    LinkML Source
-  </a>
+<span class="md-ellipsis">
+      LinkML Source
+    </span>
+</a>
 <nav aria-label="LinkML Source" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#direct">
-    Direct
-  </a>
+<span class="md-ellipsis">
+      Direct
+    </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#induced">
-    Induced
-  </a>
+<span class="md-ellipsis">
+      Induced
+    </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -209,23 +236,20 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/StroemPhi/dcat-4C-ap/edit/master/docs/elements/DataGeneratingActivity.md" title="Edit this page">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
-</a>
 <h1 id="class-datageneratingactivity">Class: DataGeneratingActivity</h1>
 <p><em>An Activity (process) that has the objective to produce information (in form of a dataset) about another Activity or Entity.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></p>
 <div class="mermaid"> classDiagram
     class DataGeneratingActivity
-    click DataGeneratingActivity href "../DataGeneratingActivity"
+    click DataGeneratingActivity href "../DataGeneratingActivity/"
       Activity &lt;|-- DataGeneratingActivity
-        click Activity href "../Activity"
+        click Activity href "../Activity/"
 
 
-      DataGeneratingActivity &lt;|-- NMRSpectroscopy
-        click NMRSpectroscopy href "../NMRSpectroscopy"
       DataGeneratingActivity &lt;|-- DataAnalysis
-        click DataAnalysis href "../DataAnalysis"
+        click DataAnalysis href "../DataAnalysis/"
+      DataGeneratingActivity &lt;|-- NMRSpectroscopy
+        click NMRSpectroscopy href "../NMRSpectroscopy/"
 
 
       DataGeneratingActivity : carried_out_by
@@ -233,8 +257,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "* _recommended_" AgenticEntity : carried_out_by
-    click AgenticEntity href "../AgenticEntity"
+
+        DataGeneratingActivity --&gt; "* _recommended_" AgenticEntity : carried_out_by
+        click AgenticEntity href "../AgenticEntity/"
+
 
 
       DataGeneratingActivity : description
@@ -244,8 +270,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "* _recommended_" EvaluatedActivity : evaluated_activity
-    click EvaluatedActivity href "../EvaluatedActivity"
+
+        DataGeneratingActivity --&gt; "* _recommended_" EvaluatedActivity : evaluated_activity
+        click EvaluatedActivity href "../EvaluatedActivity/"
+
 
 
       DataGeneratingActivity : evaluated_entity
@@ -253,8 +281,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "* _recommended_" EvaluatedEntity : evaluated_entity
-    click EvaluatedEntity href "../EvaluatedEntity"
+
+        DataGeneratingActivity --&gt; "* _recommended_" EvaluatedEntity : evaluated_entity
+        click EvaluatedEntity href "../EvaluatedEntity/"
+
 
 
       DataGeneratingActivity : had_input_activity
@@ -262,8 +292,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "* _recommended_" Activity : had_input_activity
-    click Activity href "../Activity"
+
+        DataGeneratingActivity --&gt; "* _recommended_" Activity : had_input_activity
+        click Activity href "../Activity/"
+
 
 
       DataGeneratingActivity : had_input_entity
@@ -271,8 +303,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "* _recommended_" Entity : had_input_entity
-    click Entity href "../Entity"
+
+        DataGeneratingActivity --&gt; "* _recommended_" Entity : had_input_entity
+        click Entity href "../Entity/"
+
 
 
       DataGeneratingActivity : had_output_entity
@@ -280,8 +314,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "* _recommended_" Entity : had_output_entity
-    click Entity href "../Entity"
+
+        DataGeneratingActivity --&gt; "* _recommended_" Entity : had_output_entity
+        click Entity href "../Entity/"
+
 
 
       DataGeneratingActivity : has_part
@@ -289,8 +325,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "0..1" Activity : has_part
-    click Activity href "../Activity"
+
+        DataGeneratingActivity --&gt; "0..1" Activity : has_part
+        click Activity href "../Activity/"
+
 
 
       DataGeneratingActivity : has_qualitative_attribute
@@ -298,8 +336,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
-    click QualitativeAttribute href "../QualitativeAttribute"
+
+        DataGeneratingActivity --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
+        click QualitativeAttribute href "../QualitativeAttribute/"
+
 
 
       DataGeneratingActivity : has_quantitative_attribute
@@ -307,8 +347,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
-    click QuantitativeAttribute href "../QuantitativeAttribute"
+
+        DataGeneratingActivity --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
+        click QuantitativeAttribute href "../QuantitativeAttribute/"
+
 
 
       DataGeneratingActivity : id
@@ -318,8 +360,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "0..1" Surrounding : occurred_in
-    click Surrounding href "../Surrounding"
+
+        DataGeneratingActivity --&gt; "0..1" Surrounding : occurred_in
+        click Surrounding href "../Surrounding/"
+
 
 
       DataGeneratingActivity : other_identifier
@@ -327,8 +371,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "*" Identifier : other_identifier
-    click Identifier href "../Identifier"
+
+        DataGeneratingActivity --&gt; "*" Identifier : other_identifier
+        click Identifier href "../Identifier/"
+
 
 
       DataGeneratingActivity : rdf_type
@@ -336,8 +382,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
-    click DefinedTerm href "../DefinedTerm"
+
+        DataGeneratingActivity --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+        click DefinedTerm href "../DefinedTerm/"
+
 
 
       DataGeneratingActivity : realized_plan
@@ -345,8 +393,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "0..1" Plan : realized_plan
-    click Plan href "../Plan"
+
+        DataGeneratingActivity --&gt; "0..1" Plan : realized_plan
+        click Plan href "../Plan/"
+
 
 
       DataGeneratingActivity : title
@@ -356,8 +406,10 @@
 
 
 
-    DataGeneratingActivity --&gt; "0..1" DefinedTerm : type
-    click DefinedTerm href "../DefinedTerm"
+
+        DataGeneratingActivity --&gt; "0..1" DefinedTerm : type
+        click DefinedTerm href "../DefinedTerm/"
+
 
 
 
@@ -366,8 +418,8 @@
 <ul>
 <li><a href="../Activity/">Activity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><strong>DataGeneratingActivity</strong><ul>
-<li><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></li>
 <li><a href="../DataAnalysis/">DataAnalysis</a></li>
+<li><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></li>
 </ul>
 </li>
 </ul>
@@ -516,7 +568,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap</li>
+<li>from schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -533,7 +585,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>nfdi4c:DataGeneratingActivity</td>
+<td>dcat_4c_ap:DataGeneratingActivity</td>
 </tr>
 </tbody>
 </table>
@@ -546,7 +598,7 @@ description: An Activity (process) that has the objective to produce information
   form of a dataset) about another Activity or Entity.
 in_subset:
 - domain_agnostic_core
-from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 is_a: Activity
 slots:
 - evaluated_entity
@@ -564,7 +616,7 @@ description: An Activity (process) that has the objective to produce information
   form of a dataset) about another Activity or Entity.
 in_subset:
 - domain_agnostic_core
-from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 is_a: Activity
 attributes:
   evaluated_entity:
@@ -573,7 +625,7 @@ attributes:
       produced information.
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     is_a: had_input_entity
     slot_uri: prov:used
@@ -592,7 +644,7 @@ attributes:
       produced information.
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     is_a: had_input_activity
     slot_uri: prov:wasInformedBy
@@ -611,7 +663,7 @@ attributes:
       that was realized by an Activity.
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: prov:used
     alias: realized_plan
@@ -624,7 +676,7 @@ attributes:
     description: The slot to specify the Surrounding in which an Activity took place.
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: prov:atLocation
     alias: occurred_in
@@ -637,7 +689,7 @@ attributes:
     description: A slot to provide an URI for an entity within this schema.
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     identifier: true
     alias: id
@@ -647,7 +699,11 @@ attributes:
     - AgenticEntity
     - Dataset
     - DefinedTerm
+    - Document
     - Entity
+    - LegalResource
+    - LicenseDocument
+    - Resource
     range: uriorcurie
     required: true
   title:
@@ -655,7 +711,7 @@ attributes:
     description: The slot to provide a title for the Activity.
     notes:
     - not in DCAT-AP
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: dcterms:title
     alias: title
@@ -663,19 +719,41 @@ attributes:
     domain_of:
     - Activity
     - AgenticEntity
+    - Any
+    - Attribution
     - Catalogue
     - CatalogueRecord
+    - ChecksumAlgorithm
+    - Concept
     - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
     - DefinedTerm
     - Distribution
+    - Document
     - Entity
+    - Frequency
+    - Geometry
+    - Identifier
+    - LegalResource
+    - LicenseDocument
+    - LinguisticSystem
+    - MediaType
+    - MediaTypeOrExtent
+    - PeriodOfTime
     - Plan
+    - Policy
+    - ProvenanceStatement
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Resource
+    - RightsStatement
+    - Role
+    - Standard
+    - SupportiveEntity
     - Surrounding
+    - TimeInstant
     range: string
     multivalued: true
     inlined_as_list: true
@@ -684,7 +762,7 @@ attributes:
     description: The slot to provide a description for the Activity.
     notes:
     - not in DCAT-AP
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: dcterms:description
     alias: description
@@ -692,17 +770,40 @@ attributes:
     domain_of:
     - Activity
     - AgenticEntity
+    - Any
+    - Attribution
     - Catalogue
     - CatalogueRecord
+    - ChecksumAlgorithm
+    - Concept
+    - ConceptScheme
     - DataService
     - Dataset
     - DatasetSeries
     - Distribution
+    - Document
     - Entity
+    - Frequency
+    - Geometry
+    - Identifier
+    - LegalResource
+    - LicenseDocument
+    - LinguisticSystem
+    - MediaType
+    - MediaTypeOrExtent
+    - PeriodOfTime
     - Plan
+    - Policy
+    - ProvenanceStatement
     - QualitativeAttribute
     - QuantitativeAttribute
+    - Resource
+    - RightsStatement
+    - Role
+    - Standard
+    - SupportiveEntity
     - Surrounding
+    - TimeInstant
     range: string
     multivalued: true
     inlined_as_list: true
@@ -711,7 +812,7 @@ attributes:
     description: The slot to provide a secondary identifier of the Activity.
     notes:
     - not in DCAT-AP
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: adms:identifier
     alias: other_identifier
@@ -729,7 +830,7 @@ attributes:
     description: The slot to provide an Activity that is part of the Activity.
     notes:
     - not in DCAT-AP
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: dcterms:hasPart
     alias: has_part
@@ -750,7 +851,7 @@ attributes:
     - not in DCAT-AP
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: prov:used
     alias: had_input_entity
@@ -770,7 +871,7 @@ attributes:
     - not in DCAT-AP
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: prov:generated
     alias: had_output_entity
@@ -790,7 +891,7 @@ attributes:
     - not in DCAT-AP
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: prov:wasInformedBy
     alias: had_input_activity
@@ -811,7 +912,7 @@ attributes:
     - not in DCAT-AP
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: prov:wasAssociatedWith
     alias: carried_out_by
@@ -831,7 +932,7 @@ attributes:
     - not in DCAT-AP
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: dcterms:relation
     alias: has_qualitative_attribute
@@ -854,7 +955,7 @@ attributes:
     - not in DCAT-AP
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: dcterms:relation
     alias: has_quantitative_attribute
@@ -873,7 +974,7 @@ attributes:
     name: type
     description: This slot is described in more detail within the class in which it
       is used.
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: dcterms:type
     alias: type
@@ -891,7 +992,7 @@ attributes:
       entity.
     in_subset:
     - domain_agnostic_core
-    from_schema: https://stroemphi.github.io/dcat-4C-ap/dcat_4c_ap
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
     slot_uri: rdf:type
     alias: rdf_type
@@ -907,7 +1008,8 @@ class_uri: prov:Activity
 </details>
 </article>
 </div>
-<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
 </div>
 </main>
 <footer class="md-footer">
@@ -928,8 +1030,8 @@ class_uri: prov:Activity
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
-<script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>
