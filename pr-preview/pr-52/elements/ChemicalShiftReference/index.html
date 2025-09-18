@@ -245,7 +245,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-chemicalshiftreference">Class: ChemicalShiftReference</h1>
 <p><em>A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.</em></p>
-<p>URI: <a href="http://nmrML.org/nmrCV#NMR:1001954">NMR:1001954</a></p>
+<p>URI: <a href="http://nmrML.org/nmrCV#NMR:1002013">NMR:1002013</a></p>
 <div class="mermaid"> classDiagram
     class ChemicalShiftReference
     click ChemicalShiftReference href "../ChemicalShiftReference/"
@@ -378,6 +378,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
+<td><a href="../has_shift_reference/">has_shift_reference</a></td>
+<td>range</td>
+<td><a href="./">ChemicalShiftReference</a></td>
+</tr>
+<tr>
 <td><a href="../ShiftReferenceCompound/">ShiftReferenceCompound</a></td>
 <td><a href="../has_shift_reference/">has_shift_reference</a></td>
 <td>range</td>
@@ -405,7 +411,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>NMR:1001954</td>
+<td>NMR:1002013</td>
 </tr>
 <tr>
 <td>native</td>
@@ -425,7 +431,7 @@ comments:
   schema profiles. It will be outsourced to a more appropriate location in the future.
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 is_a: QuantitativeAttribute
-class_uri: NMR:1001954
+class_uri: NMR:1002013
 
 </code></pre>
 </details>
@@ -616,7 +622,7 @@ attributes:
     range: DefinedTerm
     recommended: true
     inlined: true
-class_uri: NMR:1001954
+class_uri: NMR:1002013
 
 </code></pre>
 </details>

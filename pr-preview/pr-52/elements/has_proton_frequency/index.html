@@ -308,6 +308,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inheritance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -390,8 +399,13 @@
 <p><em>The slot to specify the NominalProtonFrequency of a NMRSpectrometer.</em></p>
 <p>URI: <a href="http://semanticscience.org/resource/SIO_000008">SIO:000008</a>
 Alias: has_proton_frequency</p>
-<!-- no inheritance hierarchy -->
-
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../has_quantitative_attribute/">has_quantitative_attribute</a><ul>
+<li><strong>has_proton_frequency</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -413,6 +427,9 @@ Alias: has_proton_frequency</p>
 <ul>
 <li>
 <p>Range: <a href="../NominalProtonFrequency/">NominalProtonFrequency</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Required: True</p>
@@ -449,13 +466,17 @@ Alias: has_proton_frequency</p>
 description: The slot to specify the NominalProtonFrequency of a NMRSpectrometer.
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 rank: 1000
+is_a: has_quantitative_attribute
 slot_uri: SIO:000008
 alias: has_proton_frequency
 domain_of:
 - NMRSpectrometer
 range: NominalProtonFrequency
 required: true
-multivalued: false
+recommended: true
+multivalued: true
+inlined: true
+inlined_as_list: true
 
 </code></pre>
 

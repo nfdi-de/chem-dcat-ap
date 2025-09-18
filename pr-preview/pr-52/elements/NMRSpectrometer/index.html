@@ -271,7 +271,7 @@
 
 
 
-        NMRSpectrometer --&gt; "1" NominalProtonFrequency : has_proton_frequency
+        NMRSpectrometer --&gt; "1..* _recommended_" NominalProtonFrequency : has_proton_frequency
         click NominalProtonFrequency href "../NominalProtonFrequency/"
 
 
@@ -360,7 +360,7 @@
 <tbody>
 <tr>
 <td><a href="../has_proton_frequency/">has_proton_frequency</a></td>
-<td>1 <br/> <a href="../NominalProtonFrequency/">NominalProtonFrequency</a></td>
+<td>1..* <em>recommended</em> <br/> <a href="../NominalProtonFrequency/">NominalProtonFrequency</a></td>
 <td>The slot to specify the NominalProtonFrequency of a NMRSpectrometer</td>
 <td>direct</td>
 </tr>
@@ -517,6 +517,7 @@ attributes:
     description: The slot to specify the NominalProtonFrequency of a NMRSpectrometer.
     from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
     rank: 1000
+    is_a: has_quantitative_attribute
     slot_uri: SIO:000008
     alias: has_proton_frequency
     owner: NMRSpectrometer
@@ -524,7 +525,10 @@ attributes:
     - NMRSpectrometer
     range: NominalProtonFrequency
     required: true
-    multivalued: false
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   id:
     name: id
     description: A slot to provide an URI for an entity within this schema.

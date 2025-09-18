@@ -349,6 +349,17 @@
 
 
 
+      ShiftCalibrationCompound : has_shift_reference
+
+
+
+
+
+        ShiftCalibrationCompound --&gt; "* _recommended_" ChemicalShiftReference : has_shift_reference
+        click ChemicalShiftReference href "../ChemicalShiftReference/"
+
+
+
       ShiftCalibrationCompound : has_temperature
 
 
@@ -492,6 +503,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../has_shift_reference/">has_shift_reference</a></td>
+<td>* <em>recommended</em> <br/> <a href="../ChemicalShiftReference/">ChemicalShiftReference</a></td>
+<td>The slot to specify the ChemicalShiftReference value</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../inchi/">inchi</a></td>
 <td>* <em>recommended</em> <br/> <a href="../InChi/">InChi</a></td>
@@ -685,6 +702,8 @@ comments:
   schema profiles. It will be outsourced to a more appropriate location in the future.
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 is_a: ChemicalEntity
+slots:
+- has_shift_reference
 class_uri: NMR:0002003
 
 </code></pre>
@@ -700,6 +719,22 @@ comments:
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 is_a: ChemicalEntity
 attributes:
+  has_shift_reference:
+    name: has_shift_reference
+    description: The slot to specify the ChemicalShiftReference value.
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+    rank: 1000
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    alias: has_shift_reference
+    owner: ShiftCalibrationCompound
+    domain_of:
+    - ShiftCalibrationCompound
+    range: ChemicalShiftReference
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   inchi:
     name: inchi
     description: The slot to provide the InChi descriptor of a ChemicalEntity.

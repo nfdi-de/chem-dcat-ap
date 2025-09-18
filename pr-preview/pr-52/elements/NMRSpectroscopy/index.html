@@ -525,15 +525,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../used_number_of_scans/">used_number_of_scans</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../NumberOfScans/">NumberOfScans</a></td>
-<td>The slot to specify the NumberOfScans used in the NMRSpectroscopy</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../used_pulse_sequence/">used_pulse_sequence</a></td>
 <td>1 <br/> <a href="../PulseSequence/">PulseSequence</a></td>
 <td>The slot to specify the PulseSequence used in the NMRSpectroscopy</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../used_number_of_scans/">used_number_of_scans</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../NumberOfScans/">NumberOfScans</a></td>
+<td>The slot to specify the NumberOfScans used in the NMRSpectroscopy</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -728,7 +728,6 @@ is_a: DataGeneratingActivity
 slots:
 - used_spectrometer
 - used_solvent
-- used_number_of_scans
 slot_usage:
   evaluated_entity:
     name: evaluated_entity
@@ -762,6 +761,19 @@ attributes:
     - NMRSpectroscopy
     range: PulseSequence
     required: true
+    multivalued: false
+    inlined: true
+  used_number_of_scans:
+    name: used_number_of_scans
+    description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml
+    rank: 1000
+    is_a: has_quantitative_attribute
+    slot_uri: OBI:0000293
+    domain_of:
+    - NMRSpectroscopy
+    range: NumberOfScans
+    recommended: true
     multivalued: false
     inlined: true
   probes_nucleus:
@@ -861,6 +873,21 @@ attributes:
     required: true
     multivalued: false
     inlined: true
+  used_number_of_scans:
+    name: used_number_of_scans
+    description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml
+    rank: 1000
+    is_a: has_quantitative_attribute
+    slot_uri: OBI:0000293
+    alias: used_number_of_scans
+    owner: NMRSpectroscopy
+    domain_of:
+    - NMRSpectroscopy
+    range: NumberOfScans
+    recommended: true
+    multivalued: false
+    inlined: true
   probes_nucleus:
     name: probes_nucleus
     description: The slot to specify the AcquisitionNucleus used in the NMRSpectroscopy.
@@ -944,20 +971,6 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  used_number_of_scans:
-    name: used_number_of_scans
-    description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
-    rank: 1000
-    slot_uri: OBI:0000293
-    alias: used_number_of_scans
-    owner: NMRSpectroscopy
-    domain_of:
-    - NMRSpectroscopy
-    range: NumberOfScans
-    recommended: true
-    multivalued: false
-    inlined: true
   evaluated_entity:
     name: evaluated_entity
     description: The slot to reference the NMRSample that was used in the NMRSpectroscopy.

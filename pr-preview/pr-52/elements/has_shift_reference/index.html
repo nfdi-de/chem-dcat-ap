@@ -417,6 +417,11 @@ Alias: has_shift_reference</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
+<td>A ChemicalEntity that produces one or more peaks used for chemical shift cali...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ShiftReferenceCompound/">ShiftReferenceCompound</a></td>
 <td>A ShiftCalibrationCompound that produces a peak used as reference frequency i...</td>
 <td>no</td>
@@ -470,7 +475,7 @@ is_a: has_quantitative_attribute
 slot_uri: SIO:000008
 alias: has_shift_reference
 domain_of:
-- ShiftReferenceCompound
+- ShiftCalibrationCompound
 range: ChemicalShiftReference
 recommended: true
 multivalued: true

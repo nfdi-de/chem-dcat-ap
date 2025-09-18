@@ -502,7 +502,7 @@
 <td><a href="../has_shift_reference/">has_shift_reference</a></td>
 <td>* <em>recommended</em> <br/> <a href="../ChemicalShiftReference/">ChemicalShiftReference</a></td>
 <td>The slot to specify the ChemicalShiftReference value</td>
-<td>direct</td>
+<td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
 </tr>
 <tr>
 <td><a href="../inchi/">inchi</a></td>
@@ -697,8 +697,6 @@ comments:
   schema profiles. It will be outsourced to a more appropriate location in the future.
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 is_a: ShiftCalibrationCompound
-slots:
-- has_shift_reference
 class_uri: NMR:1400033
 
 </code></pre>
@@ -724,7 +722,7 @@ attributes:
     alias: has_shift_reference
     owner: ShiftReferenceCompound
     domain_of:
-    - ShiftReferenceCompound
+    - ShiftCalibrationCompound
     range: ChemicalShiftReference
     recommended: true
     multivalued: true

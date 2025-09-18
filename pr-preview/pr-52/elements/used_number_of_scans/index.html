@@ -308,6 +308,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inheritance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -390,8 +399,13 @@
 <p><em>The slot to specify the NumberOfScans used in the NMRSpectroscopy.</em></p>
 <p>URI: <a href="http://purl.obolibrary.org/obo/OBI_0000293">OBI:0000293</a>
 Alias: used_number_of_scans</p>
-<!-- no inheritance hierarchy -->
-
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../has_quantitative_attribute/">has_quantitative_attribute</a><ul>
+<li><strong>used_number_of_scans</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -412,7 +426,10 @@ Alias: used_number_of_scans</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../NumberOfScans/">NumberOfScans</a></p>
+<p>Range: <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
 </li>
 <li>
 <p>Recommended: True</p>
@@ -449,14 +466,17 @@ Alias: used_number_of_scans</p>
 description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 rank: 1000
+is_a: has_quantitative_attribute
 slot_uri: OBI:0000293
 alias: used_number_of_scans
+owner: NMRSpectroscopy
 domain_of:
 - NMRSpectroscopy
-range: NumberOfScans
+range: QuantitativeAttribute
 recommended: true
-multivalued: false
+multivalued: true
 inlined: true
+inlined_as_list: true
 
 </code></pre>
 
