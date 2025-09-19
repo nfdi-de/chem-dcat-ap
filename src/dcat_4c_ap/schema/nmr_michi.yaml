@@ -173,10 +173,12 @@ classes:
         slot_uri: OBI:0000293
         range: NMRSample
         description: The slot to reference the NMRSample that was used in the NMRSpectroscopy.
+        required: true
       rdf_type:
         description: The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613.
         ## new binding feature is not yet implemented, see: https://github.com/linkml/linkml-model/releases/tag/v1.8.0
         ## current workaround: using NMRAssayEnum as range in the example data
+        required: true
         bindings:
           - binds_value_of: id
             range: NMRAssayEnum
