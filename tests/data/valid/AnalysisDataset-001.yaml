@@ -1,6 +1,6 @@
 # Example AnalysisDataset object based on a real dataset from Chemotion without many domain agnostic metadata like publisher and creator
 ---
-id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
+id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
 other_identifier:
   - notation: https://www.chemotion-repository.net/pid/50434
 title:
@@ -9,25 +9,75 @@ description:
   - "Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)"
 theme:
   - preferred_label:
-    - "Science and technology"
+      - "Science and technology"
 is_about_entity:
-  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+    title: "CRS-50440"
+    description: "The analysed chemical substance sample CRS-50440."
     rdf_type:
       id: CHEBI:59999
-      title: "Chemical Substance"
+      title: "chemical substance"
+    has_part:
+      - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+        description: "compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2"
+        other_identifier:
+          - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
+        rdf_type:
+          id: CHEBI:23367
+          title: molecular entity
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHEMINF:000059
+              title: "InChiKey"
+            value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
+            title: "assigned InChiKey"
+          - rdf_type:
+              id: CHEMINF:000113
+              title: "InChi"
+            value: "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3"
+            title: "assigned InChi"
+          - rdf_type:
+              id: CHEMINF:000018
+              title: "SMILES descriptor"
+            value: "CNCc1csc(n1)c1ccccc1"
+            title: "assigned SMILES"
+          - rdf_type:
+              id: CHEMINF:000042
+              title: "molecular formula"
+            value: "C11H12N2S"
+            title: "assigned molecular formula"
+          - rdf_type:
+              id: CHEMINF:000107
+              title: "IUPAC name"
+            value: "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine"
+            description: Chemotion IUPAC name
+          - rdf_type:
+              id: CHEMINF:000107
+              title: "IUPAC name"
+            value: "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine"
+            description: PubChem IUPAC name
+        has_quantitative_attribute:
+          - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+            unit: https://qudt.org/vocab/unit/GM-PER-MOL
+            value: 204.072119
+            description: "Molar mass as specified in the Chemotion repository."
+          - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+            unit: https://qudt.org/vocab/unit/GM-PER-MOL
+            value: 204.29
+            description: "Molar mass as specified in PubChem"
 was_generated_by: # a DataAnalysis
-  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectralAnalysis
+  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectralAnalysis
     description:
       - "Analysis of NMR spectra."
     rdf_type:
       id: NMR:1400042
       title: "NMR data processing"
     evaluated_entity:
-      - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum
+      - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum
         was_generated_by:
-          - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR
+          - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR
             title:
-             - "CDCl3_13C_NMR"
+              - "CDCl3_13C_NMR"
             rdf_type:
               id: CHMO:0000595
               title: "13C nuclear magnetic resonance spectroscopy"
@@ -39,9 +89,9 @@ was_generated_by: # a DataAnalysis
                 title: "Puls programme"
             has_quantitative_attribute:
               - rdf_type:
-                  id: IAO:0000140
-                  title: "setting datum"
-                title: "Temperature"
+                  id: NMR:1400262
+                  title: "sample temperature information"
+                title: "sample temperature setting"
                 has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
                 unit: https://qudt.org/vocab/unit/K
                 value: 300.0
@@ -53,88 +103,48 @@ was_generated_by: # a DataAnalysis
                 unit: http://qudt.org/vocab/unit/NUM
                 title: "Number of scans"
             evaluated_entity:
-              - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-                rdf_type:
-                  id: CHEBI:59999
-                  title: "Chemical Substance"
+              - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
                 title: "CRS-50440"
-                description: "The analysed chemical substance sample CRS-50440."
-                other_identifier:
-                  - notation: https://www.chemotion-repository.net/pid/50440
-                has_part:
-                  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
-                    description: "compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2"
-                    other_identifier:
-                      - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
-                    rdf_type:
-                      id: CHEBI:23367
-                      title: molecular entity
-                    has_qualitative_attribute:
-                      - rdf_type:
-                          id: CHEMINF:000059
-                          title: "InChiKey"
-                        value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
-                        title: "assigned InChiKey"
-                      - rdf_type:
-                          id: CHEMINF:000113
-                          title: "InChi"
-                        value: "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3"
-                        title: "assigned InChi"
-                      - rdf_type:
-                          id: CHEMINF:000018
-                          title: "SMILES descriptor"
-                        value: "CNCc1csc(n1)c1ccccc1"
-                        title: "assigned SMILES"
-                      - rdf_type:
-                          id: CHEMINF:000042
-                          title: "molecular formula"
-                        value: "C11H12N2S"
-                        title: "assigned molecular formula"
-                      - rdf_type:
-                          id: CHEMINF:000107
-                          title: "IUPAC name"
-                        value: "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine"
-                        description: Chemotion IUPAC name
-                      - rdf_type:
-                          id: CHEMINF:000107
-                          title: "IUPAC name"
-                        value: "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine"
-                        description: PubChem IUPAC name
-                    has_quantitative_attribute:
-                      - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-                        unit: https://qudt.org/vocab/unit/GM-PER-MOL
-                        value: 204.072119
-                        description: "Molar mass as specified in the Chemotion repository."
-                      - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-                        unit: https://qudt.org/vocab/unit/GM-PER-MOL
-                        value: 204.29
-                        description: "Molar mass as specified in PubChem"
             carried_out_by:
-              - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrometer
+              - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrometer
                 rdf_type:
                   id: OBI:0000566
                   title: "NMR instrument"
                 title: "Bruker 400 MHz"
                 description: 'The NMR spectrometer used.'
-              - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent
+              - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent
                 description: "used solvent"
                 has_part:
-                  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent_Compound
+                  - id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
                     rdf_type:
                       id: CHEBI:85365
                       title: "deuterated chloroform"
                     title: "chloroform-D1 (CDCl3)"
+              # probed nucleus information is currently not exposed in Chemotion via API/JSON
               - id: https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_AcquisitionNucleus
                 title: "probed nucleus"
                 part_of:
-                  - title: "nucleus of 13C"
+                  - title: "13C"
+                    description: "The atom of the probed nucleus"
                     id: https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleusAtom
                     rdf_type:
                       id: CHEBI:36928
                       title: "carbon-13 atom"
-      - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum
+              # calibration compound information is currently not exposed in Chemotion via API/JSON
+              - id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
+                title: "Chloroform-D"
+                description: "The used calibration compound"
+                rdf_type:
+                  id: CHEBI:85365
+                  title: "deuterated chloroform"
+                has_quantitative_attribute: # information is currently not exposed in Chemotion via API/JSON
+                  - description: "The chemical shift of the peak used for chemical shift calibration."
+                    has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
+                    unit: https://qudt.org/vocab/unit/PPM
+                    value: 77.16
+      - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum
         was_generated_by:
-          - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR
+          - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR
             title:
               - "DMSO_13C_NMR"
             rdf_type:
@@ -148,9 +158,9 @@ was_generated_by: # a DataAnalysis
                 title: "Puls programme"
             has_quantitative_attribute:
               - rdf_type:
-                  id: IAO:0000140
-                  title: "setting datum"
-                title: "Temperature"
+                  id: NMR:1400262
+                  title: "sample temperature information"
+                title: "sample temperature setting"
                 has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
                 unit: https://qudt.org/vocab/unit/K
                 value: 300.0
@@ -162,29 +172,43 @@ was_generated_by: # a DataAnalysis
                 unit: http://qudt.org/vocab/unit/NUM
                 title: "Number of scans"
             evaluated_entity:
-              - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+              - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
                 title: "CRS-50440"
-                has_part:
-                  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
-                    description: "compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2"
             carried_out_by:
-              - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer
+              - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer
+                rdf_type:
+                  id: OBI:0000566
+                  title: "NMR instrument"
                 title: "Bruker 400 MHz"
                 description: "used spectrometer"
-              - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent
+              - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent
                 description: "used solvent"
                 has_part:
-                  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent_Compound
+                  - id: https://pubchem.ncbi.nlm.nih.gov/compound/679
                     rdf_type:
                       id: CHEBI:28262
                       title: "dimethyl sulfoxide"
                     title: "DMSO"
+              # probed nucleus information is currently not exposed in Chemotion via API/JSON
               - id: https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleus
                 title: "probed nucleus"
                 part_of:
-                  - title: "nucleus of 13C"
+                  - title: "13C"
+                    description: "The atom of the probed nucleus"
                     id: https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleusAtom
                     rdf_type:
                       id: CHEBI:36928
                       title: "carbon-13 atom"
+              # calibration compound information is currently not exposed in Chemotion via API/JSON
+              - id: https://pubchem.ncbi.nlm.nih.gov/compound/679
+                title: "DMSO"
+                description: "The used calibration compound"
+                rdf_type:
+                  id: CHEBI:28262
+                  title: "dimethyl sulfoxide"
+                has_quantitative_attribute: # information is currently not exposed in Chemotion via API/JSON
+                  - description: "The chemical shift of the peak used for chemical shift calibration."
+                    has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
+                    unit: https://qudt.org/vocab/unit/PPM
+                    value: 39.52
 

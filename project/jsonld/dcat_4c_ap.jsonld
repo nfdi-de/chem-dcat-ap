@@ -3009,28 +3009,6 @@
         "NMRSpectrometer"
       ],
       "range": "NominalProtonFrequency",
-      "required": true,
-      "recommended": true,
-      "multivalued": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "has_shift_reference",
-      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_shift_reference",
-      "description": "The slot to specify the ChemicalShiftReference value.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml",
-      "mappings": [
-        "http://semanticscience.org/resource/SIO_000008"
-      ],
-      "is_a": "has_quantitative_attribute",
-      "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "ShiftCalibrationCompound",
-      "domain_of": [
-        "ShiftCalibrationCompound"
-      ],
-      "range": "ChemicalShiftReference",
       "recommended": true,
       "multivalued": true,
       "inlined": true,
@@ -3283,7 +3261,7 @@
     },
     {
       "name": "nMRSpectroscopy__used_pulse_sequence",
-      "description": "The slot to specify the PulseSequence used in the NMRSpectroscopy.",
+      "description": "The slot to specify the PulseSequence used as a setting in the NMRSpectroscopy.",
       "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml",
       "mappings": [
         "http://purl.obolibrary.org/obo/OBI_0000293"
@@ -3304,7 +3282,7 @@
     },
     {
       "name": "nMRSpectroscopy__used_number_of_scans",
-      "description": "The slot to specify the NumberOfScans used in the NMRSpectroscopy.",
+      "description": "The slot to specify the NumberOfScans used as a setting in the NMRSpectroscopy.",
       "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml",
       "mappings": [
         "http://purl.obolibrary.org/obo/OBI_0000293"
@@ -3317,6 +3295,26 @@
         "NMRSpectroscopy"
       ],
       "range": "NumberOfScans",
+      "recommended": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "nMRSpectroscopy__used_sample_temperature",
+      "description": "The slot to specify the NMRSampleTemperature used as a setting in the NMRSpectroscopy.",
+      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml",
+      "mappings": [
+        "http://purl.obolibrary.org/obo/OBI_0000293"
+      ],
+      "is_a": "has_quantitative_attribute",
+      "slot_uri": "http://purl.obolibrary.org/obo/OBI_0000293",
+      "alias": "used_sample_temperature",
+      "owner": "NMRSpectroscopy",
+      "domain_of": [
+        "NMRSpectroscopy"
+      ],
+      "range": "NMRSampleTemperature",
       "recommended": true,
       "inlined": true,
       "inlined_as_list": true,
@@ -3380,6 +3378,27 @@
         "NMRSpectroscopy"
       ],
       "range": "ShiftReferenceCompound",
+      "recommended": true,
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "shiftCalibrationCompound__has_calibration_shift",
+      "description": "The slot to specify the chemical shift value of the ShiftCalibrationCompound.",
+      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml",
+      "mappings": [
+        "http://semanticscience.org/resource/SIO_000008"
+      ],
+      "is_a": "has_quantitative_attribute",
+      "slot_uri": "http://semanticscience.org/resource/SIO_000008",
+      "alias": "has_calibration_shift",
+      "owner": "ShiftCalibrationCompound",
+      "domain_of": [
+        "ShiftCalibrationCompound"
+      ],
+      "range": "CalibrationPeakShift",
       "recommended": true,
       "multivalued": true,
       "inlined": true,
@@ -7686,6 +7705,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "evaluated_entity",
       "range": "NMRSample",
+      "required": true,
       "recommended": true,
       "multivalued": true,
       "inlined": true,
@@ -7727,6 +7747,7 @@
           "@type": "EnumBinding"
         }
       ],
+      "required": true,
       "recommended": true,
       "inlined": true,
       "@type": "SlotDefinition"
@@ -9988,6 +10009,28 @@
       "@type": "ClassDefinition"
     },
     {
+      "name": "NMRSampleTemperature",
+      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSampleTemperature",
+      "description": "The temperature of the NMR Sample.",
+      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml",
+      "mappings": [
+        "NMR:1400262"
+      ],
+      "is_a": "Temperature",
+      "slots": [
+        "title",
+        "description",
+        "QuantitativeAttribute_value",
+        "quantitativeAttribute__has_quantity_type",
+        "quantitativeAttribute__unit",
+        "ClassifierMixin_type",
+        "rdf_type"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://nmrML.org/nmrCV#NMR:1400262",
+      "@type": "ClassDefinition"
+    },
+    {
       "name": "NMRAnalysisDataset",
       "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRAnalysisDataset",
       "description": "A dataset that is the result of a NMRSpectralAnalysis of a NMRSample.",
@@ -10145,6 +10188,7 @@
         "NMRSpectroscopy_used_solvent",
         "nMRSpectroscopy__used_pulse_sequence",
         "nMRSpectroscopy__used_number_of_scans",
+        "nMRSpectroscopy__used_sample_temperature",
         "nMRSpectroscopy__probes_nucleus",
         "nMRSpectroscopy__used_calibration_compound",
         "nMRSpectroscopy__used_reference_compound",
@@ -10155,7 +10199,7 @@
       "attributes": [
         {
           "name": "used_pulse_sequence",
-          "description": "The slot to specify the PulseSequence used in the NMRSpectroscopy.",
+          "description": "The slot to specify the PulseSequence used as a setting in the NMRSpectroscopy.",
           "is_a": "has_qualitative_attribute",
           "slot_uri": "OBI:0000293",
           "range": "PulseSequence",
@@ -10165,10 +10209,20 @@
         },
         {
           "name": "used_number_of_scans",
-          "description": "The slot to specify the NumberOfScans used in the NMRSpectroscopy.",
+          "description": "The slot to specify the NumberOfScans used as a setting in the NMRSpectroscopy.",
           "is_a": "has_quantitative_attribute",
           "slot_uri": "OBI:0000293",
           "range": "NumberOfScans",
+          "recommended": true,
+          "inlined": true,
+          "@type": "SlotDefinition"
+        },
+        {
+          "name": "used_sample_temperature",
+          "description": "The slot to specify the NMRSampleTemperature used as a setting in the NMRSpectroscopy.",
+          "is_a": "has_quantitative_attribute",
+          "slot_uri": "OBI:0000293",
+          "range": "NMRSampleTemperature",
           "recommended": true,
           "inlined": true,
           "@type": "SlotDefinition"
@@ -10280,9 +10334,21 @@
         "molecular_formula",
         "iupac_name",
         "has_molar_mass",
-        "has_shift_reference"
+        "shiftCalibrationCompound__has_calibration_shift"
       ],
       "slot_usage": {},
+      "attributes": [
+        {
+          "name": "has_calibration_shift",
+          "description": "The slot to specify the chemical shift value of the ShiftCalibrationCompound.",
+          "is_a": "has_quantitative_attribute",
+          "slot_uri": "SIO:000008",
+          "range": "CalibrationPeakShift",
+          "multivalued": true,
+          "inlined_as_list": true,
+          "@type": "SlotDefinition"
+        }
+      ],
       "class_uri": "http://nmrML.org/nmrCV#NMR:0002003",
       "@type": "ClassDefinition"
     },
@@ -10322,7 +10388,7 @@
         "molecular_formula",
         "iupac_name",
         "has_molar_mass",
-        "has_shift_reference"
+        "shiftCalibrationCompound__has_calibration_shift"
       ],
       "slot_usage": {},
       "class_uri": "http://nmrML.org/nmrCV#NMR:1400033",
@@ -10499,15 +10565,15 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "ChemicalShiftReference",
-      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#ChemicalShiftReference",
-      "description": "A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.",
+      "name": "CalibrationPeakShift",
+      "definition_uri": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#CalibrationPeakShift",
+      "description": "The chemical shift of the peak used for chemical shift calibration.",
       "comments": [
         "This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future."
       ],
       "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml",
       "mappings": [
-        "NMR:1002013"
+        "NMR:1000223"
       ],
       "is_a": "QuantitativeAttribute",
       "slots": [
@@ -10520,7 +10586,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
-      "class_uri": "http://nmrML.org/nmrCV#NMR:1002013",
+      "class_uri": "http://nmrML.org/nmrCV#NMR:1000223",
       "@type": "ClassDefinition"
     },
     {
@@ -10769,7 +10835,7 @@
   "source_file": "dcat_4c_ap.yaml",
   "source_file_date": "2025-09-18T14:10:39",
   "source_file_size": 3596,
-  "generation_date": "2025-09-18T15:28:59",
+  "generation_date": "2025-09-19T15:04:26",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

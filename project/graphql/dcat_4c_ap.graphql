@@ -206,6 +206,17 @@ type Attribution
     description: String
   }
 
+type CalibrationPeakShift
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
 type Catalogue
   {
     applicableLegislation: [LegalResource]
@@ -390,17 +401,6 @@ type ChemicalReaction
     hasYield: [Yield]
     hasReactionStep: ChemicalReaction
     relatedResource: [Resource]
-  }
-
-type ChemicalShiftReference
-  {
-    title: String
-    description: String
-    value: Float!
-    hasQuantityType: DefinedTerm!
-    unit: DefinedTerm
-    type: DefinedTerm
-    rdfType: DefinedTerm
   }
 
 interface ChemicalSubstance
@@ -989,6 +989,17 @@ type NMRSample
     derivedFrom: Entity
   }
 
+type NMRSampleTemperature
+  {
+    title: String
+    description: String
+    value: Float!
+    hasQuantityType: DefinedTerm!
+    unit: DefinedTerm
+    type: DefinedTerm
+    rdfType: DefinedTerm
+  }
+
 type NMRSolvent
   {
     id: Uriorcurie!
@@ -1050,7 +1061,7 @@ type NMRSpectrometer
     rdfType: DefinedTerm
     hasPart: [Device]
     otherIdentifier: [Identifier]
-    hasProtonFrequency: [NominalProtonFrequency]!
+    hasProtonFrequency: [NominalProtonFrequency]
   }
 
 type NMRSpectroscopy
@@ -1075,11 +1086,12 @@ type NMRSpectroscopy
     usedSolvent: [NMRSolvent]!
     usedPulseSequence: PulseSequence!
     usedNumberOfScans: NumberOfScans
+    usedSampleTemperature: NMRSampleTemperature
     probesNucleus: [AcquisitionNucleus]!
     usedCalibrationCompound: [ShiftCalibrationCompound]
     usedReferenceCompound: [ShiftReferenceCompound]
-    evaluatedEntity: [NMRSample]
-    rdfType: DefinedTerm
+    evaluatedEntity: [NMRSample]!
+    rdfType: DefinedTerm!
   }
 
 type NMRSpectrum
@@ -1365,7 +1377,7 @@ type ShiftCalibrationCompound
     molecularFormula: [MolecularFormula]
     iupacName: [IUPACName]
     hasMolarMass: [MolarMass]
-    hasShiftReference: [ChemicalShiftReference]
+    hasCalibrationShift: [CalibrationPeakShift]
   }
 
 type ShiftReferenceCompound
@@ -1393,7 +1405,7 @@ type ShiftReferenceCompound
     molecularFormula: [MolecularFormula]
     iupacName: [IUPACName]
     hasMolarMass: [MolarMass]
-    hasShiftReference: [ChemicalShiftReference]
+    hasCalibrationShift: [CalibrationPeakShift]
   }
 
 type SMILES
