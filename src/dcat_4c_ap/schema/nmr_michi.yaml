@@ -208,8 +208,14 @@ classes:
     is_a: ChemicalEntity
     class_uri: NMR:0002003
     description: A ChemicalEntity that produces one or more peaks used for chemical shift calibration in nuclear magnetic resonance (NMR) spectroscopy.
-    slots:
-      - has_shift_reference
+    attributes:
+      has_calibration_shift:
+        slot_uri: SIO:000008
+        is_a: has_quantitative_attribute
+        description: The slot to specify the chemical shift value of the ShiftCalibrationCompound.
+        range: CalibrationPeakShift
+        multivalued: true
+        inlined_as_list: true
     comments:
       - This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.
 
@@ -267,10 +273,11 @@ classes:
         #ifabsent: http://qudt.org/vocab/quantitykind/Frequency
       #unit:
         #ifabsent: https://qudt.org/vocab/unit/MegaHZ
-  ChemicalShiftReference:
-    class_uri: NMR:1002013
+
+  CalibrationPeakShift:
+    class_uri: NMR:1000223
     is_a: QuantitativeAttribute
-    description: A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.
+    description: The chemical shift of the peak used for chemical shift calibration.
     comments:
       - This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.
     #slot_usage:
@@ -302,11 +309,6 @@ slots:
     description: The slot to specify the NominalProtonFrequency of a NMRSpectrometer.
     range: NominalProtonFrequency
     required: true
-  has_shift_reference:
-    slot_uri: SIO:000008
-    is_a: has_quantitative_attribute
-    description: The slot to specify the ChemicalShiftReference value.
-    range: ChemicalShiftReference
 
 enums:
   # This is a [dynamic LinkML Enum definition](https://linkml.io/linkml/schemas/enums.html#dynamic-enums) covering
