@@ -282,7 +282,7 @@
 
 
 
-        NMRSpectroscopy --&gt; "* _recommended_" NMRSample : evaluated_entity
+        NMRSpectroscopy --&gt; "1..* _recommended_" NMRSample : evaluated_entity
         click NMRSample href "../NMRSample/"
 
 
@@ -405,7 +405,7 @@
 
 
 
-        NMRSpectroscopy --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+        NMRSpectroscopy --&gt; "1 _recommended_" DefinedTerm : rdf_type
         click DefinedTerm href "../DefinedTerm/"
 
 
@@ -584,7 +584,7 @@
 </tr>
 <tr>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
-<td>* <em>recommended</em> <br/> <a href="../NMRSample/">NMRSample</a></td>
+<td>1..* <em>recommended</em> <br/> <a href="../NMRSample/">NMRSample</a></td>
 <td>The slot to reference the NMRSample that was used in the NMRSpectroscopy</td>
 <td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
 </tr>
@@ -686,7 +686,7 @@
 </tr>
 <tr>
 <td><a href="../rdf_type/">rdf_type</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
 <td>The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613</td>
 <td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
 </tr>
@@ -768,6 +768,7 @@ slot_usage:
     description: The slot to reference the NMRSample that was used in the NMRSpectroscopy.
     slot_uri: OBI:0000293
     range: NMRSample
+    required: true
   rdf_type:
     name: rdf_type
     description: The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613.
@@ -776,6 +777,7 @@ slot_usage:
       obligation_level: RECOMMENDED
       binds_value_of: id
       description: NMRSpectroscopy types from the Chemical Methods Ontology.
+    required: true
   used_solvent:
     name: used_solvent
     description: The slot to specify the NMRSSolvent used in a NMRSpectroscopy.
@@ -890,6 +892,7 @@ slot_usage:
     description: The slot to reference the NMRSample that was used in the NMRSpectroscopy.
     slot_uri: OBI:0000293
     range: NMRSample
+    required: true
   rdf_type:
     name: rdf_type
     description: The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613.
@@ -898,6 +901,7 @@ slot_usage:
       obligation_level: RECOMMENDED
       binds_value_of: id
       description: NMRSpectroscopy types from the Chemical Methods Ontology.
+    required: true
   used_solvent:
     name: used_solvent
     description: The slot to specify the NMRSSolvent used in a NMRSpectroscopy.
@@ -1049,6 +1053,7 @@ attributes:
     domain_of:
     - DataGeneratingActivity
     range: NMRSample
+    required: true
     recommended: true
     multivalued: true
     inlined: true
@@ -1437,6 +1442,7 @@ attributes:
       obligation_level: RECOMMENDED
       binds_value_of: id
       description: NMRSpectroscopy types from the Chemical Methods Ontology.
+    required: true
     recommended: true
     inlined: true
 class_uri: CHMO:0000613
