@@ -271,7 +271,7 @@
 
 
 
-        NMRSpectrometer --&gt; "1..* _recommended_" NominalProtonFrequency : has_proton_frequency
+        NMRSpectrometer --&gt; "* _recommended_" NominalProtonFrequency : has_proton_frequency
         click NominalProtonFrequency href "../NominalProtonFrequency/"
 
 
@@ -371,7 +371,7 @@
 <tbody>
 <tr>
 <td><a href="../has_proton_frequency/">has_proton_frequency</a></td>
-<td>1..* <em>recommended</em> <br/> <a href="../NominalProtonFrequency/">NominalProtonFrequency</a></td>
+<td>* <em>recommended</em> <br/> <a href="../NominalProtonFrequency/">NominalProtonFrequency</a></td>
 <td>The slot to specify the NominalProtonFrequency of a NMRSpectrometer</td>
 <td>direct</td>
 </tr>
@@ -541,7 +541,6 @@ attributes:
     domain_of:
     - NMRSpectrometer
     range: NominalProtonFrequency
-    required: true
     recommended: true
     multivalued: true
     inlined: true

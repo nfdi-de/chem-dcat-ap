@@ -37,7 +37,6 @@ default_prefix: nmr_michi
 default_range: string
 imports:
   - linkml:types
-  - dcat_ap_plus
   - dcat_4c_ap
 
 classes:
@@ -55,6 +54,17 @@ classes:
         range: CharacterizedCompound
       derived_from:
         description: The slot to specify the MaterialEntity or MaterialSample from which the NMRSample was created.
+
+  NMRSampleTemperature:
+    class_uri: NMR:1400262
+    is_a: Temperature
+    description: The temperature of the NMR Sample.
+    #slot_usage:
+      #has_quantity_type:
+        #ifabsent: http://qudt.org/vocab/quantitykind/Temperature
+      #unit:
+        #ifabsent: https://qudt.org/vocab/unit/K
+
   NMRAnalysisDataset:
     class_uri: dcat:Dataset
     is_a: AnalysisDataset
@@ -111,7 +121,7 @@ classes:
       used_pulse_sequence:
         is_a: has_qualitative_attribute
         slot_uri: OBI:0000293
-        description: The slot to specify the PulseSequence used in the NMRSpectroscopy.
+        description: The slot to specify the PulseSequence used as a setting in the NMRSpectroscopy.
         range: PulseSequence
         multivalued: false
         inlined: true
@@ -119,8 +129,16 @@ classes:
       used_number_of_scans:
         is_a: has_quantitative_attribute
         slot_uri: OBI:0000293
-        description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
+        description: The slot to specify the NumberOfScans used as a setting in the NMRSpectroscopy.
         range: NumberOfScans
+        multivalued: false
+        inlined: true
+        recommended: true
+      used_sample_temperature:
+        is_a: has_quantitative_attribute
+        slot_uri: OBI:0000293
+        description: The slot to specify the NMRSampleTemperature used as a setting in the NMRSpectroscopy.
+        range: NMRSampleTemperature
         multivalued: false
         inlined: true
         recommended: true
@@ -155,10 +173,12 @@ classes:
         slot_uri: OBI:0000293
         range: NMRSample
         description: The slot to reference the NMRSample that was used in the NMRSpectroscopy.
+        required: true
       rdf_type:
         description: The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613.
         ## new binding feature is not yet implemented, see: https://github.com/linkml/linkml-model/releases/tag/v1.8.0
         ## current workaround: using NMRAssayEnum as range in the example data
+        required: true
         bindings:
           - binds_value_of: id
             range: NMRAssayEnum
@@ -190,8 +210,14 @@ classes:
     is_a: ChemicalEntity
     class_uri: NMR:0002003
     description: A ChemicalEntity that produces one or more peaks used for chemical shift calibration in nuclear magnetic resonance (NMR) spectroscopy.
-    slots:
-      - has_shift_reference
+    attributes:
+      has_calibration_shift:
+        slot_uri: SIO:000008
+        is_a: has_quantitative_attribute
+        description: The slot to specify the chemical shift value of the ShiftCalibrationCompound.
+        range: CalibrationPeakShift
+        multivalued: true
+        inlined_as_list: true
     comments:
       - This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.
 
@@ -249,10 +275,11 @@ classes:
         #ifabsent: http://qudt.org/vocab/quantitykind/Frequency
       #unit:
         #ifabsent: https://qudt.org/vocab/unit/MegaHZ
-  ChemicalShiftReference:
-    class_uri: NMR:1002013
+
+  CalibrationPeakShift:
+    class_uri: NMR:1000223
     is_a: QuantitativeAttribute
-    description: A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.
+    description: The chemical shift of the peak used for chemical shift calibration.
     comments:
       - This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future.
     #slot_usage:
@@ -283,12 +310,7 @@ slots:
     is_a: has_quantitative_attribute
     description: The slot to specify the NominalProtonFrequency of a NMRSpectrometer.
     range: NominalProtonFrequency
-    required: true
-  has_shift_reference:
-    slot_uri: SIO:000008
-    is_a: has_quantitative_attribute
-    description: The slot to specify the ChemicalShiftReference value.
-    range: ChemicalShiftReference
+    #required: true  # disabled for now, as this needs to be specified better in the NMR MICHI yet
 
 enums:
   # This is a [dynamic LinkML Enum definition](https://linkml.io/linkml/schemas/enums.html#dynamic-enums) covering

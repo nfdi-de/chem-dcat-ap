@@ -261,6 +261,17 @@
 
       ShiftCalibrationCompound : description
 
+      ShiftCalibrationCompound : has_calibration_shift
+
+
+
+
+
+        ShiftCalibrationCompound --&gt; "*" CalibrationPeakShift : has_calibration_shift
+        click CalibrationPeakShift href "../CalibrationPeakShift/"
+
+
+
       ShiftCalibrationCompound : has_density
 
 
@@ -346,17 +357,6 @@
 
         ShiftCalibrationCompound --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
         click QuantitativeAttribute href "../QuantitativeAttribute/"
-
-
-
-      ShiftCalibrationCompound : has_shift_reference
-
-
-
-
-
-        ShiftCalibrationCompound --&gt; "* _recommended_" ChemicalShiftReference : has_shift_reference
-        click ChemicalShiftReference href "../ChemicalShiftReference/"
 
 
 
@@ -515,9 +515,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../has_shift_reference/">has_shift_reference</a></td>
-<td>* <em>recommended</em> <br/> <a href="../ChemicalShiftReference/">ChemicalShiftReference</a></td>
-<td>The slot to specify the ChemicalShiftReference value</td>
+<td><a href="../has_calibration_shift/">has_calibration_shift</a></td>
+<td>* <br/> <a href="../CalibrationPeakShift/">CalibrationPeakShift</a></td>
+<td>The slot to specify the chemical shift value of the ShiftCalibrationCompound</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -719,8 +719,20 @@ comments:
   schema profiles. It will be outsourced to a more appropriate location in the future.
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 is_a: ChemicalEntity
-slots:
-- has_shift_reference
+attributes:
+  has_calibration_shift:
+    name: has_calibration_shift
+    description: The slot to specify the chemical shift value of the ShiftCalibrationCompound.
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml
+    rank: 1000
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    domain_of:
+    - ShiftCalibrationCompound
+    range: CalibrationPeakShift
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
 class_uri: NMR:0002003
 
 </code></pre>
@@ -736,19 +748,18 @@ comments:
 from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
 is_a: ChemicalEntity
 attributes:
-  has_shift_reference:
-    name: has_shift_reference
-    description: The slot to specify the ChemicalShiftReference value.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
+  has_calibration_shift:
+    name: has_calibration_shift
+    description: The slot to specify the chemical shift value of the ShiftCalibrationCompound.
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml
     rank: 1000
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    alias: has_shift_reference
+    alias: has_calibration_shift
     owner: ShiftCalibrationCompound
     domain_of:
     - ShiftCalibrationCompound
-    range: ChemicalShiftReference
-    recommended: true
+    range: CalibrationPeakShift
     multivalued: true
     inlined: true
     inlined_as_list: true

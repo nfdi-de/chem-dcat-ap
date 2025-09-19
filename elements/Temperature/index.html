@@ -245,6 +245,11 @@
       QuantitativeAttribute &lt;|-- Temperature
         click QuantitativeAttribute href "../QuantitativeAttribute/"
 
+
+      Temperature &lt;|-- NMRSampleTemperature
+        click NMRSampleTemperature href "../NMRSampleTemperature/"
+
+
       Temperature : description
 
       Temperature : has_quantity_type
@@ -300,7 +305,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../QuantitativeAttribute/">QuantitativeAttribute</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
-<li><strong>Temperature</strong></li>
+<li><strong>Temperature</strong><ul>
+<li><a href="../NMRSampleTemperature/">NMRSampleTemperature</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

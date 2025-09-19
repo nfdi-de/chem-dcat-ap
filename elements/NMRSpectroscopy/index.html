@@ -282,7 +282,7 @@
 
 
 
-        NMRSpectroscopy --&gt; "* _recommended_" NMRSample : evaluated_entity
+        NMRSpectroscopy --&gt; "1..* _recommended_" NMRSample : evaluated_entity
         click NMRSample href "../NMRSample/"
 
 
@@ -405,7 +405,7 @@
 
 
 
-        NMRSpectroscopy --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+        NMRSpectroscopy --&gt; "1 _recommended_" DefinedTerm : rdf_type
         click DefinedTerm href "../DefinedTerm/"
 
 
@@ -478,6 +478,17 @@
 
 
 
+      NMRSpectroscopy : used_sample_temperature
+
+
+
+
+
+        NMRSpectroscopy --&gt; "0..1 _recommended_" NMRSampleTemperature : used_sample_temperature
+        click NMRSampleTemperature href "../NMRSampleTemperature/"
+
+
+
       NMRSpectroscopy : used_solvent
 
 
@@ -538,13 +549,19 @@
 <tr>
 <td><a href="../used_pulse_sequence/">used_pulse_sequence</a></td>
 <td>1 <br/> <a href="../PulseSequence/">PulseSequence</a></td>
-<td>The slot to specify the PulseSequence used in the NMRSpectroscopy</td>
+<td>The slot to specify the PulseSequence used as a setting in the NMRSpectroscop...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../used_number_of_scans/">used_number_of_scans</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../NumberOfScans/">NumberOfScans</a></td>
-<td>The slot to specify the NumberOfScans used in the NMRSpectroscopy</td>
+<td>The slot to specify the NumberOfScans used as a setting in the NMRSpectroscop...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../used_sample_temperature/">used_sample_temperature</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../NMRSampleTemperature/">NMRSampleTemperature</a></td>
+<td>The slot to specify the NMRSampleTemperature used as a setting in the NMRSpec...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -567,7 +584,7 @@
 </tr>
 <tr>
 <td><a href="../evaluated_entity/">evaluated_entity</a></td>
-<td>* <em>recommended</em> <br/> <a href="../NMRSample/">NMRSample</a></td>
+<td>1..* <em>recommended</em> <br/> <a href="../NMRSample/">NMRSample</a></td>
 <td>The slot to reference the NMRSample that was used in the NMRSpectroscopy</td>
 <td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
 </tr>
@@ -669,7 +686,7 @@
 </tr>
 <tr>
 <td><a href="../rdf_type/">rdf_type</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
+<td>1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
 <td>The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613</td>
 <td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
 </tr>
@@ -751,6 +768,7 @@ slot_usage:
     description: The slot to reference the NMRSample that was used in the NMRSpectroscopy.
     slot_uri: OBI:0000293
     range: NMRSample
+    required: true
   rdf_type:
     name: rdf_type
     description: The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613.
@@ -759,6 +777,7 @@ slot_usage:
       obligation_level: RECOMMENDED
       binds_value_of: id
       description: NMRSpectroscopy types from the Chemical Methods Ontology.
+    required: true
   used_solvent:
     name: used_solvent
     description: The slot to specify the NMRSSolvent used in a NMRSpectroscopy.
@@ -769,7 +788,7 @@ slot_usage:
 attributes:
   used_pulse_sequence:
     name: used_pulse_sequence
-    description: The slot to specify the PulseSequence used in the NMRSpectroscopy.
+    description: The slot to specify the PulseSequence used as a setting in the NMRSpectroscopy.
     from_schema: https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml
     rank: 1000
     is_a: has_qualitative_attribute
@@ -782,7 +801,7 @@ attributes:
     inlined: true
   used_number_of_scans:
     name: used_number_of_scans
-    description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
+    description: The slot to specify the NumberOfScans used as a setting in the NMRSpectroscopy.
     from_schema: https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml
     rank: 1000
     is_a: has_quantitative_attribute
@@ -790,6 +809,20 @@ attributes:
     domain_of:
     - NMRSpectroscopy
     range: NumberOfScans
+    recommended: true
+    multivalued: false
+    inlined: true
+  used_sample_temperature:
+    name: used_sample_temperature
+    description: The slot to specify the NMRSampleTemperature used as a setting in
+      the NMRSpectroscopy.
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml
+    rank: 1000
+    is_a: has_quantitative_attribute
+    slot_uri: OBI:0000293
+    domain_of:
+    - NMRSpectroscopy
+    range: NMRSampleTemperature
     recommended: true
     multivalued: false
     inlined: true
@@ -859,6 +892,7 @@ slot_usage:
     description: The slot to reference the NMRSample that was used in the NMRSpectroscopy.
     slot_uri: OBI:0000293
     range: NMRSample
+    required: true
   rdf_type:
     name: rdf_type
     description: The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613.
@@ -867,6 +901,7 @@ slot_usage:
       obligation_level: RECOMMENDED
       binds_value_of: id
       description: NMRSpectroscopy types from the Chemical Methods Ontology.
+    required: true
   used_solvent:
     name: used_solvent
     description: The slot to specify the NMRSSolvent used in a NMRSpectroscopy.
@@ -877,7 +912,7 @@ slot_usage:
 attributes:
   used_pulse_sequence:
     name: used_pulse_sequence
-    description: The slot to specify the PulseSequence used in the NMRSpectroscopy.
+    description: The slot to specify the PulseSequence used as a setting in the NMRSpectroscopy.
     from_schema: https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml
     rank: 1000
     is_a: has_qualitative_attribute
@@ -892,7 +927,7 @@ attributes:
     inlined: true
   used_number_of_scans:
     name: used_number_of_scans
-    description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
+    description: The slot to specify the NumberOfScans used as a setting in the NMRSpectroscopy.
     from_schema: https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml
     rank: 1000
     is_a: has_quantitative_attribute
@@ -902,6 +937,22 @@ attributes:
     domain_of:
     - NMRSpectroscopy
     range: NumberOfScans
+    recommended: true
+    multivalued: false
+    inlined: true
+  used_sample_temperature:
+    name: used_sample_temperature
+    description: The slot to specify the NMRSampleTemperature used as a setting in
+      the NMRSpectroscopy.
+    from_schema: https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml
+    rank: 1000
+    is_a: has_quantitative_attribute
+    slot_uri: OBI:0000293
+    alias: used_sample_temperature
+    owner: NMRSpectroscopy
+    domain_of:
+    - NMRSpectroscopy
+    range: NMRSampleTemperature
     recommended: true
     multivalued: false
     inlined: true
@@ -1002,6 +1053,7 @@ attributes:
     domain_of:
     - DataGeneratingActivity
     range: NMRSample
+    required: true
     recommended: true
     multivalued: true
     inlined: true
@@ -1390,6 +1442,7 @@ attributes:
       obligation_level: RECOMMENDED
       binds_value_of: id
       description: NMRSpectroscopy types from the Chemical Methods Ontology.
+    required: true
     recommended: true
     inlined: true
 class_uri: CHMO:0000613
