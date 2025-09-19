@@ -54,6 +54,17 @@ classes:
         range: CharacterizedCompound
       derived_from:
         description: The slot to specify the MaterialEntity or MaterialSample from which the NMRSample was created.
+
+  NMRSampleTemperature:
+    class_uri: NMR:1400262
+    is_a: Temperature
+    description: The temperature of the NMR Sample.
+    #slot_usage:
+      #has_quantity_type:
+        #ifabsent: http://qudt.org/vocab/quantitykind/Temperature
+      #unit:
+        #ifabsent: https://qudt.org/vocab/unit/K
+
   NMRAnalysisDataset:
     class_uri: dcat:Dataset
     is_a: AnalysisDataset
@@ -120,6 +131,14 @@ classes:
         slot_uri: OBI:0000293
         description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
         range: NumberOfScans
+        multivalued: false
+        inlined: true
+        recommended: true
+      used_sample_temperature:
+        is_a: has_quantitative_attribute
+        slot_uri: OBI:0000293
+        description: The slot to specify the NMRSampleTemperature used as a setting in the NMRSpectroscopy.
+        range: NMRSampleTemperature
         multivalued: false
         inlined: true
         recommended: true
