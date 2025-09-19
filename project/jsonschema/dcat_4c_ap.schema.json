@@ -1205,6 +1205,68 @@
             "title": "Attribution",
             "type": "object"
         },
+        "CalibrationPeakShift": {
+            "additionalProperties": false,
+            "description": "The chemical shift of the peak used for chemical shift calibration.",
+            "properties": {
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_quantity_type": {
+                    "description": "The type of quality that is quantifiable according to the QUDT ontology.",
+                    "type": "string"
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                },
+                "unit": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "The slot to provide the literal value of the QuantitativeAttribute.",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "value",
+                "has_quantity_type"
+            ],
+            "title": "CalibrationPeakShift",
+            "type": "object"
+        },
         "Catalogue": {
             "additionalProperties": false,
             "description": "See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)",
@@ -2692,68 +2754,6 @@
                 "id"
             ],
             "title": "ChemicalReaction",
-            "type": "object"
-        },
-        "ChemicalShiftReference": {
-            "additionalProperties": false,
-            "description": "A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.",
-            "properties": {
-                "description": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "has_quantity_type": {
-                    "description": "The type of quality that is quantifiable according to the QUDT ontology.",
-                    "type": "string"
-                },
-                "rdf_type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the ontology class that is instantiated by an entity."
-                },
-                "title": {
-                    "description": "This slot is described in more detail within the class in which it is used.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "This slot is described in more detail within the class in which it is used."
-                },
-                "unit": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "value": {
-                    "description": "The slot to provide the literal value of the QuantitativeAttribute.",
-                    "type": "number"
-                }
-            },
-            "required": [
-                "value",
-                "has_quantity_type"
-            ],
-            "title": "ChemicalShiftReference",
             "type": "object"
         },
         "Concentration": {
@@ -6630,6 +6630,68 @@
             "title": "NMRSample",
             "type": "object"
         },
+        "NMRSampleTemperature": {
+            "additionalProperties": false,
+            "description": "The temperature of the NMR Sample.",
+            "properties": {
+                "description": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_quantity_type": {
+                    "description": "The type of quality that is quantifiable according to the QUDT ontology.",
+                    "type": "string"
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "This slot is described in more detail within the class in which it is used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                },
+                "unit": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "The slot to provide the literal value of the QuantitativeAttribute.",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "value",
+                "has_quantity_type"
+            ],
+            "title": "NMRSampleTemperature",
+            "type": "object"
+        },
         "NMRSolvent": {
             "additionalProperties": false,
             "description": "A DissolvingSubstance that is used in nuclear magnetic resonance NMRSpectroscopy.",
@@ -7358,11 +7420,11 @@
                             "type": "null"
                         }
                     ],
-                    "description": "The slot to specify the NumberOfScans used in the NMRSpectroscopy."
+                    "description": "The slot to specify the NumberOfScans used as a setting in the NMRSpectroscopy."
                 },
                 "used_pulse_sequence": {
                     "$ref": "#/$defs/PulseSequence",
-                    "description": "The slot to specify the PulseSequence used in the NMRSpectroscopy."
+                    "description": "The slot to specify the PulseSequence used as a setting in the NMRSpectroscopy."
                 },
                 "used_reference_compound": {
                     "description": "The slot to specify the ShiftReferenceCompound used in the NMRSpectroscopy.",
@@ -7373,6 +7435,17 @@
                         "array",
                         "null"
                     ]
+                },
+                "used_sample_temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/NMRSampleTemperature"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the NMRSampleTemperature used as a setting in the NMRSpectroscopy."
                 },
                 "used_solvent": {
                     "description": "The slot to specify the NMRSSolvent used in a NMRSpectroscopy.",
@@ -8948,6 +9021,16 @@
                         "null"
                     ]
                 },
+                "has_calibration_shift": {
+                    "description": "The slot to specify the chemical shift value of the ShiftCalibrationCompound.",
+                    "items": {
+                        "$ref": "#/$defs/CalibrationPeakShift"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_density": {
                     "description": "The slot to provide the Density of a MaterialEntity.",
                     "items": {
@@ -9016,16 +9099,6 @@
                     "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_shift_reference": {
-                    "description": "The slot to specify the ChemicalShiftReference value.",
-                    "items": {
-                        "$ref": "#/$defs/ChemicalShiftReference"
                     },
                     "type": [
                         "array",
@@ -9180,6 +9253,16 @@
                         "null"
                     ]
                 },
+                "has_calibration_shift": {
+                    "description": "The slot to specify the chemical shift value of the ShiftCalibrationCompound.",
+                    "items": {
+                        "$ref": "#/$defs/CalibrationPeakShift"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "has_density": {
                     "description": "The slot to provide the Density of a MaterialEntity.",
                     "items": {
@@ -9248,16 +9331,6 @@
                     "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_shift_reference": {
-                    "description": "The slot to specify the ChemicalShiftReference value.",
-                    "items": {
-                        "$ref": "#/$defs/ChemicalShiftReference"
                     },
                     "type": [
                         "array",

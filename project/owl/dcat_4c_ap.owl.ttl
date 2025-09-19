@@ -63,17 +63,17 @@ dcat_4c_ap:QUDTUnitEnum a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "NMRAnalysisDataset" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSample> ;
             owl:onProperty dcat_4c_ap:is_about_entity ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSpectralAnalysis> ;
             owl:onProperty dcat_4c_ap:was_generated_by ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSample> ;
-            owl:onProperty dcat_4c_ap:is_about_entity ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcat_4c_ap:was_generated_by ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:is_about_entity ],
         dcatap_plus:AnalysisDataset ;
     skos:definition "A dataset that is the result of a NMRSpectralAnalysis of a NMRSample." ;
     skos:exactMatch dcat:Dataset ;
@@ -89,10 +89,10 @@ CHMO:0000595 a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Atom" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom owl:Thing ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcat_4c_ap:rdf_type ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom owl:Thing ;
             owl:onProperty dcat_4c_ap:rdf_type ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
@@ -128,23 +128,23 @@ dcatap_plus:Any a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Any" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ] ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ] ;
     skos:definition "This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://nfdi-de.github.io/chem-dcat-ap/elements/primary_topic/)." ;
     skos:exactMatch linkml:Any ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
@@ -154,22 +154,22 @@ dcatap_plus:Attribution a owl:Class,
     rdfs:label "Attribution" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)" ;
     skos:exactMatch prov:Attribution ;
@@ -179,22 +179,22 @@ dcatap_plus:Checksum a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Checksum" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:hexBinary ;
-            owl:onProperty dcatap_plus:checksum_value ],
-        [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:ChecksumAlgorithm ;
             owl:onProperty dcatap_plus:algorithm ],
         [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:hexBinary ;
+            owl:onProperty dcatap_plus:checksum_value ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcatap_plus:checksum_value ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:checksum_value ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty dcatap_plus:algorithm ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:algorithm ] ;
     skos:definition "See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)" ;
     skos:exactMatch <http://spdx.org/rdf/terms#Checksum> ;
@@ -204,22 +204,22 @@ dcatap_plus:ChecksumAlgorithm a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ChecksumAlgorithm" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)" ;
@@ -230,17 +230,17 @@ dcatap_plus:ConceptScheme a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ConceptScheme" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
@@ -256,6 +256,9 @@ dcatap_plus:Geometry a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
@@ -263,9 +266,6 @@ dcatap_plus:Geometry a owl:Class,
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -280,9 +280,9 @@ dcatap_plus:Policy a owl:Class,
     rdfs:label "Policy" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -291,8 +291,8 @@ dcatap_plus:Policy a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
@@ -306,22 +306,22 @@ dcatap_plus:ProvenanceStatement a owl:Class,
     rdfs:label "ProvenanceStatement" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:description ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)" ;
     skos:exactMatch dcterms:ProvenanceStatement ;
@@ -331,17 +331,17 @@ dcatap_plus:Relationship a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Relationship" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom dcatap_plus:Resource ;
             owl:onProperty dcatap_plus:relation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:had_role ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Role ;
             owl:onProperty dcatap_plus:had_role ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Resource ;
-            owl:onProperty dcatap_plus:relation ] ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:relation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:had_role ] ;
     skos:definition "See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)" ;
     skos:exactMatch dcat:Relationship ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
@@ -350,19 +350,19 @@ dcatap_plus:Role a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Role" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -382,10 +382,10 @@ dcatap_plus:Software a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty dcat_4c_ap:other_identifier ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Software ;
+            owl:minCardinality 0 ;
             owl:onProperty dcat_4c_ap:has_part ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom dcatap_plus:Software ;
             owl:onProperty dcat_4c_ap:has_part ],
         dcatap_plus:AgenticEntity ;
     skos:definition "An instrument composed of a series of instructions that can be interpreted by or directly executed by a computer." ;
@@ -397,13 +397,13 @@ dcatap_plus:Software a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "MaterialSample" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#derived_from> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Entity ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#derived_from> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#derived_from> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#derived_from> ],
         dcatap_plus:EvaluatedEntity,
         <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Materialistic> ;
@@ -417,17 +417,26 @@ dcatap_plus:Software a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AcquisitionNucleus" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#nucleus_of> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#Atom> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#nucleus_of> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#nucleus_of> ],
         dcatap_plus:AgenticEntity ;
     skos:definition "The nucleus of an Atom that is being studied during an NMR analysis." ;
     skos:exactMatch NMR:1400083 ;
+    skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> ;
+    skos:note "This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future." .
+
+<https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#CalibrationPeakShift> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "CalibrationPeakShift" ;
+    rdfs:subClassOf dcatap_plus:QuantitativeAttribute ;
+    skos:definition "The chemical shift of the peak used for chemical shift calibration." ;
+    skos:exactMatch NMR:1000223 ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> ;
     skos:note "This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future." .
 
@@ -439,6 +448,14 @@ dcatap_plus:Software a owl:Class,
     skos:exactMatch NMR:0002001 ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> ;
     skos:note "This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future." .
+
+<https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSampleTemperature> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "NMRSampleTemperature" ;
+    rdfs:subClassOf <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Temperature> ;
+    skos:definition "The temperature of the NMR Sample." ;
+    skos:exactMatch NMR:1400262 ;
+    skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> .
 
 <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSolvent> a owl:Class,
         linkml:ClassDefinition ;
@@ -468,71 +485,80 @@ dcatap_plus:Software a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "NMRSpectroscopy" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_spectrometer> ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcat_4c_ap:rdf_type ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_calibration_compound> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_number_of_scans> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NumberOfScans> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_number_of_scans> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_number_of_scans> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#ShiftReferenceCompound> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_reference_compound> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_reference_compound> ],
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#AcquisitionNucleus> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#probes_nucleus> ],
         [ a owl:Restriction ;
             owl:allValuesFrom owl:Thing ;
             owl:onProperty dcat_4c_ap:rdf_type ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_solvent> ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:rdf_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_number_of_scans> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcat_4c_ap:rdf_type ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_spectrometer> ],
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSampleTemperature> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_sample_temperature> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#probes_nucleus> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#ShiftCalibrationCompound> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_calibration_compound> ],
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#ShiftReferenceCompound> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_reference_compound> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSpectrometer> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_spectrometer> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#PulseSequence> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_pulse_sequence> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcat_4c_ap:evaluated_entity ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_pulse_sequence> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#ShiftCalibrationCompound> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_calibration_compound> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSolvent> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_solvent> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSample> ;
-            owl:onProperty dcat_4c_ap:evaluated_entity ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_pulse_sequence> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#AcquisitionNucleus> ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#PulseSequence> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_pulse_sequence> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSample> ;
+            owl:onProperty dcat_4c_ap:evaluated_entity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:evaluated_entity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_sample_temperature> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSolvent> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_solvent> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_number_of_scans> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#probes_nucleus> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NumberOfScans> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_number_of_scans> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_spectrometer> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_reference_compound> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_spectrometer> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_pulse_sequence> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_solvent> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_sample_temperature> ],
         dcatap_plus:DataGeneratingActivity ;
     skos:definition "Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them." ;
     skos:exactMatch CHMO:0000613,
@@ -544,10 +570,10 @@ dcatap_plus:Software a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "NMRSpectrum" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSpectroscopy> ;
             owl:onProperty dcat_4c_ap:was_generated_by ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSpectroscopy> ;
+            owl:minCardinality 0 ;
             owl:onProperty dcat_4c_ap:was_generated_by ],
         dcatap_plus:AnalysisSourceData ;
     skos:definition "Chemical shift data obtained via nuclear magnetic resonance (NMR) spectroscopy." ;
@@ -753,13 +779,13 @@ PATO:0002066 a owl:NamedIndividual,
         linkml:ClassDefinition ;
     rdfs:label "Catalyst" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#MolarEquivalent> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
         <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#ChemicalSubstance>,
         dcatap_plus:AgenticEntity,
@@ -785,92 +811,92 @@ PATO:0002066 a owl:NamedIndividual,
         linkml:ClassDefinition ;
     rdfs:label "ChemicalReaction" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:related_resource ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_starting_material> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_duration> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_pressure> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Temperature> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_temperature> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_reactor> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#ChemicalReaction> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_reaction_step> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#Yield> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_yield> ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_reactant> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_solvent> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_yield> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_catalyst> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Pressure> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_pressure> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#ChemicalProduct> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#generated_product> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Resource ;
-            owl:onProperty dcatap_plus:related_resource ],
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#StartingMaterial> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_starting_material> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#Reagent> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_reactant> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_reaction_step> ],
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#ChemicalProduct> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#generated_product> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#Catalyst> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_catalyst> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_temperature> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_pressure> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_reactant> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_yield> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#Reactor> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_reactor> ],
+            owl:onProperty dcatap_plus:related_resource ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:duration ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_duration> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_solvent> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_yield> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#Catalyst> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_catalyst> ],
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_reaction_step> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#StartingMaterial> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_starting_material> ],
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#Yield> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_yield> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_reaction_step> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Temperature> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_temperature> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#Reactor> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_reactor> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_pressure> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_duration> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#DissolvingSubstance> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_solvent> ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_duration> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Pressure> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_pressure> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_reaction_step> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_pressure> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#generated_product> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_duration> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_temperature> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Resource ;
+            owl:onProperty dcatap_plus:related_resource ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_catalyst> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_reactor> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_reactor> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#used_starting_material> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_temperature> ],
@@ -897,13 +923,13 @@ PATO:0002066 a owl:NamedIndividual,
         linkml:ClassDefinition ;
     rdfs:label "Reagent" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#MolarEquivalent> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
         <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#ChemicalSubstance> ;
     skos:closeMatch OBI:0001879,
@@ -918,10 +944,10 @@ PATO:0002066 a owl:NamedIndividual,
         linkml:ClassDefinition ;
     rdfs:label "StartingMaterial" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#MolarEquivalent> ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#MolarEquivalent> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -1004,74 +1030,74 @@ dcatap_plus:CatalogueRecord a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "CatalogueRecord" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom dcatap_plus:CatalogueRecord ;
+            owl:onProperty dcatap_plus:source_metadata ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ owl:intersectionOf ( [ owl:unionOf ( dcatap_plus:Catalogue dcatap_plus:Dataset dcatap_plus:DatasetSeries dcatap_plus:DataService ) ] dcatap_plus:Any ) ] ;
             owl:onProperty dcatap_plus:primary_topic ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:language ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:source_metadata ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:change_type ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:change_type ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:application_profile ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Concept ;
-            owl:onProperty dcatap_plus:change_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:source_metadata ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:onProperty dcatap_plus:listing_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:primary_topic ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:listing_date ],
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Standard ;
             owl:onProperty dcatap_plus:application_profile ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatap_plus:listing_date ],
+            owl:onProperty dcatap_plus:modification_date ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ owl:intersectionOf ( [ owl:unionOf ( dcatap_plus:Catalogue dcatap_plus:Dataset dcatap_plus:DatasetSeries dcatap_plus:DataService ) ] dcatap_plus:Any ) ] ;
-            owl:onProperty dcatap_plus:primary_topic ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:LinguisticSystem ;
-            owl:onProperty dcatap_plus:language ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:primary_topic ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:change_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
             owl:onProperty dcatap_plus:listing_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:language ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:application_profile ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcatap_plus:modification_date ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:source_metadata ],
+            owl:allValuesFrom dcatap_plus:LinguisticSystem ;
+            owl:onProperty dcatap_plus:language ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatap_plus:modification_date ],
+            owl:allValuesFrom dcatap_plus:Concept ;
+            owl:onProperty dcatap_plus:change_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:primary_topic ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:CatalogueRecord ;
-            owl:onProperty dcatap_plus:source_metadata ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ] ;
+            owl:onProperty dcatap_plus:listing_date ] ;
     skos:definition "See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)" ;
     skos:exactMatch dcat:CatalogRecord ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
@@ -1097,75 +1123,75 @@ dcatap_plus:DatasetSeries a owl:Class,
     rdfs:label "DatasetSeries" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:release_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:frequency ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatap_plus:release_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:LegalResource ;
             owl:onProperty dcatap_plus:applicable_legislation ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:applicable_legislation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Agent ;
-            owl:onProperty dcatap_plus:publisher ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:contact_point ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:publisher ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty dcatap_plus:modification_date ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:release_date ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:modification_date ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:frequency ],
+            owl:onProperty dcatap_plus:contact_point ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:publisher ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty dcatap_plus:release_date ],
+        [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Kind ;
             owl:onProperty dcatap_plus:contact_point ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Frequency ;
-            owl:onProperty dcatap_plus:frequency ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Location ;
             owl:onProperty dcatap_plus:geographical_coverage ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:PeriodOfTime ;
-            owl:onProperty dcatap_plus:temporal_coverage ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:publisher ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:applicable_legislation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:frequency ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:release_date ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:geographical_coverage ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:temporal_coverage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Agent ;
+            owl:onProperty dcatap_plus:publisher ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:modification_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Frequency ;
+            owl:onProperty dcatap_plus:frequency ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:modification_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:PeriodOfTime ;
             owl:onProperty dcatap_plus:temporal_coverage ] ;
     skos:definition "See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)" ;
     skos:exactMatch dcat:DatasetSeries ;
@@ -1176,70 +1202,34 @@ dcatap_plus:Distribution a owl:Class,
     rdfs:label "Distribution" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:packaging_format ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:LicenseDocument ;
-            owl:onProperty dcatap_plus:licence ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:nonNegativeInteger ;
-            owl:onProperty dcatap_plus:byte_size ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:download_URL ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:temporal_resolution ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:availability ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Decimal ;
-            owl:onProperty dcatap_plus:spatial_resolution ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:packaging_format ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:checksum ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:format ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Standard ;
-            owl:onProperty dcatap_plus:linked_schemas ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:byte_size ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom dcatap_plus:Concept ;
             owl:onProperty dcatap_plus:status ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Resource ;
             owl:onProperty dcatap_plus:access_URL ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:has_policy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:MediaType ;
+            owl:onProperty dcatap_plus:compression_format ],
+        [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Policy ;
             owl:onProperty dcatap_plus:has_policy ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:language ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:access_service ],
+            owl:onProperty dcatap_plus:applicable_legislation ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:media_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:rights ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:checksum ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:temporal_resolution ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:format ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:duration ;
             owl:onProperty dcatap_plus:temporal_resolution ],
@@ -1247,122 +1237,158 @@ dcatap_plus:Distribution a owl:Class,
             owl:allValuesFrom dcatap_plus:LegalResource ;
             owl:onProperty dcatap_plus:applicable_legislation ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:documentation ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:release_date ],
+            owl:allValuesFrom dcatap_plus:Checksum ;
+            owl:onProperty dcatap_plus:checksum ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:linked_schemas ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:release_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:spatial_resolution ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Concept ;
-            owl:onProperty dcatap_plus:status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:RightsStatement ;
-            owl:onProperty dcatap_plus:rights ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:availability ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:has_policy ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:onProperty dcatap_plus:download_URL ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Document ;
             owl:onProperty dcatap_plus:documentation ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:applicable_legislation ],
+            owl:onProperty dcatap_plus:byte_size ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:MediaTypeOrExtent ;
-            owl:onProperty dcatap_plus:format ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:licence ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:checksum ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:media_type ],
+            owl:onProperty dcatap_plus:availability ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
+            owl:onProperty dcatap_plus:temporal_resolution ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:DataService ;
-            owl:onProperty dcatap_plus:access_service ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:release_date ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:MediaType ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:packaging_format ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:byte_size ],
+            owl:onProperty dcatap_plus:documentation ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:release_date ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:LinguisticSystem ;
             owl:onProperty dcatap_plus:language ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:spatial_resolution ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:access_URL ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Concept ;
-            owl:onProperty dcatap_plus:availability ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Checksum ;
-            owl:onProperty dcatap_plus:checksum ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:licence ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:MediaType ;
             owl:onProperty dcatap_plus:media_type ],
         [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:LicenseDocument ;
+            owl:onProperty dcatap_plus:licence ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:nonNegativeInteger ;
+            owl:onProperty dcatap_plus:byte_size ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Standard ;
+            owl:onProperty dcatap_plus:linked_schemas ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:rights ],
+            owl:onProperty dcatap_plus:packaging_format ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:format ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:media_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:status ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:linked_schemas ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Date ;
             owl:onProperty dcatap_plus:release_date ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom dcatap_plus:Concept ;
+            owl:onProperty dcatap_plus:availability ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:has_policy ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:access_service ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:compression_format ],
+            owl:onProperty dcatap_plus:spatial_resolution ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:language ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:compression_format ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:spatial_resolution ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Decimal ;
+            owl:onProperty dcatap_plus:spatial_resolution ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:MediaType ;
+            owl:onProperty dcatap_plus:media_type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:MediaType ;
+            owl:onProperty dcatap_plus:packaging_format ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:modification_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:temporal_resolution ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:byte_size ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:licence ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:compression_format ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:RightsStatement ;
+            owl:onProperty dcatap_plus:rights ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty dcatap_plus:modification_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:MediaTypeOrExtent ;
+            owl:onProperty dcatap_plus:format ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:status ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:rights ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:licence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:access_URL ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:modification_date ],
+        [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Resource ;
             owl:onProperty dcatap_plus:download_URL ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:MediaType ;
-            owl:onProperty dcatap_plus:compression_format ] ;
+            owl:allValuesFrom dcatap_plus:DataService ;
+            owl:onProperty dcatap_plus:access_service ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ] ;
     skos:definition "See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)" ;
     skos:exactMatch dcat:Distribution ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
@@ -1374,17 +1400,17 @@ dcatap_plus:Frequency a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
@@ -1398,18 +1424,18 @@ dcatap_plus:MediaTypeOrExtent a owl:Class,
     rdfs:label "MediaTypeOrExtent" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -1423,22 +1449,22 @@ dcatap_plus:Plan a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Plan" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         dcatap_plus:ClassifierMixin ;
     skos:altLabel "Method",
@@ -1453,21 +1479,21 @@ dcatap_plus:TimeInstant a owl:Class,
     rdfs:label "TimeInstant" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)" ;
@@ -1706,20 +1732,11 @@ dcatap_plus:version_notes a owl:ObjectProperty,
     skos:exactMatch qudt:Quantity ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml> .
 
-<https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#ChemicalShiftReference> a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "ChemicalShiftReference" ;
-    rdfs:subClassOf dcatap_plus:QuantitativeAttribute ;
-    skos:definition "A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum." ;
-    skos:exactMatch NMR:1002013 ;
-    skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> ;
-    skos:note "This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future." .
-
 <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NMRSample> a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "NMRSample" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom owl:Thing ;
             owl:onProperty dcat_4c_ap:derived_from ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#CharacterizedCompound> ;
@@ -1728,10 +1745,10 @@ dcatap_plus:version_notes a owl:ObjectProperty,
             owl:minCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#composed_of> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty dcat_4c_ap:derived_from ],
         [ a owl:Restriction ;
-            owl:allValuesFrom owl:Thing ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcat_4c_ap:derived_from ],
         dcat_4c_ap:SubstanceSample ;
     skos:definition "A SubstanceSample that has been prepared for chemical analysis by NMR." ;
@@ -1746,10 +1763,10 @@ dcatap_plus:version_notes a owl:ObjectProperty,
             owl:maxCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_proton_frequency> ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NominalProtonFrequency> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_proton_frequency> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#NominalProtonFrequency> ;
+            owl:minCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_proton_frequency> ],
         dcatap_plus:Device ;
     skos:definition "A Spectrometer used to conduct NMR experiments consisting of a magnet housing a sample space surrounded by two coils which act to transmit radio frequency radiation to the sample and to detect the response of the sample." ;
@@ -1773,19 +1790,22 @@ dcatap_plus:version_notes a owl:ObjectProperty,
         linkml:ClassDefinition ;
     rdfs:label "ShiftCalibrationCompound" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#ChemicalShiftReference> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_shift_reference> ],
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#CalibrationPeakShift> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_calibration_shift> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_shift_reference> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_shift_reference> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_calibration_shift> ],
         <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#ChemicalEntity> ;
     skos:definition "A ChemicalEntity that produces one or more peaks used for chemical shift calibration in nuclear magnetic resonance (NMR) spectroscopy." ;
     skos:exactMatch NMR:0002003 ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> ;
     skos:note "This class serves as an example for the way in which we want to build domain specific schema profiles. It will be outsourced to a more appropriate location in the future." .
+
+<https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_calibration_shift> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "has_calibration_shift" ;
+    skos:definition "The slot to specify the chemical shift value of the ShiftCalibrationCompound." ;
+    skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> .
 
 <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#probes_nucleus> a owl:ObjectProperty,
         linkml:SlotDefinition ;
@@ -2006,140 +2026,140 @@ dcatap_plus:Catalogue a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Catalogue" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:CatalogueRecord ;
-            owl:onProperty dcatap_plus:record ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatap_plus:release_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:rights ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Location ;
-            owl:onProperty dcatap_plus:geographical_coverage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:LicenseDocument ;
-            owl:onProperty dcatap_plus:licence ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:applicable_legislation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Catalogue ;
-            owl:onProperty dcatap_plus:has_part ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:LegalResource ;
-            owl:onProperty dcatap_plus:applicable_legislation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:creator ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:language ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Agent ;
-            owl:onProperty dcatap_plus:creator ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:has_dataset ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:homepage ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:temporal_coverage ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:record ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:licence ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:DataService ;
-            owl:onProperty dcatap_plus:service ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:rights ],
-        [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:catalogue ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:PeriodOfTime ;
-            owl:onProperty dcatap_plus:temporal_coverage ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:geographical_coverage ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:release_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:homepage ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:creator ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:publisher ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:has_part ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:LinguisticSystem ;
             owl:onProperty dcatap_plus:language ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Dataset ;
-            owl:onProperty dcatap_plus:has_dataset ],
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty dcatap_plus:release_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Catalogue ;
+            owl:onProperty dcatap_plus:has_part ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Location ;
+            owl:onProperty dcatap_plus:geographical_coverage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:themes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:service ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:release_date ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:RightsStatement ;
-            owl:onProperty dcatap_plus:rights ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:release_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:PeriodOfTime ;
+            owl:onProperty dcatap_plus:temporal_coverage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:DataService ;
+            owl:onProperty dcatap_plus:service ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:LicenseDocument ;
+            owl:onProperty dcatap_plus:licence ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Agent ;
+            owl:onProperty dcatap_plus:creator ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:modification_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:publisher ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:licence ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Catalogue ;
+            owl:onProperty dcatap_plus:catalogue ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:applicable_legislation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:LegalResource ;
+            owl:onProperty dcatap_plus:applicable_legislation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:creator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty dcatap_plus:modification_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:CatalogueRecord ;
+            owl:onProperty dcatap_plus:record ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Agent ;
             owl:onProperty dcatap_plus:publisher ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:modification_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:licence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:has_part ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:ConceptScheme ;
+            owl:onProperty dcatap_plus:themes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:language ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:RightsStatement ;
+            owl:onProperty dcatap_plus:rights ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:creator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Dataset ;
+            owl:onProperty dcatap_plus:has_dataset ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Document ;
             owl:onProperty dcatap_plus:homepage ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:themes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:ConceptScheme ;
-            owl:onProperty dcatap_plus:themes ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:publisher ],
+            owl:onProperty dcatap_plus:temporal_coverage ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:licence ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Catalogue ;
             owl:onProperty dcatap_plus:catalogue ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:service ] ;
+            owl:onProperty dcatap_plus:homepage ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:homepage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:record ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:rights ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:geographical_coverage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:has_dataset ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:rights ] ;
     skos:definition "See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)" ;
     skos:exactMatch dcat:Catalog ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
@@ -2148,110 +2168,110 @@ dcatap_plus:DataService a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "DataService" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Standard ;
-            owl:onProperty dcatap_plus:conforms_to ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:licence ],
+            owl:onProperty dcatap_plus:serves_dataset ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Document ;
-            owl:onProperty dcatap_plus:landing_page ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:keyword ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:access_rights ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:endpoint_URL ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:conforms_to ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:keyword ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:MediaTypeOrExtent ;
-            owl:onProperty dcatap_plus:format ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:landing_page ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:theme ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:LegalResource ;
             owl:onProperty dcatap_plus:applicable_legislation ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:applicable_legislation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:LicenseDocument ;
-            owl:onProperty dcatap_plus:licence ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:contact_point ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:publisher ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:format ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Document ;
             owl:onProperty dcatap_plus:documentation ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:publisher ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:access_rights ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Resource ;
-            owl:onProperty dcatap_plus:endpoint_URL ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Resource ;
-            owl:onProperty dcatap_plus:endpoint_description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:RightsStatement ;
-            owl:onProperty dcatap_plus:access_rights ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:endpoint_description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:serves_dataset ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
+            owl:allValuesFrom dcatap_plus:Standard ;
+            owl:onProperty dcatap_plus:conforms_to ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Resource ;
+            owl:onProperty dcatap_plus:endpoint_URL ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:publisher ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:LicenseDocument ;
             owl:onProperty dcatap_plus:licence ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:MediaTypeOrExtent ;
+            owl:onProperty dcatap_plus:format ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:keyword ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:keyword ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:access_rights ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:conforms_to ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Agent ;
             owl:onProperty dcatap_plus:publisher ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:publisher ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Kind ;
+            owl:onProperty dcatap_plus:contact_point ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:endpoint_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Dataset ;
+            owl:onProperty dcatap_plus:serves_dataset ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:format ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:licence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:applicable_legislation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:licence ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:endpoint_URL ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:landing_page ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Resource ;
+            owl:onProperty dcatap_plus:endpoint_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Document ;
+            owl:onProperty dcatap_plus:documentation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Document ;
+            owl:onProperty dcatap_plus:landing_page ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Concept ;
             owl:onProperty dcatap_plus:theme ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:documentation ],
+            owl:onProperty dcatap_plus:theme ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Kind ;
-            owl:onProperty dcatap_plus:contact_point ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Dataset ;
-            owl:onProperty dcatap_plus:serves_dataset ] ;
+            owl:allValuesFrom dcatap_plus:RightsStatement ;
+            owl:onProperty dcatap_plus:access_rights ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:contact_point ] ;
     skos:definition "See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)" ;
     skos:exactMatch dcat:DataService ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
@@ -2260,14 +2280,14 @@ dcatap_plus:Device a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Device" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:other_identifier ],
+        [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Identifier ;
             owl:onProperty dcat_4c_ap:other_identifier ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Device ;
             owl:onProperty dcat_4c_ap:has_part ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcat_4c_ap:other_identifier ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcat_4c_ap:has_part ],
@@ -2293,37 +2313,37 @@ dcatap_plus:LicenseDocument a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "LicenseDocument" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Concept ;
+            owl:onProperty dcatap_plus:type ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Concept ;
-            owl:onProperty dcatap_plus:type ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:type ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:id ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)" ;
@@ -2335,30 +2355,30 @@ dcatap_plus:Location a owl:Class,
     rdfs:label "Location" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:bbox ],
+            owl:onProperty dcatap_plus:geometry ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:bbox ],
+            owl:onProperty dcatap_plus:centroid ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:geometry ],
+            owl:onProperty dcatap_plus:centroid ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Geometry ;
             owl:onProperty dcatap_plus:geometry ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:centroid ],
+            owl:onProperty dcatap_plus:bbox ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:centroid ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:geometry ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:bbox ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:bbox ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:centroid ] ;
     skos:definition "See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)" ;
     skos:exactMatch dcterms:Location ;
@@ -2368,22 +2388,22 @@ dcatap_plus:MediaType a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "MediaType" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)" ;
@@ -2394,35 +2414,38 @@ dcatap_plus:PeriodOfTime a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "PeriodOfTime" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:beginning ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:end ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:end ],
+            owl:onProperty dcatap_plus:end_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:start_date ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:start_date ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:start_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:beginning ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatap_plus:start_date ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:allValuesFrom dcatap_plus:TimeInstant ;
+            owl:onProperty dcatap_plus:end ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:end_date ],
+            owl:onProperty dcatap_plus:beginning ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
@@ -2430,23 +2453,20 @@ dcatap_plus:PeriodOfTime a owl:Class,
             owl:allValuesFrom dcatap_plus:TimeInstant ;
             owl:onProperty dcatap_plus:beginning ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Date ;
             owl:onProperty dcatap_plus:end_date ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:TimeInstant ;
-            owl:onProperty dcatap_plus:end ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:end ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:end_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty dcatap_plus:start_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:beginning ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:end ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:PeriodOfTime](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime)" ;
     skos:exactMatch dcterms:PeriodOfTime ;
@@ -2456,22 +2476,22 @@ dcatap_plus:Surrounding a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Surrounding" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         dcatap_plus:ClassifierMixin ;
     skos:definition "The surrounding in which the dataset creating activity took place (e.g. a lab)." ;
@@ -2706,15 +2726,6 @@ dcatap_plus:version a owl:ObjectProperty,
     skos:exactMatch qudt:Quantity ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml> .
 
-<https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Temperature> a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "Temperature" ;
-    rdfs:subClassOf dcatap_plus:QuantitativeAttribute ;
-    skos:closeMatch PATO:0000146 ;
-    skos:definition "A physical quantity that quantitatively expresses the attribute of hotness or coldness." ;
-    skos:exactMatch qudt:Quantity ;
-    skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml> .
-
 <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#alternative_label> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "alternative_label" ;
@@ -2762,14 +2773,6 @@ dcatap_plus:version a owl:ObjectProperty,
     skos:definition "The slot to specify the NominalProtonFrequency of a NMRSpectrometer." ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> .
 
-<https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#has_shift_reference> a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "has_shift_reference" ;
-    rdfs:range <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#ChemicalShiftReference> ;
-    rdfs:subPropertyOf dcatap_plus:has_quantitative_attribute ;
-    skos:definition "The slot to specify the ChemicalShiftReference value." ;
-    skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> .
-
 <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#nucleus_of> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "nucleus_of" ;
@@ -2779,13 +2782,19 @@ dcatap_plus:version a owl:ObjectProperty,
 <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_number_of_scans> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "used_number_of_scans" ;
-    skos:definition "The slot to specify the NumberOfScans used in the NMRSpectroscopy." ;
+    skos:definition "The slot to specify the NumberOfScans used as a setting in the NMRSpectroscopy." ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> .
 
 <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_pulse_sequence> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "used_pulse_sequence" ;
-    skos:definition "The slot to specify the PulseSequence used in the NMRSpectroscopy." ;
+    skos:definition "The slot to specify the PulseSequence used as a setting in the NMRSpectroscopy." ;
+    skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> .
+
+<https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_sample_temperature> a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "used_sample_temperature" ;
+    skos:definition "The slot to specify the NMRSampleTemperature used as a setting in the NMRSpectroscopy." ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml> .
 
 <https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml#used_spectrometer> a owl:ObjectProperty,
@@ -2823,20 +2832,23 @@ dcatap_plus:DataGeneratingActivity a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:occurred_in ],
         [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Plan ;
+            owl:onProperty dcatap_plus:realized_plan ],
+        [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:EvaluatedEntity ;
             owl:onProperty dcatap_plus:evaluated_entity ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:evaluated_entity ],
+            owl:onProperty dcatap_plus:evaluated_activity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Surrounding ;
+            owl:onProperty dcatap_plus:occurred_in ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:realized_plan ],
+            owl:onProperty dcatap_plus:evaluated_entity ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:occurred_in ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Plan ;
-            owl:onProperty dcatap_plus:realized_plan ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:EvaluatedActivity ;
             owl:onProperty dcatap_plus:evaluated_activity ],
@@ -2845,10 +2857,7 @@ dcatap_plus:DataGeneratingActivity a owl:Class,
             owl:onProperty dcatap_plus:realized_plan ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:evaluated_activity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Surrounding ;
-            owl:onProperty dcatap_plus:occurred_in ],
+            owl:onProperty dcatap_plus:realized_plan ],
         dcatap_plus:Activity ;
     skos:definition "An Activity (process) that has the objective to produce information (in form of a dataset) about another Activity or Entity." ;
     skos:exactMatch prov:Activity ;
@@ -2872,20 +2881,20 @@ dcatap_plus:LinguisticSystem a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "LinguisticSystem" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
@@ -2898,23 +2907,23 @@ dcatap_plus:RightsStatement a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "RightsStatement" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)" ;
     skos:exactMatch dcterms:RightsStatement ;
@@ -2930,13 +2939,13 @@ dcatap_plus:Standard a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
@@ -2982,6 +2991,15 @@ dcatap_plus:was_generated_by a owl:ObjectProperty,
     skos:definition "This slot is described in more detail within the class in which it is used." ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
 
+<https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Temperature> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Temperature" ;
+    rdfs:subClassOf dcatap_plus:QuantitativeAttribute ;
+    skos:closeMatch PATO:0000146 ;
+    skos:definition "A physical quantity that quantitatively expresses the attribute of hotness or coldness." ;
+    skos:exactMatch qudt:Quantity ;
+    skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml> .
+
 <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_mass> a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "has_mass" ;
@@ -2994,26 +3012,17 @@ dcatap_plus:was_generated_by a owl:ObjectProperty,
         linkml:ClassDefinition ;
     rdfs:label "ChemicalEntity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#molecular_formula> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#iupac_name> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#InChi> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#inchi> ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#molecular_formula> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#InChIKey> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#inchikey> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_molar_mass> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#SMILES> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#smiles> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#inchikey> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#molecular_formula> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#inchi> ],
@@ -3024,29 +3033,38 @@ dcatap_plus:was_generated_by a owl:ObjectProperty,
             owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#smiles> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#inchi> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#MolecularFormula> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#molecular_formula> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#smiles> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#inchi> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_molar_mass> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#SMILES> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#smiles> ],
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#iupac_name> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#molecular_formula> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#iupac_name> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#IUPACName> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#iupac_name> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_molar_mass> ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#inchikey> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#InChIKey> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#inchikey> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#InChi> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#inchi> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#IUPACName> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#iupac_name> ],
         <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#MaterialEntity> ;
     skos:definition "Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity." ;
     skos:exactMatch CHEBI:23367 ;
@@ -3064,11 +3082,23 @@ dcatap_plus:DefinedTerm a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "DefinedTerm" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty dcatap_plus:from_CV ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:from_CV ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:from_CV ],
@@ -3076,19 +3106,7 @@ dcatap_plus:DefinedTerm a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:from_CV ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:id ] ;
     skos:definition "A word, name, acronym or phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema." ;
     skos:exactMatch schema1:DefinedTerm ;
@@ -3098,32 +3116,32 @@ dcatap_plus:LegalResource a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "LegalResource" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty dcatap_plus:id ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)" ;
     skos:exactMatch <http://data.europa.eu/eli/ontology#LegalResource> ;
@@ -3160,67 +3178,67 @@ dcatap_plus:had_input_entity a owl:ObjectProperty,
     rdfs:label "Materialistic" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_temperature> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_mass> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_density> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Pressure> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_pressure> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_volume> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#alternative_label> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_temperature> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_physical_state> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Volume> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_volume> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#alternative_label> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Density> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_density> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_volume> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_physical_state> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Pressure> ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_temperature> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Mass> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_mass> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_pressure> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_temperature> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_density> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#alternative_label> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_pressure> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Temperature> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_temperature> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_volume> ],
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_density> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_mass> ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#alternative_label> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_mass> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_physical_state> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_volume> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#alternative_label> ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcat_4c_ap:PhysicalStateEnum ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_physical_state> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_pressure> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Mass> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_mass> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_density> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#alternative_label> ] ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#Volume> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#has_volume> ] ;
     skos:definition "A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity." ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml> .
 
@@ -3244,20 +3262,20 @@ dcatap_plus:Agent a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Agent" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:type ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:type ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:name ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Concept ;
+            owl:onProperty dcatap_plus:type ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Concept ;
-            owl:onProperty dcatap_plus:type ] ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:name ] ;
     skos:definition "See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)" ;
     skos:exactMatch foaf:Agent ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
@@ -3266,266 +3284,266 @@ dcatap_plus:Dataset a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Dataset" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:access_rights ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Kind ;
-            owl:onProperty dcatap_plus:contact_point ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:contact_point ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:release_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Agent ;
-            owl:onProperty dcatap_plus:creator ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Concept ;
-            owl:onProperty dcatap_plus:type ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:EvaluatedActivity ;
-            owl:onProperty dcatap_plus:is_about_activity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:EvaluatedEntity ;
-            owl:onProperty dcatap_plus:is_about_entity ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:publisher ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:documentation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:version ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:creator ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:PeriodOfTime ;
-            owl:onProperty dcatap_plus:temporal_coverage ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:is_referenced_by ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Dataset ;
-            owl:onProperty dcatap_plus:has_version ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:DataGeneratingActivity ;
-            owl:onProperty dcatap_plus:was_generated_by ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:LinguisticSystem ;
-            owl:onProperty dcatap_plus:language ],
-        [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Concept ;
             owl:onProperty dcatap_plus:theme ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:version_notes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:version_notes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:ProvenanceStatement ;
-            owl:onProperty dcatap_plus:provenance ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Resource ;
-            owl:onProperty dcatap_plus:is_referenced_by ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Document ;
-            owl:onProperty dcatap_plus:documentation ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:frequency ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:identifier ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:keyword ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Distribution ;
-            owl:onProperty dcatap_plus:sample ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:release_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:frequency ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Document ;
-            owl:onProperty dcatap_plus:landing_page ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:source ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Location ;
-            owl:onProperty dcatap_plus:geographical_coverage ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:theme ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:other_identifier ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:is_about_entity ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:geographical_coverage ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:DatasetSeries ;
-            owl:onProperty dcatap_plus:in_series ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:keyword ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:was_generated_by ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:qualified_relation ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:spatial_resolution ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Dataset ;
-            owl:onProperty dcatap_plus:source ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:RightsStatement ;
-            owl:onProperty dcatap_plus:access_rights ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:spatial_resolution ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:duration ;
-            owl:onProperty dcatap_plus:temporal_resolution ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:access_rights ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:in_series ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatap_plus:release_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Frequency ;
-            owl:onProperty dcatap_plus:frequency ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:sample ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:provenance ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:qualified_attribution ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:has_version ],
+            owl:onProperty dcatap_plus:dataset_distribution ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:related_resource ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Attribution ;
-            owl:onProperty dcatap_plus:qualified_attribution ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:geographical_coverage ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:frequency ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:LinguisticSystem ;
+            owl:onProperty dcatap_plus:language ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:is_referenced_by ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:is_about_entity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:modification_date ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:other_identifier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Dataset ;
+            owl:onProperty dcatap_plus:source ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:temporal_resolution ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:in_series ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:is_about_activity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:access_rights ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:documentation ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Standard ;
             owl:onProperty dcatap_plus:conforms_to ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:landing_page ],
+            owl:onProperty dcatap_plus:publisher ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:temporal_resolution ],
+            owl:onProperty dcatap_plus:publisher ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Distribution ;
-            owl:onProperty dcatap_plus:dataset_distribution ],
+            owl:allValuesFrom dcatap_plus:Document ;
+            owl:onProperty dcatap_plus:landing_page ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:LegalResource ;
-            owl:onProperty dcatap_plus:applicable_legislation ],
+            owl:allValuesFrom dcatap_plus:DataGeneratingActivity ;
+            owl:onProperty dcatap_plus:was_generated_by ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:modification_date ],
+            owl:onProperty dcatap_plus:theme ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Identifier ;
-            owl:onProperty dcatap_plus:other_identifier ],
+            owl:allValuesFrom dcatap_plus:EvaluatedEntity ;
+            owl:onProperty dcatap_plus:is_about_entity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:DatasetSeries ;
+            owl:onProperty dcatap_plus:in_series ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Decimal ;
+            owl:onProperty dcatap_plus:spatial_resolution ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:spatial_resolution ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:frequency ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:RightsStatement ;
+            owl:onProperty dcatap_plus:access_rights ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:was_generated_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Concept ;
+            owl:onProperty dcatap_plus:type ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Resource ;
+            owl:onProperty dcatap_plus:related_resource ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:version ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty dcatap_plus:release_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Resource ;
+            owl:onProperty dcatap_plus:is_referenced_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Location ;
+            owl:onProperty dcatap_plus:geographical_coverage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Agent ;
+            owl:onProperty dcatap_plus:creator ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:temporal_resolution ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Agent ;
+            owl:onProperty dcatap_plus:publisher ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:applicable_legislation ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:spatial_resolution ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:source ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:provenance ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:has_version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:version ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:identifier ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:temporal_resolution ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:version ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:publisher ],
+            owl:onProperty dcatap_plus:qualified_relation ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:dataset_distribution ],
+            owl:onProperty dcatap_plus:creator ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:conforms_to ],
+            owl:allValuesFrom dcatap_plus:Document ;
+            owl:onProperty dcatap_plus:documentation ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Relationship ;
             owl:onProperty dcatap_plus:qualified_relation ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Agent ;
-            owl:onProperty dcatap_plus:publisher ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty dcatap_plus:modification_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:language ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Resource ;
-            owl:onProperty dcatap_plus:related_resource ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:type ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:version ],
+            owl:onProperty dcatap_plus:keyword ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:temporal_coverage ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:is_about_activity ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:modification_date ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:identifier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Identifier ;
+            owl:onProperty dcatap_plus:other_identifier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Kind ;
+            owl:onProperty dcatap_plus:contact_point ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:version_notes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:qualified_attribution ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:version_notes ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:language ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Distribution ;
+            owl:onProperty dcatap_plus:dataset_distribution ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Frequency ;
+            owl:onProperty dcatap_plus:frequency ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:contact_point ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:LegalResource ;
             owl:onProperty dcatap_plus:applicable_legislation ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Decimal ;
-            owl:onProperty dcatap_plus:spatial_resolution ] ;
+            owl:allValuesFrom dcatap_plus:EvaluatedActivity ;
+            owl:onProperty dcatap_plus:is_about_activity ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:release_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:PeriodOfTime ;
+            owl:onProperty dcatap_plus:temporal_coverage ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Distribution ;
+            owl:onProperty dcatap_plus:sample ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:keyword ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Attribution ;
+            owl:onProperty dcatap_plus:qualified_attribution ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:ProvenanceStatement ;
+            owl:onProperty dcatap_plus:provenance ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:duration ;
+            owl:onProperty dcatap_plus:temporal_resolution ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Date ;
+            owl:onProperty dcatap_plus:modification_date ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:access_rights ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:conforms_to ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:landing_page ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:release_date ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Dataset ;
+            owl:onProperty dcatap_plus:has_version ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:sample ] ;
     skos:definition "A collection of data, published or curated by a single agent, and available for access or download in one or more representations." ;
     skos:exactMatch dcat:Dataset ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
@@ -3534,31 +3552,31 @@ dcatap_plus:Document a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Document" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
+            owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)" ;
@@ -3569,35 +3587,35 @@ dcatap_plus:EvaluatedEntity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "EvaluatedEntity" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat_4c_ap:title ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty dcat_4c_ap:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty dcat_4c_ap:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:was_generated_by ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcat_4c_ap:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcat_4c_ap:other_identifier ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Identifier ;
             owl:onProperty dcat_4c_ap:other_identifier ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:was_generated_by ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcat_4c_ap:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcat_4c_ap:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcat_4c_ap:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty dcat_4c_ap:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Activity ;
             owl:onProperty dcatap_plus:was_generated_by ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcat_4c_ap:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcat_4c_ap:other_identifier ],
         dcatap_plus:Entity ;
     skos:definition "An Entity that is being evaluated in a DataGeneratingActivity." ;
     skos:exactMatch prov:Entity ;
@@ -3697,22 +3715,37 @@ dcatap_plus:value a owl:ObjectProperty,
         linkml:ClassDefinition ;
     rdfs:label "ChemicalSubstance" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_ph_value> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_concentration> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_ph_value> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#MolarEquivalent> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_concentration> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_percentage_of_total> ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_amount> ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#composed_of> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#AmountOfSubstance> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_amount> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#Concentration> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_concentration> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_percentage_of_total> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -3721,32 +3754,17 @@ dcatap_plus:value a owl:ObjectProperty,
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#PHValue> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_ph_value> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_amount> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#Concentration> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_concentration> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#AmountOfSubstance> ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_amount> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#PercentageOfTotal> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_percentage_of_total> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_ph_value> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_ph_value> ],
+            owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#MolarEquivalent> ;
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_molar_equivalent> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#ChemicalEntity> ;
             owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#composed_of> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#composed_of> ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_reaction_ap.yaml#has_percentage_of_total> ],
+            owl:onProperty <https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml#has_concentration> ],
         <https://nfdi-de.github.io/chem-dcat-ap/material_entities_ap.yaml#MaterialEntity> ;
     skos:definition "A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types." ;
     skos:exactMatch CHEBI:59999 ;
@@ -3756,10 +3774,10 @@ dcatap_plus:ClassifierMixin a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ClassifierMixin" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:rdf_type ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:rdf_type ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -3772,7 +3790,7 @@ dcatap_plus:ClassifierMixin a owl:Class,
             owl:onProperty dcatap_plus:rdf_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:type ] ;
+            owl:onProperty dcatap_plus:rdf_type ] ;
     skos:definition "A mixin with which an entity of this schema can be classified via an additional rdf:type or dcterms:type assertion." ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
 
@@ -3780,20 +3798,20 @@ dcatap_plus:Activity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:QuantitativeAttribute ;
-            owl:onProperty dcatap_plus:has_quantitative_attribute ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Entity ;
-            owl:onProperty dcatap_plus:had_output_entity ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:part_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:other_identifier ],
+            owl:onProperty dcatap_plus:has_qualitative_attribute ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:QualitativeAttribute ;
+            owl:onProperty dcatap_plus:has_qualitative_attribute ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:had_input_activity ],
@@ -3802,40 +3820,34 @@ dcatap_plus:Activity a owl:Class,
             owl:onProperty dcatap_plus:carried_out_by ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:had_output_entity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:carried_out_by ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:had_input_entity ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Activity ;
-            owl:onProperty dcatap_plus:part_of ],
+            owl:allValuesFrom dcatap_plus:QuantitativeAttribute ;
+            owl:onProperty dcatap_plus:has_quantitative_attribute ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:has_qualitative_attribute ],
+            owl:onProperty dcatap_plus:other_identifier ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Activity ;
-            owl:onProperty dcatap_plus:has_part ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom dcatap_plus:Entity ;
             owl:onProperty dcatap_plus:had_output_entity ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:QualitativeAttribute ;
-            owl:onProperty dcatap_plus:has_qualitative_attribute ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:has_quantitative_attribute ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:has_quantitative_attribute ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
@@ -3843,8 +3855,14 @@ dcatap_plus:Activity a owl:Class,
             owl:allValuesFrom dcatap_plus:Activity ;
             owl:onProperty dcatap_plus:had_input_activity ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Identifier ;
-            owl:onProperty dcatap_plus:other_identifier ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:had_input_entity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Activity ;
+            owl:onProperty dcatap_plus:part_of ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Activity ;
+            owl:onProperty dcatap_plus:has_part ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Entity ;
             owl:onProperty dcatap_plus:had_input_entity ],
@@ -3852,8 +3870,8 @@ dcatap_plus:Activity a owl:Class,
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:has_part ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:part_of ],
+            owl:allValuesFrom dcatap_plus:Identifier ;
+            owl:onProperty dcatap_plus:other_identifier ],
         dcatap_plus:ClassifierMixin ;
     skos:definition "See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)" ;
     skos:editorialNote "The specified properties (slots) of this class are part of our extension of the DCAT-AP." ;
@@ -3867,26 +3885,26 @@ dcatap_plus:Concept a owl:Class,
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:preferred_label ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcatap_plus:preferred_label ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)" ;
     skos:exactMatch skos:Concept ;
@@ -3896,31 +3914,31 @@ dcatap_plus:Identifier a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Identifier" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:notation ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:notation ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:notation ],
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcatap_plus:notation ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:notation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)" ;
@@ -3931,32 +3949,32 @@ dcatap_plus:Resource a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Resource" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Uriorcurie ;
             owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
         dcatap_plus:SupportiveEntity ;
     skos:definition "See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)" ;
     skos:exactMatch rdfs:Resource ;
@@ -3978,46 +3996,55 @@ dcatap_plus:AgenticEntity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AgenticEntity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:part_of ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:AgenticEntity ;
+            owl:onProperty dcatap_plus:has_part ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:other_identifier ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:has_part ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Identifier ;
             owl:onProperty dcatap_plus:other_identifier ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:part_of ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:QualitativeAttribute ;
             owl:onProperty dcatap_plus:has_qualitative_attribute ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:other_identifier ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:AgenticEntity ;
-            owl:onProperty dcatap_plus:has_part ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:has_part ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:AgenticEntity ;
             owl:onProperty dcatap_plus:part_of ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom dcatap_plus:QualitativeAttribute ;
             owl:onProperty dcatap_plus:has_qualitative_attribute ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -4025,15 +4052,6 @@ dcatap_plus:AgenticEntity a owl:Class,
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:QuantitativeAttribute ;
             owl:onProperty dcatap_plus:has_quantitative_attribute ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
         dcatap_plus:ClassifierMixin ;
     skos:definition "An entity that is somehow responsible for an Activity to take place." ;
     skos:exactMatch prov:Agent ;
@@ -4049,62 +4067,62 @@ dcatap_plus:Entity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Entity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom dcatap_plus:QualitativeAttribute ;
             owl:onProperty dcatap_plus:has_qualitative_attribute ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
-            owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:Entity ;
             owl:onProperty dcatap_plus:has_part ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:has_quantitative_attribute ],
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:QualitativeAttribute ;
-            owl:onProperty dcatap_plus:has_qualitative_attribute ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Entity ;
-            owl:onProperty dcatap_plus:part_of ],
+            owl:allValuesFrom dcatap_plus:Identifier ;
+            owl:onProperty dcatap_plus:other_identifier ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:part_of ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:has_part ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:Identifier ;
-            owl:onProperty dcatap_plus:other_identifier ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:other_identifier ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:allValuesFrom dcatap_plus:QuantitativeAttribute ;
             owl:onProperty dcatap_plus:has_quantitative_attribute ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:has_part ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:has_quantitative_attribute ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:has_qualitative_attribute ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:other_identifier ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:Entity ;
+            owl:onProperty dcatap_plus:part_of ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:onProperty dcatap_plus:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:part_of ],
         dcatap_plus:ClassifierMixin ;
     skos:definition "A physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary." ;
     skos:exactMatch prov:Entity ;
@@ -4115,31 +4133,31 @@ dcatap_plus:QualitativeAttribute a owl:Class,
     rdfs:label "QualitativeAttribute" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:value ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcatap_plus:value ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:value ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ],
         dcatap_plus:ClassifierMixin ;
     skos:definition "A piece of information that is attributed to an Entity, Activity or AgenticEntity." ;
     skos:exactMatch prov:Entity ;
@@ -4200,50 +4218,50 @@ dcatap_plus:QuantitativeAttribute a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "QuantitativeAttribute" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty dcatap_plus:has_quantity_type ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:value ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:DefinedTerm ;
-            owl:onProperty dcatap_plus:unit ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom dcatap_plus:DefinedTerm ;
-            owl:onProperty dcatap_plus:has_quantity_type ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty dcatap_plus:value ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:unit ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:has_quantity_type ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty dcatap_plus:has_quantity_type ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty dcatap_plus:unit ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
+            owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:title ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty dcatap_plus:value ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty dcatap_plus:value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:DefinedTerm ;
+            owl:onProperty dcatap_plus:unit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dcatap_plus:DefinedTerm ;
             owl:onProperty dcatap_plus:has_quantity_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:description ],
         dcatap_plus:ClassifierMixin ;
     skos:definition "A quantifiable piece of information that is attributed to an Entity, Activity or AgenticEntity." ;
     skos:exactMatch qudt:Quantity ;
@@ -4261,22 +4279,22 @@ dcatap_plus:SupportiveEntity a owl:Class,
     rdfs:label "SupportiveEntity" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty dcatap_plus:title ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
             owl:onProperty dcatap_plus:description ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty dcatap_plus:title ] ;
+            owl:onProperty dcatap_plus:title ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty dcatap_plus:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty dcatap_plus:description ] ;
     skos:definition "The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties." ;
     skos:inScheme <https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml> .
 

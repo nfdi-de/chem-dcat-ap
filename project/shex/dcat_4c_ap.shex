@@ -186,6 +186,14 @@ dcatap_plus:Attribution CLOSED {
     )
 }
 
+nmr_michi:CalibrationPeakShift CLOSED {
+    (  $nmr_michi:CalibrationPeakShift_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ NMR:1000223 ] ?
+    )
+}
+
 dcatap_plus:Catalogue CLOSED {
     (  $dcatap_plus:Catalogue_tes (  dcatap:applicableLegislation @dcatap_plus:LegalResource * ;
           dcat:catalog @dcatap_plus:Catalogue * ;
@@ -318,14 +326,6 @@ chemical_reaction_ap:ChemicalReaction CLOSED {
           dcterms:relation @dcatap_plus:Resource *
        ) ;
        rdf:type [ <http://semanticscience.org/resource/SIO_010345> ]
-    )
-}
-
-nmr_michi:ChemicalShiftReference CLOSED {
-    (  $nmr_michi:ChemicalShiftReference_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
-          rdf:type [ qudt:Quantity ] ?
-       ) ;
-       rdf:type [ NMR:1002013 ] ?
     )
 }
 
@@ -854,6 +854,14 @@ nmr_michi:NMRSample CLOSED {
     )
 }
 
+nmr_michi:NMRSampleTemperature CLOSED {
+    (  $nmr_michi:NMRSampleTemperature_tes (  &material_entities_ap:Temperature_tes ;
+          rdf:type [ qudt:Quantity ] ?
+       ) ;
+       rdf:type [ NMR:1400262 ] ?
+    )
+}
+
 nmr_michi:NMRSolvent CLOSED {
     (  $nmr_michi:NMRSolvent_tes (  &chemical_reaction_ap:DissolvingSubstance_tes ;
           rdf:type [ <http://semanticscience.org/resource/SIO_010417> ] ?
@@ -887,6 +895,7 @@ nmr_michi:NMRSpectroscopy CLOSED {
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NMRSolvent + ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:PulseSequence ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NumberOfScans ? ;
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NMRSampleTemperature ? ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:AcquisitionNucleus + ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:ShiftCalibrationCompound * ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:ShiftReferenceCompound * ;
@@ -1042,7 +1051,7 @@ dcatap_plus:QuantitativeAttribute  (
           ) ;
           rdf:type [ qudt:Quantity ] ?
        )
-    } OR @chemical_entities_ap:AmountOfSubstance OR @nmr_michi:ChemicalShiftReference OR @chemical_entities_ap:Concentration OR
+    } OR @chemical_entities_ap:AmountOfSubstance OR @nmr_michi:CalibrationPeakShift OR @chemical_entities_ap:Concentration OR
     @material_entities_ap:Density OR @material_entities_ap:Mass OR @chemical_reaction_ap:MolarEquivalent OR
     @nmr_michi:NominalProtonFrequency OR @nmr_michi:NumberOfScans OR @chemical_entities_ap:PHValue OR
     @chemical_reaction_ap:PercentageOfTotal OR @material_entities_ap:Pressure OR @material_entities_ap:Temperature OR
@@ -1112,7 +1121,7 @@ nmr_michi:ShiftCalibrationCompound  (
     CLOSED {
        (  $nmr_michi:ShiftCalibrationCompound_tes (  &chemical_entities_ap:ChemicalEntity_tes ;
              rdf:type [ <http://purl.obolibrary.org/obo/CHEBI_23367> ] ? ;
-             <http://semanticscience.org/resource/SIO_000008> @nmr_michi:ChemicalShiftReference *
+             <http://semanticscience.org/resource/SIO_000008> @nmr_michi:CalibrationPeakShift *
           ) ;
           rdf:type [ NMR:0002003 ]
        )
@@ -1207,13 +1216,15 @@ dcatap_plus:Surrounding  (
     } OR @<Laboratory>
 )
 
-material_entities_ap:Temperature CLOSED {
-    (  $material_entities_ap:Temperature_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+material_entities_ap:Temperature  (
+    CLOSED {
+       (  $material_entities_ap:Temperature_tes (  &dcatap_plus:QuantitativeAttribute_tes ;
+             rdf:type [ qudt:Quantity ] ?
+          ) ;
           rdf:type [ qudt:Quantity ] ?
-       ) ;
-       rdf:type [ qudt:Quantity ] ?
-    )
-}
+       )
+    } OR @nmr_michi:NMRSampleTemperature
+)
 
 dcatap_plus:TimeInstant CLOSED {
     (  $dcatap_plus:TimeInstant_tes (  &dcatap_plus:SupportiveEntity_tes ;

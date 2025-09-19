@@ -3,12 +3,62 @@
 ```yaml
 description:
 - Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)
-id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
+id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
 is_about_entity:
-- id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+- description: The analysed chemical substance sample CRS-50440.
+  has_part:
+  - description: compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+    has_qualitative_attribute:
+    - rdf_type:
+        id: CHEMINF:000059
+        title: InChiKey
+      title: assigned InChiKey
+      value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
+    - rdf_type:
+        id: CHEMINF:000113
+        title: InChi
+      title: assigned InChi
+      value: InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3
+    - rdf_type:
+        id: CHEMINF:000018
+        title: SMILES descriptor
+      title: assigned SMILES
+      value: CNCc1csc(n1)c1ccccc1
+    - rdf_type:
+        id: CHEMINF:000042
+        title: molecular formula
+      title: assigned molecular formula
+      value: C11H12N2S
+    - description: Chemotion IUPAC name
+      rdf_type:
+        id: CHEMINF:000107
+        title: IUPAC name
+      value: N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine
+    - description: PubChem IUPAC name
+      rdf_type:
+        id: CHEMINF:000107
+        title: IUPAC name
+      value: Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine
+    has_quantitative_attribute:
+    - description: Molar mass as specified in the Chemotion repository.
+      has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+      unit: https://qudt.org/vocab/unit/GM-PER-MOL
+      value: 204.072119
+    - description: Molar mass as specified in PubChem
+      has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+      unit: https://qudt.org/vocab/unit/GM-PER-MOL
+      value: 204.29
+    id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+    other_identifier:
+    - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
+    rdf_type:
+      id: CHEBI:23367
+      title: molecular entity
+  id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
   rdf_type:
     id: CHEBI:59999
-    title: Chemical Substance
+    title: chemical substance
+  title: CRS-50440
 other_identifier:
 - notation: https://www.chemotion-repository.net/pid/50434
 theme:
@@ -20,79 +70,45 @@ was_generated_by:
 - description:
   - Analysis of NMR spectra.
   evaluated_entity:
-  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum
+  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum
     was_generated_by:
     - carried_out_by:
       - description: The NMR spectrometer used.
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrometer
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrometer
         rdf_type:
           id: OBI:0000566
           title: NMR instrument
         title: Bruker 400 MHz
       - description: used solvent
         has_part:
-        - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent_Compound
+        - id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
           rdf_type:
             id: CHEBI:85365
             title: deuterated chloroform
           title: chloroform-D1 (CDCl3)
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent
-      evaluated_entity:
-      - description: The analysed chemical substance sample CRS-50440.
-        has_part:
-        - description: compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-          has_qualitative_attribute:
-          - rdf_type:
-              id: CHEMINF:000059
-              title: InChiKey
-            title: assigned InChiKey
-            value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
-          - rdf_type:
-              id: CHEMINF:000113
-              title: InChi
-            title: assigned InChi
-            value: InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3
-          - rdf_type:
-              id: CHEMINF:000018
-              title: SMILES descriptor
-            title: assigned SMILES
-            value: CNCc1csc(n1)c1ccccc1
-          - rdf_type:
-              id: CHEMINF:000042
-              title: molecular formula
-            title: assigned molecular formula
-            value: C11H12N2S
-          - description: Chemotion IUPAC name
-            rdf_type:
-              id: CHEMINF:000107
-              title: IUPAC name
-            value: N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine
-          - description: PubChem IUPAC name
-            rdf_type:
-              id: CHEMINF:000107
-              title: IUPAC name
-            value: Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine
-          has_quantitative_attribute:
-          - description: Molar mass as specified in the Chemotion repository.
-            has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-            unit: https://qudt.org/vocab/unit/GM-PER-MOL
-            value: 204.072119
-          - description: Molar mass as specified in PubChem
-            has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-            unit: https://qudt.org/vocab/unit/GM-PER-MOL
-            value: 204.29
-          id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
-          other_identifier:
-          - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent
+      - id: https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_AcquisitionNucleus
+        part_of:
+        - description: The atom of the probed nucleus
+          id: https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleusAtom
           rdf_type:
-            id: CHEBI:23367
-            title: molecular entity
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-        other_identifier:
-        - notation: https://www.chemotion-repository.net/pid/50440
+            id: CHEBI:36928
+            title: carbon-13 atom
+          title: 13C
+        title: probed nucleus
+      - description: The used calibration compound
+        has_quantitative_attribute:
+        - description: The chemical shift of the peak used for chemical shift calibration.
+          has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
+          unit: https://qudt.org/vocab/unit/PPM
+          value: 77.16
+        id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
         rdf_type:
-          id: CHEBI:59999
-          title: Chemical Substance
+          id: CHEBI:85365
+          title: deuterated chloroform
+        title: Chloroform-D
+      evaluated_entity:
+      - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
         title: CRS-50440
       has_qualitative_attribute:
       - rdf_type:
@@ -103,9 +119,9 @@ was_generated_by:
       has_quantitative_attribute:
       - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
         rdf_type:
-          id: IAO:0000140
-          title: setting datum
-        title: Temperature
+          id: NMR:1400262
+          title: sample temperature information
+        title: sample temperature setting
         unit: https://qudt.org/vocab/unit/K
         value: 300.0
       - has_quantity_type: http://qudt.org/vocab/quantitykind/Count
@@ -115,31 +131,48 @@ was_generated_by:
         title: Number of scans
         unit: http://qudt.org/vocab/unit/NUM
         value: 1024
-      id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR
+      id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR
       rdf_type:
         id: CHMO:0000595
         title: 13C nuclear magnetic resonance spectroscopy
       title:
       - CDCl3_13C_NMR
-  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum
+  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum
     was_generated_by:
     - carried_out_by:
       - description: used spectrometer
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer
         title: Bruker 400 MHz
       - description: used solvent
         has_part:
-        - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent_Compound
+        - id: https://pubchem.ncbi.nlm.nih.gov/compound/679
           rdf_type:
             id: CHEBI:28262
             title: dimethyl sulfoxide
           title: DMSO
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent
+      - id: https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleus
+        part_of:
+        - description: The atom of the probed nucleus
+          id: https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleusAtom
+          rdf_type:
+            id: CHEBI:36928
+            title: carbon-13 atom
+          title: 13C
+        title: probed nucleus
+      - description: The used calibration compound
+        has_quantitative_attribute:
+        - description: The chemical shift of the peak used for chemical shift calibration.
+          has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
+          unit: https://qudt.org/vocab/unit/PPM
+          value: 39.52
+        id: https://pubchem.ncbi.nlm.nih.gov/compound/679
+        rdf_type:
+          id: CHEBI:28262
+          title: dimethyl sulfoxide
+        title: DMSO
       evaluated_entity:
-      - has_part:
-        - description: compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-          id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+      - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
         title: CRS-50440
       has_qualitative_attribute:
       - rdf_type:
@@ -150,9 +183,9 @@ was_generated_by:
       has_quantitative_attribute:
       - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
         rdf_type:
-          id: IAO:0000140
-          title: setting datum
-        title: Temperature
+          id: NMR:1400262
+          title: sample temperature information
+        title: sample temperature setting
         unit: https://qudt.org/vocab/unit/K
         value: 300.0
       - has_quantity_type: http://qudt.org/vocab/quantitykind/Count
@@ -162,13 +195,13 @@ was_generated_by:
         title: Number of scans
         unit: http://qudt.org/vocab/unit/NUM
         value: 1024
-      id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR
+      id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR
       rdf_type:
         id: CHMO:0000595
         title: 13C nuclear magnetic resonance spectroscopy
       title:
       - DMSO_13C_NMR
-  id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectralAnalysis
+  id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectralAnalysis
   rdf_type:
     id: NMR:1400042
     title: NMR data processing
@@ -561,12 +594,12 @@ title: Philip's wood sample
 ```yaml
 description:
 - Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)
-id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
+id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
 is_about_entity:
 - composed_of:
-  - description: compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+  - description: compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
     has_molar_mass:
-    - description: Molar mass as specified in the Chemotion repository.
+    - description: null
       has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
       unit: https://qudt.org/vocab/unit/GM-PER-MOL
       value: 204.072119
@@ -574,7 +607,7 @@ is_about_entity:
       has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
       unit: https://qudt.org/vocab/unit/GM-PER-MOL
       value: 204.29
-    id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+    id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
     inchi:
     - title: assigned InChi
       value: InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3
@@ -594,15 +627,7 @@ is_about_entity:
     smiles:
     - title: assigned SMILES
       value: ' CNCc1csc(n1)c1ccccc1'
-  has_quantitative_attribute:
-  - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
-    rdf_type:
-      id: NMR:1400025
-      title: sample temperature in magnet
-    title: sample temperature in magnet
-    unit: https://qudt.org/vocab/unit/K
-    value: 300.0
-  id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+  id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
   other_identifier:
   - notation: https://www.chemotion-repository.net/pid/50440
   title: CRS-50440
@@ -617,69 +642,35 @@ was_generated_by:
 - description:
   - Analysis of NMR spectra.
   evaluated_entity:
-  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum
+  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrum
     was_generated_by:
     - evaluated_entity:
       - composed_of:
-        - description: compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-          has_molar_mass:
-          - description: Molar mass as specified in the Chemotion repository.
-            has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-            unit: https://qudt.org/vocab/unit/GM-PER-MOL
-            value: 204.072119
-          - description: Molar mass as specified in PubChem.
-            has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-            unit: https://qudt.org/vocab/unit/GM-PER-MOL
-            value: 204.29
-          id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
-          inchi:
-          - title: assigned InChi
-            value: InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3
-          inchikey:
-          - title: assigned InChiKey
-            value: UGRXAOUDHZOHPF-UHFFFAOYSA-N
-          iupac_name:
-          - description: Chemotion IUPAC name
-            value: N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine
-          - description: PubChem IUPAC name
-            value: Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine
-          molecular_formula:
-          - title: assigned molecular formula
-            value: C11H12N2S
-          other_identifier:
-          - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
-          smiles:
-          - title: assigned SMILES
-            value: CNCc1csc(n1)c1ccccc1
-        has_quantitative_attribute:
-        - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
-          rdf_type:
-            id: NMR:1400025
-            title: sample temperature in magnet
-          title: sample temperature in magnet
-          unit: https://qudt.org/vocab/unit/K
-          value: 300.0
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-        other_identifier:
-        - notation: https://www.chemotion-repository.net/pid/50440
+        - description: compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+          id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
         title: CRS-50440
-      id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR
+      id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR
       probes_nucleus:
-      - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_AcquisitionNucleus
+      - description: The probed nucleus
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_AcquisitionNucleus
         nucleus_of:
-          id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_AcquisitionNucleusAtom
+          description: The atom of the probed nucleus
+          id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_AcquisitionNucleusAtom
           rdf_type:
             id: CHEBI:36928
             title: carbon-13 atom
+          title: 13C
       rdf_type:
         id: CHMO:0000595
         title: 13C nuclear magnetic resonance spectroscopy
       title:
       - CDCl3_13C_NMR
       used_calibration_compound:
-      - has_shift_reference:
-        - has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
-          title: The chemical shift of the peak used for chemical shift calibration.
+      - description: The used calibration compound
+        has_calibration_shift:
+        - description: The chemical shift of the peak used for chemical shift calibration.
+          has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
           unit: https://qudt.org/vocab/unit/PPM
           value: 77.16
         id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
@@ -689,12 +680,17 @@ was_generated_by:
         title: Chloroform-D
       used_number_of_scans:
         has_quantity_type: http://qudt.org/vocab/quantitykind/Count
-        title: number_of_scans
+        title: number of scans
         unit: http://qudt.org/vocab/unit/NUM
         value: 1024
       used_pulse_sequence:
         title: pulse_sequence
         value: zgpg30
+      used_sample_temperature:
+        has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+        title: sample temperature
+        unit: https://qudt.org/vocab/unit/K
+        value: 300.0
       used_solvent:
       - composed_of:
         - id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
@@ -702,78 +698,44 @@ was_generated_by:
             id: CHEBI:85365
             title: deuterated chloroform
           title: Chloroform-D
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent
       used_spectrometer:
       - has_proton_frequency:
         - has_quantity_type: http://qudt.org/vocab/quantitykind/Frequency
           title: proton_frequency
           unit: http://qudt.org/vocab/unit/NUM
           value: 100.623835930538
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrometer
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrometer
         title: Bruker 400 MHz
-  - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum
+  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrum
     was_generated_by:
     - evaluated_entity:
       - composed_of:
-        - description: compound assigned to https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-          has_molar_mass:
-          - description: Molar mass as specified in the Chemotion repository.
-            has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-            unit: https://qudt.org/vocab/unit/GM-PER-MOL
-            value: 204.072119
-          - description: Molar mass as specified in PubChem.
-            has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-            unit: https://qudt.org/vocab/unit/GM-PER-MOL
-            value: 204.29
-          id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
-          inchi:
-          - title: assigned InChi
-            value: InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3
-          inchikey:
-          - title: assigned InChiKey
-            value: UGRXAOUDHZOHPF-UHFFFAOYSA-N
-          iupac_name:
-          - description: Chemotion IUPAC name
-            value: N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine
-          - description: PubChem IUPAC name
-            value: Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine
-          molecular_formula:
-          - title: assigned molecular formula
-            value: C11H12N2S
-          other_identifier:
-          - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
-          smiles:
-          - title: assigned SMILES
-            value: CNCc1csc(n1)c1ccccc1
-        has_quantitative_attribute:
-        - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
-          rdf_type:
-            id: NMR:1400025
-            title: sample temperature in magnet
-          title: sample temperature in magnet
-          unit: https://qudt.org/vocab/unit/K
-          value: 300.0
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-        other_identifier:
-        - notation: https://www.chemotion-repository.net/pid/50440
+        - description: compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+          id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
         title: CRS-50440
-      id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR
+      id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR
       probes_nucleus:
-      - id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleus
+      - description: The probed nucleus
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleus
         nucleus_of:
-          id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleusAtom
+          description: The atom of the probed nucleus
+          id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_AcquisitionNucleusAtom
           rdf_type:
             id: CHEBI:36928
             title: carbon-13 atom
+          title: 13C
       rdf_type:
         id: CHMO:0000595
         title: 13C nuclear magnetic resonance spectroscopy
       title:
       - DMSO_13C_NMR
       used_calibration_compound:
-      - has_shift_reference:
-        - has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
-          title: The chemical shift of the peak used for chemical shift calibration.
+      - description: The used calibration compound
+        has_calibration_shift:
+        - description: The chemical shift of the peak used for chemical shift calibration.
+          has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
           unit: https://qudt.org/vocab/unit/PPM
           value: 39.52
         id: https://pubchem.ncbi.nlm.nih.gov/compound/679
@@ -783,12 +745,17 @@ was_generated_by:
         title: DMSO
       used_number_of_scans:
         has_quantity_type: http://qudt.org/vocab/quantitykind/Count
-        title: number_of_scans
+        title: number of scans
         unit: http://qudt.org/vocab/unit/NUM
         value: 1024
       used_pulse_sequence:
-        title: pulse_sequence
+        title: pulse sequence
         value: zgpg30
+      used_sample_temperature:
+        has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+        title: sample temperature
+        unit: https://qudt.org/vocab/unit/K
+        value: 300.0
       used_solvent:
       - composed_of:
         - id: https://pubchem.ncbi.nlm.nih.gov/compound/679
@@ -796,16 +763,16 @@ was_generated_by:
             id: CHEBI:28262
             title: dimethyl sulfoxide
           title: DMSO
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent
       used_spectrometer:
       - has_proton_frequency:
         - has_quantity_type: http://qudt.org/vocab/quantitykind/Frequency
           title: proton_frequency
           unit: http://qudt.org/vocab/unit/NUM
           value: 100.623835930538
-        id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer
+        id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer
         title: Bruker 400 MHz
-  id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectralAnalysis
+  id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#NMRSpectralAnalysis
 
 ```
 ## SubstanceSample-001

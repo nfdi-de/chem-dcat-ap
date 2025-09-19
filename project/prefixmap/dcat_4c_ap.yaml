@@ -81,6 +81,9 @@
    "Attribution": {
       "@id": "prov:Attribution"
    },
+   "CalibrationPeakShift": {
+      "@id": "NMR:1000223"
+   },
    "Catalogue": {
       "@id": "dcat:Catalog"
    },
@@ -107,9 +110,6 @@
    },
    "ChemicalReaction": {
       "@id": "SIO:010345"
-   },
-   "ChemicalShiftReference": {
-      "@id": "NMR:1002013"
    },
    "ChemicalSubstance": {
       "@id": "CHEBI:59999"
@@ -236,6 +236,9 @@
    },
    "NMRSample": {
       "@id": "NMR:1400128"
+   },
+   "NMRSampleTemperature": {
+      "@id": "NMR:1400262"
    },
    "NMRSolvent": {
       "@id": "NMR:1000330"

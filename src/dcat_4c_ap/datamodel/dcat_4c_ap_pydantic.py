@@ -11169,6 +11169,122 @@ class Pressure(QuantitativeAttribute):
          'slot_uri': 'rdf:type'} })
 
 
+class NMRSampleTemperature(Temperature):
+    """
+    The temperature of the NMR Sample.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'NMR:1400262',
+         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml'})
+
+    title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'title',
+         'domain_of': ['Activity',
+                       'AgenticEntity',
+                       'Any',
+                       'Attribution',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ChecksumAlgorithm',
+                       'Concept',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'DefinedTerm',
+                       'Distribution',
+                       'Document',
+                       'Entity',
+                       'Frequency',
+                       'Geometry',
+                       'Identifier',
+                       'LegalResource',
+                       'LicenseDocument',
+                       'LinguisticSystem',
+                       'MediaType',
+                       'MediaTypeOrExtent',
+                       'PeriodOfTime',
+                       'Plan',
+                       'Policy',
+                       'ProvenanceStatement',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Resource',
+                       'RightsStatement',
+                       'Role',
+                       'Standard',
+                       'SupportiveEntity',
+                       'Surrounding',
+                       'TimeInstant'],
+         'slot_uri': 'dcterms:title'} })
+    description: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['Activity',
+                       'AgenticEntity',
+                       'Any',
+                       'Attribution',
+                       'Catalogue',
+                       'CatalogueRecord',
+                       'ChecksumAlgorithm',
+                       'Concept',
+                       'ConceptScheme',
+                       'DataService',
+                       'Dataset',
+                       'DatasetSeries',
+                       'Distribution',
+                       'Document',
+                       'Entity',
+                       'Frequency',
+                       'Geometry',
+                       'Identifier',
+                       'LegalResource',
+                       'LicenseDocument',
+                       'LinguisticSystem',
+                       'MediaType',
+                       'MediaTypeOrExtent',
+                       'PeriodOfTime',
+                       'Plan',
+                       'Policy',
+                       'ProvenanceStatement',
+                       'QualitativeAttribute',
+                       'QuantitativeAttribute',
+                       'Resource',
+                       'RightsStatement',
+                       'Role',
+                       'Standard',
+                       'SupportiveEntity',
+                       'Surrounding',
+                       'TimeInstant'],
+         'slot_uri': 'dcterms:description'} })
+    value: float = Field(default=..., description="""The slot to provide the literal value of the QuantitativeAttribute.""", json_schema_extra = { "linkml_meta": {'alias': 'value',
+         'domain_of': ['QualitativeAttribute', 'QuantitativeAttribute'],
+         'in_subset': ['domain_agnostic_core'],
+         'slot_uri': 'prov:value'} })
+    has_quantity_type: str = Field(default=..., description="""The type of quality that is quantifiable according to the QUDT ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'has_quantity_type',
+         'bindings': [{'binds_value_of': 'id',
+                       'description': 'Binds the type of a quantifiable attribute to a '
+                                      'QUDT Quantity Kind instance from the QUDT '
+                                      'Quantity Kind vocabulary.',
+                       'obligation_level': 'RECOMMENDED',
+                       'range': 'QUDTQuantityKindEnum'}],
+         'domain_of': ['QuantitativeAttribute'],
+         'slot_uri': 'qudt:hasQuantityKind'} })
+    unit: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'unit',
+         'bindings': [{'binds_value_of': 'id',
+                       'description': 'Restricts the allowable defined terms to the '
+                                      'QUDT Unit vocabulary.',
+                       'obligation_level': 'RECOMMENDED',
+                       'range': 'QUDTUnitEnum'}],
+         'domain_of': ['QuantitativeAttribute'],
+         'recommended': True,
+         'slot_uri': 'qudt:unit'} })
+    type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
+         'slot_uri': 'dcterms:type'} })
+    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The slot to specify the ontology class that is instantiated by an entity.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+         'domain_of': ['ClassifierMixin'],
+         'in_subset': ['domain_agnostic_core'],
+         'recommended': True,
+         'slot_uri': 'rdf:type'} })
+
+
 class NMRAnalysisDataset(AnalysisDataset):
     """
     A dataset that is the result of a NMRSpectralAnalysis of a NMRSample.
@@ -11773,11 +11889,16 @@ class NMRSpectroscopy(DataGeneratingActivity):
          'is_a': 'carried_out_by',
          'recommended': True,
          'slot_uri': 'OBI:0000293'} })
-    used_pulse_sequence: PulseSequence = Field(default=..., description="""The slot to specify the PulseSequence used in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'used_pulse_sequence',
+    used_pulse_sequence: PulseSequence = Field(default=..., description="""The slot to specify the PulseSequence used as a setting in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'used_pulse_sequence',
          'domain_of': ['NMRSpectroscopy'],
          'is_a': 'has_qualitative_attribute',
          'slot_uri': 'OBI:0000293'} })
-    used_number_of_scans: Optional[NumberOfScans] = Field(default=None, description="""The slot to specify the NumberOfScans used in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'used_number_of_scans',
+    used_number_of_scans: Optional[NumberOfScans] = Field(default=None, description="""The slot to specify the NumberOfScans used as a setting in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'used_number_of_scans',
+         'domain_of': ['NMRSpectroscopy'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'OBI:0000293'} })
+    used_sample_temperature: Optional[NMRSampleTemperature] = Field(default=None, description="""The slot to specify the NMRSampleTemperature used as a setting in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'used_sample_temperature',
          'domain_of': ['NMRSpectroscopy'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
@@ -12118,10 +12239,9 @@ class ShiftCalibrationCompound(ChemicalEntity):
                       'a more appropriate location in the future.'],
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml'})
 
-    has_shift_reference: Optional[list[ChemicalShiftReference]] = Field(default=None, description="""The slot to specify the ChemicalShiftReference value.""", json_schema_extra = { "linkml_meta": {'alias': 'has_shift_reference',
+    has_calibration_shift: Optional[list[CalibrationPeakShift]] = Field(default=None, description="""The slot to specify the chemical shift value of the ShiftCalibrationCompound.""", json_schema_extra = { "linkml_meta": {'alias': 'has_calibration_shift',
          'domain_of': ['ShiftCalibrationCompound'],
          'is_a': 'has_quantitative_attribute',
-         'recommended': True,
          'slot_uri': 'SIO:000008'} })
     inchi: Optional[list[InChi]] = Field(default=None, description="""The slot to provide the InChi descriptor of a ChemicalEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'inchi',
          'domain_of': ['ChemicalEntity'],
@@ -12321,10 +12441,9 @@ class ShiftReferenceCompound(ShiftCalibrationCompound):
                       'a more appropriate location in the future.'],
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml'})
 
-    has_shift_reference: Optional[list[ChemicalShiftReference]] = Field(default=None, description="""The slot to specify the ChemicalShiftReference value.""", json_schema_extra = { "linkml_meta": {'alias': 'has_shift_reference',
+    has_calibration_shift: Optional[list[CalibrationPeakShift]] = Field(default=None, description="""The slot to specify the chemical shift value of the ShiftCalibrationCompound.""", json_schema_extra = { "linkml_meta": {'alias': 'has_calibration_shift',
          'domain_of': ['ShiftCalibrationCompound'],
          'is_a': 'has_quantitative_attribute',
-         'recommended': True,
          'slot_uri': 'SIO:000008'} })
     inchi: Optional[list[InChi]] = Field(default=None, description="""The slot to provide the InChi descriptor of a ChemicalEntity.""", json_schema_extra = { "linkml_meta": {'alias': 'inchi',
          'domain_of': ['ChemicalEntity'],
@@ -13264,11 +13383,11 @@ class NominalProtonFrequency(QuantitativeAttribute):
          'slot_uri': 'rdf:type'} })
 
 
-class ChemicalShiftReference(QuantitativeAttribute):
+class CalibrationPeakShift(QuantitativeAttribute):
     """
-    A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.
+    The chemical shift of the peak used for chemical shift calibration.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'NMR:1002013',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'NMR:1000223',
          'comments': ['This class serves as an example for the way in which we want to '
                       'build domain specific schema profiles. It will be outsourced to '
                       'a more appropriate location in the future.'],
@@ -14310,6 +14429,7 @@ MolarMass.model_rebuild()
 Volume.model_rebuild()
 Density.model_rebuild()
 Pressure.model_rebuild()
+NMRSampleTemperature.model_rebuild()
 NMRAnalysisDataset.model_rebuild()
 NMRSpectralAnalysis.model_rebuild()
 NMRSpectrum.model_rebuild()
@@ -14322,7 +14442,7 @@ AcquisitionNucleus.model_rebuild()
 NMRSolvent.model_rebuild()
 PulseSequence.model_rebuild()
 NominalProtonFrequency.model_rebuild()
-ChemicalShiftReference.model_rebuild()
+CalibrationPeakShift.model_rebuild()
 NumberOfScans.model_rebuild()
 SubstanceSample.model_rebuild()
 NMRSample.model_rebuild()

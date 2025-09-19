@@ -1027,6 +1027,15 @@
 --     * Slot: derived_from_id Description: The slot to specify the MaterialEntity or MaterialSample from which the NMRSample was created.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
+-- # Class: NMRSampleTemperature Description: The temperature of the NMR Sample.
+--     * Slot: id
+--     * Slot: title Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: description Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: value Description: The slot to provide the literal value of the QuantitativeAttribute.
+--     * Slot: has_quantity_type Description: The type of quality that is quantifiable according to the QUDT ontology.
+--     * Slot: unit
+--     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
+--     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
 -- # Class: NMRAnalysisDataset Description: A dataset that is the result of a NMRSpectralAnalysis of a NMRSample.
 --     * Slot: modification_date Description: The most recent date on which the Dataset was changed or modified.
 --     * Slot: release_date Description: The date of formal issuance (e.g., publication) of the Dataset.
@@ -1054,8 +1063,9 @@
 -- # Class: NMRSpectroscopy Description: Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.
 --     * Slot: id Description: A slot to provide an URI for an entity within this schema.
 --     * Slot: NMRSpectrum_id Description: Autocreated FK slot
---     * Slot: used_pulse_sequence_id Description: The slot to specify the PulseSequence used in the NMRSpectroscopy.
---     * Slot: used_number_of_scans_id Description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
+--     * Slot: used_pulse_sequence_id Description: The slot to specify the PulseSequence used as a setting in the NMRSpectroscopy.
+--     * Slot: used_number_of_scans_id Description: The slot to specify the NumberOfScans used as a setting in the NMRSpectroscopy.
+--     * Slot: used_sample_temperature_id Description: The slot to specify the NMRSampleTemperature used as a setting in the NMRSpectroscopy.
 --     * Slot: realized_plan_id Description: The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.
 --     * Slot: occurred_in_id Description: The slot to specify the Surrounding in which an Activity took place.
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
@@ -1128,7 +1138,7 @@
 --     * Slot: NMRSpectrometer_id Description: Autocreated FK slot
 --     * Slot: type_id Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: rdf_type_id Description: The slot to specify the ontology class that is instantiated by an entity.
--- # Class: ChemicalShiftReference Description: A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.
+-- # Class: CalibrationPeakShift Description: The chemical shift of the peak used for chemical shift calibration.
 --     * Slot: id
 --     * Slot: title Description: This slot is described in more detail within the class in which it is used.
 --     * Slot: description Description: This slot is described in more detail within the class in which it is used.
@@ -1933,6 +1943,21 @@ CREATE TABLE "ChemicalReaction" (
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );CREATE INDEX "ix_ChemicalReaction_id" ON "ChemicalReaction" (id);
+CREATE TABLE "NMRSampleTemperature" (
+	id INTEGER NOT NULL,
+	title TEXT,
+	description TEXT,
+	value FLOAT NOT NULL,
+	has_quantity_type TEXT NOT NULL,
+	unit TEXT,
+	type_id TEXT,
+	rdf_type_id TEXT,
+	PRIMARY KEY (id),
+	FOREIGN KEY(has_quantity_type) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(unit) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
+	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
+);CREATE INDEX "ix_NMRSampleTemperature_id" ON "NMRSampleTemperature" (id);
 CREATE TABLE "PulseSequence" (
 	id INTEGER NOT NULL,
 	title TEXT,
@@ -1970,7 +1995,7 @@ CREATE TABLE "Activity_description" (
 	description TEXT,
 	PRIMARY KEY ("Activity_id", description),
 	FOREIGN KEY("Activity_id") REFERENCES "Activity" (id)
-);CREATE INDEX "ix_Activity_description_Activity_id" ON "Activity_description" ("Activity_id");CREATE INDEX "ix_Activity_description_description" ON "Activity_description" (description);
+);CREATE INDEX "ix_Activity_description_description" ON "Activity_description" (description);CREATE INDEX "ix_Activity_description_Activity_id" ON "Activity_description" ("Activity_id");
 CREATE TABLE "Agent_name" (
 	"Agent_id" INTEGER,
 	name TEXT NOT NULL,
@@ -1994,13 +2019,13 @@ CREATE TABLE "AnalysisDataset_keyword" (
 	keyword TEXT,
 	PRIMARY KEY ("AnalysisDataset_id", keyword),
 	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
-);CREATE INDEX "ix_AnalysisDataset_keyword_keyword" ON "AnalysisDataset_keyword" (keyword);CREATE INDEX "ix_AnalysisDataset_keyword_AnalysisDataset_id" ON "AnalysisDataset_keyword" ("AnalysisDataset_id");
+);CREATE INDEX "ix_AnalysisDataset_keyword_AnalysisDataset_id" ON "AnalysisDataset_keyword" ("AnalysisDataset_id");CREATE INDEX "ix_AnalysisDataset_keyword_keyword" ON "AnalysisDataset_keyword" (keyword);
 CREATE TABLE "AnalysisDataset_title" (
 	"AnalysisDataset_id" TEXT,
 	title TEXT NOT NULL,
 	PRIMARY KEY ("AnalysisDataset_id", title),
 	FOREIGN KEY("AnalysisDataset_id") REFERENCES "AnalysisDataset" (id)
-);CREATE INDEX "ix_AnalysisDataset_title_title" ON "AnalysisDataset_title" (title);CREATE INDEX "ix_AnalysisDataset_title_AnalysisDataset_id" ON "AnalysisDataset_title" ("AnalysisDataset_id");
+);CREATE INDEX "ix_AnalysisDataset_title_AnalysisDataset_id" ON "AnalysisDataset_title" ("AnalysisDataset_id");CREATE INDEX "ix_AnalysisDataset_title_title" ON "AnalysisDataset_title" (title);
 CREATE TABLE "AnalysisDataset_version_notes" (
 	"AnalysisDataset_id" TEXT,
 	version_notes TEXT,
@@ -2036,7 +2061,7 @@ CREATE TABLE "DataService_keyword" (
 	keyword TEXT,
 	PRIMARY KEY ("DataService_id", keyword),
 	FOREIGN KEY("DataService_id") REFERENCES "DataService" (id)
-);CREATE INDEX "ix_DataService_keyword_keyword" ON "DataService_keyword" (keyword);CREATE INDEX "ix_DataService_keyword_DataService_id" ON "DataService_keyword" ("DataService_id");
+);CREATE INDEX "ix_DataService_keyword_DataService_id" ON "DataService_keyword" ("DataService_id");CREATE INDEX "ix_DataService_keyword_keyword" ON "DataService_keyword" (keyword);
 CREATE TABLE "DataService_title" (
 	"DataService_id" INTEGER,
 	title TEXT NOT NULL,
@@ -2072,7 +2097,7 @@ CREATE TABLE "Dataset_version_notes" (
 	version_notes TEXT,
 	PRIMARY KEY ("Dataset_id", version_notes),
 	FOREIGN KEY("Dataset_id") REFERENCES "Dataset" (id)
-);CREATE INDEX "ix_Dataset_version_notes_Dataset_id" ON "Dataset_version_notes" ("Dataset_id");CREATE INDEX "ix_Dataset_version_notes_version_notes" ON "Dataset_version_notes" (version_notes);
+);CREATE INDEX "ix_Dataset_version_notes_version_notes" ON "Dataset_version_notes" (version_notes);CREATE INDEX "ix_Dataset_version_notes_Dataset_id" ON "Dataset_version_notes" ("Dataset_id");
 CREATE TABLE "Distribution_description" (
 	"Distribution_id" INTEGER,
 	description TEXT,
@@ -2108,13 +2133,13 @@ CREATE TABLE "NMRAnalysisDataset_title" (
 	title TEXT NOT NULL,
 	PRIMARY KEY ("NMRAnalysisDataset_id", title),
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id)
-);CREATE INDEX "ix_NMRAnalysisDataset_title_NMRAnalysisDataset_id" ON "NMRAnalysisDataset_title" ("NMRAnalysisDataset_id");CREATE INDEX "ix_NMRAnalysisDataset_title_title" ON "NMRAnalysisDataset_title" (title);
+);CREATE INDEX "ix_NMRAnalysisDataset_title_title" ON "NMRAnalysisDataset_title" (title);CREATE INDEX "ix_NMRAnalysisDataset_title_NMRAnalysisDataset_id" ON "NMRAnalysisDataset_title" ("NMRAnalysisDataset_id");
 CREATE TABLE "NMRAnalysisDataset_version_notes" (
 	"NMRAnalysisDataset_id" TEXT,
 	version_notes TEXT,
 	PRIMARY KEY ("NMRAnalysisDataset_id", version_notes),
 	FOREIGN KEY("NMRAnalysisDataset_id") REFERENCES "NMRAnalysisDataset" (id)
-);CREATE INDEX "ix_NMRAnalysisDataset_version_notes_NMRAnalysisDataset_id" ON "NMRAnalysisDataset_version_notes" ("NMRAnalysisDataset_id");CREATE INDEX "ix_NMRAnalysisDataset_version_notes_version_notes" ON "NMRAnalysisDataset_version_notes" (version_notes);
+);CREATE INDEX "ix_NMRAnalysisDataset_version_notes_version_notes" ON "NMRAnalysisDataset_version_notes" (version_notes);CREATE INDEX "ix_NMRAnalysisDataset_version_notes_NMRAnalysisDataset_id" ON "NMRAnalysisDataset_version_notes" ("NMRAnalysisDataset_id");
 CREATE TABLE "DataAnalysis" (
 	id TEXT NOT NULL,
 	"AnalysisDataset_id" TEXT,
@@ -2399,7 +2424,7 @@ CREATE TABLE "ConceptScheme_title" (
 	title TEXT NOT NULL,
 	PRIMARY KEY ("ConceptScheme_id", title),
 	FOREIGN KEY("ConceptScheme_id") REFERENCES "ConceptScheme" (id)
-);CREATE INDEX "ix_ConceptScheme_title_ConceptScheme_id" ON "ConceptScheme_title" ("ConceptScheme_id");CREATE INDEX "ix_ConceptScheme_title_title" ON "ConceptScheme_title" (title);
+);CREATE INDEX "ix_ConceptScheme_title_title" ON "ConceptScheme_title" (title);CREATE INDEX "ix_ConceptScheme_title_ConceptScheme_id" ON "ConceptScheme_title" ("ConceptScheme_id");
 CREATE TABLE "DatasetSeries_description" (
 	"DatasetSeries_id" INTEGER,
 	description TEXT NOT NULL,
@@ -2423,7 +2448,7 @@ CREATE TABLE "ChemicalReaction_description" (
 	description TEXT,
 	PRIMARY KEY ("ChemicalReaction_id", description),
 	FOREIGN KEY("ChemicalReaction_id") REFERENCES "ChemicalReaction" (id)
-);CREATE INDEX "ix_ChemicalReaction_description_ChemicalReaction_id" ON "ChemicalReaction_description" ("ChemicalReaction_id");CREATE INDEX "ix_ChemicalReaction_description_description" ON "ChemicalReaction_description" (description);
+);CREATE INDEX "ix_ChemicalReaction_description_description" ON "ChemicalReaction_description" (description);CREATE INDEX "ix_ChemicalReaction_description_ChemicalReaction_id" ON "ChemicalReaction_description" ("ChemicalReaction_id");
 CREATE TABLE "AnalysisSourceData" (
 	title TEXT,
 	description TEXT,
@@ -2465,13 +2490,13 @@ CREATE TABLE "NMRSpectralAnalysis_title" (
 	title TEXT,
 	PRIMARY KEY ("NMRSpectralAnalysis_id", title),
 	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id)
-);CREATE INDEX "ix_NMRSpectralAnalysis_title_NMRSpectralAnalysis_id" ON "NMRSpectralAnalysis_title" ("NMRSpectralAnalysis_id");CREATE INDEX "ix_NMRSpectralAnalysis_title_title" ON "NMRSpectralAnalysis_title" (title);
+);CREATE INDEX "ix_NMRSpectralAnalysis_title_title" ON "NMRSpectralAnalysis_title" (title);CREATE INDEX "ix_NMRSpectralAnalysis_title_NMRSpectralAnalysis_id" ON "NMRSpectralAnalysis_title" ("NMRSpectralAnalysis_id");
 CREATE TABLE "NMRSpectralAnalysis_description" (
 	"NMRSpectralAnalysis_id" TEXT,
 	description TEXT,
 	PRIMARY KEY ("NMRSpectralAnalysis_id", description),
 	FOREIGN KEY("NMRSpectralAnalysis_id") REFERENCES "NMRSpectralAnalysis" (id)
-);CREATE INDEX "ix_NMRSpectralAnalysis_description_description" ON "NMRSpectralAnalysis_description" (description);CREATE INDEX "ix_NMRSpectralAnalysis_description_NMRSpectralAnalysis_id" ON "NMRSpectralAnalysis_description" ("NMRSpectralAnalysis_id");
+);CREATE INDEX "ix_NMRSpectralAnalysis_description_NMRSpectralAnalysis_id" ON "NMRSpectralAnalysis_description" ("NMRSpectralAnalysis_id");CREATE INDEX "ix_NMRSpectralAnalysis_description_description" ON "NMRSpectralAnalysis_description" (description);
 CREATE TABLE "DataGeneratingActivity" (
 	id TEXT NOT NULL,
 	"AnalysisSourceData_id" TEXT,
@@ -2493,6 +2518,7 @@ CREATE TABLE "NMRSpectroscopy" (
 	"NMRSpectrum_id" TEXT,
 	used_pulse_sequence_id INTEGER NOT NULL,
 	used_number_of_scans_id INTEGER,
+	used_sample_temperature_id INTEGER,
 	realized_plan_id INTEGER,
 	occurred_in_id INTEGER,
 	type_id TEXT,
@@ -2501,6 +2527,7 @@ CREATE TABLE "NMRSpectroscopy" (
 	FOREIGN KEY("NMRSpectrum_id") REFERENCES "NMRSpectrum" (id),
 	FOREIGN KEY(used_pulse_sequence_id) REFERENCES "PulseSequence" (id),
 	FOREIGN KEY(used_number_of_scans_id) REFERENCES "NumberOfScans" (id),
+	FOREIGN KEY(used_sample_temperature_id) REFERENCES "NMRSampleTemperature" (id),
 	FOREIGN KEY(realized_plan_id) REFERENCES "Plan" (id),
 	FOREIGN KEY(occurred_in_id) REFERENCES "Surrounding" (id),
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
@@ -2623,7 +2650,7 @@ CREATE TABLE "DataGeneratingActivity_description" (
 	description TEXT,
 	PRIMARY KEY ("DataGeneratingActivity_id", description),
 	FOREIGN KEY("DataGeneratingActivity_id") REFERENCES "DataGeneratingActivity" (id)
-);CREATE INDEX "ix_DataGeneratingActivity_description_description" ON "DataGeneratingActivity_description" (description);CREATE INDEX "ix_DataGeneratingActivity_description_DataGeneratingActivity_id" ON "DataGeneratingActivity_description" ("DataGeneratingActivity_id");
+);CREATE INDEX "ix_DataGeneratingActivity_description_DataGeneratingActivity_id" ON "DataGeneratingActivity_description" ("DataGeneratingActivity_id");CREATE INDEX "ix_DataGeneratingActivity_description_description" ON "DataGeneratingActivity_description" (description);
 CREATE TABLE "NMRSpectroscopy_title" (
 	"NMRSpectroscopy_id" TEXT,
 	title TEXT,
@@ -2635,7 +2662,7 @@ CREATE TABLE "NMRSpectroscopy_description" (
 	description TEXT,
 	PRIMARY KEY ("NMRSpectroscopy_id", description),
 	FOREIGN KEY("NMRSpectroscopy_id") REFERENCES "NMRSpectroscopy" (id)
-);CREATE INDEX "ix_NMRSpectroscopy_description_description" ON "NMRSpectroscopy_description" (description);CREATE INDEX "ix_NMRSpectroscopy_description_NMRSpectroscopy_id" ON "NMRSpectroscopy_description" ("NMRSpectroscopy_id");
+);CREATE INDEX "ix_NMRSpectroscopy_description_NMRSpectroscopy_id" ON "NMRSpectroscopy_description" ("NMRSpectroscopy_id");CREATE INDEX "ix_NMRSpectroscopy_description_description" ON "NMRSpectroscopy_description" (description);
 CREATE TABLE "Device" (
 	id TEXT NOT NULL,
 	title TEXT,
@@ -3263,7 +3290,7 @@ CREATE TABLE "NominalProtonFrequency" (
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
 );CREATE INDEX "ix_NominalProtonFrequency_id" ON "NominalProtonFrequency" (id);
-CREATE TABLE "ChemicalShiftReference" (
+CREATE TABLE "CalibrationPeakShift" (
 	id INTEGER NOT NULL,
 	title TEXT,
 	description TEXT,
@@ -3281,19 +3308,19 @@ CREATE TABLE "ChemicalShiftReference" (
 	FOREIGN KEY("ShiftReferenceCompound_id") REFERENCES "ShiftReferenceCompound" (id),
 	FOREIGN KEY(type_id) REFERENCES "DefinedTerm" (id),
 	FOREIGN KEY(rdf_type_id) REFERENCES "DefinedTerm" (id)
-);CREATE INDEX "ix_ChemicalShiftReference_id" ON "ChemicalShiftReference" (id);
+);CREATE INDEX "ix_CalibrationPeakShift_id" ON "CalibrationPeakShift" (id);
 CREATE TABLE "EvaluatedActivity_title" (
 	"EvaluatedActivity_id" TEXT,
 	title TEXT,
 	PRIMARY KEY ("EvaluatedActivity_id", title),
 	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id)
-);CREATE INDEX "ix_EvaluatedActivity_title_EvaluatedActivity_id" ON "EvaluatedActivity_title" ("EvaluatedActivity_id");CREATE INDEX "ix_EvaluatedActivity_title_title" ON "EvaluatedActivity_title" (title);
+);CREATE INDEX "ix_EvaluatedActivity_title_title" ON "EvaluatedActivity_title" (title);CREATE INDEX "ix_EvaluatedActivity_title_EvaluatedActivity_id" ON "EvaluatedActivity_title" ("EvaluatedActivity_id");
 CREATE TABLE "EvaluatedActivity_description" (
 	"EvaluatedActivity_id" TEXT,
 	description TEXT,
 	PRIMARY KEY ("EvaluatedActivity_id", description),
 	FOREIGN KEY("EvaluatedActivity_id") REFERENCES "EvaluatedActivity" (id)
-);CREATE INDEX "ix_EvaluatedActivity_description_EvaluatedActivity_id" ON "EvaluatedActivity_description" ("EvaluatedActivity_id");CREATE INDEX "ix_EvaluatedActivity_description_description" ON "EvaluatedActivity_description" (description);
+);CREATE INDEX "ix_EvaluatedActivity_description_description" ON "EvaluatedActivity_description" (description);CREATE INDEX "ix_EvaluatedActivity_description_EvaluatedActivity_id" ON "EvaluatedActivity_description" ("EvaluatedActivity_id");
 CREATE TABLE "AgenticEntity" (
 	id TEXT NOT NULL,
 	title TEXT,

@@ -33,26 +33,26 @@
     dcterms:title "CRR-56408" ;
     schema1:duration "PT22H"^^xsd:duration ;
     SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Temperature of reaction step 3" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
+            prov:value "80.0"^^xsd:float ],
+        [ a qudt:Quantity ;
             dcterms:title "Yield [%]" ;
             dcterms:type VOC4CAT:0005005 ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
             qudt:unit <http://qudt.org/vocab/unit/PERCENT> ;
             prov:value "86.0"^^xsd:float ],
         [ a qudt:Quantity ;
-            dcterms:title "Temperature of reaction step 2" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
-            qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
-            prov:value "0.0"^^xsd:float ],
-        [ a qudt:Quantity ;
-            dcterms:title "Temperature of reaction step 3" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
-            qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
-            prov:value "80.0"^^xsd:float ],
-        [ a qudt:Quantity ;
             dcterms:title "Temperature of reaction step 1" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
             qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
-            prov:value "-78.0"^^xsd:float ] ;
+            prov:value "-78.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Temperature of reaction step 2" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
+            prov:value "0.0"^^xsd:float ] ;
     adms:identifier [ a adms:Identifier ;
             skos:notation "https://www.chemotion-repository.net/pid/56408" ] ;
     prov:wasAssociatedWith <https://www.chemotion-repository.net/pid/56408_Solvent-1>,
@@ -97,25 +97,25 @@ VOC4CAT:0005005 a schema1:DefinedTerm ;
 <https://www.chemotion-repository.net/pid/56408_Reactant-1> a SIO:010411 ;
     BFO:0000051 <https://www.chemotion-repository.net/pid/56408_Reactant-1.comp> ;
     SIO:000008 [ a qudt:Quantity ;
-            dcterms:title "Mass [mg]" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
-            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
-            prov:value "688.594"^^xsd:float ],
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "4.3"^^xsd:float ],
         [ a qudt:Quantity ;
             dcterms:title "Molar Equivalent" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
             qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
             prov:value "1.183"^^xsd:float ],
-        [ a qudt:Quantity ;
-            dcterms:title "Volume [mL]" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
-            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
-            prov:value "4.3"^^xsd:float ],
         [ a CHMO:0002820 ;
             dcterms:title "Molarity [M]" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration> ;
             qudt:unit <https://qudt.org/vocab/unit/MOL-PER-L> ;
             prov:value "2.5"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "688.594"^^xsd:float ],
         [ a qudt:Quantity ;
             dcterms:title "Amount [mmol]" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
@@ -130,31 +130,31 @@ VOC4CAT:0005005 a schema1:DefinedTerm ;
 
 <https://www.chemotion-repository.net/pid/56408_Reactant-2> a SIO:010411 ;
     BFO:0000051 <https://www.chemotion-repository.net/pid/56408_Reactant-2.comp> ;
-    SIO:000008 [ a qudt:Quantity ;
-            dcterms:title "Mass [mg]" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
-            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
-            prov:value "3955.0"^^xsd:float ],
-        [ a SIO:001406 ;
+    SIO:000008 [ a SIO:001406 ;
             dcterms:title "Density [g/mL]" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
             qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
             prov:value "1.13"^^xsd:float ],
         [ a qudt:Quantity ;
-            dcterms:title "Molar Equivalent" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
-            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
-            prov:value "4.477"^^xsd:float ],
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "3.5"^^xsd:float ],
         [ a qudt:Quantity ;
             dcterms:title "Amount [mmol]" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
             qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
             prov:value "40.696"^^xsd:float ],
         [ a qudt:Quantity ;
-            dcterms:title "Volume [mL]" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
-            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
-            prov:value "3.5"^^xsd:float ] .
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "4.477"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "3955.0"^^xsd:float ] .
 
 <https://www.chemotion-repository.net/pid/56408_Reactant-2.comp> a CHEBI:23367 ;
     SIO:000008 [ a CHEMINF:000042 ;
@@ -165,36 +165,36 @@ VOC4CAT:0005005 a schema1:DefinedTerm ;
 <https://www.chemotion-repository.net/pid/56408_Reactant-3> a SIO:010411 ;
     BFO:0000051 <https://www.chemotion-repository.net/pid/56408_Reactant-3.comp> ;
     SIO:000008 [ a qudt:Quantity ;
-            dcterms:title "Amount [mmol]" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
-            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
-            prov:value "30.502"^^xsd:float ],
-        [ a qudt:Quantity ;
             dcterms:title "Mass [mg]" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
             qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
             prov:value "1908.0"^^xsd:float ],
         [ a qudt:Quantity ;
-            dcterms:title "Volume [mL]" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
-            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
-            prov:value "1.8"^^xsd:float ],
-        [ a qudt:Quantity ;
             dcterms:title "Molar Equivalent" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
             qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
             prov:value "3.355"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "1.8"^^xsd:float ],
         [ a SIO:001406 ;
             dcterms:title "Density [g/mL]" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
             qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
-            prov:value "1.06"^^xsd:float ] .
+            prov:value "1.06"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "30.502"^^xsd:float ] .
 
 <https://www.chemotion-repository.net/pid/56408_Reactant-3.comp> a CHEBI:23367 ;
-    SIO:000008 [ a CHEMINF:000107 ;
-            prov:value "glacial acetic acid" ],
-        [ a CHEMINF:000042 ;
-            prov:value "C2H4O2" ] .
+    SIO:000008 [ a CHEMINF:000042 ;
+            prov:value "C2H4O2" ],
+        [ a CHEMINF:000107 ;
+            prov:value "glacial acetic acid" ] .
 
 <https://www.chemotion-repository.net/pid/56408_Solvent-1> a SIO:010417 ;
     BFO:0000051 <https://www.chemotion-repository.net/pid/56408_Solvent-1.comp> ;
@@ -211,30 +211,30 @@ VOC4CAT:0005005 a schema1:DefinedTerm ;
 
 <https://www.chemotion-repository.net/pid/56408_Solvent-1.comp> a CHEBI:23367 ;
     dcterms:title "THF" ;
-    SIO:000008 [ a CHEMINF:000107 ;
-            prov:value "Tetrahydrofuran" ],
-        [ a CHEMINF:000042 ;
-            prov:value "C4H8O" ] .
+    SIO:000008 [ a CHEMINF:000042 ;
+            prov:value "C4H8O" ],
+        [ a CHEMINF:000107 ;
+            prov:value "Tetrahydrofuran" ] .
 
 <https://www.chemotion-repository.net/pid/56408_Solvent-2> a SIO:010417 ;
     BFO:0000051 <https://www.chemotion-repository.net/pid/56408_Solvent-2.comp> ;
     SIO:000008 [ a qudt:Quantity ;
-            dcterms:title "Volume [mL]" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
-            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
-            prov:value "3.0"^^xsd:float ],
-        [ a qudt:Quantity ;
             dcterms:title "PercentageOfTotal" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
             qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
-            prov:value "2.0"^^xsd:float ] .
+            prov:value "2.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "3.0"^^xsd:float ] .
 
 <https://www.chemotion-repository.net/pid/56408_Solvent-2.comp> a CHEBI:23367 ;
     dcterms:title "THF" ;
-    SIO:000008 [ a CHEMINF:000107 ;
-            prov:value "Tetrahydrofuran" ],
-        [ a CHEMINF:000042 ;
-            prov:value "C4H8O" ] .
+    SIO:000008 [ a CHEMINF:000042 ;
+            prov:value "C4H8O" ],
+        [ a CHEMINF:000107 ;
+            prov:value "Tetrahydrofuran" ] .
 
 <https://www.chemotion-repository.net/pid/56408_Solvent-3> a SIO:010417 ;
     BFO:0000051 <https://www.chemotion-repository.net/pid/56408_Solvent-3.comp> ;
@@ -269,44 +269,44 @@ VOC4CAT:0005005 a schema1:DefinedTerm ;
             prov:value "15.0"^^xsd:float ] .
 
 <https://www.chemotion-repository.net/pid/56408_Solvent-4.comp> a CHEBI:23367 ;
-    SIO:000008 [ a CHEMINF:000042 ;
-            prov:value "C2H6O" ],
-        [ a CHEMINF:000107 ;
-            prov:value "Ethanol" ] .
+    SIO:000008 [ a CHEMINF:000107 ;
+            prov:value "Ethanol" ],
+        [ a CHEMINF:000042 ;
+            prov:value "C2H6O" ] .
 
 <https://www.chemotion-repository.net/pid/56408_StartMat-1> a PROCO:0000029 ;
     BFO:0000051 <https://www.chemotion-repository.net/pid/56408_StartMat-1.comp> ;
     SIO:000008 [ a qudt:Quantity ;
-            dcterms:title "Molar Equivalent" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
-            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
-            prov:value "1.085"^^xsd:float ],
-        [ a qudt:Quantity ;
             dcterms:title "Mass [mg]" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
             qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
             prov:value "1761.1"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "9.862"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "1.1"^^xsd:float ],
         [ a SIO:001406 ;
             dcterms:title "Density [g/mL]" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
             qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
             prov:value "1.601"^^xsd:float ],
         [ a qudt:Quantity ;
-            dcterms:title "Volume [mL]" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
-            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
-            prov:value "1.1"^^xsd:float ],
-        [ a qudt:Quantity ;
-            dcterms:title "Amount [mmol]" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
-            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
-            prov:value "9.862"^^xsd:float ] .
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "1.085"^^xsd:float ] .
 
 <https://www.chemotion-repository.net/pid/56408_StartMat-1.comp> a CHEBI:23367 ;
-    SIO:000008 [ a CHEMINF:000107 ;
-            prov:value "1-bromo-2-fluorobenzene" ],
-        [ a CHEMINF:000042 ;
-            prov:value "C6H4BrF" ] .
+    SIO:000008 [ a CHEMINF:000042 ;
+            prov:value "C6H4BrF" ],
+        [ a CHEMINF:000107 ;
+            prov:value "1-bromo-2-fluorobenzene" ] .
 
 <https://www.chemotion-repository.net/pid/56408_StartMat-2> a PROCO:0000029 ;
     BFO:0000051 <https://www.chemotion-repository.net/pid/56408_StartMat-2.comp> ;
@@ -320,16 +320,16 @@ VOC4CAT:0005005 a schema1:DefinedTerm ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
             qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
             prov:value "1.0"^^xsd:float ],
-        [ a qudt:Quantity ;
-            dcterms:title "Volume [mL]" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
-            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
-            prov:value "1.7"^^xsd:float ],
         [ a SIO:001406 ;
             dcterms:title "Density [g/mL]" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
             qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
             prov:value "1.229"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "1.7"^^xsd:float ],
         [ a qudt:Quantity ;
             dcterms:title "Amount [mmol]" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;

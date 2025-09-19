@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-09-18T15:29:02
+# Generation date: 2025-09-19T13:04:12
 # Schema: dcat-4C-ap
 #
 # id: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
@@ -2942,6 +2942,7 @@ class NMRSpectroscopy(DataGeneratingActivity):
     used_pulse_sequence: Union[dict, "PulseSequence"] = None
     probes_nucleus: Union[dict[Union[str, AcquisitionNucleusId], Union[dict, "AcquisitionNucleus"]], list[Union[dict, "AcquisitionNucleus"]]] = empty_dict()
     used_number_of_scans: Optional[Union[dict, "NumberOfScans"]] = None
+    used_sample_temperature: Optional[Union[dict, "NMRSampleTemperature"]] = None
     used_calibration_compound: Optional[Union[dict[Union[str, ShiftCalibrationCompoundId], Union[dict, "ShiftCalibrationCompound"]], list[Union[dict, "ShiftCalibrationCompound"]]]] = empty_dict()
     used_reference_compound: Optional[Union[dict[Union[str, ShiftReferenceCompoundId], Union[dict, "ShiftReferenceCompound"]], list[Union[dict, "ShiftReferenceCompound"]]]] = empty_dict()
     evaluated_entity: Optional[Union[dict[Union[str, NMRSampleId], Union[dict, "NMRSample"]], list[Union[dict, "NMRSample"]]]] = empty_dict()
@@ -2972,6 +2973,9 @@ class NMRSpectroscopy(DataGeneratingActivity):
 
         if self.used_number_of_scans is not None and not isinstance(self.used_number_of_scans, NumberOfScans):
             self.used_number_of_scans = NumberOfScans(**as_dict(self.used_number_of_scans))
+
+        if self.used_sample_temperature is not None and not isinstance(self.used_sample_temperature, NMRSampleTemperature):
+            self.used_sample_temperature = NMRSampleTemperature(**as_dict(self.used_sample_temperature))
 
         self._normalize_inlined_as_list(slot_name="used_calibration_compound", slot_type=ShiftCalibrationCompound, key_name="id", keyed=True)
 
@@ -3098,16 +3102,16 @@ class NominalProtonFrequency(QuantitativeAttribute):
     has_quantity_type: Union[str, DefinedTermId] = None
 
 @dataclass(repr=False)
-class ChemicalShiftReference(QuantitativeAttribute):
+class CalibrationPeakShift(QuantitativeAttribute):
     """
-    A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.
+    The chemical shift of the peak used for chemical shift calibration.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMR["1002013"]
-    class_class_curie: ClassVar[str] = "NMR:1002013"
-    class_name: ClassVar[str] = "ChemicalShiftReference"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.ChemicalShiftReference
+    class_class_uri: ClassVar[URIRef] = NMR["1000223"]
+    class_class_curie: ClassVar[str] = "NMR:1000223"
+    class_name: ClassVar[str] = "CalibrationPeakShift"
+    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.CalibrationPeakShift
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -3475,7 +3479,7 @@ class ShiftCalibrationCompound(ChemicalEntity):
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.ShiftCalibrationCompound
 
     id: Union[str, ShiftCalibrationCompoundId] = None
-    has_shift_reference: Optional[Union[Union[dict, ChemicalShiftReference], list[Union[dict, ChemicalShiftReference]]]] = empty_list()
+    has_calibration_shift: Optional[Union[Union[dict, CalibrationPeakShift], list[Union[dict, CalibrationPeakShift]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3483,9 +3487,9 @@ class ShiftCalibrationCompound(ChemicalEntity):
         if not isinstance(self.id, ShiftCalibrationCompoundId):
             self.id = ShiftCalibrationCompoundId(self.id)
 
-        if not isinstance(self.has_shift_reference, list):
-            self.has_shift_reference = [self.has_shift_reference] if self.has_shift_reference is not None else []
-        self.has_shift_reference = [v if isinstance(v, ChemicalShiftReference) else ChemicalShiftReference(**as_dict(v)) for v in self.has_shift_reference]
+        if not isinstance(self.has_calibration_shift, list):
+            self.has_calibration_shift = [self.has_calibration_shift] if self.has_calibration_shift is not None else []
+        self.has_calibration_shift = [v if isinstance(v, CalibrationPeakShift) else CalibrationPeakShift(**as_dict(v)) for v in self.has_calibration_shift]
 
         super().__post_init__(**kwargs)
 
@@ -3774,6 +3778,21 @@ class Temperature(QuantitativeAttribute):
     class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "Temperature"
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.Temperature
+
+    value: float = None
+    has_quantity_type: Union[str, DefinedTermId] = None
+
+@dataclass(repr=False)
+class NMRSampleTemperature(Temperature):
+    """
+    The temperature of the NMR Sample.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMR["1400262"]
+    class_class_curie: ClassVar[str] = "NMR:1400262"
+    class_name: ClassVar[str] = "NMRSampleTemperature"
+    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRSampleTemperature
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -4352,9 +4371,6 @@ slots.used_spectrometer = Slot(uri=OBI['0000293'], name="used_spectrometer", cur
 slots.has_proton_frequency = Slot(uri=SIO['000008'], name="has_proton_frequency", curie=SIO.curie('000008'),
                    model_uri=DCAT_4C_AP.has_proton_frequency, domain=None, range=Union[Union[dict, NominalProtonFrequency], list[Union[dict, NominalProtonFrequency]]])
 
-slots.has_shift_reference = Slot(uri=SIO['000008'], name="has_shift_reference", curie=SIO.curie('000008'),
-                   model_uri=DCAT_4C_AP.has_shift_reference, domain=None, range=Optional[Union[Union[dict, ChemicalShiftReference], list[Union[dict, ChemicalShiftReference]]]])
-
 slots.alternative_label = Slot(uri=SKOS.altLabel, name="alternative_label", curie=SKOS.curie('altLabel'),
                    model_uri=DCAT_4C_AP.alternative_label, domain=None, range=Optional[str])
 
@@ -4394,6 +4410,9 @@ slots.nMRSpectroscopy__used_pulse_sequence = Slot(uri=OBI['0000293'], name="nMRS
 slots.nMRSpectroscopy__used_number_of_scans = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__used_number_of_scans", curie=OBI.curie('0000293'),
                    model_uri=DCAT_4C_AP.nMRSpectroscopy__used_number_of_scans, domain=None, range=Optional[Union[dict, NumberOfScans]])
 
+slots.nMRSpectroscopy__used_sample_temperature = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__used_sample_temperature", curie=OBI.curie('0000293'),
+                   model_uri=DCAT_4C_AP.nMRSpectroscopy__used_sample_temperature, domain=None, range=Optional[Union[dict, NMRSampleTemperature]])
+
 slots.nMRSpectroscopy__probes_nucleus = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__probes_nucleus", curie=OBI.curie('0000293'),
                    model_uri=DCAT_4C_AP.nMRSpectroscopy__probes_nucleus, domain=None, range=Union[dict[Union[str, AcquisitionNucleusId], Union[dict, AcquisitionNucleus]], list[Union[dict, AcquisitionNucleus]]])
 
@@ -4402,6 +4421,9 @@ slots.nMRSpectroscopy__used_calibration_compound = Slot(uri=OBI['0000293'], name
 
 slots.nMRSpectroscopy__used_reference_compound = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__used_reference_compound", curie=OBI.curie('0000293'),
                    model_uri=DCAT_4C_AP.nMRSpectroscopy__used_reference_compound, domain=None, range=Optional[Union[dict[Union[str, ShiftReferenceCompoundId], Union[dict, ShiftReferenceCompound]], list[Union[dict, ShiftReferenceCompound]]]])
+
+slots.shiftCalibrationCompound__has_calibration_shift = Slot(uri=SIO['000008'], name="shiftCalibrationCompound__has_calibration_shift", curie=SIO.curie('000008'),
+                   model_uri=DCAT_4C_AP.shiftCalibrationCompound__has_calibration_shift, domain=None, range=Optional[Union[Union[dict, CalibrationPeakShift], list[Union[dict, CalibrationPeakShift]]]])
 
 slots.acquisitionNucleus__nucleus_of = Slot(uri=BFO['0000050'], name="acquisitionNucleus__nucleus_of", curie=BFO.curie('0000050'),
                    model_uri=DCAT_4C_AP.acquisitionNucleus__nucleus_of, domain=None, range=Union[dict, Atom])

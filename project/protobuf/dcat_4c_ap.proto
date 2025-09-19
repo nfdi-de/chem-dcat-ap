@@ -162,6 +162,17 @@ message Attribution
   string title = 0
   string description = 0
  }
+// The chemical shift of the peak used for chemical shift calibration.
+message CalibrationPeakShift
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
 // See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
 message Catalogue
  {
@@ -347,17 +358,6 @@ message ChemicalReaction
  repeated  yield hasYield = 0
   chemicalReaction hasReactionStep = 0
  repeated  resource relatedResource = 0
- }
-// A QuantitativeAttribute representing the parts-per-million value of the peak used to reference a NMRSpectrum.
-message ChemicalShiftReference
- {
-  string title = 0
-  string description = 0
-  float value = 0
-  definedTerm hasQuantityType = 0
-  definedTerm unit = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
  }
 // A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume of the mixture.
 message Concentration
@@ -896,6 +896,17 @@ message NMRSample
  repeated  characterizedCompound composedOf = 0
   entity derivedFrom = 0
  }
+// The temperature of the NMR Sample.
+message NMRSampleTemperature
+ {
+  string title = 0
+  string description = 0
+  float value = 0
+  definedTerm hasQuantityType = 0
+  definedTerm unit = 0
+  definedTerm type = 0
+  definedTerm rdfType = 0
+ }
 // A DissolvingSubstance that is used in nuclear magnetic resonance NMRSpectroscopy.
 message NMRSolvent
  {
@@ -983,6 +994,7 @@ message NMRSpectroscopy
  repeated  nMRSolvent usedSolvent = 0
   pulseSequence usedPulseSequence = 0
   numberOfScans usedNumberOfScans = 0
+  nMRSampleTemperature usedSampleTemperature = 0
  repeated  acquisitionNucleus probesNucleus = 0
  repeated  shiftCalibrationCompound usedCalibrationCompound = 0
  repeated  shiftReferenceCompound usedReferenceCompound = 0
@@ -1244,7 +1256,7 @@ message ShiftCalibrationCompound
  repeated  molecularFormula molecularFormula = 0
  repeated  iUPACName iupacName = 0
  repeated  molarMass hasMolarMass = 0
- repeated  chemicalShiftReference hasShiftReference = 0
+ repeated  calibrationPeakShift hasCalibrationShift = 0
  }
 // A ShiftCalibrationCompound that produces a peak used as reference frequency in the delta chemical shift scale in nuclear magnetic resonance (NMR) spectroscopy.
 message ShiftReferenceCompound
@@ -1272,7 +1284,7 @@ message ShiftReferenceCompound
  repeated  molecularFormula molecularFormula = 0
  repeated  iUPACName iupacName = 0
  repeated  molarMass hasMolarMass = 0
- repeated  chemicalShiftReference hasShiftReference = 0
+ repeated  calibrationPeakShift hasCalibrationShift = 0
  }
 // A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
 message SMILES
