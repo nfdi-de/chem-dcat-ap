@@ -310,7 +310,7 @@ slots:
     is_a: has_quantitative_attribute
     description: The slot to specify the NominalProtonFrequency of a NMRSpectrometer.
     range: NominalProtonFrequency
-    required: true
+    #required: true  # disabled for now, as this needs to be specified better in the NMR MICHI yet
 
 enums:
   # This is a [dynamic LinkML Enum definition](https://linkml.io/linkml/schemas/enums.html#dynamic-enums) covering
