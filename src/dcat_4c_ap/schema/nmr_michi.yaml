@@ -37,7 +37,6 @@ default_prefix: nmr_michi
 default_range: string
 imports:
   - linkml:types
-  - dcat_ap_plus
   - dcat_4c_ap
 
 classes:
