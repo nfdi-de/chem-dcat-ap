@@ -1061,7 +1061,7 @@ type NMRSpectrometer
     rdfType: DefinedTerm
     hasPart: [Device]
     otherIdentifier: [Identifier]
-    hasProtonFrequency: [NominalProtonFrequency]!
+    hasProtonFrequency: [NominalProtonFrequency]
   }
 
 type NMRSpectroscopy
@@ -1090,8 +1090,8 @@ type NMRSpectroscopy
     probesNucleus: [AcquisitionNucleus]!
     usedCalibrationCompound: [ShiftCalibrationCompound]
     usedReferenceCompound: [ShiftReferenceCompound]
-    evaluatedEntity: [NMRSample]
-    rdfType: DefinedTerm
+    evaluatedEntity: [NMRSample]!
+    rdfType: DefinedTerm!
   }
 
 type NMRSpectrum

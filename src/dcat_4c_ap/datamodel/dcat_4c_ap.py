@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-09-19T13:04:12
+# Generation date: 2025-09-19T15:09:25
 # Schema: dcat-4C-ap
 #
 # id: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
@@ -2941,12 +2941,12 @@ class NMRSpectroscopy(DataGeneratingActivity):
     used_solvent: Union[dict[Union[str, NMRSolventId], Union[dict, "NMRSolvent"]], list[Union[dict, "NMRSolvent"]]] = empty_dict()
     used_pulse_sequence: Union[dict, "PulseSequence"] = None
     probes_nucleus: Union[dict[Union[str, AcquisitionNucleusId], Union[dict, "AcquisitionNucleus"]], list[Union[dict, "AcquisitionNucleus"]]] = empty_dict()
+    evaluated_entity: Union[dict[Union[str, NMRSampleId], Union[dict, "NMRSample"]], list[Union[dict, "NMRSample"]]] = empty_dict()
+    rdf_type: Union[dict, DefinedTerm] = None
     used_number_of_scans: Optional[Union[dict, "NumberOfScans"]] = None
     used_sample_temperature: Optional[Union[dict, "NMRSampleTemperature"]] = None
     used_calibration_compound: Optional[Union[dict[Union[str, ShiftCalibrationCompoundId], Union[dict, "ShiftCalibrationCompound"]], list[Union[dict, "ShiftCalibrationCompound"]]]] = empty_dict()
     used_reference_compound: Optional[Union[dict[Union[str, ShiftReferenceCompoundId], Union[dict, "ShiftReferenceCompound"]], list[Union[dict, "ShiftReferenceCompound"]]]] = empty_dict()
-    evaluated_entity: Optional[Union[dict[Union[str, NMRSampleId], Union[dict, "NMRSample"]], list[Union[dict, "NMRSample"]]]] = empty_dict()
-    rdf_type: Optional[Union[dict, DefinedTerm]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2971,6 +2971,15 @@ class NMRSpectroscopy(DataGeneratingActivity):
             self.MissingRequiredField("probes_nucleus")
         self._normalize_inlined_as_list(slot_name="probes_nucleus", slot_type=AcquisitionNucleus, key_name="id", keyed=True)
 
+        if self._is_empty(self.evaluated_entity):
+            self.MissingRequiredField("evaluated_entity")
+        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=NMRSample, key_name="id", keyed=True)
+
+        if self._is_empty(self.rdf_type):
+            self.MissingRequiredField("rdf_type")
+        if not isinstance(self.rdf_type, DefinedTerm):
+            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
+
         if self.used_number_of_scans is not None and not isinstance(self.used_number_of_scans, NumberOfScans):
             self.used_number_of_scans = NumberOfScans(**as_dict(self.used_number_of_scans))
 
@@ -2980,11 +2989,6 @@ class NMRSpectroscopy(DataGeneratingActivity):
         self._normalize_inlined_as_list(slot_name="used_calibration_compound", slot_type=ShiftCalibrationCompound, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="used_reference_compound", slot_type=ShiftReferenceCompound, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=NMRSample, key_name="id", keyed=True)
-
-        if self.rdf_type is not None and not isinstance(self.rdf_type, DefinedTerm):
-            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
 
         super().__post_init__(**kwargs)
 
@@ -3003,7 +3007,7 @@ class NMRSpectrometer(Device):
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRSpectrometer
 
     id: Union[str, NMRSpectrometerId] = None
-    has_proton_frequency: Union[Union[dict, "NominalProtonFrequency"], list[Union[dict, "NominalProtonFrequency"]]] = None
+    has_proton_frequency: Optional[Union[Union[dict, "NominalProtonFrequency"], list[Union[dict, "NominalProtonFrequency"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3011,8 +3015,6 @@ class NMRSpectrometer(Device):
         if not isinstance(self.id, NMRSpectrometerId):
             self.id = NMRSpectrometerId(self.id)
 
-        if self._is_empty(self.has_proton_frequency):
-            self.MissingRequiredField("has_proton_frequency")
         if not isinstance(self.has_proton_frequency, list):
             self.has_proton_frequency = [self.has_proton_frequency] if self.has_proton_frequency is not None else []
         self.has_proton_frequency = [v if isinstance(v, NominalProtonFrequency) else NominalProtonFrequency(**as_dict(v)) for v in self.has_proton_frequency]
@@ -4369,7 +4371,7 @@ slots.used_spectrometer = Slot(uri=OBI['0000293'], name="used_spectrometer", cur
                    model_uri=DCAT_4C_AP.used_spectrometer, domain=None, range=Union[dict[Union[str, NMRSpectrometerId], Union[dict, NMRSpectrometer]], list[Union[dict, NMRSpectrometer]]])
 
 slots.has_proton_frequency = Slot(uri=SIO['000008'], name="has_proton_frequency", curie=SIO.curie('000008'),
-                   model_uri=DCAT_4C_AP.has_proton_frequency, domain=None, range=Union[Union[dict, NominalProtonFrequency], list[Union[dict, NominalProtonFrequency]]])
+                   model_uri=DCAT_4C_AP.has_proton_frequency, domain=None, range=Optional[Union[Union[dict, NominalProtonFrequency], list[Union[dict, NominalProtonFrequency]]]])
 
 slots.alternative_label = Slot(uri=SKOS.altLabel, name="alternative_label", curie=SKOS.curie('altLabel'),
                    model_uri=DCAT_4C_AP.alternative_label, domain=None, range=Optional[str])
@@ -4957,10 +4959,10 @@ slots.NMRSpectrum_was_generated_by = Slot(uri=OBI['0000312'], name="NMRSpectrum_
                    model_uri=DCAT_4C_AP.NMRSpectrum_was_generated_by, domain=NMRSpectrum, range=Optional[Union[dict[Union[str, NMRSpectroscopyId], Union[dict, "NMRSpectroscopy"]], list[Union[dict, "NMRSpectroscopy"]]]])
 
 slots.NMRSpectroscopy_evaluated_entity = Slot(uri=OBI['0000293'], name="NMRSpectroscopy_evaluated_entity", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.NMRSpectroscopy_evaluated_entity, domain=NMRSpectroscopy, range=Optional[Union[dict[Union[str, NMRSampleId], Union[dict, "NMRSample"]], list[Union[dict, "NMRSample"]]]])
+                   model_uri=DCAT_4C_AP.NMRSpectroscopy_evaluated_entity, domain=NMRSpectroscopy, range=Union[dict[Union[str, NMRSampleId], Union[dict, "NMRSample"]], list[Union[dict, "NMRSample"]]])
 
 slots.NMRSpectroscopy_rdf_type = Slot(uri=RDF.type, name="NMRSpectroscopy_rdf_type", curie=RDF.curie('type'),
-                   model_uri=DCAT_4C_AP.NMRSpectroscopy_rdf_type, domain=NMRSpectroscopy, range=Optional[Union[dict, DefinedTerm]])
+                   model_uri=DCAT_4C_AP.NMRSpectroscopy_rdf_type, domain=NMRSpectroscopy, range=Union[dict, DefinedTerm])
 
 slots.NMRSpectroscopy_used_solvent = Slot(uri=OBI['0000293'], name="NMRSpectroscopy_used_solvent", curie=OBI.curie('0000293'),
                    model_uri=DCAT_4C_AP.NMRSpectroscopy_used_solvent, domain=NMRSpectroscopy, range=Union[dict[Union[str, NMRSolventId], Union[dict, "NMRSolvent"]], list[Union[dict, "NMRSolvent"]]])

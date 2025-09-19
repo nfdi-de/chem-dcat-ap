@@ -139,7 +139,11 @@
                 {
                   "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer",
                   "title": "Bruker 400 MHz",
-                  "description": "used spectrometer"
+                  "description": "used spectrometer",
+                  "rdf_type": {
+                    "id": "OBI:0000566",
+                    "title": "NMR instrument"
+                  }
                 },
                 {
                   "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent",

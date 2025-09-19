@@ -11858,6 +11858,7 @@ class NMRSpectroscopy(DataGeneratingActivity):
                                                             'in the NMRSpectroscopy.',
                                              'name': 'evaluated_entity',
                                              'range': 'NMRSample',
+                                             'required': True,
                                              'slot_uri': 'OBI:0000293'},
                         'rdf_type': {'bindings': [{'binds_value_of': 'id',
                                                    'description': 'NMRSpectroscopy '
@@ -11869,7 +11870,8 @@ class NMRSpectroscopy(DataGeneratingActivity):
                                      'description': 'The type of NMRSpectroscopy '
                                                     'provided as CURIE of a subclass '
                                                     'of CHMO:0000613.',
-                                     'name': 'rdf_type'},
+                                     'name': 'rdf_type',
+                                     'required': True},
                         'used_solvent': {'description': 'The slot to specify the '
                                                         'NMRSSolvent used in a '
                                                         'NMRSpectroscopy.',
@@ -11917,7 +11919,7 @@ class NMRSpectroscopy(DataGeneratingActivity):
          'is_a': 'carried_out_by',
          'recommended': True,
          'slot_uri': 'OBI:0000293'} })
-    evaluated_entity: Optional[list[NMRSample]] = Field(default=None, description="""The slot to reference the NMRSample that was used in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
+    evaluated_entity: list[NMRSample] = Field(default=..., description="""The slot to reference the NMRSample that was used in the NMRSpectroscopy.""", json_schema_extra = { "linkml_meta": {'alias': 'evaluated_entity',
          'domain_of': ['DataGeneratingActivity'],
          'in_subset': ['domain_agnostic_core'],
          'is_a': 'had_input_entity',
@@ -12080,7 +12082,7 @@ class NMRSpectroscopy(DataGeneratingActivity):
     type: Optional[DefinedTerm] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'domain_of': ['Agent', 'ClassifierMixin', 'Dataset', 'LicenseDocument'],
          'slot_uri': 'dcterms:type'} })
-    rdf_type: Optional[DefinedTerm] = Field(default=None, description="""The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
+    rdf_type: DefinedTerm = Field(default=..., description="""The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613.""", json_schema_extra = { "linkml_meta": {'alias': 'rdf_type',
          'bindings': [{'binds_value_of': 'id',
                        'description': 'NMRSpectroscopy types from the Chemical Methods '
                                       'Ontology.',
@@ -12104,7 +12106,7 @@ class NMRSpectrometer(Device):
          'exact_mappings': ['OBI:0000566', 'NMR:1400059', 'AFE:0002280'],
          'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/nmr_michi.yaml'})
 
-    has_proton_frequency: list[NominalProtonFrequency] = Field(default=..., description="""The slot to specify the NominalProtonFrequency of a NMRSpectrometer.""", json_schema_extra = { "linkml_meta": {'alias': 'has_proton_frequency',
+    has_proton_frequency: Optional[list[NominalProtonFrequency]] = Field(default=None, description="""The slot to specify the NominalProtonFrequency of a NMRSpectrometer.""", json_schema_extra = { "linkml_meta": {'alias': 'has_proton_frequency',
          'domain_of': ['NMRSpectrometer'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,

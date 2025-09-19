@@ -142,6 +142,9 @@ was_generated_by:
     - carried_out_by:
       - description: used spectrometer
         id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer
+        rdf_type:
+          id: OBI:0000566
+          title: NMR instrument
         title: Bruker 400 MHz
       - description: used solvent
         has_part:
@@ -703,7 +706,7 @@ was_generated_by:
       - has_proton_frequency:
         - has_quantity_type: http://qudt.org/vocab/quantitykind/Frequency
           title: proton_frequency
-          unit: http://qudt.org/vocab/unit/NUM
+          unit: http://qudt.org/vocab/unit/MegaHZ
           value: 100.623835930538
         id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Spectrometer
         title: Bruker 400 MHz
@@ -768,7 +771,7 @@ was_generated_by:
       - has_proton_frequency:
         - has_quantity_type: http://qudt.org/vocab/quantitykind/Frequency
           title: proton_frequency
-          unit: http://qudt.org/vocab/unit/NUM
+          unit: http://qudt.org/vocab/unit/MegaHZ
           value: 100.623835930538
         id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Spectrometer
         title: Bruker 400 MHz

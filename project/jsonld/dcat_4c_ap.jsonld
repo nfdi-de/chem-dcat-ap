@@ -3009,7 +3009,6 @@
         "NMRSpectrometer"
       ],
       "range": "NominalProtonFrequency",
-      "required": true,
       "recommended": true,
       "multivalued": true,
       "inlined": true,
@@ -7706,6 +7705,7 @@
       "is_usage_slot": true,
       "usage_slot_name": "evaluated_entity",
       "range": "NMRSample",
+      "required": true,
       "recommended": true,
       "multivalued": true,
       "inlined": true,
@@ -7747,6 +7747,7 @@
           "@type": "EnumBinding"
         }
       ],
+      "required": true,
       "recommended": true,
       "inlined": true,
       "@type": "SlotDefinition"
@@ -10834,7 +10835,7 @@
   "source_file": "dcat_4c_ap.yaml",
   "source_file_date": "2025-09-18T14:10:39",
   "source_file_size": 3596,
-  "generation_date": "2025-09-19T13:04:07",
+  "generation_date": "2025-09-19T15:04:26",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/dcat_4c_ap.context.jsonld",

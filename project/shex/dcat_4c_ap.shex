@@ -882,7 +882,7 @@ nmr_michi:NMRSpectralAnalysis CLOSED {
 nmr_michi:NMRSpectrometer CLOSED {
     (  $nmr_michi:NMRSpectrometer_tes (  &dcatap_plus:Device_tes ;
           rdf:type [ prov:Agent ] ? ;
-          <http://semanticscience.org/resource/SIO_000008> @nmr_michi:NominalProtonFrequency +
+          <http://semanticscience.org/resource/SIO_000008> @nmr_michi:NominalProtonFrequency *
        ) ;
        rdf:type [ <http://purl.obolibrary.org/obo/CHMO_0001807> ]
     )
@@ -899,8 +899,8 @@ nmr_michi:NMRSpectroscopy CLOSED {
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:AcquisitionNucleus + ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:ShiftCalibrationCompound * ;
           <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:ShiftReferenceCompound * ;
-          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NMRSample * ;
-          rdf:type @dcatap_plus:DefinedTerm ?
+          <http://purl.obolibrary.org/obo/OBI_0000293> @nmr_michi:NMRSample + ;
+          rdf:type @dcatap_plus:DefinedTerm
        ) ;
        rdf:type [ <http://purl.obolibrary.org/obo/CHMO_0000613> ]
     )

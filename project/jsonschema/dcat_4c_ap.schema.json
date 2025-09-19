@@ -7129,7 +7129,10 @@
                     "items": {
                         "$ref": "#/$defs/NominalProtonFrequency"
                     },
-                    "type": "array"
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "has_qualitative_attribute": {
                     "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
@@ -7206,7 +7209,6 @@
                 }
             },
             "required": [
-                "has_proton_frequency",
                 "id"
             ],
             "title": "NMRSpectrometer",
@@ -7251,10 +7253,7 @@
                     "items": {
                         "$ref": "#/$defs/NMRSample"
                     },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "type": "array"
                 },
                 "had_input_activity": {
                     "description": "The slot to provide a previous Activity that informed the Activity by being causally via a shared participant.",
@@ -7359,14 +7358,7 @@
                     "type": "array"
                 },
                 "rdf_type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/DefinedTerm",
                     "description": "The type of NMRSpectroscopy provided as CURIE of a subclass of CHMO:0000613."
                 },
                 "realized_plan": {
@@ -7467,7 +7459,9 @@
                 "used_solvent",
                 "used_pulse_sequence",
                 "probes_nucleus",
-                "id"
+                "evaluated_entity",
+                "id",
+                "rdf_type"
             ],
             "title": "NMRSpectroscopy",
             "type": "object"
