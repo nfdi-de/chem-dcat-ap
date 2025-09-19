@@ -87,7 +87,7 @@ was_generated_by: # a NMRSpectralAnalysis
                   - title: "proton_frequency"
                     value: 100.623835930538
                     has_quantity_type: http://qudt.org/vocab/quantitykind/Frequency
-                    unit: http://qudt.org/vocab/unit/NUM
+                    unit: http://qudt.org/vocab/unit/MegaHZ
             used_solvent:
               - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#CDCl3_13C_NMR_Solvent
                 composed_of:
@@ -154,7 +154,7 @@ was_generated_by: # a NMRSpectralAnalysis
                   - title: "proton_frequency"
                     value: 100.623835930538
                     has_quantity_type: http://qudt.org/vocab/quantitykind/Frequency
-                    unit: http://qudt.org/vocab/unit/NUM
+                    unit: http://qudt.org/vocab/unit/MegaHZ
             used_solvent:
               - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1#DMSO_13C_NMR_Solvent
                 composed_of:
