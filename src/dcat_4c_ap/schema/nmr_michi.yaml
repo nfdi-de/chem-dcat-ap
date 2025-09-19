@@ -121,7 +121,7 @@ classes:
       used_pulse_sequence:
         is_a: has_qualitative_attribute
         slot_uri: OBI:0000293
-        description: The slot to specify the PulseSequence used in the NMRSpectroscopy.
+        description: The slot to specify the PulseSequence used as a setting in the NMRSpectroscopy.
         range: PulseSequence
         multivalued: false
         inlined: true
@@ -129,7 +129,7 @@ classes:
       used_number_of_scans:
         is_a: has_quantitative_attribute
         slot_uri: OBI:0000293
-        description: The slot to specify the NumberOfScans used in the NMRSpectroscopy.
+        description: The slot to specify the NumberOfScans used as a setting in the NMRSpectroscopy.
         range: NumberOfScans
         multivalued: false
         inlined: true
