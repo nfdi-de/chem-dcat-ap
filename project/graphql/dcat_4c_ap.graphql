@@ -1,20 +1,20 @@
 # metamodel_version: 1.7.0
 enum DatasetThemes
   {
-    Agriculture__COMMA___fisheries__COMMA___forestry_and_food
-    Economy_and_finance
-    Education__COMMA___culture_and_sport
-    Energy
-    Environment
-    Government_and_public_sector
-    Health
-    International_issues
-    Justice__COMMA___legal_system_and_public_safety
-    Provisional_data
-    Regions_and_cities
-    Population_and_society
-    Science_and_technology
-    Transport
+    AGRI
+    ECON
+    EDUC
+    ENER
+    ENVI
+    GOVE
+    HEAL
+    INTR
+    JUST
+    OP_DATPRO
+    REGI
+    SOCI
+    TECH
+    TRAN
   }
 
 enum NMRAssayEnum
