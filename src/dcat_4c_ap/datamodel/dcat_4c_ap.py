@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-09-19T15:09:25
+# Generation date: 2025-10-22T10:32:23
 # Schema: dcat-4C-ap
 #
 # id: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
@@ -92,8 +92,9 @@ ADMS = CurieNamespace('adms', 'http://www.w3.org/ns/adms#')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 DCAT = CurieNamespace('dcat', 'http://www.w3.org/ns/dcat#')
 DCAT_4C_AP = CurieNamespace('dcat_4c_ap', 'https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml#')
+DCAT_AP_PLUS = CurieNamespace('dcat_ap_plus', 'https://nfdi-de.github.io/dcat-ap-plus/dcat_ap_plus.yaml#')
 DCATAP = CurieNamespace('dcatap', 'http://data.europa.eu/r5r/')
-DCATAP_PLUS = CurieNamespace('dcatap_plus', 'https://nfdi-de.github.io/chem-dcat-ap/dcat_ap_plus.yaml#')
+DCATAP_PLUS = CurieNamespace('dcatap_plus', 'https://nfdi-de.github.io/dcat-ap-plus/dcat_ap_plus.yaml#')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://doi.org/')
 ELI = CurieNamespace('eli', 'http://data.europa.eu/eli/ontology#')
@@ -680,8 +681,8 @@ class ClassifierMixin(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DCATAP_PLUS["ClassifierMixin"]
-    class_class_curie: ClassVar[str] = "dcatap_plus:ClassifierMixin"
+    class_class_uri: ClassVar[URIRef] = DCAT_AP_PLUS["ClassifierMixin"]
+    class_class_curie: ClassVar[str] = "dcat_ap_plus:ClassifierMixin"
     class_name: ClassVar[str] = "ClassifierMixin"
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.ClassifierMixin
 
@@ -1699,8 +1700,8 @@ class SupportiveEntity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DCATAP_PLUS["SupportiveEntity"]
-    class_class_curie: ClassVar[str] = "dcatap_plus:SupportiveEntity"
+    class_class_uri: ClassVar[URIRef] = DCAT_AP_PLUS["SupportiveEntity"]
+    class_class_curie: ClassVar[str] = "dcat_ap_plus:SupportiveEntity"
     class_name: ClassVar[str] = "SupportiveEntity"
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.SupportiveEntity
 
@@ -3875,65 +3876,66 @@ class Pressure(QuantitativeAttribute):
 # Enumerations
 class DatasetThemes(EnumDefinitionImpl):
 
-    Energy = PermissibleValue(
-        text="Energy",
+    AGRI = PermissibleValue(
+        text="AGRI",
+        description="Agriculture, fisheries, forestry and food",
         meaning=None)
-    Environment = PermissibleValue(
-        text="Environment",
+    ECON = PermissibleValue(
+        text="ECON",
+        description="Economy and finance",
         meaning=None)
-    Health = PermissibleValue(
-        text="Health",
+    EDUC = PermissibleValue(
+        text="EDUC",
+        description="Education, culture and sport",
         meaning=None)
-    Transport = PermissibleValue(
-        text="Transport",
+    ENER = PermissibleValue(
+        text="ENER",
+        description="Energy",
+        meaning=None)
+    ENVI = PermissibleValue(
+        text="ENVI",
+        description="Environment",
+        meaning=None)
+    GOVE = PermissibleValue(
+        text="GOVE",
+        description="Government and public sector",
+        meaning=None)
+    HEAL = PermissibleValue(
+        text="HEAL",
+        description="Health",
+        meaning=None)
+    INTR = PermissibleValue(
+        text="INTR",
+        description="International issues",
+        meaning=None)
+    JUST = PermissibleValue(
+        text="JUST",
+        description="Justice, legal system and public safety",
+        meaning=None)
+    OP_DATPRO = PermissibleValue(
+        text="OP_DATPRO",
+        description="Provisional data",
+        meaning=None)
+    REGI = PermissibleValue(
+        text="REGI",
+        description="Regions and cities",
+        meaning=None)
+    SOCI = PermissibleValue(
+        text="SOCI",
+        description="Population and society",
+        meaning=None)
+    TECH = PermissibleValue(
+        text="TECH",
+        description="Science and technology",
+        meaning=None)
+    TRAN = PermissibleValue(
+        text="TRAN",
+        description="Transport",
         meaning=None)
 
     _defn = EnumDefinition(
         name="DatasetThemes",
     )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "Agriculture, fisheries, forestry and food",
-            PermissibleValue(
-                text="Agriculture, fisheries, forestry and food",
-                meaning=None))
-        setattr(cls, "Economy and finance",
-            PermissibleValue(
-                text="Economy and finance",
-                meaning=None))
-        setattr(cls, "Education, culture and sport",
-            PermissibleValue(
-                text="Education, culture and sport",
-                meaning=None))
-        setattr(cls, "Government and public sector",
-            PermissibleValue(
-                text="Government and public sector",
-                meaning=None))
-        setattr(cls, "International issues",
-            PermissibleValue(
-                text="International issues",
-                meaning=None))
-        setattr(cls, "Justice, legal system and public safety",
-            PermissibleValue(
-                text="Justice, legal system and public safety",
-                meaning=None))
-        setattr(cls, "Provisional data",
-            PermissibleValue(
-                text="Provisional data",
-                meaning=None))
-        setattr(cls, "Regions and cities",
-            PermissibleValue(
-                text="Regions and cities",
-                meaning=None))
-        setattr(cls, "Population and society",
-            PermissibleValue(
-                text="Population and society",
-                meaning=None))
-        setattr(cls, "Science and technology",
-            PermissibleValue(
-                text="Science and technology",
-                meaning=None))
 
 class TopLevelMediaTypes(EnumDefinitionImpl):
 
