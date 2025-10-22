@@ -54,7 +54,7 @@ default_range: string
 imports:
   - linkml:types
   - https://nfdi-de.github.io/dcat-ap-plus/dcat_ap_plus
-  - chemical_entities_ap
+  - https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap
 classes:
 
   ChemicalReaction:
