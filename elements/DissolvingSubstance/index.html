@@ -256,11 +256,6 @@
       AgenticEntity &lt;|-- DissolvingSubstance
         click AgenticEntity href "../AgenticEntity/"
 
-
-      DissolvingSubstance &lt;|-- NMRSolvent
-        click NMRSolvent href "../NMRSolvent/"
-
-
       DissolvingSubstance : alternative_label
 
       DissolvingSubstance : composed_of
@@ -483,10 +478,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../AgenticEntity/">AgenticEntity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
-<li><strong>DissolvingSubstance</strong> [ <a href="../ChemicalSubstance/">ChemicalSubstance</a> <a href="../Materialistic/">Materialistic</a>]<ul>
-<li><a href="../NMRSolvent/">NMRSolvent</a></li>
-</ul>
-</li>
+<li><strong>DissolvingSubstance</strong> [ <a href="../ChemicalSubstance/">ChemicalSubstance</a> <a href="../Materialistic/">Materialistic</a>]</li>
 </ul>
 </li>
 </ul>
@@ -878,8 +870,8 @@ attributes:
     alias: has_temperature
     owner: DissolvingSubstance
     domain_of:
-    - ChemicalReaction
     - Materialistic
+    - ChemicalReaction
     range: Temperature
     recommended: true
     multivalued: true
@@ -943,8 +935,8 @@ attributes:
     alias: has_pressure
     owner: DissolvingSubstance
     domain_of:
-    - ChemicalReaction
     - Materialistic
+    - ChemicalReaction
     range: Pressure
     recommended: true
     multivalued: true

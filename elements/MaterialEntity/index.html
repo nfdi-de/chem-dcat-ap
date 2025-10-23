@@ -545,6 +545,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="./">MaterialEntity</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">MaterialEntity</a></td>
+</tr>
+<tr>
 <td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
@@ -582,30 +588,6 @@
 </tr>
 <tr>
 <td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">MaterialEntity</a></td>
-</tr>
-<tr>
-<td><a href="./">MaterialEntity</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">MaterialEntity</a></td>
-</tr>
-<tr>
-<td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">MaterialEntity</a></td>
-</tr>
-<tr>
-<td><a href="../ShiftReferenceCompound/">ShiftReferenceCompound</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">MaterialEntity</a></td>
-</tr>
-<tr>
-<td><a href="../CharacterizedCompound/">CharacterizedCompound</a></td>
 <td><a href="../has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">MaterialEntity</a></td>
@@ -717,8 +699,8 @@ attributes:
     alias: has_temperature
     owner: MaterialEntity
     domain_of:
-    - ChemicalReaction
     - Materialistic
+    - ChemicalReaction
     range: Temperature
     recommended: true
     multivalued: true
@@ -782,8 +764,8 @@ attributes:
     alias: has_pressure
     owner: MaterialEntity
     domain_of:
-    - ChemicalReaction
     - Materialistic
+    - ChemicalReaction
     range: Pressure
     recommended: true
     multivalued: true

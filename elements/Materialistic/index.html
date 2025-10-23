@@ -235,16 +235,16 @@
 <div class="mermaid"> classDiagram
     class Materialistic
     click Materialistic href "../Materialistic/"
+      Materialistic &lt;|-- MaterialEntity
+        click MaterialEntity href "../MaterialEntity/"
+      Materialistic &lt;|-- MaterialSample
+        click MaterialSample href "../MaterialSample/"
       Materialistic &lt;|-- DissolvingSubstance
         click DissolvingSubstance href "../DissolvingSubstance/"
       Materialistic &lt;|-- Catalyst
         click Catalyst href "../Catalyst/"
       Materialistic &lt;|-- Reactor
         click Reactor href "../Reactor/"
-      Materialistic &lt;|-- MaterialEntity
-        click MaterialEntity href "../MaterialEntity/"
-      Materialistic &lt;|-- MaterialSample
-        click MaterialSample href "../MaterialSample/"
 
       Materialistic : alternative_label
 
@@ -382,6 +382,14 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../MaterialEntity/">MaterialEntity</a></td>
+<td>A material is an Entity that has some portion of matter as proper part</td>
+</tr>
+<tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td>A Sample that was derived from a previous MaterialSample or some other kind o...</td>
+</tr>
+<tr>
 <td><a href="../DissolvingSubstance/">DissolvingSubstance</a></td>
 <td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ...</td>
 </tr>
@@ -392,14 +400,6 @@
 <tr>
 <td><a href="../Reactor/">Reactor</a></td>
 <td>A reactor is a container for controlling a biological or chemical reaction or...</td>
-</tr>
-<tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td>A material is an Entity that has some portion of matter as proper part</td>
-</tr>
-<tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td>A Sample that was derived from a previous MaterialSample or some other kind o...</td>
 </tr>
 </tbody>
 </table>
@@ -497,8 +497,8 @@ attributes:
     alias: has_temperature
     owner: Materialistic
     domain_of:
-    - ChemicalReaction
     - Materialistic
+    - ChemicalReaction
     range: Temperature
     recommended: true
     multivalued: true
@@ -562,8 +562,8 @@ attributes:
     alias: has_pressure
     owner: Materialistic
     domain_of:
-    - ChemicalReaction
     - Materialistic
+    - ChemicalReaction
     range: Pressure
     recommended: true
     multivalued: true

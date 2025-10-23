@@ -250,8 +250,6 @@
 
       SubstanceSample &lt;|-- PolymerSample
         click PolymerSample href "../PolymerSample/"
-      SubstanceSample &lt;|-- NMRSample
-        click NMRSample href "../NMRSample/"
 
 
       SubstanceSample : alternative_label
@@ -502,7 +500,6 @@
 <li><a href="../MaterialSample/">MaterialSample</a> [ <a href="../Materialistic/">Materialistic</a>]<ul>
 <li><strong>SubstanceSample</strong> [ <a href="../ChemicalSubstance/">ChemicalSubstance</a>]<ul>
 <li><a href="../PolymerSample/">PolymerSample</a> [ <a href="../Polymer/">Polymer</a>]</li>
-<li><a href="../NMRSample/">NMRSample</a></li>
 </ul>
 </li>
 </ul>
@@ -892,8 +889,8 @@ attributes:
     alias: has_temperature
     owner: SubstanceSample
     domain_of:
-    - ChemicalReaction
     - Materialistic
+    - ChemicalReaction
     range: Temperature
     recommended: true
     multivalued: true
@@ -953,8 +950,8 @@ attributes:
     alias: has_pressure
     owner: SubstanceSample
     domain_of:
-    - ChemicalReaction
     - Materialistic
+    - ChemicalReaction
     range: Pressure
     recommended: true
     multivalued: true

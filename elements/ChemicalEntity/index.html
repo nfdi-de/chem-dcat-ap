@@ -248,10 +248,6 @@
 
       ChemicalEntity &lt;|-- Atom
         click Atom href "../Atom/"
-      ChemicalEntity &lt;|-- ShiftCalibrationCompound
-        click ShiftCalibrationCompound href "../ShiftCalibrationCompound/"
-      ChemicalEntity &lt;|-- CharacterizedCompound
-        click CharacterizedCompound href "../CharacterizedCompound/"
 
 
       ChemicalEntity : alternative_label
@@ -479,8 +475,6 @@
 <li><a href="../MaterialEntity/">MaterialEntity</a> [ <a href="../Materialistic/">Materialistic</a>]<ul>
 <li><strong>ChemicalEntity</strong><ul>
 <li><a href="../Atom/">Atom</a></li>
-<li><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></li>
-<li><a href="../CharacterizedCompound/">CharacterizedCompound</a></li>
 </ul>
 </li>
 </ul>
@@ -704,12 +698,6 @@
 <td>range</td>
 <td><a href="./">ChemicalEntity</a></td>
 </tr>
-<tr>
-<td><a href="../NMRSolvent/">NMRSolvent</a></td>
-<td><a href="../composed_of/">composed_of</a></td>
-<td>range</td>
-<td><a href="./">ChemicalEntity</a></td>
-</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -902,8 +890,8 @@ attributes:
     alias: has_temperature
     owner: ChemicalEntity
     domain_of:
-    - ChemicalReaction
     - Materialistic
+    - ChemicalReaction
     range: Temperature
     recommended: true
     multivalued: true
@@ -967,8 +955,8 @@ attributes:
     alias: has_pressure
     owner: ChemicalEntity
     domain_of:
-    - ChemicalReaction
     - Materialistic
+    - ChemicalReaction
     range: Pressure
     recommended: true
     multivalued: true

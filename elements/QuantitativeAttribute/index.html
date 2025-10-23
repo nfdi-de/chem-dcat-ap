@@ -246,6 +246,16 @@
         click ClassifierMixin href "../ClassifierMixin/"
 
 
+      QuantitativeAttribute &lt;|-- Temperature
+        click Temperature href "../Temperature/"
+      QuantitativeAttribute &lt;|-- Mass
+        click Mass href "../Mass/"
+      QuantitativeAttribute &lt;|-- Volume
+        click Volume href "../Volume/"
+      QuantitativeAttribute &lt;|-- Density
+        click Density href "../Density/"
+      QuantitativeAttribute &lt;|-- Pressure
+        click Pressure href "../Pressure/"
       QuantitativeAttribute &lt;|-- Concentration
         click Concentration href "../Concentration/"
       QuantitativeAttribute &lt;|-- AmountOfSubstance
@@ -258,22 +268,6 @@
         click MolarEquivalent href "../MolarEquivalent/"
       QuantitativeAttribute &lt;|-- PercentageOfTotal
         click PercentageOfTotal href "../PercentageOfTotal/"
-      QuantitativeAttribute &lt;|-- Temperature
-        click Temperature href "../Temperature/"
-      QuantitativeAttribute &lt;|-- Mass
-        click Mass href "../Mass/"
-      QuantitativeAttribute &lt;|-- Volume
-        click Volume href "../Volume/"
-      QuantitativeAttribute &lt;|-- Density
-        click Density href "../Density/"
-      QuantitativeAttribute &lt;|-- Pressure
-        click Pressure href "../Pressure/"
-      QuantitativeAttribute &lt;|-- NominalProtonFrequency
-        click NominalProtonFrequency href "../NominalProtonFrequency/"
-      QuantitativeAttribute &lt;|-- CalibrationPeakShift
-        click CalibrationPeakShift href "../CalibrationPeakShift/"
-      QuantitativeAttribute &lt;|-- NumberOfScans
-        click NumberOfScans href "../NumberOfScans/"
 
 
       QuantitativeAttribute : description
@@ -331,20 +325,17 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>QuantitativeAttribute</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../Temperature/">Temperature</a></li>
+<li><a href="../Mass/">Mass</a></li>
+<li><a href="../Volume/">Volume</a></li>
+<li><a href="../Density/">Density</a></li>
+<li><a href="../Pressure/">Pressure</a></li>
 <li><a href="../Concentration/">Concentration</a></li>
 <li><a href="../AmountOfSubstance/">AmountOfSubstance</a></li>
 <li><a href="../PHValue/">PHValue</a></li>
 <li><a href="../Yield/">Yield</a></li>
 <li><a href="../MolarEquivalent/">MolarEquivalent</a></li>
 <li><a href="../PercentageOfTotal/">PercentageOfTotal</a></li>
-<li><a href="../Temperature/">Temperature</a></li>
-<li><a href="../Mass/">Mass</a></li>
-<li><a href="../Volume/">Volume</a></li>
-<li><a href="../Density/">Density</a></li>
-<li><a href="../Pressure/">Pressure</a></li>
-<li><a href="../NominalProtonFrequency/">NominalProtonFrequency</a></li>
-<li><a href="../CalibrationPeakShift/">CalibrationPeakShift</a></li>
-<li><a href="../NumberOfScans/">NumberOfScans</a></li>
 </ul>
 </li>
 </ul>
@@ -487,6 +478,18 @@
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
+<td><a href="../MaterialEntity/">MaterialEntity</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
 <td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
@@ -548,78 +551,6 @@
 </tr>
 <tr>
 <td><a href="../Reactor/">Reactor</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../NMRSample/">NMRSample</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../NMRSpectralAnalysis/">NMRSpectralAnalysis</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../NMRSpectrum/">NMRSpectrum</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../NMRSpectroscopy/">NMRSpectroscopy</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../NMRSpectrometer/">NMRSpectrometer</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../ShiftCalibrationCompound/">ShiftCalibrationCompound</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../ShiftReferenceCompound/">ShiftReferenceCompound</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../CharacterizedCompound/">CharacterizedCompound</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../AcquisitionNucleus/">AcquisitionNucleus</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../NMRSolvent/">NMRSolvent</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
