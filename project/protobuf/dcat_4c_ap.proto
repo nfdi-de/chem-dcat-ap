@@ -1,21 +1,6 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// The nucleus of an Atom that is being studied during an NMR analysis.
-message AcquisitionNucleus
- {
-  uriorcurie id = 0
-  string title = 0
-  string description = 0
- repeated  identifier otherIdentifier = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  agenticEntity hasPart = 0
- repeated  agenticEntity partOf = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
-  atom nucleusOf = 0
- }
 // See [DCAT-AP specs:Activity](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity)
 message Activity
  {
@@ -162,17 +147,6 @@ message Attribution
   string title = 0
   string description = 0
  }
-// The chemical shift of the peak used for chemical shift calibration.
-message CalibrationPeakShift
- {
-  string title = 0
-  string description = 0
-  float value = 0
-  definedTerm hasQuantityType = 0
-  definedTerm unit = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- }
 // See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)
 message Catalogue
  {
@@ -235,33 +209,6 @@ message Catalyst
  repeated  chemicalEntity composedOf = 0
  repeated  amountOfSubstance hasAmount = 0
  repeated  percentageOfTotal hasPercentageOfTotal = 0
- }
-// A ChemicalEntity that being characterized in an NMRSample using data acquired from a NMRSpectroscopy.
-message CharacterizedCompound
- {
-  string title = 0
-  string description = 0
-  uriorcurie id = 0
- repeated  identifier otherIdentifier = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  entity partOf = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- repeated  materialEntity hasPart = 0
-  string alternativeLabel = 0
-  physicalStateEnum hasPhysicalState = 0
- repeated  temperature hasTemperature = 0
- repeated  mass hasMass = 0
- repeated  volume hasVolume = 0
- repeated  density hasDensity = 0
- repeated  pressure hasPressure = 0
- repeated  inChi inchi = 0
- repeated  inChIKey inchikey = 0
- repeated  sMILES smiles = 0
- repeated  molecularFormula molecularFormula = 0
- repeated  iUPACName iupacName = 0
- repeated  molarMass hasMolarMass = 0
  }
 // See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)
 message Checksum
@@ -824,220 +771,6 @@ message MolecularFormula
   definedTerm type = 0
   definedTerm rdfType = 0
  }
-// A dataset that is the result of a NMRSpectralAnalysis of a NMRSample.
-message NMRAnalysisDataset
- {
-  rightsStatement accessRights = 0
- repeated  legalResource applicableLegislation = 0
- repeated  standard conformsTo = 0
- repeated  kind contactPoint = 0
- repeated  agent creator = 0
- repeated  distribution datasetDistribution = 0
- repeated  string description = 0
- repeated  document documentation = 0
-  frequency frequency = 0
- repeated  location geographicalCoverage = 0
- repeated  dataset hasVersion = 0
- repeated  string identifier = 0
- repeated  datasetSeries inSeries = 0
- repeated  resource isReferencedBy = 0
- repeated  string keyword = 0
- repeated  document landingPage = 0
- repeated  linguisticSystem language = 0
-  date modificationDate = 0
- repeated  identifier otherIdentifier = 0
- repeated  provenanceStatement provenance = 0
-  agent publisher = 0
- repeated  attribution qualifiedAttribution = 0
- repeated  relationship qualifiedRelation = 0
- repeated  resource relatedResource = 0
-  date releaseDate = 0
- repeated  distribution sample = 0
- repeated  dataset source = 0
-  decimal spatialResolution = 0
- repeated  periodOfTime temporalCoverage = 0
-  duration temporalResolution = 0
- repeated  concept theme = 0
- repeated  string title = 0
- repeated  concept type = 0
-  string version = 0
- repeated  string versionNotes = 0
-  uriorcurie id = 0
- repeated  evaluatedActivity isAboutActivity = 0
- repeated  nMRSpectralAnalysis wasGeneratedBy = 0
- repeated  nMRSample isAboutEntity = 0
- }
-// A SubstanceSample that has been prepared for chemical analysis by NMR.
-message NMRSample
- {
-  uriorcurie id = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  entity hasPart = 0
- repeated  entity partOf = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- repeated  activity wasGeneratedBy = 0
-  string title = 0
-  string description = 0
- repeated  identifier otherIdentifier = 0
-  string alternativeLabel = 0
-  physicalStateEnum hasPhysicalState = 0
- repeated  temperature hasTemperature = 0
- repeated  mass hasMass = 0
- repeated  volume hasVolume = 0
- repeated  density hasDensity = 0
- repeated  pressure hasPressure = 0
- repeated  concentration hasConcentration = 0
- repeated  pHValue hasPhValue = 0
- repeated  molarEquivalent hasMolarEquivalent = 0
- repeated  amountOfSubstance hasAmount = 0
- repeated  percentageOfTotal hasPercentageOfTotal = 0
- repeated  characterizedCompound composedOf = 0
-  entity derivedFrom = 0
- }
-// The temperature of the NMR Sample.
-message NMRSampleTemperature
- {
-  string title = 0
-  string description = 0
-  float value = 0
-  definedTerm hasQuantityType = 0
-  definedTerm unit = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- }
-// A DissolvingSubstance that is used in nuclear magnetic resonance NMRSpectroscopy.
-message NMRSolvent
- {
-  uriorcurie id = 0
-  string title = 0
-  string description = 0
- repeated  identifier otherIdentifier = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  agenticEntity hasPart = 0
- repeated  agenticEntity partOf = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- repeated  percentageOfTotal hasPercentageOfTotal = 0
-  string alternativeLabel = 0
-  physicalStateEnum hasPhysicalState = 0
- repeated  temperature hasTemperature = 0
- repeated  mass hasMass = 0
- repeated  volume hasVolume = 0
- repeated  density hasDensity = 0
- repeated  pressure hasPressure = 0
- repeated  concentration hasConcentration = 0
- repeated  pHValue hasPhValue = 0
- repeated  chemicalEntity composedOf = 0
- repeated  molarEquivalent hasMolarEquivalent = 0
- repeated  amountOfSubstance hasAmount = 0
- }
-// A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectrum generated by a NMRSpectroscopy
-message NMRSpectralAnalysis
- {
-  uriorcurie id = 0
- repeated  string title = 0
- repeated  string description = 0
- repeated  identifier otherIdentifier = 0
- repeated  activity hasPart = 0
- repeated  entity hadInputEntity = 0
- repeated  entity hadOutputEntity = 0
- repeated  activity hadInputActivity = 0
- repeated  agenticEntity carriedOutBy = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  activity partOf = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- repeated  evaluatedActivity evaluatedActivity = 0
-  plan realizedPlan = 0
-  surrounding occurredIn = 0
- repeated  nMRSpectrum evaluatedEntity = 0
- }
-// A Spectrometer used to conduct NMR experiments consisting of a magnet housing a sample space surrounded by two coils which act to transmit radio frequency radiation to the sample and to detect the response of the sample.
-message NMRSpectrometer
- {
-  uriorcurie id = 0
-  string title = 0
-  string description = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  agenticEntity partOf = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- repeated  device hasPart = 0
- repeated  identifier otherIdentifier = 0
- repeated  nominalProtonFrequency hasProtonFrequency = 0
- }
-// Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.
-message NMRSpectroscopy
- {
-  uriorcurie id = 0
- repeated  string title = 0
- repeated  string description = 0
- repeated  identifier otherIdentifier = 0
- repeated  activity hasPart = 0
- repeated  entity hadInputEntity = 0
- repeated  entity hadOutputEntity = 0
- repeated  activity hadInputActivity = 0
- repeated  agenticEntity carriedOutBy = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  activity partOf = 0
-  definedTerm type = 0
- repeated  evaluatedActivity evaluatedActivity = 0
-  plan realizedPlan = 0
-  surrounding occurredIn = 0
- repeated  nMRSpectrometer usedSpectrometer = 0
- repeated  nMRSolvent usedSolvent = 0
-  pulseSequence usedPulseSequence = 0
-  numberOfScans usedNumberOfScans = 0
-  nMRSampleTemperature usedSampleTemperature = 0
- repeated  acquisitionNucleus probesNucleus = 0
- repeated  shiftCalibrationCompound usedCalibrationCompound = 0
- repeated  shiftReferenceCompound usedReferenceCompound = 0
- repeated  nMRSample evaluatedEntity = 0
-  definedTerm rdfType = 0
- }
-// Chemical shift data obtained via nuclear magnetic resonance (NMR) spectroscopy.
-message NMRSpectrum
- {
-  uriorcurie id = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  entity hasPart = 0
- repeated  entity partOf = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
-  string title = 0
-  string description = 0
- repeated  identifier otherIdentifier = 0
- repeated  nMRSpectroscopy wasGeneratedBy = 0
- }
-// Resonance frequency of 1H at the field strength of the NMR magnet, rounded to 10-fold numbers.
-message NominalProtonFrequency
- {
-  string title = 0
-  string description = 0
-  float value = 0
-  definedTerm hasQuantityType = 0
-  definedTerm unit = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- }
-// The number of repeat scans performed and summed to create the data set for an NMRSample.
-message NumberOfScans
- {
-  string title = 0
-  string description = 0
-  float value = 0
-  definedTerm hasQuantityType = 0
-  definedTerm unit = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- }
 // A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.
 message PercentageOfTotal
  {
@@ -1127,15 +860,6 @@ message ProvenanceStatement
  {
   string title = 0
   string description = 0
- }
-// A string that denotes sequence of excitation pulses.
-message PulseSequence
- {
-  string title = 0
-  string description = 0
-  string value = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
  }
 // A piece of information that is attributed to an Entity, Activity or AgenticEntity.
 message QualitativeAttribute
@@ -1229,62 +953,6 @@ message Role
  {
   string title = 0
   string description = 0
- }
-// A ChemicalEntity that produces one or more peaks used for chemical shift calibration in nuclear magnetic resonance (NMR) spectroscopy.
-message ShiftCalibrationCompound
- {
-  string title = 0
-  string description = 0
-  uriorcurie id = 0
- repeated  identifier otherIdentifier = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  entity partOf = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- repeated  materialEntity hasPart = 0
-  string alternativeLabel = 0
-  physicalStateEnum hasPhysicalState = 0
- repeated  temperature hasTemperature = 0
- repeated  mass hasMass = 0
- repeated  volume hasVolume = 0
- repeated  density hasDensity = 0
- repeated  pressure hasPressure = 0
- repeated  inChi inchi = 0
- repeated  inChIKey inchikey = 0
- repeated  sMILES smiles = 0
- repeated  molecularFormula molecularFormula = 0
- repeated  iUPACName iupacName = 0
- repeated  molarMass hasMolarMass = 0
- repeated  calibrationPeakShift hasCalibrationShift = 0
- }
-// A ShiftCalibrationCompound that produces a peak used as reference frequency in the delta chemical shift scale in nuclear magnetic resonance (NMR) spectroscopy.
-message ShiftReferenceCompound
- {
-  string title = 0
-  string description = 0
-  uriorcurie id = 0
- repeated  identifier otherIdentifier = 0
- repeated  qualitativeAttribute hasQualitativeAttribute = 0
- repeated  quantitativeAttribute hasQuantitativeAttribute = 0
- repeated  entity partOf = 0
-  definedTerm type = 0
-  definedTerm rdfType = 0
- repeated  materialEntity hasPart = 0
-  string alternativeLabel = 0
-  physicalStateEnum hasPhysicalState = 0
- repeated  temperature hasTemperature = 0
- repeated  mass hasMass = 0
- repeated  volume hasVolume = 0
- repeated  density hasDensity = 0
- repeated  pressure hasPressure = 0
- repeated  inChi inchi = 0
- repeated  inChIKey inchikey = 0
- repeated  sMILES smiles = 0
- repeated  molecularFormula molecularFormula = 0
- repeated  iUPACName iupacName = 0
- repeated  molarMass hasMolarMass = 0
- repeated  calibrationPeakShift hasCalibrationShift = 0
  }
 // A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
 message SMILES
