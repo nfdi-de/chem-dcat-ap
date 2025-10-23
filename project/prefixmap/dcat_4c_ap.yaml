@@ -26,11 +26,12 @@
    "VOC4CAT": "https://w3id.org/nfdi4cat/voc4cat_",
    "adms": "http://www.w3.org/ns/adms#",
    "biolink": "https://w3id.org/biolink/vocab/",
+   "chemdcatap": "https://nfdi-de.github.io/chem-dcat-ap/",
    "dcat": "http://www.w3.org/ns/dcat#",
    "dcat_4c_ap": "https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml#",
-   "dcat_ap_plus": "https://nfdi-de.github.io/dcat-ap-plus/dcat_ap_plus.yaml#",
    "dcatap": "http://data.europa.eu/r5r/",
    "dcatap_plus": "https://nfdi-de.github.io/dcat-ap-plus/dcat_ap_plus.yaml#",
+   "dcatapplus": "https://nfdi-de.github.io/dcat-ap-plus/",
    "dcterms": "http://purl.org/dc/terms/",
    "doi": "https://doi.org/",
    "eli": "http://data.europa.eu/eli/ontology#",
@@ -52,9 +53,6 @@
    "spdx": "http://spdx.org/rdf/terms#",
    "time": "http://www.w3.org/2006/time#",
    "vcard": "http://www.w3.org/2006/vcard/ns#",
-   "AcquisitionNucleus": {
-      "@id": "NMR:1400083"
-   },
    "Activity": {
       "@id": "prov:Activity"
    },
@@ -82,9 +80,6 @@
    "Attribution": {
       "@id": "prov:Attribution"
    },
-   "CalibrationPeakShift": {
-      "@id": "NMR:1000223"
-   },
    "Catalogue": {
       "@id": "dcat:Catalog"
    },
@@ -93,9 +88,6 @@
    },
    "Catalyst": {
       "@id": "SIO:010344"
-   },
-   "CharacterizedCompound": {
-      "@id": "NMR:0002001"
    },
    "Checksum": {
       "@id": "spdx:Checksum"
@@ -232,36 +224,6 @@
    "MolecularFormula": {
       "@id": "CHEMINF:000042"
    },
-   "NMRAnalysisDataset": {
-      "@id": "dcat:Dataset"
-   },
-   "NMRSample": {
-      "@id": "NMR:1400128"
-   },
-   "NMRSampleTemperature": {
-      "@id": "NMR:1400262"
-   },
-   "NMRSolvent": {
-      "@id": "NMR:1000330"
-   },
-   "NMRSpectralAnalysis": {
-      "@id": "NMR:1400042"
-   },
-   "NMRSpectrometer": {
-      "@id": "CHMO:0001807"
-   },
-   "NMRSpectroscopy": {
-      "@id": "CHMO:0000613"
-   },
-   "NMRSpectrum": {
-      "@id": "NMR:1002007"
-   },
-   "NominalProtonFrequency": {
-      "@id": "qudt:Quantity"
-   },
-   "NumberOfScans": {
-      "@id": "NMR:1400087"
-   },
    "PercentageOfTotal": {
       "@id": "qudt:Quantity"
    },
@@ -289,9 +251,6 @@
    "ProvenanceStatement": {
       "@id": "dcterms:ProvenanceStatement"
    },
-   "PulseSequence": {
-      "@id": "NMR:1400037"
-   },
    "QualitativeAttribute": {
       "@id": "prov:Entity"
    },
@@ -315,12 +274,6 @@
    },
    "Role": {
       "@id": "dcat:Role"
-   },
-   "ShiftCalibrationCompound": {
-      "@id": "NMR:0002003"
-   },
-   "ShiftReferenceCompound": {
-      "@id": "NMR:1400033"
    },
    "SMILES": {
       "@id": "CHEMINF:000018"

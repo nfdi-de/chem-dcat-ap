@@ -17,11 +17,6 @@ enum DatasetThemes
     TRAN
   }
 
-enum NMRAssayEnum
-  {
-    CHMO__COLON__0000595
-  }
-
 enum PhysicalStateEnum
   {
     SOLID
@@ -43,21 +38,6 @@ enum TopLevelMediaTypes
     multipart
     text
     video
-  }
-
-type AcquisitionNucleus
-  {
-    id: Uriorcurie!
-    title: String
-    description: String
-    otherIdentifier: [Identifier]
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [AgenticEntity]
-    partOf: [AgenticEntity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
-    nucleusOf: Atom!
   }
 
 type Activity implements ClassifierMixin
@@ -206,17 +186,6 @@ type Attribution
     description: String
   }
 
-type CalibrationPeakShift
-  {
-    title: String
-    description: String
-    value: Float!
-    hasQuantityType: DefinedTerm!
-    unit: DefinedTerm
-    type: DefinedTerm
-    rdfType: DefinedTerm
-  }
-
 type Catalogue
   {
     applicableLegislation: [LegalResource]
@@ -278,33 +247,6 @@ type Catalyst implements ChemicalSubstance, Materialistic
     composedOf: [ChemicalEntity]
     hasAmount: [AmountOfSubstance]
     hasPercentageOfTotal: [PercentageOfTotal]
-  }
-
-type CharacterizedCompound
-  {
-    title: String
-    description: String
-    id: Uriorcurie!
-    otherIdentifier: [Identifier]
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    partOf: [Entity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
-    hasPart: [MaterialEntity]
-    alternativeLabel: String
-    hasPhysicalState: PhysicalStateEnum
-    hasTemperature: [Temperature]
-    hasMass: [Mass]
-    hasVolume: [Volume]
-    hasDensity: [Density]
-    hasPressure: [Pressure]
-    inchi: [InChi]
-    inchikey: [InChIKey]
-    smiles: [SMILES]
-    molecularFormula: [MolecularFormula]
-    iupacName: [IUPACName]
-    hasMolarMass: [MolarMass]
   }
 
 type Checksum
@@ -917,220 +859,6 @@ type MolecularFormula
     rdfType: DefinedTerm
   }
 
-type NMRAnalysisDataset
-  {
-    accessRights: RightsStatement
-    applicableLegislation: [LegalResource]
-    conformsTo: [Standard]
-    contactPoint: [Kind]
-    creator: [Agent]
-    datasetDistribution: [Distribution]
-    description: [String]!
-    documentation: [Document]
-    frequency: Frequency
-    geographicalCoverage: [Location]
-    hasVersion: [Dataset]
-    identifier: [String]
-    inSeries: [DatasetSeries]
-    isReferencedBy: [Resource]
-    keyword: [String]
-    landingPage: [Document]
-    language: [LinguisticSystem]
-    modificationDate: Date
-    otherIdentifier: [Identifier]
-    provenance: [ProvenanceStatement]
-    publisher: Agent
-    qualifiedAttribution: [Attribution]
-    qualifiedRelation: [Relationship]
-    relatedResource: [Resource]
-    releaseDate: Date
-    sample: [Distribution]
-    source: [Dataset]
-    spatialResolution: Decimal
-    temporalCoverage: [PeriodOfTime]
-    temporalResolution: Duration
-    theme: [Concept]
-    title: [String]!
-    type: [Concept]
-    version: String
-    versionNotes: [String]
-    id: Uriorcurie!
-    isAboutActivity: [EvaluatedActivity]
-    wasGeneratedBy: [NMRSpectralAnalysis]
-    isAboutEntity: [NMRSample]
-  }
-
-type NMRSample
-  {
-    id: Uriorcurie!
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [Entity]
-    partOf: [Entity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
-    wasGeneratedBy: [Activity]
-    title: String
-    description: String
-    otherIdentifier: [Identifier]
-    alternativeLabel: String
-    hasPhysicalState: PhysicalStateEnum
-    hasTemperature: [Temperature]
-    hasMass: [Mass]
-    hasVolume: [Volume]
-    hasDensity: [Density]
-    hasPressure: [Pressure]
-    hasConcentration: [Concentration]
-    hasPhValue: [PHValue]
-    hasMolarEquivalent: [MolarEquivalent]
-    hasAmount: [AmountOfSubstance]
-    hasPercentageOfTotal: [PercentageOfTotal]
-    composedOf: [CharacterizedCompound]!
-    derivedFrom: Entity
-  }
-
-type NMRSampleTemperature
-  {
-    title: String
-    description: String
-    value: Float!
-    hasQuantityType: DefinedTerm!
-    unit: DefinedTerm
-    type: DefinedTerm
-    rdfType: DefinedTerm
-  }
-
-type NMRSolvent
-  {
-    id: Uriorcurie!
-    title: String
-    description: String
-    otherIdentifier: [Identifier]
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [AgenticEntity]
-    partOf: [AgenticEntity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
-    hasPercentageOfTotal: [PercentageOfTotal]
-    alternativeLabel: String
-    hasPhysicalState: PhysicalStateEnum
-    hasTemperature: [Temperature]
-    hasMass: [Mass]
-    hasVolume: [Volume]
-    hasDensity: [Density]
-    hasPressure: [Pressure]
-    hasConcentration: [Concentration]
-    hasPhValue: [PHValue]
-    composedOf: [ChemicalEntity]
-    hasMolarEquivalent: [MolarEquivalent]
-    hasAmount: [AmountOfSubstance]
-  }
-
-type NMRSpectralAnalysis
-  {
-    id: Uriorcurie!
-    title: [String]
-    description: [String]
-    otherIdentifier: [Identifier]
-    hasPart: [Activity]
-    hadInputEntity: [Entity]
-    hadOutputEntity: [Entity]
-    hadInputActivity: [Activity]
-    carriedOutBy: [AgenticEntity]
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    partOf: [Activity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
-    evaluatedActivity: [EvaluatedActivity]
-    realizedPlan: Plan
-    occurredIn: Surrounding
-    evaluatedEntity: [NMRSpectrum]
-  }
-
-type NMRSpectrometer
-  {
-    id: Uriorcurie!
-    title: String
-    description: String
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    partOf: [AgenticEntity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
-    hasPart: [Device]
-    otherIdentifier: [Identifier]
-    hasProtonFrequency: [NominalProtonFrequency]
-  }
-
-type NMRSpectroscopy
-  {
-    id: Uriorcurie!
-    title: [String]
-    description: [String]
-    otherIdentifier: [Identifier]
-    hasPart: [Activity]
-    hadInputEntity: [Entity]
-    hadOutputEntity: [Entity]
-    hadInputActivity: [Activity]
-    carriedOutBy: [AgenticEntity]
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    partOf: [Activity]
-    type: DefinedTerm
-    evaluatedActivity: [EvaluatedActivity]
-    realizedPlan: Plan
-    occurredIn: Surrounding
-    usedSpectrometer: [NMRSpectrometer]!
-    usedSolvent: [NMRSolvent]!
-    usedPulseSequence: PulseSequence!
-    usedNumberOfScans: NumberOfScans
-    usedSampleTemperature: NMRSampleTemperature
-    probesNucleus: [AcquisitionNucleus]!
-    usedCalibrationCompound: [ShiftCalibrationCompound]
-    usedReferenceCompound: [ShiftReferenceCompound]
-    evaluatedEntity: [NMRSample]!
-    rdfType: DefinedTerm!
-  }
-
-type NMRSpectrum
-  {
-    id: Uriorcurie!
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    hasPart: [Entity]
-    partOf: [Entity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
-    title: String
-    description: String
-    otherIdentifier: [Identifier]
-    wasGeneratedBy: [NMRSpectroscopy]
-  }
-
-type NominalProtonFrequency
-  {
-    title: String
-    description: String
-    value: Float!
-    hasQuantityType: DefinedTerm!
-    unit: DefinedTerm
-    type: DefinedTerm
-    rdfType: DefinedTerm
-  }
-
-type NumberOfScans
-  {
-    title: String
-    description: String
-    value: Float!
-    hasQuantityType: DefinedTerm!
-    unit: DefinedTerm
-    type: DefinedTerm
-    rdfType: DefinedTerm
-  }
-
 type PercentageOfTotal
   {
     title: String
@@ -1250,15 +978,6 @@ type ProvenanceStatement
     description: String
   }
 
-type PulseSequence
-  {
-    title: String
-    description: String
-    value: String!
-    type: DefinedTerm
-    rdfType: DefinedTerm
-  }
-
 type QualitativeAttribute implements ClassifierMixin
   {
     title: String
@@ -1350,62 +1069,6 @@ type Role
   {
     title: String
     description: String
-  }
-
-type ShiftCalibrationCompound
-  {
-    title: String
-    description: String
-    id: Uriorcurie!
-    otherIdentifier: [Identifier]
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    partOf: [Entity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
-    hasPart: [MaterialEntity]
-    alternativeLabel: String
-    hasPhysicalState: PhysicalStateEnum
-    hasTemperature: [Temperature]
-    hasMass: [Mass]
-    hasVolume: [Volume]
-    hasDensity: [Density]
-    hasPressure: [Pressure]
-    inchi: [InChi]
-    inchikey: [InChIKey]
-    smiles: [SMILES]
-    molecularFormula: [MolecularFormula]
-    iupacName: [IUPACName]
-    hasMolarMass: [MolarMass]
-    hasCalibrationShift: [CalibrationPeakShift]
-  }
-
-type ShiftReferenceCompound
-  {
-    title: String
-    description: String
-    id: Uriorcurie!
-    otherIdentifier: [Identifier]
-    hasQualitativeAttribute: [QualitativeAttribute]
-    hasQuantitativeAttribute: [QuantitativeAttribute]
-    partOf: [Entity]
-    type: DefinedTerm
-    rdfType: DefinedTerm
-    hasPart: [MaterialEntity]
-    alternativeLabel: String
-    hasPhysicalState: PhysicalStateEnum
-    hasTemperature: [Temperature]
-    hasMass: [Mass]
-    hasVolume: [Volume]
-    hasDensity: [Density]
-    hasPressure: [Pressure]
-    inchi: [InChi]
-    inchikey: [InChIKey]
-    smiles: [SMILES]
-    molecularFormula: [MolecularFormula]
-    iupacName: [IUPACName]
-    hasMolarMass: [MolarMass]
-    hasCalibrationShift: [CalibrationPeakShift]
   }
 
 type SMILES

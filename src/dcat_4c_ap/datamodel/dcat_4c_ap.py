@@ -1,5 +1,5 @@
 # Auto generated from dcat_4c_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-22T10:32:23
+# Generation date: 2025-10-23T13:00:19
 # Schema: dcat-4C-ap
 #
 # id: https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml
@@ -90,11 +90,12 @@ T4FS = CurieNamespace('T4FS', 'http://purl.obolibrary.org/obo/T4FS_')
 VOC4CAT = CurieNamespace('VOC4CAT', 'https://w3id.org/nfdi4cat/voc4cat_')
 ADMS = CurieNamespace('adms', 'http://www.w3.org/ns/adms#')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
+CHEMDCATAP = CurieNamespace('chemdcatap', 'https://nfdi-de.github.io/chem-dcat-ap/')
 DCAT = CurieNamespace('dcat', 'http://www.w3.org/ns/dcat#')
 DCAT_4C_AP = CurieNamespace('dcat_4c_ap', 'https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml#')
-DCAT_AP_PLUS = CurieNamespace('dcat_ap_plus', 'https://nfdi-de.github.io/dcat-ap-plus/dcat_ap_plus.yaml#')
 DCATAP = CurieNamespace('dcatap', 'http://data.europa.eu/r5r/')
 DCATAP_PLUS = CurieNamespace('dcatap_plus', 'https://nfdi-de.github.io/dcat-ap-plus/dcat_ap_plus.yaml#')
+DCATAPPLUS = CurieNamespace('dcatapplus', 'https://nfdi-de.github.io/dcat-ap-plus/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://doi.org/')
 ELI = CurieNamespace('eli', 'http://data.europa.eu/eli/ontology#')
@@ -230,34 +231,6 @@ class ReactorId(DeviceId):
     pass
 
 
-class NMRAnalysisDatasetId(AnalysisDatasetId):
-    pass
-
-
-class NMRSpectralAnalysisId(DataAnalysisId):
-    pass
-
-
-class NMRSpectrumId(AnalysisSourceDataId):
-    pass
-
-
-class NMRSpectroscopyId(DataGeneratingActivityId):
-    pass
-
-
-class NMRSpectrometerId(DeviceId):
-    pass
-
-
-class AcquisitionNucleusId(AgenticEntityId):
-    pass
-
-
-class NMRSolventId(DissolvingSubstanceId):
-    pass
-
-
 class MaterialEntityId(EntityId):
     pass
 
@@ -290,18 +263,6 @@ class ChemicalProductId(ChemicalSubstanceId):
     pass
 
 
-class ShiftCalibrationCompoundId(ChemicalEntityId):
-    pass
-
-
-class ShiftReferenceCompoundId(ShiftCalibrationCompoundId):
-    pass
-
-
-class CharacterizedCompoundId(ChemicalEntityId):
-    pass
-
-
 class MaterialSampleId(EvaluatedEntityId):
     pass
 
@@ -311,10 +272,6 @@ class SubstanceSampleId(MaterialSampleId):
 
 
 class PolymerSampleId(SubstanceSampleId):
-    pass
-
-
-class NMRSampleId(SubstanceSampleId):
     pass
 
 
@@ -681,8 +638,8 @@ class ClassifierMixin(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DCAT_AP_PLUS["ClassifierMixin"]
-    class_class_curie: ClassVar[str] = "dcat_ap_plus:ClassifierMixin"
+    class_class_uri: ClassVar[URIRef] = DCATAP_PLUS["ClassifierMixin"]
+    class_class_curie: ClassVar[str] = "dcatap_plus:ClassifierMixin"
     class_name: ClassVar[str] = "ClassifierMixin"
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.ClassifierMixin
 
@@ -1700,8 +1657,8 @@ class SupportiveEntity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DCAT_AP_PLUS["SupportiveEntity"]
-    class_class_curie: ClassVar[str] = "dcat_ap_plus:SupportiveEntity"
+    class_class_uri: ClassVar[URIRef] = DCATAP_PLUS["SupportiveEntity"]
+    class_class_curie: ClassVar[str] = "dcatap_plus:SupportiveEntity"
     class_name: ClassVar[str] = "SupportiveEntity"
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.SupportiveEntity
 
@@ -2841,300 +2798,6 @@ class PercentageOfTotal(QuantitativeAttribute):
     has_quantity_type: Union[str, DefinedTermId] = None
 
 @dataclass(repr=False)
-class NMRAnalysisDataset(AnalysisDataset):
-    """
-    A dataset that is the result of a NMRSpectralAnalysis of a NMRSample.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
-    class_class_curie: ClassVar[str] = "dcat:Dataset"
-    class_name: ClassVar[str] = "NMRAnalysisDataset"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRAnalysisDataset
-
-    id: Union[str, NMRAnalysisDatasetId] = None
-    description: Union[str, list[str]] = None
-    title: Union[str, list[str]] = None
-    was_generated_by: Optional[Union[dict[Union[str, NMRSpectralAnalysisId], Union[dict, "NMRSpectralAnalysis"]], list[Union[dict, "NMRSpectralAnalysis"]]]] = empty_dict()
-    is_about_entity: Optional[Union[dict[Union[str, NMRSampleId], Union[dict, "NMRSample"]], list[Union[dict, "NMRSample"]]]] = empty_dict()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NMRAnalysisDatasetId):
-            self.id = NMRAnalysisDatasetId(self.id)
-
-        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=NMRSpectralAnalysis, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="is_about_entity", slot_type=NMRSample, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class NMRSpectralAnalysis(DataAnalysis):
-    """
-    A DataAnalysis which assigns a chemical structure to the peaks of a NMRSpectrum generated by a NMRSpectroscopy
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1400042"]
-    class_class_curie: ClassVar[str] = "NMR:1400042"
-    class_name: ClassVar[str] = "NMRSpectralAnalysis"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRSpectralAnalysis
-
-    id: Union[str, NMRSpectralAnalysisId] = None
-    evaluated_entity: Optional[Union[dict[Union[str, NMRSpectrumId], Union[dict, "NMRSpectrum"]], list[Union[dict, "NMRSpectrum"]]]] = empty_dict()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NMRSpectralAnalysisId):
-            self.id = NMRSpectralAnalysisId(self.id)
-
-        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=NMRSpectrum, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class NMRSpectrum(AnalysisSourceData):
-    """
-    Chemical shift data obtained via nuclear magnetic resonance (NMR) spectroscopy.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1002007"]
-    class_class_curie: ClassVar[str] = "NMR:1002007"
-    class_name: ClassVar[str] = "NMRSpectrum"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRSpectrum
-
-    id: Union[str, NMRSpectrumId] = None
-    was_generated_by: Optional[Union[dict[Union[str, NMRSpectroscopyId], Union[dict, "NMRSpectroscopy"]], list[Union[dict, "NMRSpectroscopy"]]]] = empty_dict()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NMRSpectrumId):
-            self.id = NMRSpectrumId(self.id)
-
-        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=NMRSpectroscopy, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class NMRSpectroscopy(DataGeneratingActivity):
-    """
-    Spectroscopy where the energy states of spin-active nuclei placed in a static magnetic field are interrogated by
-    inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of
-    radio frequency pulses with delay periods in between them.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = CHMO["0000613"]
-    class_class_curie: ClassVar[str] = "CHMO:0000613"
-    class_name: ClassVar[str] = "NMRSpectroscopy"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRSpectroscopy
-
-    id: Union[str, NMRSpectroscopyId] = None
-    used_spectrometer: Union[dict[Union[str, NMRSpectrometerId], Union[dict, "NMRSpectrometer"]], list[Union[dict, "NMRSpectrometer"]]] = empty_dict()
-    used_solvent: Union[dict[Union[str, NMRSolventId], Union[dict, "NMRSolvent"]], list[Union[dict, "NMRSolvent"]]] = empty_dict()
-    used_pulse_sequence: Union[dict, "PulseSequence"] = None
-    probes_nucleus: Union[dict[Union[str, AcquisitionNucleusId], Union[dict, "AcquisitionNucleus"]], list[Union[dict, "AcquisitionNucleus"]]] = empty_dict()
-    evaluated_entity: Union[dict[Union[str, NMRSampleId], Union[dict, "NMRSample"]], list[Union[dict, "NMRSample"]]] = empty_dict()
-    rdf_type: Union[dict, DefinedTerm] = None
-    used_number_of_scans: Optional[Union[dict, "NumberOfScans"]] = None
-    used_sample_temperature: Optional[Union[dict, "NMRSampleTemperature"]] = None
-    used_calibration_compound: Optional[Union[dict[Union[str, ShiftCalibrationCompoundId], Union[dict, "ShiftCalibrationCompound"]], list[Union[dict, "ShiftCalibrationCompound"]]]] = empty_dict()
-    used_reference_compound: Optional[Union[dict[Union[str, ShiftReferenceCompoundId], Union[dict, "ShiftReferenceCompound"]], list[Union[dict, "ShiftReferenceCompound"]]]] = empty_dict()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NMRSpectroscopyId):
-            self.id = NMRSpectroscopyId(self.id)
-
-        if self._is_empty(self.used_spectrometer):
-            self.MissingRequiredField("used_spectrometer")
-        self._normalize_inlined_as_list(slot_name="used_spectrometer", slot_type=NMRSpectrometer, key_name="id", keyed=True)
-
-        if self._is_empty(self.used_solvent):
-            self.MissingRequiredField("used_solvent")
-        self._normalize_inlined_as_list(slot_name="used_solvent", slot_type=NMRSolvent, key_name="id", keyed=True)
-
-        if self._is_empty(self.used_pulse_sequence):
-            self.MissingRequiredField("used_pulse_sequence")
-        if not isinstance(self.used_pulse_sequence, PulseSequence):
-            self.used_pulse_sequence = PulseSequence(**as_dict(self.used_pulse_sequence))
-
-        if self._is_empty(self.probes_nucleus):
-            self.MissingRequiredField("probes_nucleus")
-        self._normalize_inlined_as_list(slot_name="probes_nucleus", slot_type=AcquisitionNucleus, key_name="id", keyed=True)
-
-        if self._is_empty(self.evaluated_entity):
-            self.MissingRequiredField("evaluated_entity")
-        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=NMRSample, key_name="id", keyed=True)
-
-        if self._is_empty(self.rdf_type):
-            self.MissingRequiredField("rdf_type")
-        if not isinstance(self.rdf_type, DefinedTerm):
-            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
-
-        if self.used_number_of_scans is not None and not isinstance(self.used_number_of_scans, NumberOfScans):
-            self.used_number_of_scans = NumberOfScans(**as_dict(self.used_number_of_scans))
-
-        if self.used_sample_temperature is not None and not isinstance(self.used_sample_temperature, NMRSampleTemperature):
-            self.used_sample_temperature = NMRSampleTemperature(**as_dict(self.used_sample_temperature))
-
-        self._normalize_inlined_as_list(slot_name="used_calibration_compound", slot_type=ShiftCalibrationCompound, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="used_reference_compound", slot_type=ShiftReferenceCompound, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class NMRSpectrometer(Device):
-    """
-    A Spectrometer used to conduct NMR experiments consisting of a magnet housing a sample space surrounded by two
-    coils which act to transmit radio frequency radiation to the sample and to detect the response of the sample.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = CHMO["0001807"]
-    class_class_curie: ClassVar[str] = "CHMO:0001807"
-    class_name: ClassVar[str] = "NMRSpectrometer"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRSpectrometer
-
-    id: Union[str, NMRSpectrometerId] = None
-    has_proton_frequency: Optional[Union[Union[dict, "NominalProtonFrequency"], list[Union[dict, "NominalProtonFrequency"]]]] = empty_list()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NMRSpectrometerId):
-            self.id = NMRSpectrometerId(self.id)
-
-        if not isinstance(self.has_proton_frequency, list):
-            self.has_proton_frequency = [self.has_proton_frequency] if self.has_proton_frequency is not None else []
-        self.has_proton_frequency = [v if isinstance(v, NominalProtonFrequency) else NominalProtonFrequency(**as_dict(v)) for v in self.has_proton_frequency]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class AcquisitionNucleus(AgenticEntity):
-    """
-    The nucleus of an Atom that is being studied during an NMR analysis.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1400083"]
-    class_class_curie: ClassVar[str] = "NMR:1400083"
-    class_name: ClassVar[str] = "AcquisitionNucleus"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.AcquisitionNucleus
-
-    id: Union[str, AcquisitionNucleusId] = None
-    nucleus_of: Union[dict, "Atom"] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AcquisitionNucleusId):
-            self.id = AcquisitionNucleusId(self.id)
-
-        if self._is_empty(self.nucleus_of):
-            self.MissingRequiredField("nucleus_of")
-        if not isinstance(self.nucleus_of, Atom):
-            self.nucleus_of = Atom(**as_dict(self.nucleus_of))
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class NMRSolvent(DissolvingSubstance):
-    """
-    A DissolvingSubstance that is used in nuclear magnetic resonance NMRSpectroscopy.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1000330"]
-    class_class_curie: ClassVar[str] = "NMR:1000330"
-    class_name: ClassVar[str] = "NMRSolvent"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRSolvent
-
-    id: Union[str, NMRSolventId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NMRSolventId):
-            self.id = NMRSolventId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class PulseSequence(QualitativeAttribute):
-    """
-    A string that denotes sequence of excitation pulses.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1400037"]
-    class_class_curie: ClassVar[str] = "NMR:1400037"
-    class_name: ClassVar[str] = "PulseSequence"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.PulseSequence
-
-    value: str = None
-
-@dataclass(repr=False)
-class NominalProtonFrequency(QuantitativeAttribute):
-    """
-    Resonance frequency of 1H at the field strength of the NMR magnet, rounded to 10-fold numbers.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
-    class_class_curie: ClassVar[str] = "qudt:Quantity"
-    class_name: ClassVar[str] = "NominalProtonFrequency"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NominalProtonFrequency
-
-    value: float = None
-    has_quantity_type: Union[str, DefinedTermId] = None
-
-@dataclass(repr=False)
-class CalibrationPeakShift(QuantitativeAttribute):
-    """
-    The chemical shift of the peak used for chemical shift calibration.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1000223"]
-    class_class_curie: ClassVar[str] = "NMR:1000223"
-    class_name: ClassVar[str] = "CalibrationPeakShift"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.CalibrationPeakShift
-
-    value: float = None
-    has_quantity_type: Union[str, DefinedTermId] = None
-
-@dataclass(repr=False)
-class NumberOfScans(QuantitativeAttribute):
-    """
-    The number of repeat scans performed and summed to create the data set for an NMRSample.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1400087"]
-    class_class_curie: ClassVar[str] = "NMR:1400087"
-    class_name: ClassVar[str] = "NumberOfScans"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NumberOfScans
-
-    value: float = None
-    has_quantity_type: Union[str, DefinedTermId] = None
-
-@dataclass(repr=False)
 class Materialistic(YAMLRoot):
     """
     A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have
@@ -3469,82 +3132,6 @@ class ChemicalProduct(ChemicalSubstance):
 
 
 @dataclass(repr=False)
-class ShiftCalibrationCompound(ChemicalEntity):
-    """
-    A ChemicalEntity that produces one or more peaks used for chemical shift calibration in nuclear magnetic resonance
-    (NMR) spectroscopy.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["0002003"]
-    class_class_curie: ClassVar[str] = "NMR:0002003"
-    class_name: ClassVar[str] = "ShiftCalibrationCompound"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.ShiftCalibrationCompound
-
-    id: Union[str, ShiftCalibrationCompoundId] = None
-    has_calibration_shift: Optional[Union[Union[dict, CalibrationPeakShift], list[Union[dict, CalibrationPeakShift]]]] = empty_list()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ShiftCalibrationCompoundId):
-            self.id = ShiftCalibrationCompoundId(self.id)
-
-        if not isinstance(self.has_calibration_shift, list):
-            self.has_calibration_shift = [self.has_calibration_shift] if self.has_calibration_shift is not None else []
-        self.has_calibration_shift = [v if isinstance(v, CalibrationPeakShift) else CalibrationPeakShift(**as_dict(v)) for v in self.has_calibration_shift]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ShiftReferenceCompound(ShiftCalibrationCompound):
-    """
-    A ShiftCalibrationCompound that produces a peak used as reference frequency in the delta chemical shift scale in
-    nuclear magnetic resonance (NMR) spectroscopy.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1400033"]
-    class_class_curie: ClassVar[str] = "NMR:1400033"
-    class_name: ClassVar[str] = "ShiftReferenceCompound"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.ShiftReferenceCompound
-
-    id: Union[str, ShiftReferenceCompoundId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ShiftReferenceCompoundId):
-            self.id = ShiftReferenceCompoundId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class CharacterizedCompound(ChemicalEntity):
-    """
-    A ChemicalEntity that being characterized in an NMRSample using data acquired from a NMRSpectroscopy.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["0002001"]
-    class_class_curie: ClassVar[str] = "NMR:0002001"
-    class_name: ClassVar[str] = "CharacterizedCompound"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.CharacterizedCompound
-
-    id: Union[str, CharacterizedCompoundId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, CharacterizedCompoundId):
-            self.id = CharacterizedCompoundId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
 class MaterialSample(EvaluatedEntity):
     """
     A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.
@@ -3739,38 +3326,6 @@ class PolymerSample(SubstanceSample):
 
 
 @dataclass(repr=False)
-class NMRSample(SubstanceSample):
-    """
-    A SubstanceSample that has been prepared for chemical analysis by NMR.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1400128"]
-    class_class_curie: ClassVar[str] = "NMR:1400128"
-    class_name: ClassVar[str] = "NMRSample"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRSample
-
-    id: Union[str, NMRSampleId] = None
-    composed_of: Union[dict[Union[str, CharacterizedCompoundId], Union[dict, CharacterizedCompound]], list[Union[dict, CharacterizedCompound]]] = empty_dict()
-    derived_from: Optional[Union[dict, Entity]] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NMRSampleId):
-            self.id = NMRSampleId(self.id)
-
-        if self._is_empty(self.composed_of):
-            self.MissingRequiredField("composed_of")
-        self._normalize_inlined_as_list(slot_name="composed_of", slot_type=CharacterizedCompound, key_name="id", keyed=True)
-
-        if self.derived_from is not None and not isinstance(self.derived_from, Entity):
-            self.derived_from = Entity(**as_dict(self.derived_from))
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
 class Temperature(QuantitativeAttribute):
     """
     A physical quantity that quantitatively expresses the attribute of hotness or coldness.
@@ -3781,21 +3336,6 @@ class Temperature(QuantitativeAttribute):
     class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "Temperature"
     class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.Temperature
-
-    value: float = None
-    has_quantity_type: Union[str, DefinedTermId] = None
-
-@dataclass(repr=False)
-class NMRSampleTemperature(Temperature):
-    """
-    The temperature of the NMR Sample.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMR["1400262"]
-    class_class_curie: ClassVar[str] = "NMR:1400262"
-    class_name: ClassVar[str] = "NMRSampleTemperature"
-    class_model_uri: ClassVar[URIRef] = DCAT_4C_AP.NMRSampleTemperature
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -3972,24 +3512,6 @@ class QUDTUnitEnum(EnumDefinitionImpl):
         name="QUDTUnitEnum",
         description="Possible kinds of QUDT unit instances.",
     )
-
-class NMRAssayEnum(EnumDefinitionImpl):
-    """
-    NMR types from the Chemical Methods Ontology
-    """
-    _defn = EnumDefinition(
-        name="NMRAssayEnum",
-        description="NMR types from the Chemical Methods Ontology",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "CHMO:0000595",
-            PermissibleValue(
-                text="CHMO:0000595",
-                title="13C nuclear magnetic resonance spectroscopy",
-                description="""Spectroscopy where the energy states of 13C nuclei placed in a static magnetic field are interrogated by inducing transitions between the states via radio frequency irradiation. Each experiment consists of a sequence of radio frequency pulses with delay periods in between them.""",
-                meaning=CHMO["0000595"]))
 
 class PhysicalStateEnum(EnumDefinitionImpl):
 
@@ -4369,12 +3891,6 @@ slots.has_percentage_of_total = Slot(uri=SIO['000008'], name="has_percentage_of_
 slots.has_reaction_step = Slot(uri=BFO['0000051'], name="has_reaction_step", curie=BFO.curie('0000051'),
                    model_uri=DCAT_4C_AP.has_reaction_step, domain=None, range=Optional[Union[str, ChemicalReactionId]])
 
-slots.used_spectrometer = Slot(uri=OBI['0000293'], name="used_spectrometer", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.used_spectrometer, domain=None, range=Union[dict[Union[str, NMRSpectrometerId], Union[dict, NMRSpectrometer]], list[Union[dict, NMRSpectrometer]]])
-
-slots.has_proton_frequency = Slot(uri=SIO['000008'], name="has_proton_frequency", curie=SIO.curie('000008'),
-                   model_uri=DCAT_4C_AP.has_proton_frequency, domain=None, range=Optional[Union[Union[dict, NominalProtonFrequency], list[Union[dict, NominalProtonFrequency]]]])
-
 slots.alternative_label = Slot(uri=SKOS.altLabel, name="alternative_label", curie=SKOS.curie('altLabel'),
                    model_uri=DCAT_4C_AP.alternative_label, domain=None, range=Optional[str])
 
@@ -4407,30 +3923,6 @@ slots.quantitativeAttribute__has_quantity_type = Slot(uri=QUDT.hasQuantityKind, 
 
 slots.quantitativeAttribute__unit = Slot(uri=QUDT.unit, name="quantitativeAttribute__unit", curie=QUDT.curie('unit'),
                    model_uri=DCAT_4C_AP.quantitativeAttribute__unit, domain=None, range=Optional[Union[str, DefinedTermId]])
-
-slots.nMRSpectroscopy__used_pulse_sequence = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__used_pulse_sequence", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.nMRSpectroscopy__used_pulse_sequence, domain=None, range=Union[dict, PulseSequence])
-
-slots.nMRSpectroscopy__used_number_of_scans = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__used_number_of_scans", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.nMRSpectroscopy__used_number_of_scans, domain=None, range=Optional[Union[dict, NumberOfScans]])
-
-slots.nMRSpectroscopy__used_sample_temperature = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__used_sample_temperature", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.nMRSpectroscopy__used_sample_temperature, domain=None, range=Optional[Union[dict, NMRSampleTemperature]])
-
-slots.nMRSpectroscopy__probes_nucleus = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__probes_nucleus", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.nMRSpectroscopy__probes_nucleus, domain=None, range=Union[dict[Union[str, AcquisitionNucleusId], Union[dict, AcquisitionNucleus]], list[Union[dict, AcquisitionNucleus]]])
-
-slots.nMRSpectroscopy__used_calibration_compound = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__used_calibration_compound", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.nMRSpectroscopy__used_calibration_compound, domain=None, range=Optional[Union[dict[Union[str, ShiftCalibrationCompoundId], Union[dict, ShiftCalibrationCompound]], list[Union[dict, ShiftCalibrationCompound]]]])
-
-slots.nMRSpectroscopy__used_reference_compound = Slot(uri=OBI['0000293'], name="nMRSpectroscopy__used_reference_compound", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.nMRSpectroscopy__used_reference_compound, domain=None, range=Optional[Union[dict[Union[str, ShiftReferenceCompoundId], Union[dict, ShiftReferenceCompound]], list[Union[dict, ShiftReferenceCompound]]]])
-
-slots.shiftCalibrationCompound__has_calibration_shift = Slot(uri=SIO['000008'], name="shiftCalibrationCompound__has_calibration_shift", curie=SIO.curie('000008'),
-                   model_uri=DCAT_4C_AP.shiftCalibrationCompound__has_calibration_shift, domain=None, range=Optional[Union[Union[dict, CalibrationPeakShift], list[Union[dict, CalibrationPeakShift]]]])
-
-slots.acquisitionNucleus__nucleus_of = Slot(uri=BFO['0000050'], name="acquisitionNucleus__nucleus_of", curie=BFO.curie('0000050'),
-                   model_uri=DCAT_4C_AP.acquisitionNucleus__nucleus_of, domain=None, range=Union[dict, Atom])
 
 slots.Activity_title = Slot(uri=DCTERMS.title, name="Activity_title", curie=DCTERMS.curie('title'),
                    model_uri=DCAT_4C_AP.Activity_title, domain=Activity, range=Optional[Union[str, list[str]]])
@@ -4941,33 +4433,6 @@ slots.ChemicalReaction_has_pressure = Slot(uri=SIO['000008'], name="ChemicalReac
 
 slots.ChemicalReaction_related_resource = Slot(uri=DCTERMS.relation, name="ChemicalReaction_related_resource", curie=DCTERMS.curie('relation'),
                    model_uri=DCAT_4C_AP.ChemicalReaction_related_resource, domain=ChemicalReaction, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, Resource]], list[Union[dict, Resource]]]])
-
-slots.NMRSample_composed_of = Slot(uri=BFO['0000051'], name="NMRSample_composed_of", curie=BFO.curie('0000051'),
-                   model_uri=DCAT_4C_AP.NMRSample_composed_of, domain=NMRSample, range=Union[dict[Union[str, CharacterizedCompoundId], Union[dict, CharacterizedCompound]], list[Union[dict, CharacterizedCompound]]])
-
-slots.NMRSample_derived_from = Slot(uri=PROV.wasDerivedFrom, name="NMRSample_derived_from", curie=PROV.curie('wasDerivedFrom'),
-                   model_uri=DCAT_4C_AP.NMRSample_derived_from, domain=NMRSample, range=Optional[Union[dict, Entity]])
-
-slots.NMRAnalysisDataset_was_generated_by = Slot(uri=OBI['0000312'], name="NMRAnalysisDataset_was_generated_by", curie=OBI.curie('0000312'),
-                   model_uri=DCAT_4C_AP.NMRAnalysisDataset_was_generated_by, domain=NMRAnalysisDataset, range=Optional[Union[dict[Union[str, NMRSpectralAnalysisId], Union[dict, "NMRSpectralAnalysis"]], list[Union[dict, "NMRSpectralAnalysis"]]]])
-
-slots.NMRAnalysisDataset_is_about_entity = Slot(uri=IAO['0000136'], name="NMRAnalysisDataset_is_about_entity", curie=IAO.curie('0000136'),
-                   model_uri=DCAT_4C_AP.NMRAnalysisDataset_is_about_entity, domain=NMRAnalysisDataset, range=Optional[Union[dict[Union[str, NMRSampleId], Union[dict, "NMRSample"]], list[Union[dict, "NMRSample"]]]])
-
-slots.NMRSpectralAnalysis_evaluated_entity = Slot(uri=OBI['0000293'], name="NMRSpectralAnalysis_evaluated_entity", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.NMRSpectralAnalysis_evaluated_entity, domain=NMRSpectralAnalysis, range=Optional[Union[dict[Union[str, NMRSpectrumId], Union[dict, "NMRSpectrum"]], list[Union[dict, "NMRSpectrum"]]]])
-
-slots.NMRSpectrum_was_generated_by = Slot(uri=OBI['0000312'], name="NMRSpectrum_was_generated_by", curie=OBI.curie('0000312'),
-                   model_uri=DCAT_4C_AP.NMRSpectrum_was_generated_by, domain=NMRSpectrum, range=Optional[Union[dict[Union[str, NMRSpectroscopyId], Union[dict, "NMRSpectroscopy"]], list[Union[dict, "NMRSpectroscopy"]]]])
-
-slots.NMRSpectroscopy_evaluated_entity = Slot(uri=OBI['0000293'], name="NMRSpectroscopy_evaluated_entity", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.NMRSpectroscopy_evaluated_entity, domain=NMRSpectroscopy, range=Union[dict[Union[str, NMRSampleId], Union[dict, "NMRSample"]], list[Union[dict, "NMRSample"]]])
-
-slots.NMRSpectroscopy_rdf_type = Slot(uri=RDF.type, name="NMRSpectroscopy_rdf_type", curie=RDF.curie('type'),
-                   model_uri=DCAT_4C_AP.NMRSpectroscopy_rdf_type, domain=NMRSpectroscopy, range=Union[dict, DefinedTerm])
-
-slots.NMRSpectroscopy_used_solvent = Slot(uri=OBI['0000293'], name="NMRSpectroscopy_used_solvent", curie=OBI.curie('0000293'),
-                   model_uri=DCAT_4C_AP.NMRSpectroscopy_used_solvent, domain=NMRSpectroscopy, range=Union[dict[Union[str, NMRSolventId], Union[dict, "NMRSolvent"]], list[Union[dict, "NMRSolvent"]]])
 
 slots.MaterialEntity_has_part = Slot(uri=BFO['0000051'], name="MaterialEntity_has_part", curie=BFO.curie('0000051'),
                    model_uri=DCAT_4C_AP.MaterialEntity_has_part, domain=MaterialEntity, range=Optional[Union[dict[Union[str, MaterialEntityId], Union[dict, "MaterialEntity"]], list[Union[dict, "MaterialEntity"]]]])
