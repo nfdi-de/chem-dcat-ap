@@ -246,6 +246,12 @@
         click ClassifierMixin href "../ClassifierMixin/"
 
 
+      QuantitativeAttribute &lt;|-- Concentration
+        click Concentration href "../Concentration/"
+      QuantitativeAttribute &lt;|-- AmountOfSubstance
+        click AmountOfSubstance href "../AmountOfSubstance/"
+      QuantitativeAttribute &lt;|-- PHValue
+        click PHValue href "../PHValue/"
       QuantitativeAttribute &lt;|-- Temperature
         click Temperature href "../Temperature/"
       QuantitativeAttribute &lt;|-- Mass
@@ -256,12 +262,6 @@
         click Density href "../Density/"
       QuantitativeAttribute &lt;|-- Pressure
         click Pressure href "../Pressure/"
-      QuantitativeAttribute &lt;|-- Concentration
-        click Concentration href "../Concentration/"
-      QuantitativeAttribute &lt;|-- AmountOfSubstance
-        click AmountOfSubstance href "../AmountOfSubstance/"
-      QuantitativeAttribute &lt;|-- PHValue
-        click PHValue href "../PHValue/"
       QuantitativeAttribute &lt;|-- Yield
         click Yield href "../Yield/"
       QuantitativeAttribute &lt;|-- MolarEquivalent
@@ -325,14 +325,14 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>QuantitativeAttribute</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../Concentration/">Concentration</a></li>
+<li><a href="../AmountOfSubstance/">AmountOfSubstance</a></li>
+<li><a href="../PHValue/">PHValue</a></li>
 <li><a href="../Temperature/">Temperature</a></li>
 <li><a href="../Mass/">Mass</a></li>
 <li><a href="../Volume/">Volume</a></li>
 <li><a href="../Density/">Density</a></li>
 <li><a href="../Pressure/">Pressure</a></li>
-<li><a href="../Concentration/">Concentration</a></li>
-<li><a href="../AmountOfSubstance/">AmountOfSubstance</a></li>
-<li><a href="../PHValue/">PHValue</a></li>
 <li><a href="../Yield/">Yield</a></li>
 <li><a href="../MolarEquivalent/">MolarEquivalent</a></li>
 <li><a href="../PercentageOfTotal/">PercentageOfTotal</a></li>
@@ -478,18 +478,6 @@
 <td><a href="./">QuantitativeAttribute</a></td>
 </tr>
 <tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>range</td>
-<td><a href="./">QuantitativeAttribute</a></td>
-</tr>
-<tr>
 <td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
@@ -509,6 +497,18 @@
 </tr>
 <tr>
 <td><a href="../Polymer/">Polymer</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialEntity/">MaterialEntity</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>
