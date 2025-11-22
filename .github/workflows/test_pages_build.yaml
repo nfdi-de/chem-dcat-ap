@@ -7,43 +7,54 @@ on:  # yamllint disable-line rule:truthy
       - reopened
       - synchronize
 
-concurrency:  preview-${{ github.ref }}
+env:
+  CLICOLOR: 1
+
+concurrency: preview-${{ github.ref }}
+
+permissions: {}
 
 jobs:
   run:
+    # Grant GITHUB_TOKEN the permissions required to make a gh-pages deployment
+    permissions:
+      contents: write  # to let mkdocs write the new docs
+      pages: write     # to deploy to Pages
+      id-token: write  # allow to generate an OpenID Connect (OIDC) token
+      pull-requests: write  # add comment on the PR with the preview URL
     runs-on: ubuntu-latest
     steps:
+      # https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-          persist-credentials: false
 
-      - name: Set up Python 3
-        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c
+      # https://github.com/astral-sh/setup-uv
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6.4.3
         with:
-          python-version: 3.9
+          python-version: 3.13
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      # https://github.com/actions/setup-python
+      - name: Set up Python 3
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
+        with:
+          python-version: 3.13
 
-      - name: Install just & Poetry incl. plugins
-        # We install poetry-dynamic-versioning into pipx because the automatic
-        # install by poetry 2.x triggers a Windows issue
-        # https://github.com/pypa/installer/issues/260
-        # and also does not work on Ubuntu in gh-actions.
-        run: |
-          pipx install rust-just
-          pipx install poetry
-          pipx inject poetry poetry-dynamic-versioning
 
       - name: Install dependencies
-        run: poetry install
+        run: uv sync --dev --no-progress
 
       - name: Build documentation
         run: |
-          just gen-doc
-          poetry run mkdocs build
+          uv run mkdocs build -d site
+          touch site/.nojekyll
 
+      # https://github.com/rossjrw/pr-preview-action
       - name: Deploy preview
-        uses: rossjrw/pr-preview-action@9f77b1d057b494e662c50b8ca40ecc63f21e0887
+        uses: rossjrw/pr-preview-action@v1.6.2
         with:
           source-dir: site/
           preview-branch: gh-pages

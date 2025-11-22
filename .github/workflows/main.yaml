@@ -8,6 +8,9 @@ on:  # yamllint disable-line rule:truthy
     branches: [main]
   pull_request:
 
+env:
+  FORCE_COLOR: "1" # Make tools pretty.
+
 permissions: {}
 
 jobs:
@@ -16,35 +19,37 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12"]
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+      fail-fast: false
 
     steps:
 
+      # https://github.com/actions/checkout
       - name: Check out repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
 
+      # https://github.com/astral-sh/setup-uv
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6.4.3
+        with:
+          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      # https://github.com/actions/setup-python
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install just & Poetry incl. plugins
-        # We install poetry-dynamic-versioning into pipx because the automatic
-        # install by poetry 2.x triggers a Windows issue
-        # https://github.com/pypa/installer/issues/260
-        # and also does not work on Ubuntu in gh-actions.
+      - name: Install just
         run: |
-          pipx install rust-just
-          pipx install poetry
-          pipx inject poetry poetry-dynamic-versioning
+          uv tool install rust-just
 
-      - name: Install dependencies
-        run: poetry install --no-interaction --no-root
 
       - name: Install project
-        run: poetry install --no-interaction
+        run: uv sync --dev
 
       - name: Run test suite
         run: just test

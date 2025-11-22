@@ -1,6 +1,6 @@
 [build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
-build-backend = "poetry_dynamic_versioning.backend"
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
 
 [project]
 name = "dcat_4c_ap"
@@ -11,44 +11,44 @@ authors = [
 license = "MIT"
 license-files = ["LICENSE"]
 readme = "README.md"
-include = ["README.md", "src/dcat_4c_ap/schema", "project"]
-
-# We can't use caret ^ requirement specifiers here. They are a Poetry speciality.
 requires-python = ">=3.9,<4.0"
-
 dynamic = ["version"]
 
 dependencies = [
-  "linkml-runtime >=1.8.0",
+  "linkml-runtime >=1.9.4",
 ]
 
-# Ref.: https://python-poetry.org/docs/
-# Ref.: https://github.com/mtkennerly/poetry-dynamic-versioning
-[tool.poetry]
-requires-poetry = ">=2.0"
-version = "0.0.0"
+[dependency-groups]
+dev = [
+    "linkml>=1.9.3",
+    "mkdocs-material>=8.2.8",
+    "mkdocs-mermaid2-plugin>=1.1.1",
+    "jupyter>=1.0.0",
+    "mknotebooks>= 0.8.0",
+]
 
-[tool.poetry.requires-plugins]
-poetry-dynamic-versioning = ">=1.7.0"
+# See https://hatch.pypa.io/latest/config/build/#file-selection for how to
+# explicitly include files other than default into the build distributions.
 
-[tool.poetry-dynamic-versioning]
-enable = true
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+# Ref.: https://github.com/ninoseki/uv-dynamic-versioning/
+[tool.uv-dynamic-versioning]
 vcs = "git"
 style = "pep440"
+fallback-version = "0.0.0"
 
-[tool.poetry.group.dev.dependencies]
-linkml = ">=1.3.5"
-mkdocs-material = ">=8.2.8"
-mkdocs-mermaid2-plugin = ">=1.1.1"
-jupyter = ">=1.0.0"
-mknotebooks = ">= 0.8.0"
+# Ref.: https://docs.pytest.org/en/stable/reference/reference.html#configuration-options
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 # Ref.: https://github.com/codespell-project/codespell
 [tool.codespell]
 skip = [
   "LICENSE",
   "pyproject.toml",
-  "poetry.lock",
+  "uv.lock",
   "project/*",
   "src/dcat_4c_ap/datamodel/dcat_4c_ap_pydantic.py",
   "src/dcat_4c_ap/datamodel/dcat_4c_ap.py",
@@ -64,7 +64,7 @@ linke = "linke"
 [tool.typos.files]
 extend-exclude = [
   "LICENSE",
-  "poetry.lock",
+  "uv.lock",
   "pyproject.toml",
   "project/*",
   "src/dcat_4c_ap/datamodel/dcat_4c_ap_pydantic.py",
