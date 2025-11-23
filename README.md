@@ -33,42 +33,42 @@ https://nfdi-de.github.io/chem-dcat-ap
 
 ## Developer Documentation
 
-Requirements (see also https://github.com/dalito/linkml-project-copier?tab=readme-ov-file#prerequisites):
+See also the documentation of the template: https://github.com/linkml/linkml-project-copier?tab=readme-ov-file#prerequisites
 
-### Poetry 
+* **uv**
+
+  uv is a tool to manage Python projects and for managing isolated Python-based applications.
+  You will use it in your generated project to manage dependencies and build distribution files.
+  Install uv by following their [instructions](https://docs.astral.sh/uv/getting-started/installation/).
   
-  Poetry is a Python project management tool. You will use it in your generated project to manage dependencies and 
-  build distribution files. Install Poetry by running:
-  ````commandline 
-  pipx install poetry
-  pipx inject poetry "poetry-dynamic-versioning[plugin]"
-  ````
-### Copier
+  Note: Environments with private pypi repository may need extra configuration (example):
+    `export UV_DEFAULT_INDEX=https://nexus.example.com/repository/pypi-all/simple`
 
-  Copier is a tool for generating projects based on a template (like this one!). It also allows re-configuring the projects and to keep them updated when the original template changes. To insert dates into the template, copier requires [jinja2_time](https://github.com/hackebrot/jinja2-time) in the copier environment. Install both with pipx by running:
-  ````commandline 
-    pipx install copier
-    pipx inject copier jinja2_time
+* **Copier**
+
+  Copier is a tool for generating projects based on a template (like this one!). It also allows re-configuring the projects and to keep them updated when the original template changes. To insert dates into the template, copier requires [jinja2_time](https://github.com/hackebrot/jinja2-time) in the copier environment. Install both with uv by running:
+  ````shell 
+    uv tool install --with jinja2-time copier
   ````
-### just
   
-  The project contains a justfile with pre-defined complex commands. To execute these commands you need [just](https://github.com/casey/just) as command runner. Install it by running:
+* **just**
 
-  ````commandline 
-  pipx install rust-just
-  ````
-To create a Poetry env with all dependencies you then need to run:
-  * `just install`
+  The project contains a `justfile` with pre-defined complex commands.
+  To execute these commands you need [just](https://github.com/casey/just) as command runner. Install it by running:
 
-To generate project artefacts run:
-  * `just gen-project`: generates all other representations
-  * `just deploy`: deploys site
-  * `just testdoc`: locally builds docs and runs test server
+  ```shell
+  uv tool install rust-just
+  ```
+
+  To generate project artefacts run:
+    * `just gen-project`: generates all other representations
+    * `just deploy`: deploys site
+    * `just testdoc`: locally builds docs and runs test server
 
 ### Regenerate schema files from DCAT-AP SHACL shapes
 To regenerate the DCAT-AP LinkML representation as well as the PLUS extension run:
   ````commandline 
-  poetry run python src/dcat_ap_shacl_2_linkml.py
+  uv run python src/dcat_ap_shacl_2_linkml.py
   ````
 
 ### Test data validation and convertion
@@ -77,52 +77,52 @@ Validate and test all: `just test`
 Validate a single example dataset using LinkML's validator framework:
   * Validate domain agnostic DCAT-AP extension conform example
     ````commandline
-    poetry run linkml validate tests/data/valid/AnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C AnalysisDataset
+    uv run linkml validate tests/data/valid/AnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C AnalysisDataset
     ````
   * Validate a NMR spectroscopy-specific DCAT-AP extension conform example
     ````commandline
-    poetry run linkml validate tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C NMRAnalysisDataset
+    uv run linkml validate tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C NMRAnalysisDataset
     ````
   * Validate a ChemicalReaction specific DCAT-AP extension conform example
     ````commandline
-    poetry run linkml validate tests/data/valid/ChemicalReaction-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C ChemicalReaction
+    uv run linkml validate tests/data/valid/ChemicalReaction-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C ChemicalReaction
     ````
   * Validate a SubstanceSample specific DCAT-AP extension conform example
     ````commandline
-    poetry run linkml validate tests/data/valid/SubstanceSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C SubstanceSample
+    uv run linkml validate tests/data/valid/SubstanceSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C SubstanceSample
     ````
   * Validate a MaterialSample specific DCAT-AP extension conform example
     ````commandline
-    poetry run linkml validate tests/data/valid/MaterialSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C MaterialSample
+    uv run linkml validate tests/data/valid/MaterialSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C MaterialSample
     ````
 
 To convert the test datasets of each DCAT-AP profile into a TTL graph run:
   * Convert domain agnostic DCAT-AP extension conform example of an analysis
     ````commandline
-    poetry run linkml-convert -t ttl tests/data/valid/AnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C AnalysisDataset
+    uv run linkml-convert -t ttl tests/data/valid/AnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C AnalysisDataset
     ````
   * Convert a NMR spectroscopy-specific DCAT-AP extension conform example
     ````commandline
-    poetry run linkml-convert -t ttl tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
+    uv run linkml-convert -t ttl tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
     ````
   * Convert domain agnostic DCAT-AP extension conform example of a MaterialSample
     ````commandline
-    poetry run linkml-convert -t ttl tests/data/valid/MaterialSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C MaterialSample
+    uv run linkml-convert -t ttl tests/data/valid/MaterialSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C MaterialSample
     ````
   * Convert domain agnostic DCAT-AP extension conform example of a SubstanceSample
     ````commandline
-    poetry run linkml-convert -t ttl tests/data/valid/SubstanceSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C SubstanceSample
+    uv run linkml-convert -t ttl tests/data/valid/SubstanceSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C SubstanceSample
     ````
   * Convert domain agnostic DCAT-AP extension conform example of a ChemicalReaction
     ````commandline
-    poetry run linkml-convert -t ttl tests/data/valid/ChemicalReaction-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ChemicalReaction
+    uv run linkml-convert -t ttl tests/data/valid/ChemicalReaction-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ChemicalReaction
     ````
 ### Build GitHub pages docs locally
     ````commandline
-    poetry run mkdocs serve
+    uv run mkdocs serve
     ````
     ````commandline
-    rm -rf docs/elements/*.md && poetry run gen-doc  -d docs/elements src/dcat_4c_ap/schema/dcat_4c_ap.yaml
+    rm -rf docs/elements/*.md && uv run gen-doc  -d docs/elements src/dcat_4c_ap/schema/dcat_4c_ap.yaml
     ````
 
 ## Credits
@@ -130,4 +130,4 @@ To convert the test datasets of each DCAT-AP profile into a TTL graph run:
 This project was initially created with
 [linkml-project-cookiecutter](https://github.com/linkml/linkml-project-cookiecutter).
 and later migrated to
-[linkml-project-copier](https://github.com/dalito/linkml-project-copier).
+[linkml-project-copier](https://github.com/linkml/linkml-project-copier).
