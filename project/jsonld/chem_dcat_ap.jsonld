@@ -1,5 +1,5 @@
 {
-  "name": "chem_dcat_ap",
+  "name": "chem-dcat-ap",
   "description": "This is an extension of the DCAT Application Profile PLUS LinkML schema. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles/schemas to provide chemistry specific specific metadata for a dataset.",
   "title": "ChemDCAT-AP",
   "see_also": [
@@ -9710,9 +9710,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2025-12-03T09:52:01",
+  "source_file_date": "2025-12-03T12:21:23",
   "source_file_size": 3576,
-  "generation_date": "2025-12-03T09:52:10",
+  "generation_date": "2025-12-03T12:24:23",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/chem_dcat_ap.context.jsonld",

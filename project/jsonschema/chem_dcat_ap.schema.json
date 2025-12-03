@@ -7741,7 +7741,7 @@
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
-    "title": "chem_dcat_ap",
+    "title": "chem-dcat-ap",
     "type": "object",
     "version": null
 }
