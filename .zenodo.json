@@ -33,6 +33,12 @@
   "license": "MIT",
   "related_identifiers": [
     {
+        "identifier": "doi:10.5281/zenodo.17702369",
+        "relation": "requires",
+        "resource_type": "software",
+        "scheme": "doi"
+    },
+    {
         "identifier": "doi:10.5281/zenodo.5703670",
         "relation": "requires",
         "resource_type": "software",
