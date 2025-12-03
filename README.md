@@ -24,10 +24,10 @@ https://nfdi-de.github.io/chem-dcat-ap
 * [examples/](examples/) - example data and code
 * [project/](project/) - project files (do not edit these)
 * [src/](src/) - source files (edit these)
-  * [dcat_4c_ap](src/dcat_4c_ap)
-    * [schema](src/dcat_4c_ap/schema) -- LinkML schema
+  * [dcat_4c_ap](src/chem_dcat_ap)
+    * [schema](src/chem_dcat_ap/schema) -- LinkML schema
       (edit this)
-    * [datamodel](src/dcat_4c_ap/datamodel) -- generated
+    * [datamodel](src/chem_dcat_ap/datamodel) -- generated
       Python datamodel
 * [tests/](tests/) - Python tests
 
@@ -77,52 +77,52 @@ Validate and test all: `just test`
 Validate a single example dataset using LinkML's validator framework:
   * Validate domain agnostic DCAT-AP extension conform example
     ````commandline
-    uv run linkml validate tests/data/valid/AnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C AnalysisDataset
+    uv run linkml validate tests/data/valid/AnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C AnalysisDataset
     ````
   * Validate a NMR spectroscopy-specific DCAT-AP extension conform example
     ````commandline
-    uv run linkml validate tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C NMRAnalysisDataset
+    uv run linkml validate tests/data/valid/NMRAnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C NMRAnalysisDataset
     ````
   * Validate a ChemicalReaction specific DCAT-AP extension conform example
     ````commandline
-    uv run linkml validate tests/data/valid/ChemicalReaction-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C ChemicalReaction
+    uv run linkml validate tests/data/valid/ChemicalReaction-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C ChemicalReaction
     ````
   * Validate a SubstanceSample specific DCAT-AP extension conform example
     ````commandline
-    uv run linkml validate tests/data/valid/SubstanceSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C SubstanceSample
+    uv run linkml validate tests/data/valid/SubstanceSample-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C SubstanceSample
     ````
   * Validate a MaterialSample specific DCAT-AP extension conform example
     ````commandline
-    uv run linkml validate tests/data/valid/MaterialSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -C MaterialSample
+    uv run linkml validate tests/data/valid/MaterialSample-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C MaterialSample
     ````
 
 To convert the test datasets of each DCAT-AP profile into a TTL graph run:
   * Convert domain agnostic DCAT-AP extension conform example of an analysis
     ````commandline
-    uv run linkml-convert -t ttl tests/data/valid/AnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C AnalysisDataset
+    uv run linkml-convert -t ttl tests/data/valid/AnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C AnalysisDataset
     ````
   * Convert a NMR spectroscopy-specific DCAT-AP extension conform example
     ````commandline
-    uv run linkml-convert -t ttl tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
+    uv run linkml-convert -t ttl tests/data/valid/NMRAnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
     ````
   * Convert domain agnostic DCAT-AP extension conform example of a MaterialSample
     ````commandline
-    uv run linkml-convert -t ttl tests/data/valid/MaterialSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C MaterialSample
+    uv run linkml-convert -t ttl tests/data/valid/MaterialSample-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C MaterialSample
     ````
   * Convert domain agnostic DCAT-AP extension conform example of a SubstanceSample
     ````commandline
-    uv run linkml-convert -t ttl tests/data/valid/SubstanceSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C SubstanceSample
+    uv run linkml-convert -t ttl tests/data/valid/SubstanceSample-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C SubstanceSample
     ````
   * Convert domain agnostic DCAT-AP extension conform example of a ChemicalReaction
     ````commandline
-    uv run linkml-convert -t ttl tests/data/valid/ChemicalReaction-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ChemicalReaction
+    uv run linkml-convert -t ttl tests/data/valid/ChemicalReaction-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ChemicalReaction
     ````
 ### Build GitHub pages docs locally
     ````commandline
     uv run mkdocs serve
     ````
     ````commandline
-    rm -rf docs/elements/*.md && uv run gen-doc  -d docs/elements src/dcat_4c_ap/schema/dcat_4c_ap.yaml
+    rm -rf docs/elements/*.md && uv run gen-doc  -d docs/elements src/chem_dcat_ap/schema/chem_dcat_ap.yaml
     ````
 
 ## Credits

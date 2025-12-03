@@ -6,10 +6,10 @@
 
 # Note:
 # - just works fine with quoted variables of dot-env files like this one
-LINKML_SCHEMA_NAME="dcat_4c_ap"
+LINKML_SCHEMA_NAME="chem_dcat_ap"
 LINKML_SCHEMA_AUTHOR="Philip Strömert <philip.stroemert@tib.eu>"
 LINKML_SCHEMA_DESCRIPTION="This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset."
-LINKML_SCHEMA_SOURCE_DIR="src/dcat_4c_ap/schema"
+LINKML_SCHEMA_SOURCE_DIR="src/chem_dcat_ap/schema"
 
 ###### linkml generator variables, used by justfile
 

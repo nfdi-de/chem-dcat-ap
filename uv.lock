@@ -469,6 +469,34 @@ wheels = [
 ]
 
 [[package]]
+name = "chem_dcat_ap"
+source = { editable = "." }
+dependencies = [
+    { name = "linkml-runtime" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "jupyter" },
+    { name = "linkml" },
+    { name = "mkdocs-material" },
+    { name = "mkdocs-mermaid2-plugin" },
+    { name = "mknotebooks" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "linkml-runtime", specifier = ">=1.9.4" }]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "jupyter", specifier = ">=1.0.0" },
+    { name = "linkml", specifier = ">=1.9.3" },
+    { name = "mkdocs-material", specifier = ">=8.2.8" },
+    { name = "mkdocs-mermaid2-plugin", specifier = ">=1.1.1" },
+    { name = "mknotebooks", specifier = ">=0.8.0" },
+]
+
+[[package]]
 name = "click"
 version = "8.1.8"
 source = { registry = "https://pypi.org/simple" }
@@ -532,34 +560,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/9e/42/2e002f786d7df6d08fbf4afee4396f38188f758c879be5dc86cafdaddf90/curies-0.12.4.tar.gz", hash = "sha256:df01f25b92074cd998e0b3c1786b0e0b2f7c9f31709f4c5cbecc7775ce712ad3", size = 281174, upload-time = "2025-10-30T09:31:43.834Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c3/57/e7bb1d32639883ac45ed36a3aabeee6de16bf5e0879aeb5c64394d5e80d6/curies-0.12.4-py3-none-any.whl", hash = "sha256:b93679f17cce2f85f2b261f36a60899a76a34c10410e7220721c5d349aaa55cd", size = 68322, upload-time = "2025-10-30T09:31:42.167Z" },
-]
-
-[[package]]
-name = "dcat-4c-ap"
-source = { editable = "." }
-dependencies = [
-    { name = "linkml-runtime" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "jupyter" },
-    { name = "linkml" },
-    { name = "mkdocs-material" },
-    { name = "mkdocs-mermaid2-plugin" },
-    { name = "mknotebooks" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "linkml-runtime", specifier = ">=1.9.4" }]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "jupyter", specifier = ">=1.0.0" },
-    { name = "linkml", specifier = ">=1.9.3" },
-    { name = "mkdocs-material", specifier = ">=8.2.8" },
-    { name = "mkdocs-mermaid2-plugin", specifier = ">=1.1.1" },
-    { name = "mknotebooks", specifier = ">=0.8.0" },
 ]
 
 [[package]]
