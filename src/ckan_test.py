@@ -1,11 +1,11 @@
-from dcat_4c_ap import (AnalysisDataset,
-                        AnalysisSourceData,
-                        DataAnalysis,
-                        Activity,
-                        DefinedTerm,
-                        Standard,
-                        EvaluatedEntity,
-                        QualitativeAttribute)
+from chem_dcat_ap import (AnalysisDataset,
+                          AnalysisSourceData,
+                          DataAnalysis,
+                          Activity,
+                          DefinedTerm,
+                          Standard,
+                          EvaluatedEntity,
+                          QualitativeAttribute)
 from linkml_runtime.dumpers import RDFLibDumper
 from linkml_runtime.utils.schemaview import SchemaView
 
@@ -243,7 +243,7 @@ def graph_from_dataset(dataset_dict):
     #TODO: Instantiate the rest of the given dataset attributes, most importantly the measurement variables
 
     # Create an RDFLib graph using RDFLibDumper & SchemaView classes from the linkml package
-    g = RDFLibDumper().as_rdf_graph(dataset, schemaview=SchemaView("dcat_4c_ap/schema/dcat_4c_ap.yaml", merge_imports=True))
+    g = RDFLibDumper().as_rdf_graph(dataset, schemaview=SchemaView("chem_dcat_ap/schema/chem_dcat_ap.yaml", merge_imports=True))
 
     print(g.serialize(format='ttl'))
 

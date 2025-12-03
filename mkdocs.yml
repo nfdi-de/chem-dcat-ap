@@ -1,5 +1,5 @@
 ---
-site_name: "dcat-4C-ap"
+site_name: "ChemDCAT-AP"
 theme:
   name: material
   # palette:
@@ -22,7 +22,7 @@ plugins:
   #       - gen_pages.py  # or any other name or path
 
 watch:
-  - src/dcat_4c_ap/schema
+  - src/chem_dcat_ap/schema
 
 nav:
   - Home: index.md
@@ -32,8 +32,8 @@ nav:
 exclude_docs: |
   /templates-linkml/
 
-site_url: https://StroemPhi.github.io/dcat-4C-ap
-repo_url: https://github.com/StroemPhi/dcat-4C-ap
+site_url: https://nfdi-de.github.io/chem-dcat-ap
+repo_url: https://github.com/nfdi-de/chem-dcat-ap
 
 # Uncomment this block to enable use of Google Analytics.
 # Replace the property value with your own ID.

@@ -4330,7 +4330,7 @@
         },
         "EvaluatedActivity": {
             "additionalProperties": false,
-            "description": "An activity or proces that is being evaluated in a DataGeneratingActivity.",
+            "description": "An activity or process that is being evaluated in a DataGeneratingActivity.",
             "properties": {
                 "carried_out_by": {
                     "description": "The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.",
@@ -7737,11 +7737,11 @@
             "type": "object"
         }
     },
-    "$id": "https://nfdi-de.github.io/chem-dcat-ap/dcat_4c_ap.yaml",
+    "$id": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
-    "title": "dcat-4C-ap",
+    "title": "chem-dcat-ap",
     "type": "object",
     "version": null
 }
