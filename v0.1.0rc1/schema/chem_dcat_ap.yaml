@@ -1,0 +1,88 @@
+---
+id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry
+version: "0.1.0rc1"  # Managed by dynamic-versioning. Don't change this line!
+name: chem-dcat-ap
+title: ChemDCAT-AP
+description: |-
+  This is an extension of the DCAT Application Profile PLUS LinkML schema. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles/schemas to provide chemistry specific specific metadata for a dataset.
+license: CC-BY 4.0
+see_also:
+  - https://nfdi-de.github.io/chem-dcat-ap/
+  - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
+  - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
+prefixes:
+  chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+  dcatapplus: https://nfdi-de.github.io/dcat-ap-plus/latest/schema/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/vocab/
+  schema: http://schema.org/
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  adms: http://www.w3.org/ns/adms#
+  prov: http://www.w3.org/ns/prov#
+  sosa: http://www.w3.org/ns/sosa/
+  vcard: http://www.w3.org/2006/vcard/ns#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  foaf: http://xmlns.com/foaf/0.1/
+  qudt: http://qudt.org/schema/qudt/
+  RO: http://purl.obolibrary.org/obo/RO_
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  IAO: http://purl.obolibrary.org/obo/IAO_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  T4FS: http://purl.obolibrary.org/obo/T4FS_
+  FOODON: http://purl.obolibrary.org/obo/FOODON_
+  CHEMINF: http://semanticscience.org/resource/CHEMINF_
+  RXNO: http://purl.obolibrary.org/obo/RXNO_
+  MOP: http://purl.obolibrary.org/obo/MOP_
+  ex: http://example.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  SIO: http://semanticscience.org/resource/SIO_
+  doi: https://doi.org/
+  NMR: "http://nmrML.org/nmrCV#NMR:"
+  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
+  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
+  AFP: http://purl.allotrope.org/ontologies/process#AFP_
+  AFR: http://purl.allotrope.org/ontologies/result#AFR_
+  VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
+  PROCO: http://purl.obolibrary.org/obo/PROCO_
+  time: http://www.w3.org/2006/time#
+  REX: http://purl.obolibrary.org/obo/REX_
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+default_prefix: chemdcatap
+default_range: string
+imports:
+  - linkml:types
+  - dcatapplus:dcat_ap_plus
+  - chemical_entities_ap
+  - chemical_reaction_ap
+
+classes:
+
+  SubstanceSample:
+    class_uri: SIO:001378
+    is_a: MaterialSample
+    aliases:
+      - analyte
+    description: A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.
+    mixins:
+      - ChemicalSubstance
+
+  PolymerSample:
+    is_a: SubstanceSample
+    class_uri: SIO:001378
+    description: A SubstanceSample derived from a Polymer.
+    mixins:
+      - Polymer
+    todos:
+      - "Find a better mapping, as it is currently mapped to same ontology class as its parent."
+
+  Laboratory:
+    is_a: Surrounding
+    class_uri: ENVO:01001405
+    description: A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
