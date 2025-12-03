@@ -3,7 +3,7 @@ requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [project]
-name = "chem_dcat_ap"
+name = "chem-dcat-ap"
 description = "This is an extension of the DCAT Application Profile in LinkML. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles to provide domain specific metadata for a dataset."
 authors = [
   {name = "Philip Strömert", email = "philip.stroemert@tib.eu"},

@@ -469,7 +469,7 @@ wheels = [
 ]
 
 [[package]]
-name = "chem_dcat_ap"
+name = "chem-dcat-ap"
 source = { editable = "." }
 dependencies = [
     { name = "linkml-runtime" },
