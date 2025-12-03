@@ -16,6 +16,8 @@ permissions: {}
 
 jobs:
   run:
+    # Don't run for PRs from forks
+    if: github.event.pull_request.head.repo.full_name == github.repository
     # Grant GITHUB_TOKEN the permissions required to make a gh-pages deployment
     permissions:
       contents: write  # to let mkdocs write the new docs
@@ -30,6 +32,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      # https://github.com/actions/setup-python
+      - name: Set up Python 3
+        uses: actions/setup-python@v6.1.0
+        with:
+          python-version: 3.13
+
       # https://github.com/astral-sh/setup-uv
       - name: Install uv
         uses: astral-sh/setup-uv@v7.1.4
@@ -37,18 +45,17 @@ jobs:
           python-version: 3.13
           enable-cache: true
           cache-dependency-glob: "uv.lock"
-      # https://github.com/actions/setup-python
-      - name: Set up Python 3
-        uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
-        with:
-          python-version: 3.13
 
+      - name: Install just
+        run: |
+          uv tool install rust-just
 
       - name: Install dependencies
         run: uv sync --dev --no-progress
 
       - name: Build documentation
         run: |
+          just gen-doc
           uv run mkdocs build -d site
           touch site/.nojekyll
 

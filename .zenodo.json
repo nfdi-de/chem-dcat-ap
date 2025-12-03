@@ -1,0 +1,43 @@
+{
+  "access_right": "open",
+  "communities": [
+    {"identifier": "nfdi4cat"},
+    {"identifier": "nfdi4chem"}
+  ],
+  "creators": [
+    {
+      "name": "Str\u00f6mert, Philip",
+      "orcid": "0000-0002-1595-3213",
+      "affiliation": "TIB - Leibniz Information Centre for Science and Technology, Germany"
+    },
+    {
+      "name": "Borgelt, Hendrik",
+      "orcid": "0000-0001-5886-7860",
+      "affiliation": "TU Dortmund University, Germany"
+    },
+    {
+      "name": "Doerr, Mark",
+      "orcid": "0000-0003-3270-6895",
+      "affiliation": "University of Greifswald, Germany"
+    },
+    {
+      "name": "Linke, David",
+      "orcid": "0000-0002-5898-1820",
+      "affiliation": "Leibniz Institute for Catalysis, Albert-Einstein-Str. 29 A, 18059 Rostock, Germany"
+    }
+  ],
+  "description": "<p><a href=\"https://nfdi-de.github.io/chem-dcat-ap/\">ChemDCAT-AP</a> is a metadata schema extension for providing chemistry specific metadata for a dataset. It builds upon the domain-agnostic <a href=\"https://nfdi-de.github.io/dcat-ap-plus/\">DCAT-AP-PLUS</a> schema.</p> <p>The metadata schema is developend as <a href=\"https://linkml.io/\">LinkML</a> model which allows to generate various artefacts such as JSON-Schema, SHACL shapes, Python-bindings, and documentation.</p>",
+  "keywords": [
+    "LinkML", "DCAT", "DCAT-AP", "data modelling"
+  ],
+  "license": "MIT",
+  "related_identifiers": [
+    {
+        "identifier": "doi:10.5281/zenodo.5703670",
+        "relation": "requires",
+        "resource_type": "software",
+        "scheme": "doi"
+    }
+  ],
+  "upload_type": "software"
+}

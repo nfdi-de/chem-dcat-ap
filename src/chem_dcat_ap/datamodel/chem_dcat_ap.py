@@ -1,5 +1,5 @@
 # Auto generated from chem_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-03T12:24:25
+# Generation date: 2025-12-03T14:19:01
 # Schema: chem-dcat-ap
 #
 # id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry
@@ -60,7 +60,7 @@ from linkml_runtime.linkml_model.types import Date, Decimal, Float, String, Urio
 from linkml_runtime.utils.metamodelcore import Decimal, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = None
+version = "0.0.0.post340.dev0+4762fd7"
 
 # Namespaces
 AFE = CurieNamespace('AFE', 'http://purl.allotrope.org/ontologies/equipment#AFE_')

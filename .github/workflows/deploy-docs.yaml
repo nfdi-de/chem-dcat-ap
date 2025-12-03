@@ -2,7 +2,14 @@
 name: Deploy docs
 on:  # yamllint disable-line rule:truthy
   push:
-    branches: [main]
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+rc[0-9]'
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions: {}
@@ -55,4 +62,28 @@ jobs:
       - name: Generate schema documentation
         run: |
           just gen-doc
-          uv run mkdocs gh-deploy
+
+      # The if-conditions below make sure to select the right step, depending
+      # on the job trigger. Only one of the steps below will run at a time.
+      # The others will be skipped.
+
+      - name: Check docs in pull requests with strict mode
+        if: github.event_name == 'pull_request'
+        run: |
+          # XXX Enable strict mode once docs are clean
+          echo "Strict check of docs disabled."
+          # uv run mkdocs build --strict
+
+      # yamllint disable rule:line-length
+      - name: Build & deploy "dev" docs for a new commit to main
+
+        if: (github.event_name == 'push' && github.ref_type != 'tag') || github.event_name == 'workflow_dispatch'
+        run: |
+          export SHORT_SHA=$(echo "${GITHUB_SHA}" | cut -c1-7)
+          uv run mike deploy --push --update-aliases --title "dev (${SHORT_SHA})" dev
+
+      - name: Build & deploy docs for a new version tag
+        if: github.ref_type == 'tag' && github.event_name == 'push'
+        run: |
+          uv run mike deploy --push --update-aliases ${{ github.ref_name }} latest
+          uv run mike set-default latest --push

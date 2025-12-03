@@ -1,9 +1,9 @@
-# Contributing to dcat-4C-ap
+# Contributing to chem-dcat-ap
 
 :+1: First of all: Thank you for taking the time to contribute!
 
 The following is a set of guidelines for contributing to
-dcat-4C-ap. These guidelines are not strict rules.
+chem-dcat-ap. These guidelines are not strict rules.
 Use your best judgment, and feel free to propose changes to this document
 in a pull request.
 
@@ -22,7 +22,7 @@ in a pull request.
 
 ## Code of Conduct
 
-The dcat-4C-ap team strives to create a
+The chem-dcat-ap team strives to create a
 welcoming environment for editors, users and other contributors.
 Please carefully read our [Code of Conduct](CODE_OF_CONDUCT.md).
 
@@ -73,7 +73,7 @@ Please submit a [Pull Request][pulls] to submit a new term for consideration.
     - Never work on the main branch, always work on an issue/feature branch
     - Core developers can work on branches off origin rather than forks
     - Always create a PR on a branch to maximize transparency of what you are doing
-    - PRs should be reviewed and merged in a timely fashion by the dcat-4C-ap technical leads
+    - PRs should be reviewed and merged in a timely fashion by the chem-dcat-ap technical leads
     - PRs that do not pass GitHub actions should never be merged
     - In the case of git conflicts, the contributor should try and resolve the conflict
     - If a PR fails a GitHub action check, the contributor should try and resolve the issue in a timely fashion
@@ -102,7 +102,7 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
 - Include examples and counter-examples (intentionally invalid examples)
     - Rationale: these serve as documentation and unit tests
     - These will be used by the automated test suite
-    - All elements of the nmdc-schema must be illustrated with valid and invalid data examples in src/data. New schema elements will not be merged into the main branch until examples are provided
+    - All elements of the schema must be illustrated with valid and invalid data examples in src/data. New schema elements will not be merged into the main branch until examples are provided
     - Invalid example data files should be invalid for one single reason, which should be reflected in the filename. It should be possible to render the invalid example files valid by addressing that single fault.
 - Use enums for categorical values
     - Rationale: Open-ended string ranges encourage multiple values to represent the same entity, like “water”, “H2O” and “HOH”
@@ -110,12 +110,12 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Non-categorical values, e.g. descriptive fields like `name` or `description` fall outside of this.
 - Reuse
     - Existing scheme elements should be reused where appropriate, rather than making duplicative elements
-    - More specific classes can be created by refinining classes using inheritance (`is_a`)
+    - More specific classes can be created by refining classes using inheritance (`is_a`)
 
 [about-branches]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches
 [about-issues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
 [about-pulls]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
-[issues]: https://github.com/StroemPhi/dcat-4C-ap/issues/
-[pulls]: https://github.com/StroemPhi/dcat-4C-ap/pulls/
+[issues]: https://github.com/nfdi-de/chem-dcat-ap/issues/
+[pulls]: https://github.com/nfdi-de/chem-dcat-ap/pulls/
 
 We recommend also reading [GitHub Pull Requests: 10 Tips to Know](https://blog.mergify.com/github-pull-requests-10-tips-to-know/)
