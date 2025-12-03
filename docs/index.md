@@ -4,5 +4,5 @@ This is an extension of the DCAT Application Profile in LinkML. It is intended t
 
 URI: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
 
-- Auto-generated [schema documentation](elements/index.md)
+- Auto-generated [schema documentation](elements/overview.md)
 - License: MIT

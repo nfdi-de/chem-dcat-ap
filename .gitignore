@@ -1,11 +1,22 @@
+docs/local-js-pkgs
+
 # generated part of documentation
-/docs/elements/*.md
+docs/elements/**/*.md
+
+# generated merged schema
+docs/schema/*
+!docs/schema/README.md
 
 # linkml-run-examples output (not useful to have in git in its current form)
 /examples/output/*.yaml
 
 # Derived schemas, generated from the schema.yaml
 tmp/
+
+# generated model representations of generators that ignore config.yaml
+project/java
+project/owl
+project/typescript
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -141,7 +152,3 @@ dmypy.json
 .idea
 # Local vscode editor config
 .vscode
-/docs
-/.idea
-/docs
-/.idea

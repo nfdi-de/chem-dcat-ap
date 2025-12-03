@@ -1,14 +1,57 @@
 ---
-site_name: "ChemDCAT-AP"
+site_name: "ChemDCAT-AP Documentation"
+site_url: https://nfdi-de.github.io/chem-dcat-ap
+repo_url: https://github.com/nfdi-de/chem-dcat-ap
+
 theme:
   name: material
-  # palette:
-  #  scheme: slate
-  #  primary: cyan
+  # logo-customization: https://github.com/squidfunk/mkdocs-material/discussions/2729
+  custom_dir: docs/overrides
+  logo_dark_mode: 'images/logo-icon.svg'
+  logo_light_mode: 'images/logo-icon.svg'
+
+  # Toggling between default/light/dark color schemes
+  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+  palette:
+
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: 'blue grey'
+      accent: 'indigo'
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: 'blue grey'
+      accent: 'indigo'
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
   features:
     - content.tabs.link
+    - search.highlight
+    - navigation.expand
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+
+  favicon: 'images/favicon.svg'
 
 # for adding extra css/js see https://www.mkdocs.org/user-guide/customizing-your-theme/
+extra_css:
+  - stylesheets/extra.css
+
 
 plugins:
   - search
@@ -16,7 +59,15 @@ plugins:
       execute: false
   - mermaid2:
       version: 11.4.1
-  # TODO rebuild docs on schema change (https://github.com/linkml/linkml-project-copier/issues/39)
+      # Optionally provide a local copy of mermaid.js (path relative to docs/)
+      # javascript: local-js-pkgs/mermaid.min.js
+  - mike:
+      # Multi-version support, https://github.com/jimporter/mike
+      canonical_version: "latest"
+      version_selector: true
+
+  # TODO rebuild docs on schema change see
+  # https://github.com/dalito/linkml-project-copier/issues/39
   # - gen-files:
   #     scripts:
   #       - gen_pages.py  # or any other name or path
@@ -26,14 +77,30 @@ watch:
 
 nav:
   - Home: index.md
-  - Schema: elements/index.md
+  - Schema: elements/overview.md
+  - Versioning: versioning.md
   - About: about.md
 
+# enable version selector for multi-version support
+extra:
+  version:
+    provider: mike
+    alias: true
+    default:
+      - stable
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences:
+      # make exceptions to highlighting of code:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
 exclude_docs: |
   /templates-linkml/
-
-site_url: https://nfdi-de.github.io/chem-dcat-ap
-repo_url: https://github.com/nfdi-de/chem-dcat-ap
 
 # Uncomment this block to enable use of Google Analytics.
 # Replace the property value with your own ID.

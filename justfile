@@ -38,7 +38,7 @@ dest := "project"
 pymodel := src / schema_name / "datamodel"
 source_schema_path := source_schema_dir / schema_name + ".yaml"
 docdir := "docs/elements"  # Directory for generated documentation
-merged_schema_path := "docs/schema" / schema_name + ".yaml"
+distrib_schema_path := "docs/schema"  # Directory for publishing schema artifacts
 
 # ============== Project recipes ==============
 
@@ -49,7 +49,7 @@ _default: _status
 # Initialize a new project (use this for projects not yet under version control)
 [group('project management')]
 setup: _check-config _git-init install _git-add && _setup_part2
-  git commit -m "Initialise git with minimal project" -a
+  git commit -m "Initialise git with minimal project" -a || true
 
 _setup_part2: gen-project gen-doc
   @echo
@@ -92,9 +92,9 @@ test: _test-schema _test-python _test-examples
 lint:
   uv run linkml-lint {{source_schema_dir}}
 
-# Generate md documentation for the schema
+# Generate md documentation for the schema and add artifacts
 [group('model development')]
-gen-doc: _gen-yaml
+gen-doc: _gen-yaml && _add-artifacts
   uv run gen-doc {{gen_doc_args}} -d {{docdir}} {{source_schema_path}}
 
 # Build docs and run test server
@@ -112,14 +112,19 @@ gen-project:
   uv run gen-project {{config_yaml}} -d {{dest}} {{source_schema_path}}
   mv {{dest}}/*.py {{pymodel}}
   uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{schema_name}}_pydantic.py
+
+  @# Some generators ignore config_yaml or cannot create directories, so we run them separately.
   uv run gen-java {{gen_java_args}} --output-directory {{dest}}/java/ {{source_schema_path}}
-  @if [ ! ${{gen_owl_args}} ]; then \
-    mkdir -p {{dest}}/owl && \
-    uv run gen-owl {{gen_owl_args}} {{source_schema_path}} > {{dest}}/owl/{{schema_name}}.owl.ttl || true ; \
+
+  @if [ ! -d "{{dest}}/typescript" ]; then \
+    mkdir -p {{dest}}/typescript ; \
   fi
-  @if [ ! ${{gen_ts_args}} ]; then \
-    uv run gen-typescript {{gen_ts_args}} {{source_schema_path}} > {{dest}}/typescript/{{schema_name}}.ts || true ; \
+  uv run gen-typescript {{gen_ts_args}} {{source_schema_path}} > {{dest}}/typescript/{{schema_name}}.ts
+
+  @if [ ! -d "{{dest}}/owl" ]; then \
+    mkdir -p {{dest}}/owl ; \
   fi
+  uv run gen-owl {{gen_owl_args}} {{source_schema_path}} > "{{dest}}/owl/{{schema_name}}.owl.ttl"
 
 # ============== Migrations recipes for Copier ==============
 
@@ -197,10 +202,13 @@ _test-examples: _ensure_examples_output
     --output-directory examples/output \
     --schema {{source_schema_path}} > examples/output/README.md
 
-# Generate merged model
+# Add the merged model to docs/schema.
 _gen-yaml:
-  -mkdir -p docs/schema
-  uv run gen-yaml {{source_schema_path}} > {{merged_schema_path}}
+  -mkdir -p {{distrib_schema_path}}
+  uv run gen-yaml {{source_schema_path}} > {{distrib_schema_path}}/{{schema_name}}.yaml
+
+# Overridable recipe to add project-specific artifacts to the distribution schema path
+_add-artifacts:
 
 # Run documentation server
 _serve:
@@ -247,3 +255,21 @@ _ensure_examples_output:  # Ensure a clean examples/output directory exists
 # ============== Include project-specific recipes ==============
 
 import "project.justfile"
+
+# ====== Override recipes from above with custom versions =======
+
+# Uncomment the following line to allow duplicate recipe names
+set allow-duplicate-recipes
+
+# Overriding recipes from the root justfile by adding a recipe with the same
+# name in an imported file is not possible until a known issue in just is fixed,
+# https://github.com/casey/just/issues/2540
+
+# Custom recipe for dcat-ap-plus to add project-specific artifacts to the distribution schema path
+_add-artifacts:
+  @echo "Adding project-specific artifacts to {{distrib_schema_path}} for deploying to gh-pages"
+  for d in "{{distrib_schema_path}}"/*/; do rm -rf "$d"/; done
+  for d in "{{dest}}"/*/; do cp -a "$d" "{{distrib_schema_path}}"/; done
+  cp {{source_schema_dir}}/*.yaml {{distrib_schema_path}}/
+  @mkdir -p {{distrib_schema_path}}/merged-yaml
+  uv run gen-yaml {{source_schema_path}} > {{distrib_schema_path}}/merged-yaml/{{schema_name}}.yaml
