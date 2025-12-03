@@ -24,7 +24,7 @@ https://nfdi-de.github.io/chem-dcat-ap
 * [examples/](examples/) - example data and code
 * [project/](project/) - project files (do not edit these)
 * [src/](src/) - source files (edit these)
-  * [dcat_4c_ap](src/chem_dcat_ap)
+  * [chem_dcat_ap](src/chem_dcat_ap)
     * [schema](src/chem_dcat_ap/schema) -- LinkML schema
       (edit this)
     * [datamodel](src/chem_dcat_ap/datamodel) -- generated
