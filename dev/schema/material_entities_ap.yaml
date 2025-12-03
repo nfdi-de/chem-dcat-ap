@@ -1,0 +1,203 @@
+---
+id: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+name: material-entity-ap
+title: Material Entities Application Profile
+description: |-
+  This is an application profile for material entities to be used for extending the DCAT-AP-PLUS.
+license: CC-BY 4.0
+prefixes:
+  material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/
+  dcatapplus: https://nfdi-de.github.io/dcat-ap-plus/latest/schema/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/vocab/
+  schema: http://schema.org/
+  dcterms: http://purl.org/dc/terms/
+  sosa: http://www.w3.org/ns/sosa/
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  RO: http://purl.obolibrary.org/obo/RO_
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  IAO: http://purl.obolibrary.org/obo/IAO_
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  ex: http://example.org/
+  SIO: http://semanticscience.org/resource/SIO_
+  doi: https://doi.org/
+  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
+  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
+  AFP: http://purl.allotrope.org/ontologies/process#AFP_
+  VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
+default_prefix: material_entities_ap
+default_range: string
+imports:
+  - linkml:types
+  - dcatapplus:dcat_ap_plus
+
+classes:
+  Materialistic:
+    mixin: true
+    description: A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.
+    slots:
+      - alternative_label
+      - has_physical_state
+      - has_temperature
+      - has_mass
+      - has_volume
+      - has_density
+      - has_pressure
+      # more slots might need to be defined for a MaterialEntity
+
+  MaterialEntity:
+    class_uri: BFO:0000040
+    is_a: Entity
+    mixins:
+      - Materialistic
+    description: A material is an Entity that has some portion of matter as proper part.
+    slot_usage:
+      has_part:
+        slot_uri: BFO:0000051
+        description: The slot to provide the parts of a MaterialEntity.
+        range: MaterialEntity
+        multivalued: true
+        inlined_as_list: true
+        recommended: true
+
+  MaterialSample:
+    is_a: EvaluatedEntity
+    class_uri: OBI:0000747
+    description: A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.
+    mixins:
+      - Materialistic
+    slots:
+      - derived_from
+    slot_usage:
+      derived_from:
+        description: The slot to specify the MaterialEntity or MaterialSample from which the MaterialSample was created.
+    exact_mappings:
+      - SIO:001050
+      - VOC4CAT:0005056
+
+  Temperature:
+    is_a: QuantitativeAttribute
+    class_uri: qudt:Quantity
+    description: A physical quantity that quantitatively expresses the attribute of hotness or coldness.
+    close_mappings:
+      - PATO:0000146
+    #slot_usage:
+      #has_quantity_type:
+        #ifabsent: http://qudt.org/vocab/quantitykind/Temperature
+  Mass:
+    is_a: QuantitativeAttribute
+    class_uri: qudt:Quantity
+    description: The strength of a body's gravitational attraction to other bodies.
+    close_mappings:
+      - PATO:0000125
+    #slot_usage:
+      #has_quantity_type:
+      #ifabsent: http://qudt.org/vocab/quantitykind/Mass
+  Volume:
+    is_a: QuantitativeAttribute
+    class_uri: qudt:Quantity
+    description: A measure of regions in three-dimensional space.
+    close_mappings:
+      - PATO:0000918
+    #slot_usage:
+      #has_quantity_type:
+      #ifabsent: http://qudt.org/vocab/quantitykind/Volume
+  Density:
+    is_a: QuantitativeAttribute
+    class_uri: SIO:001406
+    description: A measure of the mass per unit volume of a substance.
+    close_mappings:
+      - PATO:0001019
+      #slot_usage:
+      #has_quantity_type:
+      #ifabsent: http://qudt.org/vocab/quantitykind/Density
+  Pressure:
+    is_a: QuantitativeAttribute
+    class_uri: qudt:Quantity
+    close_mappings:
+      - PATO:0001025
+    #slot_usage:
+      #has_quantity_type:
+      #ifabsent: http://qudt.org/vocab/quantitykind/Pressure
+
+
+slots:
+  alternative_label:
+    slot_uri: skos:altLabel
+    description:  The slot to specify an alternative label, name or title for a MaterialEntity.
+    todos:
+      - "Should probably rather declared on Entity or in some common metadata mixin instead."
+
+  has_physical_state:
+    #is_a: has_qualitative_attribute # cannot be made a subproperty due to its Emum range
+    slot_uri: SIO:000008
+    description: The slot to specify the physical state of a MaterialEntity.
+    range: PhysicalStateEnum
+    multivalued: false
+    inlined: false
+    todos:
+      - "Find out how to make this a subproperty of has_qualitative_attribute, as it currently throws the error 'physical_state enumerations cannot be inlined' due to the fact that we are using an enum here."
+
+  has_temperature:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    range: Temperature
+    description: The slot to provide the Temperature of a MaterialEntity.
+
+  has_mass:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    range: Mass
+    description: The slot to provide the Mass of a MaterialEntity.
+
+  has_volume:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    range: Volume
+    description: The slot to provide the Volume of a MaterialEntity.
+
+  has_density:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    range: Density
+    description: The slot to provide the Density of a MaterialEntity.
+
+  has_pressure:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    range: Pressure
+    description: The slot to provide the Pressure of a MaterialEntity.
+
+  derived_from:
+    slot_uri: prov:wasDerivedFrom
+    description: The slot to specify the Entity from which a Sample was derived.
+    range: Entity
+    inlined: true
+    inlined_as_list: false
+    exact_mappings:
+      - SIO:000244
+    close_mappings:
+      - BFO:0000050
+      - dcterms:partOf
+
+enums:
+  PhysicalStateEnum:
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      SOLID:
+        meaning: PATO:0001736
+        description: A state of matter in which molecules are closely packed and cannot move past each other.
+      CRYSTAL:
+        meaning: PATO:0002066
+        description: A solid state of matter whose constituents (such as atoms, molecules, or ions) are arranged in a highly ordered microscopic structure, forming a crystal lattice that extends in all directions.
+      LIQUID:
+        meaning: PATO:0001735
+        description: A state of matter with a definite volume but no fixed shape. Liquids adapt to the shape of their container and are nearly incompressible, maintaining their volume even under pressure.
+      GASEOUS:
+        meaning: PATO:0001737
+        description: A state of matter with neither fixed volume nor fixed shape.
