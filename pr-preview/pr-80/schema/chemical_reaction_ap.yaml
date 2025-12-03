@@ -1,0 +1,256 @@
+---
+id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+name: chemical-reaction-ap
+title: Chemical Reaction Application Profile
+description: |-
+  This is an application profile for chemical reactions that is intended to be used as an extension of DCAT-AP-PLUS.
+license: CC-BY 4.0
+prefixes:
+  chemical_reaction_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/
+  chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+  dcatapplus: https://nfdi-de.github.io/dcat-ap-plus/latest/schema/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/vocab/
+  schema: http://schema.org/
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  prov: http://www.w3.org/ns/prov#
+  sosa: http://www.w3.org/ns/sosa/
+  vcard: http://www.w3.org/2006/vcard/ns#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  foaf: http://xmlns.com/foaf/0.1/
+  qudt: http://qudt.org/schema/qudt/
+  RO: http://purl.obolibrary.org/obo/RO_
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  IAO: http://purl.obolibrary.org/obo/IAO_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  T4FS: http://purl.obolibrary.org/obo/T4FS_
+  FOODON: http://purl.obolibrary.org/obo/FOODON_
+  CHEMINF: http://semanticscience.org/resource/CHEMINF_
+  RXNO: http://purl.obolibrary.org/obo/RXNO_
+  MOP: http://purl.obolibrary.org/obo/MOP_
+  ex: http://example.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  SIO: http://semanticscience.org/resource/SIO_
+  doi: https://doi.org/
+  NMR: "http://nmrML.org/nmrCV#NMR:"
+  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
+  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
+  AFP: http://purl.allotrope.org/ontologies/process#AFP_
+  VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
+  PROCO: http://purl.obolibrary.org/obo/PROCO_
+  time: http://www.w3.org/2006/time#
+  REX: http://purl.obolibrary.org/obo/REX_
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+default_prefix: chemical_reaction_ap
+default_range: string
+imports:
+  - linkml:types
+  - dcatapplus:dcat_ap_plus
+  - chemical_entities_ap
+
+classes:
+
+  ChemicalReaction:
+    is_a: Activity
+    class_uri: SIO:010345
+    description: A process that leads to the transformation of one set of chemical substances to another.
+    slots:
+      - used_starting_material
+      - used_reactant
+      - generated_product
+      - used_catalyst
+      - used_solvent
+      - has_duration
+      - used_reactor
+      - has_temperature # reused from material_entities_ap.yaml
+      - has_pressure # reused from material_entities_ap.yaml
+      - has_yield
+      - has_reaction_step
+      - related_resource
+    slot_usage:
+      has_temperature:
+        description: The slot to specify the Temperature at which a ChemicalReaction takes place.
+        inlined_as_list: true
+      has_pressure:
+        description: The slot to specify the Pressure at which a ChemicalReaction takes place.
+      related_resource:
+        range: Resource
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+        description: The slot to specify any Documents related to a ChemicalReaction.
+    exact_mappings:
+      - MOP:0000543
+      - REX:0000002
+      - AFP:0003711
+    narrow_mappings:
+      - RXNO:0000329
+
+  StartingMaterial:
+    class_uri: PROCO:0000029
+    is_a: ChemicalSubstance
+    description: A ChemicalSubstance with that has a starting material role in a synthesis.
+    slots:
+      - has_molar_equivalent
+
+  DissolvingSubstance:
+    class_uri: SIO:010417
+    is_a: AgenticEntity
+    aliases:
+      - solvent
+    slots:
+      - has_percentage_of_total
+    mixins:
+      - ChemicalSubstance
+      - Materialistic
+    description: A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.
+    exact_mappings:
+      - VOC4CAT:0007246
+      - NCIT:C45790
+
+  Reagent:
+    class_uri: SIO:010411
+    is_a: ChemicalSubstance
+    description: A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.
+    slots:
+      - has_molar_equivalent
+    exact_mappings:
+      - NCIT:C802
+      - VOC4CAT:0000101
+    close_mappings:
+      - OBI:0001879
+      - PROCO:0000029
+
+  ChemicalProduct:
+    class_uri: NCIT:C48810
+    is_a: ChemicalSubstance
+    description: A chemical substance that is produced by a ChemicalReaction.
+    exact_mappings:
+      - VOC4CAT:0000194
+    close_mappings:
+      - ENVO:2000000
+
+  Catalyst:
+    class_uri: SIO:010344
+    is_a: AgenticEntity
+    mixins:
+      - ChemicalSubstance
+      - Materialistic
+    description: A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.
+    slots:
+      - has_molar_equivalent
+    exact_mappings:
+      - VOC4CAT:0000194
+      - NCIT:C48810
+    close_mappings:
+      - CHEBI:35223
+
+  Reactor:
+    is_a: Device
+    class_uri: AFE:0000153
+    mixins:
+      - Materialistic
+    description: A reactor is a container for controlling a biological or chemical reaction or process.
+    exact_mappings:
+      - VOC4CAT:0007017
+
+  Yield:
+    class_uri: qudt:Quantity
+    is_a: QuantitativeAttribute
+    description: A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).
+    exact_mappings:
+      - VOC4CAT:0005005
+
+  MolarEquivalent:
+    class_uri: qudt:Quantity
+    is_a: QuantitativeAttribute
+    description: A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.
+
+  PercentageOfTotal:
+    class_uri: qudt:Quantity
+    is_a: QuantitativeAttribute
+    description: A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.
+      #slot_usage:
+      #has_quantity_type:
+      # ifabsent: http://qudt.org/vocab/quantitykind/Dimensionless
+    #unit:
+    # ifabsent: https://qudt.org/vocab/unit/MilliL
+
+slots:
+  used_starting_material:
+    range: StartingMaterial
+    is_a: had_input_entity
+    slot_uri: RO:0004009
+    description: The slot to specify the Reagent(s) of a ChemicalReaction.
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+  used_reactant:
+    range: Reagent
+    is_a: had_input_entity
+    slot_uri: RO:0004009
+    description: The slot to specify the Reagent(s) of a ChemicalReaction.
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+  generated_product:
+    range: ChemicalProduct
+    is_a: had_output_entity
+    slot_uri: RO:0004008
+    description: The slot to specify the Product of a ChemicalReaction.
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+  used_catalyst:
+    range: Catalyst
+    is_a: carried_out_by
+    slot_uri: RXNO:0000425
+    description: The slot to specify the Catalyst of a ChemicalReaction.
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+  used_solvent:
+    range: DissolvingSubstance
+    is_a: carried_out_by
+    slot_uri: prov:wasAssociatedWith
+    description: The slot to specify the chemical substance that had a solvent role (CHEBI:35223) in a ChemicalReaction.
+    recommended: true
+    multivalued: true
+    inlined_as_list: true
+  has_duration:
+    slot_uri: schema:duration
+    range: duration
+    description: A slot to provide the duration of a ChemicalReaction.
+  used_reactor:
+    is_a: carried_out_by
+    slot_uri: prov:wasAssociatedWith
+    description: The slot to specify the reactor used in a ChemicalReaction.
+    range: Reactor
+  has_yield:
+    slot_uri: SIO:000008
+    is_a: has_quantitative_attribute
+    description: A slot to provide the percentage of how much of the ChemicalProduct was produced by a ChemicalReaction.
+    range: Yield
+  has_molar_equivalent:
+    slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
+    is_a: has_quantitative_attribute
+    range: MolarEquivalent
+    description: A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.
+  has_percentage_of_total:
+    slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
+    is_a: has_quantitative_attribute
+    range: PercentageOfTotal
+    description:
+      A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.
+  has_reaction_step:
+    is_a: has_part
+    slot_uri: BFO:0000051
+    description: A slot to specify a step (part) of a ChemicalReaction that is itself a ChemicalReaction.
+    range: ChemicalReaction

@@ -1,0 +1,213 @@
+---
+id: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+name: chemical-entities-ap
+title: Chemical Entities Application Profile
+description: |-
+  This is an application profile for chemical entities to be used for extending the DCAT-AP-PLUS.
+license: CC-BY 4.0
+prefixes:
+  chemical_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/
+  chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/vocab/
+  schema: http://schema.org/
+  dcterms: http://purl.org/dc/terms/
+  sosa: http://www.w3.org/ns/sosa/
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  RO: http://purl.obolibrary.org/obo/RO_
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  IAO: http://purl.obolibrary.org/obo/IAO_
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  ex: http://example.org/
+  SIO: http://semanticscience.org/resource/SIO_
+  doi: https://doi.org/
+  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
+  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
+  AFP: http://purl.allotrope.org/ontologies/process#AFP_
+  AFX: http://purl.allotrope.org/ontologies/property#AFX_
+  AFR: http://purl.allotrope.org/ontologies/result#AFR_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
+  EDAM: http://edamontology.org/data_
+default_prefix: chemical_entities_ap
+default_range: string
+imports:
+  - linkml:types
+  - material_entities_ap
+
+classes:
+
+  ChemicalEntity:
+    is_a: MaterialEntity
+    class_uri: CHEBI:23367
+    description: Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.
+    slots:
+      - inchi
+      - inchikey
+      - smiles
+      - molecular_formula
+      - iupac_name
+      - has_molar_mass
+  Atom:
+    class_uri: CHEBI:33250
+    is_a: ChemicalEntity
+    description: A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.
+    slot_usage:
+      rdf_type:
+        description: The slot to provide the Atom as a ChEBI ID from the atom (CHEBI:33250) branch.
+        required: true
+
+  MolarMass:
+    class_uri: AFR:0002409
+    is_a: Mass
+    description: A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.
+    close_mappings:
+      - PATO:0001681
+  InChIKey:
+    class_uri: CHEMINF:000059
+    is_a: QualitativeAttribute
+  InChi:
+    class_uri: CHEMINF:000113
+    is_a: QualitativeAttribute
+    description: A structure descriptor which conforms to the InChI format specification.
+  MolecularFormula:
+    class_uri: CHEMINF:000042
+    is_a: QualitativeAttribute
+    description: A structure descriptor which identifies each constituent element by its chemical symbol and indicates the number of atoms of each element found in each discrete molecule of that compound.
+  IUPACName:
+    class_uri: CHEMINF:000107
+    is_a: QualitativeAttribute
+    description: A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).
+  SMILES:
+    class_uri: CHEMINF:000018
+    is_a: QualitativeAttribute
+    description: A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
+
+  ChemicalSubstance:
+    class_uri: CHEBI:59999
+    is_a: MaterialEntity
+    mixin: true
+    description: A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.
+    slots:
+      - has_concentration
+      - has_ph_value
+      - composed_of
+      - has_molar_equivalent
+      - has_amount
+      - has_percentage_of_total
+  Polymer:
+    class_uri: CHEBI:60027
+    is_a: ChemicalSubstance
+    mixin: true
+    description: A ChemicalSubstance that is composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..
+    # attributes: # Needed attributes will be defined here
+
+  Concentration:
+    is_a: QuantitativeAttribute
+    class_uri: CHMO:0002820
+    description: A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume of the mixture.
+    exact_mappings:
+      - EDAM:2140
+      - NCIT:C41185
+      - VOC4CAT:0007244
+      - AFR:0002036
+    narrow_mappings:
+      - CHMO:0002822
+    close_mappings:
+      - PATO:0000033
+    #slot_usage:
+      #has_quantity_type:
+      # ifabsent: http://qudt.org/vocab/quantitykind/Concentration
+      # ifabsent: http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration
+      # ifabsent: http://qudt.org/vocab/quantitykind/MassConcentration
+  AmountOfSubstance:
+    class_uri: qudt:Quantity
+    is_a: QuantitativeAttribute
+    aliases:
+      - SubstanceAmount
+    description: The total amount of substance used in a ChemicalReaction.
+    close_mappings:
+      - PATO:0000070
+    #slot_usage:
+      #has_quantity_type:
+      # ifabsent: http://qudt.org/vocab/quantitykind/AmountOfSubstance
+  PHValue:
+    is_a: QuantitativeAttribute
+    class_uri: SIO:001089
+    exact_mappings:
+      - NCIT:C45997
+      - AFR:0001142
+    close_mappings:
+      - PATO:0001842
+      #slot_usage:
+      #has_quantity_type:
+      #ifabsent: http://qudt.org/vocab/quantitykind/Acidity
+
+slots:
+
+  composed_of:
+    slot_uri: BFO:0000051
+    is_a: has_part
+    description: The slot to provide the chemical entities of which a ChemicalSubstance is composed of.
+    range: ChemicalEntity
+    multivalued: true
+    inlined_as_list: true
+    recommended: true
+    close_mappings:
+      - AFX:0000940
+  has_concentration:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
+    range: Concentration
+    description: The slot to provide the Concentration of a ChemicalSubstance.
+  has_amount:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
+    range: AmountOfSubstance
+    description: The slot to provide the AmountConcentration of a ChemicalSubstance.
+  has_ph_value:
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
+    range: PHValue
+    description: The slot to provide the PHValue of a ChemicalSubstance.
+
+  inchi:
+    slot_uri: SIO:000008 # using SIO here instead of dcterms:relation of DCAT-AP-PLUS
+    range: InChi
+    is_a: has_qualitative_attribute
+    description: The slot to provide the InChi descriptor of a ChemicalEntity.
+    recommended: true
+  inchikey:
+    slot_uri: SIO:000008
+    range: InChIKey
+    is_a: has_qualitative_attribute
+    description: The slot to provide the InChiKey of a ChemicalEntity.
+    recommended: true
+  smiles:
+    slot_uri: SIO:000008
+    range: SMILES
+    is_a: has_qualitative_attribute
+    description: The slot to provide the canonical SMILES descriptor of a ChemicalEntity.
+    recommended: true
+  molecular_formula:
+    slot_uri: SIO:000008
+    range: MolecularFormula
+    is_a: has_qualitative_attribute
+    description: The slot to provide the IUPAC formula of a ChemicalEntity.
+    recommended: true
+  iupac_name:
+    slot_uri: SIO:000008
+    is_a: has_qualitative_attribute
+    range: IUPACName
+    description: The slot to provide the IUPAC name of a ChemicalEntity.
+    recommended: true
+  has_molar_mass:
+    slot_uri: SIO:000008
+    is_a: has_mass
+    range: MolarMass
+    description: The slot to provide the MolarMass of a ChemicalEntity.
+    recommended: true
