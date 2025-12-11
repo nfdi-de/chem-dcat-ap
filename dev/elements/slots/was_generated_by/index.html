@@ -508,14 +508,19 @@ Alias: was_generated_by</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/PolymerSample/">PolymerSample</a></td>
-<td>A SubstanceSample derived from a Polymer.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../../classes/Dataset/">Dataset</a></td>
 <td>A collection of data, published or curated by a single agent, and available for access or download in one or more representations.</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>Information that was evaluated within a DataAnalysis.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/MaterialSample/">MaterialSample</a></td>
+<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../../classes/SubstanceSample/">SubstanceSample</a></td>
@@ -528,19 +533,14 @@ Alias: was_generated_by</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../../classes/AnalysisSourceData/">AnalysisSourceData</a></td>
-<td>Information that was evaluated within a DataAnalysis.</td>
-<td>yes</td>
+<td><a href="../../classes/PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer.</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../../classes/EvaluatedEntity/">EvaluatedEntity</a></td>
 <td>An Entity that is being evaluated in a DataGeneratingActivity.</td>
 <td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/MaterialSample/">MaterialSample</a></td>
-<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
-<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -551,7 +551,7 @@ Alias: was_generated_by</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry</li>
+<li>from schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -577,7 +577,7 @@ Alias: was_generated_by</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">was_generated_by</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This slot is described in more detail within the class in which it is</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">used.</span>
-<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry</span>
+<span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:wasGeneratedBy</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">was_generated_by</span>

@@ -1,12 +1,12 @@
 ---
-id: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
 name: chemical-entities-ap
 title: Chemical Entities Application Profile
 description: |-
   This is an application profile for chemical entities to be used for extending the DCAT-AP-PLUS.
 license: CC-BY 4.0
 prefixes:
-  chemical_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/
+  chemical_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
   chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/

@@ -8,11 +8,11 @@ see_also:
 - https://nfdi-de.github.io/chem-dcat-ap/
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
-id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry
-version: 0.1.0rc1.post1.dev0+b86ffb3
+id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+version: 0.1.0rc1.post3.dev0+ed81866
 imports:
 - linkml:types
-- dcatapplus:dcat_ap_plus
+- dcatapplus:latest/schema/dcat_ap_plus
 - chemical_entities_ap
 - chemical_reaction_ap
 - material_entities_ap
@@ -23,7 +23,7 @@ prefixes:
     prefix_reference: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
   dcatapplus:
     prefix_prefix: dcatapplus
-    prefix_reference: https://nfdi-de.github.io/dcat-ap-plus/latest/schema/
+    prefix_reference: https://w3id.org/nfdi-de/dcat-ap-plus/
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
@@ -590,10 +590,10 @@ enums:
       is_direct: true
   PhysicalStateEnum:
     name: PhysicalStateEnum
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/PhysicalStateEnum
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/PhysicalStateEnum
     implements:
     - owl:NamedIndividual
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     permissible_values:
       SOLID:
         text: SOLID
@@ -2085,10 +2085,10 @@ slots:
     range: string
   composed_of:
     name: composed_of
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/composed_of
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/composed_of
     description: The slot to provide the chemical entities of which a ChemicalSubstance
       is composed of.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - BFO:0000051
     close_mappings:
@@ -2105,9 +2105,9 @@ slots:
     inlined_as_list: true
   has_concentration:
     name: has_concentration
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/has_concentration
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/has_concentration
     description: The slot to provide the Concentration of a ChemicalSubstance.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2122,9 +2122,9 @@ slots:
     inlined_as_list: true
   has_amount:
     name: has_amount
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/has_amount
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/has_amount
     description: The slot to provide the AmountConcentration of a ChemicalSubstance.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2139,9 +2139,9 @@ slots:
     inlined_as_list: true
   has_ph_value:
     name: has_ph_value
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/has_ph_value
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/has_ph_value
     description: The slot to provide the PHValue of a ChemicalSubstance.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2156,9 +2156,9 @@ slots:
     inlined_as_list: true
   inchi:
     name: inchi
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/inchi
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/inchi
     description: The slot to provide the InChi descriptor of a ChemicalEntity.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - SIO:000008
     is_a: has_qualitative_attribute
@@ -2173,9 +2173,9 @@ slots:
     inlined_as_list: true
   inchikey:
     name: inchikey
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/inchikey
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/inchikey
     description: The slot to provide the InChiKey of a ChemicalEntity.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - SIO:000008
     is_a: has_qualitative_attribute
@@ -2190,9 +2190,9 @@ slots:
     inlined_as_list: true
   smiles:
     name: smiles
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/smiles
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/smiles
     description: The slot to provide the canonical SMILES descriptor of a ChemicalEntity.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - SIO:000008
     is_a: has_qualitative_attribute
@@ -2207,9 +2207,9 @@ slots:
     inlined_as_list: true
   molecular_formula:
     name: molecular_formula
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/molecular_formula
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/molecular_formula
     description: The slot to provide the IUPAC formula of a ChemicalEntity.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - SIO:000008
     is_a: has_qualitative_attribute
@@ -2224,9 +2224,9 @@ slots:
     inlined_as_list: true
   iupac_name:
     name: iupac_name
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/iupac_name
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/iupac_name
     description: The slot to provide the IUPAC name of a ChemicalEntity.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - SIO:000008
     is_a: has_qualitative_attribute
@@ -2241,9 +2241,9 @@ slots:
     inlined_as_list: true
   has_molar_mass:
     name: has_molar_mass
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/has_molar_mass
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/has_molar_mass
     description: The slot to provide the MolarMass of a ChemicalEntity.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - SIO:000008
     is_a: has_mass
@@ -2258,9 +2258,9 @@ slots:
     inlined_as_list: true
   used_starting_material:
     name: used_starting_material
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/used_starting_material
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_starting_material
     description: The slot to specify the Reagent(s) of a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - RO:0004009
     is_a: had_input_entity
@@ -2275,9 +2275,9 @@ slots:
     inlined_as_list: true
   used_reactant:
     name: used_reactant
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/used_reactant
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_reactant
     description: The slot to specify the Reagent(s) of a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - RO:0004009
     is_a: had_input_entity
@@ -2292,9 +2292,9 @@ slots:
     inlined_as_list: true
   generated_product:
     name: generated_product
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/generated_product
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/generated_product
     description: The slot to specify the Product of a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - RO:0004008
     is_a: had_output_entity
@@ -2309,9 +2309,9 @@ slots:
     inlined_as_list: true
   used_catalyst:
     name: used_catalyst
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/used_catalyst
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_catalyst
     description: The slot to specify the Catalyst of a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - RXNO:0000425
     is_a: carried_out_by
@@ -2326,10 +2326,10 @@ slots:
     inlined_as_list: true
   used_solvent:
     name: used_solvent
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/used_solvent
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_solvent
     description: The slot to specify the chemical substance that had a solvent role
       (CHEBI:35223) in a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - prov:wasAssociatedWith
     is_a: carried_out_by
@@ -2344,9 +2344,9 @@ slots:
     inlined_as_list: true
   has_duration:
     name: has_duration
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/has_duration
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/has_duration
     description: A slot to provide the duration of a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - schema:duration
     slot_uri: schema:duration
@@ -2356,9 +2356,9 @@ slots:
     range: duration
   used_reactor:
     name: used_reactor
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/used_reactor
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_reactor
     description: The slot to specify the reactor used in a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - prov:wasAssociatedWith
     is_a: carried_out_by
@@ -2373,10 +2373,10 @@ slots:
     inlined_as_list: true
   has_yield:
     name: has_yield
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/has_yield
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/has_yield
     description: A slot to provide the percentage of how much of the ChemicalProduct
       was produced by a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2391,11 +2391,11 @@ slots:
     inlined_as_list: true
   has_molar_equivalent:
     name: has_molar_equivalent
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/has_molar_equivalent
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/has_molar_equivalent
     description: A slot to provide the MolarEquivalent of a ChemicalSubstance, such
       as the DissolvingSubstance, Starting Material or Reactant, within the context
       of a chemical reaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2413,11 +2413,11 @@ slots:
     inlined_as_list: true
   has_percentage_of_total:
     name: has_percentage_of_total
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/has_percentage_of_total
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/has_percentage_of_total
     description: A slot to specify the percentage of a specific ChemicalSubstance
       in relation to the total amount of that same substance used across a multi-step
       reaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2433,10 +2433,10 @@ slots:
     inlined_as_list: true
   has_reaction_step:
     name: has_reaction_step
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/has_reaction_step
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/has_reaction_step
     description: A slot to specify a step (part) of a ChemicalReaction that is itself
       a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - BFO:0000051
     is_a: has_part
@@ -2447,11 +2447,11 @@ slots:
     range: ChemicalReaction
   alternative_label:
     name: alternative_label
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/alternative_label
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/alternative_label
     description: The slot to specify an alternative label, name or title for a MaterialEntity.
     todos:
     - Should probably rather declared on Entity or in some common metadata mixin instead.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - skos:altLabel
     slot_uri: skos:altLabel
@@ -2461,13 +2461,13 @@ slots:
     range: string
   has_physical_state:
     name: has_physical_state
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_physical_state
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_physical_state
     description: The slot to specify the physical state of a MaterialEntity.
     todos:
     - Find out how to make this a subproperty of has_qualitative_attribute, as it
       currently throws the error 'physical_state enumerations cannot be inlined' due
       to the fact that we are using an enum here.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:000008
     slot_uri: SIO:000008
@@ -2479,9 +2479,9 @@ slots:
     inlined: false
   has_temperature:
     name: has_temperature
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_temperature
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_temperature
     description: The slot to provide the Temperature of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2497,9 +2497,9 @@ slots:
     inlined_as_list: true
   has_mass:
     name: has_mass
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_mass
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_mass
     description: The slot to provide the Mass of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2514,9 +2514,9 @@ slots:
     inlined_as_list: true
   has_volume:
     name: has_volume
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_volume
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_volume
     description: The slot to provide the Volume of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2531,9 +2531,9 @@ slots:
     inlined_as_list: true
   has_density:
     name: has_density
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_density
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_density
     description: The slot to provide the Density of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2548,9 +2548,9 @@ slots:
     inlined_as_list: true
   has_pressure:
     name: has_pressure
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_pressure
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_pressure
     description: The slot to provide the Pressure of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:000008
     is_a: has_quantitative_attribute
@@ -2566,9 +2566,9 @@ slots:
     inlined_as_list: true
   derived_from:
     name: derived_from
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/derived_from
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/derived_from
     description: The slot to specify the Entity from which a Sample was derived.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - prov:wasDerivedFrom
     exact_mappings:
@@ -6196,10 +6196,10 @@ slots:
     inlined_as_list: false
   ChemicalReaction_has_temperature:
     name: ChemicalReaction_has_temperature
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_temperature
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_temperature
     description: The slot to specify the Temperature at which a ChemicalReaction takes
       place.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:000008
     is_a: has_temperature
@@ -6218,10 +6218,10 @@ slots:
     inlined_as_list: true
   ChemicalReaction_has_pressure:
     name: ChemicalReaction_has_pressure
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_pressure
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_pressure
     description: The slot to specify the Pressure at which a ChemicalReaction takes
       place.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:000008
     is_a: has_pressure
@@ -6281,10 +6281,10 @@ slots:
     inlined_as_list: true
   MaterialSample_derived_from:
     name: MaterialSample_derived_from
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/derived_from
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/derived_from
     description: The slot to specify the MaterialEntity or MaterialSample from which
       the MaterialSample was created.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - prov:wasDerivedFrom
     exact_mappings:
@@ -6310,7 +6310,7 @@ classes:
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSample
     description: A MaterialSample derived from a ChemicalSubstance that is of interest
       in an analytical procedure.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
     aliases:
     - analyte
     mappings:
@@ -6352,7 +6352,7 @@ classes:
     todos:
     - Find a better mapping, as it is currently mapped to same ontology class as its
       parent.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
     mappings:
     - SIO:001378
     is_a: SubstanceSample
@@ -6390,7 +6390,7 @@ classes:
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/Laboratory
     description: A facility that provides controlled conditions in which scientific
       or technological research, experiments, and measurement may be performed.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
     mappings:
     - ENVO:01001405
     is_a: Surrounding
@@ -8749,11 +8749,11 @@ classes:
     class_uri: time:Instant
   ChemicalEntity:
     name: ChemicalEntity
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/ChemicalEntity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalEntity
     description: Any constitutionally or isotopically distinct atom, molecule, ion,
       ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately
       distinguishable entity.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEBI:23367
     is_a: MaterialEntity
@@ -8784,10 +8784,10 @@ classes:
     class_uri: CHEBI:23367
   Atom:
     name: Atom
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/Atom
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Atom
     description: A MaterialEntity constituting the smallest component of an element
       having the chemical properties of the element.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEBI:33250
     is_a: ChemicalEntity
@@ -8824,10 +8824,10 @@ classes:
     class_uri: CHEBI:33250
   MolarMass:
     name: MolarMass
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/MolarMass
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/MolarMass
     description: A Mass (physical quality) that quantifies the mass of a homogeneous
       ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - AFR:0002409
     close_mappings:
@@ -8844,8 +8844,8 @@ classes:
     class_uri: AFR:0002409
   InChIKey:
     name: InChIKey
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/InChIKey
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/InChIKey
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEMINF:000059
     is_a: QualitativeAttribute
@@ -8858,9 +8858,9 @@ classes:
     class_uri: CHEMINF:000059
   InChi:
     name: InChi
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/InChi
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/InChi
     description: A structure descriptor which conforms to the InChI format specification.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEMINF:000113
     is_a: QualitativeAttribute
@@ -8873,11 +8873,11 @@ classes:
     class_uri: CHEMINF:000113
   MolecularFormula:
     name: MolecularFormula
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/MolecularFormula
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/MolecularFormula
     description: A structure descriptor which identifies each constituent element
       by its chemical symbol and indicates the number of atoms of each element found
       in each discrete molecule of that compound.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEMINF:000042
     is_a: QualitativeAttribute
@@ -8890,11 +8890,11 @@ classes:
     class_uri: CHEMINF:000042
   IUPACName:
     name: IUPACName
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/IUPACName
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/IUPACName
     description: A systematic name which is formulated according to the rules and
       recommendations for chemical nomenclature set out by the International Union
       of Pure and Applied Chemistry (IUPAC).
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEMINF:000107
     is_a: QualitativeAttribute
@@ -8907,10 +8907,10 @@ classes:
     class_uri: CHEMINF:000107
   SMILES:
     name: SMILES
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/SMILES
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/SMILES
     description: A structure descriptor that denotes a molecular structure as a graph
       and conforms to the SMILES format specification.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEMINF:000018
     is_a: QualitativeAttribute
@@ -8923,10 +8923,10 @@ classes:
     class_uri: CHEMINF:000018
   ChemicalSubstance:
     name: ChemicalSubstance
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/ChemicalSubstance
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstance
     description: A MaterialEntity of constant composition, composed of chemical entities
       of the same type or of different types.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEBI:59999
     is_a: MaterialEntity
@@ -8958,11 +8958,11 @@ classes:
     class_uri: CHEBI:59999
   Polymer:
     name: Polymer
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/Polymer
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Polymer
     description: A ChemicalSubstance that is composed of macromolecules of different
       kinds and which may be differentiated by composition, length, degree of branching
       etc..
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEBI:60027
     is_a: ChemicalSubstance
@@ -8994,10 +8994,10 @@ classes:
     class_uri: CHEBI:60027
   Concentration:
     name: Concentration
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/Concentration
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Concentration
     description: A QuantitativeAttribute of a ChemicalSubstance that represents the
       amount of a constituent divided by the volume of the mixture.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHMO:0002820
     exact_mappings:
@@ -9021,9 +9021,9 @@ classes:
     class_uri: CHMO:0002820
   AmountOfSubstance:
     name: AmountOfSubstance
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/AmountOfSubstance
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/AmountOfSubstance
     description: The total amount of substance used in a ChemicalReaction.
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     aliases:
     - SubstanceAmount
     mappings:
@@ -9042,8 +9042,8 @@ classes:
     class_uri: qudt:Quantity
   PHValue:
     name: PHValue
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/PHValue
-    from_schema: https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PHValue
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - SIO:001089
     exact_mappings:
@@ -9063,10 +9063,10 @@ classes:
     class_uri: SIO:001089
   ChemicalReaction:
     name: ChemicalReaction
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/ChemicalReaction
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalReaction
     description: A process that leads to the transformation of one set of chemical
       substances to another.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - SIO:010345
     exact_mappings:
@@ -9123,9 +9123,9 @@ classes:
     class_uri: SIO:010345
   StartingMaterial:
     name: StartingMaterial
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/StartingMaterial
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/StartingMaterial
     description: A ChemicalSubstance with that has a starting material role in a synthesis.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - PROCO:0000029
     is_a: ChemicalSubstance
@@ -9156,10 +9156,10 @@ classes:
     class_uri: PROCO:0000029
   DissolvingSubstance:
     name: DissolvingSubstance
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/DissolvingSubstance
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/DissolvingSubstance
     description: A liquid ChemicalSubstance that dissolves or that is capable of dissolving
       a ChemicalSubstance.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     aliases:
     - solvent
     mappings:
@@ -9198,9 +9198,9 @@ classes:
     class_uri: SIO:010417
   Reagent:
     name: Reagent
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/Reagent
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Reagent
     description: A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - SIO:010411
     exact_mappings:
@@ -9237,9 +9237,9 @@ classes:
     class_uri: SIO:010411
   ChemicalProduct:
     name: ChemicalProduct
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/ChemicalProduct
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalProduct
     description: A chemical substance that is produced by a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - NCIT:C48810
     exact_mappings:
@@ -9274,10 +9274,10 @@ classes:
     class_uri: NCIT:C48810
   Catalyst:
     name: Catalyst
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/Catalyst
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Catalyst
     description: A ChemicalSubstance or MaterialEntity that initiates or accelerates
       a ChemicalReaction without itself being affected.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - SIO:010344
     exact_mappings:
@@ -9316,10 +9316,10 @@ classes:
     class_uri: SIO:010344
   Reactor:
     name: Reactor
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/Reactor
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Reactor
     description: A reactor is a container for controlling a biological or chemical
       reaction or process.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - AFE:0000153
     exact_mappings:
@@ -9348,12 +9348,12 @@ classes:
     class_uri: AFE:0000153
   Yield:
     name: Yield
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/Yield
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Yield
     description: A dimensionless physical quantity describing the fraction of a product
       B that is formed from a reactant A taking into account the stoichiometry. If
       A fully reacts to B without side-reactions, the yield of product B is 1 (or
       100 %).
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - qudt:Quantity
     exact_mappings:
@@ -9370,10 +9370,10 @@ classes:
     class_uri: qudt:Quantity
   MolarEquivalent:
     name: MolarEquivalent
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/MolarEquivalent
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/MolarEquivalent
     description: A dimensionless ratio that quantifies the stoichiometric proportion
       of a chemical substance relative to a reference substance in a chemical reaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - qudt:Quantity
     is_a: QuantitativeAttribute
@@ -9388,10 +9388,10 @@ classes:
     class_uri: qudt:Quantity
   PercentageOfTotal:
     name: PercentageOfTotal
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/PercentageOfTotal
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/PercentageOfTotal
     description: A dimensionless ratio that quantifies the stoichiometric proportion
       of a chemical substance relative to a reference substance in a chemical reaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - qudt:Quantity
     is_a: QuantitativeAttribute
@@ -9406,11 +9406,11 @@ classes:
     class_uri: qudt:Quantity
   Materialistic:
     name: Materialistic
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Materialistic
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Materialistic
     description: A LinkML mixin used to pass down properties common to all material
       entities. It is needed for example to have MaterialSample have the same properties
       as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mixin: true
     slots:
     - alternative_label
@@ -9423,10 +9423,10 @@ classes:
     class_uri: material_entities_ap:Materialistic
   MaterialEntity:
     name: MaterialEntity
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/MaterialEntity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialEntity
     description: A material is an Entity that has some portion of matter as proper
       part.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - BFO:0000040
     is_a: Entity
@@ -9462,10 +9462,10 @@ classes:
     class_uri: BFO:0000040
   MaterialSample:
     name: MaterialSample
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/MaterialSample
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialSample
     description: A Sample that was derived from a previous MaterialSample or some
       other kind of MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - OBI:0000747
     exact_mappings:
@@ -9502,10 +9502,10 @@ classes:
     class_uri: OBI:0000747
   Temperature:
     name: Temperature
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Temperature
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Temperature
     description: A physical quantity that quantitatively expresses the attribute of
       hotness or coldness.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - qudt:Quantity
     close_mappings:
@@ -9522,9 +9522,9 @@ classes:
     class_uri: qudt:Quantity
   Mass:
     name: Mass
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Mass
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Mass
     description: The strength of a body's gravitational attraction to other bodies.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - qudt:Quantity
     close_mappings:
@@ -9541,9 +9541,9 @@ classes:
     class_uri: qudt:Quantity
   Volume:
     name: Volume
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Volume
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Volume
     description: A measure of regions in three-dimensional space.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - qudt:Quantity
     close_mappings:
@@ -9560,9 +9560,9 @@ classes:
     class_uri: qudt:Quantity
   Density:
     name: Density
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Density
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Density
     description: A measure of the mass per unit volume of a substance.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:001406
     close_mappings:
@@ -9579,8 +9579,8 @@ classes:
     class_uri: SIO:001406
   Pressure:
     name: Pressure
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Pressure
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Pressure
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - qudt:Quantity
     close_mappings:
@@ -9597,7 +9597,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2025-12-03T17:51:16'
+source_file_date: '2025-12-11T16:04:50'
 source_file_size: 3586
-generation_date: '2025-12-03T17:51:27'
+generation_date: '2025-12-11T16:05:01'
 
