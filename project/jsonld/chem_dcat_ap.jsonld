@@ -7,10 +7,11 @@
     "https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml",
     "https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads"
   ],
-  "id": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry",
+  "id": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
+  "version": "0.1.0rc1.post1.dev0+b86ffb3",
   "imports": [
     "linkml:types",
-    "dcatapplus:dcat_ap_plus",
+    "dcatapplus:latest/schema/dcat_ap_plus",
     "chemical_entities_ap",
     "chemical_reaction_ap",
     "material_entities_ap"
@@ -23,7 +24,7 @@
     },
     {
       "prefix_prefix": "dcatapplus",
-      "prefix_reference": "https://nfdi-de.github.io/dcat-ap-plus/latest/schema/"
+      "prefix_reference": "https://w3id.org/nfdi-de/dcat-ap-plus/"
     },
     {
       "prefix_prefix": "linkml",
@@ -719,11 +720,11 @@
     },
     {
       "name": "PhysicalStateEnum",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/PhysicalStateEnum",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/PhysicalStateEnum",
       "implements": [
         "owl:NamedIndividual"
       ],
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "permissible_values": [
         {
           "text": "SOLID",
@@ -2525,9 +2526,9 @@
     },
     {
       "name": "composed_of",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/composed_of",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/composed_of",
       "description": "The slot to provide the chemical entities of which a ChemicalSubstance is composed of.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "http://purl.obolibrary.org/obo/BFO_0000051"
       ],
@@ -2549,9 +2550,9 @@
     },
     {
       "name": "has_concentration",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/has_concentration",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/has_concentration",
       "description": "The slot to provide the Concentration of a ChemicalSubstance.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2570,9 +2571,9 @@
     },
     {
       "name": "has_amount",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/has_amount",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/has_amount",
       "description": "The slot to provide the AmountConcentration of a ChemicalSubstance.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2591,9 +2592,9 @@
     },
     {
       "name": "has_ph_value",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/has_ph_value",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/has_ph_value",
       "description": "The slot to provide the PHValue of a ChemicalSubstance.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2612,9 +2613,9 @@
     },
     {
       "name": "inchi",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/inchi",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/inchi",
       "description": "The slot to provide the InChi descriptor of a ChemicalEntity.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2633,9 +2634,9 @@
     },
     {
       "name": "inchikey",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/inchikey",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/inchikey",
       "description": "The slot to provide the InChiKey of a ChemicalEntity.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2654,9 +2655,9 @@
     },
     {
       "name": "smiles",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/smiles",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/smiles",
       "description": "The slot to provide the canonical SMILES descriptor of a ChemicalEntity.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2675,9 +2676,9 @@
     },
     {
       "name": "molecular_formula",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/molecular_formula",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/molecular_formula",
       "description": "The slot to provide the IUPAC formula of a ChemicalEntity.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2696,9 +2697,9 @@
     },
     {
       "name": "iupac_name",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/iupac_name",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/iupac_name",
       "description": "The slot to provide the IUPAC name of a ChemicalEntity.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2717,9 +2718,9 @@
     },
     {
       "name": "has_molar_mass",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/has_molar_mass",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/has_molar_mass",
       "description": "The slot to provide the MolarMass of a ChemicalEntity.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2738,9 +2739,9 @@
     },
     {
       "name": "used_starting_material",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/used_starting_material",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_starting_material",
       "description": "The slot to specify the Reagent(s) of a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://purl.obolibrary.org/obo/RO_0004009"
       ],
@@ -2759,9 +2760,9 @@
     },
     {
       "name": "used_reactant",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/used_reactant",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_reactant",
       "description": "The slot to specify the Reagent(s) of a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://purl.obolibrary.org/obo/RO_0004009"
       ],
@@ -2780,9 +2781,9 @@
     },
     {
       "name": "generated_product",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/generated_product",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/generated_product",
       "description": "The slot to specify the Product of a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://purl.obolibrary.org/obo/RO_0004008"
       ],
@@ -2801,9 +2802,9 @@
     },
     {
       "name": "used_catalyst",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/used_catalyst",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_catalyst",
       "description": "The slot to specify the Catalyst of a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://purl.obolibrary.org/obo/RXNO_0000425"
       ],
@@ -2822,9 +2823,9 @@
     },
     {
       "name": "used_solvent",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/used_solvent",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_solvent",
       "description": "The slot to specify the chemical substance that had a solvent role (CHEBI:35223) in a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://www.w3.org/ns/prov#wasAssociatedWith"
       ],
@@ -2843,9 +2844,9 @@
     },
     {
       "name": "has_duration",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/has_duration",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/has_duration",
       "description": "A slot to provide the duration of a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://schema.org/duration"
       ],
@@ -2859,9 +2860,9 @@
     },
     {
       "name": "used_reactor",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/used_reactor",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_reactor",
       "description": "The slot to specify the reactor used in a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://www.w3.org/ns/prov#wasAssociatedWith"
       ],
@@ -2880,9 +2881,9 @@
     },
     {
       "name": "has_yield",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/has_yield",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/has_yield",
       "description": "A slot to provide the percentage of how much of the ChemicalProduct was produced by a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2901,9 +2902,9 @@
     },
     {
       "name": "has_molar_equivalent",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/has_molar_equivalent",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/has_molar_equivalent",
       "description": "A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2925,9 +2926,9 @@
     },
     {
       "name": "has_percentage_of_total",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/has_percentage_of_total",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/has_percentage_of_total",
       "description": "A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -2947,9 +2948,9 @@
     },
     {
       "name": "has_reaction_step",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/has_reaction_step",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/has_reaction_step",
       "description": "A slot to specify a step (part) of a ChemicalReaction that is itself a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://purl.obolibrary.org/obo/BFO_0000051"
       ],
@@ -2964,12 +2965,12 @@
     },
     {
       "name": "alternative_label",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/alternative_label",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/alternative_label",
       "description": "The slot to specify an alternative label, name or title for a MaterialEntity.",
       "todos": [
         "Should probably rather declared on Entity or in some common metadata mixin instead."
       ],
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://www.w3.org/2004/02/skos/core#altLabel"
       ],
@@ -2983,12 +2984,12 @@
     },
     {
       "name": "has_physical_state",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_physical_state",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_physical_state",
       "description": "The slot to specify the physical state of a MaterialEntity.",
       "todos": [
         "Find out how to make this a subproperty of has_qualitative_attribute, as it currently throws the error 'physical_state enumerations cannot be inlined' due to the fact that we are using an enum here."
       ],
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -3002,9 +3003,9 @@
     },
     {
       "name": "has_temperature",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_temperature",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_temperature",
       "description": "The slot to provide the Temperature of a MaterialEntity.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -3024,9 +3025,9 @@
     },
     {
       "name": "has_mass",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_mass",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_mass",
       "description": "The slot to provide the Mass of a MaterialEntity.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -3045,9 +3046,9 @@
     },
     {
       "name": "has_volume",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_volume",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_volume",
       "description": "The slot to provide the Volume of a MaterialEntity.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -3066,9 +3067,9 @@
     },
     {
       "name": "has_density",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_density",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_density",
       "description": "The slot to provide the Density of a MaterialEntity.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -3087,9 +3088,9 @@
     },
     {
       "name": "has_pressure",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_pressure",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_pressure",
       "description": "The slot to provide the Pressure of a MaterialEntity.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -3109,9 +3110,9 @@
     },
     {
       "name": "derived_from",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/derived_from",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/derived_from",
       "description": "The slot to specify the Entity from which a Sample was derived.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://www.w3.org/ns/prov#wasDerivedFrom"
       ],
@@ -7229,9 +7230,9 @@
     },
     {
       "name": "ChemicalReaction_has_temperature",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_temperature",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_temperature",
       "description": "The slot to specify the Temperature at which a ChemicalReaction takes place.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -7254,9 +7255,9 @@
     },
     {
       "name": "ChemicalReaction_has_pressure",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/has_pressure",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_pressure",
       "description": "The slot to specify the Pressure at which a ChemicalReaction takes place.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
       ],
@@ -7328,9 +7329,9 @@
     },
     {
       "name": "MaterialSample_derived_from",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/derived_from",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/derived_from",
       "description": "The slot to specify the MaterialEntity or MaterialSample from which the MaterialSample was created.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://www.w3.org/ns/prov#wasDerivedFrom"
       ],
@@ -7361,7 +7362,7 @@
       "name": "SubstanceSample",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSample",
       "description": "A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
       "aliases": [
         "analyte"
       ],
@@ -7410,7 +7411,7 @@
       "todos": [
         "Find a better mapping, as it is currently mapped to same ontology class as its parent."
       ],
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
       "mappings": [
         "SIO:001378"
       ],
@@ -7453,7 +7454,7 @@
       "name": "Laboratory",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/Laboratory",
       "description": "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
       "mappings": [
         "ENVO:01001405"
       ],
@@ -8740,9 +8741,9 @@
     },
     {
       "name": "ChemicalEntity",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/ChemicalEntity",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalEntity",
       "description": "Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEBI:23367"
       ],
@@ -8778,9 +8779,9 @@
     },
     {
       "name": "Atom",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/Atom",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Atom",
       "description": "A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEBI:33250"
       ],
@@ -8816,9 +8817,9 @@
     },
     {
       "name": "MolarMass",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/MolarMass",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/MolarMass",
       "description": "A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "AFR:0002409"
       ],
@@ -8841,8 +8842,8 @@
     },
     {
       "name": "InChIKey",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/InChIKey",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/InChIKey",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEMINF:000059"
       ],
@@ -8860,9 +8861,9 @@
     },
     {
       "name": "InChi",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/InChi",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/InChi",
       "description": "A structure descriptor which conforms to the InChI format specification.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEMINF:000113"
       ],
@@ -8880,9 +8881,9 @@
     },
     {
       "name": "MolecularFormula",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/MolecularFormula",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/MolecularFormula",
       "description": "A structure descriptor which identifies each constituent element by its chemical symbol and indicates the number of atoms of each element found in each discrete molecule of that compound.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEMINF:000042"
       ],
@@ -8900,9 +8901,9 @@
     },
     {
       "name": "IUPACName",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/IUPACName",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/IUPACName",
       "description": "A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEMINF:000107"
       ],
@@ -8920,9 +8921,9 @@
     },
     {
       "name": "SMILES",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/SMILES",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/SMILES",
       "description": "A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEMINF:000018"
       ],
@@ -8940,9 +8941,9 @@
     },
     {
       "name": "ChemicalSubstance",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/ChemicalSubstance",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstance",
       "description": "A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEBI:59999"
       ],
@@ -8979,9 +8980,9 @@
     },
     {
       "name": "Polymer",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/Polymer",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Polymer",
       "description": "A ChemicalSubstance that is composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEBI:60027"
       ],
@@ -9018,9 +9019,9 @@
     },
     {
       "name": "Concentration",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/Concentration",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Concentration",
       "description": "A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume of the mixture.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHMO:0002820"
       ],
@@ -9052,9 +9053,9 @@
     },
     {
       "name": "AmountOfSubstance",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/AmountOfSubstance",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/AmountOfSubstance",
       "description": "The total amount of substance used in a ChemicalReaction.",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "aliases": [
         "SubstanceAmount"
       ],
@@ -9080,8 +9081,8 @@
     },
     {
       "name": "PHValue",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-entities/PHValue",
-      "from_schema": "https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PHValue",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "SIO:001089"
       ],
@@ -9108,9 +9109,9 @@
     },
     {
       "name": "ChemicalReaction",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/ChemicalReaction",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalReaction",
       "description": "A process that leads to the transformation of one set of chemical substances to another.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "SIO:010345"
       ],
@@ -9157,9 +9158,9 @@
     },
     {
       "name": "StartingMaterial",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/StartingMaterial",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/StartingMaterial",
       "description": "A ChemicalSubstance with that has a starting material role in a synthesis.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "PROCO:0000029"
       ],
@@ -9195,9 +9196,9 @@
     },
     {
       "name": "DissolvingSubstance",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/DissolvingSubstance",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/DissolvingSubstance",
       "description": "A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "aliases": [
         "solvent"
       ],
@@ -9244,9 +9245,9 @@
     },
     {
       "name": "Reagent",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/Reagent",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Reagent",
       "description": "A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "SIO:010411"
       ],
@@ -9290,9 +9291,9 @@
     },
     {
       "name": "ChemicalProduct",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/ChemicalProduct",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalProduct",
       "description": "A chemical substance that is produced by a ChemicalReaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "NCIT:C48810"
       ],
@@ -9334,9 +9335,9 @@
     },
     {
       "name": "Catalyst",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/Catalyst",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Catalyst",
       "description": "A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "SIO:010344"
       ],
@@ -9383,9 +9384,9 @@
     },
     {
       "name": "Reactor",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/Reactor",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Reactor",
       "description": "A reactor is a container for controlling a biological or chemical reaction or process.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "AFE:0000153"
       ],
@@ -9421,9 +9422,9 @@
     },
     {
       "name": "Yield",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/Yield",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Yield",
       "description": "A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "qudt:Quantity"
       ],
@@ -9446,9 +9447,9 @@
     },
     {
       "name": "MolarEquivalent",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/MolarEquivalent",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/MolarEquivalent",
       "description": "A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "qudt:Quantity"
       ],
@@ -9468,9 +9469,9 @@
     },
     {
       "name": "PercentageOfTotal",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/PercentageOfTotal",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/PercentageOfTotal",
       "description": "A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "qudt:Quantity"
       ],
@@ -9490,9 +9491,9 @@
     },
     {
       "name": "Materialistic",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Materialistic",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Materialistic",
       "description": "A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mixin": true,
       "slots": [
         "alternative_label",
@@ -9504,14 +9505,14 @@
         "has_pressure"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Materialistic",
+      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Materialistic",
       "@type": "ClassDefinition"
     },
     {
       "name": "MaterialEntity",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/MaterialEntity",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialEntity",
       "description": "A material is an Entity that has some portion of matter as proper part.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "BFO:0000040"
       ],
@@ -9544,9 +9545,9 @@
     },
     {
       "name": "MaterialSample",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/MaterialSample",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialSample",
       "description": "A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "OBI:0000747"
       ],
@@ -9585,9 +9586,9 @@
     },
     {
       "name": "Temperature",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Temperature",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Temperature",
       "description": "A physical quantity that quantitatively expresses the attribute of hotness or coldness.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "qudt:Quantity"
       ],
@@ -9610,9 +9611,9 @@
     },
     {
       "name": "Mass",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Mass",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Mass",
       "description": "The strength of a body's gravitational attraction to other bodies.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "qudt:Quantity"
       ],
@@ -9635,9 +9636,9 @@
     },
     {
       "name": "Volume",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Volume",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Volume",
       "description": "A measure of regions in three-dimensional space.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "qudt:Quantity"
       ],
@@ -9660,9 +9661,9 @@
     },
     {
       "name": "Density",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Density",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Density",
       "description": "A measure of the mass per unit volume of a substance.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "SIO:001406"
       ],
@@ -9685,8 +9686,8 @@
     },
     {
       "name": "Pressure",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/Pressure",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Pressure",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "qudt:Quantity"
       ],
@@ -9710,14 +9711,14 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2025-12-03T12:21:23",
-  "source_file_size": 3576,
-  "generation_date": "2025-12-03T12:24:23",
+  "source_file_date": "2025-12-11T09:59:36",
+  "source_file_size": 3674,
+  "generation_date": "2025-12-11T10:14:24",
   "@type": "SchemaDefinition",
   "@context": [
-    "project/jsonld/chem_dcat_ap.context.jsonld",
+    "project\\jsonld/chem_dcat_ap.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
-    "https://nfdi-de.github.io/dcat-ap-plus/latest/schema/dcat_ap_plus.context.jsonld",
+    "https://w3id.org/nfdi-de/dcat-ap-plus/latest/schema/dcat_ap_plus.context.jsonld",
     "chemical_entities_ap.context.jsonld",
     "chemical_reaction_ap.context.jsonld",
     "material_entities_ap.context.jsonld",

@@ -1,8 +1,8 @@
 # Auto generated from chem_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-03T14:19:01
+# Generation date: 2025-12-11T10:14:26
 # Schema: chem-dcat-ap
 #
-# id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry
+# id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
 # description: This is an extension of the DCAT Application Profile PLUS LinkML schema. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles/schemas to provide chemistry specific specific metadata for a dataset.
 # license: CC-BY 4.0
 
@@ -60,7 +60,7 @@ from linkml_runtime.linkml_model.types import Date, Decimal, Float, String, Urio
 from linkml_runtime.utils.metamodelcore import Decimal, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.0.post340.dev0+4762fd7"
+version = "0.1.0rc1.post1.dev0+b86ffb3"
 
 # Namespaces
 AFE = CurieNamespace('AFE', 'http://purl.allotrope.org/ontologies/equipment#AFE_')
@@ -94,7 +94,7 @@ CHEMDCATAP = CurieNamespace('chemdcatap', 'https://w3id.org/nfdi-de/dcat-ap-plus
 DCAT = CurieNamespace('dcat', 'http://www.w3.org/ns/dcat#')
 DCATAP = CurieNamespace('dcatap', 'http://data.europa.eu/r5r/')
 DCATAP_PLUS = CurieNamespace('dcatap_plus', 'https://w3id.org/nfdi-de/dcat-ap-plus/')
-DCATAPPLUS = CurieNamespace('dcatapplus', 'https://nfdi-de.github.io/dcat-ap-plus/latest/schema/')
+DCATAPPLUS = CurieNamespace('dcatapplus', 'https://w3id.org/nfdi-de/dcat-ap-plus/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://doi.org/')
 ELI = CurieNamespace('eli', 'http://data.europa.eu/eli/ontology#')
@@ -103,7 +103,7 @@ EX = CurieNamespace('ex', 'http://example.org/')
 FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 LOCN = CurieNamespace('locn', 'http://www.w3.org/ns/locn#')
-MATERIAL_ENTITIES_AP = CurieNamespace('material_entities_ap', 'https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/')
+MATERIAL_ENTITIES_AP = CurieNamespace('material_entities_ap', 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/')
 ODRL = CurieNamespace('odrl', 'http://www.w3.org/ns/odrl/2/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
@@ -637,8 +637,8 @@ class ClassifierMixin(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DCATAP_PLUS["ClassifierMixin"]
-    class_class_curie: ClassVar[str] = "dcatap_plus:ClassifierMixin"
+    class_class_uri: ClassVar[URIRef] = DCATAPPLUS["ClassifierMixin"]
+    class_class_curie: ClassVar[str] = "dcatapplus:ClassifierMixin"
     class_name: ClassVar[str] = "ClassifierMixin"
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.ClassifierMixin
 
@@ -1656,8 +1656,8 @@ class SupportiveEntity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DCATAP_PLUS["SupportiveEntity"]
-    class_class_curie: ClassVar[str] = "dcatap_plus:SupportiveEntity"
+    class_class_uri: ClassVar[URIRef] = DCATAPPLUS["SupportiveEntity"]
+    class_class_curie: ClassVar[str] = "dcatapplus:SupportiveEntity"
     class_name: ClassVar[str] = "SupportiveEntity"
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.SupportiveEntity
 

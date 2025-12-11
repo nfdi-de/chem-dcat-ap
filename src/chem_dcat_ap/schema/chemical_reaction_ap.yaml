@@ -1,14 +1,14 @@
 ---
-id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction
+id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
 name: chemical-reaction-ap
 title: Chemical Reaction Application Profile
 description: |-
   This is an application profile for chemical reactions that is intended to be used as an extension of DCAT-AP-PLUS.
 license: CC-BY 4.0
 prefixes:
-  chemical_reaction_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction/
+  chemical_reaction_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
   chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-  dcatapplus: https://nfdi-de.github.io/dcat-ap-plus/latest/schema/
+  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -52,7 +52,7 @@ default_prefix: chemical_reaction_ap
 default_range: string
 imports:
   - linkml:types
-  - dcatapplus:dcat_ap_plus
+  - dcatapplus:latest/schema/dcat_ap_plus
   - chemical_entities_ap
 
 classes:
