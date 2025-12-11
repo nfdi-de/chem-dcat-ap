@@ -1,13 +1,13 @@
 ---
-id: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+id: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
 name: material-entity-ap
 title: Material Entities Application Profile
 description: |-
   This is an application profile for material entities to be used for extending the DCAT-AP-PLUS.
 license: CC-BY 4.0
 prefixes:
-  material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/
-  dcatapplus: https://nfdi-de.github.io/dcat-ap-plus/latest/schema/
+  material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -33,7 +33,7 @@ default_prefix: material_entities_ap
 default_range: string
 imports:
   - linkml:types
-  - dcatapplus:dcat_ap_plus
+  - dcatapplus:latest/schema/dcat_ap_plus
 
 classes:
   Materialistic:

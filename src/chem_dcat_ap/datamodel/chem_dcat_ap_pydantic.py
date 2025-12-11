@@ -30,7 +30,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.0.0.post340.dev0+4762fd7"
+version = "0.1.0rc1.post1.dev0+b86ffb3"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -85,9 +85,9 @@ linkml_meta = LinkMLMeta({'default_prefix': 'chemdcatap',
                     'NFDI4Cat as a core that can further be extended in '
                     'profiles/schemas to provide chemistry specific specific '
                     'metadata for a dataset.',
-     'id': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry',
+     'id': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/',
      'imports': ['linkml:types',
-                 'dcatapplus:dcat_ap_plus',
+                 'dcatapplus:latest/schema/dcat_ap_plus',
                  'chemical_entities_ap',
                  'chemical_reaction_ap'],
      'license': 'CC-BY 4.0',
@@ -147,7 +147,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'chemdcatap',
                   'dcat': {'prefix_prefix': 'dcat',
                            'prefix_reference': 'http://www.w3.org/ns/dcat#'},
                   'dcatapplus': {'prefix_prefix': 'dcatapplus',
-                                 'prefix_reference': 'https://nfdi-de.github.io/dcat-ap-plus/latest/schema/'},
+                                 'prefix_reference': 'https://w3id.org/nfdi-de/dcat-ap-plus/'},
                   'dcterms': {'prefix_prefix': 'dcterms',
                               'prefix_reference': 'http://purl.org/dc/terms/'},
                   'doi': {'prefix_prefix': 'doi',
@@ -6341,7 +6341,7 @@ class TimeInstant(SupportiveEntity):
 
 class InChIKey(QualitativeAttribute):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEMINF:000059',
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -6434,7 +6434,7 @@ class InChi(QualitativeAttribute):
     A structure descriptor which conforms to the InChI format specification.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEMINF:000113',
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -6527,7 +6527,7 @@ class MolecularFormula(QualitativeAttribute):
     A structure descriptor which identifies each constituent element by its chemical symbol and indicates the number of atoms of each element found in each discrete molecule of that compound.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEMINF:000042',
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -6620,7 +6620,7 @@ class IUPACName(QualitativeAttribute):
     A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEMINF:000107',
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -6713,7 +6713,7 @@ class SMILES(QualitativeAttribute):
     A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEMINF:000018',
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -6811,7 +6811,7 @@ class Concentration(QuantitativeAttribute):
                             'NCIT:C41185',
                             'VOC4CAT:0007244',
                             'AFR:0002036'],
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
          'narrow_mappings': ['CHMO:0002822']})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
@@ -6923,7 +6923,7 @@ class AmountOfSubstance(QuantitativeAttribute):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['SubstanceAmount'],
          'class_uri': 'qudt:Quantity',
          'close_mappings': ['PATO:0000070'],
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -7031,7 +7031,7 @@ class PHValue(QuantitativeAttribute):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:001089',
          'close_mappings': ['PATO:0001842'],
          'exact_mappings': ['NCIT:C45997', 'AFR:0001142'],
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -7139,7 +7139,7 @@ class Materialistic(ConfiguredBaseModel):
     """
     A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/material-entities',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/',
          'mixin': True})
 
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Materialistic'],
@@ -7179,7 +7179,7 @@ class MaterialEntity(Materialistic, Entity):
     A material is an Entity that has some portion of matter as proper part.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'BFO:0000040',
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/material-entities',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/',
          'mixins': ['Materialistic'],
          'slot_usage': {'has_part': {'description': 'The slot to provide the parts of '
                                                     'a MaterialEntity.',
@@ -7336,7 +7336,7 @@ class ChemicalEntity(MaterialEntity):
     Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEBI:23367',
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
     inchi: Optional[list[InChi]] = Field(default=[], description="""The slot to provide the InChi descriptor of a ChemicalEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity'],
          'is_a': 'has_qualitative_attribute',
@@ -7508,7 +7508,7 @@ class Atom(ChemicalEntity):
     A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEBI:33250',
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
          'slot_usage': {'rdf_type': {'description': 'The slot to provide the Atom as a '
                                                     'ChEBI ID from the atom '
                                                     '(CHEBI:33250) branch.',
@@ -7685,7 +7685,7 @@ class ChemicalSubstance(MaterialEntity):
     A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEBI:59999',
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
          'mixin': True})
 
     has_concentration: Optional[list[Concentration]] = Field(default=[], description="""The slot to provide the Concentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstance'],
@@ -7859,7 +7859,7 @@ class Polymer(ChemicalSubstance):
     A ChemicalSubstance that is composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEBI:60027',
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
          'mixin': True})
 
     has_concentration: Optional[list[Concentration]] = Field(default=[], description="""The slot to provide the Concentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstance'],
@@ -8034,7 +8034,7 @@ class MaterialSample(Materialistic, EvaluatedEntity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'OBI:0000747',
          'exact_mappings': ['SIO:001050', 'VOC4CAT:0005056'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/material-entities',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/',
          'mixins': ['Materialistic'],
          'slot_usage': {'derived_from': {'description': 'The slot to specify the '
                                                         'MaterialEntity or '
@@ -8193,7 +8193,7 @@ class Temperature(QuantitativeAttribute):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
          'close_mappings': ['PATO:0000146'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/material-entities'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -8303,7 +8303,7 @@ class Mass(QuantitativeAttribute):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
          'close_mappings': ['PATO:0000125'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/material-entities'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -8413,7 +8413,7 @@ class MolarMass(Mass):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'AFR:0002409',
          'close_mappings': ['PATO:0001681'],
-         'from_schema': 'https://nfdi-de.github.io/chem-dcat-ap/chemical_entities_ap.yaml'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -8523,7 +8523,7 @@ class Volume(QuantitativeAttribute):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
          'close_mappings': ['PATO:0000918'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/material-entities'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -8633,7 +8633,7 @@ class Density(QuantitativeAttribute):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:001406',
          'close_mappings': ['PATO:0001019'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/material-entities'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -8740,7 +8740,7 @@ class Density(QuantitativeAttribute):
 class Pressure(QuantitativeAttribute):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
          'close_mappings': ['PATO:0001025'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/material-entities'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -8850,7 +8850,7 @@ class ChemicalReaction(Activity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:010345',
          'exact_mappings': ['MOP:0000543', 'REX:0000002', 'AFP:0003711'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'narrow_mappings': ['RXNO:0000329'],
          'slot_usage': {'has_pressure': {'description': 'The slot to specify the '
                                                         'Pressure at which a '
@@ -9053,7 +9053,7 @@ class StartingMaterial(ChemicalSubstance):
     A ChemicalSubstance with that has a starting material role in a synthesis.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'PROCO:0000029',
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/'})
 
     has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstance', 'StartingMaterial', 'Reagent', 'Catalyst'],
          'is_a': 'has_quantitative_attribute',
@@ -9228,7 +9228,7 @@ class DissolvingSubstance(ChemicalSubstance, Materialistic, AgenticEntity):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['solvent'],
          'class_uri': 'SIO:010417',
          'exact_mappings': ['VOC4CAT:0007246', 'NCIT:C45790'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['ChemicalSubstance', 'Materialistic']})
 
     has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstance', 'DissolvingSubstance'],
@@ -9404,7 +9404,7 @@ class Reagent(ChemicalSubstance):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:010411',
          'close_mappings': ['OBI:0001879', 'PROCO:0000029'],
          'exact_mappings': ['NCIT:C802', 'VOC4CAT:0000101'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/'})
 
     has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstance', 'StartingMaterial', 'Reagent', 'Catalyst'],
          'is_a': 'has_quantitative_attribute',
@@ -9579,7 +9579,7 @@ class ChemicalProduct(ChemicalSubstance):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'NCIT:C48810',
          'close_mappings': ['ENVO:2000000'],
          'exact_mappings': ['VOC4CAT:0000194'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/'})
 
     has_concentration: Optional[list[Concentration]] = Field(default=[], description="""The slot to provide the Concentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstance'],
          'is_a': 'has_quantitative_attribute',
@@ -9754,7 +9754,7 @@ class Catalyst(ChemicalSubstance, Materialistic, AgenticEntity):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:010344',
          'close_mappings': ['CHEBI:35223'],
          'exact_mappings': ['VOC4CAT:0000194', 'NCIT:C48810'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['ChemicalSubstance', 'Materialistic']})
 
     has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstance', 'StartingMaterial', 'Reagent', 'Catalyst'],
@@ -9929,7 +9929,7 @@ class Reactor(Materialistic, Device):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'AFE:0000153',
          'exact_mappings': ['VOC4CAT:0007017'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['Materialistic']})
 
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Materialistic'],
@@ -10078,7 +10078,7 @@ class Yield(QuantitativeAttribute):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
          'exact_mappings': ['VOC4CAT:0005005'],
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -10187,7 +10187,7 @@ class MolarEquivalent(QuantitativeAttribute):
     A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -10296,7 +10296,7 @@ class PercentageOfTotal(QuantitativeAttribute):
     A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/chemical-reaction'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
@@ -10406,7 +10406,7 @@ class SubstanceSample(MaterialSample, ChemicalSubstance):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['analyte'],
          'class_uri': 'SIO:001378',
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/',
          'mixins': ['ChemicalSubstance']})
 
     has_concentration: Optional[list[Concentration]] = Field(default=[], description="""The slot to provide the Concentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstance'],
@@ -10585,7 +10585,7 @@ class PolymerSample(SubstanceSample, Polymer):
     A SubstanceSample derived from a Polymer.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:001378',
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry',
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/',
          'mixins': ['Polymer'],
          'todos': ['Find a better mapping, as it is currently mapped to same ontology '
                    'class as its parent.']})
@@ -10766,7 +10766,7 @@ class Laboratory(Surrounding):
     A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'ENVO:01001405',
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry'})
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
