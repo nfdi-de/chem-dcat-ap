@@ -4,7 +4,7 @@ version: "0.0.0.post341.dev0+b70db99"  # Managed by dynamic-versioning. Don't ch
 name: chem-dcat-ap
 title: ChemDCAT-AP
 description: |-
-  This is an extension of the DCAT Application Profile PLUS LinkML schema. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles/schemas to provide chemistry specific specific metadata for a dataset.
+  This is an extension of the DCAT Application Profile PLUS LinkML schema. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles/schemas to provide chemistry specific metadata for a dataset.
 license: CC-BY 4.0
 see_also:
   - https://nfdi-de.github.io/chem-dcat-ap/
