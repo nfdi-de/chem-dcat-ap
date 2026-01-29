@@ -7,7 +7,7 @@ description: |-
 license: CC-BY 4.0
 prefixes:
   chemical_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-  aterial_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+  material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
   chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
@@ -38,7 +38,7 @@ default_prefix: chemical_entities_ap
 default_range: string
 imports:
   - linkml:types
-  - aterial_entities_ap:latest/schema/material_entities_ap
+  - material_entities_ap:latest/schema/material_entities_ap
 
 classes:
 
