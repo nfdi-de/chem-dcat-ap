@@ -519,8 +519,8 @@ Alias: alternative_label</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/MaterialEntity/">MaterialEntity</a></td>
-<td>A material is an Entity that has some portion of matter as proper part.</td>
+<td><a href="../../classes/StartingMaterial/">StartingMaterial</a></td>
+<td>A ChemicalSubstance with that has a starting material role in a synthesis.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -529,48 +529,8 @@ Alias: alternative_label</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/Materialistic/">Materialistic</a></td>
-<td>A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/DissolvingSubstance/">DissolvingSubstance</a></td>
-<td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/PolymerSample/">PolymerSample</a></td>
-<td>A SubstanceSample derived from a Polymer.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/ChemicalEntity/">ChemicalEntity</a></td>
-<td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/StartingMaterial/">StartingMaterial</a></td>
-<td>A ChemicalSubstance with that has a starting material role in a synthesis.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/Atom/">Atom</a></td>
-<td>A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../../classes/ChemicalSubstance/">ChemicalSubstance</a></td>
 <td>A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/Reagent/">Reagent</a></td>
-<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/Reactor/">Reactor</a></td>
-<td>A reactor is a container for controlling a biological or chemical reaction or process.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -579,8 +539,33 @@ Alias: alternative_label</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/SubstanceSample/">SubstanceSample</a></td>
-<td>A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.</td>
+<td><a href="../../classes/MaterialEntity/">MaterialEntity</a></td>
+<td>A material is an Entity that has some portion of matter as proper part.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/ChemicalEntity/">ChemicalEntity</a></td>
+<td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/DissolvingSubstance/">DissolvingSubstance</a></td>
+<td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/Reagent/">Reagent</a></td>
+<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/Materialistic/">Materialistic</a></td>
+<td>A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/MaterialSample/">MaterialSample</a></td>
+<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -589,8 +574,23 @@ Alias: alternative_label</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/MaterialSample/">MaterialSample</a></td>
-<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
+<td><a href="../../classes/SubstanceSample/">SubstanceSample</a></td>
+<td>A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/Reactor/">Reactor</a></td>
+<td>A reactor is a container for controlling a biological or chemical reaction or process.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/Atom/">Atom</a></td>
+<td>A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.</td>
 <td>no</td>
 </tr>
 </tbody>
