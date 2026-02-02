@@ -6,6 +6,7 @@ description: |-
   This is an application profile for chemical reactions that is intended to be used as an extension of DCAT-AP-PLUS.
 license: CC-BY 4.0
 prefixes:
+  material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
   chemical_reaction_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
   chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
   dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
@@ -53,7 +54,7 @@ default_range: string
 imports:
   - linkml:types
   - dcatapplus:latest/schema/dcat_ap_plus
-  - chemical_entities_ap
+  - chemical_entities_ap:latest/schema/chemical_entities_ap
 
 classes:
 
