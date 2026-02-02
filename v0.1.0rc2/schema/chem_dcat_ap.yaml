@@ -11,6 +11,7 @@ see_also:
   - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
   - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
+  material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
   chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
   dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
   linkml: https://w3id.org/linkml/
@@ -59,7 +60,7 @@ default_range: string
 imports:
   - linkml:types
   - dcatapplus:latest/schema/dcat_ap_plus
-  - chemical_entities_ap
+  - chemical_entities_ap:latest/schema/chemical_entities_ap
   - chemical_reaction_ap
 
 classes:
