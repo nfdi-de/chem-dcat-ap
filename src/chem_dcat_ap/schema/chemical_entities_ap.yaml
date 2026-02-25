@@ -87,11 +87,10 @@ classes:
     is_a: QualitativeAttribute
     description: A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.
 
-  ChemicalSubstance:
-    class_uri: CHEBI:59999
-    is_a: MaterialEntity
+  ChemicalSubstanceMixin:
+    abstract: true
     mixin: true
-    description: A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.
+    description: A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.
     slots:
       - has_concentration
       - has_ph_value
