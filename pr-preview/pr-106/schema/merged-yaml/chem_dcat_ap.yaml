@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post11.dev0+8c574c51
+version: 0.1.0rc2.post12.dev0+182a7c8e
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -8929,9 +8929,17 @@ classes:
       entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc.,
       ) of the same type or of different types.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    is_a: MaterialisticMixin
     abstract: true
     mixin: true
     slots:
+    - alternative_label
+    - has_physical_state
+    - has_temperature
+    - has_mass
+    - has_volume
+    - has_density
+    - has_pressure
     - has_concentration
     - has_ph_value
     - composed_of
@@ -8950,6 +8958,13 @@ classes:
     abstract: true
     mixin: true
     slots:
+    - alternative_label
+    - has_physical_state
+    - has_temperature
+    - has_mass
+    - has_volume
+    - has_density
+    - has_pressure
     - has_concentration
     - has_ph_value
     - composed_of
@@ -9150,11 +9165,6 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     - has_percentage_of_total
-    - has_concentration
-    - has_ph_value
-    - composed_of
-    - has_molar_equivalent
-    - has_amount
     - alternative_label
     - has_physical_state
     - has_temperature
@@ -9162,6 +9172,11 @@ classes:
     - has_volume
     - has_density
     - has_pressure
+    - has_concentration
+    - has_ph_value
+    - composed_of
+    - has_molar_equivalent
+    - has_amount
     class_uri: SIO:010417
   Reagent:
     name: Reagent
@@ -9259,7 +9274,6 @@ classes:
     is_a: AgenticEntity
     mixins:
     - ChemicalSubstanceMixin
-    - MaterialisticMixin
     slots:
     - id
     - title
@@ -9272,11 +9286,6 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     - has_molar_equivalent
-    - has_concentration
-    - has_ph_value
-    - composed_of
-    - has_amount
-    - has_percentage_of_total
     - alternative_label
     - has_physical_state
     - has_temperature
@@ -9284,6 +9293,11 @@ classes:
     - has_volume
     - has_density
     - has_pressure
+    - has_concentration
+    - has_ph_value
+    - composed_of
+    - has_amount
+    - has_percentage_of_total
     class_uri: SIO:010344
   Reactor:
     name: Reactor
@@ -9569,7 +9583,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-02-25T17:28:56'
+source_file_date: '2026-02-25T17:37:02'
 source_file_size: 3599
-generation_date: '2026-02-25T17:29:07'
+generation_date: '2026-02-25T17:37:13'
 
