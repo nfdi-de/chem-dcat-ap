@@ -148,7 +148,6 @@ classes:
     is_a: AgenticEntity
     mixins:
       - ChemicalSubstanceMixin
-      - MaterialisticMixin
     description: A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.
     slots:
       - has_molar_equivalent

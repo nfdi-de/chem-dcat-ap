@@ -90,6 +90,7 @@ classes:
   ChemicalSubstanceMixin:
     abstract: true
     mixin: true
+    is_a: MaterialisticMixin
     description: A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.
     slots:
       - has_concentration
