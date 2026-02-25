@@ -98,11 +98,11 @@ classes:
       - has_molar_equivalent
       - has_amount
       - has_percentage_of_total
-  Polymer:
-    class_uri: CHEBI:60027
-    is_a: ChemicalSubstance
+  PolymerMixin:
+    abstract: true
+    is_a: ChemicalSubstanceMixin
     mixin: true
-    description: A ChemicalSubstance that is composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..
+    description: A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..
     # attributes: # Needed attributes will be defined here
 
   Concentration:
