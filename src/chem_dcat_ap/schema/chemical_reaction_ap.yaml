@@ -95,7 +95,9 @@ classes:
 
   StartingMaterial:
     class_uri: PROCO:0000029
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+      - ChemicalSubstance
     description: A ChemicalSubstance with that has a starting material role in a synthesis.
     slots:
       - has_molar_equivalent
@@ -117,7 +119,9 @@ classes:
 
   Reagent:
     class_uri: SIO:010411
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+      - ChemicalSubstance
     description: A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.
     slots:
       - has_molar_equivalent
@@ -130,7 +134,9 @@ classes:
 
   ChemicalProduct:
     class_uri: NCIT:C48810
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+      - ChemicalSubstance
     description: A chemical substance that is produced by a ChemicalReaction.
     exact_mappings:
       - VOC4CAT:0000194
