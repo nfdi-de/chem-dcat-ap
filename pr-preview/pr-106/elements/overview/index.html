@@ -1,0 +1,1666 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nfdi-de.github.io/chem-dcat-ap/elements/overview/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../versioning/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Schema - ChemDCAT-AP Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chemdcat-ap" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ChemDCAT-AP Documentation" class="md-header__button md-logo" aria-label="ChemDCAT-AP Documentation" data-md-component="logo">
+      <img id="logo_dark_mode" src="../../images/logo-icon.svg" alt="logo">
+<img id="logo_light_mode" src="../../images/logo-icon.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ChemDCAT-AP Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nfdi-de/chem-dcat-ap" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ChemDCAT-AP Documentation" class="md-nav__button md-logo" aria-label="ChemDCAT-AP Documentation" data-md-component="logo">
+      <img id="logo_dark_mode" src="../../images/logo-icon.svg" alt="logo">
+<img id="logo_light_mode" src="../../images/logo-icon.svg" alt="logo">
+    </a>
+    ChemDCAT-AP Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nfdi-de/chem-dcat-ap" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../versioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Versioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="chemdcat-ap">ChemDCAT-AP</h1>
+<p>This is an extension of the DCAT Application Profile PLUS LinkML schema. It is intended to be used by NFDI4Chem &amp; NFDI4Cat as a core that can further be extended in profiles/schemas to provide chemistry specific specific metadata for a dataset.</p>
+<p>URI: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</p>
+<p>Name: chem-dcat-ap</p>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../classes/Activity/">Activity</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity">DCAT-AP specs:Activity</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/ChemicalReaction/">ChemicalReaction</a></td>
+<td>A process that leads to the transformation of one set of chemical substances to another.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/DataGeneratingActivity/">DataGeneratingActivity</a></td>
+<td>An Activity (process) that has the objective to produce information (in form of a dataset) about another Activity or Entity.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/DataAnalysis/">DataAnalysis</a></td>
+<td>An Activity that evaluates the data produced by another Activity.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or process that is being evaluated in a DataGeneratingActivity.</td>
+</tr>
+<tr>
+<td><a href="../classes/Agent/">Agent</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent">DCAT-AP specs:Agent</a></td>
+</tr>
+<tr>
+<td><a href="../classes/AgenticEntity/">AgenticEntity</a></td>
+<td>An entity that is somehow responsible for an Activity to take place.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Catalyst/">Catalyst</a></td>
+<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Device/">Device</a></td>
+<td>A material instrument that is designed to perform a function primarily by means of its mechanical or electrical nature.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Reactor/">Reactor</a></td>
+<td>A reactor is a container for controlling a biological or chemical reaction or process.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/DissolvingSubstance/">DissolvingSubstance</a></td>
+<td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Software/">Software</a></td>
+<td>An instrument composed of a series of instructions that can be interpreted by or directly executed by a computer.</td>
+</tr>
+<tr>
+<td><a href="../classes/Any/">Any</a></td>
+<td>This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot <a href="https://nfdi-de.github.io/chem-dcat-ap/elements/primary_topic/">primary_topic</a>.</td>
+</tr>
+<tr>
+<td><a href="../classes/Catalogue/">Catalogue</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue">DCAT-AP specs:Catalogue</a></td>
+</tr>
+<tr>
+<td><a href="../classes/CatalogueRecord/">CatalogueRecord</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord">DCAT-AP specs:CatalogueRecord</a></td>
+</tr>
+<tr>
+<td><a href="../classes/Checksum/">Checksum</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum">DCAT-AP specs:Checksum</a></td>
+</tr>
+<tr>
+<td><a href="../classes/ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/PolymerMixin/">PolymerMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..</td>
+</tr>
+<tr>
+<td><a href="../classes/ClassifierMixin/">ClassifierMixin</a></td>
+<td>A mixin with which an entity of this schema can be classified via an additional rdf:type or dcterms:type assertion.</td>
+</tr>
+<tr>
+<td><a href="../classes/DataService/">DataService</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService">DCAT-AP specs:DataService</a></td>
+</tr>
+<tr>
+<td><a href="../classes/Dataset/">Dataset</a></td>
+<td>A collection of data, published or curated by a single agent, and available for access or download in one or more representations.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/AnalysisDataset/">AnalysisDataset</a></td>
+<td>A Dataset that was generated by an analysis of some previously generated data. For example, a dataset that contains the data of an assignment of a chemical structure to a sample based on the spectral data obtained from the sample is an AnalyticalDataset.</td>
+</tr>
+<tr>
+<td><a href="../classes/DatasetSeries/">DatasetSeries</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries">DCAT-AP specs:DatasetSeries</a></td>
+</tr>
+<tr>
+<td><a href="../classes/DefinedTerm/">DefinedTerm</a></td>
+<td>A word, name, acronym or phrase that is defined in a controlled vocabulary (CV) and that is used to provide an additional rdf:type or dcterms:type of a class within this schema.</td>
+</tr>
+<tr>
+<td><a href="../classes/Distribution/">Distribution</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution">DCAT-AP specs:Distribution</a></td>
+</tr>
+<tr>
+<td><a href="../classes/Entity/">Entity</a></td>
+<td>A physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>An Entity that is being evaluated in a DataGeneratingActivity.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>Information that was evaluated within a DataAnalysis.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/MaterialSample/">MaterialSample</a></td>
+<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/SubstanceSample/">SubstanceSample</a></td>
+<td>A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/MaterialEntity/">MaterialEntity</a></td>
+<td>A material is an Entity that has some portion of matter as proper part.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/ChemicalEntity/">ChemicalEntity</a></td>
+<td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Atom/">Atom</a></td>
+<td>A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/ChemicalProduct/">ChemicalProduct</a></td>
+<td>A chemical substance that is produced by a ChemicalReaction.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Reagent/">Reagent</a></td>
+<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/StartingMaterial/">StartingMaterial</a></td>
+<td>A ChemicalSubstance with that has a starting material role in a synthesis.</td>
+</tr>
+<tr>
+<td><a href="../classes/Kind/">Kind</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind">DCAT-AP specs:Kind</a></td>
+</tr>
+<tr>
+<td><a href="../classes/Location/">Location</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location">DCAT-AP specs:Location</a></td>
+</tr>
+<tr>
+<td><a href="../classes/MaterialisticMixin/">MaterialisticMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.</td>
+</tr>
+<tr>
+<td><a href="../classes/Plan/">Plan</a></td>
+<td>A piece of information that specifies how an activity has to be carried out by its agents including what kind of steps have to be taken and what kind of parameters have to be met/set.</td>
+</tr>
+<tr>
+<td><a href="../classes/QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>A piece of information that is attributed to an Entity, Activity or AgenticEntity.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/InChi/">InChi</a></td>
+<td>A structure descriptor which conforms to the InChI format specification.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/InChIKey/">InChIKey</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/IUPACName/">IUPACName</a></td>
+<td>A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/MolecularFormula/">MolecularFormula</a></td>
+<td>A structure descriptor which identifies each constituent element by its chemical symbol and indicates the number of atoms of each element found in each discrete molecule of that compound.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/SMILES/">SMILES</a></td>
+<td>A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.</td>
+</tr>
+<tr>
+<td><a href="../classes/QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>A quantifiable piece of information that is attributed to an Entity, Activity or AgenticEntity.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/AmountOfSubstance/">AmountOfSubstance</a></td>
+<td>The total amount of substance used in a ChemicalReaction.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Concentration/">Concentration</a></td>
+<td>A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume of the mixture.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Density/">Density</a></td>
+<td>A measure of the mass per unit volume of a substance.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Mass/">Mass</a></td>
+<td>The strength of a body's gravitational attraction to other bodies.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/MolarMass/">MolarMass</a></td>
+<td>A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/MolarEquivalent/">MolarEquivalent</a></td>
+<td>A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/PercentageOfTotal/">PercentageOfTotal</a></td>
+<td>A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/PHValue/">PHValue</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Pressure/">Pressure</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Temperature/">Temperature</a></td>
+<td>A physical quantity that quantitatively expresses the attribute of hotness or coldness.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Volume/">Volume</a></td>
+<td>A measure of regions in three-dimensional space.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Yield/">Yield</a></td>
+<td>A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).</td>
+</tr>
+<tr>
+<td><a href="../classes/Relationship/">Relationship</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship">DCAT-AP specs:Relationship</a></td>
+</tr>
+<tr>
+<td><a href="../classes/SupportiveEntity/">SupportiveEntity</a></td>
+<td>The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Attribution/">Attribution</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution">DCAT-AP specs:Attribution</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/ChecksumAlgorithm/">ChecksumAlgorithm</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm">DCAT-AP specs:ChecksumAlgorithm</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Concept/">Concept</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept">DCAT-AP specs:Concept</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/ConceptScheme/">ConceptScheme</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme">DCAT-AP specs:ConceptScheme</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Document/">Document</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document">DCAT-AP specs:Document</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Frequency/">Frequency</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency">DCAT-AP specs:Frequency</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Geometry/">Geometry</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry">DCAT-AP specs:Geometry</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Identifier/">Identifier</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier">DCAT-AP specs:Identifier</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/LegalResource/">LegalResource</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource">DCAT-AP specs:LegalResource</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/LicenseDocument/">LicenseDocument</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument">DCAT-AP specs:LicenseDocument</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/LinguisticSystem/">LinguisticSystem</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem">DCAT-AP specs:LinguisticSystem</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/MediaType/">MediaType</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType">DCAT-AP specs:MediaType</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/MediaTypeOrExtent/">MediaTypeOrExtent</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaTypeOrExtent">DCAT-AP specs:MediaTypeOrExtent</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/PeriodOfTime/">PeriodOfTime</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime">DCAT-AP specs:PeriodOfTime</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Policy/">Policy</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy">DCAT-AP specs:Policy</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/ProvenanceStatement/">ProvenanceStatement</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement">DCAT-AP specs:ProvenanceStatement</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Resource/">Resource</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource">DCAT-AP specs:Resource</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/RightsStatement/">RightsStatement</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement">DCAT-AP specs:RightsStatement</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Role/">Role</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role">DCAT-AP specs:Role</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Standard/">Standard</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard">DCAT-AP specs:Standard</a></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/TimeInstant/">TimeInstant</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant">DCAT-AP specs:TimeInstant</a></td>
+</tr>
+<tr>
+<td><a href="../classes/Surrounding/">Surrounding</a></td>
+<td>The surrounding in which the dataset creating activity took place (e.g. a lab).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Laboratory/">Laboratory</a></td>
+<td>A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../slots/access_rights/">access_rights</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/access_service/">access_service</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/access_URL/">access_URL</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/algorithm/">algorithm</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/alternative_label/">alternative_label</a></td>
+<td>The slot to specify an alternative label, name or title for a MaterialEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/applicable_legislation/">applicable_legislation</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/application_profile/">application_profile</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/availability/">availability</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/bbox/">bbox</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/beginning/">beginning</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/byte_size/">byte_size</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/carried_out_by/">carried_out_by</a></td>
+<td>The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.</td>
+</tr>
+<tr>
+<td><a href="../slots/catalogue/">catalogue</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/centroid/">centroid</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/change_type/">change_type</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/checksum/">checksum</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/checksum_value/">checksum_value</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/composed_of/">composed_of</a></td>
+<td>The slot to provide the chemical entities of which a ChemicalSubstance is composed of.</td>
+</tr>
+<tr>
+<td><a href="../slots/compression_format/">compression_format</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/conforms_to/">conforms_to</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/contact_point/">contact_point</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/creator/">creator</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/dataset_distribution/">dataset_distribution</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/derived_from/">derived_from</a></td>
+<td>The slot to specify the Entity from which a Sample was derived.</td>
+</tr>
+<tr>
+<td><a href="../slots/description/">description</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/documentation/">documentation</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/download_URL/">download_URL</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/end/">end</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/end_date/">end_date</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/endpoint_description/">endpoint_description</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/endpoint_URL/">endpoint_URL</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/evaluated_activity/">evaluated_activity</a></td>
+<td>The slot to specify the Activity about which the DataGeneratingActivity produced information.</td>
+</tr>
+<tr>
+<td><a href="../slots/evaluated_entity/">evaluated_entity</a></td>
+<td>The slot to specify the Entity about which the DataGeneratingActivity produced information.</td>
+</tr>
+<tr>
+<td><a href="../slots/format/">format</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/frequency/">frequency</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/from_CV/">from_CV</a></td>
+<td>The URL of the controlled vocabulary.</td>
+</tr>
+<tr>
+<td><a href="../slots/generated_product/">generated_product</a></td>
+<td>The slot to specify the Product of a ChemicalReaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/geographical_coverage/">geographical_coverage</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/geometry/">geometry</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/had_input_activity/">had_input_activity</a></td>
+<td>The slot to provide a previous Activity that informed the Activity by being causally via a shared participant.</td>
+</tr>
+<tr>
+<td><a href="../slots/had_input_entity/">had_input_entity</a></td>
+<td>The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed.</td>
+</tr>
+<tr>
+<td><a href="../slots/had_output_entity/">had_output_entity</a></td>
+<td>The slot to specify the Entity that was generated as an output of an Activity.</td>
+</tr>
+<tr>
+<td><a href="../slots/had_role/">had_role</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_amount/">has_amount</a></td>
+<td>The slot to provide the AmountConcentration of a ChemicalSubstance.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_concentration/">has_concentration</a></td>
+<td>The slot to provide the Concentration of a ChemicalSubstance.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_dataset/">has_dataset</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_density/">has_density</a></td>
+<td>The slot to provide the Density of a MaterialEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_duration/">has_duration</a></td>
+<td>A slot to provide the duration of a ChemicalReaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_mass/">has_mass</a></td>
+<td>The slot to provide the Mass of a MaterialEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_molar_equivalent/">has_molar_equivalent</a></td>
+<td>A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_molar_mass/">has_molar_mass</a></td>
+<td>The slot to provide the MolarMass of a ChemicalEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_part/">has_part</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_percentage_of_total/">has_percentage_of_total</a></td>
+<td>A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_ph_value/">has_ph_value</a></td>
+<td>The slot to provide the PHValue of a ChemicalSubstance.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_physical_state/">has_physical_state</a></td>
+<td>The slot to specify the physical state of a MaterialEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_policy/">has_policy</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_pressure/">has_pressure</a></td>
+<td>The slot to provide the Pressure of a MaterialEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_qualitative_attribute/">has_qualitative_attribute</a></td>
+<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity</td>
+</tr>
+<tr>
+<td><a href="../slots/has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity</td>
+</tr>
+<tr>
+<td><a href="../slots/has_quantity_type/">has_quantity_type</a></td>
+<td>The type of quality that is quantifiable according to the QUDT ontology.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_reaction_step/">has_reaction_step</a></td>
+<td>A slot to specify a step (part) of a ChemicalReaction that is itself a ChemicalReaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_temperature/">has_temperature</a></td>
+<td>The slot to provide the Temperature of a MaterialEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_version/">has_version</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_volume/">has_volume</a></td>
+<td>The slot to provide the Volume of a MaterialEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/has_yield/">has_yield</a></td>
+<td>A slot to provide the percentage of how much of the ChemicalProduct was produced by a ChemicalReaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/homepage/">homepage</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/id/">id</a></td>
+<td>A slot to provide an URI for an entity within this schema.</td>
+</tr>
+<tr>
+<td><a href="../slots/identifier/">identifier</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/in_series/">in_series</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/inchi/">inchi</a></td>
+<td>The slot to provide the InChi descriptor of a ChemicalEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/inchikey/">inchikey</a></td>
+<td>The slot to provide the InChiKey of a ChemicalEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/is_about_activity/">is_about_activity</a></td>
+<td>A slot to provide the EvaluatedActivity a Dataset is about.</td>
+</tr>
+<tr>
+<td><a href="../slots/is_about_entity/">is_about_entity</a></td>
+<td>A slot to provide the EvaluatedEntity a Dataset is about.</td>
+</tr>
+<tr>
+<td><a href="../slots/is_referenced_by/">is_referenced_by</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/iupac_name/">iupac_name</a></td>
+<td>The slot to provide the IUPAC name of a ChemicalEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/keyword/">keyword</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/landing_page/">landing_page</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/language/">language</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/licence/">licence</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/linked_schemas/">linked_schemas</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/listing_date/">listing_date</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/media_type/">media_type</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/modification_date/">modification_date</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/molecular_formula/">molecular_formula</a></td>
+<td>The slot to provide the IUPAC formula of a ChemicalEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/name/">name</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/notation/">notation</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/occurred_in/">occurred_in</a></td>
+<td>The slot to specify the Surrounding in which an Activity took place.</td>
+</tr>
+<tr>
+<td><a href="../slots/other_identifier/">other_identifier</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/packaging_format/">packaging_format</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/part_of/">part_of</a></td>
+<td>A slot to specify a related resource in which the described resource is physically or logically included.</td>
+</tr>
+<tr>
+<td><a href="../slots/preferred_label/">preferred_label</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/primary_topic/">primary_topic</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/provenance/">provenance</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/publisher/">publisher</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/qualified_attribution/">qualified_attribution</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/qualified_relation/">qualified_relation</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/rdf_type/">rdf_type</a></td>
+<td>The slot to specify the ontology class that is instantiated by an entity.</td>
+</tr>
+<tr>
+<td><a href="../slots/realized_plan/">realized_plan</a></td>
+<td>The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.</td>
+</tr>
+<tr>
+<td><a href="../slots/record/">record</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/related_resource/">related_resource</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/relation/">relation</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/release_date/">release_date</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/rights/">rights</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/sample/">sample</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/serves_dataset/">serves_dataset</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/service/">service</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/smiles/">smiles</a></td>
+<td>The slot to provide the canonical SMILES descriptor of a ChemicalEntity.</td>
+</tr>
+<tr>
+<td><a href="../slots/source/">source</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/source_metadata/">source_metadata</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/spatial_resolution/">spatial_resolution</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/start_date/">start_date</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/status/">status</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/temporal_coverage/">temporal_coverage</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/temporal_resolution/">temporal_resolution</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/theme/">theme</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/themes/">themes</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/title/">title</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/type/">type</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/unit/">unit</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../slots/used_catalyst/">used_catalyst</a></td>
+<td>The slot to specify the Catalyst of a ChemicalReaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/used_reactant/">used_reactant</a></td>
+<td>The slot to specify the Reagent(s) of a ChemicalReaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/used_reactor/">used_reactor</a></td>
+<td>The slot to specify the reactor used in a ChemicalReaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/used_solvent/">used_solvent</a></td>
+<td>The slot to specify the chemical substance that had a solvent role (CHEBI:35223) in a ChemicalReaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/used_starting_material/">used_starting_material</a></td>
+<td>The slot to specify the Reagent(s) of a ChemicalReaction.</td>
+</tr>
+<tr>
+<td><a href="../slots/value/">value</a></td>
+<td>A slot to provide the literal value of an attribute.</td>
+</tr>
+<tr>
+<td><a href="../slots/version/">version</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/version_notes/">version_notes</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+<tr>
+<td><a href="../slots/was_generated_by/">was_generated_by</a></td>
+<td>This slot is described in more detail within the class in which it is used.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations">Enumerations</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../enums/DatasetThemes/">DatasetThemes</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../enums/PhysicalStateEnum/">PhysicalStateEnum</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="../enums/QUDTQuantityKindEnum/">QUDTQuantityKindEnum</a></td>
+<td>Possible kinds of quantifiable attribute types provided as QUDT QualityKind instances.</td>
+</tr>
+<tr>
+<td><a href="../enums/QUDTUnitEnum/">QUDTUnitEnum</a></td>
+<td>Possible kinds of QUDT unit instances.</td>
+</tr>
+<tr>
+<td><a href="../enums/TopLevelMediaTypes/">TopLevelMediaTypes</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="types">Types</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../types/Boolean/">Boolean</a></td>
+<td>A binary (true or false) value</td>
+</tr>
+<tr>
+<td><a href="../types/Curie/">Curie</a></td>
+<td>a compact URI</td>
+</tr>
+<tr>
+<td><a href="../types/Date/">Date</a></td>
+<td>a date (year, month and day) in an idealized calendar</td>
+</tr>
+<tr>
+<td><a href="../types/DateOrDatetime/">DateOrDatetime</a></td>
+<td>Either a date or a datetime</td>
+</tr>
+<tr>
+<td><a href="../types/Datetime/">Datetime</a></td>
+<td>The combination of a date and time</td>
+</tr>
+<tr>
+<td><a href="../types/Decimal/">Decimal</a></td>
+<td>A real number with arbitrary precision that conforms to the xsd:decimal specification</td>
+</tr>
+<tr>
+<td><a href="../types/Double/">Double</a></td>
+<td>A real number that conforms to the xsd:double specification</td>
+</tr>
+<tr>
+<td><a href="../types/Duration/">Duration</a></td>
+<td>The datatype that represents durations of time.</td>
+</tr>
+<tr>
+<td><a href="../types/Float/">Float</a></td>
+<td>A real number that conforms to the xsd:float specification</td>
+</tr>
+<tr>
+<td><a href="../types/HexBinary/">HexBinary</a></td>
+<td>The datatype that represents arbitrary hex-encoded binary data.</td>
+</tr>
+<tr>
+<td><a href="../types/Integer/">Integer</a></td>
+<td>An integer</td>
+</tr>
+<tr>
+<td><a href="../types/Jsonpath/">Jsonpath</a></td>
+<td>A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.</td>
+</tr>
+<tr>
+<td><a href="../types/Jsonpointer/">Jsonpointer</a></td>
+<td>A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.</td>
+</tr>
+<tr>
+<td><a href="../types/Ncname/">Ncname</a></td>
+<td>Prefix part of CURIE</td>
+</tr>
+<tr>
+<td><a href="../types/Nodeidentifier/">Nodeidentifier</a></td>
+<td>A URI, CURIE or BNODE that represents a node in a model.</td>
+</tr>
+<tr>
+<td><a href="../types/NonNegativeInteger/">NonNegativeInteger</a></td>
+<td>The datatype that represents non-negative integers.</td>
+</tr>
+<tr>
+<td><a href="../types/Objectidentifier/">Objectidentifier</a></td>
+<td>A URI or CURIE that represents an object in the model.</td>
+</tr>
+<tr>
+<td><a href="../types/Sparqlpath/">Sparqlpath</a></td>
+<td>A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.</td>
+</tr>
+<tr>
+<td><a href="../types/String/">String</a></td>
+<td>A character string</td>
+</tr>
+<tr>
+<td><a href="../types/Time/">Time</a></td>
+<td>A time object represents a (local) time of day, independent of any particular day</td>
+</tr>
+<tr>
+<td><a href="../types/Uri/">Uri</a></td>
+<td>a complete URI</td>
+</tr>
+<tr>
+<td><a href="../types/Uriorcurie/">Uriorcurie</a></td>
+<td>a URI or a CURIE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="subsets">Subsets</h2>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../subsets/DomainAgnosticCore/">DomainAgnosticCore</a></td>
+<td>The elements of this subset are considered the core layer of our DCAT-AP extension.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "search.highlight", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": ["stable"], "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
