@@ -69,9 +69,9 @@ classes:
     is_a: MaterialSample
     aliases:
       - analyte
-    description: A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.
+    description: A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.
     mixins:
-      - ChemicalSubstance
+      - ChemicalSubstanceMixin
 
   PolymerSample:
     is_a: SubstanceSample
