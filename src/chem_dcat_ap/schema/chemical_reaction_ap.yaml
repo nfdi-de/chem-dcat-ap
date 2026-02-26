@@ -58,9 +58,9 @@ imports:
 classes:
 
   ChemicalReaction:
-    is_a: Activity
+    is_a: EvaluatedActivity
     class_uri: SIO:010345
-    description: A process that leads to the transformation of one set of chemical substances to another.
+    description: A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.
     slots:
       - used_starting_material
       - used_reactant
