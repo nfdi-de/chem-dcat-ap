@@ -2106,7 +2106,7 @@
         },
         "ChemicalReaction": {
             "additionalProperties": false,
-            "description": "A process that leads to the transformation of one set of chemical substances to another.",
+            "description": "A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.",
             "properties": {
                 "carried_out_by": {
                     "description": "The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.",
@@ -2248,7 +2248,7 @@
                     "type": "string"
                 },
                 "other_identifier": {
-                    "description": "The slot to provide a secondary identifier of the Activity.",
+                    "description": "A slot to provide a secondary identifier of the EvaluatedActivity.",
                     "items": {
                         "$ref": "#/$defs/Identifier"
                     },

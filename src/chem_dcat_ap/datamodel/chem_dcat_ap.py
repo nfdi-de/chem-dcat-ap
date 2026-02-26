@@ -1,5 +1,5 @@
 # Auto generated from chem_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-11T10:14:26
+# Generation date: 2026-02-26T14:05:40
 # Schema: chem-dcat-ap
 #
 # id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
@@ -214,7 +214,7 @@ class ResourceId(URIorCURIE):
     pass
 
 
-class ChemicalReactionId(ActivityId):
+class ChemicalReactionId(EvaluatedActivityId):
     pass
 
 
@@ -2420,9 +2420,10 @@ class PHValue(QuantitativeAttribute):
     has_quantity_type: Union[str, DefinedTermId] = None
 
 @dataclass(repr=False)
-class ChemicalReaction(Activity):
+class ChemicalReaction(EvaluatedActivity):
     """
-    A process that leads to the transformation of one set of chemical substances to another.
+    A process that leads to the transformation of one set of chemical substances to another and that is the subject
+    matter of a DataGeneratingActivity.
     """
     _inherited_slots: ClassVar[list[str]] = []
 

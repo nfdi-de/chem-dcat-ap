@@ -8844,9 +8844,9 @@ class Pressure(QuantitativeAttribute):
          'slot_uri': 'rdf:type'} })
 
 
-class ChemicalReaction(Activity):
+class ChemicalReaction(EvaluatedActivity):
     """
-    A process that leads to the transformation of one set of chemical substances to another.
+    A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:010345',
          'exact_mappings': ['MOP:0000543', 'REX:0000002', 'AFP:0003711'],
@@ -8999,7 +8999,7 @@ class ChemicalReaction(Activity):
                        'TimeInstant'],
          'notes': ['not in DCAT-AP'],
          'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[list[Identifier]] = Field(default=[], description="""The slot to provide a secondary identifier of the Activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'AgenticEntity', 'Dataset', 'Entity'],
+    other_identifier: Optional[list[Identifier]] = Field(default=[], description="""A slot to provide a secondary identifier of the EvaluatedActivity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'AgenticEntity', 'Dataset', 'Entity'],
          'notes': ['not in DCAT-AP'],
          'slot_uri': 'adms:identifier'} })
     has_part: Optional[list[Activity]] = Field(default=[], description="""The slot to provide an Activity that is part of the Activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'AgenticEntity', 'Catalogue', 'Entity'],

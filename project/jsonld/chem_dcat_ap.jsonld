@@ -9110,7 +9110,7 @@
     {
       "name": "ChemicalReaction",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalReaction",
-      "description": "A process that leads to the transformation of one set of chemical substances to another.",
+      "description": "A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "SIO:010345"
@@ -9123,12 +9123,11 @@
       "narrow_mappings": [
         "RXNO:0000329"
       ],
-      "is_a": "Activity",
+      "is_a": "EvaluatedActivity",
       "slots": [
         "id",
         "Activity_title",
         "Activity_description",
-        "Activity_other_identifier",
         "Activity_has_part",
         "Activity_had_input_entity",
         "Activity_had_output_entity",
@@ -9139,6 +9138,7 @@
         "Activity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
+        "EvaluatedActivity_other_identifier",
         "used_starting_material",
         "used_reactant",
         "generated_product",
@@ -9711,12 +9711,12 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2025-12-11T09:59:36",
+  "source_file_date": "2026-02-26T14:02:51",
   "source_file_size": 3674,
-  "generation_date": "2025-12-11T10:14:24",
+  "generation_date": "2026-02-26T14:05:37",
   "@type": "SchemaDefinition",
   "@context": [
-    "project\\jsonld/chem_dcat_ap.context.jsonld",
+    "project/jsonld/chem_dcat_ap.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
     "https://w3id.org/nfdi-de/dcat-ap-plus/latest/schema/dcat_ap_plus.context.jsonld",
     "chemical_entities_ap.context.jsonld",
