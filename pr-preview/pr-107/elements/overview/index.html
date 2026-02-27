@@ -703,7 +703,7 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/SubstanceSample/">SubstanceSample</a></td>
-<td>A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.</td>
+<td>A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/PolymerSample/">PolymerSample</a></td>
@@ -722,23 +722,15 @@
 <td>A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/ChemicalProduct/">ChemicalProduct</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/ChemicalProduct/">ChemicalProduct</a></td>
 <td>A chemical substance that is produced by a ChemicalReaction.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Polymer/">Polymer</a></td>
-<td>A ChemicalSubstance that is composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Reagent/">Reagent</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/Reagent/">Reagent</a></td>
 <td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/StartingMaterial/">StartingMaterial</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/StartingMaterial/">StartingMaterial</a></td>
 <td>A ChemicalSubstance with that has a starting material role in a synthesis.</td>
 </tr>
 <tr>
@@ -750,8 +742,16 @@
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location">DCAT-AP specs:Location</a></td>
 </tr>
 <tr>
-<td><a href="../classes/Materialistic/">Materialistic</a></td>
+<td><a href="../classes/MaterialisticMixin/">MaterialisticMixin</a></td>
 <td>A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../classes/PolymerMixin/">PolymerMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..</td>
 </tr>
 <tr>
 <td><a href="../classes/Plan/">Plan</a></td>

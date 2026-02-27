@@ -2537,9 +2537,9 @@
       ],
       "is_a": "has_part",
       "slot_uri": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "owner": "ChemicalSubstance",
+      "owner": "ChemicalSubstanceMixin",
       "domain_of": [
-        "ChemicalSubstance"
+        "ChemicalSubstanceMixin"
       ],
       "range": "ChemicalEntity",
       "recommended": true,
@@ -2558,9 +2558,9 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "ChemicalSubstance",
+      "owner": "ChemicalSubstanceMixin",
       "domain_of": [
-        "ChemicalSubstance"
+        "ChemicalSubstanceMixin"
       ],
       "range": "Concentration",
       "recommended": true,
@@ -2579,9 +2579,9 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "ChemicalSubstance",
+      "owner": "ChemicalSubstanceMixin",
       "domain_of": [
-        "ChemicalSubstance"
+        "ChemicalSubstanceMixin"
       ],
       "range": "AmountOfSubstance",
       "recommended": true,
@@ -2600,9 +2600,9 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "ChemicalSubstance",
+      "owner": "ChemicalSubstanceMixin",
       "domain_of": [
-        "ChemicalSubstance"
+        "ChemicalSubstanceMixin"
       ],
       "range": "PHValue",
       "recommended": true,
@@ -2912,7 +2912,7 @@
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
       "owner": "Catalyst",
       "domain_of": [
-        "ChemicalSubstance",
+        "ChemicalSubstanceMixin",
         "StartingMaterial",
         "Reagent",
         "Catalyst"
@@ -2936,7 +2936,7 @@
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
       "owner": "DissolvingSubstance",
       "domain_of": [
-        "ChemicalSubstance",
+        "ChemicalSubstanceMixin",
         "DissolvingSubstance"
       ],
       "range": "PercentageOfTotal",
@@ -2975,9 +2975,9 @@
         "http://www.w3.org/2004/02/skos/core#altLabel"
       ],
       "slot_uri": "http://www.w3.org/2004/02/skos/core#altLabel",
-      "owner": "Materialistic",
+      "owner": "MaterialisticMixin",
       "domain_of": [
-        "Materialistic"
+        "MaterialisticMixin"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -2994,9 +2994,9 @@
         "http://semanticscience.org/resource/SIO_000008"
       ],
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "Materialistic",
+      "owner": "MaterialisticMixin",
       "domain_of": [
-        "Materialistic"
+        "MaterialisticMixin"
       ],
       "range": "PhysicalStateEnum",
       "@type": "SlotDefinition"
@@ -3011,10 +3011,10 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "Materialistic",
+      "owner": "MaterialisticMixin",
       "domain_of": [
         "ChemicalReaction",
-        "Materialistic"
+        "MaterialisticMixin"
       ],
       "range": "Temperature",
       "recommended": true,
@@ -3033,9 +3033,9 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "Materialistic",
+      "owner": "MaterialisticMixin",
       "domain_of": [
-        "Materialistic"
+        "MaterialisticMixin"
       ],
       "range": "Mass",
       "recommended": true,
@@ -3054,9 +3054,9 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "Materialistic",
+      "owner": "MaterialisticMixin",
       "domain_of": [
-        "Materialistic"
+        "MaterialisticMixin"
       ],
       "range": "Volume",
       "recommended": true,
@@ -3075,9 +3075,9 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "Materialistic",
+      "owner": "MaterialisticMixin",
       "domain_of": [
-        "Materialistic"
+        "MaterialisticMixin"
       ],
       "range": "Density",
       "recommended": true,
@@ -3096,10 +3096,10 @@
       ],
       "is_a": "has_quantitative_attribute",
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
-      "owner": "Materialistic",
+      "owner": "MaterialisticMixin",
       "domain_of": [
         "ChemicalReaction",
-        "Materialistic"
+        "MaterialisticMixin"
       ],
       "range": "Pressure",
       "recommended": true,
@@ -7361,7 +7361,7 @@
     {
       "name": "SubstanceSample",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSample",
-      "description": "A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.",
+      "description": "A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
       "aliases": [
         "analyte"
@@ -7371,7 +7371,7 @@
       ],
       "is_a": "MaterialSample",
       "mixins": [
-        "ChemicalSubstance"
+        "ChemicalSubstanceMixin"
       ],
       "slots": [
         "id",
@@ -7417,7 +7417,7 @@
       ],
       "is_a": "SubstanceSample",
       "mixins": [
-        "Polymer"
+        "PolymerMixin"
       ],
       "slots": [
         "id",
@@ -8940,26 +8940,14 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "ChemicalSubstance",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstance",
-      "description": "A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.",
+      "name": "ChemicalSubstanceMixin",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstanceMixin",
+      "description": "A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "mappings": [
-        "CHEBI:59999"
-      ],
-      "is_a": "MaterialEntity",
+      "is_a": "MaterialisticMixin",
+      "abstract": true,
       "mixin": true,
       "slots": [
-        "Entity_title",
-        "Entity_description",
-        "id",
-        "Entity_other_identifier",
-        "has_qualitative_attribute",
-        "has_quantitative_attribute",
-        "Entity_part_of",
-        "ClassifierMixin_type",
-        "rdf_type",
-        "MaterialEntity_has_part",
         "alternative_label",
         "has_physical_state",
         "has_temperature",
@@ -8975,30 +8963,18 @@
         "has_percentage_of_total"
       ],
       "slot_usage": {},
-      "class_uri": "http://purl.obolibrary.org/obo/CHEBI_59999",
+      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstanceMixin",
       "@type": "ClassDefinition"
     },
     {
-      "name": "Polymer",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Polymer",
-      "description": "A ChemicalSubstance that is composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..",
+      "name": "PolymerMixin",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerMixin",
+      "description": "A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "mappings": [
-        "CHEBI:60027"
-      ],
-      "is_a": "ChemicalSubstance",
+      "is_a": "ChemicalSubstanceMixin",
+      "abstract": true,
       "mixin": true,
       "slots": [
-        "Entity_title",
-        "Entity_description",
-        "id",
-        "Entity_other_identifier",
-        "has_qualitative_attribute",
-        "has_quantitative_attribute",
-        "Entity_part_of",
-        "ClassifierMixin_type",
-        "rdf_type",
-        "MaterialEntity_has_part",
         "alternative_label",
         "has_physical_state",
         "has_temperature",
@@ -9014,7 +8990,7 @@
         "has_percentage_of_total"
       ],
       "slot_usage": {},
-      "class_uri": "http://purl.obolibrary.org/obo/CHEBI_60027",
+      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerMixin",
       "@type": "ClassDefinition"
     },
     {
@@ -9164,7 +9140,10 @@
       "mappings": [
         "PROCO:0000029"
       ],
-      "is_a": "ChemicalSubstance",
+      "is_a": "MaterialEntity",
+      "mixins": [
+        "ChemicalSubstanceMixin"
+      ],
       "slots": [
         "Entity_title",
         "Entity_description",
@@ -9183,12 +9162,12 @@
         "has_volume",
         "has_density",
         "has_pressure",
+        "has_molar_equivalent",
         "has_concentration",
         "has_ph_value",
         "composed_of",
         "has_amount",
-        "has_percentage_of_total",
-        "has_molar_equivalent"
+        "has_percentage_of_total"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/PROCO_0000029",
@@ -9211,8 +9190,8 @@
       ],
       "is_a": "AgenticEntity",
       "mixins": [
-        "ChemicalSubstance",
-        "Materialistic"
+        "ChemicalSubstanceMixin",
+        "MaterialisticMixin"
       ],
       "slots": [
         "id",
@@ -9259,7 +9238,10 @@
         "OBI:0001879",
         "PROCO:0000029"
       ],
-      "is_a": "ChemicalSubstance",
+      "is_a": "MaterialEntity",
+      "mixins": [
+        "ChemicalSubstanceMixin"
+      ],
       "slots": [
         "Entity_title",
         "Entity_description",
@@ -9278,12 +9260,12 @@
         "has_volume",
         "has_density",
         "has_pressure",
+        "has_molar_equivalent",
         "has_concentration",
         "has_ph_value",
         "composed_of",
         "has_amount",
-        "has_percentage_of_total",
-        "has_molar_equivalent"
+        "has_percentage_of_total"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_010411",
@@ -9303,7 +9285,10 @@
       "close_mappings": [
         "ENVO:2000000"
       ],
-      "is_a": "ChemicalSubstance",
+      "is_a": "MaterialEntity",
+      "mixins": [
+        "ChemicalSubstanceMixin"
+      ],
       "slots": [
         "Entity_title",
         "Entity_description",
@@ -9350,8 +9335,7 @@
       ],
       "is_a": "AgenticEntity",
       "mixins": [
-        "ChemicalSubstance",
-        "Materialistic"
+        "ChemicalSubstanceMixin"
       ],
       "slots": [
         "id",
@@ -9395,7 +9379,7 @@
       ],
       "is_a": "Device",
       "mixins": [
-        "Materialistic"
+        "MaterialisticMixin"
       ],
       "slots": [
         "id",
@@ -9490,10 +9474,11 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "Materialistic",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Materialistic",
+      "name": "MaterialisticMixin",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialisticMixin",
       "description": "A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
+      "abstract": true,
       "mixin": true,
       "slots": [
         "alternative_label",
@@ -9505,7 +9490,7 @@
         "has_pressure"
       ],
       "slot_usage": {},
-      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Materialistic",
+      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialisticMixin",
       "@type": "ClassDefinition"
     },
     {
@@ -9518,7 +9503,7 @@
       ],
       "is_a": "Entity",
       "mixins": [
-        "Materialistic"
+        "MaterialisticMixin"
       ],
       "slots": [
         "Entity_title",
@@ -9557,7 +9542,7 @@
       ],
       "is_a": "EvaluatedEntity",
       "mixins": [
-        "Materialistic"
+        "MaterialisticMixin"
       ],
       "slots": [
         "id",
@@ -9711,9 +9696,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-02-26T14:02:51",
-  "source_file_size": 3674,
-  "generation_date": "2026-02-26T14:05:37",
+  "source_file_date": "2026-02-27T09:40:31",
+  "source_file_size": 3685,
+  "generation_date": "2026-02-27T09:42:23",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/chem_dcat_ap.context.jsonld",

@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post7.dev0+987d0038
+version: 0.1.0rc2.post17.dev0+4b21678b
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -2095,9 +2095,9 @@ slots:
     - AFX:0000940
     is_a: has_part
     slot_uri: BFO:0000051
-    owner: ChemicalSubstance
+    owner: ChemicalSubstanceMixin
     domain_of:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     range: ChemicalEntity
     recommended: true
     multivalued: true
@@ -2112,9 +2112,9 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: ChemicalSubstance
+    owner: ChemicalSubstanceMixin
     domain_of:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     range: Concentration
     recommended: true
     multivalued: true
@@ -2129,9 +2129,9 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: ChemicalSubstance
+    owner: ChemicalSubstanceMixin
     domain_of:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     range: AmountOfSubstance
     recommended: true
     multivalued: true
@@ -2146,9 +2146,9 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: ChemicalSubstance
+    owner: ChemicalSubstanceMixin
     domain_of:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     range: PHValue
     recommended: true
     multivalued: true
@@ -2402,7 +2402,7 @@ slots:
     slot_uri: SIO:000008
     owner: Catalyst
     domain_of:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     - StartingMaterial
     - Reagent
     - Catalyst
@@ -2424,7 +2424,7 @@ slots:
     slot_uri: SIO:000008
     owner: DissolvingSubstance
     domain_of:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     - DissolvingSubstance
     range: PercentageOfTotal
     recommended: true
@@ -2455,9 +2455,9 @@ slots:
     mappings:
     - skos:altLabel
     slot_uri: skos:altLabel
-    owner: Materialistic
+    owner: MaterialisticMixin
     domain_of:
-    - Materialistic
+    - MaterialisticMixin
     range: string
   has_physical_state:
     name: has_physical_state
@@ -2471,9 +2471,9 @@ slots:
     mappings:
     - SIO:000008
     slot_uri: SIO:000008
-    owner: Materialistic
+    owner: MaterialisticMixin
     domain_of:
-    - Materialistic
+    - MaterialisticMixin
     range: PhysicalStateEnum
     multivalued: false
     inlined: false
@@ -2486,10 +2486,10 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: Materialistic
+    owner: MaterialisticMixin
     domain_of:
     - ChemicalReaction
-    - Materialistic
+    - MaterialisticMixin
     range: Temperature
     recommended: true
     multivalued: true
@@ -2504,9 +2504,9 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: Materialistic
+    owner: MaterialisticMixin
     domain_of:
-    - Materialistic
+    - MaterialisticMixin
     range: Mass
     recommended: true
     multivalued: true
@@ -2521,9 +2521,9 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: Materialistic
+    owner: MaterialisticMixin
     domain_of:
-    - Materialistic
+    - MaterialisticMixin
     range: Volume
     recommended: true
     multivalued: true
@@ -2538,9 +2538,9 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: Materialistic
+    owner: MaterialisticMixin
     domain_of:
-    - Materialistic
+    - MaterialisticMixin
     range: Density
     recommended: true
     multivalued: true
@@ -2555,10 +2555,10 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: Materialistic
+    owner: MaterialisticMixin
     domain_of:
     - ChemicalReaction
-    - Materialistic
+    - MaterialisticMixin
     range: Pressure
     recommended: true
     multivalued: true
@@ -6308,7 +6308,7 @@ classes:
   SubstanceSample:
     name: SubstanceSample
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSample
-    description: A MaterialSample derived from a ChemicalSubstance that is of interest
+    description: A MaterialSample derived from a chemical substance that is of interest
       in an analytical procedure.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
     aliases:
@@ -6317,7 +6317,7 @@ classes:
     - SIO:001378
     is_a: MaterialSample
     mixins:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     slots:
     - id
     - has_qualitative_attribute
@@ -6357,7 +6357,7 @@ classes:
     - SIO:001378
     is_a: SubstanceSample
     mixins:
-    - Polymer
+    - PolymerMixin
     slots:
     - id
     - has_qualitative_attribute
@@ -8921,27 +8921,18 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     class_uri: CHEMINF:000018
-  ChemicalSubstance:
-    name: ChemicalSubstance
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstance
-    description: A MaterialEntity of constant composition, composed of chemical entities
-      of the same type or of different types.
+  ChemicalSubstanceMixin:
+    name: ChemicalSubstanceMixin
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstanceMixin
+    description: A LinkML mixin used to pass down properties common to all material
+      entities that are described in a chemical context via being composed of chemical
+      entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc.,
+      ) of the same type or of different types.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-    mappings:
-    - CHEBI:59999
-    is_a: MaterialEntity
+    is_a: MaterialisticMixin
+    abstract: true
     mixin: true
     slots:
-    - Entity_title
-    - Entity_description
-    - id
-    - Entity_other_identifier
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - Entity_part_of
-    - ClassifierMixin_type
-    - rdf_type
-    - MaterialEntity_has_part
     - alternative_label
     - has_physical_state
     - has_temperature
@@ -8955,29 +8946,18 @@ classes:
     - has_molar_equivalent
     - has_amount
     - has_percentage_of_total
-    class_uri: CHEBI:59999
-  Polymer:
-    name: Polymer
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Polymer
-    description: A ChemicalSubstance that is composed of macromolecules of different
-      kinds and which may be differentiated by composition, length, degree of branching
-      etc..
+    class_uri: chemical_entities_ap:ChemicalSubstanceMixin
+  PolymerMixin:
+    name: PolymerMixin
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerMixin
+    description: A LinkML mixin used to pass down properties common to all chemical
+      substances that are composed of macromolecules of different kinds and which
+      may be differentiated by composition, length, degree of branching etc..
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-    mappings:
-    - CHEBI:60027
-    is_a: ChemicalSubstance
+    is_a: ChemicalSubstanceMixin
+    abstract: true
     mixin: true
     slots:
-    - Entity_title
-    - Entity_description
-    - id
-    - Entity_other_identifier
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - Entity_part_of
-    - ClassifierMixin_type
-    - rdf_type
-    - MaterialEntity_has_part
     - alternative_label
     - has_physical_state
     - has_temperature
@@ -8991,7 +8971,7 @@ classes:
     - has_molar_equivalent
     - has_amount
     - has_percentage_of_total
-    class_uri: CHEBI:60027
+    class_uri: chemical_entities_ap:PolymerMixin
   Concentration:
     name: Concentration
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Concentration
@@ -9128,7 +9108,9 @@ classes:
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - PROCO:0000029
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+    - ChemicalSubstanceMixin
     slots:
     - Entity_title
     - Entity_description
@@ -9147,12 +9129,12 @@ classes:
     - has_volume
     - has_density
     - has_pressure
+    - has_molar_equivalent
     - has_concentration
     - has_ph_value
     - composed_of
     - has_amount
     - has_percentage_of_total
-    - has_molar_equivalent
     class_uri: PROCO:0000029
   DissolvingSubstance:
     name: DissolvingSubstance
@@ -9169,8 +9151,8 @@ classes:
     - NCIT:C45790
     is_a: AgenticEntity
     mixins:
-    - ChemicalSubstance
-    - Materialistic
+    - ChemicalSubstanceMixin
+    - MaterialisticMixin
     slots:
     - id
     - title
@@ -9209,7 +9191,9 @@ classes:
     close_mappings:
     - OBI:0001879
     - PROCO:0000029
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+    - ChemicalSubstanceMixin
     slots:
     - Entity_title
     - Entity_description
@@ -9228,12 +9212,12 @@ classes:
     - has_volume
     - has_density
     - has_pressure
+    - has_molar_equivalent
     - has_concentration
     - has_ph_value
     - composed_of
     - has_amount
     - has_percentage_of_total
-    - has_molar_equivalent
     class_uri: SIO:010411
   ChemicalProduct:
     name: ChemicalProduct
@@ -9246,7 +9230,9 @@ classes:
     - VOC4CAT:0000194
     close_mappings:
     - ENVO:2000000
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+    - ChemicalSubstanceMixin
     slots:
     - Entity_title
     - Entity_description
@@ -9287,8 +9273,7 @@ classes:
     - CHEBI:35223
     is_a: AgenticEntity
     mixins:
-    - ChemicalSubstance
-    - Materialistic
+    - ChemicalSubstanceMixin
     slots:
     - id
     - title
@@ -9326,7 +9311,7 @@ classes:
     - VOC4CAT:0007017
     is_a: Device
     mixins:
-    - Materialistic
+    - MaterialisticMixin
     slots:
     - id
     - title
@@ -9404,13 +9389,14 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     class_uri: qudt:Quantity
-  Materialistic:
-    name: Materialistic
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Materialistic
+  MaterialisticMixin:
+    name: MaterialisticMixin
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialisticMixin
     description: A LinkML mixin used to pass down properties common to all material
       entities. It is needed for example to have MaterialSample have the same properties
       as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    abstract: true
     mixin: true
     slots:
     - alternative_label
@@ -9420,7 +9406,7 @@ classes:
     - has_volume
     - has_density
     - has_pressure
-    class_uri: material_entities_ap:Materialistic
+    class_uri: material_entities_ap:MaterialisticMixin
   MaterialEntity:
     name: MaterialEntity
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialEntity
@@ -9431,7 +9417,7 @@ classes:
     - BFO:0000040
     is_a: Entity
     mixins:
-    - Materialistic
+    - MaterialisticMixin
     slots:
     - Entity_title
     - Entity_description
@@ -9473,7 +9459,7 @@ classes:
     - VOC4CAT:0005056
     is_a: EvaluatedEntity
     mixins:
-    - Materialistic
+    - MaterialisticMixin
     slots:
     - id
     - has_qualitative_attribute
@@ -9597,7 +9583,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-02-26T13:18:46'
-source_file_size: 3587
-generation_date: '2026-02-26T13:18:58'
+source_file_date: '2026-02-27T08:45:05'
+source_file_size: 3599
+generation_date: '2026-02-27T08:45:16'
 

@@ -304,8 +304,10 @@
 <pre class="mermaid"><code> classDiagram
     class StartingMaterial
     click StartingMaterial href "../../classes/StartingMaterial/"
-      ChemicalSubstance &lt;|-- StartingMaterial
-        click ChemicalSubstance href "../../classes/ChemicalSubstance/"
+      ChemicalSubstanceMixin &lt;|-- StartingMaterial
+        click ChemicalSubstanceMixin href "../../classes/ChemicalSubstanceMixin/"
+      MaterialEntity &lt;|-- StartingMaterial
+        click MaterialEntity href "../../classes/MaterialEntity/"
 
       StartingMaterial : alternative_label
 
@@ -529,11 +531,8 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Entity/">Entity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
-<li><a href="../MaterialEntity/">MaterialEntity</a> [ <a href="../Materialistic/">Materialistic</a>]<ul>
-<li><a href="../ChemicalSubstance/">ChemicalSubstance</a><ul>
-<li><strong>StartingMaterial</strong></li>
-</ul>
-</li>
+<li><a href="../MaterialEntity/">MaterialEntity</a> [ <a href="../MaterialisticMixin/">MaterialisticMixin</a>]<ul>
+<li><strong>StartingMaterial</strong> [ <a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a>]</li>
 </ul>
 </li>
 </ul>
@@ -560,73 +559,73 @@
 <td><a href="../../slots/has_concentration/">has_concentration</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Concentration/">Concentration</a></td>
 <td>The slot to provide the Concentration of a ChemicalSubstance.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_ph_value/">has_ph_value</a></td>
 <td>* <em>recommended</em> <br/> <a href="../PHValue/">PHValue</a></td>
 <td>The slot to provide the PHValue of a ChemicalSubstance.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/composed_of/">composed_of</a></td>
 <td>* <em>recommended</em> <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
 <td>The slot to provide the chemical entities of which a ChemicalSubstance is composed of.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_amount/">has_amount</a></td>
 <td>* <em>recommended</em> <br/> <a href="../AmountOfSubstance/">AmountOfSubstance</a></td>
 <td>The slot to provide the AmountConcentration of a ChemicalSubstance.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_percentage_of_total/">has_percentage_of_total</a></td>
 <td>* <em>recommended</em> <br/> <a href="../PercentageOfTotal/">PercentageOfTotal</a></td>
 <td>A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/alternative_label/">alternative_label</a></td>
 <td>0..1 <br/> <a href="../../types/String/">String</a></td>
 <td>The slot to specify an alternative label, name or title for a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_physical_state/">has_physical_state</a></td>
 <td>0..1 <br/> <a href="../../enums/PhysicalStateEnum/">PhysicalStateEnum</a></td>
 <td>The slot to specify the physical state of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_temperature/">has_temperature</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Temperature/">Temperature</a></td>
 <td>The slot to provide the Temperature of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_mass/">has_mass</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Mass/">Mass</a></td>
 <td>The slot to provide the Mass of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_volume/">has_volume</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Volume/">Volume</a></td>
 <td>The slot to provide the Volume of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_density/">has_density</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Density/">Density</a></td>
 <td>The slot to provide the Density of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_pressure/">has_pressure</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Pressure/">Pressure</a></td>
 <td>The slot to provide the Pressure of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/title/">title</a></td>
@@ -740,7 +739,9 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A ChemicalSubstance with that has a starting material role in a synthesis.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialEntity</span>
+<span class="nt">mixins</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="nt">slots</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_molar_equivalent</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PROCO:0000029</span>
@@ -751,7 +752,9 @@
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A ChemicalSubstance with that has a starting material role in a synthesis.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialEntity</span>
+<span class="nt">mixins</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">has_molar_equivalent</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_molar_equivalent</span>
@@ -765,7 +768,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_molar_equivalent</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reagent</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalyst</span>
@@ -784,7 +787,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_concentration</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Concentration</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -800,7 +803,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_ph_value</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PHValue</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -819,7 +822,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composed_of</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalEntity</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -835,7 +838,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_amount</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AmountOfSubstance</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -853,7 +856,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_percentage_of_total</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DissolvingSubstance</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PercentageOfTotal</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -871,7 +874,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alternative_label</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">has_physical_state</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_physical_state</span>
@@ -886,7 +889,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_physical_state</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalStateEnum</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
@@ -900,7 +903,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_temperature</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalReaction</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Temperature</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -917,7 +920,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_mass</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mass</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -933,7 +936,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_volume</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Volume</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -949,7 +952,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_density</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Density</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -965,7 +968,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_pressure</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalReaction</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pressure</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>

@@ -95,7 +95,9 @@ classes:
 
   StartingMaterial:
     class_uri: PROCO:0000029
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+      - ChemicalSubstanceMixin
     description: A ChemicalSubstance with that has a starting material role in a synthesis.
     slots:
       - has_molar_equivalent
@@ -108,8 +110,8 @@ classes:
     slots:
       - has_percentage_of_total
     mixins:
-      - ChemicalSubstance
-      - Materialistic
+      - ChemicalSubstanceMixin
+      - MaterialisticMixin
     description: A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.
     exact_mappings:
       - VOC4CAT:0007246
@@ -117,7 +119,9 @@ classes:
 
   Reagent:
     class_uri: SIO:010411
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+      - ChemicalSubstanceMixin
     description: A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.
     slots:
       - has_molar_equivalent
@@ -130,7 +134,9 @@ classes:
 
   ChemicalProduct:
     class_uri: NCIT:C48810
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+      - ChemicalSubstanceMixin
     description: A chemical substance that is produced by a ChemicalReaction.
     exact_mappings:
       - VOC4CAT:0000194
@@ -141,8 +147,7 @@ classes:
     class_uri: SIO:010344
     is_a: AgenticEntity
     mixins:
-      - ChemicalSubstance
-      - Materialistic
+      - ChemicalSubstanceMixin
     description: A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.
     slots:
       - has_molar_equivalent
@@ -156,7 +161,7 @@ classes:
     is_a: Device
     class_uri: AFE:0000153
     mixins:
-      - Materialistic
+      - MaterialisticMixin
     description: A reactor is a container for controlling a biological or chemical reaction or process.
     exact_mappings:
       - VOC4CAT:0007017

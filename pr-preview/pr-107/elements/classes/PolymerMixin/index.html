@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://nfdi-de.github.io/chem-dcat-ap/elements/classes/Polymer/" rel="canonical"/>
+<link href="https://nfdi-de.github.io/chem-dcat-ap/elements/classes/PolymerMixin/" rel="canonical"/>
 <link href="../../../images/favicon.svg" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
-<title>Class: Polymer - ChemDCAT-AP Documentation</title>
+<title>Class: PolymerMixin - ChemDCAT-AP Documentation</title>
 <link href="../../../assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -25,7 +25,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-polymer">
+<a class="md-skip" href="#class-polymermixin">
           Skip to content
         </a>
 </div>
@@ -52,7 +52,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: Polymer
+              Class: PolymerMixin
             
           </span>
 </div>
@@ -298,234 +298,154 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-polymer">Class: Polymer</h1>
-<p><em>A ChemicalSubstance that is composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..</em></p>
-<p>URI: <a href="http://purl.obolibrary.org/obo/CHEBI_60027">CHEBI:60027</a></p>
+<h1 id="class-polymermixin">Class: PolymerMixin</h1>
+<p><em>A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..</em></p>
+<ul>
+<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
+</ul>
+<p>URI: <a href="https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/class/PolymerMixin">chemdcatap:class/PolymerMixin</a></p>
 <pre class="mermaid"><code> classDiagram
-    class Polymer
-    click Polymer href "../../classes/Polymer/"
-      ChemicalSubstance &lt;|-- Polymer
-        click ChemicalSubstance href "../../classes/ChemicalSubstance/"
+    class PolymerMixin
+    click PolymerMixin href "../../classes/PolymerMixin/"
+      ChemicalSubstanceMixin &lt;|-- PolymerMixin
+        click ChemicalSubstanceMixin href "../../classes/ChemicalSubstanceMixin/"
 
 
-      Polymer &lt;|-- PolymerSample
+      PolymerMixin &lt;|-- PolymerSample
         click PolymerSample href "../../classes/PolymerSample/"
 
 
-      Polymer : alternative_label
+      PolymerMixin : alternative_label
 
-      Polymer : composed_of
-
-
+      PolymerMixin : composed_of
 
 
 
-        Polymer --&gt; "* _recommended_" ChemicalEntity : composed_of
+
+
+        PolymerMixin --&gt; "* _recommended_" ChemicalEntity : composed_of
         click ChemicalEntity href "../../classes/ChemicalEntity/"
 
 
 
-      Polymer : description
-
-      Polymer : has_amount
+      PolymerMixin : has_amount
 
 
 
 
 
-        Polymer --&gt; "* _recommended_" AmountOfSubstance : has_amount
+        PolymerMixin --&gt; "* _recommended_" AmountOfSubstance : has_amount
         click AmountOfSubstance href "../../classes/AmountOfSubstance/"
 
 
 
-      Polymer : has_concentration
+      PolymerMixin : has_concentration
 
 
 
 
 
-        Polymer --&gt; "* _recommended_" Concentration : has_concentration
+        PolymerMixin --&gt; "* _recommended_" Concentration : has_concentration
         click Concentration href "../../classes/Concentration/"
 
 
 
-      Polymer : has_density
+      PolymerMixin : has_density
 
 
 
 
 
-        Polymer --&gt; "* _recommended_" Density : has_density
+        PolymerMixin --&gt; "* _recommended_" Density : has_density
         click Density href "../../classes/Density/"
 
 
 
-      Polymer : has_mass
+      PolymerMixin : has_mass
 
 
 
 
 
-        Polymer --&gt; "* _recommended_" Mass : has_mass
+        PolymerMixin --&gt; "* _recommended_" Mass : has_mass
         click Mass href "../../classes/Mass/"
 
 
 
-      Polymer : has_molar_equivalent
+      PolymerMixin : has_molar_equivalent
 
 
 
 
 
-        Polymer --&gt; "* _recommended_" MolarEquivalent : has_molar_equivalent
+        PolymerMixin --&gt; "* _recommended_" MolarEquivalent : has_molar_equivalent
         click MolarEquivalent href "../../classes/MolarEquivalent/"
 
 
 
-      Polymer : has_part
+      PolymerMixin : has_percentage_of_total
 
 
 
 
 
-        Polymer --&gt; "* _recommended_" MaterialEntity : has_part
-        click MaterialEntity href "../../classes/MaterialEntity/"
-
-
-
-      Polymer : has_percentage_of_total
-
-
-
-
-
-        Polymer --&gt; "* _recommended_" PercentageOfTotal : has_percentage_of_total
+        PolymerMixin --&gt; "* _recommended_" PercentageOfTotal : has_percentage_of_total
         click PercentageOfTotal href "../../classes/PercentageOfTotal/"
 
 
 
-      Polymer : has_ph_value
+      PolymerMixin : has_ph_value
 
 
 
 
 
-        Polymer --&gt; "* _recommended_" PHValue : has_ph_value
+        PolymerMixin --&gt; "* _recommended_" PHValue : has_ph_value
         click PHValue href "../../classes/PHValue/"
 
 
 
-      Polymer : has_physical_state
+      PolymerMixin : has_physical_state
 
 
 
 
 
-        Polymer --&gt; "0..1" PhysicalStateEnum : has_physical_state
+        PolymerMixin --&gt; "0..1" PhysicalStateEnum : has_physical_state
         click PhysicalStateEnum href "../../enums/PhysicalStateEnum/"
 
 
 
-      Polymer : has_pressure
+      PolymerMixin : has_pressure
 
 
 
 
 
-        Polymer --&gt; "* _recommended_" Pressure : has_pressure
+        PolymerMixin --&gt; "* _recommended_" Pressure : has_pressure
         click Pressure href "../../classes/Pressure/"
 
 
 
-      Polymer : has_qualitative_attribute
+      PolymerMixin : has_temperature
 
 
 
 
 
-        Polymer --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
-        click QualitativeAttribute href "../../classes/QualitativeAttribute/"
-
-
-
-      Polymer : has_quantitative_attribute
-
-
-
-
-
-        Polymer --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
-        click QuantitativeAttribute href "../../classes/QuantitativeAttribute/"
-
-
-
-      Polymer : has_temperature
-
-
-
-
-
-        Polymer --&gt; "* _recommended_" Temperature : has_temperature
+        PolymerMixin --&gt; "* _recommended_" Temperature : has_temperature
         click Temperature href "../../classes/Temperature/"
 
 
 
-      Polymer : has_volume
+      PolymerMixin : has_volume
 
 
 
 
 
-        Polymer --&gt; "* _recommended_" Volume : has_volume
+        PolymerMixin --&gt; "* _recommended_" Volume : has_volume
         click Volume href "../../classes/Volume/"
-
-
-
-      Polymer : id
-
-      Polymer : other_identifier
-
-
-
-
-
-        Polymer --&gt; "*" Identifier : other_identifier
-        click Identifier href "../../classes/Identifier/"
-
-
-
-      Polymer : part_of
-
-
-
-
-
-        Polymer --&gt; "*" Entity : part_of
-        click Entity href "../../classes/Entity/"
-
-
-
-      Polymer : rdf_type
-
-
-
-
-
-        Polymer --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
-        click DefinedTerm href "../../classes/DefinedTerm/"
-
-
-
-      Polymer : title
-
-      Polymer : type
-
-
-
-
-
-        Polymer --&gt; "0..1" DefinedTerm : type
-        click DefinedTerm href "../../classes/DefinedTerm/"
 
 
 
@@ -533,12 +453,9 @@
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Entity/">Entity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
-<li><a href="../MaterialEntity/">MaterialEntity</a> [ <a href="../Materialistic/">Materialistic</a>]<ul>
-<li><a href="../ChemicalSubstance/">ChemicalSubstance</a><ul>
-<li><strong>Polymer</strong></li>
-</ul>
-</li>
+<li><a href="../MaterialisticMixin/">MaterialisticMixin</a><ul>
+<li><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a><ul>
+<li><strong>PolymerMixin</strong></li>
 </ul>
 </li>
 </ul>
@@ -559,139 +476,79 @@
 <td><a href="../../slots/has_concentration/">has_concentration</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Concentration/">Concentration</a></td>
 <td>The slot to provide the Concentration of a ChemicalSubstance.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_ph_value/">has_ph_value</a></td>
 <td>* <em>recommended</em> <br/> <a href="../PHValue/">PHValue</a></td>
 <td>The slot to provide the PHValue of a ChemicalSubstance.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/composed_of/">composed_of</a></td>
 <td>* <em>recommended</em> <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
 <td>The slot to provide the chemical entities of which a ChemicalSubstance is composed of.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_molar_equivalent/">has_molar_equivalent</a></td>
 <td>* <em>recommended</em> <br/> <a href="../MolarEquivalent/">MolarEquivalent</a></td>
 <td>A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_amount/">has_amount</a></td>
 <td>* <em>recommended</em> <br/> <a href="../AmountOfSubstance/">AmountOfSubstance</a></td>
 <td>The slot to provide the AmountConcentration of a ChemicalSubstance.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_percentage_of_total/">has_percentage_of_total</a></td>
 <td>* <em>recommended</em> <br/> <a href="../PercentageOfTotal/">PercentageOfTotal</a></td>
 <td>A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/alternative_label/">alternative_label</a></td>
 <td>0..1 <br/> <a href="../../types/String/">String</a></td>
 <td>The slot to specify an alternative label, name or title for a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_physical_state/">has_physical_state</a></td>
 <td>0..1 <br/> <a href="../../enums/PhysicalStateEnum/">PhysicalStateEnum</a></td>
 <td>The slot to specify the physical state of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_temperature/">has_temperature</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Temperature/">Temperature</a></td>
 <td>The slot to provide the Temperature of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_mass/">has_mass</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Mass/">Mass</a></td>
 <td>The slot to provide the Mass of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_volume/">has_volume</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Volume/">Volume</a></td>
 <td>The slot to provide the Volume of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_density/">has_density</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Density/">Density</a></td>
 <td>The slot to provide the Density of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_pressure/">has_pressure</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Pressure/">Pressure</a></td>
 <td>The slot to provide the Pressure of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/title/">title</a></td>
-<td>0..1 <br/> <a href="../../types/String/">String</a></td>
-<td>The slot to provide a title for the Entity.</td>
-<td><a href="../Entity/">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/description/">description</a></td>
-<td>0..1 <br/> <a href="../../types/String/">String</a></td>
-<td>The slot to provide a description for the Entity.</td>
-<td><a href="../Entity/">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/id/">id</a></td>
-<td>1 <br/> <a href="../../types/Uriorcurie/">Uriorcurie</a></td>
-<td>A slot to provide an URI for an entity within this schema.</td>
-<td><a href="../Entity/">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/other_identifier/">other_identifier</a></td>
-<td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A slot to provide a secondary identifier of the Entity.</td>
-<td><a href="../Entity/">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity</td>
-<td><a href="../Entity/">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/has_quantitative_attribute/">has_quantitative_attribute</a></td>
-<td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity</td>
-<td><a href="../Entity/">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/has_part/">has_part</a></td>
-<td>* <em>recommended</em> <br/> <a href="../MaterialEntity/">MaterialEntity</a></td>
-<td>The slot to provide the parts of a MaterialEntity.</td>
-<td><a href="../Entity/">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/part_of/">part_of</a></td>
-<td>* <br/> <a href="../Entity/">Entity</a></td>
-<td>The slot to specify an Entity of which the Entity is a part.</td>
-<td><a href="../Entity/">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/type/">type</a></td>
-<td>0..1 <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
-<td>This slot is described in more detail within the class in which it is used.</td>
-<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
-</tr>
-<tr>
-<td><a href="../../slots/rdf_type/">rdf_type</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../DefinedTerm/">DefinedTerm</a></td>
-<td>The slot to specify the ontology class that is instantiated by an entity.</td>
-<td><a href="../ClassifierMixin/">ClassifierMixin</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 </tbody>
 </table>
@@ -726,11 +583,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>CHEBI:60027</td>
+<td>chemdcatap:PolymerMixin</td>
 </tr>
 <tr>
 <td>native</td>
-<td>chemdcatap:Polymer</td>
+<td>chemdcatap:PolymerMixin</td>
 </tr>
 </tbody>
 </table>
@@ -738,22 +595,25 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A ChemicalSubstance that is composed of macromolecules of different kinds</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">and which may be differentiated by composition, length, degree of branching etc..</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A LinkML mixin used to pass down properties common to all chemical substances</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">that are composed of macromolecules of different kinds and which may be differentiated</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">by composition, length, degree of branching etc..</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
+<span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">mixin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:60027</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A ChemicalSubstance that is composed of macromolecules of different kinds</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">and which may be differentiated by composition, length, degree of branching etc..</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A LinkML mixin used to pass down properties common to all chemical substances</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">that are composed of macromolecules of different kinds and which may be differentiated</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">by composition, length, degree of branching etc..</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
+<span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">mixin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">has_concentration</span><span class="p">:</span>
@@ -764,9 +624,9 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_concentration</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Concentration</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -780,9 +640,9 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_ph_value</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PHValue</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -799,9 +659,9 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BFO:0000051</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composed_of</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalEntity</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -817,9 +677,9 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_molar_equivalent</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StartingMaterial</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reagent</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalyst</span>
@@ -836,9 +696,9 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_amount</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AmountOfSubstance</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -854,9 +714,9 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_percentage_of_total</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DissolvingSubstance</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PercentageOfTotal</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -872,9 +732,9 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">skos:altLabel</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alternative_label</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">has_physical_state</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_physical_state</span>
@@ -887,9 +747,9 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_physical_state</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalStateEnum</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
@@ -901,9 +761,9 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_temperature</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalReaction</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Temperature</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -918,9 +778,9 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_mass</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mass</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -934,9 +794,9 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_volume</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Volume</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -950,9 +810,9 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_density</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Density</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -966,257 +826,15 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_pressure</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PolymerMixin</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalReaction</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pressure</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">title</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">title</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide a title for the Entity.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:title</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">title</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Any</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Attribution</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalogue</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CatalogueRecord</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChecksumAlgorithm</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Concept</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConceptScheme</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataService</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dataset</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DatasetSeries</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DefinedTerm</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Distribution</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Document</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Frequency</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Geometry</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Identifier</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LegalResource</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LicenseDocument</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LinguisticSystem</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MediaType</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MediaTypeOrExtent</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PeriodOfTime</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Plan</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Policy</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProvenanceStatement</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QualitativeAttribute</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QuantitativeAttribute</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RightsStatement</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Role</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Standard</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SupportiveEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Surrounding</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimeInstant</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">  </span><span class="nt">description</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide a description for the Entity.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:description</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Any</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Attribution</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalogue</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CatalogueRecord</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChecksumAlgorithm</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Concept</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConceptScheme</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataService</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dataset</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DatasetSeries</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Distribution</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Document</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Frequency</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Geometry</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Identifier</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LegalResource</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LicenseDocument</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LinguisticSystem</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MediaType</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MediaTypeOrExtent</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PeriodOfTime</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Plan</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Policy</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProvenanceStatement</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QualitativeAttribute</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QuantitativeAttribute</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RightsStatement</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Role</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Standard</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SupportiveEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Surrounding</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimeInstant</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">  </span><span class="nt">id</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A slot to provide an URI for an entity within this schema.</span>
-<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dataset</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DefinedTerm</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Document</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LegalResource</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LicenseDocument</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">other_identifier</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">other_identifier</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A slot to provide a secondary identifier of the Entity.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adms:identifier</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">other_identifier</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dataset</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Identifier</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">has_qualitative_attribute</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_qualitative_attribute</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to relate a qualitative attribute to an EvaluatedEntity,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">EvaluatedActivity or AgenticEntity</span>
-<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:relation</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_qualitative_attribute</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QualitativeAttribute</span>
-<span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">has_quantitative_attribute</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to relate a quantitative attribute to an EvaluatedEntity,</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">EvaluatedActivity or AgenticEntity</span>
-<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:relation</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QuantitativeAttribute</span>
-<span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">has_part</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide the parts of a MaterialEntity.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BFO:0000051</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalogue</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialEntity</span>
-<span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">part_of</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">part_of</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify an Entity of which the Entity is a part.</span>
-<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
-<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:isPartOf</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">part_of</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
-<span class="w">    </span><span class="nt">inverse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This slot is described in more detail within the class in which it</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">is used.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:type</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Agent</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClassifierMixin</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dataset</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LicenseDocument</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DefinedTerm</span>
-<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">rdf_type</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdf_type</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the ontology class that is instantiated by an</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">entity.</span>
-<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdf:type</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdf_type</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Polymer</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClassifierMixin</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DefinedTerm</span>
-<span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:60027</span>
 </code></pre></div>
 </details>
 </article>

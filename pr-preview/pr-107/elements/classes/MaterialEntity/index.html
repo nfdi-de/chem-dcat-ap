@@ -304,16 +304,20 @@
 <pre class="mermaid"><code> classDiagram
     class MaterialEntity
     click MaterialEntity href "../../classes/MaterialEntity/"
-      Materialistic &lt;|-- MaterialEntity
-        click Materialistic href "../../classes/Materialistic/"
+      MaterialisticMixin &lt;|-- MaterialEntity
+        click MaterialisticMixin href "../../classes/MaterialisticMixin/"
       Entity &lt;|-- MaterialEntity
         click Entity href "../../classes/Entity/"
 
 
       MaterialEntity &lt;|-- ChemicalEntity
         click ChemicalEntity href "../../classes/ChemicalEntity/"
-      MaterialEntity &lt;|-- ChemicalSubstance
-        click ChemicalSubstance href "../../classes/ChemicalSubstance/"
+      MaterialEntity &lt;|-- StartingMaterial
+        click StartingMaterial href "../../classes/StartingMaterial/"
+      MaterialEntity &lt;|-- Reagent
+        click Reagent href "../../classes/Reagent/"
+      MaterialEntity &lt;|-- ChemicalProduct
+        click ChemicalProduct href "../../classes/ChemicalProduct/"
 
 
       MaterialEntity : alternative_label
@@ -472,9 +476,11 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Entity/">Entity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
-<li><strong>MaterialEntity</strong> [ <a href="../Materialistic/">Materialistic</a>]<ul>
+<li><strong>MaterialEntity</strong> [ <a href="../MaterialisticMixin/">MaterialisticMixin</a>]<ul>
 <li><a href="../ChemicalEntity/">ChemicalEntity</a></li>
-<li><a href="../ChemicalSubstance/">ChemicalSubstance</a></li>
+<li><a href="../StartingMaterial/">StartingMaterial</a> [ <a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a>]</li>
+<li><a href="../Reagent/">Reagent</a> [ <a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a>]</li>
+<li><a href="../ChemicalProduct/">ChemicalProduct</a> [ <a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a>]</li>
 </ul>
 </li>
 </ul>
@@ -495,43 +501,43 @@
 <td><a href="../../slots/alternative_label/">alternative_label</a></td>
 <td>0..1 <br/> <a href="../../types/String/">String</a></td>
 <td>The slot to specify an alternative label, name or title for a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_physical_state/">has_physical_state</a></td>
 <td>0..1 <br/> <a href="../../enums/PhysicalStateEnum/">PhysicalStateEnum</a></td>
 <td>The slot to specify the physical state of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_temperature/">has_temperature</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Temperature/">Temperature</a></td>
 <td>The slot to provide the Temperature of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_mass/">has_mass</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Mass/">Mass</a></td>
 <td>The slot to provide the Mass of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_volume/">has_volume</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Volume/">Volume</a></td>
 <td>The slot to provide the Volume of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_density/">has_density</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Density/">Density</a></td>
 <td>The slot to provide the Density of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_pressure/">has_pressure</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Pressure/">Pressure</a></td>
 <td>The slot to provide the Pressure of a MaterialEntity.</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/title/">title</a></td>
@@ -619,18 +625,6 @@
 <td><a href="./">MaterialEntity</a></td>
 </tr>
 <tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td><a href="../../slots/has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">MaterialEntity</a></td>
-</tr>
-<tr>
-<td><a href="../Polymer/">Polymer</a></td>
-<td><a href="../../slots/has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">MaterialEntity</a></td>
-</tr>
-<tr>
 <td><a href="./">MaterialEntity</a></td>
 <td><a href="../../slots/has_part/">has_part</a></td>
 <td>range</td>
@@ -689,7 +683,7 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
 <span class="nt">mixins</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">has_part</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
@@ -709,7 +703,7 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
 <span class="nt">mixins</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">has_part</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
@@ -731,7 +725,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alternative_label</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialEntity</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">has_physical_state</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_physical_state</span>
@@ -746,7 +740,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_physical_state</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialEntity</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalStateEnum</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
@@ -760,7 +754,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_temperature</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialEntity</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalReaction</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Temperature</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -777,7 +771,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_mass</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialEntity</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mass</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -793,7 +787,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_volume</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialEntity</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Volume</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -809,7 +803,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_density</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialEntity</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Density</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -825,7 +819,7 @@
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_pressure</span>
 <span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialEntity</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalReaction</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pressure</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
