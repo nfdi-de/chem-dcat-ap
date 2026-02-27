@@ -1417,7 +1417,7 @@
                     ]
                 },
                 "description": {
-                    "description": "The slot to provide a description for the Entity.",
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
                         "string",
                         "null"
@@ -1593,7 +1593,7 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "title": {
-                    "description": "The slot to provide a title for the Entity.",
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
                         "string",
                         "null"
@@ -3751,7 +3751,7 @@
                     ]
                 },
                 "description": {
-                    "description": "The slot to provide a description for the Entity.",
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
                         "string",
                         "null"
@@ -3927,7 +3927,7 @@
                     "description": "The slot to specify the ontology class that is instantiated by an entity."
                 },
                 "title": {
-                    "description": "The slot to provide a title for the Entity.",
+                    "description": "This slot is described in more detail within the class in which it is used.",
                     "type": [
                         "string",
                         "null"
@@ -7203,7 +7203,7 @@
         },
         "SubstanceSample": {
             "additionalProperties": false,
-            "description": "A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.",
+            "description": "A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.",
             "properties": {
                 "alternative_label": {
                     "description": "The slot to specify an alternative label, name or title for a MaterialEntity.",
