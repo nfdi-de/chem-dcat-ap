@@ -111,7 +111,6 @@ classes:
       - has_percentage_of_total
     mixins:
       - ChemicalSubstanceMixin
-      - MaterialisticMixin
     description: A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.
     exact_mappings:
       - VOC4CAT:0007246
