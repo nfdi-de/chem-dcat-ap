@@ -6801,82 +6801,6 @@ class SMILES(QualitativeAttribute):
          'slot_uri': 'rdf:type'} })
 
 
-class ChemicalSubstanceMixin(ConfiguredBaseModel):
-    """
-    A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
-         'mixin': True})
-
-    has_concentration: Optional[list[Concentration]] = Field(default=[], description="""The slot to provide the Concentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_ph_value: Optional[list[PHValue]] = Field(default=[], description="""The slot to provide the PHValue of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=[], description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
-         'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_part',
-         'recommended': True,
-         'slot_uri': 'BFO:0000051'} })
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-
-
-class PolymerMixin(ChemicalSubstanceMixin):
-    """
-    A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
-         'mixin': True})
-
-    has_concentration: Optional[list[Concentration]] = Field(default=[], description="""The slot to provide the Concentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_ph_value: Optional[list[PHValue]] = Field(default=[], description="""The slot to provide the PHValue of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=[], description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
-         'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_part',
-         'recommended': True,
-         'slot_uri': 'BFO:0000051'} })
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-
-
 class Concentration(QuantitativeAttribute):
     """
     A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume of the mixture.
@@ -7219,6 +7143,142 @@ class MaterialisticMixin(ConfiguredBaseModel):
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/',
          'mixin': True})
 
+    alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'slot_uri': 'skos:altLabel',
+         'todos': ['Should probably rather declared on Entity or in some common '
+                   'metadata mixin instead.']} })
+    has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'slot_uri': 'SIO:000008',
+         'todos': ['Find out how to make this a subproperty of '
+                   'has_qualitative_attribute, as it currently throws the error '
+                   "'physical_state enumerations cannot be inlined' due to the fact "
+                   'that we are using an enum here.']} })
+    has_temperature: Optional[list[Temperature]] = Field(default=[], description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin', 'ChemicalReaction'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_mass: Optional[list[Mass]] = Field(default=[], description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_volume: Optional[list[Volume]] = Field(default=[], description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_density: Optional[list[Density]] = Field(default=[], description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_pressure: Optional[list[Pressure]] = Field(default=[], description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin', 'ChemicalReaction'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+
+
+class ChemicalSubstanceMixin(MaterialisticMixin):
+    """
+    A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
+         'mixin': True})
+
+    has_concentration: Optional[list[Concentration]] = Field(default=[], description="""The slot to provide the Concentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_ph_value: Optional[list[PHValue]] = Field(default=[], description="""The slot to provide the PHValue of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=[], description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+         'domain_of': ['ChemicalSubstanceMixin'],
+         'is_a': 'has_part',
+         'recommended': True,
+         'slot_uri': 'BFO:0000051'} })
+    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
+                       'StartingMaterial',
+                       'Reagent',
+                       'Catalyst'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'slot_uri': 'skos:altLabel',
+         'todos': ['Should probably rather declared on Entity or in some common '
+                   'metadata mixin instead.']} })
+    has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'slot_uri': 'SIO:000008',
+         'todos': ['Find out how to make this a subproperty of '
+                   'has_qualitative_attribute, as it currently throws the error '
+                   "'physical_state enumerations cannot be inlined' due to the fact "
+                   'that we are using an enum here.']} })
+    has_temperature: Optional[list[Temperature]] = Field(default=[], description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin', 'ChemicalReaction'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_mass: Optional[list[Mass]] = Field(default=[], description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_volume: Optional[list[Volume]] = Field(default=[], description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_density: Optional[list[Density]] = Field(default=[], description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_pressure: Optional[list[Pressure]] = Field(default=[], description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin', 'ChemicalReaction'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+
+
+class PolymerMixin(ChemicalSubstanceMixin):
+    """
+    A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
+         'mixin': True})
+
+    has_concentration: Optional[list[Concentration]] = Field(default=[], description="""The slot to provide the Concentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_ph_value: Optional[list[PHValue]] = Field(default=[], description="""The slot to provide the PHValue of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=[], description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+         'domain_of': ['ChemicalSubstanceMixin'],
+         'is_a': 'has_part',
+         'recommended': True,
+         'slot_uri': 'BFO:0000051'} })
+    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
+                       'StartingMaterial',
+                       'Reagent',
+                       'Catalyst'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
     alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
          'slot_uri': 'skos:altLabel',
          'todos': ['Should probably rather declared on Entity or in some common '
@@ -8573,9 +8633,9 @@ class Pressure(QuantitativeAttribute):
          'slot_uri': 'rdf:type'} })
 
 
-class ChemicalReaction(Activity):
+class ChemicalReaction(EvaluatedActivity):
     """
-    A process that leads to the transformation of one set of chemical substances to another.
+    A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:010345',
          'exact_mappings': ['MOP:0000543', 'REX:0000002', 'AFP:0003711'],
@@ -8728,7 +8788,7 @@ class ChemicalReaction(Activity):
                        'TimeInstant'],
          'notes': ['not in DCAT-AP'],
          'slot_uri': 'dcterms:description'} })
-    other_identifier: Optional[list[Identifier]] = Field(default=[], description="""The slot to provide a secondary identifier of the Activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'AgenticEntity', 'Dataset', 'Entity'],
+    other_identifier: Optional[list[Identifier]] = Field(default=[], description="""A slot to provide a secondary identifier of the EvaluatedActivity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'AgenticEntity', 'Dataset', 'Entity'],
          'notes': ['not in DCAT-AP'],
          'slot_uri': 'adms:identifier'} })
     has_part: Optional[list[Activity]] = Field(default=[], description="""The slot to provide an Activity that is part of the Activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'AgenticEntity', 'Catalogue', 'Entity'],
@@ -8954,7 +9014,7 @@ class StartingMaterial(MaterialEntity, ChemicalSubstanceMixin):
          'slot_uri': 'rdf:type'} })
 
 
-class DissolvingSubstance(MaterialisticMixin, ChemicalSubstanceMixin, AgenticEntity):
+class DissolvingSubstance(ChemicalSubstanceMixin, MaterialisticMixin, AgenticEntity):
     """
     A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.
     """
@@ -9490,7 +9550,7 @@ class ChemicalProduct(MaterialEntity, ChemicalSubstanceMixin):
          'slot_uri': 'rdf:type'} })
 
 
-class Catalyst(MaterialisticMixin, ChemicalSubstanceMixin, AgenticEntity):
+class Catalyst(ChemicalSubstanceMixin, AgenticEntity):
     """
     A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.
     """
@@ -9498,7 +9558,7 @@ class Catalyst(MaterialisticMixin, ChemicalSubstanceMixin, AgenticEntity):
          'close_mappings': ['CHEBI:35223'],
          'exact_mappings': ['VOC4CAT:0000194', 'NCIT:C48810'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
-         'mixins': ['ChemicalSubstanceMixin', 'MaterialisticMixin']})
+         'mixins': ['ChemicalSubstanceMixin']})
 
     has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
                        'StartingMaterial',
@@ -9525,36 +9585,6 @@ class Catalyst(MaterialisticMixin, ChemicalSubstanceMixin, AgenticEntity):
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
     has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
-         'slot_uri': 'skos:altLabel',
-         'todos': ['Should probably rather declared on Entity or in some common '
-                   'metadata mixin instead.']} })
-    has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
-         'slot_uri': 'SIO:000008',
-         'todos': ['Find out how to make this a subproperty of '
-                   'has_qualitative_attribute, as it currently throws the error '
-                   "'physical_state enumerations cannot be inlined' due to the fact "
-                   'that we are using an enum here.']} })
-    has_temperature: Optional[list[Temperature]] = Field(default=[], description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin', 'ChemicalReaction'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_mass: Optional[list[Mass]] = Field(default=[], description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_volume: Optional[list[Volume]] = Field(default=[], description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_density: Optional[list[Density]] = Field(default=[], description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_pressure: Optional[list[Pressure]] = Field(default=[], description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin', 'ChemicalReaction'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -9666,6 +9696,36 @@ class Catalyst(MaterialisticMixin, ChemicalSubstanceMixin, AgenticEntity):
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'rdf:type'} })
+    alternative_label: Optional[str] = Field(default=None, description="""The slot to specify an alternative label, name or title for a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'slot_uri': 'skos:altLabel',
+         'todos': ['Should probably rather declared on Entity or in some common '
+                   'metadata mixin instead.']} })
+    has_physical_state: Optional[PhysicalStateEnum] = Field(default=None, description="""The slot to specify the physical state of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'slot_uri': 'SIO:000008',
+         'todos': ['Find out how to make this a subproperty of '
+                   'has_qualitative_attribute, as it currently throws the error '
+                   "'physical_state enumerations cannot be inlined' due to the fact "
+                   'that we are using an enum here.']} })
+    has_temperature: Optional[list[Temperature]] = Field(default=[], description="""The slot to provide the Temperature of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin', 'ChemicalReaction'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_mass: Optional[list[Mass]] = Field(default=[], description="""The slot to provide the Mass of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_volume: Optional[list[Volume]] = Field(default=[], description="""The slot to provide the Volume of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_density: Optional[list[Density]] = Field(default=[], description="""The slot to provide the Density of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
+    has_pressure: Optional[list[Pressure]] = Field(default=[], description="""The slot to provide the Pressure of a MaterialEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MaterialisticMixin', 'ChemicalReaction'],
+         'is_a': 'has_quantitative_attribute',
+         'recommended': True,
+         'slot_uri': 'SIO:000008'} })
 
 
 class Reactor(MaterialisticMixin, Device):
@@ -10657,12 +10717,12 @@ InChi.model_rebuild()
 MolecularFormula.model_rebuild()
 IUPACName.model_rebuild()
 SMILES.model_rebuild()
-ChemicalSubstanceMixin.model_rebuild()
-PolymerMixin.model_rebuild()
 Concentration.model_rebuild()
 AmountOfSubstance.model_rebuild()
 PHValue.model_rebuild()
 MaterialisticMixin.model_rebuild()
+ChemicalSubstanceMixin.model_rebuild()
+PolymerMixin.model_rebuild()
 MaterialEntity.model_rebuild()
 ChemicalEntity.model_rebuild()
 Atom.model_rebuild()
