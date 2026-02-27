@@ -69,16 +69,16 @@ classes:
     is_a: MaterialSample
     aliases:
       - analyte
-    description: A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.
+    description: A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.
     mixins:
-      - ChemicalSubstance
+      - ChemicalSubstanceMixin
 
   PolymerSample:
     is_a: SubstanceSample
     class_uri: SIO:001378
     description: A SubstanceSample derived from a Polymer.
     mixins:
-      - Polymer
+      - PolymerMixin
     todos:
       - "Find a better mapping, as it is currently mapped to same ontology class as its parent."
 
