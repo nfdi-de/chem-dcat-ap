@@ -525,109 +525,9 @@ Alias: has_part</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/Activity/">Activity</a></td>
-<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity">DCAT-AP specs:Activity</a></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/MaterialEntity/">MaterialEntity</a></td>
-<td>A material is an Entity that has some portion of matter as proper part.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/DissolvingSubstance/">DissolvingSubstance</a></td>
-<td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/Device/">Device</a></td>
-<td>A material instrument that is designed to perform a function primarily by means of its mechanical or electrical nature.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/PolymerSample/">PolymerSample</a></td>
-<td>A SubstanceSample derived from a Polymer.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/DataGeneratingActivity/">DataGeneratingActivity</a></td>
-<td>An Activity (process) that has the objective to produce information (in form of a dataset) about another Activity or Entity.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>An activity or process that is being evaluated in a DataGeneratingActivity.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/Catalyst/">Catalyst</a></td>
-<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/ChemicalEntity/">ChemicalEntity</a></td>
-<td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../../classes/Software/">Software</a></td>
 <td>An instrument composed of a series of instructions that can be interpreted by or directly executed by a computer.</td>
 <td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/Polymer/">Polymer</a></td>
-<td>A ChemicalSubstance that is composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/SubstanceSample/">SubstanceSample</a></td>
-<td>A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/AgenticEntity/">AgenticEntity</a></td>
-<td>An entity that is somehow responsible for an Activity to take place.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../../classes/Reactor/">Reactor</a></td>
-<td>A reactor is a container for controlling a biological or chemical reaction or process.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/MaterialSample/">MaterialSample</a></td>
-<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/DataAnalysis/">DataAnalysis</a></td>
-<td>An Activity that evaluates the data produced by another Activity.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>An Entity that is being evaluated in a DataGeneratingActivity.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/StartingMaterial/">StartingMaterial</a></td>
-<td>A ChemicalSubstance with that has a starting material role in a synthesis.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/ChemicalReaction/">ChemicalReaction</a></td>
-<td>A process that leads to the transformation of one set of chemical substances to another.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/AnalysisSourceData/">AnalysisSourceData</a></td>
-<td>Information that was evaluated within a DataAnalysis.</td>
-<td>no</td>
 </tr>
 <tr>
 <td><a href="../../classes/Entity/">Entity</a></td>
@@ -635,8 +535,23 @@ Alias: has_part</p>
 <td>yes</td>
 </tr>
 <tr>
+<td><a href="../../classes/EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or process that is being evaluated in a DataGeneratingActivity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/DissolvingSubstance/">DissolvingSubstance</a></td>
+<td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../../classes/Catalogue/">Catalogue</a></td>
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue">DCAT-AP specs:Catalogue</a></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/Device/">Device</a></td>
+<td>A material instrument that is designed to perform a function primarily by means of its mechanical or electrical nature.</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -645,13 +560,88 @@ Alias: has_part</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../../classes/Atom/">Atom</a></td>
+<td>A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/DataGeneratingActivity/">DataGeneratingActivity</a></td>
+<td>An Activity (process) that has the objective to produce information (in form of a dataset) about another Activity or Entity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/SubstanceSample/">SubstanceSample</a></td>
+<td>A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/AnalysisSourceData/">AnalysisSourceData</a></td>
+<td>Information that was evaluated within a DataAnalysis.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../../classes/Reagent/">Reagent</a></td>
 <td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/Atom/">Atom</a></td>
-<td>A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.</td>
+<td><a href="../../classes/Reactor/">Reactor</a></td>
+<td>A reactor is a container for controlling a biological or chemical reaction or process.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/DataAnalysis/">DataAnalysis</a></td>
+<td>An Activity that evaluates the data produced by another Activity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/StartingMaterial/">StartingMaterial</a></td>
+<td>A ChemicalSubstance with that has a starting material role in a synthesis.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/MaterialSample/">MaterialSample</a></td>
+<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/MaterialEntity/">MaterialEntity</a></td>
+<td>A material is an Entity that has some portion of matter as proper part.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/ChemicalReaction/">ChemicalReaction</a></td>
+<td>A process that leads to the transformation of one set of chemical substances to another.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/ChemicalEntity/">ChemicalEntity</a></td>
+<td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>An Entity that is being evaluated in a DataGeneratingActivity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/Activity/">Activity</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity">DCAT-AP specs:Activity</a></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/AgenticEntity/">AgenticEntity</a></td>
+<td>An entity that is somehow responsible for an Activity to take place.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../../classes/Catalyst/">Catalyst</a></td>
+<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.</td>
 <td>no</td>
 </tr>
 </tbody>

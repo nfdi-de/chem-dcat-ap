@@ -2,990 +2,990 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/about/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/versioning/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/overview/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Activity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Agent/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/AgenticEntity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/AmountOfSubstance/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/AnalysisDataset/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/AnalysisSourceData/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Any/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Atom/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Attribution/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Catalogue/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/CatalogueRecord/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Catalyst/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Checksum/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/ChecksumAlgorithm/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/ChemicalEntity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/ChemicalProduct/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/ChemicalReaction/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
-         <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/ChemicalSubstance/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/ChemicalSubstanceMixin/</loc>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/ClassifierMixin/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Concentration/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Concept/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/ConceptScheme/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/DataAnalysis/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/DataGeneratingActivity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/DataService/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Dataset/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/DatasetSeries/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/DefinedTerm/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Density/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Device/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/DissolvingSubstance/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Distribution/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Document/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Entity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/EvaluatedActivity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/EvaluatedEntity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Frequency/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Geometry/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/IUPACName/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Identifier/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/InChIKey/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/InChi/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Kind/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Laboratory/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/LegalResource/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/LicenseDocument/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/LinguisticSystem/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Location/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Mass/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/MaterialEntity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/MaterialSample/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
-         <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Materialistic/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/MaterialisticMixin/</loc>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/MediaType/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/MediaTypeOrExtent/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/MolarEquivalent/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/MolarMass/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/MolecularFormula/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/PHValue/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/PercentageOfTotal/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/PeriodOfTime/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Plan/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Policy/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
-         <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Polymer/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/PolymerMixin/</loc>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/PolymerSample/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Pressure/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/ProvenanceStatement/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/QualitativeAttribute/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/QuantitativeAttribute/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Reactor/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Reagent/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Relationship/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Resource/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/RightsStatement/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Role/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/SMILES/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Software/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Standard/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/StartingMaterial/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/SubstanceSample/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/SupportiveEntity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Surrounding/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Temperature/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/TimeInstant/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Volume/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/classes/Yield/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/enums/DatasetThemes/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/enums/PhysicalStateEnum/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/enums/QUDTQuantityKindEnum/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/enums/QUDTUnitEnum/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/enums/TopLevelMediaTypes/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/schemas/chem-dcat-ap/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/access_URL/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/access_rights/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/access_service/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/algorithm/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/alternative_label/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/applicable_legislation/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/application_profile/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/availability/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/bbox/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/beginning/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/byte_size/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/carried_out_by/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/catalogue/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/centroid/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/change_type/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/checksum/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/checksum_value/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/composed_of/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/compression_format/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/conforms_to/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/contact_point/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/creator/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/dataset_distribution/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/derived_from/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/description/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/documentation/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/download_URL/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/end/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/end_date/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/endpoint_URL/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/endpoint_description/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/evaluated_activity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/evaluated_entity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/format/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/frequency/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/from_CV/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/generated_product/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/geographical_coverage/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/geometry/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/had_input_activity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/had_input_entity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/had_output_entity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/had_role/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_amount/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_concentration/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_dataset/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_density/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_duration/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_mass/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_molar_equivalent/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_molar_mass/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_part/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_percentage_of_total/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_ph_value/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_physical_state/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_policy/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_pressure/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_qualitative_attribute/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_quantitative_attribute/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_quantity_type/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_reaction_step/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_temperature/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_version/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_volume/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/has_yield/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/homepage/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/id/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/identifier/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/in_series/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/inchi/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/inchikey/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/is_about_activity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/is_about_entity/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/is_referenced_by/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/iupac_name/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/keyword/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/landing_page/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/language/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/licence/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/linked_schemas/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/listing_date/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/media_type/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/modification_date/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/molecular_formula/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/name/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/notation/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/occurred_in/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/other_identifier/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/packaging_format/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/part_of/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/preferred_label/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/primary_topic/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/provenance/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/publisher/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/qualified_attribution/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/qualified_relation/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/rdf_type/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/realized_plan/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/record/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/related_resource/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/relation/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/release_date/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/rights/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/sample/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/serves_dataset/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/service/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/smiles/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/source/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/source_metadata/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/spatial_resolution/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/start_date/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/status/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/temporal_coverage/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/temporal_resolution/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/theme/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/themes/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/title/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/type/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/unit/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/used_catalyst/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/used_reactant/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/used_reactor/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/used_solvent/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/used_starting_material/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/value/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/version/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/version_notes/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/slots/was_generated_by/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/subsets/DomainAgnosticCore/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Boolean/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Curie/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Date/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/DateOrDatetime/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Datetime/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Decimal/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Double/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Duration/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Float/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/HexBinary/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Integer/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Jsonpath/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Jsonpointer/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Ncname/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Nodeidentifier/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/NonNegativeInteger/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Objectidentifier/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Sparqlpath/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/String/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Time/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Uri/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/elements/types/Uriorcurie/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
     <url>
          <loc>https://nfdi-de.github.io/chem-dcat-ap/latest/schema/</loc>
-         <lastmod>2026-02-01</lastmod>
+         <lastmod>2026-02-27</lastmod>
     </url>
 </urlset>
