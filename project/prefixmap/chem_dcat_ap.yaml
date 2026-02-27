@@ -27,10 +27,11 @@
    "adms": "http://www.w3.org/ns/adms#",
    "biolink": "https://w3id.org/biolink/vocab/",
    "chemdcatap": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
+   "chemical_entities_ap": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
    "dcat": "http://www.w3.org/ns/dcat#",
    "dcatap": "http://data.europa.eu/r5r/",
    "dcatap_plus": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-   "dcatapplus": "https://nfdi-de.github.io/dcat-ap-plus/latest/schema/",
+   "dcatapplus": "https://w3id.org/nfdi-de/dcat-ap-plus/",
    "dcterms": "http://purl.org/dc/terms/",
    "doi": "https://doi.org/",
    "eli": "http://data.europa.eu/eli/ontology#",
@@ -39,7 +40,7 @@
    "foaf": "http://xmlns.com/foaf/0.1/",
    "linkml": "https://w3id.org/linkml/",
    "locn": "http://www.w3.org/ns/locn#",
-   "material_entities_ap": "https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/",
+   "material_entities_ap": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
    "odrl": "http://www.w3.org/ns/odrl/2/",
    "owl": "http://www.w3.org/2002/07/owl#",
    "prov": "http://www.w3.org/ns/prov#",
@@ -103,8 +104,8 @@
    "ChemicalReaction": {
       "@id": "SIO:010345"
    },
-   "ChemicalSubstance": {
-      "@id": "CHEBI:59999"
+   "ChemicalSubstanceMixin": {
+      "@id": "chemical_entities_ap:ChemicalSubstanceMixin"
    },
    "ClassifierMixin": {
       "@id": "dcatap_plus:ClassifierMixin"
@@ -202,8 +203,8 @@
    "MaterialEntity": {
       "@id": "BFO:0000040"
    },
-   "Materialistic": {
-      "@id": "material_entities_ap:Materialistic"
+   "MaterialisticMixin": {
+      "@id": "material_entities_ap:MaterialisticMixin"
    },
    "MaterialSample": {
       "@id": "OBI:0000747"
@@ -238,8 +239,8 @@
    "Policy": {
       "@id": "odrl:Policy"
    },
-   "Polymer": {
-      "@id": "CHEBI:60027"
+   "PolymerMixin": {
+      "@id": "chemical_entities_ap:PolymerMixin"
    },
    "PolymerSample": {
       "@id": "SIO:001378"

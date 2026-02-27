@@ -1,6 +1,6 @@
 ---
-id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry
-version: "0.0.0.post341.dev0+b70db99"  # Managed by dynamic-versioning. Don't change this line!
+id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+version: "0.1.0rc1.post1.dev0+b86ffb3"  # Managed by dynamic-versioning. Don't change this line!
 name: chem-dcat-ap
 title: ChemDCAT-AP
 description: |-
@@ -12,7 +12,7 @@ see_also:
   - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
   chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-  dcatapplus: https://nfdi-de.github.io/dcat-ap-plus/latest/schema/
+  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -58,7 +58,7 @@ default_prefix: chemdcatap
 default_range: string
 imports:
   - linkml:types
-  - dcatapplus:dcat_ap_plus
+  - dcatapplus:latest/schema/dcat_ap_plus
   - chemical_entities_ap
   - chemical_reaction_ap
 
@@ -69,16 +69,16 @@ classes:
     is_a: MaterialSample
     aliases:
       - analyte
-    description: A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.
+    description: A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.
     mixins:
-      - ChemicalSubstance
+      - ChemicalSubstanceMixin
 
   PolymerSample:
     is_a: SubstanceSample
     class_uri: SIO:001378
     description: A SubstanceSample derived from a Polymer.
     mixins:
-      - Polymer
+      - PolymerMixin
     todos:
       - "Find a better mapping, as it is currently mapped to same ontology class as its parent."
 

@@ -1,8 +1,8 @@
 # Auto generated from chem_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-03T14:19:01
+# Generation date: 2026-02-25T18:24:17
 # Schema: chem-dcat-ap
 #
-# id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry
+# id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
 # description: This is an extension of the DCAT Application Profile PLUS LinkML schema. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles/schemas to provide chemistry specific specific metadata for a dataset.
 # license: CC-BY 4.0
 
@@ -60,7 +60,7 @@ from linkml_runtime.linkml_model.types import Date, Decimal, Float, String, Urio
 from linkml_runtime.utils.metamodelcore import Decimal, URIorCURIE, XSDDate
 
 metamodel_version = "1.7.0"
-version = "0.0.0.post340.dev0+4762fd7"
+version = "0.1.0rc1.post1.dev0+b86ffb3"
 
 # Namespaces
 AFE = CurieNamespace('AFE', 'http://purl.allotrope.org/ontologies/equipment#AFE_')
@@ -91,10 +91,11 @@ VOC4CAT = CurieNamespace('VOC4CAT', 'https://w3id.org/nfdi4cat/voc4cat_')
 ADMS = CurieNamespace('adms', 'http://www.w3.org/ns/adms#')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 CHEMDCATAP = CurieNamespace('chemdcatap', 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/')
+CHEMICAL_ENTITIES_AP = CurieNamespace('chemical_entities_ap', 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/')
 DCAT = CurieNamespace('dcat', 'http://www.w3.org/ns/dcat#')
 DCATAP = CurieNamespace('dcatap', 'http://data.europa.eu/r5r/')
 DCATAP_PLUS = CurieNamespace('dcatap_plus', 'https://w3id.org/nfdi-de/dcat-ap-plus/')
-DCATAPPLUS = CurieNamespace('dcatapplus', 'https://nfdi-de.github.io/dcat-ap-plus/latest/schema/')
+DCATAPPLUS = CurieNamespace('dcatapplus', 'https://w3id.org/nfdi-de/dcat-ap-plus/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://doi.org/')
 ELI = CurieNamespace('eli', 'http://data.europa.eu/eli/ontology#')
@@ -103,7 +104,7 @@ EX = CurieNamespace('ex', 'http://example.org/')
 FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 LOCN = CurieNamespace('locn', 'http://www.w3.org/ns/locn#')
-MATERIAL_ENTITIES_AP = CurieNamespace('material_entities_ap', 'https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/')
+MATERIAL_ENTITIES_AP = CurieNamespace('material_entities_ap', 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/')
 ODRL = CurieNamespace('odrl', 'http://www.w3.org/ns/odrl/2/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
@@ -242,23 +243,15 @@ class AtomId(ChemicalEntityId):
     pass
 
 
-class ChemicalSubstanceId(MaterialEntityId):
+class StartingMaterialId(MaterialEntityId):
     pass
 
 
-class PolymerId(ChemicalSubstanceId):
+class ReagentId(MaterialEntityId):
     pass
 
 
-class StartingMaterialId(ChemicalSubstanceId):
-    pass
-
-
-class ReagentId(ChemicalSubstanceId):
-    pass
-
-
-class ChemicalProductId(ChemicalSubstanceId):
+class ChemicalProductId(MaterialEntityId):
     pass
 
 
@@ -637,8 +630,8 @@ class ClassifierMixin(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DCATAP_PLUS["ClassifierMixin"]
-    class_class_curie: ClassVar[str] = "dcatap_plus:ClassifierMixin"
+    class_class_uri: ClassVar[URIRef] = DCATAPPLUS["ClassifierMixin"]
+    class_class_curie: ClassVar[str] = "dcatapplus:ClassifierMixin"
     class_name: ClassVar[str] = "ClassifierMixin"
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.ClassifierMixin
 
@@ -1656,8 +1649,8 @@ class SupportiveEntity(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = DCATAP_PLUS["SupportiveEntity"]
-    class_class_curie: ClassVar[str] = "dcatap_plus:SupportiveEntity"
+    class_class_uri: ClassVar[URIRef] = DCATAPPLUS["SupportiveEntity"]
+    class_class_curie: ClassVar[str] = "dcatapplus:SupportiveEntity"
     class_name: ClassVar[str] = "SupportiveEntity"
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.SupportiveEntity
 
@@ -2377,6 +2370,66 @@ class SMILES(QualitativeAttribute):
     value: str = None
 
 @dataclass(repr=False)
+class ChemicalSubstanceMixin(YAMLRoot):
+    """
+    A LinkML mixin used to pass down properties common to all material entities that are described in a chemical
+    context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer
+    etc., ) of the same type or of different types.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CHEMICAL_ENTITIES_AP["ChemicalSubstanceMixin"]
+    class_class_curie: ClassVar[str] = "chemical_entities_ap:ChemicalSubstanceMixin"
+    class_name: ClassVar[str] = "ChemicalSubstanceMixin"
+    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.ChemicalSubstanceMixin
+
+    has_concentration: Optional[Union[Union[dict, "Concentration"], list[Union[dict, "Concentration"]]]] = empty_list()
+    has_ph_value: Optional[Union[Union[dict, "PHValue"], list[Union[dict, "PHValue"]]]] = empty_list()
+    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
+    has_molar_equivalent: Optional[Union[Union[dict, "MolarEquivalent"], list[Union[dict, "MolarEquivalent"]]]] = empty_list()
+    has_amount: Optional[Union[Union[dict, "AmountOfSubstance"], list[Union[dict, "AmountOfSubstance"]]]] = empty_list()
+    has_percentage_of_total: Optional[Union[Union[dict, "PercentageOfTotal"], list[Union[dict, "PercentageOfTotal"]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if not isinstance(self.has_concentration, list):
+            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
+        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+
+        if not isinstance(self.has_ph_value, list):
+            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
+        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+
+        self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
+
+        if not isinstance(self.has_molar_equivalent, list):
+            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
+        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
+
+        if not isinstance(self.has_amount, list):
+            self.has_amount = [self.has_amount] if self.has_amount is not None else []
+        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+
+        if not isinstance(self.has_percentage_of_total, list):
+            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
+        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
+
+        super().__post_init__(**kwargs)
+
+
+class PolymerMixin(ChemicalSubstanceMixin):
+    """
+    A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules
+    of different kinds and which may be differentiated by composition, length, degree of branching etc..
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CHEMICAL_ENTITIES_AP["PolymerMixin"]
+    class_class_curie: ClassVar[str] = "chemical_entities_ap:PolymerMixin"
+    class_name: ClassVar[str] = "PolymerMixin"
+    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.PolymerMixin
+
+
+@dataclass(repr=False)
 class Concentration(QuantitativeAttribute):
     """
     A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume
@@ -2499,11 +2552,12 @@ class DissolvingSubstance(AgenticEntity):
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.DissolvingSubstance
 
     id: Union[str, DissolvingSubstanceId] = None
-    title: Optional[str] = None
-    description: Optional[str] = None
-    has_qualitative_attribute: Optional[Union[Union[dict, QualitativeAttribute], list[Union[dict, QualitativeAttribute]]]] = empty_list()
-    has_quantitative_attribute: Optional[Union[Union[dict, QuantitativeAttribute], list[Union[dict, QuantitativeAttribute]]]] = empty_list()
     has_percentage_of_total: Optional[Union[Union[dict, "PercentageOfTotal"], list[Union[dict, "PercentageOfTotal"]]]] = empty_list()
+    has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
+    has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
+    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
+    has_molar_equivalent: Optional[Union[Union[dict, "MolarEquivalent"], list[Union[dict, "MolarEquivalent"]]]] = empty_list()
+    has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
     alternative_label: Optional[str] = None
     has_physical_state: Optional[Union[str, "PhysicalStateEnum"]] = None
     has_temperature: Optional[Union[Union[dict, "Temperature"], list[Union[dict, "Temperature"]]]] = empty_list()
@@ -2511,11 +2565,6 @@ class DissolvingSubstance(AgenticEntity):
     has_volume: Optional[Union[Union[dict, "Volume"], list[Union[dict, "Volume"]]]] = empty_list()
     has_density: Optional[Union[Union[dict, "Density"], list[Union[dict, "Density"]]]] = empty_list()
     has_pressure: Optional[Union[Union[dict, "Pressure"], list[Union[dict, "Pressure"]]]] = empty_list()
-    has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
-    has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
-    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
-    has_molar_equivalent: Optional[Union[Union[dict, "MolarEquivalent"], list[Union[dict, "MolarEquivalent"]]]] = empty_list()
-    has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2523,23 +2572,27 @@ class DissolvingSubstance(AgenticEntity):
         if not isinstance(self.id, DissolvingSubstanceId):
             self.id = DissolvingSubstanceId(self.id)
 
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if not isinstance(self.has_qualitative_attribute, list):
-            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
-        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
-
-        if not isinstance(self.has_quantitative_attribute, list):
-            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
-        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
-
         if not isinstance(self.has_percentage_of_total, list):
             self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
         self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
+
+        if not isinstance(self.has_concentration, list):
+            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
+        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+
+        if not isinstance(self.has_ph_value, list):
+            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
+        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+
+        self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
+
+        if not isinstance(self.has_molar_equivalent, list):
+            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
+        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
+
+        if not isinstance(self.has_amount, list):
+            self.has_amount = [self.has_amount] if self.has_amount is not None else []
+        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
 
         if self.alternative_label is not None and not isinstance(self.alternative_label, str):
             self.alternative_label = str(self.alternative_label)
@@ -2566,24 +2619,6 @@ class DissolvingSubstance(AgenticEntity):
         if not isinstance(self.has_pressure, list):
             self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
         self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
-
-        if not isinstance(self.has_concentration, list):
-            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
-        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
-
-        if not isinstance(self.has_ph_value, list):
-            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
-        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
-
-        self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
-
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
-
-        if not isinstance(self.has_amount, list):
-            self.has_amount = [self.has_amount] if self.has_amount is not None else []
-        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
 
         super().__post_init__(**kwargs)
 
@@ -2602,11 +2637,12 @@ class Catalyst(AgenticEntity):
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.Catalyst
 
     id: Union[str, CatalystId] = None
-    title: Optional[str] = None
-    description: Optional[str] = None
-    has_qualitative_attribute: Optional[Union[Union[dict, QualitativeAttribute], list[Union[dict, QualitativeAttribute]]]] = empty_list()
-    has_quantitative_attribute: Optional[Union[Union[dict, QuantitativeAttribute], list[Union[dict, QuantitativeAttribute]]]] = empty_list()
     has_molar_equivalent: Optional[Union[Union[dict, "MolarEquivalent"], list[Union[dict, "MolarEquivalent"]]]] = empty_list()
+    has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
+    has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
+    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
+    has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
+    has_percentage_of_total: Optional[Union[Union[dict, "PercentageOfTotal"], list[Union[dict, "PercentageOfTotal"]]]] = empty_list()
     alternative_label: Optional[str] = None
     has_physical_state: Optional[Union[str, "PhysicalStateEnum"]] = None
     has_temperature: Optional[Union[Union[dict, "Temperature"], list[Union[dict, "Temperature"]]]] = empty_list()
@@ -2614,11 +2650,6 @@ class Catalyst(AgenticEntity):
     has_volume: Optional[Union[Union[dict, "Volume"], list[Union[dict, "Volume"]]]] = empty_list()
     has_density: Optional[Union[Union[dict, "Density"], list[Union[dict, "Density"]]]] = empty_list()
     has_pressure: Optional[Union[Union[dict, "Pressure"], list[Union[dict, "Pressure"]]]] = empty_list()
-    has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
-    has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
-    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
-    has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
-    has_percentage_of_total: Optional[Union[Union[dict, "PercentageOfTotal"], list[Union[dict, "PercentageOfTotal"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2626,23 +2657,27 @@ class Catalyst(AgenticEntity):
         if not isinstance(self.id, CatalystId):
             self.id = CatalystId(self.id)
 
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if not isinstance(self.has_qualitative_attribute, list):
-            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
-        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
-
-        if not isinstance(self.has_quantitative_attribute, list):
-            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
-        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
-
         if not isinstance(self.has_molar_equivalent, list):
             self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
         self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
+
+        if not isinstance(self.has_concentration, list):
+            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
+        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+
+        if not isinstance(self.has_ph_value, list):
+            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
+        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+
+        self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
+
+        if not isinstance(self.has_amount, list):
+            self.has_amount = [self.has_amount] if self.has_amount is not None else []
+        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+
+        if not isinstance(self.has_percentage_of_total, list):
+            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
+        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
 
         if self.alternative_label is not None and not isinstance(self.alternative_label, str):
             self.alternative_label = str(self.alternative_label)
@@ -2669,24 +2704,6 @@ class Catalyst(AgenticEntity):
         if not isinstance(self.has_pressure, list):
             self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
         self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
-
-        if not isinstance(self.has_concentration, list):
-            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
-        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
-
-        if not isinstance(self.has_ph_value, list):
-            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
-        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
-
-        self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
-
-        if not isinstance(self.has_amount, list):
-            self.has_amount = [self.has_amount] if self.has_amount is not None else []
-        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
-
-        if not isinstance(self.has_percentage_of_total, list):
-            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
-        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
 
         super().__post_init__(**kwargs)
 
@@ -2797,7 +2814,7 @@ class PercentageOfTotal(QuantitativeAttribute):
     has_quantity_type: Union[str, DefinedTermId] = None
 
 @dataclass(repr=False)
-class Materialistic(YAMLRoot):
+class MaterialisticMixin(YAMLRoot):
     """
     A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have
     MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of
@@ -2805,10 +2822,10 @@ class Materialistic(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = MATERIAL_ENTITIES_AP["Materialistic"]
-    class_class_curie: ClassVar[str] = "material_entities_ap:Materialistic"
-    class_name: ClassVar[str] = "Materialistic"
-    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.Materialistic
+    class_class_uri: ClassVar[URIRef] = MATERIAL_ENTITIES_AP["MaterialisticMixin"]
+    class_class_curie: ClassVar[str] = "material_entities_ap:MaterialisticMixin"
+    class_name: ClassVar[str] = "MaterialisticMixin"
+    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.MaterialisticMixin
 
     alternative_label: Optional[str] = None
     has_physical_state: Optional[Union[str, "PhysicalStateEnum"]] = None
@@ -2991,18 +3008,120 @@ class Atom(ChemicalEntity):
 
 
 @dataclass(repr=False)
-class ChemicalSubstance(MaterialEntity):
+class StartingMaterial(MaterialEntity):
     """
-    A MaterialEntity of constant composition, composed of chemical entities of the same type or of different types.
+    A ChemicalSubstance with that has a starting material role in a synthesis.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = CHEBI["59999"]
-    class_class_curie: ClassVar[str] = "CHEBI:59999"
-    class_name: ClassVar[str] = "ChemicalSubstance"
-    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.ChemicalSubstance
+    class_class_uri: ClassVar[URIRef] = PROCO["0000029"]
+    class_class_curie: ClassVar[str] = "PROCO:0000029"
+    class_name: ClassVar[str] = "StartingMaterial"
+    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.StartingMaterial
 
-    id: Union[str, ChemicalSubstanceId] = None
+    id: Union[str, StartingMaterialId] = None
+    has_molar_equivalent: Optional[Union[Union[dict, MolarEquivalent], list[Union[dict, MolarEquivalent]]]] = empty_list()
+    has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
+    has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
+    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
+    has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
+    has_percentage_of_total: Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, StartingMaterialId):
+            self.id = StartingMaterialId(self.id)
+
+        if not isinstance(self.has_molar_equivalent, list):
+            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
+        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
+
+        if not isinstance(self.has_concentration, list):
+            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
+        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+
+        if not isinstance(self.has_ph_value, list):
+            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
+        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+
+        self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
+
+        if not isinstance(self.has_amount, list):
+            self.has_amount = [self.has_amount] if self.has_amount is not None else []
+        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+
+        if not isinstance(self.has_percentage_of_total, list):
+            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
+        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Reagent(MaterialEntity):
+    """
+    A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = SIO["010411"]
+    class_class_curie: ClassVar[str] = "SIO:010411"
+    class_name: ClassVar[str] = "Reagent"
+    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.Reagent
+
+    id: Union[str, ReagentId] = None
+    has_molar_equivalent: Optional[Union[Union[dict, MolarEquivalent], list[Union[dict, MolarEquivalent]]]] = empty_list()
+    has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
+    has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
+    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
+    has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
+    has_percentage_of_total: Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ReagentId):
+            self.id = ReagentId(self.id)
+
+        if not isinstance(self.has_molar_equivalent, list):
+            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
+        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
+
+        if not isinstance(self.has_concentration, list):
+            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
+        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+
+        if not isinstance(self.has_ph_value, list):
+            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
+        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+
+        self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
+
+        if not isinstance(self.has_amount, list):
+            self.has_amount = [self.has_amount] if self.has_amount is not None else []
+        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+
+        if not isinstance(self.has_percentage_of_total, list):
+            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
+        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ChemicalProduct(MaterialEntity):
+    """
+    A chemical substance that is produced by a ChemicalReaction.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NCIT["C48810"]
+    class_class_curie: ClassVar[str] = "NCIT:C48810"
+    class_name: ClassVar[str] = "ChemicalProduct"
+    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.ChemicalProduct
+
+    id: Union[str, ChemicalProductId] = None
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
@@ -3011,6 +3130,11 @@ class ChemicalSubstance(MaterialEntity):
     has_percentage_of_total: Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ChemicalProductId):
+            self.id = ChemicalProductId(self.id)
+
         if not isinstance(self.has_concentration, list):
             self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
         self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
@@ -3032,100 +3156,6 @@ class ChemicalSubstance(MaterialEntity):
         if not isinstance(self.has_percentage_of_total, list):
             self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
         self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class Polymer(ChemicalSubstance):
-    """
-    A ChemicalSubstance that is composed of macromolecules of different kinds and which may be differentiated by
-    composition, length, degree of branching etc..
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = CHEBI["60027"]
-    class_class_curie: ClassVar[str] = "CHEBI:60027"
-    class_name: ClassVar[str] = "Polymer"
-    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.Polymer
-
-    id: Union[str, PolymerId] = None
-
-@dataclass(repr=False)
-class StartingMaterial(ChemicalSubstance):
-    """
-    A ChemicalSubstance with that has a starting material role in a synthesis.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = PROCO["0000029"]
-    class_class_curie: ClassVar[str] = "PROCO:0000029"
-    class_name: ClassVar[str] = "StartingMaterial"
-    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.StartingMaterial
-
-    id: Union[str, StartingMaterialId] = None
-    has_molar_equivalent: Optional[Union[Union[dict, MolarEquivalent], list[Union[dict, MolarEquivalent]]]] = empty_list()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, StartingMaterialId):
-            self.id = StartingMaterialId(self.id)
-
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class Reagent(ChemicalSubstance):
-    """
-    A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = SIO["010411"]
-    class_class_curie: ClassVar[str] = "SIO:010411"
-    class_name: ClassVar[str] = "Reagent"
-    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.Reagent
-
-    id: Union[str, ReagentId] = None
-    has_molar_equivalent: Optional[Union[Union[dict, MolarEquivalent], list[Union[dict, MolarEquivalent]]]] = empty_list()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ReagentId):
-            self.id = ReagentId(self.id)
-
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ChemicalProduct(ChemicalSubstance):
-    """
-    A chemical substance that is produced by a ChemicalReaction.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NCIT["C48810"]
-    class_class_curie: ClassVar[str] = "NCIT:C48810"
-    class_name: ClassVar[str] = "ChemicalProduct"
-    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.ChemicalProduct
-
-    id: Union[str, ChemicalProductId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ChemicalProductId):
-            self.id = ChemicalProductId(self.id)
 
         super().__post_init__(**kwargs)
 
@@ -3193,7 +3223,7 @@ class MaterialSample(EvaluatedEntity):
 @dataclass(repr=False)
 class SubstanceSample(MaterialSample):
     """
-    A MaterialSample derived from a ChemicalSubstance that is of interest in an analytical procedure.
+    A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -3203,10 +3233,6 @@ class SubstanceSample(MaterialSample):
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.SubstanceSample
 
     id: Union[str, SubstanceSampleId] = None
-    has_qualitative_attribute: Optional[Union[Union[dict, QualitativeAttribute], list[Union[dict, QualitativeAttribute]]]] = empty_list()
-    has_quantitative_attribute: Optional[Union[Union[dict, QuantitativeAttribute], list[Union[dict, QuantitativeAttribute]]]] = empty_list()
-    has_part: Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]] = empty_dict()
-    part_of: Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]] = empty_dict()
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
@@ -3219,18 +3245,6 @@ class SubstanceSample(MaterialSample):
             self.MissingRequiredField("id")
         if not isinstance(self.id, SubstanceSampleId):
             self.id = SubstanceSampleId(self.id)
-
-        if not isinstance(self.has_qualitative_attribute, list):
-            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
-        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
-
-        if not isinstance(self.has_quantitative_attribute, list):
-            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
-        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
-
-        self._normalize_inlined_as_list(slot_name="has_part", slot_type=Entity, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="part_of", slot_type=Entity, key_name="id", keyed=True)
 
         if not isinstance(self.has_concentration, list):
             self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
@@ -3270,10 +3284,6 @@ class PolymerSample(SubstanceSample):
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.PolymerSample
 
     id: Union[str, PolymerSampleId] = None
-    has_qualitative_attribute: Optional[Union[Union[dict, QualitativeAttribute], list[Union[dict, QualitativeAttribute]]]] = empty_list()
-    has_quantitative_attribute: Optional[Union[Union[dict, QuantitativeAttribute], list[Union[dict, QuantitativeAttribute]]]] = empty_list()
-    has_part: Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]] = empty_dict()
-    part_of: Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]] = empty_dict()
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
@@ -3286,18 +3296,6 @@ class PolymerSample(SubstanceSample):
             self.MissingRequiredField("id")
         if not isinstance(self.id, PolymerSampleId):
             self.id = PolymerSampleId(self.id)
-
-        if not isinstance(self.has_qualitative_attribute, list):
-            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
-        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
-
-        if not isinstance(self.has_quantitative_attribute, list):
-            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
-        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
-
-        self._normalize_inlined_as_list(slot_name="has_part", slot_type=Entity, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="part_of", slot_type=Entity, key_name="id", keyed=True)
 
         if not isinstance(self.has_concentration, list):
             self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []

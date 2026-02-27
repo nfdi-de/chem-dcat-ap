@@ -1,13 +1,13 @@
 ---
-id: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities
+id: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
 name: material-entity-ap
 title: Material Entities Application Profile
 description: |-
   This is an application profile for material entities to be used for extending the DCAT-AP-PLUS.
 license: CC-BY 4.0
 prefixes:
-  material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/material-entities/
-  dcatapplus: https://nfdi-de.github.io/dcat-ap-plus/latest/schema/
+  material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -33,11 +33,12 @@ default_prefix: material_entities_ap
 default_range: string
 imports:
   - linkml:types
-  - dcatapplus:dcat_ap_plus
+  - dcatapplus:latest/schema/dcat_ap_plus
 
 classes:
-  Materialistic:
+  MaterialisticMixin:
     mixin: true
+    abstract: true
     description: A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.
     slots:
       - alternative_label
@@ -53,7 +54,7 @@ classes:
     class_uri: BFO:0000040
     is_a: Entity
     mixins:
-      - Materialistic
+      - MaterialisticMixin
     description: A material is an Entity that has some portion of matter as proper part.
     slot_usage:
       has_part:
@@ -69,7 +70,7 @@ classes:
     class_uri: OBI:0000747
     description: A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.
     mixins:
-      - Materialistic
+      - MaterialisticMixin
     slots:
       - derived_from
     slot_usage:
