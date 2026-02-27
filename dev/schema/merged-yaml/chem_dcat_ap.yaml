@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post12.dev0+f772cbf4
+version: 0.1.0rc2.post13.dev0+21a7c5c7
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -9045,7 +9045,7 @@ classes:
     name: ChemicalReaction
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalReaction
     description: A process that leads to the transformation of one set of chemical
-      substances to another.
+      substances to another and that is the subject matter of a DataGeneratingActivity.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - SIO:010345
@@ -9055,12 +9055,11 @@ classes:
     - AFP:0003711
     narrow_mappings:
     - RXNO:0000329
-    is_a: Activity
+    is_a: EvaluatedActivity
     slots:
     - id
     - Activity_title
     - Activity_description
-    - Activity_other_identifier
     - Activity_has_part
     - Activity_had_input_entity
     - Activity_had_output_entity
@@ -9071,6 +9070,7 @@ classes:
     - Activity_part_of
     - ClassifierMixin_type
     - rdf_type
+    - EvaluatedActivity_other_identifier
     - used_starting_material
     - used_reactant
     - generated_product
@@ -9152,7 +9152,6 @@ classes:
     is_a: AgenticEntity
     mixins:
     - ChemicalSubstanceMixin
-    - MaterialisticMixin
     slots:
     - id
     - title
@@ -9583,7 +9582,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-02-27T07:21:39'
+source_file_date: '2026-02-27T13:37:49'
 source_file_size: 3599
-generation_date: '2026-02-27T07:21:51'
+generation_date: '2026-02-27T13:37:59'
 

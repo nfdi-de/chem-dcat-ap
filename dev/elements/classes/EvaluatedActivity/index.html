@@ -307,6 +307,11 @@
       Activity &lt;|-- EvaluatedActivity
         click Activity href "../../classes/Activity/"
 
+
+      EvaluatedActivity &lt;|-- ChemicalReaction
+        click ChemicalReaction href "../../classes/ChemicalReaction/"
+
+
       EvaluatedActivity : carried_out_by
 
 
@@ -439,7 +444,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Activity/">Activity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
-<li><strong>EvaluatedActivity</strong></li>
+<li><strong>EvaluatedActivity</strong><ul>
+<li><a href="../ChemicalReaction/">ChemicalReaction</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
