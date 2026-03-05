@@ -7318,18 +7318,7 @@ class ChemicalSubstanceMixin(MaterialisticMixin):
          'is_a': 'has_part',
          'recommended': True,
          'slot_uri': 'BFO:0000051'} })
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
     has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -7386,18 +7375,7 @@ class PolymerMixin(ChemicalSubstanceMixin):
          'is_a': 'has_part',
          'recommended': True,
          'slot_uri': 'BFO:0000051'} })
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
     has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -8790,10 +8768,7 @@ class StartingMaterial(MaterialEntity, ChemicalSubstanceMixin):
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['ChemicalSubstanceMixin']})
 
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
+    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['StartingMaterial', 'Reagent', 'Catalyst'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -8811,10 +8786,6 @@ class StartingMaterial(MaterialEntity, ChemicalSubstanceMixin):
          'recommended': True,
          'slot_uri': 'BFO:0000051'} })
     has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -8969,7 +8940,7 @@ class DissolvingSubstance(ChemicalSubstanceMixin, AgenticEntity):
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['ChemicalSubstanceMixin']})
 
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
+    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DissolvingSubstance'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -8986,13 +8957,6 @@ class DissolvingSubstance(ChemicalSubstanceMixin, AgenticEntity):
          'is_a': 'has_part',
          'recommended': True,
          'slot_uri': 'BFO:0000051'} })
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
     has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
@@ -9147,10 +9111,7 @@ class Reagent(MaterialEntity, ChemicalSubstanceMixin):
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['ChemicalSubstanceMixin']})
 
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
+    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['StartingMaterial', 'Reagent', 'Catalyst'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -9168,10 +9129,6 @@ class Reagent(MaterialEntity, ChemicalSubstanceMixin):
          'recommended': True,
          'slot_uri': 'BFO:0000051'} })
     has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -9339,18 +9296,7 @@ class ChemicalProduct(MaterialEntity, ChemicalSubstanceMixin):
          'is_a': 'has_part',
          'recommended': True,
          'slot_uri': 'BFO:0000051'} })
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
     has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -9505,10 +9451,7 @@ class Catalyst(ChemicalSubstanceMixin, AgenticEntity):
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['ChemicalSubstanceMixin']})
 
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
+    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['StartingMaterial', 'Reagent', 'Catalyst'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -9526,10 +9469,6 @@ class Catalyst(ChemicalSubstanceMixin, AgenticEntity):
          'recommended': True,
          'slot_uri': 'BFO:0000051'} })
     has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -10172,18 +10111,7 @@ class SubstanceSample(MaterialSample, ChemicalSubstanceMixin):
          'is_a': 'has_part',
          'recommended': True,
          'slot_uri': 'BFO:0000051'} })
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
     has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
@@ -10355,18 +10283,7 @@ class PolymerSample(SubstanceSample, PolymerMixin):
          'is_a': 'has_part',
          'recommended': True,
          'slot_uri': 'BFO:0000051'} })
-    has_molar_equivalent: Optional[list[MolarEquivalent]] = Field(default=[], description="""A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin',
-                       'StartingMaterial',
-                       'Reagent',
-                       'Catalyst'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
     has_amount: Optional[list[AmountOfSubstance]] = Field(default=[], description="""The slot to provide the AmountConcentration of a ChemicalSubstance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin'],
-         'is_a': 'has_quantitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_percentage_of_total: Optional[list[PercentageOfTotal]] = Field(default=[], description="""A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalSubstanceMixin', 'DissolvingSubstance'],
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })

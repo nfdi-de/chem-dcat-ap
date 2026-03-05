@@ -96,9 +96,7 @@ classes:
       - has_concentration
       - has_ph_value
       - composed_of
-      - has_molar_equivalent
       - has_amount
-      - has_percentage_of_total
   PolymerMixin:
     abstract: true
     is_a: ChemicalSubstanceMixin
