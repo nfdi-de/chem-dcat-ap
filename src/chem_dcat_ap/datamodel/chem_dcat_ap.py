@@ -1,5 +1,5 @@
 # Auto generated from chem_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-27T09:42:25
+# Generation date: 2026-03-03T16:45:35
 # Schema: chem-dcat-ap
 #
 # id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
@@ -215,6 +215,10 @@ class ResourceId(URIorCURIE):
     pass
 
 
+class AtomId(EntityId):
+    pass
+
+
 class ChemicalReactionId(EvaluatedActivityId):
     pass
 
@@ -236,10 +240,6 @@ class MaterialEntityId(EntityId):
 
 
 class ChemicalEntityId(MaterialEntityId):
-    pass
-
-
-class AtomId(ChemicalEntityId):
     pass
 
 
@@ -2300,6 +2300,35 @@ class TimeInstant(SupportiveEntity):
 
 
 @dataclass(repr=False)
+class Atom(Entity):
+    """
+    An Entity constituting the smallest component of a chemical element having the chemical properties of the element.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CHEBI["33250"]
+    class_class_curie: ClassVar[str] = "CHEBI:33250"
+    class_name: ClassVar[str] = "Atom"
+    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.Atom
+
+    id: Union[str, AtomId] = None
+    rdf_type: Union[dict, DefinedTerm] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, AtomId):
+            self.id = AtomId(self.id)
+
+        if self._is_empty(self.rdf_type):
+            self.MissingRequiredField("rdf_type")
+        if not isinstance(self.rdf_type, DefinedTerm):
+            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class InChIKey(QualitativeAttribute):
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2975,35 +3004,6 @@ class ChemicalEntity(MaterialEntity):
         if not isinstance(self.has_molar_mass, list):
             self.has_molar_mass = [self.has_molar_mass] if self.has_molar_mass is not None else []
         self.has_molar_mass = [v if isinstance(v, MolarMass) else MolarMass(**as_dict(v)) for v in self.has_molar_mass]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class Atom(ChemicalEntity):
-    """
-    A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = CHEBI["33250"]
-    class_class_curie: ClassVar[str] = "CHEBI:33250"
-    class_name: ClassVar[str] = "Atom"
-    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.Atom
-
-    id: Union[str, AtomId] = None
-    rdf_type: Union[dict, DefinedTerm] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AtomId):
-            self.id = AtomId(self.id)
-
-        if self._is_empty(self.rdf_type):
-            self.MissingRequiredField("rdf_type")
-        if not isinstance(self.rdf_type, DefinedTerm):
-            self.rdf_type = DefinedTerm(**as_dict(self.rdf_type))
 
         super().__post_init__(**kwargs)
 
