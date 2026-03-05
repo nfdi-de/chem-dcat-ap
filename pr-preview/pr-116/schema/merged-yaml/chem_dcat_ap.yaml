@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post27.dev0+db2b9f30
+version: 0.1.0rc2.post30.dev0+cb2827b5
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -2402,7 +2402,6 @@ slots:
     slot_uri: SIO:000008
     owner: Catalyst
     domain_of:
-    - ChemicalSubstanceMixin
     - StartingMaterial
     - Reagent
     - Catalyst
@@ -2424,7 +2423,6 @@ slots:
     slot_uri: SIO:000008
     owner: DissolvingSubstance
     domain_of:
-    - ChemicalSubstanceMixin
     - DissolvingSubstance
     range: PercentageOfTotal
     recommended: true
@@ -6362,9 +6360,7 @@ classes:
     - has_concentration
     - has_ph_value
     - composed_of
-    - has_molar_equivalent
     - has_amount
-    - has_percentage_of_total
     class_uri: SIO:001378
   PolymerSample:
     name: PolymerSample
@@ -6402,9 +6398,7 @@ classes:
     - has_concentration
     - has_ph_value
     - composed_of
-    - has_molar_equivalent
     - has_amount
-    - has_percentage_of_total
     class_uri: SIO:001378
   Laboratory:
     name: Laboratory
@@ -8959,9 +8953,7 @@ classes:
     - has_concentration
     - has_ph_value
     - composed_of
-    - has_molar_equivalent
     - has_amount
-    - has_percentage_of_total
     class_uri: chemical_entities_ap:ChemicalSubstanceMixin
   PolymerMixin:
     name: PolymerMixin
@@ -8984,9 +8976,7 @@ classes:
     - has_concentration
     - has_ph_value
     - composed_of
-    - has_molar_equivalent
     - has_amount
-    - has_percentage_of_total
     class_uri: chemical_entities_ap:PolymerMixin
   Concentration:
     name: Concentration
@@ -9150,7 +9140,6 @@ classes:
     - has_ph_value
     - composed_of
     - has_amount
-    - has_percentage_of_total
     class_uri: PROCO:0000029
   DissolvingSubstance:
     name: DissolvingSubstance
@@ -9190,7 +9179,6 @@ classes:
     - has_concentration
     - has_ph_value
     - composed_of
-    - has_molar_equivalent
     - has_amount
     class_uri: SIO:010417
   Reagent:
@@ -9232,7 +9220,6 @@ classes:
     - has_ph_value
     - composed_of
     - has_amount
-    - has_percentage_of_total
     class_uri: SIO:010411
   ChemicalProduct:
     name: ChemicalProduct
@@ -9269,9 +9256,7 @@ classes:
     - has_concentration
     - has_ph_value
     - composed_of
-    - has_molar_equivalent
     - has_amount
-    - has_percentage_of_total
     class_uri: NCIT:C48810
   Catalyst:
     name: Catalyst
@@ -9312,7 +9297,6 @@ classes:
     - has_ph_value
     - composed_of
     - has_amount
-    - has_percentage_of_total
     class_uri: SIO:010344
   Reactor:
     name: Reactor
@@ -9598,7 +9582,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-03-05T14:57:49'
+source_file_date: '2026-03-05T15:37:51'
 source_file_size: 3599
-generation_date: '2026-03-05T14:58:02'
+generation_date: '2026-03-05T15:38:00'
 
