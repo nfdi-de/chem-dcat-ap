@@ -2912,7 +2912,6 @@
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
       "owner": "Catalyst",
       "domain_of": [
-        "ChemicalSubstanceMixin",
         "StartingMaterial",
         "Reagent",
         "Catalyst"
@@ -2936,7 +2935,6 @@
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
       "owner": "DissolvingSubstance",
       "domain_of": [
-        "ChemicalSubstanceMixin",
         "DissolvingSubstance"
       ],
       "range": "PercentageOfTotal",
@@ -7396,9 +7394,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_001378",
@@ -7442,9 +7438,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_001378",
@@ -8945,9 +8939,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstanceMixin",
@@ -8972,9 +8964,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerMixin",
@@ -9153,8 +9143,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/PROCO_0000029",
@@ -9201,7 +9190,6 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
         "has_amount"
       ],
       "slot_usage": {},
@@ -9250,8 +9238,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_010411",
@@ -9296,9 +9283,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/NCIT_C48810",
@@ -9345,8 +9330,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_010344",
@@ -9682,9 +9666,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-03-03T16:35:31",
+  "source_file_date": "2026-03-05T14:57:35",
   "source_file_size": 3685,
-  "generation_date": "2026-03-03T16:36:18",
+  "generation_date": "2026-03-05T16:08:00",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/chem_dcat_ap.context.jsonld",
