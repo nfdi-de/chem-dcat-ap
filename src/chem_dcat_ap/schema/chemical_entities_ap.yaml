@@ -42,7 +42,7 @@ imports:
 classes:
 
   ChemicalEntity:
-    is_a: MaterialEntity
+    is_a: Entity
     class_uri: CHEBI:23367
     description: Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.
     slots:
@@ -52,6 +52,13 @@ classes:
       - molecular_formula
       - iupac_name
       - has_molar_mass
+    slot_usage:
+      has_part:
+        slot_uri: BFO:0000051
+        description: The slot to provide the parts of a ChemicalEntity that are themself chemical entities.
+        range: ChemicalEntity
+        multivalued: true
+        inlined_as_list: true
   Atom:
     class_uri: CHEBI:33250
     is_a: ChemicalEntity
