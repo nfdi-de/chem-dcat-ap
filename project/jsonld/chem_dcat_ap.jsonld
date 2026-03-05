@@ -2912,7 +2912,6 @@
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
       "owner": "Catalyst",
       "domain_of": [
-        "ChemicalSubstanceMixin",
         "StartingMaterial",
         "Reagent",
         "Catalyst"
@@ -2936,7 +2935,6 @@
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
       "owner": "DissolvingSubstance",
       "domain_of": [
-        "ChemicalSubstanceMixin",
         "DissolvingSubstance"
       ],
       "range": "PercentageOfTotal",
@@ -7202,30 +7200,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "ChemicalEntity_has_part",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/has_part",
-      "description": "The slot to provide the parts of a ChemicalEntity that are themself chemical entities.",
-      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "mappings": [
-        "http://purl.obolibrary.org/obo/BFO_0000051"
-      ],
-      "is_a": "Entity_has_part",
-      "domain": "ChemicalEntity",
-      "slot_uri": "http://purl.obolibrary.org/obo/BFO_0000051",
-      "alias": "has_part",
-      "owner": "ChemicalEntity",
-      "domain_of": [
-        "ChemicalEntity"
-      ],
-      "is_usage_slot": true,
-      "usage_slot_name": "has_part",
-      "range": "ChemicalEntity",
-      "multivalued": true,
-      "inlined": true,
-      "inlined_as_list": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "Atom_rdf_type",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/rdf_type",
       "description": "The slot to provide the Atom as a ChEBI ID from the atom (CHEBI:33250) branch.",
@@ -7420,9 +7394,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_001378",
@@ -7466,9 +7438,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_001378",
@@ -8771,7 +8741,7 @@
       "mappings": [
         "CHEBI:23367"
       ],
-      "is_a": "Entity",
+      "is_a": "MaterialEntity",
       "slots": [
         "Entity_title",
         "Entity_description",
@@ -8782,13 +8752,20 @@
         "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
+        "MaterialEntity_has_part",
+        "alternative_label",
+        "has_physical_state",
+        "has_temperature",
+        "has_mass",
+        "has_volume",
+        "has_density",
+        "has_pressure",
         "inchi",
         "inchikey",
         "smiles",
         "molecular_formula",
         "iupac_name",
-        "has_molar_mass",
-        "ChemicalEntity_has_part"
+        "has_molar_mass"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/CHEBI_23367",
@@ -8797,12 +8774,12 @@
     {
       "name": "Atom",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Atom",
-      "description": "A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.",
+      "description": "An Entity constituting the smallest component of a chemical element having the chemical properties of the element.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEBI:33250"
       ],
-      "is_a": "ChemicalEntity",
+      "is_a": "Entity",
       "slots": [
         "Entity_title",
         "Entity_description",
@@ -8810,15 +8787,9 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_has_part",
         "Entity_part_of",
         "ClassifierMixin_type",
-        "inchi",
-        "inchikey",
-        "smiles",
-        "molecular_formula",
-        "iupac_name",
-        "has_molar_mass",
-        "ChemicalEntity_has_part",
         "Atom_rdf_type"
       ],
       "slot_usage": {},
@@ -8968,9 +8939,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstanceMixin",
@@ -8995,9 +8964,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerMixin",
@@ -9176,8 +9143,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/PROCO_0000029",
@@ -9224,7 +9190,6 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
         "has_amount"
       ],
       "slot_usage": {},
@@ -9273,8 +9238,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_010411",
@@ -9319,9 +9283,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/NCIT_C48810",
@@ -9368,8 +9330,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_010344",
@@ -9707,7 +9668,7 @@
   "source_file": "chem_dcat_ap.yaml",
   "source_file_date": "2026-03-05T14:57:35",
   "source_file_size": 3685,
-  "generation_date": "2026-03-05T15:53:37",
+  "generation_date": "2026-03-05T16:08:00",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/chem_dcat_ap.context.jsonld",
