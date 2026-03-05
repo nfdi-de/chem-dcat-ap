@@ -1483,16 +1483,6 @@
                         "null"
                     ]
                 },
-                "has_percentage_of_total": {
-                    "description": "A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.",
-                    "items": {
-                        "$ref": "#/$defs/PercentageOfTotal"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "has_ph_value": {
                     "description": "The slot to provide the PHValue of a ChemicalSubstance.",
                     "items": {
@@ -1950,30 +1940,10 @@
                         "null"
                     ]
                 },
-                "has_molar_equivalent": {
-                    "description": "A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.",
-                    "items": {
-                        "$ref": "#/$defs/MolarEquivalent"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "has_part": {
                     "description": "The slot to provide the parts of a MaterialEntity.",
                     "items": {
                         "$ref": "#/$defs/MaterialEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_percentage_of_total": {
-                    "description": "A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.",
-                    "items": {
-                        "$ref": "#/$defs/PercentageOfTotal"
                     },
                     "type": [
                         "array",
@@ -3791,16 +3761,6 @@
                     "description": "The slot to provide the Mass of a MaterialEntity.",
                     "items": {
                         "$ref": "#/$defs/Mass"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_molar_equivalent": {
-                    "description": "A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.",
-                    "items": {
-                        "$ref": "#/$defs/MolarEquivalent"
                     },
                     "type": [
                         "array",
@@ -5951,30 +5911,10 @@
                         "null"
                     ]
                 },
-                "has_molar_equivalent": {
-                    "description": "A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.",
-                    "items": {
-                        "$ref": "#/$defs/MolarEquivalent"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "has_part": {
                     "description": "A slot to provide a part of the Entity.",
                     "items": {
                         "$ref": "#/$defs/Entity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_percentage_of_total": {
-                    "description": "A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.",
-                    "items": {
-                        "$ref": "#/$defs/PercentageOfTotal"
                     },
                     "type": [
                         "array",
@@ -6572,16 +6512,6 @@
                         "null"
                     ]
                 },
-                "has_percentage_of_total": {
-                    "description": "A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.",
-                    "items": {
-                        "$ref": "#/$defs/PercentageOfTotal"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "has_ph_value": {
                     "description": "The slot to provide the PHValue of a ChemicalSubstance.",
                     "items": {
@@ -7067,16 +6997,6 @@
                         "null"
                     ]
                 },
-                "has_percentage_of_total": {
-                    "description": "A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.",
-                    "items": {
-                        "$ref": "#/$defs/PercentageOfTotal"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "has_ph_value": {
                     "description": "The slot to provide the PHValue of a ChemicalSubstance.",
                     "items": {
@@ -7280,30 +7200,10 @@
                         "null"
                     ]
                 },
-                "has_molar_equivalent": {
-                    "description": "A slot to provide the MolarEquivalent of a ChemicalSubstance, such as the DissolvingSubstance, Starting Material or Reactant, within the context of a chemical reaction.",
-                    "items": {
-                        "$ref": "#/$defs/MolarEquivalent"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "has_part": {
                     "description": "A slot to provide a part of the Entity.",
                     "items": {
                         "$ref": "#/$defs/Entity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_percentage_of_total": {
-                    "description": "A slot to specify the percentage of a specific ChemicalSubstance in relation to the total amount of that same substance used across a multi-step reaction.",
-                    "items": {
-                        "$ref": "#/$defs/PercentageOfTotal"
                     },
                     "type": [
                         "array",

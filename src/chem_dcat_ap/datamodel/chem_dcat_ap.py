@@ -1,5 +1,5 @@
 # Auto generated from chem_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-27T09:42:25
+# Generation date: 2026-03-05T10:01:48
 # Schema: chem-dcat-ap
 #
 # id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
@@ -2504,7 +2504,6 @@ class DissolvingSubstance(AgenticEntity):
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
-    has_molar_equivalent: Optional[Union[Union[dict, "MolarEquivalent"], list[Union[dict, "MolarEquivalent"]]]] = empty_list()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2553,10 +2552,6 @@ class DissolvingSubstance(AgenticEntity):
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
-
         if not isinstance(self.has_amount, list):
             self.has_amount = [self.has_amount] if self.has_amount is not None else []
         self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
@@ -2590,7 +2585,6 @@ class Catalyst(AgenticEntity):
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
-    has_percentage_of_total: Optional[Union[Union[dict, "PercentageOfTotal"], list[Union[dict, "PercentageOfTotal"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -2641,10 +2635,6 @@ class Catalyst(AgenticEntity):
         if not isinstance(self.has_amount, list):
             self.has_amount = [self.has_amount] if self.has_amount is not None else []
         self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
-
-        if not isinstance(self.has_percentage_of_total, list):
-            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
-        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
 
         super().__post_init__(**kwargs)
 
@@ -2823,9 +2813,7 @@ class ChemicalSubstanceMixin(MaterialisticMixin):
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
-    has_molar_equivalent: Optional[Union[Union[dict, MolarEquivalent], list[Union[dict, MolarEquivalent]]]] = empty_list()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
-    has_percentage_of_total: Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if not isinstance(self.has_concentration, list):
@@ -2838,17 +2826,9 @@ class ChemicalSubstanceMixin(MaterialisticMixin):
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
-
         if not isinstance(self.has_amount, list):
             self.has_amount = [self.has_amount] if self.has_amount is not None else []
         self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
-
-        if not isinstance(self.has_percentage_of_total, list):
-            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
-        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
 
         super().__post_init__(**kwargs)
 
@@ -3033,7 +3013,6 @@ class StartingMaterial(MaterialEntity):
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
-    has_percentage_of_total: Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3085,10 +3064,6 @@ class StartingMaterial(MaterialEntity):
             self.has_amount = [self.has_amount] if self.has_amount is not None else []
         self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
 
-        if not isinstance(self.has_percentage_of_total, list):
-            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
-        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
-
         super().__post_init__(**kwargs)
 
 
@@ -3117,7 +3092,6 @@ class Reagent(MaterialEntity):
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
-    has_percentage_of_total: Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3169,10 +3143,6 @@ class Reagent(MaterialEntity):
             self.has_amount = [self.has_amount] if self.has_amount is not None else []
         self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
 
-        if not isinstance(self.has_percentage_of_total, list):
-            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
-        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
-
         super().__post_init__(**kwargs)
 
 
@@ -3199,9 +3169,7 @@ class ChemicalProduct(MaterialEntity):
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
-    has_molar_equivalent: Optional[Union[Union[dict, MolarEquivalent], list[Union[dict, MolarEquivalent]]]] = empty_list()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
-    has_percentage_of_total: Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3245,17 +3213,9 @@ class ChemicalProduct(MaterialEntity):
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
-
         if not isinstance(self.has_amount, list):
             self.has_amount = [self.has_amount] if self.has_amount is not None else []
         self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
-
-        if not isinstance(self.has_percentage_of_total, list):
-            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
-        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
 
         super().__post_init__(**kwargs)
 
@@ -3343,9 +3303,7 @@ class SubstanceSample(MaterialSample):
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
-    has_molar_equivalent: Optional[Union[Union[dict, MolarEquivalent], list[Union[dict, MolarEquivalent]]]] = empty_list()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
-    has_percentage_of_total: Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3389,17 +3347,9 @@ class SubstanceSample(MaterialSample):
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
-
         if not isinstance(self.has_amount, list):
             self.has_amount = [self.has_amount] if self.has_amount is not None else []
         self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
-
-        if not isinstance(self.has_percentage_of_total, list):
-            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
-        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
 
         super().__post_init__(**kwargs)
 
@@ -3427,9 +3377,7 @@ class PolymerSample(SubstanceSample):
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
     composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
-    has_molar_equivalent: Optional[Union[Union[dict, MolarEquivalent], list[Union[dict, MolarEquivalent]]]] = empty_list()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
-    has_percentage_of_total: Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3473,17 +3421,9 @@ class PolymerSample(SubstanceSample):
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
-
         if not isinstance(self.has_amount, list):
             self.has_amount = [self.has_amount] if self.has_amount is not None else []
         self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
-
-        if not isinstance(self.has_percentage_of_total, list):
-            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
-        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
 
         super().__post_init__(**kwargs)
 
