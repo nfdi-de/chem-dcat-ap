@@ -865,37 +865,10 @@
             "additionalProperties": false,
             "description": "A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.",
             "properties": {
-                "alternative_label": {
-                    "description": "The slot to specify an alternative label, name or title for a MaterialEntity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "description": {
                     "description": "The slot to provide a description for the Entity.",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "has_density": {
-                    "description": "The slot to provide the Density of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Density"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_mass": {
-                    "description": "The slot to provide the Mass of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Mass"
-                    },
-                    "type": [
-                        "array",
                         "null"
                     ]
                 },
@@ -910,23 +883,9 @@
                     ]
                 },
                 "has_part": {
-                    "description": "The slot to provide the parts of a MaterialEntity.",
+                    "description": "The slot to provide the parts of a ChemicalEntity that are themself chemical entities.",
                     "items": {
-                        "$ref": "#/$defs/MaterialEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
-                    "description": "The slot to specify the physical state of a MaterialEntity."
-                },
-                "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Pressure"
+                        "$ref": "#/$defs/ChemicalEntity"
                     },
                     "type": [
                         "array",
@@ -947,26 +906,6 @@
                     "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Temperature"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_volume": {
-                    "description": "The slot to provide the Volume of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Volume"
                     },
                     "type": [
                         "array",
@@ -1664,37 +1603,10 @@
             "additionalProperties": false,
             "description": "Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.",
             "properties": {
-                "alternative_label": {
-                    "description": "The slot to specify an alternative label, name or title for a MaterialEntity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "description": {
                     "description": "The slot to provide a description for the Entity.",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "has_density": {
-                    "description": "The slot to provide the Density of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Density"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_mass": {
-                    "description": "The slot to provide the Mass of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Mass"
-                    },
-                    "type": [
-                        "array",
                         "null"
                     ]
                 },
@@ -1709,23 +1621,9 @@
                     ]
                 },
                 "has_part": {
-                    "description": "The slot to provide the parts of a MaterialEntity.",
+                    "description": "The slot to provide the parts of a ChemicalEntity that are themself chemical entities.",
                     "items": {
-                        "$ref": "#/$defs/MaterialEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
-                    "description": "The slot to specify the physical state of a MaterialEntity."
-                },
-                "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Pressure"
+                        "$ref": "#/$defs/ChemicalEntity"
                     },
                     "type": [
                         "array",
@@ -1746,26 +1644,6 @@
                     "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
                     "items": {
                         "$ref": "#/$defs/QuantitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Temperature"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_volume": {
-                    "description": "The slot to provide the Volume of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Volume"
                     },
                     "type": [
                         "array",
