@@ -2912,7 +2912,6 @@
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
       "owner": "Catalyst",
       "domain_of": [
-        "ChemicalSubstanceMixin",
         "StartingMaterial",
         "Reagent",
         "Catalyst"
@@ -2936,7 +2935,6 @@
       "slot_uri": "http://semanticscience.org/resource/SIO_000008",
       "owner": "DissolvingSubstance",
       "domain_of": [
-        "ChemicalSubstanceMixin",
         "DissolvingSubstance"
       ],
       "range": "PercentageOfTotal",
@@ -7202,6 +7200,30 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "ChemicalEntity_has_part",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/has_part",
+      "description": "The slot to provide the parts of a ChemicalEntity that are themself chemical entities.",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
+      "mappings": [
+        "http://purl.obolibrary.org/obo/BFO_0000051"
+      ],
+      "is_a": "Entity_has_part",
+      "domain": "ChemicalEntity",
+      "slot_uri": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "alias": "has_part",
+      "owner": "ChemicalEntity",
+      "domain_of": [
+        "ChemicalEntity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_part",
+      "range": "ChemicalEntity",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "Atom_rdf_type",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/rdf_type",
       "description": "The slot to provide the Atom as a ChEBI ID from the atom (CHEBI:33250) branch.",
@@ -7396,9 +7418,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_001378",
@@ -7442,9 +7462,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_001378",
@@ -8744,10 +8762,13 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalEntity",
       "description": "Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
+      "aliases": [
+        "molecular entity"
+      ],
       "mappings": [
         "CHEBI:23367"
       ],
-      "is_a": "MaterialEntity",
+      "is_a": "Entity",
       "slots": [
         "Entity_title",
         "Entity_description",
@@ -8758,20 +8779,13 @@
         "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
-        "MaterialEntity_has_part",
-        "alternative_label",
-        "has_physical_state",
-        "has_temperature",
-        "has_mass",
-        "has_volume",
-        "has_density",
-        "has_pressure",
         "inchi",
         "inchikey",
         "smiles",
         "molecular_formula",
         "iupac_name",
-        "has_molar_mass"
+        "has_molar_mass",
+        "ChemicalEntity_has_part"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/CHEBI_23367",
@@ -8795,20 +8809,13 @@
         "has_quantitative_attribute",
         "Entity_part_of",
         "ClassifierMixin_type",
-        "MaterialEntity_has_part",
-        "alternative_label",
-        "has_physical_state",
-        "has_temperature",
-        "has_mass",
-        "has_volume",
-        "has_density",
-        "has_pressure",
         "inchi",
         "inchikey",
         "smiles",
         "molecular_formula",
         "iupac_name",
         "has_molar_mass",
+        "ChemicalEntity_has_part",
         "Atom_rdf_type"
       ],
       "slot_usage": {},
@@ -8944,15 +8951,21 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstanceMixin",
       "description": "A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
+      "is_a": "MaterialisticMixin",
       "abstract": true,
       "mixin": true,
       "slots": [
+        "alternative_label",
+        "has_physical_state",
+        "has_temperature",
+        "has_mass",
+        "has_volume",
+        "has_density",
+        "has_pressure",
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstanceMixin",
@@ -8967,12 +8980,17 @@
       "abstract": true,
       "mixin": true,
       "slots": [
+        "alternative_label",
+        "has_physical_state",
+        "has_temperature",
+        "has_mass",
+        "has_volume",
+        "has_density",
+        "has_pressure",
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerMixin",
@@ -9071,7 +9089,7 @@
     {
       "name": "ChemicalReaction",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalReaction",
-      "description": "A process that leads to the transformation of one set of chemical substances to another.",
+      "description": "A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "SIO:010345"
@@ -9084,12 +9102,11 @@
       "narrow_mappings": [
         "RXNO:0000329"
       ],
-      "is_a": "Activity",
+      "is_a": "EvaluatedActivity",
       "slots": [
         "id",
         "Activity_title",
         "Activity_description",
-        "Activity_other_identifier",
         "Activity_has_part",
         "Activity_had_input_entity",
         "Activity_had_output_entity",
@@ -9100,6 +9117,7 @@
         "Activity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
+        "EvaluatedActivity_other_identifier",
         "used_starting_material",
         "used_reactant",
         "generated_product",
@@ -9151,8 +9169,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/PROCO_0000029",
@@ -9175,8 +9192,7 @@
       ],
       "is_a": "AgenticEntity",
       "mixins": [
-        "ChemicalSubstanceMixin",
-        "MaterialisticMixin"
+        "ChemicalSubstanceMixin"
       ],
       "slots": [
         "id",
@@ -9190,18 +9206,17 @@
         "ClassifierMixin_type",
         "rdf_type",
         "has_percentage_of_total",
-        "has_concentration",
-        "has_ph_value",
-        "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
         "alternative_label",
         "has_physical_state",
         "has_temperature",
         "has_mass",
         "has_volume",
         "has_density",
-        "has_pressure"
+        "has_pressure",
+        "has_concentration",
+        "has_ph_value",
+        "composed_of",
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_010417",
@@ -9249,8 +9264,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_010411",
@@ -9295,9 +9309,7 @@
         "has_concentration",
         "has_ph_value",
         "composed_of",
-        "has_molar_equivalent",
-        "has_amount",
-        "has_percentage_of_total"
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/NCIT_C48810",
@@ -9320,8 +9332,7 @@
       ],
       "is_a": "AgenticEntity",
       "mixins": [
-        "ChemicalSubstanceMixin",
-        "MaterialisticMixin"
+        "ChemicalSubstanceMixin"
       ],
       "slots": [
         "id",
@@ -9335,18 +9346,17 @@
         "ClassifierMixin_type",
         "rdf_type",
         "has_molar_equivalent",
-        "has_concentration",
-        "has_ph_value",
-        "composed_of",
-        "has_amount",
-        "has_percentage_of_total",
         "alternative_label",
         "has_physical_state",
         "has_temperature",
         "has_mass",
         "has_volume",
         "has_density",
-        "has_pressure"
+        "has_pressure",
+        "has_concentration",
+        "has_ph_value",
+        "composed_of",
+        "has_amount"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/SIO_010344",
@@ -9682,9 +9692,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-02-25T18:18:04",
+  "source_file_date": "2026-03-09T10:41:18",
   "source_file_size": 3685,
-  "generation_date": "2026-02-25T18:24:14",
+  "generation_date": "2026-03-09T10:50:13",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/chem_dcat_ap.context.jsonld",
