@@ -310,8 +310,6 @@
         click Entity href "../../classes/Entity/"
 
 
-      MaterialEntity &lt;|-- ChemicalEntity
-        click ChemicalEntity href "../../classes/ChemicalEntity/"
       MaterialEntity &lt;|-- StartingMaterial
         click StartingMaterial href "../../classes/StartingMaterial/"
       MaterialEntity &lt;|-- Reagent
@@ -477,7 +475,6 @@
 <ul>
 <li><a href="../Entity/">Entity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><strong>MaterialEntity</strong> [ <a href="../MaterialisticMixin/">MaterialisticMixin</a>]<ul>
-<li><a href="../ChemicalEntity/">ChemicalEntity</a></li>
 <li><a href="../StartingMaterial/">StartingMaterial</a> [ <a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a>]</li>
 <li><a href="../Reagent/">Reagent</a> [ <a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a>]</li>
 <li><a href="../ChemicalProduct/">ChemicalProduct</a> [ <a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a>]</li>
@@ -612,12 +609,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td><a href="../../slots/has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">MaterialEntity</a></td>
-</tr>
 <tr>
 <td><a href="./">MaterialEntity</a></td>
 <td><a href="../../slots/has_part/">has_part</a></td>

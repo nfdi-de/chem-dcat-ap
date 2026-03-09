@@ -7200,6 +7200,30 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "ChemicalEntity_has_part",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/has_part",
+      "description": "The slot to provide the parts of a ChemicalEntity that are themself chemical entities.",
+      "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
+      "mappings": [
+        "http://purl.obolibrary.org/obo/BFO_0000051"
+      ],
+      "is_a": "Entity_has_part",
+      "domain": "ChemicalEntity",
+      "slot_uri": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "alias": "has_part",
+      "owner": "ChemicalEntity",
+      "domain_of": [
+        "ChemicalEntity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "has_part",
+      "range": "ChemicalEntity",
+      "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "Atom_rdf_type",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/rdf_type",
       "description": "The slot to provide the Atom as a ChEBI ID from the atom (CHEBI:33250) branch.",
@@ -8738,10 +8762,13 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalEntity",
       "description": "Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
+      "aliases": [
+        "molecular entity"
+      ],
       "mappings": [
         "CHEBI:23367"
       ],
-      "is_a": "MaterialEntity",
+      "is_a": "Entity",
       "slots": [
         "Entity_title",
         "Entity_description",
@@ -8752,20 +8779,13 @@
         "Entity_part_of",
         "ClassifierMixin_type",
         "rdf_type",
-        "MaterialEntity_has_part",
-        "alternative_label",
-        "has_physical_state",
-        "has_temperature",
-        "has_mass",
-        "has_volume",
-        "has_density",
-        "has_pressure",
         "inchi",
         "inchikey",
         "smiles",
         "molecular_formula",
         "iupac_name",
-        "has_molar_mass"
+        "has_molar_mass",
+        "ChemicalEntity_has_part"
       ],
       "slot_usage": {},
       "class_uri": "http://purl.obolibrary.org/obo/CHEBI_23367",
@@ -8774,12 +8794,12 @@
     {
       "name": "Atom",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Atom",
-      "description": "An Entity constituting the smallest component of a chemical element having the chemical properties of the element.",
+      "description": "A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEBI:33250"
       ],
-      "is_a": "Entity",
+      "is_a": "ChemicalEntity",
       "slots": [
         "Entity_title",
         "Entity_description",
@@ -8787,9 +8807,15 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
-        "Entity_has_part",
         "Entity_part_of",
         "ClassifierMixin_type",
+        "inchi",
+        "inchikey",
+        "smiles",
+        "molecular_formula",
+        "iupac_name",
+        "has_molar_mass",
+        "ChemicalEntity_has_part",
         "Atom_rdf_type"
       ],
       "slot_usage": {},
@@ -9666,9 +9692,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-03-05T14:57:35",
+  "source_file_date": "2026-03-09T10:41:18",
   "source_file_size": 3685,
-  "generation_date": "2026-03-05T16:08:00",
+  "generation_date": "2026-03-09T10:50:13",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/chem_dcat_ap.context.jsonld",
