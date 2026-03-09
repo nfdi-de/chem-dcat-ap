@@ -63,8 +63,8 @@ classes:
         inlined_as_list: true
   Atom:
     class_uri: CHEBI:33250
-    is_a: ChemicalEntity
-    description: A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.
+    is_a: Entity
+    description: An Entity constituting the smallest component of a chemical element having the chemical properties of the element.
     slot_usage:
       rdf_type:
         description: The slot to provide the Atom as a ChEBI ID from the atom (CHEBI:33250) branch.

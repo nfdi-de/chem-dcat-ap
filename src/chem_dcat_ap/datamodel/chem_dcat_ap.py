@@ -1,5 +1,5 @@
 # Auto generated from chem_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-09T10:50:15
+# Generation date: 2026-03-09T15:22:59
 # Schema: chem-dcat-ap
 #
 # id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
@@ -218,7 +218,7 @@ class ChemicalEntityId(EntityId):
     pass
 
 
-class AtomId(ChemicalEntityId):
+class AtomId(EntityId):
     pass
 
 
@@ -2356,9 +2356,9 @@ class ChemicalEntity(Entity):
 
 
 @dataclass(repr=False)
-class Atom(ChemicalEntity):
+class Atom(Entity):
     """
-    A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.
+    An Entity constituting the smallest component of a chemical element having the chemical properties of the element.
     """
     _inherited_slots: ClassVar[list[str]] = []
 

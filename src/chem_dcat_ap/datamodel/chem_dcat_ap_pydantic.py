@@ -6489,9 +6489,9 @@ class ChemicalEntity(Entity):
          'slot_uri': 'rdf:type'} })
 
 
-class Atom(ChemicalEntity):
+class Atom(Entity):
     """
-    A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.
+    An Entity constituting the smallest component of a chemical element having the chemical properties of the element.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEBI:33250',
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
@@ -6501,30 +6501,6 @@ class Atom(ChemicalEntity):
                                      'name': 'rdf_type',
                                      'required': True}}})
 
-    inchi: Optional[list[InChi]] = Field(default=[], description="""The slot to provide the InChi descriptor of a ChemicalEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity'],
-         'is_a': 'has_qualitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    inchikey: Optional[list[InChIKey]] = Field(default=[], description="""The slot to provide the InChiKey of a ChemicalEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity'],
-         'is_a': 'has_qualitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    smiles: Optional[list[SMILES]] = Field(default=[], description="""The slot to provide the canonical SMILES descriptor of a ChemicalEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity'],
-         'is_a': 'has_qualitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    molecular_formula: Optional[list[MolecularFormula]] = Field(default=[], description="""The slot to provide the IUPAC formula of a ChemicalEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity'],
-         'is_a': 'has_qualitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    iupac_name: Optional[list[IUPACName]] = Field(default=[], description="""The slot to provide the IUPAC name of a ChemicalEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity'],
-         'is_a': 'has_qualitative_attribute',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
-    has_molar_mass: Optional[list[MolarMass]] = Field(default=[], description="""The slot to provide the MolarMass of a ChemicalEntity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ChemicalEntity'],
-         'is_a': 'has_mass',
-         'recommended': True,
-         'slot_uri': 'SIO:000008'} })
     title: Optional[str] = Field(default=None, description="""The slot to provide a title for the Entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
                        'AgenticEntity',
                        'Any',
@@ -6620,8 +6596,8 @@ class Atom(ChemicalEntity):
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,
          'slot_uri': 'dcterms:relation'} })
-    has_part: Optional[list[ChemicalEntity]] = Field(default=[], description="""The slot to provide the parts of a ChemicalEntity that are themself chemical entities.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'AgenticEntity', 'Catalogue', 'Entity'],
-         'slot_uri': 'BFO:0000051'} })
+    has_part: Optional[list[Entity]] = Field(default=[], description="""A slot to provide a part of the Entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'AgenticEntity', 'Catalogue', 'Entity'],
+         'slot_uri': 'dcterms:hasPart'} })
     part_of: Optional[list[Entity]] = Field(default=[], description="""The slot to specify an Entity of which the Entity is a part.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity', 'AgenticEntity', 'Entity'],
          'in_subset': ['domain_agnostic_core'],
          'inverse': 'has_part',
