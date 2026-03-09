@@ -1,5 +1,5 @@
 # Auto generated from chem_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-05T16:08:04
+# Generation date: 2026-03-09T10:50:15
 # Schema: chem-dcat-ap
 #
 # id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
@@ -94,7 +94,6 @@ CHEMDCATAP = CurieNamespace('chemdcatap', 'https://w3id.org/nfdi-de/dcat-ap-plus
 CHEMICAL_ENTITIES_AP = CurieNamespace('chemical_entities_ap', 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/')
 DCAT = CurieNamespace('dcat', 'http://www.w3.org/ns/dcat#')
 DCATAP = CurieNamespace('dcatap', 'http://data.europa.eu/r5r/')
-DCATAP_PLUS = CurieNamespace('dcatap_plus', 'https://w3id.org/nfdi-de/dcat-ap-plus/')
 DCATAPPLUS = CurieNamespace('dcatapplus', 'https://w3id.org/nfdi-de/dcat-ap-plus/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://doi.org/')
@@ -215,7 +214,11 @@ class ResourceId(URIorCURIE):
     pass
 
 
-class AtomId(EntityId):
+class ChemicalEntityId(EntityId):
+    pass
+
+
+class AtomId(ChemicalEntityId):
     pass
 
 
@@ -236,10 +239,6 @@ class ReactorId(DeviceId):
 
 
 class MaterialEntityId(EntityId):
-    pass
-
-
-class ChemicalEntityId(MaterialEntityId):
     pass
 
 
@@ -2300,9 +2299,66 @@ class TimeInstant(SupportiveEntity):
 
 
 @dataclass(repr=False)
-class Atom(Entity):
+class ChemicalEntity(Entity):
     """
-    An Entity constituting the smallest component of a chemical element having the chemical properties of the element.
+    Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex,
+    conformer etc., identifiable as a separately distinguishable entity.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CHEBI["23367"]
+    class_class_curie: ClassVar[str] = "CHEBI:23367"
+    class_name: ClassVar[str] = "ChemicalEntity"
+    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.ChemicalEntity
+
+    id: Union[str, ChemicalEntityId] = None
+    inchi: Optional[Union[Union[dict, "InChi"], list[Union[dict, "InChi"]]]] = empty_list()
+    inchikey: Optional[Union[Union[dict, "InChIKey"], list[Union[dict, "InChIKey"]]]] = empty_list()
+    smiles: Optional[Union[Union[dict, "SMILES"], list[Union[dict, "SMILES"]]]] = empty_list()
+    molecular_formula: Optional[Union[Union[dict, "MolecularFormula"], list[Union[dict, "MolecularFormula"]]]] = empty_list()
+    iupac_name: Optional[Union[Union[dict, "IUPACName"], list[Union[dict, "IUPACName"]]]] = empty_list()
+    has_molar_mass: Optional[Union[Union[dict, "MolarMass"], list[Union[dict, "MolarMass"]]]] = empty_list()
+    has_part: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ChemicalEntityId):
+            self.id = ChemicalEntityId(self.id)
+
+        if not isinstance(self.inchi, list):
+            self.inchi = [self.inchi] if self.inchi is not None else []
+        self.inchi = [v if isinstance(v, InChi) else InChi(**as_dict(v)) for v in self.inchi]
+
+        if not isinstance(self.inchikey, list):
+            self.inchikey = [self.inchikey] if self.inchikey is not None else []
+        self.inchikey = [v if isinstance(v, InChIKey) else InChIKey(**as_dict(v)) for v in self.inchikey]
+
+        if not isinstance(self.smiles, list):
+            self.smiles = [self.smiles] if self.smiles is not None else []
+        self.smiles = [v if isinstance(v, SMILES) else SMILES(**as_dict(v)) for v in self.smiles]
+
+        if not isinstance(self.molecular_formula, list):
+            self.molecular_formula = [self.molecular_formula] if self.molecular_formula is not None else []
+        self.molecular_formula = [v if isinstance(v, MolecularFormula) else MolecularFormula(**as_dict(v)) for v in self.molecular_formula]
+
+        if not isinstance(self.iupac_name, list):
+            self.iupac_name = [self.iupac_name] if self.iupac_name is not None else []
+        self.iupac_name = [v if isinstance(v, IUPACName) else IUPACName(**as_dict(v)) for v in self.iupac_name]
+
+        if not isinstance(self.has_molar_mass, list):
+            self.has_molar_mass = [self.has_molar_mass] if self.has_molar_mass is not None else []
+        self.has_molar_mass = [v if isinstance(v, MolarMass) else MolarMass(**as_dict(v)) for v in self.has_molar_mass]
+
+        self._normalize_inlined_as_list(slot_name="has_part", slot_type=ChemicalEntity, key_name="id", keyed=True)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Atom(ChemicalEntity):
+    """
+    A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2532,7 +2588,7 @@ class DissolvingSubstance(AgenticEntity):
     has_pressure: Optional[Union[Union[dict, "Pressure"], list[Union[dict, "Pressure"]]]] = empty_list()
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
-    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
+    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2612,7 +2668,7 @@ class Catalyst(AgenticEntity):
     has_pressure: Optional[Union[Union[dict, "Pressure"], list[Union[dict, "Pressure"]]]] = empty_list()
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
-    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
+    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2841,7 +2897,7 @@ class ChemicalSubstanceMixin(MaterialisticMixin):
 
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
-    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]] = empty_dict()
+    composed_of: Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]] = empty_dict()
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2930,60 +2986,6 @@ class MaterialEntity(Entity):
         if not isinstance(self.has_pressure, list):
             self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
         self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ChemicalEntity(MaterialEntity):
-    """
-    Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex,
-    conformer etc., identifiable as a separately distinguishable entity.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = CHEBI["23367"]
-    class_class_curie: ClassVar[str] = "CHEBI:23367"
-    class_name: ClassVar[str] = "ChemicalEntity"
-    class_model_uri: ClassVar[URIRef] = CHEMDCATAP.ChemicalEntity
-
-    id: Union[str, ChemicalEntityId] = None
-    inchi: Optional[Union[Union[dict, InChi], list[Union[dict, InChi]]]] = empty_list()
-    inchikey: Optional[Union[Union[dict, InChIKey], list[Union[dict, InChIKey]]]] = empty_list()
-    smiles: Optional[Union[Union[dict, SMILES], list[Union[dict, SMILES]]]] = empty_list()
-    molecular_formula: Optional[Union[Union[dict, MolecularFormula], list[Union[dict, MolecularFormula]]]] = empty_list()
-    iupac_name: Optional[Union[Union[dict, IUPACName], list[Union[dict, IUPACName]]]] = empty_list()
-    has_molar_mass: Optional[Union[Union[dict, "MolarMass"], list[Union[dict, "MolarMass"]]]] = empty_list()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ChemicalEntityId):
-            self.id = ChemicalEntityId(self.id)
-
-        if not isinstance(self.inchi, list):
-            self.inchi = [self.inchi] if self.inchi is not None else []
-        self.inchi = [v if isinstance(v, InChi) else InChi(**as_dict(v)) for v in self.inchi]
-
-        if not isinstance(self.inchikey, list):
-            self.inchikey = [self.inchikey] if self.inchikey is not None else []
-        self.inchikey = [v if isinstance(v, InChIKey) else InChIKey(**as_dict(v)) for v in self.inchikey]
-
-        if not isinstance(self.smiles, list):
-            self.smiles = [self.smiles] if self.smiles is not None else []
-        self.smiles = [v if isinstance(v, SMILES) else SMILES(**as_dict(v)) for v in self.smiles]
-
-        if not isinstance(self.molecular_formula, list):
-            self.molecular_formula = [self.molecular_formula] if self.molecular_formula is not None else []
-        self.molecular_formula = [v if isinstance(v, MolecularFormula) else MolecularFormula(**as_dict(v)) for v in self.molecular_formula]
-
-        if not isinstance(self.iupac_name, list):
-            self.iupac_name = [self.iupac_name] if self.iupac_name is not None else []
-        self.iupac_name = [v if isinstance(v, IUPACName) else IUPACName(**as_dict(v)) for v in self.iupac_name]
-
-        if not isinstance(self.has_molar_mass, list):
-            self.has_molar_mass = [self.has_molar_mass] if self.has_molar_mass is not None else []
-        self.has_molar_mass = [v if isinstance(v, MolarMass) else MolarMass(**as_dict(v)) for v in self.has_molar_mass]
 
         super().__post_init__(**kwargs)
 
@@ -3778,7 +3780,7 @@ slots.has_version = Slot(uri=DCAT.hasVersion, name="has_version", curie=DCAT.cur
 slots.homepage = Slot(uri=FOAF.homepage, name="homepage", curie=FOAF.curie('homepage'),
                    model_uri=CHEMDCATAP.homepage, domain=None, range=Optional[str])
 
-slots.id = Slot(uri=DCATAP_PLUS.id, name="id", curie=DCATAP_PLUS.curie('id'),
+slots.id = Slot(uri=DCATAPPLUS.id, name="id", curie=DCATAPPLUS.curie('id'),
                    model_uri=CHEMDCATAP.id, domain=None, range=URIRef)
 
 slots.identifier = Slot(uri=DCTERMS.identifier, name="identifier", curie=DCTERMS.curie('identifier'),
@@ -4524,6 +4526,9 @@ slots.Software_has_part = Slot(uri=DCTERMS.hasPart, name="Software_has_part", cu
 
 slots.Software_other_identifier = Slot(uri=ADMS.identifier, name="Software_other_identifier", curie=ADMS.curie('identifier'),
                    model_uri=CHEMDCATAP.Software_other_identifier, domain=Software, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
+
+slots.ChemicalEntity_has_part = Slot(uri=BFO['0000051'], name="ChemicalEntity_has_part", curie=BFO.curie('0000051'),
+                   model_uri=CHEMDCATAP.ChemicalEntity_has_part, domain=ChemicalEntity, range=Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]])
 
 slots.Atom_rdf_type = Slot(uri=RDF.type, name="Atom_rdf_type", curie=RDF.curie('type'),
                    model_uri=CHEMDCATAP.Atom_rdf_type, domain=Atom, range=Union[dict, DefinedTerm])
