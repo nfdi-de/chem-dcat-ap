@@ -863,7 +863,7 @@
         },
         "Atom": {
             "additionalProperties": false,
-            "description": "A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.",
+            "description": "An Entity constituting the smallest component of a chemical element having the chemical properties of the element.",
             "properties": {
                 "description": {
                     "description": "The slot to provide a description for the Entity.",
@@ -872,20 +872,10 @@
                         "null"
                     ]
                 },
-                "has_molar_mass": {
-                    "description": "The slot to provide the MolarMass of a ChemicalEntity.",
-                    "items": {
-                        "$ref": "#/$defs/MolarMass"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "has_part": {
-                    "description": "The slot to provide the parts of a ChemicalEntity that are themself chemical entities.",
+                    "description": "A slot to provide a part of the Entity.",
                     "items": {
-                        "$ref": "#/$defs/ChemicalEntity"
+                        "$ref": "#/$defs/Entity"
                     },
                     "type": [
                         "array",
@@ -916,46 +906,6 @@
                     "description": "A slot to provide an URI for an entity within this schema.",
                     "type": "string"
                 },
-                "inchi": {
-                    "description": "The slot to provide the InChi descriptor of a ChemicalEntity.",
-                    "items": {
-                        "$ref": "#/$defs/InChi"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "inchikey": {
-                    "description": "The slot to provide the InChiKey of a ChemicalEntity.",
-                    "items": {
-                        "$ref": "#/$defs/InChIKey"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "iupac_name": {
-                    "description": "The slot to provide the IUPAC name of a ChemicalEntity.",
-                    "items": {
-                        "$ref": "#/$defs/IUPACName"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "molecular_formula": {
-                    "description": "The slot to provide the IUPAC formula of a ChemicalEntity.",
-                    "items": {
-                        "$ref": "#/$defs/MolecularFormula"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "other_identifier": {
                     "description": "A slot to provide a secondary identifier of the Entity.",
                     "items": {
@@ -979,16 +929,6 @@
                 "rdf_type": {
                     "$ref": "#/$defs/DefinedTerm",
                     "description": "The slot to provide the Atom as a ChEBI ID from the atom (CHEBI:33250) branch."
-                },
-                "smiles": {
-                    "description": "The slot to provide the canonical SMILES descriptor of a ChemicalEntity.",
-                    "items": {
-                        "$ref": "#/$defs/SMILES"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
                 },
                 "title": {
                     "description": "The slot to provide a title for the Entity.",
