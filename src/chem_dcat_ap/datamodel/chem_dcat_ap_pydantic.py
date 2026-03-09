@@ -6343,7 +6343,8 @@ class ChemicalEntity(Entity):
     """
     Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHEBI:23367',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['molecular entity'],
+         'class_uri': 'CHEBI:23367',
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
          'slot_usage': {'has_part': {'description': 'The slot to provide the parts of '
                                                     'a ChemicalEntity that are '
