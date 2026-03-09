@@ -312,6 +312,8 @@
         click EvaluatedEntity href "../../classes/EvaluatedEntity/"
       Entity &lt;|-- ChemicalEntity
         click ChemicalEntity href "../../classes/ChemicalEntity/"
+      Entity &lt;|-- Atom
+        click Atom href "../../classes/Atom/"
       Entity &lt;|-- MaterialEntity
         click MaterialEntity href "../../classes/MaterialEntity/"
 
@@ -406,6 +408,7 @@
 <li><strong>Entity</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><a href="../EvaluatedEntity/">EvaluatedEntity</a></li>
 <li><a href="../ChemicalEntity/">ChemicalEntity</a></li>
+<li><a href="../Atom/">Atom</a></li>
 <li><a href="../MaterialEntity/">MaterialEntity</a> [ <a href="../MaterialisticMixin/">MaterialisticMixin</a>]</li>
 </ul>
 </li>
@@ -617,6 +620,12 @@
 <tr>
 <td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
 <td><a href="../../slots/part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../Atom/">Atom</a></td>
+<td><a href="../../slots/has_part/">has_part</a></td>
 <td>range</td>
 <td><a href="./">Entity</a></td>
 </tr>

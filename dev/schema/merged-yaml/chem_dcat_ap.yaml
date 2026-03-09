@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post24.dev0+6715dbae
+version: 0.1.0rc2.post25.dev0+b6b60108
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -8804,12 +8804,12 @@ classes:
   Atom:
     name: Atom
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Atom
-    description: A MaterialEntity constituting the smallest component of an element
+    description: An Entity constituting the smallest component of a chemical element
       having the chemical properties of the element.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEBI:33250
-    is_a: ChemicalEntity
+    is_a: Entity
     slots:
     - Entity_title
     - Entity_description
@@ -8817,15 +8817,9 @@ classes:
     - Entity_other_identifier
     - has_qualitative_attribute
     - has_quantitative_attribute
+    - Entity_has_part
     - Entity_part_of
     - ClassifierMixin_type
-    - inchi
-    - inchikey
-    - smiles
-    - molecular_formula
-    - iupac_name
-    - has_molar_mass
-    - ChemicalEntity_has_part
     - Atom_rdf_type
     slot_usage:
       rdf_type:
@@ -9584,7 +9578,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-03-09T10:10:01'
+source_file_date: '2026-03-09T14:30:50'
 source_file_size: 3599
-generation_date: '2026-03-09T10:10:11'
+generation_date: '2026-03-09T14:31:02'
 

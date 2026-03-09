@@ -8794,12 +8794,12 @@
     {
       "name": "Atom",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Atom",
-      "description": "A MaterialEntity constituting the smallest component of an element having the chemical properties of the element.",
+      "description": "An Entity constituting the smallest component of a chemical element having the chemical properties of the element.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "mappings": [
         "CHEBI:33250"
       ],
-      "is_a": "ChemicalEntity",
+      "is_a": "Entity",
       "slots": [
         "Entity_title",
         "Entity_description",
@@ -8807,15 +8807,9 @@
         "Entity_other_identifier",
         "has_qualitative_attribute",
         "has_quantitative_attribute",
+        "Entity_has_part",
         "Entity_part_of",
         "ClassifierMixin_type",
-        "inchi",
-        "inchikey",
-        "smiles",
-        "molecular_formula",
-        "iupac_name",
-        "has_molar_mass",
-        "ChemicalEntity_has_part",
         "Atom_rdf_type"
       ],
       "slot_usage": {},
@@ -9692,9 +9686,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-03-09T10:41:18",
+  "source_file_date": "2026-03-09T15:20:10",
   "source_file_size": 3685,
-  "generation_date": "2026-03-09T10:50:13",
+  "generation_date": "2026-03-09T15:22:57",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/chem_dcat_ap.context.jsonld",
