@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post30.dev0+cb2827b5
+version: 0.1.0rc2.post31.dev0+566233fc
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -1318,7 +1318,7 @@ slots:
     in_subset:
     - domain_agnostic_core
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
-    slot_uri: dcatap_plus:id
+    slot_uri: dcatapplus:id
     identifier: true
     owner: Resource
     domain_of:
@@ -7056,7 +7056,7 @@ classes:
         name: type
         range: DefinedTerm
         inlined: true
-    class_uri: dcatap_plus:ClassifierMixin
+    class_uri: dcatapplus:ClassifierMixin
   Concept:
     name: Concept
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/Concept
@@ -8731,7 +8731,7 @@ classes:
     slots:
     - title
     - description
-    class_uri: dcatap_plus:SupportiveEntity
+    class_uri: dcatapplus:SupportiveEntity
   Surrounding:
     name: Surrounding
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/Surrounding
@@ -8769,6 +8769,8 @@ classes:
       ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately
       distinguishable entity.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    aliases:
+    - molecular entity
     mappings:
     - CHEBI:23367
     is_a: Entity
@@ -9582,7 +9584,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-03-05T15:37:51'
+source_file_date: '2026-03-09T09:45:49'
 source_file_size: 3599
-generation_date: '2026-03-05T15:38:00'
+generation_date: '2026-03-09T09:45:59'
 

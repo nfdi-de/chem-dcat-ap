@@ -44,6 +44,8 @@ classes:
   ChemicalEntity:
     is_a: Entity
     class_uri: CHEBI:23367
+    aliases:
+      - molecular entity
     description: Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately distinguishable entity.
     slots:
       - inchi
