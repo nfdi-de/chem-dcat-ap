@@ -15,6 +15,10 @@ To generate the output of each DCAT-AP profile into a TTL graph run:
     ````commandline
     uv run linkml-convert -t ttl ../tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
     ````
+  * Convert a single point UV-vis spectroscopy-specific DCAT-AP extension conform example
+    ````commandline
+    uv run linkml-convert -t ttl ../tests/data/valid/Single-UVvis-450nm-AnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C AnalysisDataset
+    ````
   * Convert domain agnostic DCAT-AP extension conform example of a MaterialSample
     ````commandline
     uv run linkml-convert -t ttl ../tests/data/valid/MaterialSample-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C MaterialSample
@@ -36,6 +40,10 @@ To generate the output of each DCAT-AP profile into a JSON file:
   * Convert a NMR spectroscopy-specific DCAT-AP extension conform example
     ````commandline
     uv run linkml-convert -t json ../tests/data/valid/NMRAnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
+    ````
+  * Convert a single point UV-vis spectroscopy-specific DCAT-AP extension conform example
+    ````commandline
+    uv run linkml-convert -t json ../tests/data/valid/Single-UVvis-450nm-AnalysisDataset-001.yaml -s src/dcat_4c_ap/schema/dcat_4c_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C AnalysisDataset
     ````
   * Convert domain agnostic DCAT-AP extension conform example of a MaterialSample
     ````commandline
