@@ -1,0 +1,138 @@
+# Example AnalysisDataset object for single point UV-vis spectroscopy measurement at 450nm wavelength
+---
+id: handle:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.2
+other_identifier:
+  - notation: https://pid4cat.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.2
+title:
+  - "Single point UV-vis analysis at 450 nm of CRS-50440"
+description:
+  - "Dataset for single point UV-visible spectroscopy (UV-vis) measurement at 450 nm wavelength"
+theme:
+  - preferred_label:
+      - "Science and technology"
+is_about_entity:
+  - id: handle:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+    title: "CRS-50440"
+    description: "The analysed chemical substance sample CRS-50440."
+    rdf_type:
+      id: CHEBI:59999
+      title: "chemical substance"
+    has_part:
+      - id: handle:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+        description: "compound assigned to handle:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2"
+        other_identifier:
+          - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
+        rdf_type:
+          id: CHEBI:23367
+          title: molecular entity
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHEMINF:000059
+              title: "InChiKey"
+            value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
+            title: "assigned InChiKey"
+          - rdf_type:
+              id: CHEMINF:000113
+              title: "InChi"
+            value: "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3"
+            title: "assigned InChi"
+          - rdf_type:
+              id: CHEMINF:000018
+              title: "SMILES descriptor"
+            value: "CNCc1csc(n1)c1ccccc1"
+            title: "assigned SMILES"
+          - rdf_type:
+              id: CHEMINF:000042
+              title: "molecular formula"
+            value: "C11H12N2S"
+            title: "assigned molecular formula"
+          - rdf_type:
+              id: CHEMINF:000107
+              title: "IUPAC name"
+            value: "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine"
+            description: Chemotion IUPAC name
+          - rdf_type:
+              id: CHEMINF:000107
+              title: "IUPAC name"
+            value: "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine"
+            description: PubChem IUPAC name
+        has_quantitative_attribute:
+          - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+            unit: https://qudt.org/vocab/unit/GM-PER-MOL
+            value: 204.072119
+            description: "Molar mass as specified in the Chemotion repository."
+          - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+            unit: https://qudt.org/vocab/unit/GM-PER-MOL
+            value: 204.29
+            description: "Molar mass as specified in PubChem"
+was_generated_by: # a DataAnalysis
+  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.2#UVvisSpectralAnalysis
+    description:
+      - "Analysis of UV-visible spectra at 450 nm wavelength."
+    rdf_type:
+      id: CHMO:0000596
+      title: "UV-visible spectroscopy"
+    evaluated_entity:
+      - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.2#UVvis_Spectrum_450nm
+        was_generated_by:
+          - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.2#UVvis_450nm
+            title:
+              - "UV-vis spectrum at 450 nm"
+            rdf_type:
+              id: CHMO:0000596
+              title: "UV-visible spectroscopy"
+            has_qualitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000597
+                  title: "measurement wavelength"
+                value: "450"
+                title: "Wavelength of measurement"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000598
+                  title: "absorbance value"
+                value: 0.85
+                has_quantity_type: http://qudt.org/vocab/quantitykind/DimensionlessRatio
+                unit: https://qudt.org/vocab/unit/ABS
+                title: "Absorbance at 450 nm"
+              - rdf_type:
+                  id: CHMO:0000599
+                  title: "sample temperature information"
+                title: "sample temperature setting"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+                unit: https://qudt.org/vocab/unit/K
+                value: 293.15
+              - rdf_type:
+                  id: CHMO:0000600
+                  title: "instrument resolution"
+                value: 1.0
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Wavelength
+                unit: https://qudt.org/vocab/unit/NM
+                title: "Instrument resolution at 450 nm"
+            evaluated_entity:
+              - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+                title: "CRS-50440"
+            carried_out_by:
+              - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.2#UVvis_Spectrometer
+                rdf_type:
+                  id: OBI:0000566
+                  title: "UV-vis instrument"
+                title: "UV-Vis Spectrophotometer Model XYZ"
+                description: 'The UV-Vis spectrophotometer used for measurement at 450 nm.'
+              - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.2#UVvis_SampleCell
+                description: "Sample cell used for measurement"
+                has_part:
+                  - id: https://pubchem.ncbi.nlm.nih.gov/compound/12345
+                    rdf_type:
+                      id: CHEBI:12345
+                      title: "cuvette"
+                    title: "1 cm cuvette"
+              - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.2#UVvis_Wavelength
+                title: "measurement wavelength"
+                part_of:
+                  - title: "450 nm"
+                    description: "The wavelength of measurement"
+                    id: https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.2#UVvis_Wavelength_450nm
+                    rdf_type:
+                      id: CHMO:0000601
+                      title: "wavelength"
