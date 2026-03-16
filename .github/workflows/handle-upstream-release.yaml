@@ -1,0 +1,313 @@
+---
+name: Handle upstream dcat-ap-plus release
+
+# Runs daily at 08:00 UTC to check whether dcat-ap-plus has released a new
+# version since the last time the source schemas were frozen.
+#
+# No secrets required. No changes needed in the upstream dcat-ap-plus repo.
+# The workflow is fully self-contained: it fetches the current 'latest' version
+# from the dcat-ap-plus GitHub Pages and decides autonomously whether to act.
+#
+# What this workflow does
+# -----------------------
+# 1. Fetches the current 'latest' version from dcat-ap-plus GitHub Pages.
+# 2. Detects the current dcatapplus import token in the source schemas.
+# 3. Skip guard A: if source is already pinned to the upstream latest, stop.
+# 4. Skip guard B: if an open PR for this version already exists, stop silently.
+# 5. Check whether the freeze branch already exists (e.g. from a previous
+#    failed run) — branch creation is skipped if it does, but the PR step
+#    still runs so nothing is lost.
+# 6. Create branch freeze/dcatapplus-<version> (if it does not exist yet),
+#    commit the updated import, open a PR with a CI checklist, and post a
+#    notice on every open non-freeze PR so contributors are aware of the
+#    upstream change.
+#
+# One-time repository setup required (Settings → Actions → General):
+#   "Allow GitHub Actions to create and approve pull requests" must be enabled.
+#
+# The workflow_dispatch trigger allows manual runs at any time — useful for
+# testing or to trigger an immediate check without waiting for the schedule.
+
+on:  # yamllint disable-line rule:truthy
+  schedule:
+    - cron: '0 8 * * *'   # daily at 08:00 UTC
+  workflow_dispatch:       # manual trigger — no inputs needed
+
+permissions: {}
+
+jobs:
+  check-and-freeze:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write       # push the freeze branch
+      pull-requests: write  # open the PR and post comments
+
+    # GH_TOKEN at job level so gh CLI is authenticated in all steps,
+    # including the early skip guards (before tooling is installed).
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ------------------------------------------------------------------
+      # Fetch the current 'latest' version from dcat-ap-plus GitHub Pages
+      # ------------------------------------------------------------------
+      - name: Fetch upstream latest version
+        id: upstream
+        run: |
+          VERSION=$(python3 - <<'EOF'
+          import json, sys, urllib.request
+          url = "https://nfdi-de.github.io/dcat-ap-plus/versions.json"
+          try:
+              with urllib.request.urlopen(url, timeout=15) as r:
+                  versions = json.load(r)
+              for entry in versions:
+                  if "latest" in entry.get("aliases", []):
+                      print(entry["version"])
+                      sys.exit(0)
+              print("ERROR: no 'latest' alias found in versions.json", file=sys.stderr)
+              sys.exit(1)
+          except Exception as exc:
+              print(f"ERROR: {exc}", file=sys.stderr)
+              sys.exit(1)
+          EOF
+          )
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Upstream latest: ${VERSION}"
+
+      # ------------------------------------------------------------------
+      # Detect what the source schemas currently import
+      # ------------------------------------------------------------------
+      - name: Detect current dcatapplus import token
+        id: detect
+        run: |
+          CURRENT=$(python3 - <<'EOF'
+          import re, pathlib, sys
+          for f in sorted(pathlib.Path("src/chem_dcat_ap/schema").glob("*.yaml")):
+              m = re.search(r"dcatapplus:([^/\s]+)/", f.read_text())
+              if m:
+                  print(m.group(1))
+                  sys.exit(0)
+          # Fallback: no token found, assume 'latest'
+          print("latest")
+          EOF
+          )
+          echo "current_token=${CURRENT}" >> "$GITHUB_OUTPUT"
+          echo "Current source token: ${CURRENT}"
+
+      # ------------------------------------------------------------------
+      # Skip guard A: source already pinned to the upstream latest
+      # ------------------------------------------------------------------
+      - name: Check if source is already up to date
+        id: check_uptodate
+        env:
+          VERSION: ${{ steps.upstream.outputs.version }}
+          CURRENT_TOKEN: ${{ steps.detect.outputs.current_token }}
+        run: |
+          if [ "${CURRENT_TOKEN}" = "${VERSION}" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Source already pinned to ${VERSION} — nothing to do."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "Update needed: ${CURRENT_TOKEN} → ${VERSION}"
+          fi
+
+      # ------------------------------------------------------------------
+      # Skip guard B: an open freeze PR for this version already exists.
+      # Uses gh CLI (pre-installed on ubuntu-latest, authenticated via
+      # GH_TOKEN set at job level).
+      # Note: we check for an open PR, not just for the branch — a branch
+      # can exist without a PR (e.g. from a previous run that failed after
+      # the branch push). In that case we still want to create the PR.
+      # ------------------------------------------------------------------
+      - name: Check if open freeze PR already exists
+        id: check_pr
+        if: steps.check_uptodate.outputs.skip == 'false'
+        env:
+          VERSION: ${{ steps.upstream.outputs.version }}
+        run: |
+          BRANCH="freeze/dcatapplus-${VERSION}"
+          EXISTING=$(gh pr list \
+            --head "${BRANCH}" \
+            --state open \
+            --json number \
+            --jq '.[0].number' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Open freeze PR #${EXISTING} already exists for '${BRANCH}' — skipping."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "No open freeze PR found — will proceed."
+          fi
+
+      # ------------------------------------------------------------------
+      # Check whether the freeze branch already exists (e.g. from a
+      # previous run that failed after the branch push but before the PR).
+      # This is separate from the skip guard — if the branch exists but no
+      # PR does, we still proceed to create the PR.
+      # ------------------------------------------------------------------
+      - name: Check if freeze branch already exists
+        id: check_branch
+        if: >
+          steps.check_uptodate.outputs.skip == 'false' &&
+          steps.check_pr.outputs.skip == 'false'
+        env:
+          VERSION: ${{ steps.upstream.outputs.version }}
+        run: |
+          BRANCH="freeze/dcatapplus-${VERSION}"
+          if git ls-remote --exit-code --heads origin "${BRANCH}" > /dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Branch '${BRANCH}' already exists — will skip creation, proceed to PR."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "Branch does not exist — will create it."
+          fi
+
+      # ------------------------------------------------------------------
+      # Install tooling — only when we are actually going to create a PR
+      # ------------------------------------------------------------------
+      - name: Install uv
+        if: >
+          steps.check_uptodate.outputs.skip == 'false' &&
+          steps.check_pr.outputs.skip == 'false'
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
+        if: >
+          steps.check_uptodate.outputs.skip == 'false' &&
+          steps.check_pr.outputs.skip == 'false'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Configure git for the bot
+        if: >
+          steps.check_uptodate.outputs.skip == 'false' &&
+          steps.check_pr.outputs.skip == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # ------------------------------------------------------------------
+      # Create the freeze branch and commit the updated imports.
+      # Skipped if the branch already exists (recovery path).
+      # ------------------------------------------------------------------
+      - name: Create freeze branch and commit
+        if: >
+          steps.check_uptodate.outputs.skip == 'false' &&
+          steps.check_pr.outputs.skip == 'false' &&
+          steps.check_branch.outputs.exists == 'false'
+        id: branch
+        env:
+          VERSION: ${{ steps.upstream.outputs.version }}
+          CURRENT_TOKEN: ${{ steps.detect.outputs.current_token }}
+        run: |
+          BRANCH="freeze/dcatapplus-${VERSION}"
+          git checkout -b "${BRANCH}"
+
+          uv run python scripts/freeze_imports.py \
+            --schema-dir src/chem_dcat_ap/schema \
+            --prefix dcatapplus \
+            --from-alias "${CURRENT_TOKEN}" \
+            --to-version "${VERSION}"
+
+          git add src/chem_dcat_ap/schema/
+          git commit -m "chore: freeze dcatapplus import to ${VERSION}
+
+          Automatically created by the daily upstream check workflow.
+
+          Pins the source schema imports from 'dcatapplus:${CURRENT_TOKEN}/'
+          to 'dcatapplus:${VERSION}/', making local development and all
+          future releases of chem-dcat-ap deterministic against the new
+          upstream version."
+
+          git push origin "${BRANCH}"
+
+      # ------------------------------------------------------------------
+      # Open the PR — always runs if both skip guards passed, regardless
+      # of whether the branch was just created or already existed.
+      # ------------------------------------------------------------------
+      - name: Create pull request
+        if: >
+          steps.check_uptodate.outputs.skip == 'false' &&
+          steps.check_pr.outputs.skip == 'false'
+        id: create-pr
+        env:
+          VERSION: ${{ steps.upstream.outputs.version }}
+          CURRENT_TOKEN: ${{ steps.detect.outputs.current_token }}
+        run: |
+          BRANCH="freeze/dcatapplus-${VERSION}"
+          PR_URL=$(gh pr create \
+            --title "chore: freeze dcatapplus import to ${VERSION}" \
+            --base main \
+            --head "${BRANCH}" \
+            --body "$(cat <<EOF
+          ## Upstream release detected: dcat-ap-plus ${VERSION}
+
+          The daily upstream check found that dcat-ap-plus has released a new
+          version: **${VERSION}**.
+
+          This PR updates the source schema imports from \`dcatapplus:${CURRENT_TOKEN}/\`
+          to \`dcatapplus:${VERSION}/\`, making local development and all future releases
+          of chem-dcat-ap deterministic against this upstream version.
+
+          ### Before merging
+          - [ ] CI passes — confirms chem-dcat-ap is compatible with dcat-ap-plus **${VERSION}**
+          - [ ] If CI fails, there are breaking changes in **${VERSION}** that require
+                schema updates in this repo before this PR can be merged
+
+          ### After merging
+          The \`main\` branch will carry \`dcatapplus:${VERSION}/\` in source.
+          The release-time freeze step in \`deploy-docs.yaml\` will be a no-op
+          (the import is already pinned), which is correct and expected behaviour.
+
+          ---
+          *This PR was created automatically by the \`handle-upstream-release\` workflow.*
+          EOF
+          )")
+          echo "pr_url=${PR_URL}" >> "$GITHUB_OUTPUT"
+          echo "Created freeze PR: ${PR_URL}"
+
+      # ------------------------------------------------------------------
+      # Post a notice on all open non-freeze PRs
+      # ------------------------------------------------------------------
+      - name: Post notice on open PRs
+        if: >
+          steps.check_uptodate.outputs.skip == 'false' &&
+          steps.check_pr.outputs.skip == 'false'
+        env:
+          VERSION: ${{ steps.upstream.outputs.version }}
+          FREEZE_PR_URL: ${{ steps.create-pr.outputs.pr_url }}
+        run: |
+          gh pr list --state open --json number,headRefName \
+            --jq '.[] | select(.headRefName | startswith("freeze/") | not) | .number' \
+          | while read -r PR_NUM; do
+            gh pr comment "${PR_NUM}" --body "$(cat <<EOF
+          ## ⚠️ Upstream release: dcat-ap-plus ${VERSION}
+
+          The daily upstream check found that a new version of dcat-ap-plus has been
+          released: **${VERSION}**.
+
+          **What this means for your PR:**
+          The \`dcatapplus:latest\` alias now points to **${VERSION}**, which may introduce
+          changes that affect your work.
+
+          A compatibility freeze PR has been opened: ${FREEZE_PR_URL}
+
+          Please check whether that PR's CI passes:
+          - **CI green** → dcat-ap-plus ${VERSION} is backwards-compatible; no action needed in your PR.
+          - **CI red** → there are breaking changes; coordinate with maintainers before merging.
+
+          ---
+          *This notice was posted automatically by the \`handle-upstream-release\` workflow.*
+          EOF
+          )"
+          done
