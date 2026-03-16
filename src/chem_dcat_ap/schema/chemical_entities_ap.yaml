@@ -41,6 +41,27 @@ imports:
 
 classes:
 
+#####################
+# EvaluatedEntities #
+#####################
+  SubstanceSample:
+    class_uri: SIO:001378
+    is_a: MaterialSample
+    aliases:
+      - analyte
+    description: A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.
+    mixins:
+      - ChemicalSubstanceMixin
+
+  PolymerSample:
+    is_a: SubstanceSample
+    class_uri: SIO:001378
+    description: A SubstanceSample derived from a Polymer.
+    mixins:
+      - PolymerMixin
+    todos:
+      - "Find a better mapping, as it is currently mapped to same ontology class as its parent."
+
   ChemicalEntity:
     is_a: Entity
     class_uri: CHEBI:23367
