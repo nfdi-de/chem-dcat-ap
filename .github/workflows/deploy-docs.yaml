@@ -27,7 +27,7 @@ jobs:
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
 
@@ -40,7 +40,7 @@ jobs:
 
       # https://github.com/astral-sh/setup-uv
       - name: Install uv
-        uses: astral-sh/setup-uv@v7.2.1
+        uses: astral-sh/setup-uv@v5
         with:
           python-version: 3.13
           enable-cache: true
@@ -48,7 +48,7 @@ jobs:
 
       # https://github.com/actions/setup-python
       - name: Set up Python
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v5
         with:
           python-version: 3.13
 
@@ -58,6 +58,24 @@ jobs:
 
       - name: Install dependencies
         run: uv sync --dev --no-progress
+
+      # -----------------------------------------------------------------------
+      # VERSION FREEZE (release tags only)
+      #
+      # Replaces  dcatapplus:latest/  with  dcatapplus:<resolved-version>/
+      # in the schema YAML files of the working copy (NOT committed to git).
+      # This ensures every snapshot deployed to GitHub Pages carries a pinned,
+      # reproducible import while source files continue to use 'latest' during
+      # normal development on the main branch.
+      # -----------------------------------------------------------------------
+      - name: Freeze dcat-ap-plus import to current 'latest' version
+        if: github.ref_type == 'tag' && github.event_name == 'push'
+        run: |
+          uv run python scripts/freeze_imports.py \
+            --schema-dir src/chem_dcat_ap/schema \
+            --prefix dcatapplus \
+            --from-alias latest \
+            --versions-url https://nfdi-de.github.io/dcat-ap-plus/versions.json
 
       - name: Generate schema documentation
         run: |
@@ -76,14 +94,38 @@ jobs:
 
       # yamllint disable rule:line-length
       - name: Build & deploy "dev" docs for a new commit to main
-
         if: (github.event_name == 'push' && github.ref_type != 'tag') || github.event_name == 'workflow_dispatch'
         run: |
           export SHORT_SHA=$(echo "${GITHUB_SHA}" | cut -c1-7)
           uv run mike deploy --push --update-aliases --title "dev (${SHORT_SHA})" dev
 
+      # -----------------------------------------------------------------------
+      # RELEASE DEPLOYMENT
+      #
+      # Always deploy the new version under its own path (e.g. /v0.2.0/).
+      # Only promote to 'latest' when this version is semver >= the version
+      # currently carrying the 'latest' alias.  This prevents a maintenance
+      # patch on an old major branch (e.g. v1.10.4) from overwriting 'latest'
+      # when a newer release (e.g. v2.0.1) is already live.
+      # -----------------------------------------------------------------------
       - name: Build & deploy docs for a new version tag
         if: github.ref_type == 'tag' && github.event_name == 'push'
         run: |
-          uv run mike deploy --push --update-aliases ${{ github.ref_name }} latest
-          uv run mike set-default latest --push
+          # Deploy under the version path (e.g. /v0.2.0/)
+          uv run mike deploy --push --update-aliases ${{ github.ref_name }}
+
+          # Check whether to also promote the 'latest' alias
+          SHOULD_UPDATE=$(uv run python scripts/should_update_latest.py \
+            --new-version ${{ github.ref_name }} \
+            --versions-url https://nfdi-de.github.io/chem-dcat-ap/versions.json \
+            2>/dev/null || echo "true")
+
+          echo "Promote 'latest' alias: ${SHOULD_UPDATE}"
+
+          if [ "${SHOULD_UPDATE}" = "true" ]; then
+            uv run mike deploy --push --update-aliases ${{ github.ref_name }} latest
+            uv run mike set-default latest --push
+            echo "Updated 'latest' -> ${{ github.ref_name }}"
+          else
+            echo "Keeping 'latest' as-is (current latest is a newer version)."
+          fi
