@@ -3,11 +3,11 @@ Module to generate example datasets for chemical reactions using the Chem DCAT-A
 """
 
 from chem_dcat_ap.datamodel.chem_dcat_ap_pydantic import (
-    Dataset, ChemicalReaction, StartingMaterial, Reagent, ChemicalProduct, 
-    Catalyst, DissolvingSubstance, Reactor, Temperature, Pressure, Yield,
-    ChemicalEntity, InChi, InChIKey, SMILES, MolecularFormula, IUPACName,
+    Dataset, ChemicalEntity, InChi, InChIKey, SMILES, MolecularFormula, IUPACName,
     Agent, DataGeneratingActivity, DataAnalysis, Distribution, 
-    QualitativeAttribute, QuantitativeAttribute, PhysicalStateEnum
+    QualitativeAttribute, QuantitativeAttribute, PhysicalStateEnum,
+    Device, Software, Plan, AnalysisSourceData, ChemicalReaction, 
+    ChemicalProduct, StartingMaterial, Reagent, Catalyst, DissolvingSubstance
 )
 from datetime import date
 from typing import List, Optional
@@ -34,294 +34,134 @@ def create_chemical_entity(
     return entity
 
 
-def create_starting_material(
-    id: str,
-    chemical_entity: ChemicalEntity,
-    mass: Optional[float] = None,
-    volume: Optional[float] = None,
-    temperature: Optional[float] = None,
-    pressure: Optional[float] = None,
-    physical_state: Optional[PhysicalStateEnum] = None
-) -> StartingMaterial:
-    """Create a StartingMaterial with the provided properties."""
-    material = StartingMaterial(
-        id=id,
-        composed_of=[chemical_entity],
-        has_mass=[QuantitativeAttribute(
-            value=mass,
-            has_quantity_type="mass",
-            unit="g"
-        )] if mass else [],
-        has_volume=[QuantitativeAttribute(
-            value=volume,
-            has_quantity_type="volume",
-            unit="mL"
-        )] if volume else [],
-        has_temperature=[QuantitativeAttribute(
-            value=temperature,
-            has_quantity_type="temperature",
-            unit="K"
-        )] if temperature else [],
-        has_pressure=[QuantitativeAttribute(
-            value=pressure,
-            has_quantity_type="pressure",
-            unit="bar"
-        )] if pressure else [],
-        has_physical_state=physical_state
-    )
-    return material
-
-
-def create_reagent(
-    id: str,
-    chemical_entity: ChemicalEntity,
-    mass: Optional[float] = None,
-    volume: Optional[float] = None,
-    temperature: Optional[float] = None,
-    pressure: Optional[float] = None,
-    physical_state: Optional[PhysicalStateEnum] = None
-) -> Reagent:
-    """Create a Reagent with the provided properties."""
-    material = Reagent(
-        id=id,
-        composed_of=[chemical_entity],
-        has_mass=[QuantitativeAttribute(
-            value=mass,
-            has_quantity_type="mass",
-            unit="g"
-        )] if mass else [],
-        has_volume=[QuantitativeAttribute(
-            value=volume,
-            has_quantity_type="volume",
-            unit="mL"
-        )] if volume else [],
-        has_temperature=[QuantitativeAttribute(
-            value=temperature,
-            has_quantity_type="temperature",
-            unit="K"
-        )] if temperature else [],
-        has_pressure=[QuantitativeAttribute(
-            value=pressure,
-            has_quantity_type="pressure",
-            unit="bar"
-        )] if pressure else [],
-        has_physical_state=physical_state
-    )
-    return material
-
-
-def create_chemical_product(
-    id: str,
-    chemical_entity: ChemicalEntity,
-    mass: Optional[float] = None,
-    volume: Optional[float] = None,
-    temperature: Optional[float] = None,
-    pressure: Optional[float] = None,
-    physical_state: Optional[PhysicalStateEnum] = None
-) -> ChemicalProduct:
-    """Create a ChemicalProduct with the provided properties."""
-    product = ChemicalProduct(
-        id=id,
-        composed_of=[chemical_entity],
-        has_mass=[QuantitativeAttribute(
-            value=mass,
-            has_quantity_type="mass",
-            unit="g"
-        )] if mass else [],
-        has_volume=[QuantitativeAttribute(
-            value=volume,
-            has_quantity_type="volume",
-            unit="mL"
-        )] if volume else [],
-        has_temperature=[QuantitativeAttribute(
-            value=temperature,
-            has_quantity_type="temperature",
-            unit="K"
-        )] if temperature else [],
-        has_pressure=[QuantitativeAttribute(
-            value=pressure,
-            has_quantity_type="pressure",
-            unit="bar"
-        )] if pressure else [],
-        has_physical_state=physical_state
-    )
-    return product
-
-
-def create_catalyst(
-    id: str,
-    chemical_entity: ChemicalEntity,
-    mass: Optional[float] = None,
-    volume: Optional[float] = None,
-    temperature: Optional[float] = None,
-    pressure: Optional[float] = None,
-    physical_state: Optional[PhysicalStateEnum] = None
-) -> Catalyst:
-    """Create a Catalyst with the provided properties."""
-    catalyst = Catalyst(
-        id=id,
-        composed_of=[chemical_entity],
-        has_mass=[QuantitativeAttribute(
-            value=mass,
-            has_quantity_type="mass",
-            unit="g"
-        )] if mass else [],
-        has_volume=[QuantitativeAttribute(
-            value=volume,
-            has_quantity_type="volume",
-            unit="mL"
-        )] if volume else [],
-        has_temperature=[QuantitativeAttribute(
-            value=temperature,
-            has_quantity_type="temperature",
-            unit="K"
-        )] if temperature else [],
-        has_pressure=[QuantitativeAttribute(
-            value=pressure,
-            has_quantity_type="pressure",
-            unit="bar"
-        )] if pressure else [],
-        has_physical_state=physical_state
-    )
-    return catalyst
-
-
-def create_solvent(
-    id: str,
-    chemical_entity: ChemicalEntity,
-    volume: Optional[float] = None,
-    temperature: Optional[float] = None,
-    pressure: Optional[float] = None,
-    physical_state: Optional[PhysicalStateEnum] = None
-) -> DissolvingSubstance:
-    """Create a DissolvingSubstance (solvent) with the provided properties."""
-    solvent = DissolvingSubstance(
-        id=id,
-        composed_of=[chemical_entity],
-        has_volume=[QuantitativeAttribute(
-            value=volume,
-            has_quantity_type="volume",
-            unit="mL"
-        )] if volume else [],
-        has_temperature=[QuantitativeAttribute(
-            value=temperature,
-            has_quantity_type="temperature",
-            unit="K"
-        )] if temperature else [],
-        has_pressure=[QuantitativeAttribute(
-            value=pressure,
-            has_quantity_type="pressure",
-            unit="bar"
-        )] if pressure else [],
-        has_physical_state=physical_state
-    )
-    return solvent
-
-
-def create_reactor(
-    id: str,
-    name: str,
-    volume: Optional[float] = None,
-    temperature: Optional[float] = None,
-    pressure: Optional[float] = None
-) -> Reactor:
-    """Create a Reactor with the provided properties."""
-    reactor = Reactor(
-        id=id,
-        title=name,
-        has_volume=[QuantitativeAttribute(
-            value=volume,
-            has_quantity_type="volume",
-            unit="L"
-        )] if volume else [],
-        has_temperature=[QuantitativeAttribute(
-            value=temperature,
-            has_quantity_type="temperature",
-            unit="K"
-        )] if temperature else [],
-        has_pressure=[QuantitativeAttribute(
-            value=pressure,
-            has_quantity_type="pressure",
-            unit="bar"
-        )] if pressure else []
-    )
-    return reactor
-
-
-def create_chemical_reaction(
+def create_device(
     id: str,
     title: str,
     description: str,
-    starting_materials: List[StartingMaterial],
-    reagents: List[Reagent],
-    products: List[ChemicalProduct],
-    catalysts: List[Catalyst],
-    solvents: List[DissolvingSubstance],
-    reactors: List[Reactor],
-    temperature: Optional[float] = None,
-    pressure: Optional[float] = None,
-    duration: Optional[str] = None,
-    yield_percentage: Optional[float] = None,
-    creator: Optional[Agent] = None
-) -> ChemicalReaction:
-    """Create a ChemicalReaction with the provided properties."""
-    reaction = ChemicalReaction(
+    manufacturer: str,
+    model: str
+) -> Device:
+    """Create a Device with the provided properties."""
+    device = Device(
+        id=id,
+        title=title,
+        description=description,
+        other_identifier=[],
+        has_qualitative_attribute=[],
+        has_quantitative_attribute=[],
+        has_part=[],
+        part_of=[]
+    )
+    return device
+
+
+def create_software(
+    id: str,
+    title: str,
+    version: str,
+    description: str
+) -> Software:
+    """Create a Software with the provided properties."""
+    software = Software(
+        id=id,
+        title=title,
+        description=description,
+        other_identifier=[],
+        has_qualitative_attribute=[],
+        has_quantitative_attribute=[],
+        has_part=[],
+        part_of=[]
+    )
+    return software
+
+
+def create_plan(
+    title: str,
+    description: str,
+    steps: List[str]
+) -> Plan:
+    """Create a Plan with the provided properties."""
+    plan = Plan(
+        title=title,
+        description=description
+    )
+    return plan
+
+
+def create_analysis_source_data(
+    id: str,
+    title: str,
+    description: str,
+    chemical_entity: ChemicalEntity,
+    data_type: str
+) -> AnalysisSourceData:
+    """Create AnalysisSourceData with the provided properties."""
+    source_data = AnalysisSourceData(
+        id=id,
+        title=title,
+        description=description,
+        composed_of=[chemical_entity],
+        was_generated_by=[]
+    )
+    return source_data
+
+
+def create_reaction_activity(
+    id: str,
+    title: str,
+    description: str,
+    creator: Agent,
+    device: Device,
+    software: Software,
+    plan: Plan,
+    reaction: ChemicalReaction,
+    reaction_date: date
+) -> DataGeneratingActivity:
+    """Create a DataGeneratingActivity for a chemical reaction."""
+    activity = DataGeneratingActivity(
         id=id,
         title=[title],
         description=[description],
-        used_starting_material=starting_materials,
-        used_reactant=reagents,
-        generated_product=products,
-        used_catalyst=catalysts,
-        used_solvent=solvents,
-        used_reactor=reactors,
-        has_temperature=[QuantitativeAttribute(
-            value=temperature,
-            has_quantity_type="temperature",
-            unit="K"
-        )] if temperature else [],
-        has_pressure=[QuantitativeAttribute(
-            value=pressure,
-            has_quantity_type="pressure",
-            unit="bar"
-        )] if pressure else [],
-        has_duration=duration,
-        has_yield=[QuantitativeAttribute(
-            value=yield_percentage,
-            has_quantity_type="yield",
-            unit="%"
-        )] if yield_percentage else []
+        carried_out_by=[creator],
+        had_input_entity=[],
+        had_output_entity=[reaction],
+        realized_plan=plan,
+        occurred_in=None,
+        has_part=[],
+        had_input_activity=[],
+        has_qualitative_attribute=[],
+        has_quantitative_attribute=[],
+        part_of=[],
+        type=None,
+        rdf_type=None
     )
-    
-    if creator:
-        reaction.carried_out_by = [creator]
-        
-    return reaction
+    return activity
 
 
 def create_dataset_for_reaction(
     dataset_id: str,
-    reaction: ChemicalReaction,
+    activity: DataGeneratingActivity,
     creator: Agent,
     title: str,
     description: str,
-    release_date: date = None
+    release_date: date = None,
+    reaction: Optional[ChemicalReaction] = None
 ) -> Dataset:
-    """Create a Dataset for a ChemicalReaction."""
+    """Create a Dataset for a chemical reaction activity."""
     dataset = Dataset(
         id=dataset_id,
         title=[title],
         description=[description],
-        was_generated_by=[reaction],
+        was_generated_by=[activity],
         creator=[creator],
         release_date=release_date,
-        is_about_entity=[],
-        is_about_activity=[reaction]
+        is_about_entity=[reaction] if reaction else [],
+        is_about_activity=[activity]
     )
     return dataset
 
 
-def generate_chemical_reaction_datasets() -> List[Dataset]:
+def generate_reaction_datasets() -> List[Dataset]:
     """Generate example datasets for chemical reactions."""
     # Create agents
     researcher = Agent(
@@ -329,385 +169,381 @@ def generate_chemical_reaction_datasets() -> List[Dataset]:
         type=None
     )
     
-    # Create chemical entities
-    benzene = create_chemical_entity(
-        id="CHEBI:15377",
-        inchi="InChI=1S/C6H6/c1-2-4-6-5-3-1/h1-6H",
-        inchikey="UHOVQNZJYSORNB-UHFFFAOYSA-N",
-        smiles="c1ccccc1",
-        molecular_formula="C6H6",
-        iupac_name="benzene"
+    # Create chemical entities for reactions
+    # Reaction 1: Aldol Condensation
+    benzaldehyde = create_chemical_entity(
+        id="REACTANT001",
+        inchi="InChI=1S/C7H6O/c8-6-4-2-1-3-5-6/h1-7H",
+        inchikey="VWWQXPODVHRPQS-UHFFFAOYSA-N",
+        smiles="c1ccccc1C=O",
+        molecular_formula="C7H6O",
+        iupac_name="benzaldehyde"
     )
     
-    acetaldehyde = create_chemical_entity(
-        id="CHEBI:15343",
-        inchi="InChI=1S/C2H4O/c1-2-3/h1-3H",
-        inchikey="QGZKDVFQNNGYKY-UHFFFAOYSA-N",
-        smiles="CC=O",
-        molecular_formula="C2H4O",
-        iupac_name="acetaldehyde"
+    acetone = create_chemical_entity(
+        id="REACTANT002",
+        inchi="InChI=1S/C3H6O/c1-3(2)4/h1-4H3",
+        inchikey="KFZMGEQVEWPINO-UHFFFAOYSA-N",
+        smiles="CC(C)=O",
+        molecular_formula="C3H6O",
+        iupac_name="acetone"
     )
     
-    cyclohexanol = create_chemical_entity(
-        id="CHEBI:17855",
-        inchi="InChI=1S/C6H12O/c7-6-4-2-1-3-5-6/h1-5,7H2",
+    benzoin = create_chemical_entity(
+        id="PRODUCT001",
+        inchi="InChI=1S/C14H12O/c1-2-4-10-14(10)12-6-8-13(13)11-5-7-12/h1-14H",
         inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-        smiles="C1CCCCC1O",
-        molecular_formula="C6H12O",
-        iupac_name="cyclohexanol"
+        smiles="c1ccccc1C(c2ccccc2)c3ccccc3",
+        molecular_formula="C14H12O",
+        iupac_name="benzoin"
     )
     
-    # Create starting materials
-    benzene_starting = create_starting_material(
-        id="SM001",
-        chemical_entity=benzene,
-        mass=50.0,
-        volume=50.0,
-        temperature=298.15,
-        pressure=1.0,
-        physical_state=PhysicalStateEnum.LIQUID
+    # Reaction 2: Transamination
+    glutamate = create_chemical_entity(
+        id="REACTANT003",
+        inchi="InChI=1S/C5H9NO4/c6-2(1-5(9)10)3-4(7)8/h2-4,6H,1H2,(H,9,10)(H,7,8)/t2-/m0/s1",
+        inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
+        smiles="N[C@@H](CO)C(=O)O",
+        molecular_formula="C5H9NO4",
+        iupac_name="glutamic acid"
     )
     
-    acetaldehyde_starting = create_starting_material(
-        id="SM002",
-        chemical_entity=acetaldehyde,
-        mass=30.0,
-        volume=30.0,
-        temperature=298.15,
-        pressure=1.0,
-        physical_state=PhysicalStateEnum.LIQUID
+    alpha_ketoglutarate = create_chemical_entity(
+        id="REACTANT004",
+        inchi="InChI=1S/C5H6O5/c6-2(1-5(9)10)3-4(7)8/h2-4,6H,1H2,(H,9,10)(H,7,8)/t2-/m0/s1",
+        inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
+        smiles="C[C@@H](C(=O)O)C(=O)O",
+        molecular_formula="C5H6O5",
+        iupac_name="alpha-ketoglutaric acid"
     )
     
-    # Create reagents
-    hydrogen_gas = create_reagent(
-        id="R001",
-        chemical_entity=create_chemical_entity(
-            id="CHEBI:15379",
-            inchi="InChI=1S/H2/h1H",
-            inchikey="XUFQDOOMUQDZQJ-UHFFFAOYSA-N",
-            smiles="[H][H]",
-            molecular_formula="H2",
-            iupac_name="hydrogen"
-        ),
-        mass=0.5,
-        volume=100.0,
-        temperature=298.15,
-        pressure=10.0,
-        physical_state=PhysicalStateEnum.GASEOUS
+    phenylalanine = create_chemical_entity(
+        id="PRODUCT002",
+        inchi="InChI=1S/C9H11NO2/c10-8(11)12-9-5-3-1-2-4-9/h1-9H,10H2,(H,11,12)",
+        inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
+        smiles="N[C@@H](Cc1ccccc1)C(=O)O",
+        molecular_formula="C9H11NO2",
+        iupac_name="phenylalanine"
     )
     
-    # Create products
-    cyclohexanone = create_chemical_product(
-        id="CP001",
-        chemical_entity=create_chemical_entity(
-            id="CHEBI:17856",
-            inchi="InChI=1S/C6H10O/c7-6-4-2-1-3-5-6/h1-5,7H2",
-            inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-            smiles="C1CCCCC1=O",
-            molecular_formula="C6H10O",
-            iupac_name="cyclohexanone"
-        ),
-        mass=45.0,
-        volume=45.0,
-        temperature=298.15,
-        pressure=1.0,
-        physical_state=PhysicalStateEnum.LIQUID
+    # Reaction 3: Fischer-Tropsch Synthesis
+    carbon_monoxide = create_chemical_entity(
+        id="REACTANT005",
+        inchi="InChI=1S/CO/c1-2",
+        inchikey="VNWKTOKETHGBQD-UHFFFAOYSA-N",
+        smiles="CO",
+        molecular_formula="CO",
+        iupac_name="carbon monoxide"
     )
     
-    # Create catalysts
-    nickel_catalyst = create_catalyst(
-        id="CAT001",
-        chemical_entity=create_chemical_entity(
-            id="CHEBI:17857",
-            inchi="InChI=1S/Ni/c1-2",
-            inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-            smiles="[Ni]",
-            molecular_formula="Ni",
-            iupac_name="nickel"
-        ),
-        mass=0.1,
-        volume=0.1,
-        temperature=298.15,
-        pressure=1.0,
-        physical_state=PhysicalStateEnum.SOLID
+    hydrogen = create_chemical_entity(
+        id="REACTANT006",
+        inchi="InChI=1S/H2/h1H",
+        inchikey="UFHFLXCUPAHTMO-UHFFFAOYSA-N",
+        smiles="H2",
+        molecular_formula="H2",
+        iupac_name="hydrogen"
     )
     
-    # Create solvents
-    ethanol_solvent = create_solvent(
-        id="S001",
-        chemical_entity=create_chemical_entity(
-            id="CHEBI:16236",
-            inchi="InChI=1S/C2H6O/c1-2-3/h1-3H3",
-            inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-            smiles="CCO",
-            molecular_formula="C2H6O",
-            iupac_name="ethanol"
-        ),
-        volume=100.0,
-        temperature=298.15,
-        pressure=1.0,
-        physical_state=PhysicalStateEnum.LIQUID
+    decane = create_chemical_entity(
+        id="PRODUCT003",
+        inchi="InChI=1S/C10H22/c1-3-5-7-9-10-8-6-4-2/h3-10H2,1-2H3",
+        inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
+        smiles="CCCCCCCCC",
+        molecular_formula="C10H22",
+        iupac_name="decane"
     )
     
-    # Create reactors
-    reactor1 = create_reactor(
+    # Create devices
+    reactor_device = create_device(
         id="REACTOR001",
-        name="Reactor A",
-        volume=1.0,
-        temperature=350.0,
-        pressure=5.0
+        title="Laboratory Reactor",
+        description="Glass reactor with heating mantle and magnetic stirrer",
+        manufacturer="Schlenk",
+        model="SR-2000"
+    )
+    
+    # Create software
+    reaction_software = create_software(
+        id="REACTION_SOFTWARE001",
+        title="ChemDraw Pro",
+        version="18.0",
+        description="Chemical structure drawing software"
+    )
+    
+    # Create plans
+    reaction_plan = create_plan(
+        id="REACTION_PLAN001",
+        title="Chemical Reaction Protocol",
+        description="Standard protocol for conducting chemical reactions",
+        steps=[
+            "Reactant preparation",
+            "Reaction setup",
+            "Reaction monitoring",
+            "Product isolation",
+            "Product characterization"
+        ]
     )
     
     # Create chemical reactions
-    aldol_condensation = create_chemical_reaction(
-        id="CR001",
-        title="Aldol Condensation Reaction",
-        description="Aldol condensation reaction between benzene and acetaldehyde in presence of nickel catalyst",
-        starting_materials=[benzene_starting, acetaldehyde_starting],
-        reagents=[hydrogen_gas],
-        products=[cyclohexanone],
-        catalysts=[nickel_catalyst],
-        solvents=[ethanol_solvent],
-        reactors=[reactor1],
-        temperature=350.0,
-        pressure=5.0,
-        duration="2 hours",
-        yield_percentage=85.0,
-        creator=researcher
+    aldol_condensation = ChemicalReaction(
+        id="REACTION001",
+        title="Aldol Condensation",
+        description="Aldol condensation between benzaldehyde and acetone",
+        has_input_entity=[benzaldehyde, acetone],
+        has_output_entity=[benzoin],
+        has_reagent=[],
+        has_catalyst=[],
+        has_solvent=[],
+        has_starting_material=[benzaldehyde, acetone],
+        has_product=[benzoin],
+        has_part=[],
+        part_of=[],
+        type=None,
+        rdf_type=None
     )
     
-    # Create datasets for the reaction
-    dataset1 = create_dataset_for_reaction(
-        dataset_id="DS001",
-        reaction=aldol_condensation,
+    transamination = ChemicalReaction(
+        id="REACTION002",
+        title="Transamination",
+        description="Transamination reaction between glutamate and alpha-ketoglutarate",
+        has_input_entity=[glutamate, alpha_ketoglutarate],
+        has_output_entity=[phenylalanine],
+        has_reagent=[],
+        has_catalyst=[],
+        has_solvent=[],
+        has_starting_material=[glutamate, alpha_ketoglutarate],
+        has_product=[phenylalanine],
+        has_part=[],
+        part_of=[],
+        type=None,
+        rdf_type=None
+    )
+    
+    fischer_tropsch = ChemicalReaction(
+        id="REACTION003",
+        title="Fischer-Tropsch Synthesis",
+        description="Fischer-Tropsch synthesis of hydrocarbons from CO and H2",
+        has_input_entity=[carbon_monoxide, hydrogen],
+        has_output_entity=[decane],
+        has_reagent=[],
+        has_catalyst=[],
+        has_solvent=[],
+        has_starting_material=[carbon_monoxide, hydrogen],
+        has_product=[decane],
+        has_part=[],
+        part_of=[],
+        type=None,
+        rdf_type=None
+    )
+    
+    # Create reaction activities (replicates)
+    # Aldol Condensation - Replicate 1
+    reaction_activity1 = create_reaction_activity(
+        id="REACTION_ACTIVITY001",
+        title="Aldol Condensation - Replicate 1",
+        description="First replicate of aldol condensation reaction",
         creator=researcher,
-        title="Dataset D1: Aldol Condensation Reaction",
-        description="Dataset D1: Aldol condensation reaction between benzene and acetaldehyde with nickel catalyst",
-        release_date=date(2023, 1, 1)
-    )
-    
-    # Create second replicate
-    dataset2 = create_dataset_for_reaction(
-        dataset_id="DS002",
+        device=reactor_device,
+        software=reaction_software,
+        plan=reaction_plan,
         reaction=aldol_condensation,
-        creator=researcher,
-        title="Dataset D2: Aldol Condensation Reaction (Replicate 2)",
-        description="Dataset D2: Aldol condensation reaction between benzene and acetaldehyde with nickel catalyst (replicate 2)",
-        release_date=date(2023, 1, 2)
+        reaction_date=date(2023, 1, 1)
     )
     
-    # Create third replicate
-    dataset3 = create_dataset_for_reaction(
-        dataset_id="DS003",
+    # Aldol Condensation - Replicate 2
+    reaction_activity2 = create_reaction_activity(
+        id="REACTION_ACTIVITY002",
+        title="Aldol Condensation - Replicate 2",
+        description="Second replicate of aldol condensation reaction",
+        creator=researcher,
+        device=reactor_device,
+        software=reaction_software,
+        plan=reaction_plan,
         reaction=aldol_condensation,
+        reaction_date=date(2023, 1, 2)
+    )
+    
+    # Aldol Condensation - Replicate 3
+    reaction_activity3 = create_reaction_activity(
+        id="REACTION_ACTIVITY003",
+        title="Aldol Condensation - Replicate 3",
+        description="Third replicate of aldol condensation reaction",
         creator=researcher,
-        title="Dataset D3: Aldol Condensation Reaction (Replicate 3)",
-        description="Dataset D3: Aldol condensation reaction between benzene and acetaldehyde with nickel catalyst (replicate 3)",
-        release_date=date(2023, 1, 3)
+        device=reactor_device,
+        software=reaction_software,
+        plan=reaction_plan,
+        reaction=aldol_condensation,
+        reaction_date=date(2023, 1, 3)
     )
     
-    # Create transamination reaction
-    transamination = create_chemical_reaction(
-        id="CR002",
-        title="Transamination Reaction",
-        description="Transamination reaction between amino acid and keto acid",
-        starting_materials=[create_starting_material(
-            id="SM003",
-            chemical_entity=create_chemical_entity(
-                id="CHEBI:17858",
-                inchi="InChI=1S/C3H7NO2/c4-2(1-3(5)6)7/h2-7H,1H2,(H,5,6)",
-                inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-                smiles="C(C(=O)O)CN",
-                molecular_formula="C3H7NO2",
-                iupac_name="alanine"
-            ),
-            mass=20.0,
-            volume=20.0,
-            temperature=298.15,
-            pressure=1.0,
-            physical_state=PhysicalStateEnum.LIQUID
-        )],
-        reagents=[create_reagent(
-            id="R002",
-            chemical_entity=create_chemical_entity(
-                id="CHEBI:17859",
-                inchi="InChI=1S/C3H4O3/c1-2(3(4)5)6/h2H2,1H3,(H,4,5)",
-                inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-                smiles="C(=O)(C(=O)O)C",
-                molecular_formula="C3H4O3",
-                iupac_name="pyruvic acid"
-            ),
-            mass=15.0,
-            volume=15.0,
-            temperature=298.15,
-            pressure=1.0,
-            physical_state=PhysicalStateEnum.LIQUID
-        )],
-        products=[create_chemical_product(
-            id="CP002",
-            chemical_entity=create_chemical_entity(
-                id="CHEBI:17860",
-                inchi="InChI=1S/C3H7NO2/c4-2(1-3(5)6)7/h2-7H,1H2,(H,5,6)",
-                inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-                smiles="C(C(=O)O)CN",
-                molecular_formula="C3H7NO2",
-                iupac_name="glutamic acid"
-            ),
-            mass=25.0,
-            volume=25.0,
-            temperature=298.15,
-            pressure=1.0,
-            physical_state=PhysicalStateEnum.LIQUID
-        )],
-        catalysts=[create_catalyst(
-            id="CAT002",
-            chemical_entity=create_chemical_entity(
-                id="CHEBI:17861",
-                inchi="InChI=1S/C6H12N2O2/c7-5(8)3-1-2-4-6(9)10/h1-10H2,(H,7,8)(H,9,10)",
-                inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-                smiles="C1CC(NC(=O)C)C1",
-                molecular_formula="C6H12N2O2",
-                iupac_name="pyridoxal phosphate"
-            ),
-            mass=0.05,
-            volume=0.05,
-            temperature=298.15,
-            pressure=1.0,
-            physical_state=PhysicalStateEnum.SOLID
-        )],
-        solvents=[create_solvent(
-            id="S002",
-            chemical_entity=create_chemical_entity(
-                id="CHEBI:17862",
-                inchi="InChI=1S/H2O/h1H2",
-                inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-                smiles="O",
-                molecular_formula="H2O",
-                iupac_name="water"
-            ),
-            volume=50.0,
-            temperature=298.15,
-            pressure=1.0,
-            physical_state=PhysicalStateEnum.LIQUID
-        )],
-        reactors=[reactor1],
-        temperature=300.0,
-        pressure=1.0,
-        duration="1 hour",
-        yield_percentage=90.0,
-        creator=researcher
-    )
-    
-    # Create datasets for transamination
-    dataset4 = create_dataset_for_reaction(
-        dataset_id="DS004",
+    # Transamination - Replicate 1
+    reaction_activity4 = create_reaction_activity(
+        id="REACTION_ACTIVITY004",
+        title="Transamination - Replicate 1",
+        description="First replicate of transamination reaction",
+        creator=researcher,
+        device=reactor_device,
+        software=reaction_software,
+        plan=reaction_plan,
         reaction=transamination,
+        reaction_date=date(2023, 1, 4)
+    )
+    
+    # Transamination - Replicate 2
+    reaction_activity5 = create_reaction_activity(
+        id="REACTION_ACTIVITY005",
+        title="Transamination - Replicate 2",
+        description="Second replicate of transamination reaction",
         creator=researcher,
-        title="Dataset D4: Transamination Reaction",
-        description="Dataset D4: Transamination reaction between alanine and pyruvic acid with pyridoxal phosphate catalyst",
-        release_date=date(2023, 1, 4)
+        device=reactor_device,
+        software=reaction_software,
+        plan=reaction_plan,
+        reaction=transamination,
+        reaction_date=date(2023, 1, 5)
     )
     
-    # Create Fisher-Tropsch synthesis reaction
-    fisher_tropsch = create_chemical_reaction(
-        id="CR003",
-        title="Fisher-Tropsch Synthesis Reaction",
-        description="Fisher-Tropsch synthesis reaction converting syngas to hydrocarbons",
-        starting_materials=[create_starting_material(
-            id="SM004",
-            chemical_entity=create_chemical_entity(
-                id="CHEBI:17863",
-                inchi="InChI=1S/CH4/h1H4",
-                inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-                smiles="C",
-                molecular_formula="CH4",
-                iupac_name="methane"
-            ),
-            mass=10.0,
-            volume=10.0,
-            temperature=298.15,
-            pressure=1.0,
-            physical_state=PhysicalStateEnum.GASEOUS
-        )],
-        reagents=[create_reagent(
-            id="R003",
-            chemical_entity=create_chemical_entity(
-                id="CHEBI:17864",
-                inchi="InChI=1S/CO/c1-2",
-                inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-                smiles="C#O",
-                molecular_formula="CO",
-                iupac_name="carbon monoxide"
-            ),
-            mass=20.0,
-            volume=20.0,
-            temperature=298.15,
-            pressure=1.0,
-            physical_state=PhysicalStateEnum.GASEOUS
-        )],
-        products=[create_chemical_product(
-            id="CP003",
-            chemical_entity=create_chemical_entity(
-                id="CHEBI:17865",
-                inchi="InChI=1S/C2H6/c1-2/h1-2H3",
-                inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-                smiles="CC",
-                molecular_formula="C2H6",
-                iupac_name="ethane"
-            ),
-            mass=15.0,
-            volume=15.0,
-            temperature=298.15,
-            pressure=1.0,
-            physical_state=PhysicalStateEnum.LIQUID
-        )],
-        catalysts=[create_catalyst(
-            id="CAT003",
-            chemical_entity=create_chemical_entity(
-                id="CHEBI:17866",
-                inchi="InChI=1S/Fe/c1-2",
-                inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-                smiles="[Fe]",
-                molecular_formula="Fe",
-                iupac_name="iron"
-            ),
-            mass=0.2,
-            volume=0.2,
-            temperature=298.15,
-            pressure=1.0,
-            physical_state=PhysicalStateEnum.SOLID
-        )],
-        solvents=[create_solvent(
-            id="S003",
-            chemical_entity=create_chemical_entity(
-                id="CHEBI:17867",
-                inchi="InChI=1S/C2H6O/c1-2-3/h1-3H3",
-                inchikey="QVJZQZQZQZQZQZ-QVJZQZQZSA-N",
-                smiles="CCO",
-                molecular_formula="C2H6O",
-                iupac_name="ethanol"
-            ),
-            volume=100.0,
-            temperature=298.15,
-            pressure=1.0,
-            physical_state=PhysicalStateEnum.LIQUID
-        )],
-        reactors=[reactor1],
-        temperature=400.0,
-        pressure=20.0,
-        duration="3 hours",
-        yield_percentage=75.0,
-        creator=researcher
+    # Transamination - Replicate 3
+    reaction_activity6 = create_reaction_activity(
+        id="REACTION_ACTIVITY006",
+        title="Transamination - Replicate 3",
+        description="Third replicate of transamination reaction",
+        creator=researcher,
+        device=reactor_device,
+        software=reaction_software,
+        plan=reaction_plan,
+        reaction=transamination,
+        reaction_date=date(2023, 1, 6)
     )
     
-    # Create dataset for Fisher-Tropsch
+    # Fischer-Tropsch - Replicate 1
+    reaction_activity7 = create_reaction_activity(
+        id="REACTION_ACTIVITY007",
+        title="Fischer-Tropsch Synthesis - Replicate 1",
+        description="First replicate of Fischer-Tropsch synthesis reaction",
+        creator=researcher,
+        device=reactor_device,
+        software=reaction_software,
+        plan=reaction_plan,
+        reaction=fischer_tropsch,
+        reaction_date=date(2023, 1, 7)
+    )
+    
+    # Fischer-Tropsch - Replicate 2
+    reaction_activity8 = create_reaction_activity(
+        id="REACTION_ACTIVITY008",
+        title="Fischer-Tropsch Synthesis - Replicate 2",
+        description="Second replicate of Fischer-Tropsch synthesis reaction",
+        creator=researcher,
+        device=reactor_device,
+        software=reaction_software,
+        plan=reaction_plan,
+        reaction=fischer_tropsch,
+        reaction_date=date(2023, 1, 8)
+    )
+    
+    # Fischer-Tropsch - Replicate 3
+    reaction_activity9 = create_reaction_activity(
+        id="REACTION_ACTIVITY009",
+        title="Fischer-Tropsch Synthesis - Replicate 3",
+        description="Third replicate of Fischer-Tropsch synthesis reaction",
+        creator=researcher,
+        device=reactor_device,
+        software=reaction_software,
+        plan=reaction_plan,
+        reaction=fischer_tropsch,
+        reaction_date=date(2023, 1, 9)
+    )
+    
+    # Create datasets for reactions
+    dataset1 = create_dataset_for_reaction(
+        dataset_id="REACTION_DS001",
+        activity=reaction_activity1,
+        creator=researcher,
+        title="Dataset D1: Aldol Condensation - Replicate 1",
+        description="Dataset D1: First replicate of aldol condensation reaction",
+        release_date=date(2023, 1, 1),
+        reaction=aldol_condensation
+    )
+    
+    dataset2 = create_dataset_for_reaction(
+        dataset_id="REACTION_DS002",
+        activity=reaction_activity2,
+        creator=researcher,
+        title="Dataset D2: Aldol Condensation - Replicate 2",
+        description="Dataset D2: Second replicate of aldol condensation reaction",
+        release_date=date(2023, 1, 2),
+        reaction=aldol_condensation
+    )
+    
+    dataset3 = create_dataset_for_reaction(
+        dataset_id="REACTION_DS003",
+        activity=reaction_activity3,
+        creator=researcher,
+        title="Dataset D3: Aldol Condensation - Replicate 3",
+        description="Dataset D3: Third replicate of aldol condensation reaction",
+        release_date=date(2023, 1, 3),
+        reaction=aldol_condensation
+    )
+    
+    dataset4 = create_dataset_for_reaction(
+        dataset_id="REACTION_DS004",
+        activity=reaction_activity4,
+        creator=researcher,
+        title="Dataset D4: Transamination - Replicate 1",
+        description="Dataset D4: First replicate of transamination reaction",
+        release_date=date(2023, 1, 4),
+        reaction=transamination
+    )
+    
     dataset5 = create_dataset_for_reaction(
-        dataset_id="DS005",
-        reaction=fisher_tropsch,
+        dataset_id="REACTION_DS005",
+        activity=reaction_activity5,
         creator=researcher,
-        title="Dataset D5: Fisher-Tropsch Synthesis Reaction",
-        description="Dataset D5: Fisher-Tropsch synthesis reaction converting syngas to hydrocarbons with iron catalyst",
-        release_date=date(2023, 1, 5)
+        title="Dataset D5: Transamination - Replicate 2",
+        description="Dataset D5: Second replicate of transamination reaction",
+        release_date=date(2023, 1, 5),
+        reaction=transamination
     )
     
-    return [dataset1, dataset2, dataset3, dataset4, dataset5]
+    dataset6 = create_dataset_for_reaction(
+        dataset_id="REACTION_DS006",
+        activity=reaction_activity6,
+        creator=researcher,
+        title="Dataset D6: Transamination - Replicate 3",
+        description="Dataset D6: Third replicate of transamination reaction",
+        release_date=date(2023, 1, 6),
+        reaction=transamination
+    )
+    
+    dataset7 = create_dataset_for_reaction(
+        dataset_id="REACTION_DS007",
+        activity=reaction_activity7,
+        creator=researcher,
+        title="Dataset D7: Fischer-Tropsch Synthesis - Replicate 1",
+        description="Dataset D7: First replicate of Fischer-Tropsch synthesis reaction",
+        release_date=date(2023, 1, 7),
+        reaction=fischer_tropsch
+    )
+    
+    dataset8 = create_dataset_for_reaction(
+        dataset_id="REACTION_DS008",
+        activity=reaction_activity8,
+        creator=researcher,
+        title="Dataset D8: Fischer-Tropsch Synthesis - Replicate 2",
+        description="Dataset D8: Second replicate of Fischer-Tropsch synthesis reaction",
+        release_date=date(2023, 1, 8),
+        reaction=fischer_tropsch
+    )
+    
+    dataset9 = create_dataset_for_reaction(
+        dataset_id="REACTION_DS009",
+        activity=reaction_activity9,
+        creator=researcher,
+        title="Dataset D9: Fischer-Tropsch Synthesis - Replicate 3",
+        description="Dataset D9: Third replicate of Fischer-Tropsch synthesis reaction",
+        release_date=date(2023, 1, 9),
+        reaction=fischer_tropsch
+    )
+    
+    return [dataset1, dataset2, dataset3, dataset4, dataset5, dataset6, dataset7, dataset8, dataset9]

@@ -8,6 +8,8 @@ description = "An extension of the DCAT Application Profile extended to provide 
 authors = [
   {name = "David Linke", email = "david.linke@catalysis.de"},
   {name = "Philip Strömert", email = "philip.stroemert@tib.eu"},
+  {name = "Hendrik Borgelt", email = "hendrik.borgelt@tu-dortmund.de"},
+  {name = "mark doerr", email = "mark.doerr@uni-greisfswald.de"}
 ]
 license = "MIT"
 license-files = ["LICENSE"]
@@ -33,6 +35,7 @@ dev = [
     "pre-commit>=4.3.0",
     "rdflib>=7.4.0",
     "factory-boy>=3.3.3",
+    "pyshacl>=0.31.0",
 ]
 
 # See https://hatch.pypa.io/latest/config/build/#file-selection for how to
