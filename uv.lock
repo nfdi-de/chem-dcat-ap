@@ -525,6 +525,12 @@ dev = [
     { name = "pytest", version = "9.0.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
     { name = "rdflib" },
 ]
+test = [
+    { name = "factory-boy" },
+    { name = "pyshacl" },
+    { name = "pytest", version = "8.4.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
+    { name = "pytest", version = "9.0.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
+]
 
 [package.metadata]
 requires-dist = [{ name = "linkml-runtime", specifier = ">=1.9.4" }]
@@ -544,6 +550,11 @@ dev = [
     { name = "pyshacl", specifier = ">=0.31.0" },
     { name = "pytest", specifier = ">=8.3.5" },
     { name = "rdflib", specifier = ">=7.4.0" },
+]
+test = [
+    { name = "factory-boy", specifier = ">=3.3.3" },
+    { name = "pyshacl", specifier = ">=0.31.0" },
+    { name = "pytest", specifier = ">=8.3.5" },
 ]
 
 [[package]]
