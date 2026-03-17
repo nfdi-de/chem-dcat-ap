@@ -76,6 +76,7 @@ def create_software(
 
 
 def create_plan(
+    name: str,
     title: str,
     description: str,
     steps: List[str]
@@ -273,7 +274,7 @@ def generate_reaction_datasets() -> List[Dataset]:
     
     # Create plans
     reaction_plan = create_plan(
-        id="REACTION_PLAN001",
+        name="REACTION_PLAN001",
         title="Chemical Reaction Protocol",
         description="Standard protocol for conducting chemical reactions",
         steps=[
@@ -295,8 +296,8 @@ def generate_reaction_datasets() -> List[Dataset]:
         has_reagent=[],
         has_catalyst=[],
         has_solvent=[],
-        has_starting_material=[benzaldehyde, acetone],
-        has_product=[benzoin],
+        used_starting_material=[benzaldehyde, acetone],
+        generated_product=[benzoin],
         has_part=[],
         part_of=[],
         type=None,
@@ -312,8 +313,8 @@ def generate_reaction_datasets() -> List[Dataset]:
         has_reagent=[],
         has_catalyst=[],
         has_solvent=[],
-        has_starting_material=[glutamate, alpha_ketoglutarate],
-        has_product=[phenylalanine],
+        used_starting_material=[glutamate, alpha_ketoglutarate],
+        generated_product=[phenylalanine],
         has_part=[],
         part_of=[],
         type=None,
@@ -329,8 +330,8 @@ def generate_reaction_datasets() -> List[Dataset]:
         has_reagent=[],
         has_catalyst=[],
         has_solvent=[],
-        has_starting_material=[carbon_monoxide, hydrogen],
-        has_product=[decane],
+        used_starting_material=[carbon_monoxide, hydrogen],
+        generated_product=[decane],
         has_part=[],
         part_of=[],
         type=None,
