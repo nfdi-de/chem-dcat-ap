@@ -64,7 +64,96 @@ imports:
 
 classes:
 
+############
+# Datasets #
+############
+# The only difference between these classes and their DCAT-AP+ parents are the made range restrictions
 
+  SubstanceCharacterizationDataset:
+    is_a: Dataset
+    class_uri: dcat:Dataset
+    description: >-
+      A Dataset about a SubstanceSample that was produced by a SubstanceCharacterization activity.
+      This is a coarse-grained convenience shape that conflates measurement and analysis into a single
+      data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement
+      from post-processing or structure assignment should define their own Dataset subclasses, potentially
+      using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.
+    slot_usage:
+      was_generated_by:
+        range: SubstanceCharacterization
+        multivalued: true
+        inlined_as_list: true
+        description: The slot to specify the SubstanceCharacterization activity that produced this dataset.
+      is_about_entity:
+        range: SubstanceSample
+        multivalued: true
+        inlined_as_list: true
+        description: The slot to specify the SubstanceSample this dataset is about.
+
+  ReactionRecordingDataset:
+    is_a: Dataset
+    class_uri: dcat:Dataset
+    description: >-
+      A Dataset about a ChemicalReaction that was produced by a ReactionRecording activity.
+      This is a coarse-grained convenience shape that conflates experimental documentation and analysis
+      into a single data-generating activity. Domain-specific sub-profiles that need to distinguish
+      reaction monitoring from subsequent data evaluation should define their own Dataset subclasses,
+      potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.
+    slot_usage:
+      was_generated_by:
+        range: ReactionRecording
+        multivalued: true
+        inlined_as_list: true
+        description: The slot to specify the ReactionRecording activity that produced this dataset.
+      is_about_activity:
+        range: ChemicalReaction
+        description: The slot to specify the ChemicalReaction this dataset is about.
+
+############################
+# DataGeneratingActivities #
+# ##########################
+# The only difference between these classes and their DCAT-AP+ parents are the made range restrictions
+
+  SubstanceCharacterization:
+    is_a: DataGeneratingActivity
+    class_uri: prov:Activity
+    broad_mappings:
+      - OBI:0000070
+    description: >-
+      A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic
+      measurement, a physical property determination, or a combined measurement-and-analysis workflow.
+      This is a coarse-grained convenience shape that does not distinguish between raw data acquisition
+      and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction
+      should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain
+      to separate raw measurement from derived results.
+    slot_usage:
+      evaluated_entity:
+        range: SubstanceSample
+        multivalued: true
+        inlined_as_list: true
+        description: The slot to specify the SubstanceSample being characterized.
+
+  ReactionRecording:
+    is_a: DataGeneratingActivity
+    class_uri: prov:Activity
+    description: >-
+      A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring,
+      experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained
+      convenience shape that does not distinguish between raw experimental recording and subsequent data
+      evaluation. Domain-specific sub-profiles that need this distinction should define their own
+      DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data
+      from derived results.
+    slot_usage:
+      evaluated_activity:
+        range: ChemicalReaction
+        multivalued: true
+        inlined_as_list: true
+        description: The slot to specify the ChemicalReaction being recorded.
+
+
+################
+# Surroundings #
+################
 
   Laboratory:
     is_a: Surrounding

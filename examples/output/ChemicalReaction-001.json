@@ -1,19 +1,62 @@
 {
-  "id": "doi:10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ",
+  "id": "https://www.chemotion-repository.net/pid/56408",
   "title": [
-    "CRR-56408"
+    "Chemotion Repository synthesis CRR-56408"
   ],
   "description": [
-    "The reaction has been conducted in dry glass ware under argon atmosphere. A solution of 1-bromo-2-fluorobenzene (1.76 g, 1.10 mL, 9.86 mmol, 1.08 equiv) in anhydrous THF (24.0 mL) was cooled to -78 Â°C, and n-BuLi (689 mg, 4.30 mL, 10.8 mmol, 2.50M in hexane, 1.18 equiv) was added drop-wise over 10 min. After stirring for further 50 min, a solution of chloro(diphenyl)phosphine (2.09 g, 1.70 mL, 9.09 mmol, 1.00 equiv) in anhydrous THF (3.00 mL) was added drop-wise over 10 min, and the reaction mixture was stirred for 8 h at -78 Â°C. The reaction mixture was allowed to warm up to 25 Â°C over 8 h, and was then quenched by the addition of 1 M HCl (10.0 mL). The phases were separated, and the aqueous phase was extracted with diethyl ether (3 Ã— 50.0 mL). Then, the combined organic layers were washed with sat. aq. NaHCO3-solution (50.0 mL), water (50.0 mL), and with brine (50.0 mL). The organic phase was dried over Na2SO4, filtered, and the solvent was evaporated under reduced pressure to afford the phosphine intermediate as a pale yellow oil.\n- The crude phosphine intermediate was dissolved in ethanol (150 mL), and cooled to 0 Â°C. Under vigorous stirring, a solution of hydrogen peroxide (3.95 g, 3.50 mL, 40.7 mmol, 35%, 4.48 equiv), and glacial acetic acid (1.91 g, 1.80 mL, 30.5 mmol, 3.36 equiv) in ethanol (15.0 mL) was added drop-wise over 15 min. The mixture was stirred for 2 h at 0 Â°C, and was then refluxed for 2 h. After evaporating the solvent under reduced pressure, the crude was dissolved in dichloromethane (50.0 mL), washed with sat. aq. NaHCO3-solution (2 Ã— 25.0 mL), water (25.0 mL), and brine (25.0 mL). The organic layer was dried over Na2SO4, before evaporating the solvent under reduced pressure.\n- Additional information for publication and purification details: - The crude product was purified via flash-chromatography (InterchimÂ®Â puriFLASH XS520) on silica gel (PF-30SIHP-F0040) using cyclohexane/ethyl acetate 35:65 to 30:70 in 10 CV (1 CV = 52.7 mL; flowrate = 26.0 mL/min). The product 1-diphenylphosphoryl-2-fluorobenzene (2.33 g, 7.78 mmol, 86% yield) was obtained as a colorless solid."
+    "Synthesis of 1-diphenylphosphoryl-2-fluorobenzene via lithiation-phosphination-oxidation"
   ],
-  "other_identifier": [
+  "has_qualitative_attribute": [
     {
-      "notation": "https://www.chemotion-repository.net/pid/56408"
+      "value": "1.00.1S/C12H10ClP/c13-14(11-7-3-1-4-8-11) 12-9-5-2-6-10-12/h1-10H!C6H4BrF/c7-5-3-1-2-4-6(5)8/h1-4H<>C18H14FOP/c19-17-13-7-8-14-18(17)21(20,15-9-3-1-4-10-15)16-11-5-2-6-12-16/h1-14H<>C2H4O2/c1-2(3)4/h1H3,(H,3,4)!C2H6O/c1-2-3/h3H,2H2,1H3!C2H6O/c1-2-3/h3H,2H2,1H3!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H9.Li/c1-3-4-2;/h1,3-4H2,2H3;!H2O2/c1-2/h1-2H/d+",
+      "title": "RInChI",
+      "rdf_type": {
+        "id": "IAO:0020000",
+        "title": "identifier"
+      }
+    },
+    {
+      "value": "SA-FUHFF-XGRJZXREYAXTGV-UHFFFAOYSA-N-IPWBFGUBXWMIPR-UHFFFAOYSA-N--MTSVGCFANKMACF-UHFFFAOYSA-N--QTBSBXVTEAMEQO-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-MZRVEZGGRBJDDB-UHFFFAOYSA-N-MHAJPDPJQMAIIY-UHFFFAOYSA-N",
+      "title": "Long-RInChIKey",
+      "rdf_type": {
+        "id": "IAO:0020000",
+        "title": "identifier"
+      }
+    },
+    {
+      "value": "SA-FUHFF-SCESBIRHVX-MTSVGCFANK-IWBUMUHRPY-NUHFF-NUHFF-NUHFF-ZZZ",
+      "title": "Short-RInChIKey",
+      "rdf_type": {
+        "id": "IAO:0020000",
+        "title": "identifier"
+      }
+    },
+    {
+      "value": "BOMQVCJFVRPGKEKDX-NUHFFFADPSCTJSA",
+      "title": "Web-RInChIKey",
+      "rdf_type": {
+        "id": "IAO:0020000",
+        "title": "identifier"
+      }
+    },
+    {
+      "value": "Successful",
+      "title": "Status",
+      "description": "The status of the reaction",
+      "rdf_type": {
+        "id": "SIO:001326",
+        "title": "status descriptor"
+      }
     }
   ],
+  "rdf_type": {
+    "id": "RXNO:0000329",
+    "title": "planned synthesis"
+  },
   "used_starting_material": [
     {
       "id": "https://www.chemotion-repository.net/pid/56408_StartMat-1",
+      "title": "StartMat-1: 1-bromo-2-fluorobenzene",
       "has_mass": [
         {
           "value": 1761.1,
@@ -38,27 +81,21 @@
           "unit": "https://qudt.org/vocab/unit/GM-PER-MilliL"
         }
       ],
-      "composed_of": [
-        {
-          "id": "https://www.chemotion-repository.net/pid/56408_StartMat-1.comp",
-          "molecular_formula": [
-            {
-              "value": "C6H4BrF"
-            }
-          ],
-          "iupac_name": [
-            {
-              "value": "1-bromo-2-fluorobenzene"
-            }
-          ]
-        }
-      ],
       "has_molar_equivalent": [
         {
           "value": 1.085,
           "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
           "title": "Molar Equivalent",
           "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/61259",
+          "rdf_type": {
+            "id": "CHEBI:35496",
+            "title": "fluorobenzenes"
+          }
         }
       ],
       "has_amount": [
@@ -72,6 +109,7 @@
     },
     {
       "id": "https://www.chemotion-repository.net/pid/56408_StartMat-2",
+      "title": "StartMat-2: chloro(diphenyl)phosphine",
       "has_mass": [
         {
           "value": 2089.3,
@@ -96,9 +134,21 @@
           "unit": "https://qudt.org/vocab/unit/GM-PER-MilliL"
         }
       ],
+      "has_molar_equivalent": [
+        {
+          "value": 1.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "Molar Equivalent",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
       "composed_of": [
         {
-          "id": "https://www.chemotion-repository.net/pid/56408_StartMat-2.comp",
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/66180",
+          "rdf_type": {
+            "id": "CHEBI:63258",
+            "title": "phosphine derivative"
+          },
           "molecular_formula": [
             {
               "value": "C12H10ClP"
@@ -109,14 +159,6 @@
               "value": "chloro(diphenyl)phosphine"
             }
           ]
-        }
-      ],
-      "has_molar_equivalent": [
-        {
-          "value": 1.0,
-          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
-          "title": "Molar Equivalent",
-          "unit": "https://qudt.org/vocab/unit/PERCENT"
         }
       ],
       "has_amount": [
@@ -132,6 +174,11 @@
   "used_reactant": [
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Reactant-1",
+      "title": "Reactant-1: n-BuLi",
+      "rdf_type": {
+        "id": "CHEBI:60004",
+        "title": "mixture"
+      },
       "has_mass": [
         {
           "value": 688.594,
@@ -148,6 +195,14 @@
           "unit": "https://qudt.org/vocab/unit/MilliL"
         }
       ],
+      "has_molar_equivalent": [
+        {
+          "value": 1.183,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "Molar Equivalent",
+          "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
       "has_concentration": [
         {
           "value": 2.5,
@@ -158,25 +213,11 @@
       ],
       "composed_of": [
         {
-          "id": "https://www.chemotion-repository.net/pid/56408_Reactant-1.comp",
-          "molecular_formula": [
-            {
-              "value": "C4H9Li"
-            }
-          ],
-          "iupac_name": [
-            {
-              "value": "n-BuLi"
-            }
-          ]
-        }
-      ],
-      "has_molar_equivalent": [
-        {
-          "value": 1.183,
-          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
-          "title": "Molar Equivalent",
-          "unit": "https://qudt.org/vocab/unit/PERCENT"
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/53627823",
+          "rdf_type": {
+            "id": "CHEBI:51469",
+            "title": "butyllithium"
+          }
         }
       ],
       "has_amount": [
@@ -190,6 +231,7 @@
     },
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Reactant-2",
+      "title": "Reactant-2: Hydrogen Peroxide",
       "has_mass": [
         {
           "value": 3955.0,
@@ -214,27 +256,21 @@
           "unit": "https://qudt.org/vocab/unit/GM-PER-MilliL"
         }
       ],
-      "composed_of": [
-        {
-          "id": "https://www.chemotion-repository.net/pid/56408_Reactant-2.comp",
-          "molecular_formula": [
-            {
-              "value": "H2O2"
-            }
-          ],
-          "iupac_name": [
-            {
-              "value": "Hydrogen Peroxide"
-            }
-          ]
-        }
-      ],
       "has_molar_equivalent": [
         {
           "value": 4.477,
           "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
           "title": "Molar Equivalent",
           "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/784",
+          "rdf_type": {
+            "id": "CHEBI:16240",
+            "title": "Hydrogen Peroxide"
+          }
         }
       ],
       "has_amount": [
@@ -248,6 +284,17 @@
     },
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Reactant-3",
+      "title": "Reactant-3: glacial acetic acid",
+      "has_qualitative_attribute": [
+        {
+          "value": "Glacial",
+          "title": "Grade/Purity",
+          "rdf_type": {
+            "id": "AFR:0002371",
+            "title": "purity"
+          }
+        }
+      ],
       "has_mass": [
         {
           "value": 1908.0,
@@ -272,27 +319,21 @@
           "unit": "https://qudt.org/vocab/unit/GM-PER-MilliL"
         }
       ],
-      "composed_of": [
-        {
-          "id": "https://www.chemotion-repository.net/pid/56408_Reactant-3.comp",
-          "molecular_formula": [
-            {
-              "value": "C2H4O2"
-            }
-          ],
-          "iupac_name": [
-            {
-              "value": "glacial acetic acid"
-            }
-          ]
-        }
-      ],
       "has_molar_equivalent": [
         {
           "value": 3.355,
           "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
           "title": "Molar Equivalent",
           "unit": "https://qudt.org/vocab/unit/PERCENT"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/176",
+          "rdf_type": {
+            "id": "CHEBI:15366",
+            "title": "acetic acid"
+          }
         }
       ],
       "has_amount": [
@@ -307,7 +348,19 @@
   ],
   "generated_product": [
     {
-      "id": "https://www.chemotion-repository.net/pid/56408_Product-1",
+      "id": "https://dx.doi.org/10.14272/MTSVGCFANKMACF-UHFFFAOYSA-N.1",
+      "title": "Reaction mixture containing crude 1-diphenylphosphoryl-2-fluorobenzene",
+      "has_qualitative_attribute": [
+        {
+          "value": "colorless",
+          "title": "property: colorless",
+          "rdf_type": {
+            "id": "PATO:0000337",
+            "title": "colorless"
+          }
+        }
+      ],
+      "has_physical_state": "SOLID",
       "has_mass": [
         {
           "value": 2328.0,
@@ -318,7 +371,7 @@
       ],
       "composed_of": [
         {
-          "id": "https://www.chemotion-repository.net/pid/56408_Product-1.comp",
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/13005284",
           "molecular_formula": [
             {
               "value": "C18H14FOP"
@@ -344,6 +397,7 @@
   "used_solvent": [
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Solvent-1",
+      "title": "Solvent-1: THF",
       "has_percentage_of_total": [
         {
           "value": 13.0,
@@ -362,16 +416,15 @@
       ],
       "composed_of": [
         {
-          "id": "https://www.chemotion-repository.net/pid/56408_Solvent-1.comp",
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/8028",
           "title": "THF",
-          "molecular_formula": [
-            {
-              "value": "C4H8O"
-            }
-          ],
+          "rdf_type": {
+            "id": "CHEBI:26911",
+            "title": "oxolane"
+          },
           "iupac_name": [
             {
-              "value": "Tetrahydrofuran"
+              "value": "oxolane"
             }
           ]
         }
@@ -379,6 +432,7 @@
     },
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Solvent-2",
+      "title": "Solvent-2: THF",
       "has_percentage_of_total": [
         {
           "value": 2.0,
@@ -397,23 +451,14 @@
       ],
       "composed_of": [
         {
-          "id": "https://www.chemotion-repository.net/pid/56408_Solvent-2.comp",
-          "title": "THF",
-          "molecular_formula": [
-            {
-              "value": "C4H8O"
-            }
-          ],
-          "iupac_name": [
-            {
-              "value": "Tetrahydrofuran"
-            }
-          ]
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/8028",
+          "title": "THF"
         }
       ]
     },
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Solvent-3",
+      "title": "Solvent-3: Ethanol",
       "has_percentage_of_total": [
         {
           "value": 78.0,
@@ -432,22 +477,18 @@
       ],
       "composed_of": [
         {
-          "id": "https://www.chemotion-repository.net/pid/56408_Solvent-3.comp",
-          "molecular_formula": [
-            {
-              "value": "C2H6O"
-            }
-          ],
-          "iupac_name": [
-            {
-              "value": "Ethanol"
-            }
-          ]
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/702",
+          "title": "Ethanol",
+          "rdf_type": {
+            "id": "CHEBI:16236",
+            "title": "ethanol"
+          }
         }
       ]
     },
     {
       "id": "https://www.chemotion-repository.net/pid/56408_Solvent-4",
+      "title": "Solvent-4: Ethanol",
       "has_percentage_of_total": [
         {
           "value": 8.0,
@@ -466,40 +507,83 @@
       ],
       "composed_of": [
         {
-          "id": "https://www.chemotion-repository.net/pid/56408_Solvent-4.comp",
-          "molecular_formula": [
-            {
-              "value": "C2H6O"
-            }
-          ],
-          "iupac_name": [
-            {
-              "value": "Ethanol"
-            }
-          ]
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/702",
+          "title": "Ethanol"
+        }
+      ]
+    },
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_Solvent-5",
+      "title": "Solvent-5: Diethyl Ether",
+      "has_volume": [
+        {
+          "value": 150.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/3283",
+          "title": "Diethyl Ether",
+          "rdf_type": {
+            "id": "CHEBI:35702",
+            "title": "diethyl ether"
+          }
+        }
+      ]
+    },
+    {
+      "id": "https://www.chemotion-repository.net/pid/56408_Solvent-6",
+      "title": "Solvent-6: Dichloromethane",
+      "has_volume": [
+        {
+          "value": 50.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Dimensionless",
+          "title": "Volume [mL]",
+          "unit": "https://qudt.org/vocab/unit/MilliL"
+        }
+      ],
+      "composed_of": [
+        {
+          "id": "https://pubchem.ncbi.nlm.nih.gov/compound/6344",
+          "title": "Dichloromethane",
+          "rdf_type": {
+            "id": "CHEBI:15767",
+            "title": "dichloromethane"
+          }
         }
       ]
     }
   ],
   "has_duration": "PT22H",
-  "has_temperature": [
+  "used_reactor": [
     {
-      "value": -78.0,
-      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Temperature",
-      "title": "Temperature of reaction step 1",
-      "unit": "http://qudt.org/vocab/unit/DEG_C"
-    },
-    {
-      "value": 0.0,
-      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Temperature",
-      "title": "Temperature of reaction step 2",
-      "unit": "http://qudt.org/vocab/unit/DEG_C"
-    },
-    {
-      "value": 80.0,
-      "has_quantity_type": "http://qudt.org/vocab/quantitykind/Temperature",
-      "title": "Temperature of reaction step 3",
-      "unit": "http://qudt.org/vocab/unit/DEG_C"
+      "id": "https://www.chemotion-repository.net/pid/56408_Reactor-1",
+      "title": "dry glass ware under argon atmosphere",
+      "has_qualitative_attribute": [
+        {
+          "value": "Argon atmosphere",
+          "title": "Argon atmosphere of the glass ware",
+          "type": {
+            "id": "VOC4CAT:0007809",
+            "title": "atmosphere"
+          }
+        },
+        {
+          "value": "dry",
+          "title": "dryness of the used glass ware",
+          "type": {
+            "id": "PATO:0001824",
+            "title": "dry"
+          }
+        }
+      ],
+      "rdf_type": {
+        "id": "OBI:0002089",
+        "title": "container with environmental control"
+      }
     }
   ],
   "has_yield": [
@@ -512,24 +596,6 @@
         "id": "VOC4CAT:0005005",
         "title": "yield"
       }
-    }
-  ],
-  "related_resource": [
-    {
-      "title": "SYNTHESE UND NMR-UNTERSUCHUNGEN VON 2-FLUOR-TRIPHENYLPHOSPHINEN UND IHREN DERIVATEN",
-      "id": "doi:10.1080/03086648208081193"
-    },
-    {
-      "title": "Synthesis and thermal behavior of dimethyl scandium complexes featuring anilido-phosphinimine ancillary ligands",
-      "id": "doi:10.1016/j.jorganchem.2007.08.037"
-    },
-    {
-      "title": "Role of through space 2p-3d overlap in the alkylation of phosphines",
-      "id": "doi:10.1021/ja00491a030"
-    },
-    {
-      "title": "Arylation of Secondary Phosphines with Diaryliodonium Salts under Metal-Free and Non-Photochemical Conditions",
-      "id": "doi:10.1002/adsc.202400919"
     }
   ],
   "@type": "ChemicalReaction"

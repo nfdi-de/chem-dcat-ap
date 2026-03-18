@@ -1,0 +1,107 @@
+# Example SubstanceCharacterizationDataset object based on a real dataset from Chemotion
+# without many domain agnostic metadata like publisher and creator that conforms to ChemDCAT-AP schema
+---
+id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604
+other_identifier:
+  - notation: https://www.chemotion-repository.net/pid/50438
+title:
+  - "heteronuclear single quantum coherence (HSQC) dataset"
+description:
+  - "Dataset analysing Sample ID: CRS-50440 with heteronuclear single quantum coherence (HSQC) NMR spectroscopy"
+theme:
+  - preferred_label:
+      - "Science and technology"
+is_about_entity: # the evaluated SubstanceSample
+  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+    title: "CRS-50440"
+    description: "The analysed chemical substance sample CRS-50440."
+    rdf_type: # providing an additional type using CHEBI, since SubstanceSample is mapped to SIO:001378 (analyte)
+      id: CHEBI:59999
+      title: "chemical substance"
+    composed_of: # the compound (a ChemicalEntity) of which the SubsctanceSample is primarily composed of
+      - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+        description: "compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2"
+        other_identifier:
+          - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
+        inchikey:
+          - value: "KVOIVNBYNQXCNY-BOCHJOTCSA-N"
+            description: "assigned InChiKey"
+        inchi:
+          - value: "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3"
+            description: "assigned InChi"
+        smiles:
+          - value: "CNCc1csc(n1)c1ccccc1"
+            description: "assigned SMILES"
+        molecular_formula:
+          - value: "C11H12N2S"
+            description: "assigned molecular formula"
+        iupac_name:
+          - value: "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine"
+            description: "Chemotion IUPAC name"
+          - value: "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine"
+            description: "PubChem IUPAC name"
+        has_molar_mass:
+          - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+            unit: https://qudt.org/vocab/unit/GM-PER-MOL
+            value: 204.072119
+            description: "Molar mass as specified in the Chemotion repository."
+          - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+            unit: https://qudt.org/vocab/unit/GM-PER-MOL
+            value: 204.29
+            description: "Molar mass as specified in PubChem"
+was_generated_by: # the SubstanceCharacterization activity that produced this dataset
+  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932
+    description:
+      - "heteronuclear single quantum coherence (HSQC) NMR spectroscopy."
+    title:
+      - "X27932"
+    rdf_type:
+      id: CHMO:0000604
+      title: "heteronuclear single quantum coherence"
+    evaluated_entity:
+      - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+        title: "CRS-50440"
+    # The attributes and agents of this NRM spectroscopy are described using the general DCAT-AP+ shapes,
+    # since the SubstanceCharacterization shape is deliberately under-specified.
+    # Sub-profiles using ChemDCAT-AP, such as https://nfdi4chem.github.io/nmr-dcat-ap,
+    # should define more appropriate SubstanceCharacterization/DataGeneratingActivity subclasses
+    # that introduce more granular shapes for the needed attributes and agents involved.
+    has_qualitative_attribute:
+      - rdf_type:
+          id: NMR:1400037
+          title: "NMR pulse sequence"
+        value: hsqcedetgp
+        description: "used pulse program"
+    has_quantitative_attribute:
+      - rdf_type:
+          id: NMR:1400025
+          title: "sample temperature in magnet"
+        description: "used sample temperature setting"
+        has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+        unit: https://qudt.org/vocab/unit/K
+        value: 300.1
+      - rdf_type:
+          id: NMR:1400087
+          title: "number of scans"
+        value: 2
+        has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+        unit: http://qudt.org/vocab/unit/NUM
+        description: "used number of scans"
+    carried_out_by:
+      - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Spectrometer
+        rdf_type:
+          id: NMR:1000371
+          title: "AVANCE III HD"
+        title: "Avance III 400 NMR spectrometer"
+        description: 'used NMR spectrometer'
+      - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Solvent
+        description: "used solvent"
+        rdf_type:
+          id: NCIT:C45790
+          title: Solvent
+        has_part:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
+            rdf_type:
+              id: CHEBI:85365
+              title: "deuterated chloroform"
+            title: "chloroform-D1 (CDCl3)"

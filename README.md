@@ -101,14 +101,18 @@ Validate a single example dataset using LinkML's validator framework:
     uv run linkml validate tests/data/valid/MaterialSample-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C MaterialSample
     ````
 
-To convert the test datasets of each DCAT-AP profile into a TTL graph run:
-  * Convert domain agnostic DCAT-AP extension conform example of an analysis
+To convert the test data into a TTL graph run:
+  * Convert the domain agnostic DCAT-AP+ based example of a AnalysisDataset
     ````commandline
     uv run linkml-convert -t ttl tests/data/valid/AnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C AnalysisDataset
     ````
-  * Convert a NMR spectroscopy-specific DCAT-AP extension conform example
+  * Convert a NMR spectroscopy-specific dataset example conforming to ChemDCAT-AP's `SubstanceCharacterizationDataset`
     ````commandline
-    uv run linkml-convert -t ttl tests/data/valid/NMRAnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
+    uv run linkml-convert -t ttl tests/data/valid/SubstanceCharacterizationDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C SubstanceCharacterizationDataset
+    ````
+  * Convert a ReactionRecordingDataset specific DCAT-AP extension conform example
+    ````commandline
+    uv run linkml-convert -t ttl tests/data/valid/ReactionRecordingDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ReactionRecordingDataset
     ````
   * Convert domain agnostic DCAT-AP extension conform example of a MaterialSample
     ````commandline
