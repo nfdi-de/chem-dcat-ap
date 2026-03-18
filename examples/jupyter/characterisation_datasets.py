@@ -1,14 +1,15 @@
 """
-Module to generate example datasets for chemical characterization using the Chem DCAT-AP LinkML data model.
+Module to generate example datasets for chemical characterisation using the Chem DCAT-AP LinkML data model.
 """
 
 from chem_dcat_ap.datamodel.chem_dcat_ap_pydantic import (
     Dataset, ChemicalEntity, InChi, InChIKey, SMILES, MolecularFormula, IUPACName,
-    Agent, DataGeneratingActivity, DataAnalysis, Distribution, 
+    Agent, AgenticEntity, DataGeneratingActivity, DataAnalysis, Distribution, 
     QualitativeAttribute, QuantitativeAttribute, PhysicalStateEnum,
-    Device, Software, Plan, AnalysisSourceData, ChemicalReaction, 
+    Device, Software, Plan, AnalysisSourceData, EvaluatedActivity, EvaluatedEntity, ChemicalReaction, 
     ChemicalProduct, StartingMaterial, Reagent, Catalyst, DissolvingSubstance
 )
+
 from datetime import date
 from typing import List, Optional
 import uuid
@@ -83,7 +84,6 @@ def create_plan(
 ) -> Plan:
     """Create a Plan with the provided properties."""
     plan = Plan(
-        id=id,
         title=title,
         description=description
     )
@@ -102,7 +102,7 @@ def create_analysis_source_data(
         id=id,
         title=title,
         description=description,
-        composed_of=[chemical_entity],
+        # composed_of=[chemical_entity],
         was_generated_by=[]
     )
     return source_data
@@ -120,12 +120,17 @@ def create_characterization_activity(
     analysis_type: str,
     analysis_date: date
 ) -> DataAnalysis:
-    """Create a DataAnalysis activity for characterization."""
+    """Create a DataAnalysis activity for characterisation."""
+    agentic_entity = AgenticEntity(
+        id = str(uuid.uuid4()),
+        title=f"Title of AgenticEntity {title}",
+        description=description
+    )
     activity = DataAnalysis(
         id=id,
         title=[title],
         description=[description],
-        carried_out_by=[creator],
+        carried_out_by=[agentic_entity],
         had_input_entity=[source_data],
         had_output_entity=[],
         realized_plan=plan,
@@ -150,7 +155,14 @@ def create_dataset_for_characterization(
     release_date: date = None,
     chemical_entity: Optional[ChemicalEntity] = None
 ) -> Dataset:
-    """Create a Dataset for a characterization activity."""
+    """Create a Dataset for a characterisation activity."""
+    is_about_entity = EvaluatedEntity(
+        title=f"Evaluated entity for {title}", id=str(uuid.uuid4()), type=None
+    )
+    # !!! inconsistency - list / str in title - need to check the data model
+    is_about_activity = EvaluatedActivity(
+        title=[f"Evaluated activity for {title}"], id=str(uuid.uuid4()), type=None
+    )
     dataset = Dataset(
         id=dataset_id,
         title=[title],
@@ -158,14 +170,14 @@ def create_dataset_for_characterization(
         was_generated_by=[activity],
         creator=[creator],
         release_date=release_date,
-        is_about_entity=[chemical_entity] if chemical_entity else [],
-        is_about_activity=[activity]
+        is_about_entity=[is_about_entity],
+        is_about_activity=[is_about_activity]
     )
     return dataset
 
 
-def generate_characterization_datasets() -> List[Dataset]:
-    """Generate example datasets for chemical characterization."""
+def generate_characterisation_datasets() -> List[Dataset]:
+    """Generate example datasets for chemical characterisation."""
     # Create agents
     researcher = Agent(
         name=["Dr. John Doe"],
@@ -288,7 +300,7 @@ def generate_characterization_datasets() -> List[Dataset]:
     source_data1 = create_analysis_source_data(
         id="SOURCE001",
         title="Benzene Sample",
-        description="Pure benzene sample for characterization",
+        description="Pure benzene sample for characterisation",
         chemical_entity=substance1,
         data_type="chemical_sample"
     )
@@ -296,7 +308,7 @@ def generate_characterization_datasets() -> List[Dataset]:
     source_data2 = create_analysis_source_data(
         id="SOURCE002",
         title="Acetaldehyde Sample",
-        description="Pure acetaldehyde sample for characterization",
+        description="Pure acetaldehyde sample for characterisation",
         chemical_entity=substance2,
         data_type="chemical_sample"
     )
@@ -304,12 +316,12 @@ def generate_characterization_datasets() -> List[Dataset]:
     source_data3 = create_analysis_source_data(
         id="SOURCE003",
         title="Cyclohexanol Sample",
-        description="Pure cyclohexanol sample for characterization",
+        description="Pure cyclohexanol sample for characterisation",
         chemical_entity=substance3,
         data_type="chemical_sample"
     )
     
-    # Create characterization activities
+    # Create characterisation activities
     nmr_activity1 = create_characterization_activity(
         id="NMR_ACTIVITY001",
         title="NMR Spectroscopy of Benzene",
@@ -349,7 +361,7 @@ def generate_characterization_datasets() -> List[Dataset]:
         analysis_date=date(2023, 2, 3)
     )
     
-    # Create datasets for characterization
+    # Create datasets for characterisation
     dataset1 = create_dataset_for_characterization(
         dataset_id="CHAR_DS001",
         activity=nmr_activity1,
@@ -380,7 +392,7 @@ def generate_characterization_datasets() -> List[Dataset]:
         chemical_entity=substance1
     )
     
-    # Create characterization activities for second substance
+    # Create characterisation activities for second substance
     nmr_activity2 = create_characterization_activity(
         id="NMR_ACTIVITY002",
         title="NMR Spectroscopy of Acetaldehyde",
