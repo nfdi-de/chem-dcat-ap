@@ -666,6 +666,9 @@ is_about_activity:
       title: 'property: colorless'
       value: colorless
     id: https://dx.doi.org/10.14272/MTSVGCFANKMACF-UHFFFAOYSA-N.1
+    rdf_type:
+      id: CHEBI:59999
+      title: chemical substance
     title: Reaction mixture containing crude 1-diphenylphosphoryl-2-fluorobenzene
   has_duration: PT22H
   has_qualitative_attribute:
@@ -742,8 +745,8 @@ is_about_activity:
       value: 4.3
     id: https://www.chemotion-repository.net/pid/56408_Reactant-1
     rdf_type:
-      id: CHEBI:60004
-      title: mixture
+      id: CHEBI:59999
+      title: chemical substance
     title: 'Reactant-1: n-BuLi'
   - composed_of:
     - id: https://pubchem.ncbi.nlm.nih.gov/compound/784
@@ -776,6 +779,9 @@ is_about_activity:
       unit: https://qudt.org/vocab/unit/MilliL
       value: 3.5
     id: https://www.chemotion-repository.net/pid/56408_Reactant-2
+    rdf_type:
+      id: CHEBI:59999
+      title: chemical substance
     title: 'Reactant-2: Hydrogen Peroxide'
   - composed_of:
     - id: https://pubchem.ncbi.nlm.nih.gov/compound/176
@@ -814,6 +820,9 @@ is_about_activity:
       unit: https://qudt.org/vocab/unit/MilliL
       value: 1.8
     id: https://www.chemotion-repository.net/pid/56408_Reactant-3
+    rdf_type:
+      id: CHEBI:59999
+      title: chemical substance
     title: 'Reactant-3: glacial acetic acid'
   used_reactor:
   - has_qualitative_attribute:
@@ -852,6 +861,9 @@ is_about_activity:
       unit: https://qudt.org/vocab/unit/MilliL
       value: 24.0
     id: https://www.chemotion-repository.net/pid/56408_Solvent-1
+    rdf_type:
+      id: CHEBI:59999
+      title: chemical substance
     title: 'Solvent-1: THF'
   - composed_of:
     - id: https://pubchem.ncbi.nlm.nih.gov/compound/8028
@@ -885,6 +897,9 @@ is_about_activity:
       unit: https://qudt.org/vocab/unit/MilliL
       value: 150.0
     id: https://www.chemotion-repository.net/pid/56408_Solvent-3
+    rdf_type:
+      id: CHEBI:59999
+      title: chemical substance
     title: 'Solvent-3: Ethanol'
   - composed_of:
     - id: https://pubchem.ncbi.nlm.nih.gov/compound/702
@@ -900,6 +915,9 @@ is_about_activity:
       unit: https://qudt.org/vocab/unit/MilliL
       value: 15.0
     id: https://www.chemotion-repository.net/pid/56408_Solvent-4
+    rdf_type:
+      id: CHEBI:59999
+      title: chemical substance
     title: 'Solvent-4: Ethanol'
   - composed_of:
     - id: https://pubchem.ncbi.nlm.nih.gov/compound/3283
@@ -913,6 +931,9 @@ is_about_activity:
       unit: https://qudt.org/vocab/unit/MilliL
       value: 150.0
     id: https://www.chemotion-repository.net/pid/56408_Solvent-5
+    rdf_type:
+      id: CHEBI:59999
+      title: chemical substance
     title: 'Solvent-5: Diethyl Ether'
   - composed_of:
     - id: https://pubchem.ncbi.nlm.nih.gov/compound/6344
@@ -926,6 +947,9 @@ is_about_activity:
       unit: https://qudt.org/vocab/unit/MilliL
       value: 50.0
     id: https://www.chemotion-repository.net/pid/56408_Solvent-6
+    rdf_type:
+      id: CHEBI:59999
+      title: chemical substance
     title: 'Solvent-6: Dichloromethane'
   used_starting_material:
   - composed_of:
@@ -959,6 +983,9 @@ is_about_activity:
       unit: https://qudt.org/vocab/unit/MilliL
       value: 1.1
     id: https://www.chemotion-repository.net/pid/56408_StartMat-1
+    rdf_type:
+      id: CHEBI:59999
+      title: chemical substance
     title: 'StartMat-1: 1-bromo-2-fluorobenzene'
   - composed_of:
     - id: https://pubchem.ncbi.nlm.nih.gov/compound/66180
@@ -995,6 +1022,9 @@ is_about_activity:
       unit: https://qudt.org/vocab/unit/MilliL
       value: 1.7
     id: https://www.chemotion-repository.net/pid/56408_StartMat-2
+    rdf_type:
+      id: CHEBI:59999
+      title: chemical substance
     title: 'StartMat-2: chloro(diphenyl)phosphine'
 related_resource:
 - id: doi:10.1080/03086648208081193

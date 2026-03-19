@@ -55,49 +55,49 @@ NCIT:C45790 a schema1:DefinedTerm ;
     SIO:000008 [ a CHEMINF:000059 ;
             dcterms:description "assigned InChiKey" ;
             prov:value "KVOIVNBYNQXCNY-BOCHJOTCSA-N" ],
-        [ a CHEMINF:000113 ;
-            dcterms:description "assigned InChi" ;
-            prov:value "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3" ],
-        [ a AFR:0002409 ;
-            dcterms:description "Molar mass as specified in PubChem" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
-            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
-            prov:value "204.29"^^xsd:float ],
-        [ a CHEMINF:000042 ;
-            dcterms:description "assigned molecular formula" ;
-            prov:value "C11H12N2S" ],
-        [ a CHEMINF:000018 ;
-            dcterms:description "assigned SMILES" ;
-            prov:value "CNCc1csc(n1)c1ccccc1" ],
         [ a AFR:0002409 ;
             dcterms:description "Molar mass as specified in the Chemotion repository." ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
             qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
             prov:value "204.072119"^^xsd:float ],
         [ a CHEMINF:000107 ;
+            dcterms:description "PubChem IUPAC name" ;
+            prov:value "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine" ],
+        [ a AFR:0002409 ;
+            dcterms:description "Molar mass as specified in PubChem" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
+            prov:value "204.29"^^xsd:float ],
+        [ a CHEMINF:000113 ;
+            dcterms:description "assigned InChi" ;
+            prov:value "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3" ],
+        [ a CHEMINF:000018 ;
+            dcterms:description "assigned SMILES" ;
+            prov:value "CNCc1csc(n1)c1ccccc1" ],
+        [ a CHEMINF:000107 ;
             dcterms:description "Chemotion IUPAC name" ;
             prov:value "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine" ],
-        [ a CHEMINF:000107 ;
-            dcterms:description "PubChem IUPAC name" ;
-            prov:value "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine" ] ;
+        [ a CHEMINF:000042 ;
+            dcterms:description "assigned molecular formula" ;
+            prov:value "C11H12N2S" ] ;
     adms:identifier [ a adms:Identifier ;
             skos:notation "https://pubchem.ncbi.nlm.nih.gov/compound/26248854" ] .
 
 <https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932> a CHMO:0000604,
         prov:Activity ;
     dcterms:description "heteronuclear single quantum coherence (HSQC) NMR spectroscopy." ;
-    dcterms:relation [ a NMR:1400087,
-                qudt:Quantity ;
-            dcterms:description "used number of scans" ;
-            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
-            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
-            prov:value "2.0"^^xsd:float ],
-        [ a NMR:1400025,
+    dcterms:relation [ a NMR:1400025,
                 qudt:Quantity ;
             dcterms:description "used sample temperature setting" ;
             qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
             qudt:unit <https://qudt.org/vocab/unit/K> ;
             prov:value "300.1"^^xsd:float ],
+        [ a NMR:1400087,
+                qudt:Quantity ;
+            dcterms:description "used number of scans" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
+            qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+            prov:value "2.0"^^xsd:float ],
         [ a NMR:1400037,
                 prov:Entity ;
             dcterms:description "used pulse program" ;

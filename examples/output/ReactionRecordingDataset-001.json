@@ -1596,6 +1596,10 @@
         {
           "id": "https://www.chemotion-repository.net/pid/56408_StartMat-1",
           "title": "StartMat-1: 1-bromo-2-fluorobenzene",
+          "rdf_type": {
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
+          },
           "has_mass": [
             {
               "value": 1761.1,
@@ -1649,6 +1653,10 @@
         {
           "id": "https://www.chemotion-repository.net/pid/56408_StartMat-2",
           "title": "StartMat-2: chloro(diphenyl)phosphine",
+          "rdf_type": {
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
+          },
           "has_mass": [
             {
               "value": 2089.3,
@@ -1715,8 +1723,8 @@
           "id": "https://www.chemotion-repository.net/pid/56408_Reactant-1",
           "title": "Reactant-1: n-BuLi",
           "rdf_type": {
-            "id": "CHEBI:60004",
-            "title": "mixture"
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
           },
           "has_mass": [
             {
@@ -1771,6 +1779,10 @@
         {
           "id": "https://www.chemotion-repository.net/pid/56408_Reactant-2",
           "title": "Reactant-2: Hydrogen Peroxide",
+          "rdf_type": {
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
+          },
           "has_mass": [
             {
               "value": 3955.0,
@@ -1834,6 +1846,10 @@
               }
             }
           ],
+          "rdf_type": {
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
+          },
           "has_mass": [
             {
               "value": 1908.0,
@@ -1899,6 +1915,10 @@
               }
             }
           ],
+          "rdf_type": {
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
+          },
           "has_physical_state": "SOLID",
           "has_mass": [
             {
@@ -1937,6 +1957,10 @@
         {
           "id": "https://www.chemotion-repository.net/pid/56408_Solvent-1",
           "title": "Solvent-1: THF",
+          "rdf_type": {
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
+          },
           "has_percentage_of_total": [
             {
               "value": 13.0,
@@ -1998,6 +2022,10 @@
         {
           "id": "https://www.chemotion-repository.net/pid/56408_Solvent-3",
           "title": "Solvent-3: Ethanol",
+          "rdf_type": {
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
+          },
           "has_percentage_of_total": [
             {
               "value": 78.0,
@@ -2028,6 +2056,10 @@
         {
           "id": "https://www.chemotion-repository.net/pid/56408_Solvent-4",
           "title": "Solvent-4: Ethanol",
+          "rdf_type": {
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
+          },
           "has_percentage_of_total": [
             {
               "value": 8.0,
@@ -2054,6 +2086,10 @@
         {
           "id": "https://www.chemotion-repository.net/pid/56408_Solvent-5",
           "title": "Solvent-5: Diethyl Ether",
+          "rdf_type": {
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
+          },
           "has_volume": [
             {
               "value": 150.0,
@@ -2076,6 +2112,10 @@
         {
           "id": "https://www.chemotion-repository.net/pid/56408_Solvent-6",
           "title": "Solvent-6: Dichloromethane",
+          "rdf_type": {
+            "id": "CHEBI:59999",
+            "title": "chemical substance"
+          },
           "has_volume": [
             {
               "value": 50.0,

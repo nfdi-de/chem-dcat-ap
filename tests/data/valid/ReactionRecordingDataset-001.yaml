@@ -59,6 +59,9 @@ is_about_activity:
     used_starting_material:
       - id: https://www.chemotion-repository.net/pid/56408_StartMat-1
         title: "StartMat-1: 1-bromo-2-fluorobenzene"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
         has_amount:
           - title: "Amount [mmol]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
@@ -91,6 +94,9 @@ is_about_activity:
               title: "fluorobenzenes"
       - id: https://www.chemotion-repository.net/pid/56408_StartMat-2
         title: "StartMat-2: chloro(diphenyl)phosphine"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
         has_amount:
           - title: "Amount [mmol]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
@@ -129,8 +135,8 @@ is_about_activity:
       - id: https://www.chemotion-repository.net/pid/56408_Reactant-1
         title: "Reactant-1: n-BuLi"
         rdf_type:
-          id: CHEBI:60004
-          title: "mixture"
+          id: CHEBI:59999
+          title: "chemical substance"
         has_concentration:
           - title: "Molarity [M]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration
@@ -163,6 +169,9 @@ is_about_activity:
               title: "butyllithium"
       - id: https://www.chemotion-repository.net/pid/56408_Reactant-2
         title: "Reactant-2: Hydrogen Peroxide"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
         has_amount:
           - title: "Amount [mmol]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
@@ -195,6 +204,9 @@ is_about_activity:
               title: "Hydrogen Peroxide"
       - id: https://www.chemotion-repository.net/pid/56408_Reactant-3
         title: "Reactant-3: glacial acetic acid"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
         has_amount:
           - title: "Amount [mmol]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
@@ -234,6 +246,9 @@ is_about_activity:
     generated_product:
       - id: https://dx.doi.org/10.14272/MTSVGCFANKMACF-UHFFFAOYSA-N.1
         title: "Reaction mixture containing crude 1-diphenylphosphoryl-2-fluorobenzene"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
         has_amount:
           - title: "Amount [mmol]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
@@ -260,6 +275,9 @@ is_about_activity:
     used_solvent:
       - id: https://www.chemotion-repository.net/pid/56408_Solvent-1
         title: "Solvent-1: THF"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
         has_volume:
           - title: "Volume [mL]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
@@ -295,6 +313,9 @@ is_about_activity:
             title: "THF"
       - id: https://www.chemotion-repository.net/pid/56408_Solvent-3
         title: "Solvent-3: Ethanol"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
         has_volume:
           - title: "Volume [mL]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
@@ -313,6 +334,9 @@ is_about_activity:
               title: "ethanol"
       - id: https://www.chemotion-repository.net/pid/56408_Solvent-4
         title: "Solvent-4: Ethanol"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
         has_volume:
           - title: "Volume [mL]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
@@ -328,6 +352,9 @@ is_about_activity:
             title: "Ethanol"
       - id: https://www.chemotion-repository.net/pid/56408_Solvent-5
         title: "Solvent-5: Diethyl Ether"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
         has_volume:
           - title: "Volume [mL]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
@@ -341,6 +368,9 @@ is_about_activity:
               title: "diethyl ether"
       - id: https://www.chemotion-repository.net/pid/56408_Solvent-6
         title: "Solvent-6: Dichloromethane"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
         has_volume:
           - title: "Volume [mL]"
             has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
