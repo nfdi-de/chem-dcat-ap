@@ -77,7 +77,14 @@ watch:
 
 nav:
   - Home: index.md
-  - Schema: elements/overview.md
+  - Material Entities: material-entities.md
+  - Chemical Entities: chemical-entities.md
+  - Chemical Reactions: chemical-reactions.md
+  - Chemical Datasets: dataset-activity-shapes.md
+  - Ontology Alignment: ontology-alignment.md
+  - Adoption Guide: guidance.md
+  - Quick Start: quickstart.md
+  - Schema Reference: elements/overview.md
   - Versioning: versioning.md
   - About: about.md
 
@@ -93,6 +100,9 @@ markdown_extensions:
   - admonition
   - footnotes
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.superfences:
       # make exceptions to highlighting of code:
       custom_fences:
