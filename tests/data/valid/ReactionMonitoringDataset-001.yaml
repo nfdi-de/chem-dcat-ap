@@ -1,0 +1,1396 @@
+# Example ReactionRecordingDataset object based on a real dataset from Chemotion:
+#   - without many DCAT-AP metadata like creator but only metadata conforming to ChemDCAT-AP,
+#   - with the reaction/synthesis steps extracted manually from the description
+#   - with titles and descriptions added for entities not represented in such structured form in Chemotion yet
+---
+# We use the Chemotion reaction DOI as the ID for the Dataset that has the (meta)data about the reaction
+id: doi:10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ
+title:
+  - "Dataset for Chemotion Repository synthesis CRR-56408"
+description:
+  - "This dataset contains the recorded information for the Chemotion Repository synthesis CRR-56408."
+related_resource:
+  - id: doi:10.1080/03086648208081193
+    title: "SYNTHESE UND NMR-UNTERSUCHUNGEN VON 2-FLUOR-TRIPHENYLPHOSPHINEN UND IHREN DERIVATEN"
+  - id: doi:10.1016/j.jorganchem.2007.08.037
+    title: "Synthesis and thermal behavior of dimethyl scandium complexes featuring anilido-phosphinimine ancillary ligands"
+  - id: doi:10.1021/ja00491a030
+    title: "Role of through space 2p-3d overlap in the alkylation of phosphines"
+  - id: doi:10.1002/adsc.202400919
+    title: "Arylation of Secondary Phosphines with Diaryliodonium Salts under Metal-Free and Non-Photochemical Conditions"
+is_about_activity:
+  - id: https://www.chemotion-repository.net/pid/56408
+    title:
+      - "Chemotion Repository synthesis CRR-56408"
+    description:
+      - "Synthesis of 1-diphenylphosphoryl-2-fluorobenzene via lithiation-phosphination-oxidation"
+    rdf_type:
+      id: RXNO:0000329
+      title: "planned synthesis"
+    # None of the following reaction ID types have a class in CHEMINF or another ontology yet,
+    # so we fall back on the IAO identifier class and DCAT-AP+ qualitative attribute pattern.
+    has_qualitative_attribute:
+      - rdf_type:
+          id: IAO:0020000
+          title: "identifier"
+        title: "RInChI"
+        value: "1.00.1S/C12H10ClP/c13-14(11-7-3-1-4-8-11) 12-9-5-2-6-10-12/h1-10H!C6H4BrF/c7-5-3-1-2-4-6(5)8/h1-4H<>C18H14FOP/c19-17-13-7-8-14-18(17)21(20,15-9-3-1-4-10-15)16-11-5-2-6-12-16/h1-14H<>C2H4O2/c1-2(3)4/h1H3,(H,3,4)!C2H6O/c1-2-3/h3H,2H2,1H3!C2H6O/c1-2-3/h3H,2H2,1H3!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H9.Li/c1-3-4-2;/h1,3-4H2,2H3;!H2O2/c1-2/h1-2H/d+"
+      - rdf_type:
+          id: IAO:0020000
+          title: "identifier"
+        title: "Long-RInChIKey"
+        value: "SA-FUHFF-XGRJZXREYAXTGV-UHFFFAOYSA-N-IPWBFGUBXWMIPR-UHFFFAOYSA-N--MTSVGCFANKMACF-UHFFFAOYSA-N--QTBSBXVTEAMEQO-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-MZRVEZGGRBJDDB-UHFFFAOYSA-N-MHAJPDPJQMAIIY-UHFFFAOYSA-N"
+      - rdf_type:
+          id: IAO:0020000
+          title: "identifier"
+        title: "Short-RInChIKey"
+        value: "SA-FUHFF-SCESBIRHVX-MTSVGCFANK-IWBUMUHRPY-NUHFF-NUHFF-NUHFF-ZZZ"
+      - rdf_type:
+          id: IAO:0020000
+          title: "identifier"
+        title: "Web-RInChIKey"
+        value: "BOMQVCJFVRPGKEKDX-NUHFFFADPSCTJSA"
+      - value: "Successful"
+        title: "Status"
+        description: "The status of the reaction"
+        rdf_type:
+          id: SIO:001326
+          title: "status descriptor"
+    used_starting_material:
+      - id: https://www.chemotion-repository.net/pid/56408_StartMat-1
+        title: "StartMat-1: 1-bromo-2-fluorobenzene"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_amount:
+          - title: "Amount [mmol]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
+            unit: https://qudt.org/vocab/unit/MilliMOL
+            value: 9.862
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 1.100
+        has_mass:
+          - title: "Mass [mg]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Mass
+            unit: https://qudt.org/vocab/unit/MilliGM
+            value: 1761.100
+        has_density:
+          - title: "Density [g/mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Density
+            unit: https://qudt.org/vocab/unit/GM-PER-MilliL
+            value: 1.601
+        has_molar_equivalent:
+          - title: "Molar Equivalent"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/PERCENT
+            value: 1.085
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/61259
+            rdf_type:
+              id: CHEBI:35496
+              title: "fluorobenzenes"
+      - id: https://www.chemotion-repository.net/pid/56408_StartMat-2
+        title: "StartMat-2: chloro(diphenyl)phosphine"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_amount:
+          - title: "Amount [mmol]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
+            unit: https://qudt.org/vocab/unit/MilliMOL
+            value: 9.091
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 1.700
+        has_mass:
+          - title: "Mass [mg]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Mass
+            unit: https://qudt.org/vocab/unit/MilliGM
+            value: 2089.300
+        has_density:
+          - title: "Density [g/mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Density
+            unit: https://qudt.org/vocab/unit/GM-PER-MilliL
+            value: 1.229
+        has_molar_equivalent:
+          - title: "Molar Equivalent"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/PERCENT
+            value: 1.000
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/66180
+            molecular_formula:
+              - value: "C12H10ClP"
+            iupac_name:
+              - value: "chloro(diphenyl)phosphine"
+            rdf_type:
+              id: CHEBI:63258
+              title: "phosphine derivative"
+    used_reactant:
+      - id: https://www.chemotion-repository.net/pid/56408_Reactant-1
+        title: "Reactant-1: n-BuLi"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_concentration:
+          - title: "Molarity [M]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration
+            unit: https://qudt.org/vocab/unit/MOL-PER-L
+            value: 2.5
+        has_amount:
+          - title: "Amount [mmol]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
+            unit: https://qudt.org/vocab/unit/MilliMOL
+            value: 10.750
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 4.300
+        has_mass:
+          - title: "Mass [mg]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Mass
+            unit: https://qudt.org/vocab/unit/MilliGM
+            value: 688.594
+        has_molar_equivalent:
+          - title: "Molar Equivalent"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/PERCENT
+            value: 1.183
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/53627823
+            rdf_type:
+              id: CHEBI:51469
+              title: "butyllithium"
+      - id: https://www.chemotion-repository.net/pid/56408_Reactant-2
+        title: "Reactant-2: Hydrogen Peroxide"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_amount:
+          - title: "Amount [mmol]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
+            unit: https://qudt.org/vocab/unit/MilliMOL
+            value: 40.696
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 3.500
+        has_mass:
+          - title: "Mass [mg]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Mass
+            unit: https://qudt.org/vocab/unit/MilliGM
+            value: 3955.000
+        has_density:
+          - title: "Density [g/mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Density
+            unit: https://qudt.org/vocab/unit/GM-PER-MilliL
+            value: 1.13
+        has_molar_equivalent:
+          - title: "Molar Equivalent"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/PERCENT
+            value: 4.477
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/784
+            rdf_type:
+              id: CHEBI:16240
+              title: "Hydrogen Peroxide"
+      - id: https://www.chemotion-repository.net/pid/56408_Reactant-3
+        title: "Reactant-3: glacial acetic acid"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_amount:
+          - title: "Amount [mmol]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
+            unit: https://qudt.org/vocab/unit/MilliMOL
+            value: 30.502
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 1.800
+        has_mass:
+          - title: "Mass [mg]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Mass
+            unit: https://qudt.org/vocab/unit/MilliGM
+            value: 1908.000
+        has_density:
+          - title: "Density [g/mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Density
+            unit: https://qudt.org/vocab/unit/GM-PER-MilliL
+            value: 1.06
+        has_molar_equivalent:
+          - title: "Molar Equivalent"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/PERCENT
+            value: 3.355
+        has_qualitative_attribute:
+          - value: "Glacial"
+            title: "Grade/Purity"
+            rdf_type:
+              id: AFR:0002371
+              title: "purity"
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/176
+            rdf_type:
+              id: CHEBI:15366
+              title: "acetic acid"
+    generated_product:
+      - id: https://dx.doi.org/10.14272/MTSVGCFANKMACF-UHFFFAOYSA-N.1
+        title: "Reaction mixture containing crude 1-diphenylphosphoryl-2-fluorobenzene"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_amount:
+          - title: "Amount [mmol]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/AmountOfSubstance
+            unit: https://qudt.org/vocab/unit/MilliMOL
+            value: 7.779
+        has_mass:
+          - title: "Mass [mg]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Mass
+            unit: https://qudt.org/vocab/unit/MilliGM
+            value: 2328.000
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/13005284
+            molecular_formula:
+              - value: "C18H14FOP"
+            iupac_name:
+              - value: "1-diphenylphosphoryl-2-fluorobenzene"
+        has_physical_state: SOLID
+        has_qualitative_attribute:
+          - title: "property: colorless"
+            value: "colorless"
+            rdf_type:
+              id: PATO:0000337
+              title: colorless
+    used_solvent:
+      - id: https://www.chemotion-repository.net/pid/56408_Solvent-1
+        title: "Solvent-1: THF"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 24.000
+        has_percentage_of_total:
+          - title: "PercentageOfTotal"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/PERCENT
+            value: 13
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/8028
+            rdf_type:
+              id: CHEBI:26911
+              title: "oxolane"
+            title: "THF"
+            iupac_name:
+              - value: "oxolane"
+      - id: https://www.chemotion-repository.net/pid/56408_Solvent-2
+        title: "Solvent-2: THF"
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 3.000
+        has_percentage_of_total:
+          - title: "PercentageOfTotal"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/PERCENT
+            value: 2
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/8028
+            title: "THF"
+      - id: https://www.chemotion-repository.net/pid/56408_Solvent-3
+        title: "Solvent-3: Ethanol"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 150.000
+        has_percentage_of_total:
+          - title: "PercentageOfTotal"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/PERCENT
+            value: 78
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/702
+            title: "Ethanol"
+            rdf_type:
+              id: CHEBI:16236
+              title: "ethanol"
+      - id: https://www.chemotion-repository.net/pid/56408_Solvent-4
+        title: "Solvent-4: Ethanol"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 15.000
+        has_percentage_of_total:
+          - title: "PercentageOfTotal"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/PERCENT
+            value: 8
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/702
+            title: "Ethanol"
+      - id: https://www.chemotion-repository.net/pid/56408_Solvent-5
+        title: "Solvent-5: Diethyl Ether"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 150.0
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/3283
+            title: "Diethyl Ether"
+            rdf_type:
+              id: CHEBI:35702
+              title: "diethyl ether"
+      - id: https://www.chemotion-repository.net/pid/56408_Solvent-6
+        title: "Solvent-6: Dichloromethane"
+        rdf_type:
+          id: CHEBI:59999
+          title: "chemical substance"
+        has_volume:
+          - title: "Volume [mL]"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            unit: https://qudt.org/vocab/unit/MilliL
+            value: 50.0
+        composed_of:
+          - id: https://pubchem.ncbi.nlm.nih.gov/compound/6344
+            title: "Dichloromethane"
+            rdf_type:
+              id: CHEBI:15767
+              title: "dichloromethane"
+    has_yield:
+      - type:
+          id: VOC4CAT:0005005
+          title: "yield"
+        has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+        unit: http://qudt.org/vocab/unit/PERCENT
+        value: 86
+        title: "Yield [%]"
+    used_reactor:
+      - id: https://www.chemotion-repository.net/pid/56408_Reactor-1
+        title: "dry glass ware under argon atmosphere"
+        rdf_type:
+          id: OBI:0002089
+          title: "container with environmental control"
+        has_qualitative_attribute:
+          - title: "Argon atmosphere of the glass ware"
+            value: "Argon atmosphere"
+            type:
+              id: VOC4CAT:0007809
+              title: atmosphere
+          - title: "dryness of the used glass ware"
+            value: "dry"
+            type:
+              id: PATO:0001824
+              title: dry
+    has_duration: PT22H
+was_generated_by:
+  - id: doi:10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ#Recording
+    title:
+      - "Recording of the Chemotion Repo synthesis CRR-56408"
+    description:
+      - "The reaction has been conducted in dry glass ware under argon atmosphere. A solution of 1-bromo-2-fluorobenzene (1.76 g, 1.10 mL, 9.86 mmol, 1.08 equiv) in anhydrous THF (24.0 mL) was cooled to -78 °C, and n-BuLi (689 mg, 4.30 mL, 10.8 mmol, 2.50M in hexane, 1.18 equiv) was added drop-wise over 10 min. After stirring for further 50 min, a solution of chloro(diphenyl)phosphine (2.09 g, 1.70 mL, 9.09 mmol, 1.00 equiv) in anhydrous THF (3.00 mL) was added drop-wise over 10 min, and the reaction mixture was stirred for 8 h at -78 °C. The reaction mixture was allowed to warm up to 25 °C over 8 h, and was then quenched by the addition of 1 M HCl (10.0 mL). The phases were separated, and the aqueous phase was extracted with diethyl ether (3 × 50.0 mL). Then, the combined organic layers were washed with sat. aq. NaHCO3-solution (50.0 mL), water (50.0 mL), and with brine (50.0 mL). The organic phase was dried over Na2SO4, filtered, and the solvent was evaporated under reduced pressure to afford the phosphine intermediate as a pale yellow oil.
+      The crude phosphine intermediate was dissolved in ethanol (150 mL), and cooled to 0 °C. Under vigorous stirring, a solution of hydrogen peroxide (3.95 g, 3.50 mL, 40.7 mmol, 35%, 4.48 equiv), and glacial acetic acid (1.91 g, 1.80 mL, 30.5 mmol, 3.36 equiv) in ethanol (15.0 mL) was added drop-wise over 15 min. The mixture was stirred for 2 h at 0 °C, and was then refluxed for 2 h. After evaporating the solvent under reduced pressure, the crude was dissolved in dichloromethane (50.0 mL), washed with sat. aq. NaHCO3-solution (2 × 25.0 mL), water (25.0 mL), and brine (25.0 mL). The organic layer was dried over Na2SO4, before evaporating the solvent under reduced pressure.
+      Additional information for publication and purification details: The crude product was purified via flash-chromatography (Interchim® puriFLASH XS520) on silica gel (PF-30SIHP-F0040) using cyclohexane/ethyl acetate 35:65 to 30:70 in 10 CV (1 CV = 52.7 mL; flowrate = 26.0 mL/min). The product 1-diphenylphosphoryl-2-fluorobenzene (2.33 g, 7.78 mmol, 86% yield) was obtained as a colorless solid."
+    evaluated_activity:
+      # ======================================================================================================
+      # The details of the reaction including its steps where manually added from the description, since
+      # the Chemotion repository currently does not serve this information in such detailed structured form.
+      # ======================================================================================================
+
+      # For the reaction ID itself we use the Chemotion repository URL
+      - id: https://www.chemotion-repository.net/pid/56408
+
+        # Here we define the chemical reactions of this synthesis.
+        has_reaction_step:
+          # ============================================================
+          # STEP 1: Lithiation & Phosphination (ChemicalReaction)
+          # ============================================================
+          - id: https://www.chemotion-repository.net/pid/56408#step-1
+            title:
+              - "Step 1: Lithiation and Phosphination"
+            rdf_type:
+              id: RXNO:0000001
+              title: "planned reaction step"
+            description:
+              - "The reaction has been conducted in dry glass ware under argon atmosphere. A solution of 1-bromo-2-fluorobenzene (1.76 g, 1.10 mL, 9.86 mmol, 1.08 equiv) in anhydrous THF (24.0 mL) was cooled to -78 °C, and n-BuLi (689 mg, 4.30 mL, 10.8 mmol, 2.50M in hexane, 1.18 equiv) was added drop-wise over 10 min. After stirring for further 50 min, a solution of chloro(diphenyl)phosphine (2.09 g, 1.70 mL, 9.09 mmol, 1.00 equiv) in anhydrous THF (3.00 mL) was added drop-wise over 10 min, and the reaction mixture was stirred for 8 h at -78 °C."
+            has_duration: PT9H10M
+            has_temperature:
+              - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+                title: "Temperature of reaction step 1"
+                unit: http://qudt.org/vocab/unit/DEG_C
+                value: -78
+            used_starting_material:
+              - id: https://www.chemotion-repository.net/pid/56408_StartMat-1
+                title: "StartMat-1: 1-bromo-2-fluorobenzene"
+              - id: https://www.chemotion-repository.net/pid/56408_StartMat-2
+                title: "StartMat-2: chloro(diphenyl)phosphine"
+            used_reactant:
+              - id: https://www.chemotion-repository.net/pid/56408_Reactant-1
+                title: "Reactant-1: n-BuLi"
+            used_solvent:
+              - id: https://www.chemotion-repository.net/pid/56408_Solvent-1
+                title: "Solvent-1: THF"
+              - id: https://www.chemotion-repository.net/pid/56408_Solvent-2
+                title: "Solvent-2: THF"
+            used_reactor:
+              - id: https://www.chemotion-repository.net/pid/56408_Reactor-1
+                title: "dry glass ware under argon atmosphere"
+            generated_product:
+              - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2
+                title: "step-1_ReactionMixture-2: 1-bromo-2-fluorobenzene & chloro(diphenyl)phosphine in THF + n-BuLi"
+
+            # Sub-steps of Step 1 that are not considered a ChemicalReaction but rather a mechanical step
+            has_part:
+              # step-1_part-1: dissolving of 1-bromo-2-fluorobenzene in anhydrous Tetrahydrofuran
+              - id: https://www.chemotion-repository.net/pid/56408#step-1_part-1
+                title:
+                  - "step-1_part-1: dissolving of 1-bromo-2-fluorobenzene in Tetrahydrofuran"
+                rdf_type:
+                  id: CHMO:0002773
+                  title: "dissolving"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408_Solvent-1
+                    title: "Solvent-1: THF"
+                  - id: https://www.chemotion-repository.net/pid/56408_StartMat-1
+                    title: "StartMat-1: 1-bromo-2-fluorobenzene"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_Solution-1
+                    title: "step-1_Solution-1 of 1-bromo-2-fluorobenzene in Tetrahydrofuran"
+                    rdf_type:
+                      id: CHEBI:75958
+                      title: solution
+                    has_part:
+                      - id: https://www.chemotion-repository.net/pid/56408_Solvent-1
+                        title: "Solvent-1: THF"
+                      - id: https://www.chemotion-repository.net/pid/56408_StartMat-1
+                        title: "StartMat-1: 1-bromo-2-fluorobenzene"
+
+              # step-1_part-2: drop-wise addition of n-BuLi
+              - id: https://www.chemotion-repository.net/pid/56408#step-1_part-2
+                title:
+                  - "step-1_part-2: drop-wise addition of n-BuLi (2.5M in hexane)"
+                rdf_type:
+                  id: OBI:0000274
+                  title: "adding a material entity into a target"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_part-1
+                    title:
+                      - "step-1_part-1: dissolving of 1-bromo-2-fluorobenzene in Tetrahydrofuran"
+                # temporary workaround until https://github.com/nfdi-de/dcat-ap-plus/issues/69 is fixed
+                has_qualitative_attribute:
+                  - value: "PT10M"
+                    type:
+                      id: https://schema.org/Duration
+                      title: "Duration"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_Solution-1
+                    title: "step-1_Solution-1: 1-bromo-2-fluorobenzene in Tetrahydrofuran"
+                  - id: https://www.chemotion-repository.net/pid/56408_Reactant-1
+                    title: "Reactant-1: n-BuLi"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-1
+                    title: "step-1_ReactionMixture-1: 1-bromo-2-fluorobenzene in Tetrahydrofuran and n-BuLi"
+                    rdf_type:
+                      id: CHEBI:60004
+                      title: "mixture"
+                    has_part:
+                      - id: https://www.chemotion-repository.net/pid/56408#step-1_Solution-1
+                        title: "step-1_Solution-1: 1-bromo-2-fluorobenzene in Tetrahydrofuran"
+                      - id: https://www.chemotion-repository.net/pid/56408_Reactant-1
+                        title: "Reactant-1: n-BuLi"
+
+              # step-1_part-3: stirring for 50 minutes
+              - id: https://www.chemotion-repository.net/pid/56408#step-1_part-3
+                title:
+                  - "step-1_part-3: stirring for 50 minutes"
+                rdf_type:
+                  id: CHMO:0002774
+                  title: stirring
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_part-2
+                    title:
+                      - "step-1_part-2: drop-wise addition of n-BuLi (2.5M in hexane)"
+                # temporary workaround until https://github.com/nfdi-de/dcat-ap-plus/issues/69 is fixed
+                has_qualitative_attribute:
+                  - value: "PT50M"
+                    title: "duration of step-1_part-4"
+                    type:
+                      id: https://schema.org/Duration
+                      title: "Duration"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-1
+                    title: "step-1_ReactionMixture-1: 1-bromo-2-fluorobenzene in Tetrahydrofuran and n-BuLi"
+
+              # step-1_part-4: dissolving of chloro(diphenyl)phosphine in anhydrous THF (parallel with or before step-1_part-3)
+              - id: https://www.chemotion-repository.net/pid/56408#step-1_part-4
+                title:
+                  - "step-1_part-4: dissolving of chloro(diphenyl)phosphine in anhydrous THF (3.00 mL)"
+                rdf_type:
+                  id: CHMO:0002773
+                  title: "dissolving"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408_StartMat-2
+                    title: "StartMat-2: chloro(diphenyl)phosphine"
+                  - id: https://www.chemotion-repository.net/pid/56408_Solvent-2
+                    title: "Solvent-2: THF"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_Solution-2
+                    title: "step-1_Solution-2: chloro(diphenyl)phosphine in anhydrous THF"
+                    rdf_type:
+                      id: CHEBI:75958
+                      title: solution
+                    has_part:
+                      - id: https://www.chemotion-repository.net/pid/56408_StartMat-2
+                        title: "StartMat-2: chloro(diphenyl)phosphine"
+                      - id: https://www.chemotion-repository.net/pid/56408_Solvent-2
+                        title: "Solvent-2: THF"
+
+              # step-1_part-5: drop-wise addition of step-1_Solution-2 to step-1_ReactionMixture-1
+              - id: https://www.chemotion-repository.net/pid/56408#step-1_part-5
+                title:
+                  - "step-1_part-5: drop-wise addition of chloro(diphenyl)phosphine in THF"
+                rdf_type:
+                  id: OBI:0000274
+                  title: "adding a material entity into a target"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_part-4
+                    title:
+                      - "step-1_part-4: dissolving of chloro(diphenyl)phosphine in anhydrous THF (3.00 mL)"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_part-3
+                    title:
+                      - "step-1_part-3: stirring for 50 minutes"
+                # temporary workaround until https://github.com/nfdi-de/dcat-ap-plus/issues/69 is fixed
+                has_qualitative_attribute:
+                  - value: "PT10M"
+                    title: "duration of step-1_part-5"
+                    type:
+                      id: https://schema.org/Duration
+                      title: "Duration"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_Solution-2
+                    title: "step-1_Solution-2: chloro(diphenyl)phosphine in anhydrous THF"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-1
+                    title: "step-1_ReactionMixture-1: 1-bromo-2-fluorobenzene in Tetrahydrofuran and n-BuLi"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2
+                    title: "step-1_ReactionMixture-2: 1-bromo-2-fluorobenzene & chloro(diphenyl)phosphine in THF + n-BuLi"
+                    rdf_type:
+                      id: CHEBI:60004
+                      title: "mixture"
+                    has_part:
+                      - id: https://www.chemotion-repository.net/pid/56408#step-1_Solution-2
+                        title: "step-1_Solution-2: chloro(diphenyl)phosphine in anhydrous THF"
+                      - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-1
+                        title: "step-1_ReactionMixture-1: 1-bromo-2-fluorobenzene in Tetrahydrofuran and n-BuLi"
+
+              # step-1_part-6: stirring step-1_ReactionMixture-1 for 8 hours"
+              - id: https://www.chemotion-repository.net/pid/56408#step-1_part-6
+                title:
+                  - "step-1_part-6: stirring for 8 hours"
+                rdf_type:
+                  id: CHMO:0002774
+                  title: stirring
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_part-5
+                    title:
+                      - "step-1_part-5: drop-wise addition of chloro(diphenyl)phosphine in THF"
+                # temporary workaround until https://github.com/nfdi-de/dcat-ap-plus/issues/69 is fixed
+                has_qualitative_attribute:
+                  - value: "PT8H"
+                    title: "duration of step-1_part-6"
+                    type:
+                      id: https://schema.org/Duration
+                      title: "Duration"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2
+                    title: "step-1_ReactionMixture-2: 1-bromo-2-fluorobenzene & chloro(diphenyl)phosphine in THF + n-BuLi"
+
+          # ============================================================
+          # STEP 3: Oxidation (ChemicalReaction)
+          #         Links to Step 2 via had_input_activity.
+          # ============================================================
+          - id: https://www.chemotion-repository.net/pid/56408#step-3
+            title:
+             - "Step 3: Oxidation to Phosphine Oxide"
+            rdf_type:
+              id: RXNO:0000001
+              title: "planned reaction step"
+            description:
+              - "The crude phosphine intermediate was dissolved in ethanol (150 mL), and cooled to 0 °C. Under vigorous stirring, a solution of hydrogen peroxide (3.95 g, 3.50 mL, 40.7 mmol, 35%, 4.48 equiv), and glacial acetic acid (1.91 g, 1.80 mL, 30.5 mmol, 3.36 equiv) in ethanol (15.0 mL) was added drop-wise over 15 min. The mixture was stirred for 2 h at 0 °C, and was then refluxed for 2 h."
+
+            # Chronological Link: Starts after Step 2 (Work-up) finishes
+            had_input_activity:
+              - id: https://www.chemotion-repository.net/pid/56408#step-2
+                title:
+                  - "Step 2: Warm-up, Quench, and Extraction"
+
+            # Duration: 15m (add) + 2h (stir 0°C) + 2h (reflux) = 4h 15m
+            has_duration: PT4H15M
+
+            used_starting_material:
+              - id: https://www.chemotion-repository.net/pid/56408#step-2_Output-1
+                title: "Crude phosphine intermediate (pale yellow oil)"
+            used_reactant:
+              - id: https://www.chemotion-repository.net/pid/56408_Reactant-2
+                title: "Reactant-2: Hydrogen Peroxide"
+              - id: https://www.chemotion-repository.net/pid/56408_Reactant-3
+                title: "Reactant-3: glacial acetic acid"
+            used_solvent:
+              - id: https://www.chemotion-repository.net/pid/56408_Solvent-3
+                title: "Solvent-3: Ethanol"
+              - id: https://www.chemotion-repository.net/pid/56408_Solvent-4
+                title: "Solvent-4: Ethanol"
+            used_reactor:
+              - id: https://www.chemotion-repository.net/pid/56408_Reactor-1
+                title: "dry glass ware under argon atmosphere"
+            generated_product:
+              - id: https://www.chemotion-repository.net/pid/56408#step-3_Output-1
+                title: "step-3_Output-1: containing crude 1-diphenylphosphoryl-2-fluorobenzene"
+
+            # Sub-steps of Step 3
+            has_part:
+              # step-3_part-1: Dissolving crude phosphine in Ethanol
+              - id: https://www.chemotion-repository.net/pid/56408#step-3_part-1
+                title:
+                 - "step-3_part-1: dissolving of crude phosphine in Ethanol"
+                rdf_type:
+                  id: CHMO:0002773
+                  title: "dissolving"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_part-6
+                    title:
+                      - "Filtering"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_Output-1
+                    title: "step-2_Output-1: Crude phosphine intermediate (pale yellow oil)"
+                  - id: https://www.chemotion-repository.net/pid/56408_Solvent-3
+                    title: "Solvent-3: Ethanol"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_Solution-1
+                    title: "step-3_Solution-1: crude phosphine in Ethanol"
+                    rdf_type:
+                      id: CHEBI:75958
+                      title: solution
+                    has_part:
+                      - id: https://www.chemotion-repository.net/pid/56408#step-2_Output-1
+                        title: "step-2_Output-1: Crude phosphine intermediate (pale yellow oil)"
+                      - id: https://www.chemotion-repository.net/pid/56408_Solvent-3
+                        title: "Solvent-3: Ethanol"
+
+              # step-3_part-2: Preparation of Oxidant Solution (Parallel/Prep)
+              # Can happen in parallel to part-1, but logically listed here
+              - id: https://www.chemotion-repository.net/pid/56408#step-3_part-2
+                title:
+                  - "step-3_part-2: preparation of H2O2/Acetic Acid solution in Ethanol"
+                rdf_type:
+                  id: CHMO:0002773
+                  title: "dissolving"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408_Reactant-2
+                    title: "Reactant-2: Hydrogen Peroxide"
+                  - id: https://www.chemotion-repository.net/pid/56408_Reactant-3
+                    title: "Reactant-3: glacial acetic acid"
+                  - id: https://www.chemotion-repository.net/pid/56408_Solvent-4
+                    title: "Solvent-4: Ethanol"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_Solution-2
+                    title: "step-3_Solution-2: H2O2 and Acetic Acid in Ethanol"
+                    rdf_type:
+                      id: CHEBI:75958
+                      title: solution
+                    has_part:
+                      - id: https://www.chemotion-repository.net/pid/56408_Reactant-2
+                        title: "Reactant-2: Hydrogen Peroxide"
+                      - id: https://www.chemotion-repository.net/pid/56408_Reactant-3
+                        title: "Reactant-3: glacial acetic acid"
+                      - id: https://www.chemotion-repository.net/pid/56408_Solvent-4
+                        title: "Solvent-4: Ethanol"
+
+              # step-3_part-3: Drop-wise addition of Oxidant
+              - id: https://www.chemotion-repository.net/pid/56408#step-3_part-3
+                title:
+                 - "step-3_part-3: drop-wise addition of H2O2/Acetic Acid solution"
+                rdf_type:
+                  id: OBI:0000274
+                  title: "adding a material entity into a target"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_part-1
+                    title:
+                      - "step-3_part-1: dissolving of crude phosphine in Ethanol"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_part-2
+                    title:
+                      - "step-3_part-2: preparation of H2O2/Acetic Acid solution in Ethanol"
+                # temporary workaround until https://github.com/nfdi-de/dcat-ap-plus/issues/69 is fixed
+                has_qualitative_attribute:
+                  - value: "PT15M"
+                    title: "duration of step-3_part-3"
+                    type:
+                      id: https://schema.org/Duration
+                      title: "Duration"
+                has_quantitative_attribute:
+                   - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+                     unit: http://qudt.org/vocab/unit/DEG_C
+                     value: 0
+                     title: "temperature of step-3_part-3"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_Solution-1
+                    title: "step-3_Solution-1: crude phosphine in Ethanol"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_Solution-2
+                    title: "step-3_Solution-2: H2O2 and Acetic Acid in Ethanol"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_ReactionMixture-1
+                    title: "step-3_ReactionMixture-1 mixture at 0°C"
+                    rdf_type:
+                      id: CHEBI:60004
+                      title: "mixture"
+
+              # step-3_part-4: Stirring at 0°C
+              - id: https://www.chemotion-repository.net/pid/56408#step-3_part-4
+                title:
+                  - "step-3_part-4: stirring for 2 hours at 0°C"
+                rdf_type:
+                  id: CHMO:0002774
+                  title: stirring
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_part-3
+                    title:
+                      - "step-3_part-3: drop-wise addition of H2O2/Acetic Acid solution"
+                # temporary workaround until https://github.com/nfdi-de/dcat-ap-plus/issues/69 is fixed
+                has_qualitative_attribute:
+                  - value: "PT2H"
+                    title: "duration of step-3_part-4"
+                    type:
+                      id: https://schema.org/Duration
+                      title: "Duration"
+                has_quantitative_attribute:
+                   - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+                     unit: http://qudt.org/vocab/unit/DEG_C
+                     value: 0
+                     title: "temperature of stirring"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_ReactionMixture-1
+                    title: "step-3_ReactionMixture-1 mixture at 0°C"
+
+              # step-3_part-5: Reflux for 2 hours
+              - id: https://www.chemotion-repository.net/pid/56408#step-3_part-5
+                title:
+                  - "step-3_part-5: reflux for 2 hours"
+                rdf_type:
+                  id: ENVO:01000623
+                  title: boiling #Reflux implies boiling and stirring
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_part-4
+                    title:
+                     - "step-3_part-4: stirring for 2 hours at 0°C"
+                # temporary workaround until https://github.com/nfdi-de/dcat-ap-plus/issues/69 is fixed
+                has_qualitative_attribute:
+                  - value: "PT2H"
+                    title: "duration of reflux"
+                    type:
+                      id: https://schema.org/Duration
+                      title: "Duration"
+                has_quantitative_attribute:
+                   - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+                     title: "Reflux Temperature (Ethanol)"
+                     unit: http://qudt.org/vocab/unit/DEG_C
+                     value: 80
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_ReactionMixture-1
+                    title: "step-3_ReactionMixture-1: mixture at 0°C"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_Output-1
+                    title: "step-3_Output-1: containing crude 1-diphenylphosphoryl-2-fluorobenzene"
+                    rdf_type:
+                      id: CHEBI:60004
+                      title: "mixture"
+
+        # Here we list all activities of this synthesis and define those, which are not considered chemical
+        # reactions but rather material processing steps.
+        has_part:
+          # ============================================================
+          # STEP 1: Lithiation & Phosphination (ChemicalReaction)
+          #         Only referenced here, defined via has_reaction_step
+          # ============================================================
+          - id: https://www.chemotion-repository.net/pid/56408#step-1
+            title:
+              - "Step 1: Lithiation and Phosphination"
+
+          # ============================================================
+          # STEP 2: Work-up & Isolation (Activity)
+          #         NOT in has_reaction_step, but IS in has_part.
+          #         Links to Step 1 via had_input_activity.
+          # ============================================================
+          - id: https://www.chemotion-repository.net/pid/56408#step-2
+            title:
+              - "Step 1: Warm-up, Quench, and Extraction"
+            rdf_type:
+              id: OBI:0000094
+              title: "material processing"
+            description:
+              - "The reaction mixture was allowed to warm up to 25 °C over 8 h, and was then quenched by the addition of 1 M HCl (10.0 mL). The phases were separated, and the aqueous phase was extracted with diethyl ether (3 × 50.0 mL). Then, the combined organic layers were washed with sat. aq. NaHCO3-solution (50.0 mL), water (50.0 mL), and with brine (50.0 mL). The organic phase was dried over Na2SO4, filtered, and the solvent was evaporated under reduced pressure to afford the phosphine intermediate as a pale yellow oil."
+
+            # Chronological Link: Step 2 starts after Step 1 finishes
+            had_input_activity:
+              - id: https://www.chemotion-repository.net/pid/56408#step-1
+                title:
+                  - "Step 1: Lithiation and Phosphination"
+
+            # The output of Step 1 as input
+            had_input_entity:
+              - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2
+                title: "step-1_ReactionMixture-2: 1-bromo-2-fluorobenzene & chloro(diphenyl)phosphine in THF + n-BuLi"
+
+            # The final output of this block becomes the input for Step 3
+            had_output_entity:
+              - id: https://www.chemotion-repository.net/pid/56408#step-2_Output-1
+                title: "step-2_Output-1: Crude phosphine intermediate (pale yellow oil)"
+                rdf_type:
+                  id: CHEBI:60004
+                  title: "mixture"
+
+            # ============================================================
+            # Sub-steps of Step 2
+            # ============================================================
+            has_part:
+              # step-2_part-1: Warming
+              - id: https://www.chemotion-repository.net/pid/56408#step-2_part-1
+                title:
+                  - "step-2_part-1: Warming to 25 °C over 8 h"
+                rdf_type:
+                  id: ENVO:01001739
+                  title: "warming of a fluid"
+                description:
+                  - "The reaction mixture was allowed to warm up to 25 °C over 8 h"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_part-6
+                    title:
+                      - "step-1_part-6: stirring for 8 hours"
+                has_quantitative_attribute:
+                  - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+                    title: "start temperature "
+                    unit: http://qudt.org/vocab/unit/DEG_C
+                    value: -78
+                  - has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+                    title: "end temperature"
+                    unit: http://qudt.org/vocab/unit/DEG_C
+                    value: 25
+                # temporary workaround until https://github.com/nfdi-de/dcat-ap-plus/issues/69 is fixed
+                has_qualitative_attribute:
+                  - value: "PT8H"
+                    title: "duration of step-2_part-1"
+                    type:
+                      id: https://schema.org/Duration
+                      title: "Duration"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2
+                    title: "step-1_ReactionMixture-2: 1-bromo-2-fluorobenzene & chloro(diphenyl)phosphine in THF + n-BuLi"
+
+              # step-2_part-2: Quench
+              - id: https://www.chemotion-repository.net/pid/56408#step-2_part-2
+                title:
+                  - "step-2_part-2: Quench with 1 M HCl"
+                rdf_type:
+                  id: OBI:0000274
+                  title: "adding a material entity into a target"
+                description:
+                  - "The reaction mixture was quenched by the addition of 1 M HCl (10.0 mL)"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_part-1
+                    title:
+                      - "step-2_part-1: Warming to 25 °C over 8 h"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2
+                    title: "step-1_ReactionMixture-2: 1-bromo-2-fluorobenzene & chloro(diphenyl)phosphine in THF + n-BuLi"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_Reagent-1
+                    title: "step-2_Reagent-1: HCl"
+                    has_quantitative_attribute:
+                      - title: "Volume [mL]"
+                        has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+                        unit: https://qudt.org/vocab/unit/MilliL
+                        value: 10.0
+                      - title: "Concentration [mol/L]"
+                        has_quantity_type: http://qudt.org/vocab/quantitykind/Concentration
+                        unit: https://qudt.org/vocab/unit/MOL-PER-L
+                        value: 1
+                        rdf_type:
+                          id: CHMO:0002820
+                          title: "concentration"
+                    has_part:
+                      - id: https://pubchem.ncbi.nlm.nih.gov/compound/313
+                        rdf_type:
+                          id: CHEBI:17883
+                          title: "hydrogen chloride"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-1
+                    title: "step-2_ReactionMixture-1"
+
+              # step-2_part-2: Extraction
+              - id: https://www.chemotion-repository.net/pid/56408#step-2_part-3
+                title:
+                 - "step-2_part-3: Extraction with Diethyl Ether"
+                rdf_type:
+                  id: CHMO:0001577
+                  title: "extraction"
+                description:
+                  - "The phases were separated, and the aqueous phase was extracted with diethyl ether (3 × 50.0 mL)."
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_part-2
+                    title:
+                      - "step-2_part-2: Quench with 1 M HCl"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-1
+                    title: "step-2_ReactionMixture-1"
+                  - id: https://www.chemotion-repository.net/pid/56408_Solvent-5
+                    title: "Solvent-5: Diethyl Ether"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-2
+                    title: "step-2_ReactionMixture-2"
+
+             # step-2_part-4: Washing
+              - id: https://www.chemotion-repository.net/pid/56408#step-2_part-4
+                title:
+                  - "step-2_part-4: Washing (NaHCO3, Water, Brine)"
+                rdf_type:
+                  id: OBI:0302888
+                  title: "washing"
+                description:
+                  - "The combined organic layers were washed with sat. aq. NaHCO3-solution (50.0 mL), water (50.0 mL), and with brine (50.0 mL)."
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_part-3
+                    title:
+                      - "step-2_part-3: Extraction with Diethyl Ether"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-2
+                    title: "step-2_ReactionMixture-2"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_Reagent-2
+                    title: "step-2_Reagent-2: NaHCO3"
+                    rdf_type:
+                      id: CHEBI:59999
+                      title: "chemical substance"
+                    has_quantitative_attribute:
+                      - title: "Volume [mL]"
+                        has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+                        unit: https://qudt.org/vocab/unit/MilliL
+                        value: 50.0
+                    has_part:
+                      - id: https://pubchem.ncbi.nlm.nih.gov/compound/516892
+                        title: "sodium hydrogen carbonate"
+                        rdf_type:
+                          id: CHEBI:32139
+                          title: "sodium hydrogencarbonate"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_Reagent-3
+                    title: "step-2_Reagent-3: water"
+                    rdf_type:
+                      id: ENVO:00002006
+                      title: "liquid water"
+                    has_quantitative_attribute:
+                      - title: "Volume [mL]"
+                        has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+                        unit: https://qudt.org/vocab/unit/MilliL
+                        value: 50.0
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_Reagent-4
+                    title: "step-2_Reagent-4: brine"
+                    rdf_type:
+                      id: ENVO:00003044
+                      title: "brine"
+                    has_quantitative_attribute:
+                      - title: "Volume [mL]"
+                        has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+                        unit: https://qudt.org/vocab/unit/MilliL
+                        value: 50.0
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-3
+                    title: "step-2_ReactionMixture-3"
+
+              # step-2_part-5: Drying
+              - id: https://www.chemotion-repository.net/pid/56408#step-2_part-5
+                title:
+                 - "step-2_part-5: Drying over Na2SO4"
+                rdf_type:
+                  id: CHMO:0001549
+                  title: "sample drying"
+                description:
+                  - "The step-2_ReactionMixture-3 organic phase was dried over Na2SO4, filtered"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_part-4
+                    title:
+                      - "step-2_part-4: Washing (NaHCO3, Water, Brine)"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-3
+                    title: "step-2_ReactionMixture-3"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_Reagent-5
+                    title: "step-2_Reagent-5: Na2SO4"
+                    rdf_type:
+                      id: CHEBI:59999
+                      title: "chemical substance"
+                    has_part:
+                      - id: https://pubchem.ncbi.nlm.nih.gov/compound/24436
+                        rdf_type:
+                          id: CHEBI:32149
+                          title: "sodium sulfate"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-4
+                    title: "step-2_ReactionMixture-4"
+
+              # step-2_part-6: Filtering
+              - id: https://www.chemotion-repository.net/pid/56408#step-2_part-6
+                title:
+                  - "step-2_part-6: Filtering"
+                rdf_type:
+                  id: CHMO:0001640
+                  title: "filtration"
+                description:
+                  - "The step-2_ReactionMixture-4 organic phase was filtered."
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_part-5
+                    title:
+                      - "step-2_part-5: Drying over Na2SO4"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-4
+                    title: "step-2_ReactionMixture-4"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-5
+                    title: "step-2_ReactionMixture-5"
+
+              # step-2_part-7: Evaporation
+              - id: https://www.chemotion-repository.net/pid/56408#step-2_part-7
+                title:
+                 - "step-2_part-7: Evaporation to afford crude oil"
+                rdf_type:
+                  id: CHMO:0002208
+                  title: "solvent evaporation"
+                description:
+                  - "the solvent was evaporated under reduced pressure"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_part-6
+                    title:
+                      - "step-2_part-6: Filtering"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-5
+                    title: "step-2_ReactionMixture-5"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-2_Output-1
+                    title: "step-2_Output-1: Crude phosphine intermediate (pale yellow oil)"
+
+          # ============================================================
+          # STEP 3: Oxidation (ChemicalReaction)
+          #         Only referenced here, defined via has_reaction_step
+          # ============================================================
+          - id: https://www.chemotion-repository.net/pid/56408#step-3
+            title:
+              - "Step 3: Oxidation to Phosphine Oxide"
+
+          # ============================================================
+          # STEP 4: Work-up of Oxidation Mixture (Activity)
+          #         NOT in has_reaction_step, but IS in has_part.
+          #         Links to Step 3 via had_input_activity..
+          # ============================================================
+          - id: https://www.chemotion-repository.net/pid/56408#step-4
+            title:
+              - "STEP 4: Work-up of Oxidation Mixture"
+            rdf_type:
+              id: OBI:0000094
+              title: "material processing"
+            description:
+              - "Evaporation of solvent, dissolution in DCM, washing (NaHCO3, water, brine), drying, and final evaporation."
+
+            # Chronological Link: Starts after Step 3 (Reflux) finishes
+            had_input_activity:
+              - id: https://www.chemotion-repository.net/pid/56408#step-3
+                title:
+                  - "Step 3: Oxidation to Phosphine Oxide"
+
+            # The output from Step 3 as input
+            had_input_entity:
+              - id: https://www.chemotion-repository.net/pid/56408#step-3_Output-1
+                title: "step-3_Output-1: containing crude 1-diphenylphosphoryl-2-fluorobenzene"
+
+            # The final output becomes the input for Step 5 (Purification)
+            had_output_entity:
+              - id: https://www.chemotion-repository.net/pid/56408#step-4_Output-1
+                title: "step-4_Output-1: Crude 1-diphenylphosphoryl-2-fluorobenzene"
+                rdf_type:
+                  id: CHEBI:60004
+                  title: "mixture"
+
+            # Sub-steps of Step 4
+            has_part:
+              # step-4_part-1: Evaporation of Ethanol
+              - id: https://www.chemotion-repository.net/pid/56408#step-4_part-1
+                title:
+                  - "step-4_part-1: Evaporation of solvent under reduced pressure"
+                rdf_type:
+                  id: CHMO:0002208
+                  title: "solvent evaporation"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_part-5
+                    title:
+                      - "step-3_part-5: reflux for 2 hours"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-3_Output-1
+                    title: "step-3_Output-1: containing crude 1-diphenylphosphoryl-2-fluorobenzene"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-1
+                    title: "step-4_ReactionMixture-1: crude residue after evaporation"
+                    rdf_type:
+                      id: CHEBI:60004
+                      title: "mixture"
+
+              # step-4_part-2: Dissolution in DCM
+              - id: https://www.chemotion-repository.net/pid/56408#step-4_part-2
+                title:
+                  - "step-4_part-2: Dissolution in Dichloromethane"
+                rdf_type:
+                  id: CHMO:0002773
+                  title: "dissolving"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_part-1
+                    title:
+                      - "step-4_part-1: Evaporation of solvent under reduced pressure"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-1
+                    title: "step-4_ReactionMixture-1: crude residue after evaporation"
+                  - id: https://www.chemotion-repository.net/pid/56408_Solvent-6
+                    title: "Solvent-6: Dichloromethane"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_Solution-1
+                    title: "Solution in Dichloromethane"
+                    rdf_type:
+                      id: CHEBI:75958
+                      title: solution
+                    has_part:
+                      - id: https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-1
+                        title: "step-4_ReactionMixture-1: crude residue after evaporation"
+                      - id: https://www.chemotion-repository.net/pid/56408_Solvent-6
+                        title: "Solvent-6: Dichloromethane"
+
+              # step-4_part-3: Washing
+              - id: https://www.chemotion-repository.net/pid/56408#step-4_part-3
+                title:
+                  - "step-4_part-3: Washing (NaHCO3, Water, Brine)"
+                rdf_type:
+                  id: OBI:0302888
+                  title: "washing"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_part-2
+                    title:
+                      - "step-4_part-2: Dissolution in Dichloromethane"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_Solution-1
+                    title: "Solution in Dichloromethane"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_Reagent-1
+                    title: "Sat. aq. NaHCO3 solution (2 x 25.0 mL)"
+                    has_quantitative_attribute:
+                      - value: 50.0
+                        unit: https://qudt.org/vocab/unit/MilliL
+                        has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+                    has_part:
+                      - id: https://pubchem.ncbi.nlm.nih.gov/compound/516892
+                        title: "sodium hydrogen carbonate"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_Reagent-2
+                    title: "Water (25.0 mL)"
+                    has_quantitative_attribute:
+                      - value: 25.0
+                        unit: https://qudt.org/vocab/unit/MilliL
+                        has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+                    rdf_type:
+                      id: ENVO:00002006
+                      title: "liquid water"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_Reagent-3
+                    title: "Brine (25.0 mL)"
+                    rdf_type:
+                      id: ENVO:00003044
+                      title: "brine"
+                    has_quantitative_attribute:
+                      - value: 25.0
+                        unit: https://qudt.org/vocab/unit/MilliL
+                        has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-2
+                    title: "Washed organic layer"
+                    rdf_type:
+                      id: CHEBI:59999
+                      title: "chemical substance"
+
+
+              # step-4_part-4: Drying
+              - id: https://www.chemotion-repository.net/pid/56408#step-4_part-4
+                title:
+                  - "step-4_part-4: Drying over Na2SO4"
+                rdf_type:
+                  id: CHMO:0001549
+                  title: "sample drying"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_part-3
+                    title:
+                      - "step-4_part-3: Washing (NaHCO3, Water, Brine)"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-2
+                    title: "step-4_ReactionMixture-2: Washed organic layer"
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_Reagent-4
+                    title: "step-4_Reagent-4: Sodium sulfate (Na2SO4)"
+                    rdf_type:
+                      id: CHEBI:59999
+                      title: "chemical substance"
+                    has_part:
+                      - id: https://pubchem.ncbi.nlm.nih.gov/compound/24436
+                        title: "sodium sulfate"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-3
+                    title: "step-4_ReactionMixture-3: dried organic solution"
+                    rdf_type:
+                      id: CHEBI:59999
+                      title: "chemical substance"
+
+
+              # step-4_part-5: Final Evaporation
+              - id: https://www.chemotion-repository.net/pid/56408#step-4_part-5
+                title:
+                  - "step-4_part-5: Evaporation to afford crude product"
+                rdf_type:
+                  id: CHMO:0002208
+                  title: "solvent evaporation"
+                had_input_activity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_part-4
+                    title:
+                      - "step-4_part-4: Drying over Na2SO4"
+                had_input_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-3
+                    title: "step-4_ReactionMixture-3: dried organic solution"
+                had_output_entity:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-4_Output-1
+                    title: "step-4_Output-1: Crude 1-diphenylphosphoryl-2-fluorobenzene"
+                    rdf_type:
+                      id: CHEBI:59999
+                      title: "chemical substance"
+
+
+          # ============================================================
+          # STEP 5: Purification via Flash Chromatography (Activity)
+          # ============================================================
+          - id: https://www.chemotion-repository.net/pid/56408#step-5
+            title:
+              - "step-5: Purification via Flash Chromatography"
+            rdf_type:
+              id: CHMO:0002582
+              title: "flash chromatography"
+            description:
+              - "The crude product was purified via flash-chromatography (Interchim® puriFLASH XS520) on silica gel (PF-30SIHP-F0040) using cyclohexane/ethyl acetate 35:65 to 30:70 in 10 CV (1 CV = 52.7 mL; flowrate = 26.0 mL/min). The product 1-diphenylphosphoryl-2-fluorobenzene (2.33 g, 7.78 mmol, 86% yield) was obtained as a colorless solid."
+
+            # Link to previous step
+            had_input_activity:
+              - id: https://www.chemotion-repository.net/pid/56408#step-4
+                title:
+                  - "STEP 4: Work-up of Oxidation Mixture"
+            # Inputs
+            had_input_entity:
+              # Output of step 4 as input
+              - id: https://www.chemotion-repository.net/pid/56408#step-4_Output-1
+                title: "step-4_Output-1: Crude 1-diphenylphosphoryl-2-fluorobenzene"
+              # Solvents are inputs to the process, not parts of the column agent
+              - id: https://www.chemotion-repository.net/pid/56408#step-5_Solvent-1
+                title: "step-5_Solvent-1: Cyclohexane"
+                has_part:
+                  - id: https://pubchem.ncbi.nlm.nih.gov/compound/8078
+                    rdf_type:
+                      id: CHEBI:29005
+                      title: "cyclohexane"
+              - id: https://www.chemotion-repository.net/pid/56408#step-5_Solvent-2
+                title: "step-5_Solvent-2: Ethyl acetate"
+                has_part:
+                  - id: https://pubchem.ncbi.nlm.nih.gov/compound/8857
+                    rdf_type:
+                      id: CHEBI:27750
+                      title: "ethyl acetate"
+            # Agents
+            carried_out_by:
+              - id: https://www.chemotion-repository.net/pid/56408#step-5_device-1
+                title: "Interchim puriFLASH XS520"
+                description: "Flash chromatography system."
+                rdf_type:
+                  id: OBI:0000485
+                  title: chromatography instrument
+                has_part:
+                  - id: https://www.chemotion-repository.net/pid/56408#step-5_device-2
+                    title: "Interchim puriFLASH Column (PF-30SIHP-F0040)"
+                    description: "Silica gel column used for purification."
+                    rdf_type:
+                      id: OBI:0000038
+                      title: "chromatography column"
+                    part_of:
+                      - id: https://www.chemotion-repository.net/pid/56408#step-5_device-1
+                        title: "Interchim puriFLASH XS520"
+                    has_quantitative_attribute:
+                      - title: "Column Volume (1 CV)"
+                        value: 52.7
+                        unit: https://qudt.org/vocab/unit/MilliL
+                        has_quantity_type: http://qudt.org/vocab/quantitykind/Volume
+                    has_part:
+                      - id: https://www.chemotion-repository.net/pid/56408#step-5_device-3
+                        title: "step-5_StationaryPhase: Silica gel (PF-30SIHP-F0040)"
+                        rdf_type:
+                          id: CHMO:0002782
+                          title: "silica gel"
+                        part_of:
+                          - id: https://www.chemotion-repository.net/pid/56408#step-5_device-2
+                            title: "Interchim puriFLASH Column (PF-30SIHP-F0040)"
+            # Activity parameter
+            has_quantitative_attribute:
+              - value: 26.0
+                unit: https://qudt.org/vocab/unit/MilliL-PER-MIN
+                has_quantity_type: http://qudt.org/vocab/quantitykind/VolumeFlowRate
+                title: "Flow Rate"
+              # Gradient Profile
+              - title: "Initial Ethyl Acetate Concentration"
+                value: 65.0
+                unit: http://qudt.org/vocab/unit/PERCENT
+                has_quantity_type: http://qudt.org/vocab/quantitykind/VolumeFraction
+              - title: "Final Ethyl Acetate Concentration"
+                value: 70.0
+                unit: http://qudt.org/vocab/unit/PERCENT
+                has_quantity_type: http://qudt.org/vocab/quantitykind/VolumeFraction
+              - title: "Initial Cyclohexane Concentration"
+                value: 35.0
+                unit: http://qudt.org/vocab/unit/PERCENT
+                has_quantity_type: http://qudt.org/vocab/quantitykind/VolumeFraction
+              - title: "Final Cyclohexane Concentration"
+                value: 30.0
+                unit: http://qudt.org/vocab/unit/PERCENT
+                has_quantity_type: http://qudt.org/vocab/quantitykind/VolumeFraction
+              - title: "Gradient Duration in Column Volumes"
+                value: 10.0
+                unit: http://qudt.org/vocab/unit/UNITLESS
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
+            # Output of Step 5 is the final product
+            had_output_entity:
+              - id: https://www.chemotion-repository.net/pid/56408#step-5_Product
+                title: "step-5_Product: 1-diphenylphosphoryl-2-fluorobenzene"
+                rdf_type:
+                  id: CHEBI:59999
+                  title: "chemical substance"
+

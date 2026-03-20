@@ -80,45 +80,53 @@ To regenerate the DCAT-AP LinkML representation as well as the PLUS extension ru
 Validate and test all: `just test`
 
 Validate a single example dataset using LinkML's validator framework:
-  * Validate domain agnostic DCAT-AP extension conform example
+  * Validate domain agnostic DCAT-AP extension conform dataset example
     ````commandline
     uv run linkml validate tests/data/valid/AnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C AnalysisDataset
     ````
-  * Validate a NMR spectroscopy-specific DCAT-AP extension conform example
+  * Validate a NMR spectroscopy-specific dataset example conforming to ChemDCAT-AP's `SubstanceCharacterizationDataset`
     ````commandline
-    uv run linkml validate tests/data/valid/NMRAnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C NMRAnalysisDataset
+    uv run linkml validate tests/data/valid/SubstanceCharacterizationDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C SubstanceCharacterizationDataset
     ````
-  * Validate a ChemicalReaction specific DCAT-AP extension conform example
+  * Validate a reaction dataset example conforming to ChemDCAT-AP's `ReactionRecordingDataset`
+    ````commandline
+    uv run linkml validate tests/data/valid/ReactionRecordingDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C ReactionRecordingDataset
+    ````
+  * Validate a chemical reaction example conforming to ChemDCAT-AP's `ChemicalReaction`
     ````commandline
     uv run linkml validate tests/data/valid/ChemicalReaction-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C ChemicalReaction
     ````
-  * Validate a SubstanceSample specific DCAT-AP extension conform example
+  * Validate a chemical substance sample example conforming to ChemDCAT-AP's `SubstanceSample`
     ````commandline
     uv run linkml validate tests/data/valid/SubstanceSample-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C SubstanceSample
     ````
-  * Validate a MaterialSample specific DCAT-AP extension conform example
+  * Validate a material sample example conforming to ChemDCAT-AP's `MaterialSample`
     ````commandline
     uv run linkml validate tests/data/valid/MaterialSample-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C MaterialSample
     ````
 
-To convert the test datasets of each DCAT-AP profile into a TTL graph run:
-  * Convert domain agnostic DCAT-AP extension conform example of an analysis
+To convert the test data into a TTL graph run:
+  * Convert the domain agnostic DCAT-AP+ based example of a AnalysisDataset
     ````commandline
     uv run linkml-convert -t ttl tests/data/valid/AnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C AnalysisDataset
     ````
-  * Convert a NMR spectroscopy-specific DCAT-AP extension conform example
+  * Convert a NMR spectroscopy-specific dataset example conforming to ChemDCAT-AP's `SubstanceCharacterizationDataset`
     ````commandline
-    uv run linkml-convert -t ttl tests/data/valid/NMRAnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C NMRAnalysisDataset
+    uv run linkml-convert -t ttl tests/data/valid/SubstanceCharacterizationDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C SubstanceCharacterizationDataset
     ````
-  * Convert domain agnostic DCAT-AP extension conform example of a MaterialSample
+  * Convert a reaction dataset example conforming to ChemDCAT-AP's `ReactionRecordingDataset`
+    ````commandline
+    uv run linkml-convert -t ttl tests/data/valid/ReactionRecordingDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ReactionRecordingDataset
+    ````
+  * Convert a material sample example conforming to ChemDCAT-AP's `MaterialSample`
     ````commandline
     uv run linkml-convert -t ttl tests/data/valid/MaterialSample-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C MaterialSample
     ````
-  * Convert domain agnostic DCAT-AP extension conform example of a SubstanceSample
+  * Convert a chemical substance sample example conforming to ChemDCAT-AP's `SubstanceSample`
     ````commandline
     uv run linkml-convert -t ttl tests/data/valid/SubstanceSample-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C SubstanceSample
     ````
-  * Convert domain agnostic DCAT-AP extension conform example of a ChemicalReaction
+  * Convert a chemical reaction example conforming to ChemDCAT-AP's `ChemicalReaction`
     ````commandline
     uv run linkml-convert -t ttl tests/data/valid/ChemicalReaction-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ChemicalReaction
     ````

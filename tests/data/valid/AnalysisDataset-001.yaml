@@ -1,4 +1,6 @@
-# Example AnalysisDataset object based on a real dataset from Chemotion without many domain agnostic metadata like publisher and creator
+# Example AnalysisDataset object based on a real dataset from Chemotion
+# without many domain agnostic metadata like publisher and creator
+# conforms to DCAT-AP+ schema
 ---
 id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000595.1
 other_identifier:
