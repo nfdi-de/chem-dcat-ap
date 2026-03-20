@@ -631,7 +631,7 @@ rdf_type:
 title: Philip's wood sample
 
 ```
-## ReactionRecordingDataset-001
+## ReactionMonitoringDataset-001
 ### Input
 ```yaml
 description:
