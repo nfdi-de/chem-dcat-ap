@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post32.dev0+19cf87bf
+version: 0.1.0rc2.post33.dev0+bfcfe667
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -2682,29 +2682,29 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  ReactionRecordingDataset_was_generated_by:
-    name: ReactionRecordingDataset_was_generated_by
+  ReactionMonitoringDataset_was_generated_by:
+    name: ReactionMonitoringDataset_was_generated_by
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/was_generated_by
-    description: The slot to specify the ReactionRecording activity that produced
+    description: The slot to specify the ReactionMonitoring activity that produced
       this dataset.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
     mappings:
     - prov:wasGeneratedBy
     is_a: was_generated_by
-    domain: ReactionRecordingDataset
+    domain: ReactionMonitoringDataset
     slot_uri: prov:wasGeneratedBy
     alias: was_generated_by
-    owner: ReactionRecordingDataset
+    owner: ReactionMonitoringDataset
     domain_of:
-    - ReactionRecordingDataset
+    - ReactionMonitoringDataset
     is_usage_slot: true
     usage_slot_name: was_generated_by
-    range: ReactionRecording
+    range: ReactionMonitoring
     multivalued: true
     inlined: true
     inlined_as_list: true
-  ReactionRecordingDataset_is_about_activity:
-    name: ReactionRecordingDataset_is_about_activity
+  ReactionMonitoringDataset_is_about_activity:
+    name: ReactionMonitoringDataset_is_about_activity
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/is_about_activity
     description: The slot to specify the ChemicalReaction this dataset is about.
     in_subset:
@@ -2715,12 +2715,12 @@ slots:
     exact_mappings:
     - IAO:0000136
     is_a: is_about_activity
-    domain: ReactionRecordingDataset
+    domain: ReactionMonitoringDataset
     slot_uri: dcterms:subject
     alias: is_about_activity
-    owner: ReactionRecordingDataset
+    owner: ReactionMonitoringDataset
     domain_of:
-    - ReactionRecordingDataset
+    - ReactionMonitoringDataset
     is_usage_slot: true
     usage_slot_name: is_about_activity
     range: ChemicalReaction
@@ -2751,8 +2751,8 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  ReactionRecording_evaluated_activity:
-    name: ReactionRecording_evaluated_activity
+  ReactionMonitoring_evaluated_activity:
+    name: ReactionMonitoring_evaluated_activity
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/evaluated_activity
     description: The slot to specify the ChemicalReaction being recorded.
     in_subset:
@@ -2761,12 +2761,12 @@ slots:
     mappings:
     - prov:wasInformedBy
     is_a: evaluated_activity
-    domain: ReactionRecording
+    domain: ReactionMonitoring
     slot_uri: prov:wasInformedBy
     alias: evaluated_activity
-    owner: ReactionRecording
+    owner: ReactionMonitoring
     domain_of:
-    - ReactionRecording
+    - ReactionMonitoring
     is_usage_slot: true
     usage_slot_name: evaluated_activity
     range: ChemicalReaction
@@ -6533,10 +6533,10 @@ classes:
         multivalued: true
         inlined_as_list: true
     class_uri: dcat:Dataset
-  ReactionRecordingDataset:
-    name: ReactionRecordingDataset
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ReactionRecordingDataset
-    description: A Dataset about a ChemicalReaction that was produced by a ReactionRecording
+  ReactionMonitoringDataset:
+    name: ReactionMonitoringDataset
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ReactionMonitoringDataset
+    description: A Dataset about a ChemicalReaction that was produced by a ReactionMonitoring
       activity. This is a coarse-grained convenience shape that conflates experimental
       documentation and analysis into a single data-generating activity. Domain-specific
       sub-profiles that need to distinguish reaction monitoring from subsequent data
@@ -6584,14 +6584,14 @@ classes:
     - Dataset_version_notes
     - id
     - is_about_entity
-    - ReactionRecordingDataset_was_generated_by
-    - ReactionRecordingDataset_is_about_activity
+    - ReactionMonitoringDataset_was_generated_by
+    - ReactionMonitoringDataset_is_about_activity
     slot_usage:
       was_generated_by:
         name: was_generated_by
-        description: The slot to specify the ReactionRecording activity that produced
+        description: The slot to specify the ReactionMonitoring activity that produced
           this dataset.
-        range: ReactionRecording
+        range: ReactionMonitoring
         multivalued: true
         inlined_as_list: true
       is_about_activity:
@@ -6642,9 +6642,9 @@ classes:
         multivalued: true
         inlined_as_list: true
     class_uri: prov:Activity
-  ReactionRecording:
-    name: ReactionRecording
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ReactionRecording
+  ReactionMonitoring:
+    name: ReactionMonitoring
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ReactionMonitoring
     description: A DataGeneratingActivity that produces data about a ChemicalReaction,
       such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation
       workflow. This is a coarse-grained convenience shape that does not distinguish
@@ -6674,7 +6674,7 @@ classes:
     - evaluated_entity
     - realized_plan
     - occurred_in
-    - ReactionRecording_evaluated_activity
+    - ReactionMonitoring_evaluated_activity
     slot_usage:
       evaluated_activity:
         name: evaluated_activity
@@ -9937,7 +9937,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-03-19T08:08:21'
-source_file_size: 7258
-generation_date: '2026-03-19T08:08:32'
+source_file_date: '2026-03-20T12:16:14'
+source_file_size: 7566
+generation_date: '2026-03-20T12:16:25'
 

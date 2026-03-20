@@ -1,6 +1,6 @@
 ---
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: "0.1.0rc2.post32.dev0+19cf87bf"  # Managed by dynamic-versioning. Don't change this line!
+version: "0.1.0rc2.post33.dev0+bfcfe667" # Managed by dynamic-versioning. Don't change this line!
 name: chem-dcat-ap
 title: ChemDCAT-AP
 description: |-
@@ -63,11 +63,12 @@ imports:
   - chemical_reaction_ap
 
 classes:
-
-############
-# Datasets #
-############
-# The only difference between these classes and their DCAT-AP+ parents are the made range restrictions
+  ############
+  # Datasets #
+  ############
+  # The only difference between these classes and their DCAT-AP+ parents are the made range restrictions
+  # This process is described in more depth at:
+  # https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#problems-dcat-ap-addresses
 
   SubstanceCharacterizationDataset:
     is_a: Dataset
@@ -90,29 +91,31 @@ classes:
         inlined_as_list: true
         description: The slot to specify the SubstanceSample this dataset is about.
 
-  ReactionRecordingDataset:
+  ReactionMonitoringDataset:
     is_a: Dataset
     class_uri: dcat:Dataset
     description: >-
-      A Dataset about a ChemicalReaction that was produced by a ReactionRecording activity.
+      A Dataset about a ChemicalReaction that was produced by a ReactionMonitoring activity.
       This is a coarse-grained convenience shape that conflates experimental documentation and analysis
       into a single data-generating activity. Domain-specific sub-profiles that need to distinguish
       reaction monitoring from subsequent data evaluation should define their own Dataset subclasses,
       potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.
     slot_usage:
       was_generated_by:
-        range: ReactionRecording
+        range: ReactionMonitoring
         multivalued: true
         inlined_as_list: true
-        description: The slot to specify the ReactionRecording activity that produced this dataset.
+        description: The slot to specify the ReactionMonitoring activity that produced this dataset.
       is_about_activity:
         range: ChemicalReaction
         description: The slot to specify the ChemicalReaction this dataset is about.
 
-############################
-# DataGeneratingActivities #
-# ##########################
-# The only difference between these classes and their DCAT-AP+ parents are the made range restrictions
+  ############################
+  # DataGeneratingActivities #
+  # ##########################
+  # The only difference between these classes and their DCAT-AP+ parents are the made range restrictions
+  # This process is described in more depth at:
+  # https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#problems-dcat-ap-addresses
 
   SubstanceCharacterization:
     is_a: DataGeneratingActivity
@@ -133,7 +136,7 @@ classes:
         inlined_as_list: true
         description: The slot to specify the SubstanceSample being characterized.
 
-  ReactionRecording:
+  ReactionMonitoring:
     is_a: DataGeneratingActivity
     class_uri: prov:Activity
     description: >-
@@ -150,10 +153,9 @@ classes:
         inlined_as_list: true
         description: The slot to specify the ChemicalReaction being recorded.
 
-
-################
-# Surroundings #
-################
+  ################
+  # Surroundings #
+  ################
 
   Laboratory:
     is_a: Surrounding

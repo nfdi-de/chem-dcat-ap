@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://nfdi-de.github.io/chem-dcat-ap/elements/classes/ReactionRecording/" rel="canonical"/>
+<link href="https://nfdi-de.github.io/chem-dcat-ap/elements/classes/ReactionMonitoring/" rel="canonical"/>
 <link href="../../../images/favicon.svg" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
-<title>Class: ReactionRecording - ChemDCAT-AP Documentation</title>
+<title>Class: ReactionMonitoring - ChemDCAT-AP Documentation</title>
 <link href="../../../assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -25,7 +25,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-reactionrecording">
+<a class="md-skip" href="#class-reactionmonitoring">
           Skip to content
         </a>
 </div>
@@ -52,7 +52,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: ReactionRecording
+              Class: ReactionMonitoring
             
           </span>
 </div>
@@ -298,182 +298,182 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-reactionrecording">Class: ReactionRecording</h1>
+<h1 id="class-reactionmonitoring">Class: ReactionMonitoring</h1>
 <p><em>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></p>
 <pre class="mermaid"><code> classDiagram
-    class ReactionRecording
-    click ReactionRecording href "../../classes/ReactionRecording/"
-      DataGeneratingActivity &lt;|-- ReactionRecording
+    class ReactionMonitoring
+    click ReactionMonitoring href "../../classes/ReactionMonitoring/"
+      DataGeneratingActivity &lt;|-- ReactionMonitoring
         click DataGeneratingActivity href "../../classes/DataGeneratingActivity/"
 
-      ReactionRecording : carried_out_by
+      ReactionMonitoring : carried_out_by
 
 
 
 
 
-        ReactionRecording --&gt; "* _recommended_" AgenticEntity : carried_out_by
+        ReactionMonitoring --&gt; "* _recommended_" AgenticEntity : carried_out_by
         click AgenticEntity href "../../classes/AgenticEntity/"
 
 
 
-      ReactionRecording : description
+      ReactionMonitoring : description
 
-      ReactionRecording : evaluated_activity
-
-
+      ReactionMonitoring : evaluated_activity
 
 
 
-        ReactionRecording --&gt; "* _recommended_" ChemicalReaction : evaluated_activity
+
+
+        ReactionMonitoring --&gt; "* _recommended_" ChemicalReaction : evaluated_activity
         click ChemicalReaction href "../../classes/ChemicalReaction/"
 
 
 
-      ReactionRecording : evaluated_entity
+      ReactionMonitoring : evaluated_entity
 
 
 
 
 
-        ReactionRecording --&gt; "* _recommended_" EvaluatedEntity : evaluated_entity
+        ReactionMonitoring --&gt; "* _recommended_" EvaluatedEntity : evaluated_entity
         click EvaluatedEntity href "../../classes/EvaluatedEntity/"
 
 
 
-      ReactionRecording : had_input_activity
+      ReactionMonitoring : had_input_activity
 
 
 
 
 
-        ReactionRecording --&gt; "* _recommended_" Activity : had_input_activity
+        ReactionMonitoring --&gt; "* _recommended_" Activity : had_input_activity
         click Activity href "../../classes/Activity/"
 
 
 
-      ReactionRecording : had_input_entity
+      ReactionMonitoring : had_input_entity
 
 
 
 
 
-        ReactionRecording --&gt; "* _recommended_" Entity : had_input_entity
+        ReactionMonitoring --&gt; "* _recommended_" Entity : had_input_entity
         click Entity href "../../classes/Entity/"
 
 
 
-      ReactionRecording : had_output_entity
+      ReactionMonitoring : had_output_entity
 
 
 
 
 
-        ReactionRecording --&gt; "* _recommended_" Entity : had_output_entity
+        ReactionMonitoring --&gt; "* _recommended_" Entity : had_output_entity
         click Entity href "../../classes/Entity/"
 
 
 
-      ReactionRecording : has_part
+      ReactionMonitoring : has_part
 
 
 
 
 
-        ReactionRecording --&gt; "*" Activity : has_part
+        ReactionMonitoring --&gt; "*" Activity : has_part
         click Activity href "../../classes/Activity/"
 
 
 
-      ReactionRecording : has_qualitative_attribute
+      ReactionMonitoring : has_qualitative_attribute
 
 
 
 
 
-        ReactionRecording --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
+        ReactionMonitoring --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
         click QualitativeAttribute href "../../classes/QualitativeAttribute/"
 
 
 
-      ReactionRecording : has_quantitative_attribute
+      ReactionMonitoring : has_quantitative_attribute
 
 
 
 
 
-        ReactionRecording --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
+        ReactionMonitoring --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
         click QuantitativeAttribute href "../../classes/QuantitativeAttribute/"
 
 
 
-      ReactionRecording : id
+      ReactionMonitoring : id
 
-      ReactionRecording : occurred_in
-
-
+      ReactionMonitoring : occurred_in
 
 
 
-        ReactionRecording --&gt; "0..1" Surrounding : occurred_in
+
+
+        ReactionMonitoring --&gt; "0..1" Surrounding : occurred_in
         click Surrounding href "../../classes/Surrounding/"
 
 
 
-      ReactionRecording : other_identifier
+      ReactionMonitoring : other_identifier
 
 
 
 
 
-        ReactionRecording --&gt; "*" Identifier : other_identifier
+        ReactionMonitoring --&gt; "*" Identifier : other_identifier
         click Identifier href "../../classes/Identifier/"
 
 
 
-      ReactionRecording : part_of
+      ReactionMonitoring : part_of
 
 
 
 
 
-        ReactionRecording --&gt; "*" Activity : part_of
+        ReactionMonitoring --&gt; "*" Activity : part_of
         click Activity href "../../classes/Activity/"
 
 
 
-      ReactionRecording : rdf_type
+      ReactionMonitoring : rdf_type
 
 
 
 
 
-        ReactionRecording --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+        ReactionMonitoring --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
         click DefinedTerm href "../../classes/DefinedTerm/"
 
 
 
-      ReactionRecording : realized_plan
+      ReactionMonitoring : realized_plan
 
 
 
 
 
-        ReactionRecording --&gt; "0..1" Plan : realized_plan
+        ReactionMonitoring --&gt; "0..1" Plan : realized_plan
         click Plan href "../../classes/Plan/"
 
 
 
-      ReactionRecording : title
+      ReactionMonitoring : title
 
-      ReactionRecording : type
-
-
+      ReactionMonitoring : type
 
 
 
-        ReactionRecording --&gt; "0..1" DefinedTerm : type
+
+
+        ReactionMonitoring --&gt; "0..1" DefinedTerm : type
         click DefinedTerm href "../../classes/DefinedTerm/"
 
 
@@ -484,7 +484,7 @@
 <ul>
 <li><a href="../Activity/">Activity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><a href="../DataGeneratingActivity/">DataGeneratingActivity</a><ul>
-<li><strong>ReactionRecording</strong></li>
+<li><strong>ReactionMonitoring</strong></li>
 </ul>
 </li>
 </ul>
@@ -623,10 +623,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ReactionRecordingDataset/">ReactionRecordingDataset</a></td>
+<td><a href="../ReactionMonitoringDataset/">ReactionMonitoringDataset</a></td>
 <td><a href="../../slots/was_generated_by/">was_generated_by</a></td>
 <td>range</td>
-<td><a href="./">ReactionRecording</a></td>
+<td><a href="./">ReactionMonitoring</a></td>
 </tr>
 </tbody>
 </table>
@@ -650,7 +650,7 @@
 </tr>
 <tr>
 <td>native</td>
-<td>chemdcatap:ReactionRecording</td>
+<td>chemdcatap:ReactionMonitoring</td>
 </tr>
 </tbody>
 </table>
@@ -658,7 +658,7 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A DataGeneratingActivity that produces data about a ChemicalReaction,</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">workflow. This is a coarse-grained convenience shape that does not distinguish between</span>
@@ -679,7 +679,7 @@
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A DataGeneratingActivity that produces data about a ChemicalReaction,</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">workflow. This is a coarse-grained convenience shape that does not distinguish between</span>
@@ -707,7 +707,7 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_entity</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:used</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evaluated_entity</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EvaluatedEntity</span>
@@ -725,7 +725,7 @@
 <span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_activity</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:wasInformedBy</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evaluated_activity</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalReaction</span>
@@ -743,7 +743,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:used</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">realized_plan</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Plan</span>
@@ -756,7 +756,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:atLocation</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">occurred_in</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Surrounding</span>
@@ -769,7 +769,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -791,7 +791,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:title</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">title</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -842,7 +842,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:description</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -892,7 +892,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adms:identifier</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">other_identifier</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -910,7 +910,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:hasPart</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -931,7 +931,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:used</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_entity</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
@@ -951,7 +951,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:generated</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_output_entity</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
@@ -971,7 +971,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:wasInformedBy</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_activity</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
@@ -992,7 +992,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:wasAssociatedWith</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">carried_out_by</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -1012,7 +1012,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:relation</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_qualitative_attribute</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -1034,7 +1034,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:relation</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -1055,7 +1055,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:isPartOf</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">part_of</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -1072,7 +1072,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:type</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Agent</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClassifierMixin</span>
@@ -1090,7 +1090,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdf:type</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdf_type</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionRecording</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReactionMonitoring</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClassifierMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DefinedTerm</span>
