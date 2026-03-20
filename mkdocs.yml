@@ -86,6 +86,7 @@ nav:
   - Quick Start: quickstart.md
   - Schema Reference: elements/overview.md
   - Versioning: versioning.md
+  - Users: users.md
   - About: about.md
 
 # enable version selector for multi-version support
