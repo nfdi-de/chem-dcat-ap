@@ -8,7 +8,7 @@
     "https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads"
   ],
   "id": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
-  "version": "0.1.0rc1.post1.dev0+b86ffb3",
+  "version": "0.1.0rc2.post33.dev0+fb29e03e",
   "imports": [
     "linkml:types",
     "dcatapplus:latest/schema/dcat_ap_plus",
@@ -3209,7 +3209,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "SubstanceCharacterizationDataset_was_generated_by",
+      "name": "SubstanceSampleCharacterizationDataset_was_generated_by",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/was_generated_by",
       "description": "The slot to specify the SubstanceCharacterization activity that produced this dataset.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
@@ -3217,23 +3217,23 @@
         "http://www.w3.org/ns/prov#wasGeneratedBy"
       ],
       "is_a": "was_generated_by",
-      "domain": "SubstanceCharacterizationDataset",
+      "domain": "SubstanceSampleCharacterizationDataset",
       "slot_uri": "http://www.w3.org/ns/prov#wasGeneratedBy",
       "alias": "was_generated_by",
-      "owner": "SubstanceCharacterizationDataset",
+      "owner": "SubstanceSampleCharacterizationDataset",
       "domain_of": [
-        "SubstanceCharacterizationDataset"
+        "SubstanceSampleCharacterizationDataset"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "was_generated_by",
-      "range": "SubstanceCharacterization",
+      "range": "SubstanceSampleCharacterization",
       "multivalued": true,
       "inlined": true,
       "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "SubstanceCharacterizationDataset_is_about_entity",
+      "name": "SubstanceSampleCharacterizationDataset_is_about_entity",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/is_about_entity",
       "description": "The slot to specify the SubstanceSample this dataset is about.",
       "in_subset": [
@@ -3247,12 +3247,12 @@
         "http://purl.obolibrary.org/obo/IAO_0000136"
       ],
       "is_a": "is_about_entity",
-      "domain": "SubstanceCharacterizationDataset",
+      "domain": "SubstanceSampleCharacterizationDataset",
       "slot_uri": "http://purl.org/dc/terms/subject",
       "alias": "is_about_entity",
-      "owner": "SubstanceCharacterizationDataset",
+      "owner": "SubstanceSampleCharacterizationDataset",
       "domain_of": [
-        "SubstanceCharacterizationDataset"
+        "SubstanceSampleCharacterizationDataset"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "is_about_entity",
@@ -3319,7 +3319,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "SubstanceCharacterization_evaluated_entity",
+      "name": "SubstanceSampleCharacterization_evaluated_entity",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/evaluated_entity",
       "description": "The slot to specify the SubstanceSample being characterized.",
       "in_subset": [
@@ -3330,12 +3330,12 @@
         "http://www.w3.org/ns/prov#used"
       ],
       "is_a": "evaluated_entity",
-      "domain": "SubstanceCharacterization",
+      "domain": "SubstanceSampleCharacterization",
       "slot_uri": "http://www.w3.org/ns/prov#used",
       "alias": "evaluated_entity",
-      "owner": "SubstanceCharacterization",
+      "owner": "SubstanceSampleCharacterization",
       "domain_of": [
-        "SubstanceCharacterization"
+        "SubstanceSampleCharacterization"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "evaluated_entity",
@@ -7550,9 +7550,9 @@
   ],
   "classes": [
     {
-      "name": "SubstanceCharacterizationDataset",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceCharacterizationDataset",
-      "description": "A Dataset about a SubstanceSample that was produced by a SubstanceCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.",
+      "name": "SubstanceSampleCharacterizationDataset",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterizationDataset",
+      "description": "A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
       "mappings": [
         "dcat:Dataset"
@@ -7596,8 +7596,8 @@
         "Dataset_version_notes",
         "id",
         "is_about_activity",
-        "SubstanceCharacterizationDataset_was_generated_by",
-        "SubstanceCharacterizationDataset_is_about_entity"
+        "SubstanceSampleCharacterizationDataset_was_generated_by",
+        "SubstanceSampleCharacterizationDataset_is_about_entity"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/dcat#Dataset",
@@ -7658,8 +7658,8 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "SubstanceCharacterization",
-      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceCharacterization",
+      "name": "SubstanceSampleCharacterization",
+      "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterization",
       "description": "A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic measurement, a physical property determination, or a combined measurement-and-analysis workflow. This is a coarse-grained convenience shape that does not distinguish between raw data acquisition and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw measurement from derived results.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
       "mappings": [
@@ -7687,7 +7687,7 @@
         "evaluated_activity",
         "realized_plan",
         "occurred_in",
-        "SubstanceCharacterization_evaluated_entity"
+        "SubstanceSampleCharacterization_evaluated_entity"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/ns/prov#Activity",
@@ -10032,9 +10032,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-03-20T16:17:38",
-  "source_file_size": 7727,
-  "generation_date": "2026-03-20T16:22:00",
+  "source_file_date": "2026-03-22T19:57:01",
+  "source_file_size": 7591,
+  "generation_date": "2026-03-22T20:03:30",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/chem_dcat_ap.context.jsonld",

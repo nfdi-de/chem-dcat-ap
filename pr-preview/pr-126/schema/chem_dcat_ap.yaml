@@ -1,6 +1,6 @@
 ---
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: "0.1.0rc2.post34.dev0+db1c83f4" # Managed by dynamic-versioning. Don't change this line!
+version: "0.1.0rc2.post35.dev0+a63b6e09" # Managed by dynamic-versioning. Don't change this line!
 name: chem-dcat-ap
 title: ChemDCAT-AP
 description: |-
@@ -70,18 +70,18 @@ classes:
   # This process is described in more depth at:
   # https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#problems-dcat-ap-addresses
 
-  SubstanceCharacterizationDataset:
+  SubstanceSampleCharacterizationDataset:
     is_a: Dataset
     class_uri: dcat:Dataset
     description: >-
-      A Dataset about a SubstanceSample that was produced by a SubstanceCharacterization activity.
+      A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity.
       This is a coarse-grained convenience shape that conflates measurement and analysis into a single
       data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement
       from post-processing or structure assignment should define their own Dataset subclasses, potentially
       using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.
     slot_usage:
       was_generated_by:
-        range: SubstanceCharacterization
+        range: SubstanceSampleCharacterization
         multivalued: true
         inlined_as_list: true
         description: The slot to specify the SubstanceCharacterization activity that produced this dataset.
@@ -117,7 +117,7 @@ classes:
   # This process is described in more depth at:
   # https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#problems-dcat-ap-addresses
 
-  SubstanceCharacterization:
+  SubstanceSampleCharacterization :
     is_a: DataGeneratingActivity
     class_uri: prov:Activity
     broad_mappings:

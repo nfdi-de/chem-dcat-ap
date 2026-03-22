@@ -292,14 +292,14 @@
    "StartingMaterial": {
       "@id": "PROCO:0000029"
    },
-   "SubstanceCharacterization": {
-      "@id": "prov:Activity"
-   },
-   "SubstanceCharacterizationDataset": {
-      "@id": "dcat:Dataset"
-   },
    "SubstanceSample": {
       "@id": "SIO:001378"
+   },
+   "SubstanceSampleCharacterization": {
+      "@id": "prov:Activity"
+   },
+   "SubstanceSampleCharacterizationDataset": {
+      "@id": "dcat:Dataset"
    },
    "SupportiveEntity": {
       "@id": "dcatapplus:SupportiveEntity"

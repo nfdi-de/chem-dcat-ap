@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post34.dev0+db1c83f4
+version: 0.1.0rc2.post35.dev0+a63b6e09
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -2636,8 +2636,8 @@ slots:
       binds_value_of: id
       description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
     recommended: true
-  SubstanceCharacterizationDataset_was_generated_by:
-    name: SubstanceCharacterizationDataset_was_generated_by
+  SubstanceSampleCharacterizationDataset_was_generated_by:
+    name: SubstanceSampleCharacterizationDataset_was_generated_by
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/was_generated_by
     description: The slot to specify the SubstanceCharacterization activity that produced
       this dataset.
@@ -2645,20 +2645,20 @@ slots:
     mappings:
     - prov:wasGeneratedBy
     is_a: was_generated_by
-    domain: SubstanceCharacterizationDataset
+    domain: SubstanceSampleCharacterizationDataset
     slot_uri: prov:wasGeneratedBy
     alias: was_generated_by
-    owner: SubstanceCharacterizationDataset
+    owner: SubstanceSampleCharacterizationDataset
     domain_of:
-    - SubstanceCharacterizationDataset
+    - SubstanceSampleCharacterizationDataset
     is_usage_slot: true
     usage_slot_name: was_generated_by
-    range: SubstanceCharacterization
+    range: SubstanceSampleCharacterization
     multivalued: true
     inlined: true
     inlined_as_list: true
-  SubstanceCharacterizationDataset_is_about_entity:
-    name: SubstanceCharacterizationDataset_is_about_entity
+  SubstanceSampleCharacterizationDataset_is_about_entity:
+    name: SubstanceSampleCharacterizationDataset_is_about_entity
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/is_about_entity
     description: The slot to specify the SubstanceSample this dataset is about.
     in_subset:
@@ -2669,12 +2669,12 @@ slots:
     exact_mappings:
     - IAO:0000136
     is_a: is_about_entity
-    domain: SubstanceCharacterizationDataset
+    domain: SubstanceSampleCharacterizationDataset
     slot_uri: dcterms:subject
     alias: is_about_entity
-    owner: SubstanceCharacterizationDataset
+    owner: SubstanceSampleCharacterizationDataset
     domain_of:
-    - SubstanceCharacterizationDataset
+    - SubstanceSampleCharacterizationDataset
     is_usage_slot: true
     usage_slot_name: is_about_entity
     range: SubstanceSample
@@ -2728,8 +2728,8 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  SubstanceCharacterization_evaluated_entity:
-    name: SubstanceCharacterization_evaluated_entity
+  SubstanceSampleCharacterization_evaluated_entity:
+    name: SubstanceSampleCharacterization_evaluated_entity
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/evaluated_entity
     description: The slot to specify the SubstanceSample being characterized.
     in_subset:
@@ -2738,12 +2738,12 @@ slots:
     mappings:
     - prov:used
     is_a: evaluated_entity
-    domain: SubstanceCharacterization
+    domain: SubstanceSampleCharacterization
     slot_uri: prov:used
     alias: evaluated_entity
-    owner: SubstanceCharacterization
+    owner: SubstanceSampleCharacterization
     domain_of:
-    - SubstanceCharacterization
+    - SubstanceSampleCharacterization
     is_usage_slot: true
     usage_slot_name: evaluated_entity
     range: SubstanceSample
@@ -6465,10 +6465,10 @@ slots:
     inlined: true
     inlined_as_list: false
 classes:
-  SubstanceCharacterizationDataset:
-    name: SubstanceCharacterizationDataset
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceCharacterizationDataset
-    description: A Dataset about a SubstanceSample that was produced by a SubstanceCharacterization
+  SubstanceSampleCharacterizationDataset:
+    name: SubstanceSampleCharacterizationDataset
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterizationDataset
+    description: A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization
       activity. This is a coarse-grained convenience shape that conflates measurement
       and analysis into a single data-generating activity. Domain-specific sub-profiles
       that need to distinguish raw measurement from post-processing or structure assignment
@@ -6516,14 +6516,14 @@ classes:
     - Dataset_version_notes
     - id
     - is_about_activity
-    - SubstanceCharacterizationDataset_was_generated_by
-    - SubstanceCharacterizationDataset_is_about_entity
+    - SubstanceSampleCharacterizationDataset_was_generated_by
+    - SubstanceSampleCharacterizationDataset_is_about_entity
     slot_usage:
       was_generated_by:
         name: was_generated_by
         description: The slot to specify the SubstanceCharacterization activity that
           produced this dataset.
-        range: SubstanceCharacterization
+        range: SubstanceSampleCharacterization
         multivalued: true
         inlined_as_list: true
       is_about_entity:
@@ -6599,9 +6599,9 @@ classes:
         description: The slot to specify the ChemicalReaction this dataset is about.
         range: ChemicalReaction
     class_uri: dcat:Dataset
-  SubstanceCharacterization:
-    name: SubstanceCharacterization
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceCharacterization
+  SubstanceSampleCharacterization:
+    name: SubstanceSampleCharacterization
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterization
     description: A DataGeneratingActivity that produces data about a SubstanceSample,
       such as a spectroscopic measurement, a physical property determination, or a
       combined measurement-and-analysis workflow. This is a coarse-grained convenience
@@ -6633,7 +6633,7 @@ classes:
     - evaluated_activity
     - realized_plan
     - occurred_in
-    - SubstanceCharacterization_evaluated_entity
+    - SubstanceSampleCharacterization_evaluated_entity
     slot_usage:
       evaluated_entity:
         name: evaluated_entity
@@ -9937,7 +9937,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-03-20T15:25:37'
-source_file_size: 7566
-generation_date: '2026-03-20T15:25:48'
+source_file_date: '2026-03-22T21:11:36'
+source_file_size: 7591
+generation_date: '2026-03-22T21:11:47'
 
