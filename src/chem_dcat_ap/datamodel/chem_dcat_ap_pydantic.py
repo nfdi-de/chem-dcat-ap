@@ -30,7 +30,7 @@ from pydantic import (
 
 
 metamodel_version = "None"
-version = "0.1.0rc1.post1.dev0+b86ffb3"
+version = "0.1.0rc2.post33.dev0+fb29e03e"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -10410,9 +10410,9 @@ class PercentageOfTotal(QuantitativeAttribute):
          'slot_uri': 'rdf:type'} })
 
 
-class SubstanceCharacterizationDataset(Dataset):
+class SubstanceSampleCharacterizationDataset(Dataset):
     """
-    A Dataset about a SubstanceSample that was produced by a SubstanceCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.
+    A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Dataset',
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/',
@@ -10430,7 +10430,7 @@ class SubstanceCharacterizationDataset(Dataset):
                                              'inlined_as_list': True,
                                              'multivalued': True,
                                              'name': 'was_generated_by',
-                                             'range': 'SubstanceCharacterization'}}})
+                                             'range': 'SubstanceSampleCharacterization'}}})
 
     access_rights: Optional[RightsStatement] = Field(default=None, description="""Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataService', 'Dataset'], 'slot_uri': 'dcterms:accessRights'} })
     applicable_legislation: Optional[list[LegalResource]] = Field(default=[], description="""The legislation that mandates the creation or management of the Dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Catalogue',
@@ -10567,7 +10567,7 @@ class SubstanceCharacterizationDataset(Dataset):
          'slot_uri': 'dcterms:type'} })
     version: Optional[str] = Field(default=None, description="""The version indicator (name or identifier) of a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcat:version'} })
     version_notes: Optional[list[str]] = Field(default=[], description="""A description of the differences between this version and a previous version of the Dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'adms:versionNotes'} })
-    was_generated_by: list[SubstanceCharacterization] = Field(default=..., description="""The slot to specify the SubstanceCharacterization activity that produced this dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'EvaluatedEntity'],
+    was_generated_by: list[SubstanceSampleCharacterization] = Field(default=..., description="""The slot to specify the SubstanceCharacterization activity that produced this dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'EvaluatedEntity'],
          'notes': ['stricter than DCAT-AP'],
          'slot_uri': 'prov:wasGeneratedBy'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
@@ -10772,7 +10772,7 @@ class ReactionMonitoringDataset(Dataset):
          'slot_uri': 'dcterms:subject'} })
 
 
-class SubstanceCharacterization(DataGeneratingActivity):
+class SubstanceSampleCharacterization(DataGeneratingActivity):
     """
     A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic measurement, a physical property determination, or a combined measurement-and-analysis workflow. This is a coarse-grained convenience shape that does not distinguish between raw data acquisition and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw measurement from derived results.
     """
@@ -11280,8 +11280,8 @@ Reactor.model_rebuild()
 Yield.model_rebuild()
 MolarEquivalent.model_rebuild()
 PercentageOfTotal.model_rebuild()
-SubstanceCharacterizationDataset.model_rebuild()
+SubstanceSampleCharacterizationDataset.model_rebuild()
 ReactionMonitoringDataset.model_rebuild()
-SubstanceCharacterization.model_rebuild()
+SubstanceSampleCharacterization.model_rebuild()
 ReactionMonitoring.model_rebuild()
 Laboratory.model_rebuild()

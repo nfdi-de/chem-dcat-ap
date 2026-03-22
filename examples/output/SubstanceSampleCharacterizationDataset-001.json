@@ -170,5 +170,5 @@
       ]
     }
   ],
-  "@type": "SubstanceCharacterizationDataset"
+  "@type": "SubstanceSampleCharacterizationDataset"
 }

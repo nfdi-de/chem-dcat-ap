@@ -7511,7 +7511,230 @@
             "title": "StartingMaterial",
             "type": "object"
         },
-        "SubstanceCharacterization": {
+        "SubstanceSample": {
+            "additionalProperties": false,
+            "description": "A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.",
+            "properties": {
+                "alternative_label": {
+                    "description": "The slot to specify an alternative label, name or title for a MaterialEntity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "composed_of": {
+                    "description": "The slot to provide the chemical entities of which a ChemicalSubstance is composed of.",
+                    "items": {
+                        "$ref": "#/$defs/ChemicalEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "derived_from": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Entity"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the MaterialEntity or MaterialSample from which the MaterialSample was created."
+                },
+                "description": {
+                    "description": "The slot to provide a description for the EvaluatedEntity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_amount": {
+                    "description": "The slot to provide the AmountConcentration of a ChemicalSubstance.",
+                    "items": {
+                        "$ref": "#/$defs/AmountOfSubstance"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_concentration": {
+                    "description": "The slot to provide the Concentration of a ChemicalSubstance.",
+                    "items": {
+                        "$ref": "#/$defs/Concentration"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_density": {
+                    "description": "The slot to provide the Density of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Density"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_mass": {
+                    "description": "The slot to provide the Mass of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Mass"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_part": {
+                    "description": "A slot to provide a part of the Entity.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_ph_value": {
+                    "description": "The slot to provide the PHValue of a ChemicalSubstance.",
+                    "items": {
+                        "$ref": "#/$defs/PHValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_physical_state": {
+                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "description": "The slot to specify the physical state of a MaterialEntity."
+                },
+                "has_pressure": {
+                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Pressure"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_qualitative_attribute": {
+                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QualitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_quantitative_attribute": {
+                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
+                    "items": {
+                        "$ref": "#/$defs/QuantitativeAttribute"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_temperature": {
+                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Temperature"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_volume": {
+                    "description": "The slot to provide the Volume of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Volume"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A slot to provide an URI for an entity within this schema.",
+                    "type": "string"
+                },
+                "other_identifier": {
+                    "description": "A slot to provide a secondary identifier of the EvaluatedEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Identifier"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "part_of": {
+                    "description": "The slot to specify an Entity of which the Entity is a part.",
+                    "items": {
+                        "$ref": "#/$defs/Entity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "title": {
+                    "description": "The slot to provide a title for the EvaluatedEntity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                },
+                "was_generated_by": {
+                    "description": "A slot to provide the Activity which created the EvaluatedEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Activity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "SubstanceSample",
+            "type": "object"
+        },
+        "SubstanceSampleCharacterization": {
             "additionalProperties": false,
             "description": "A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic measurement, a physical property determination, or a combined measurement-and-analysis workflow. This is a coarse-grained convenience shape that does not distinguish between raw data acquisition and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw measurement from derived results.",
             "properties": {
@@ -7697,12 +7920,12 @@
             "required": [
                 "id"
             ],
-            "title": "SubstanceCharacterization",
+            "title": "SubstanceSampleCharacterization",
             "type": "object"
         },
-        "SubstanceCharacterizationDataset": {
+        "SubstanceSampleCharacterizationDataset": {
             "additionalProperties": false,
-            "description": "A Dataset about a SubstanceSample that was produced by a SubstanceCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.",
+            "description": "A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.",
             "properties": {
                 "access_rights": {
                     "anyOf": [
@@ -8066,7 +8289,7 @@
                 "was_generated_by": {
                     "description": "The slot to specify the SubstanceCharacterization activity that produced this dataset.",
                     "items": {
-                        "$ref": "#/$defs/SubstanceCharacterization"
+                        "$ref": "#/$defs/SubstanceSampleCharacterization"
                     },
                     "type": "array"
                 }
@@ -8077,230 +8300,7 @@
                 "was_generated_by",
                 "id"
             ],
-            "title": "SubstanceCharacterizationDataset",
-            "type": "object"
-        },
-        "SubstanceSample": {
-            "additionalProperties": false,
-            "description": "A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.",
-            "properties": {
-                "alternative_label": {
-                    "description": "The slot to specify an alternative label, name or title for a MaterialEntity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "composed_of": {
-                    "description": "The slot to provide the chemical entities of which a ChemicalSubstance is composed of.",
-                    "items": {
-                        "$ref": "#/$defs/ChemicalEntity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "derived_from": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Entity"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the MaterialEntity or MaterialSample from which the MaterialSample was created."
-                },
-                "description": {
-                    "description": "The slot to provide a description for the EvaluatedEntity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "has_amount": {
-                    "description": "The slot to provide the AmountConcentration of a ChemicalSubstance.",
-                    "items": {
-                        "$ref": "#/$defs/AmountOfSubstance"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_concentration": {
-                    "description": "The slot to provide the Concentration of a ChemicalSubstance.",
-                    "items": {
-                        "$ref": "#/$defs/Concentration"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_density": {
-                    "description": "The slot to provide the Density of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Density"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_mass": {
-                    "description": "The slot to provide the Mass of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Mass"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_part": {
-                    "description": "A slot to provide a part of the Entity.",
-                    "items": {
-                        "$ref": "#/$defs/Entity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_ph_value": {
-                    "description": "The slot to provide the PHValue of a ChemicalSubstance.",
-                    "items": {
-                        "$ref": "#/$defs/PHValue"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
-                    "description": "The slot to specify the physical state of a MaterialEntity."
-                },
-                "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Pressure"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_qualitative_attribute": {
-                    "description": "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
-                    "items": {
-                        "$ref": "#/$defs/QualitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_quantitative_attribute": {
-                    "description": "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity",
-                    "items": {
-                        "$ref": "#/$defs/QuantitativeAttribute"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Temperature"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_volume": {
-                    "description": "The slot to provide the Volume of a MaterialEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Volume"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A slot to provide an URI for an entity within this schema.",
-                    "type": "string"
-                },
-                "other_identifier": {
-                    "description": "A slot to provide a secondary identifier of the EvaluatedEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Identifier"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "part_of": {
-                    "description": "The slot to specify an Entity of which the Entity is a part.",
-                    "items": {
-                        "$ref": "#/$defs/Entity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "rdf_type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The slot to specify the ontology class that is instantiated by an entity."
-                },
-                "title": {
-                    "description": "The slot to provide a title for the EvaluatedEntity.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/DefinedTerm"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "This slot is described in more detail within the class in which it is used."
-                },
-                "was_generated_by": {
-                    "description": "A slot to provide the Activity which created the EvaluatedEntity.",
-                    "items": {
-                        "$ref": "#/$defs/Activity"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "SubstanceSample",
+            "title": "SubstanceSampleCharacterizationDataset",
             "type": "object"
         },
         "SupportiveEntity": {
@@ -8602,5 +8602,5 @@
     "metamodel_version": "1.7.0",
     "title": "chem-dcat-ap",
     "type": "object",
-    "version": "0.1.0rc1.post1.dev0+b86ffb3"
+    "version": "0.1.0rc2.post33.dev0+fb29e03e"
 }

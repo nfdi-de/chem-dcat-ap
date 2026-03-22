@@ -80,13 +80,13 @@ To regenerate the DCAT-AP LinkML representation as well as the PLUS extension ru
 Validate and test all: `just test`
 
 Validate a single example dataset using LinkML's validator framework:
-  * Validate domain agnostic DCAT-AP extension conform dataset example
+  * Validate domain agnostic DCAT-AP extension conform `AnalysisDataset` example
     ````commandline
     uv run linkml validate tests/data/valid/AnalysisDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C AnalysisDataset
     ````
-  * Validate a NMR spectroscopy-specific dataset example conforming to ChemDCAT-AP's `SubstanceCharacterizationDataset`
+  * Validate a NMR spectroscopy-specific dataset example conforming to ChemDCAT-AP's `SubstanceSampleCharacterizationDataset`
     ````commandline
-    uv run linkml validate tests/data/valid/SubstanceCharacterizationDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C SubstanceCharacterizationDataset
+    uv run linkml validate tests/data/valid/SubstanceSampleCharacterizationDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C SubstanceSampleCharacterizationDataset
     ````
   * Validate a reaction dataset example conforming to ChemDCAT-AP's `ReactionRecordingDataset`
     ````commandline

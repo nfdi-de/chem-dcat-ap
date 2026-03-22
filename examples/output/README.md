@@ -1954,111 +1954,6 @@ was_generated_by:
   - Recording of the Chemotion Repo synthesis CRR-56408
 
 ```
-## SubstanceCharacterizationDataset-001
-### Input
-```yaml
-description:
-- 'Dataset analysing Sample ID: CRS-50440 with heteronuclear single quantum coherence
-  (HSQC) NMR spectroscopy'
-id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604
-is_about_entity:
-- composed_of:
-  - description: compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-    has_molar_mass:
-    - description: Molar mass as specified in the Chemotion repository.
-      has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-      unit: https://qudt.org/vocab/unit/GM-PER-MOL
-      value: 204.072119
-    - description: Molar mass as specified in PubChem
-      has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-      unit: https://qudt.org/vocab/unit/GM-PER-MOL
-      value: 204.29
-    id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
-    inchi:
-    - description: assigned InChi
-      value: InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3
-    inchikey:
-    - description: assigned InChiKey
-      value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
-    iupac_name:
-    - description: Chemotion IUPAC name
-      value: N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine
-    - description: PubChem IUPAC name
-      value: Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine
-    molecular_formula:
-    - description: assigned molecular formula
-      value: C11H12N2S
-    other_identifier:
-    - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
-    smiles:
-    - description: assigned SMILES
-      value: CNCc1csc(n1)c1ccccc1
-  description: The analysed chemical substance sample CRS-50440.
-  id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-  rdf_type:
-    id: CHEBI:59999
-    title: chemical substance
-  title: CRS-50440
-other_identifier:
-- notation: https://www.chemotion-repository.net/pid/50438
-theme:
-- preferred_label:
-  - Science and technology
-title:
-- heteronuclear single quantum coherence (HSQC) dataset
-was_generated_by:
-- carried_out_by:
-  - description: used NMR spectrometer
-    id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Spectrometer
-    rdf_type:
-      id: NMR:1000371
-      title: AVANCE III HD
-    title: Avance III 400 NMR spectrometer
-  - description: used solvent
-    has_part:
-    - id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
-      rdf_type:
-        id: CHEBI:85365
-        title: deuterated chloroform
-      title: chloroform-D1 (CDCl3)
-    id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Solvent
-    rdf_type:
-      id: NCIT:C45790
-      title: Solvent
-  description:
-  - heteronuclear single quantum coherence (HSQC) NMR spectroscopy.
-  evaluated_entity:
-  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
-    title: CRS-50440
-  has_qualitative_attribute:
-  - description: used pulse program
-    rdf_type:
-      id: NMR:1400037
-      title: NMR pulse sequence
-    value: hsqcedetgp
-  has_quantitative_attribute:
-  - description: used sample temperature setting
-    has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
-    rdf_type:
-      id: NMR:1400025
-      title: sample temperature in magnet
-    unit: https://qudt.org/vocab/unit/K
-    value: 300.1
-  - description: used number of scans
-    has_quantity_type: http://qudt.org/vocab/quantitykind/Count
-    rdf_type:
-      id: NMR:1400087
-      title: number of scans
-    unit: http://qudt.org/vocab/unit/NUM
-    value: 2
-  id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932
-  rdf_type:
-    id: CHMO:0000604
-    title: heteronuclear single quantum coherence
-  title:
-  - X27932
-
-```
 ## SubstanceSample-001
 ### Input
 ```yaml
@@ -2166,5 +2061,110 @@ id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
 other_identifier:
 - notation: https://www.chemotion-repository.net/pid/50440
 title: CRS-50440
+
+```
+## SubstanceSampleCharacterizationDataset-001
+### Input
+```yaml
+description:
+- 'Dataset analysing Sample ID: CRS-50440 with heteronuclear single quantum coherence
+  (HSQC) NMR spectroscopy'
+id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604
+is_about_entity:
+- composed_of:
+  - description: compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+    has_molar_mass:
+    - description: Molar mass as specified in the Chemotion repository.
+      has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+      unit: https://qudt.org/vocab/unit/GM-PER-MOL
+      value: 204.072119
+    - description: Molar mass as specified in PubChem
+      has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+      unit: https://qudt.org/vocab/unit/GM-PER-MOL
+      value: 204.29
+    id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound
+    inchi:
+    - description: assigned InChi
+      value: InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3
+    inchikey:
+    - description: assigned InChiKey
+      value: KVOIVNBYNQXCNY-BOCHJOTCSA-N
+    iupac_name:
+    - description: Chemotion IUPAC name
+      value: N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine
+    - description: PubChem IUPAC name
+      value: Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine
+    molecular_formula:
+    - description: assigned molecular formula
+      value: C11H12N2S
+    other_identifier:
+    - notation: https://pubchem.ncbi.nlm.nih.gov/compound/26248854
+    smiles:
+    - description: assigned SMILES
+      value: CNCc1csc(n1)c1ccccc1
+  description: The analysed chemical substance sample CRS-50440.
+  id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+  rdf_type:
+    id: CHEBI:59999
+    title: chemical substance
+  title: CRS-50440
+other_identifier:
+- notation: https://www.chemotion-repository.net/pid/50438
+theme:
+- preferred_label:
+  - Science and technology
+title:
+- heteronuclear single quantum coherence (HSQC) dataset
+was_generated_by:
+- carried_out_by:
+  - description: used NMR spectrometer
+    id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Spectrometer
+    rdf_type:
+      id: NMR:1000371
+      title: AVANCE III HD
+    title: Avance III 400 NMR spectrometer
+  - description: used solvent
+    has_part:
+    - id: https://pubchem.ncbi.nlm.nih.gov/compound/71583
+      rdf_type:
+        id: CHEBI:85365
+        title: deuterated chloroform
+      title: chloroform-D1 (CDCl3)
+    id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Solvent
+    rdf_type:
+      id: NCIT:C45790
+      title: Solvent
+  description:
+  - heteronuclear single quantum coherence (HSQC) NMR spectroscopy.
+  evaluated_entity:
+  - id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
+    title: CRS-50440
+  has_qualitative_attribute:
+  - description: used pulse program
+    rdf_type:
+      id: NMR:1400037
+      title: NMR pulse sequence
+    value: hsqcedetgp
+  has_quantitative_attribute:
+  - description: used sample temperature setting
+    has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+    rdf_type:
+      id: NMR:1400025
+      title: sample temperature in magnet
+    unit: https://qudt.org/vocab/unit/K
+    value: 300.1
+  - description: used number of scans
+    has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+    rdf_type:
+      id: NMR:1400087
+      title: number of scans
+    unit: http://qudt.org/vocab/unit/NUM
+    value: 2
+  id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932
+  rdf_type:
+    id: CHMO:0000604
+    title: heteronuclear single quantum coherence
+  title:
+  - X27932
 
 ```
