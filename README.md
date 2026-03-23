@@ -88,7 +88,7 @@ Validate a single example dataset using LinkML's validator framework:
     ````commandline
     uv run linkml validate tests/data/valid/SubstanceSampleCharacterizationDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C SubstanceSampleCharacterizationDataset
     ````
-  * Validate a reaction dataset example conforming to ChemDCAT-AP's `ReactionRecordingDataset`
+  * Validate a reaction dataset example conforming to ChemDCAT-AP's `ReactionMonitoringDataset`
     ````commandline
     uv run linkml validate tests/data/valid/ReactionRecordingDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -C ReactionRecordingDataset
     ````
@@ -116,7 +116,7 @@ To convert the test data into a TTL graph run:
     ````
   * Convert a reaction dataset example conforming to ChemDCAT-AP's `ReactionRecordingDataset`
     ````commandline
-    uv run linkml-convert -t ttl tests/data/valid/ReactionRecordingDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ReactionRecordingDataset
+    uv run linkml-convert -t ttl tests/data/valid/ReactionRecordingDataset-001.yaml -s src/chem_dcat_ap/schema/chem_dcat_ap.yaml -P "_base=https://search.nfdi4chem.de/dataset/" -C ReactionMonitoringDataset
     ````
   * Convert a material sample example conforming to ChemDCAT-AP's `MaterialSample`
     ````commandline
