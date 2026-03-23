@@ -513,6 +513,11 @@ Alias: creator</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../../classes/ReactionMonitoringDataset/">ReactionMonitoringDataset</a></td>
+<td>A Dataset about a ChemicalReaction that was produced by a ReactionMonitoring activity. This is a coarse-grained convenience shape that conflates experimental documentation and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish reaction monitoring from subsequent data evaluation should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../../classes/Catalogue/">Catalogue</a></td>
 <td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue">DCAT-AP specs:Catalogue</a></td>
 <td>yes</td>
@@ -520,11 +525,6 @@ Alias: creator</p>
 <tr>
 <td><a href="../../classes/SubstanceSampleCharacterizationDataset/">SubstanceSampleCharacterizationDataset</a></td>
 <td>A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/ReactionMonitoringDataset/">ReactionMonitoringDataset</a></td>
-<td>A Dataset about a ChemicalReaction that was produced by a ReactionMonitoring activity. This is a coarse-grained convenience shape that conflates experimental documentation and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish reaction monitoring from subsequent data evaluation should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.</td>
 <td>no</td>
 </tr>
 <tr>
