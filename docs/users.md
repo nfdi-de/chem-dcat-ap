@@ -6,15 +6,21 @@
 
 [:octicons-globe-16: search.nfdi4chem.de](https://search.nfdi4chem.de/)
 
-ChemDCAT-AP is deployed in production within the NFDI4Chem Search Service, a [CKAN](https://ckan.org/)-based data catalog. A custom profile for the [`ckanext-dcat`](https://github.com/ckan/ckanext-dcat) plugin enables the service to parse and export ChemDCAT-AP-compliant metadata. The auto-generated Python data classes from the LinkML model validate and transform metadata harvested from source repositories into a standardized RDF graph.
+ChemDCAT-AP is currently being implemented in the NFDI4Chem Search Service, a [CKAN](https://ckan.org/)-based registry of NFDI4Chem's federation of data repositories. A custom profile for the [`ckanext-dcat`](https://github.com/ckan/ckanext-dcat) plugin enables the service to parse and export ChemDCAT-AP-compliant metadata. The auto-generated Python data classes generated from its LinkML model validate and transform metadata harvested from the source repositories into a standardized RDF graph.
 
-This powers the **NFDI Chemistry Knowledge Graph** (ChemKG), enabling faceted search queries that are impossible with generic catalog metadata. For example, finding all datasets where a specific solvent was used or that analyze a compound with a given InChIKey.
+This powers the **NFDI Chemistry Knowledge Graph** (ChemKG), enabling faceted SPARQL search queries that are impossible with generic catalog metadata. For example, finding all datasets where a specific solvent was used or that analyze a compound with a given InChIKey.
+
+### Repo4Cat (NFDI4Cat Central Data Repository)
+ 
+[:octicons-globe-16: repository.nfdi4cat.org](https://repository.nfdi4cat.org) · [:octicons-repo-16: nfdi4cat/repo4cat](https://github.com/nfdi4cat/repo4cat)
+ 
+The NFDI4Cat Central Data Repository is a [Dataverse](https://dataverse.org/)-based platform for sharing catalysis research data. It is the target deployment for [CoreMeta4Cat](#coremeta4cat), NFDI4Cat's catalysis-specific profiles built on ChemDCAT-AP. Integration of ChemDCAT-AP-derived metadata into the Repo4Cat cataloging workflow is under development.
 
 ### Chemotion Repository
 
 [:octicons-globe-16: chemotion-repository.net](https://www.chemotion-repository.net/)
 
-The [Chemotion Repository](https://www.chemotion-repository.net/) is the primary data source validated against ChemDCAT-AP. All existing metadata fields from Chemotion records have been successfully mapped to the ChemDCAT-AP schema. The test data used in the schema's CI pipeline comes from real Chemotion records (e.g., substance samples, chemical reactions with full stoichiometry and conditions). The implementation of ChemDCAT-AP more directly in Chemotion is currently being investigated.
+The [Chemotion Repository](https://www.chemotion-repository.net/) is currently the primary data source validated against ChemDCAT-AP. All relevant metadata fields from Chemotion records have been successfully mapped to the ChemDCAT-AP schema. The test data used in the schema's CI pipeline comes from real Chemotion records (e.g., substance samples, chemical reactions with full stoichiometry and conditions). The implementation of ChemDCAT-AP more directly in Chemotion is currently being investigated.
 
 ---
 
@@ -54,10 +60,10 @@ We are collaborating with the developers of the [NFDIcore ontology](https://nfdi
 
 If your subdomain is not covered above, you can build a profile that imports ChemDCAT-AP. The [Adoption guide](guidance.md#extending-chemdcat-ap-further) provides a conformance checklist and anti-patterns to avoid. The [Dataset and activity shapes](dataset-activity-shapes.md) page documents the coarse-grained convenience shapes you can reuse or replace with more granular alternatives.
 
-To make your profile discoverable, tag your GitHub repository with `chemdcatap`, `dcatapplus`, and `linkml`.
+To allow us linking to your sub-profile, tag your GitHub repository with `chemdcatap`, `dcatapplus`, and `linkml`.
 
 ## Using ChemDCAT-AP?
 
-If you are building on ChemDCAT-AP or using it in your infrastructure, we welcome additions to this page. Feel free to open an [issue](https://github.com/nfdi-de/chem-dcat-ap/issues) or pull request.
+If you are building on ChemDCAT-AP or using it in your infrastructure, we welcome additions to this page and other constructive feedback. Please, feel free to open an [issue](https://github.com/nfdi-de/chem-dcat-ap/issues) or pull request.
 
-For the broader set of projects using the underlying DCAT-AP+ framework, see [DCAT-AP+ Projects](https://nfdi-de.github.io/dcat-ap-plus/dcat-ap-plus-users/).
+For the broader set of projects using the underlying DCAT-AP+ framework, see [DCAT-AP+ Projects](https://nfdi-de.github.io/dcat-ap-plus/latest/dcat-ap-plus-users/).
