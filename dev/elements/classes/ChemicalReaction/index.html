@@ -416,7 +416,7 @@
 
 
 
-        ChemicalReaction --&gt; "0..1" ChemicalReaction : has_reaction_step
+        ChemicalReaction --&gt; "*" ChemicalReaction : has_reaction_step
         click ChemicalReaction href "../../classes/ChemicalReaction/"
 
 
@@ -642,7 +642,7 @@
 </tr>
 <tr>
 <td><a href="../../slots/has_reaction_step/">has_reaction_step</a></td>
-<td>0..1 <br/> <a href="./">ChemicalReaction</a></td>
+<td>* <br/> <a href="./">ChemicalReaction</a></td>
 <td>A slot to specify a step (part) of a ChemicalReaction that is itself a ChemicalReaction.</td>
 <td>direct</td>
 </tr>
@@ -749,6 +749,18 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../ReactionMonitoringDataset/">ReactionMonitoringDataset</a></td>
+<td><a href="../../slots/is_about_activity/">is_about_activity</a></td>
+<td>range</td>
+<td><a href="./">ChemicalReaction</a></td>
+</tr>
+<tr>
+<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
+<td><a href="../../slots/evaluated_activity/">evaluated_activity</a></td>
+<td>range</td>
+<td><a href="./">ChemicalReaction</a></td>
+</tr>
 <tr>
 <td><a href="./">ChemicalReaction</a></td>
 <td><a href="../../slots/has_reaction_step/">has_reaction_step</a></td>
@@ -1042,6 +1054,9 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalReaction</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalReaction</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">related_resource</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">related_resource</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify any Documents related to a ChemicalReaction.</span>
