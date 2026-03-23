@@ -1,4 +1,4 @@
-# Example SubstanceCharacterizationDataset object based on a real dataset from Chemotion
+# Example SubstanceSampleCharacterizationDataset object based on a real dataset from Chemotion
 # without many domain agnostic metadata like publisher and creator that conforms to ChemDCAT-AP schema
 ---
 id: doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604

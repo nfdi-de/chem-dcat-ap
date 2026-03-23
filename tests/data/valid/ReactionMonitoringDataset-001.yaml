@@ -1,4 +1,4 @@
-# Example ReactionRecordingDataset object based on a real dataset from Chemotion:
+# Example ReactionMonitoringDataset object based on a real dataset from Chemotion:
 #   - without many DCAT-AP metadata like creator but only metadata conforming to ChemDCAT-AP,
 #   - with the reaction/synthesis steps extracted manually from the description
 #   - with titles and descriptions added for entities not represented in such structured form in Chemotion yet
