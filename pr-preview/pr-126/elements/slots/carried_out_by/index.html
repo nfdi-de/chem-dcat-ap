@@ -526,9 +526,9 @@ Alias: carried_out_by</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/ChemicalReaction/">ChemicalReaction</a></td>
-<td>A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.</td>
-<td>no</td>
+<td><a href="../../classes/Activity/">Activity</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity">DCAT-AP specs:Activity</a></td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../../classes/SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
@@ -538,11 +538,6 @@ Alias: carried_out_by</p>
 <tr>
 <td><a href="../../classes/ReactionMonitoring/">ReactionMonitoring</a></td>
 <td>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>An activity or process that is being evaluated in a DataGeneratingActivity.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -556,9 +551,14 @@ Alias: carried_out_by</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/Activity/">Activity</a></td>
-<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity">DCAT-AP specs:Activity</a></td>
-<td>yes</td>
+<td><a href="../../classes/ChemicalReaction/">ChemicalReaction</a></td>
+<td>A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or process that is being evaluated in a DataGeneratingActivity.</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
