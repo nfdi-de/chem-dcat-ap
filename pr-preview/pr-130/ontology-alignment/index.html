@@ -1258,10 +1258,6 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition info">
-<p class="admonition-title">Planned: formal projection queries</p>
-<p>We plan to provide a complete set of SPARQL CONSTRUCT queries covering all predicate replacements listed above, with worked examples from the ChemDCAT-AP test data. These will allow any triplestore hosting ChemDCAT-AP data to materialize the DCAT-AP+ base predicates alongside the domain-specific ones, ensuring backward-compatible querying without losing semantic precision.</p>
-</div>
 <h3 id="sio000008-as-the-chemistry-attribute-predicate">SIO:000008 as the chemistry attribute predicate</h3>
 <p>All ChemDCAT-AP attribute sub-slots (<code>has_temperature</code>, <code>has_mass</code>, <code>inchi</code>, <code>smiles</code>, <code>has_concentration</code>, <code>has_yield</code>, etc.) use <code>slot_uri: SIO:000008</code> (has attribute) instead of the DCAT-AP+ default <code>dcterms:relation</code>. The rationale:</p>
 <ul>
@@ -1321,6 +1317,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>This is the same approach recommended in the <a href="https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#for-slots-property-shapes-with-replaceable-predicates">DCAT-AP+ design patterns documentation</a> for avoiding blank node duplication when projecting between vocabularies. Generate RDF from the domain-specific schema and use CONSTRUCT rules to add the generic predicates to the existing nodes.</p>
+<div class="admonition info">
+<p class="admonition-title">Planned: formal projection queries</p>
+<p>We plan to provide a complete set of SPARQL CONSTRUCT queries covering all predicate replacements listed above, with worked examples from the ChemDCAT-AP test data. These will allow any triplestore hosting ChemDCAT-AP data to materialize the DCAT-AP+ base predicates alongside the domain-specific ones, ensuring backward-compatible querying without losing semantic precision.</p>
+</div>
 <h2 id="why-bfo-alignment-matters">Why BFO alignment matters</h2>
 <p>Several of ChemDCAT-AP's ontology choices (CHEBI, OBI, RO, PATO) are part of the <a href="https://obofoundry.org/">OBO Foundry</a>, which is built on the <a href="https://basic-formal-ontology.org/">Basic Formal Ontology (BFO)</a>. This alignment has practical value:</p>
 <ul>
