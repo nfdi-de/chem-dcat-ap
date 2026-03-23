@@ -193,12 +193,12 @@ enums:
       SOLID:
         meaning: PATO:0001736
         description: A state of matter in which molecules are closely packed and cannot move past each other.
-      CRYSTAL:
-        meaning: PATO:0002066
-        description: A solid state of matter whose constituents (such as atoms, molecules, or ions) are arranged in a highly ordered microscopic structure, forming a crystal lattice that extends in all directions.
       LIQUID:
         meaning: PATO:0001735
         description: A state of matter with a definite volume but no fixed shape. Liquids adapt to the shape of their container and are nearly incompressible, maintaining their volume even under pressure.
       GASEOUS:
         meaning: PATO:0001737
         description: A state of matter with neither fixed volume nor fixed shape.
+      PLASMA:
+        meaning: PATO:0015012
+        description: A state of matter in which a gas becomes ionized and conducts electricity, often found in high-energy environments such as stars or lightning.
