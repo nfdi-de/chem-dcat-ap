@@ -41,8 +41,8 @@ is_about_entity: # the evaluated SubstanceSample
           - value: "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine"
             description: "PubChem IUPAC name"
         has_molar_mass:
-          - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
-            unit: https://qudt.org/vocab/unit/GM-PER-MOL
+          - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMassee
+            unit: https://qudt.org/vocab/unit/GM-PER-MOLd
             value: 204.072119
             description: "Molar mass as specified in the Chemotion repository."
           - has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
