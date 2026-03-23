@@ -48,9 +48,6 @@ When ChemDCAT-AP creates a sub-slot (via `is_a`), it may assign a different, sem
 | `has_part` (on MaterialEntity), `composed_of`, `has_reaction_step` | `has_part` | `dcterms:hasPart` | `BFO:0000051` (has part) |
 | `used_solvent`, `used_reactor` | `carried_out_by` | `prov:wasAssociatedWith` | *(not replaced)* |
 
-!!! info "Planned: formal projection queries"
-    We plan to provide a complete set of SPARQL CONSTRUCT queries covering all predicate replacements listed above, with worked examples from the ChemDCAT-AP test data. These will allow any triplestore hosting ChemDCAT-AP data to materialize the DCAT-AP+ base predicates alongside the domain-specific ones, ensuring backward-compatible querying without losing semantic precision.
-
 ### SIO:000008 as the chemistry attribute predicate
 
 All ChemDCAT-AP attribute sub-slots (`has_temperature`, `has_mass`, `inchi`, `smiles`, `has_concentration`, `has_yield`, etc.) use `slot_uri: SIO:000008` (has attribute) instead of the DCAT-AP+ default `dcterms:relation`. The rationale:
@@ -98,6 +95,9 @@ WHERE {
 ```
 
 This is the same approach recommended in the [DCAT-AP+ design patterns documentation](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#for-slots-property-shapes-with-replaceable-predicates) for avoiding blank node duplication when projecting between vocabularies. Generate RDF from the domain-specific schema and use CONSTRUCT rules to add the generic predicates to the existing nodes.
+
+!!! info "Planned: formal projection queries"
+    We plan to provide a complete set of SPARQL CONSTRUCT queries covering all predicate replacements listed above, with worked examples from the ChemDCAT-AP test data. These will allow any triplestore hosting ChemDCAT-AP data to materialize the DCAT-AP+ base predicates alongside the domain-specific ones, ensuring backward-compatible querying without losing semantic precision.
 
 ## Why BFO alignment matters
 
