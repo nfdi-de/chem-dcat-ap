@@ -1,0 +1,173 @@
+---
+name: Check schema compatibility
+
+# Runs weekly to verify that every deployed version of chem-dcat-ap still
+# has a resolvable dcat-ap-plus dependency.
+#
+# What this workflow does
+# -----------------------
+# 1. Runs scripts/check_compatibility.py (pure stdlib — no pip install needed).
+# 2. Pushes badge.json and compatibility.html directly to the gh-pages root
+#    so they are available at stable, version-independent URLs.
+# 3. If the 'latest' version has newly become stale, opens a GitHub Issue
+#    labelled 'schema-dep-stale' to notify maintainers.
+# 4. If the 'latest' version is now valid and a stale issue is open,
+#    closes it automatically with a resolution comment.
+#
+# Stable URLs produced:
+#   badge.json          → https://nfdi-de.github.io/chem-dcat-ap/badge.json
+#   compatibility.html  → https://nfdi-de.github.io/chem-dcat-ap/compatibility.html
+#
+# No secrets required beyond the default GITHUB_TOKEN.
+
+on:  # yamllint disable-line rule:truthy
+  schedule:
+    - cron: '0 6 * * 1'   # Weekly on Mondays at 06:00 UTC
+  workflow_dispatch:       # manual trigger
+
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # push badge.json + compatibility.html to gh-pages
+      issues: write     # open / close the schema-dep-stale issue
+
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git for the bot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # ------------------------------------------------------------------
+      # Run the compatibility check.
+      # Pure stdlib — no uv / pip install needed.
+      # '|| true' ensures the workflow never fails; state changes are
+      # communicated through issues, not workflow status.
+      # ------------------------------------------------------------------
+      - name: Run compatibility check
+        id: compat
+        run: |
+          python3 scripts/check_compatibility.py \
+            --chemdcatap-url https://nfdi-de.github.io/chem-dcat-ap \
+            --dcatapplus-url https://nfdi-de.github.io/dcat-ap-plus \
+            --output-dir /tmp/compat_output || true
+          cat /tmp/compat_output/status.env >> "$GITHUB_OUTPUT"
+
+      # ------------------------------------------------------------------
+      # Push badge.json and compatibility.html to the gh-pages root.
+      # Uses a git worktree so the main checkout is untouched.
+      # [skip ci] prevents a recursive gh-pages build trigger.
+      # ------------------------------------------------------------------
+      - name: Publish badge and compatibility matrix to gh-pages
+        run: |
+          git fetch origin gh-pages
+          git worktree add /tmp/gh-pages gh-pages
+
+          cp /tmp/compat_output/badge.json         /tmp/gh-pages/badge.json
+          cp /tmp/compat_output/compatibility.html /tmp/gh-pages/compatibility.html
+
+          cd /tmp/gh-pages
+          git add badge.json compatibility.html
+          if git diff --staged --quiet; then
+            echo "No changes to badge or matrix — nothing to commit."
+          else
+            git commit -m "chore: update schema compatibility status [skip ci]"
+            git push origin gh-pages
+            echo "Pushed updated badge and compatibility matrix."
+          fi
+          cd -
+          git worktree remove /tmp/gh-pages
+
+      # ------------------------------------------------------------------
+      # Create the label if it does not exist yet (idempotent).
+      # ------------------------------------------------------------------
+      - name: Ensure schema-dep-stale label exists
+        run: |
+          gh label create "schema-dep-stale" \
+            --color "e4e669" \
+            --description "Latest released version depends on an unavailable upstream schema" \
+            2>/dev/null || true
+
+      # ------------------------------------------------------------------
+      # Open a new issue only on the first run where latest is stale.
+      # ------------------------------------------------------------------
+      - name: Open issue if latest has newly become stale
+        if: steps.compat.outputs.latest_stale == 'true'
+        run: |
+          EXISTING=$(gh issue list \
+            --label "schema-dep-stale" \
+            --state open \
+            --json number \
+            --jq '.[0].number' 2>/dev/null || echo "")
+
+          if [ -z "$EXISTING" ]; then
+            gh issue create \
+              --title "⚠️ Schema dependency stale: latest chem-dcat-ap depends on an unavailable dcat-ap-plus version" \
+              --label "schema-dep-stale" \
+              --body "$(cat <<EOF
+          ## Schema dependency broken
+
+          The weekly compatibility check found that the **latest** released version of
+          chem-dcat-ap depends on a version of dcat-ap-plus that is no longer available
+          on GitHub Pages.
+
+          | Metric | Value |
+          |--------|-------|
+          | Stale versions | ${{ steps.compat.outputs.stale_count }} of ${{ steps.compat.outputs.total_count }} |
+          | Badge status | ${{ steps.compat.outputs.badge_message }} |
+
+          See the [compatibility matrix](https://nfdi-de.github.io/chem-dcat-ap/compatibility.html)
+          for the full version-by-version breakdown.
+
+          ### Suggested actions
+          - Check whether the dcat-ap-plus version was deleted or moved
+          - If deleted: release a patched chem-dcat-ap version frozen to an
+            available dcat-ap-plus version
+          - If temporarily unavailable: wait for the next weekly check — this
+            issue will close automatically once the dependency is reachable again
+
+          ---
+          *This issue was opened automatically by the \`check-schema-compatibility\` workflow.*
+          *It will be closed automatically once the latest version is valid again.*
+          EOF
+          )"
+            echo "Opened new schema-dep-stale issue."
+          else
+            echo "Issue #${EXISTING} already open — skipping duplicate."
+          fi
+
+      # ------------------------------------------------------------------
+      # Auto-close the stale issue when latest is valid again.
+      # ------------------------------------------------------------------
+      - name: Close stale issue if latest is now valid
+        if: steps.compat.outputs.latest_stale == 'false'
+        run: |
+          EXISTING=$(gh issue list \
+            --label "schema-dep-stale" \
+            --state open \
+            --json number \
+            --jq '.[0].number' 2>/dev/null || echo "")
+
+          if [ -n "$EXISTING" ]; then
+            gh issue close "$EXISTING" \
+              --comment "$(cat <<EOF
+          ✅ The latest version is valid again — closing automatically.
+
+          See the [compatibility matrix](https://nfdi-de.github.io/chem-dcat-ap/compatibility.html)
+          for the current status of all deployed versions.
+          EOF
+          )"
+            echo "Closed issue #${EXISTING}."
+          else
+            echo "No open schema-dep-stale issue — nothing to close."
+          fi
