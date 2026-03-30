@@ -2,7 +2,7 @@
 
 This page provides practical guidance for chemists, data stewards, and developers working with ChemDCAT-AP, whether producing instance data, consuming it, or building further extensions.
 
-For the generic extension rules (what you must do, may do, and must not do), see the [DCAT-AP+ Extension Rules](https://nfdi-de.github.io/dcat-ap-plus/how-to-extend/).
+For the generic extension rules (what you must do, may do, and must not do), see the [DCAT-AP+ Extension Rules](https://nfdi-de.github.io/dcat-ap-plus/latest/how-to-extend/).
 
 ---
 

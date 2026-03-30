@@ -105,6 +105,6 @@ derived_from:
 
 Key observations:
 
-- `rdf_type` uses the DCAT-AP+ [ClassifierMixin](https://nfdi-de.github.io/dcat-ap-plus/design-patterns/#pattern-3-flexible-classification-classifiermixin) to classify the sample as `ENVO:00002040` (wood).
+- `rdf_type` uses the DCAT-AP+ [ClassifierMixin](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#pattern-3-flexible-classification-classifiermixin) to classify the sample as `ENVO:00002040` (wood).
 - Each physical property follows the DCAT-AP+ `QuantitativeAttribute` pattern: `value` + `has_quantity_type` (QUDT QuantityKind) + `unit` (QUDT Unit).
 - `derived_from` traces the sample back to a geographic origin, itself classified via `rdf_type` as a forest biome (`ENVO:01000174`).

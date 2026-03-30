@@ -26,7 +26,7 @@ The [Chemotion Repository](https://www.chemotion-repository.net/) is currently t
 
 ## Downstream profiles
 
-ChemDCAT-AP is designed to be imported and further specialized by domain-specific sub-profiles. These profiles add third-layer shapes on top of ChemDCAT-AP's chemistry classes, following the same [extension rules](https://nfdi-de.github.io/dcat-ap-plus/how-to-extend/) that ChemDCAT-AP follows for DCAT-AP+. See the [Adoption guide: Extending ChemDCAT-AP](guidance.md#extending-chemdcat-ap-further) for practical guidance.
+ChemDCAT-AP is designed to be imported and further specialized by domain-specific sub-profiles. These profiles add third-layer shapes on top of ChemDCAT-AP's chemistry classes, following the same [extension rules](https://nfdi-de.github.io/dcat-ap-plus/latest/how-to-extend/) that ChemDCAT-AP follows for DCAT-AP+. See the [Adoption guide: Extending ChemDCAT-AP](guidance.md#extending-chemdcat-ap-further) for practical guidance.
 
 ### NMR-DCAT-AP
 

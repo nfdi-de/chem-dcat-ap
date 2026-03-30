@@ -19,7 +19,7 @@ This is not a bug. LinkML validates against the shape declared in the range, and
 These four shapes also serve as templates: downstream profiles that need more granular alternatives can follow the same pattern of subclassing `Dataset` and `DataGeneratingActivity` with narrower ranges.
 
 !!! warning "Coarse-grained by design"
-    These shapes deliberately conflate measurement and analysis into a single `DataGeneratingActivity`. This is appropriate when a dataset captures the end result of a characterization workflow without needing to trace intermediate steps (raw data vs. processed data vs. derived results). When that distinction matters, use the DCAT-AP+ [DataAnalysis chain](https://nfdi-de.github.io/dcat-ap-plus/design-patterns/#the-dataanalysis-chain) instead: define your own `DataGeneratingActivity` and `DataAnalysis` subclasses in a sub-profile that imports ChemDCAT-AP, and model raw and derived datasets separately via `AnalysisSourceData` and `AnalysisDataset`.
+    These shapes deliberately conflate measurement and analysis into a single `DataGeneratingActivity`. This is appropriate when a dataset captures the end result of a characterization workflow without needing to trace intermediate steps (raw data vs. processed data vs. derived results). When that distinction matters, use the DCAT-AP+ [DataAnalysis chain](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#the-dataanalysis-chain) instead: define your own `DataGeneratingActivity` and `DataAnalysis` subclasses in a sub-profile that imports ChemDCAT-AP, and model raw and derived datasets separately via `AnalysisSourceData` and `AnalysisDataset`.
 
 ## Substance sample characterization
 
@@ -27,7 +27,7 @@ These four shapes also serve as templates: downstream profiles that need more gr
 
 **SubstanceSampleCharacterization** extends `DataGeneratingActivity` and constrains `evaluated_entity` to range `SubstanceSample`. Declares `broad_mappings: OBI:0000070` (assay), indicating that this shape is semantically narrower than OBI's assay class.
 
-The `rdf_type` slot (inherited from the [ClassifierMixin](https://nfdi-de.github.io/dcat-ap-plus/design-patterns/#pattern-3-flexible-classification-classifiermixin)) is how you specify *what kind* of characterization was performed. For a NMR measurement, you would set `rdf_type` to `CHMO:0000595` (carbon-13 NMR spectroscopy) or another CHMO term. For an XRD analysis, you would use the corresponding CHMO class. The shape itself does not prescribe the method.
+The `rdf_type` slot (inherited from the [ClassifierMixin](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#pattern-3-flexible-classification-classifiermixin)) is how you specify *what kind* of characterization was performed. For a NMR measurement, you would set `rdf_type` to `CHMO:0000595` (carbon-13 NMR spectroscopy) or another CHMO term. For an XRD analysis, you would use the corresponding CHMO class. The shape itself does not prescribe the method.
 
 ### When to use vs. when to define your own
 
@@ -56,6 +56,6 @@ The same `rdf_type` mechanism applies: classify the `ReactionMonitoring` instanc
 
 ## Shared design properties
 
-All four classes share `class_uri` with their parents (`dcat:Dataset` or `prov:Activity`). They are different **shapes** (SHACL node shapes with narrower property constraints), not new ontology classes. This follows the [DCAT-AP+ foundational principle](https://nfdi-de.github.io/dcat-ap-plus/design-patterns/#foundational-principle-linkml-elements-as-shacl-shapes): multiple LinkML classes can reference the same ontology term, each representing a different usage context.
+All four classes share `class_uri` with their parents (`dcat:Dataset` or `prov:Activity`). They are different **shapes** (SHACL node shapes with narrower property constraints), not new ontology classes. This follows the [DCAT-AP+ foundational principle](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#foundational-principle-linkml-elements-as-shacl-shapes): multiple LinkML classes can reference the same ontology term, each representing a different usage context.
 
 In practice this means a SPARQL query for `?x a dcat:Dataset` will find both `SubstanceSampleCharacterizationDataset` and `ReactionMonitoringDataset` instances. The narrower shapes exist for validation and developer guidance, not for RDF-level type discrimination.

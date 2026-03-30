@@ -137,7 +137,7 @@ The examples in the other documentation pages show individual classes (a `Materi
 
 ### A reaction monitoring dataset
 
-This is a real example from the [Chemotion Repository (CRR-56408)](https://www.chemotion-repository.net/pid/56408), showing a multi-step phosphine synthesis. The source file is part of ChemDCAT-AP's validation test suite: [tests/data/valid/ReactionMonitoringDataset-001.yaml](../tests/data/valid/ReactionMonitoringDataset-001.yaml). The full example is extensive (~1400 lines) because it models individual reaction steps, work-up procedures, and purification as nested activities. The excerpt below shows the top-level Dataset structure and the first reaction step to illustrate the pattern.
+This is a real example from the [Chemotion Repository (CRR-56408)](https://www.chemotion-repository.net/pid/56408), showing a multi-step phosphine synthesis. The source file is part of ChemDCAT-AP's validation test suite: [tests/data/valid/ReactionMonitoringDataset-001.yaml](https://github.com/nfdi-de/chem-dcat-ap/blob/main/tests/data/valid/ReactionMonitoringDataset-001.yaml). The full example is extensive (~1400 lines) because it models individual reaction steps, work-up procedures, and purification as nested activities. The excerpt below shows the top-level Dataset structure and the first reaction step to illustrate the pattern.
 
 ```yaml
 # A ReactionMonitoringDataset - the Chemotion reaction DOI serves as the Dataset ID
@@ -323,7 +323,7 @@ Notice how the YAML-to-RDF mapping works:
 
 ### A substance sample characterization dataset
 
-This is a real example from the [Chemotion Repository](https://www.chemotion-repository.net/pid/50438), showing an HSQC NMR measurement of a chemical substance sample. The source file is part of ChemDCAT-AP's validation test suite: [`tests/data/valid/SubstanceSampleCharacterizationDataset-001.yaml`](../tests/data/valid/SubstanceSampleCharacterizationDataset-001.yaml). Every CI run validates this file against the schema.
+This is a real example from the [Chemotion Repository](https://www.chemotion-repository.net/pid/50438), showing an HSQC NMR measurement of a chemical substance sample. The source file is part of ChemDCAT-AP's validation test suite: [`tests/data/valid/SubstanceSampleCharacterizationDataset-001.yaml`](https://github.com/nfdi-de/chem-dcat-ap/blob/main/tests/data/valid/SubstanceSampleCharacterizationDataset-001.yaml). Every CI run validates this file against the schema.
 
 Note how the `SubstanceSampleCharacterization` activity uses the generic DCAT-AP+ attribute and agent slots (`has_qualitative_attribute`, `has_quantitative_attribute`, `carried_out_by`) rather than chemistry-specific sub-slots. This is deliberate: `SubstanceSampleCharacterization` is a [coarse-grained convenience shape](dataset-activity-shapes.md) that leaves method-specific structuring to sub-profiles like [NMR-DCAT-AP](https://nfdi4chem.github.io/nmr-dcat-ap).
 

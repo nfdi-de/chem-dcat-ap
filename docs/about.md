@@ -19,7 +19,7 @@ ChemDCAT-AP grew out of a collaboration between [NFDI4Chem](https://nfdi4chem.de
 
 Consequently, ChemDCAT-AP serves a dual role: 
 
-* it will be implemented and further extended for **production metadata schemata** used by NFDI4Cat and NFDI4Chem services, such as [NFDI4Chem's Search Service](https://search.nfdi4chem.de/) or NFDI4Cat's [Repo4Cat](https://repository.nfdi4cat.org) and [Metadata4cat]((https://nfdi4cat.org/Services/Meta4Cat.html)),
+* it will be implemented and further extended for **production metadata schemata** used by NFDI4Cat and NFDI4Chem services, such as [NFDI4Chem's Search Service](https://search.nfdi4chem.de/) or NFDI4Cat's [Repo4Cat](https://repository.nfdi4cat.org) and [Metadata4cat](https://nfdi4cat.org/Services/Meta4Cat.html),
 * and a **reference implementation** that demonstrates the [DCAT-AP+ extension rules](https://nfdi-de.github.io/dcat-ap-plus/latest/how-to-extend/) in practice. Every design decision documented here can serve as a template for other domains building their own DCAT-AP+ extension profiles. 
 
 
@@ -33,7 +33,7 @@ The collaborative development process between NFDI4Chem and NFDI4Cat followed fo
 3. **Semantic grounding** — Every added class and property is mapped to an established ontology (PROV-O, QUDT, BFO, IAO, OBI, CHEBI, CHMO, SIO, etc.) via `class_uri` and `slot_uri`.
 4. **Simplicity for data stewards and developers** — The schema remains usable without requiring deep ontology expertise. Dedicated typed slots, clear naming, and the [quick start](quickstart.md) lower the adoption barrier.
 
-For more on DCAT-AP+'s design rationale and the gap in DCAT-AP that motivated this work, see the [DCAT-AP+ design patterns documentation](https://nfdi-de.github.io/dcat-ap-plus/design-patterns/).
+For more on DCAT-AP+'s design rationale and the gap in DCAT-AP that motivated this work, see the [DCAT-AP+ design patterns documentation](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/).
 
 ## Publication
 

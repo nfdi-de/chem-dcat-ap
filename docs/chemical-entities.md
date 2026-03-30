@@ -64,7 +64,7 @@ The `composed_of` slot (a sub-slot of `has_part`, mapped to `BFO:0000051`) links
 | `AmountOfSubstance` | `qudt:Quantity` | `QuantitativeAttribute` | close: `PATO:0000070` |
 | `PHValue` | `SIO:001089` | `QuantitativeAttribute` | exact: `NCIT:C45997`, `AFR:0001142` |
 
-These follow the DCAT-AP+ [QuantitativeAttribute pattern](https://nfdi-de.github.io/dcat-ap-plus/design-patterns/#quantitativeattribute). Each narrows the semantic intent while preserving the structural `value` + `has_quantity_type` + `unit` shape.
+These follow the DCAT-AP+ [QuantitativeAttribute pattern](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#quantitativeattribute). Each narrows the semantic intent while preserving the structural `value` + `has_quantity_type` + `unit` shape.
 
 !!! warning "Enum bindings for `has_quantity_type` and `unit` are still experimental"
     The schema declares bindings that constrain `has_quantity_type` and `unit` values to QUDT QuantityKind and Unit vocabularies respectively. These bindings are not enforced by `linkml-validate`. They will be validated using the [linkml-term-validator](https://linkml.io/linkml-term-validator/), which is meant to supports dynamic enums and binding validation. Yet, this still needs to be implemented in the ChemDCAT-AP pipeline.
@@ -135,7 +135,7 @@ Key observations:
 
 - The `SubstanceSample` (macroscopic level) links to its `ChemicalEntity` (molecular level) via `composed_of`.
 - The `ChemicalEntity` carries all structure descriptors. Each descriptor slot allows multiple values (e.g. two `iupac_name` entries from different sources, two `has_molar_mass` entries with different precision).
-- The sample's temperature uses `rdf_type` to classify it as specifically the sample temperature in the NMR magnet (`NMR:1400025`), not just any temperature. Similarly, the `SubstanceSample` is additionally typed to be an instance of CHEBI's _chemical substance_ class. This is the [ClassifierMixin](https://nfdi-de.github.io/dcat-ap-plus/design-patterns/#pattern-3-flexible-classification-classifiermixin) at work.
+- The sample's temperature uses `rdf_type` to classify it as specifically the sample temperature in the NMR magnet (`NMR:1400025`), not just any temperature. Similarly, the `SubstanceSample` is additionally typed to be an instance of CHEBI's _chemical substance_ class. This is the [ClassifierMixin](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#pattern-3-flexible-classification-classifiermixin) at work.
 
 ## PolymerSample and PolymerMixin
 
@@ -148,7 +148,7 @@ Key observations:
 
 ## Atom
 
-`Atom` (mapped to `CHEBI:33250`) extends `Entity` directly. It is a currently minimal shape whose only addition is that `rdf_type` is `required: true`, forcing every instance to declare which specific atom type it is via the [ClassifierMixin](https://nfdi-de.github.io/dcat-ap-plus/design-patterns/#pattern-3-flexible-classification-classifiermixin). The slot description indicates that the value should come from CHEBI's atom branch (`CHEBI:33250` and its subclasses, e.g. `CHEBI:26708` for a sodium atom), but this constraint is not yet enforced programmatically. Future versions of ChemDCAT-AP will use LinkML [slot bindings](https://linkml.io/linkml-model/latest/docs/bindings/) and the [linkml-term-validator](https://linkml.io/linkml-term-validator/) to validate this.
+`Atom` (mapped to `CHEBI:33250`) extends `Entity` directly. It is a currently minimal shape whose only addition is that `rdf_type` is `required: true`, forcing every instance to declare which specific atom type it is via the [ClassifierMixin](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#pattern-3-flexible-classification-classifiermixin). The slot description indicates that the value should come from CHEBI's atom branch (`CHEBI:33250` and its subclasses, e.g. `CHEBI:26708` for a sodium atom), but this constraint is not yet enforced programmatically. Future versions of ChemDCAT-AP will use LinkML [slot bindings](https://linkml.io/linkml-model/latest/docs/bindings/) and the [linkml-term-validator](https://linkml.io/linkml-term-validator/) to validate this.
 
 !!! note "Why Atom extends Entity, not ChemicalEntity"
     Since `ChemicalEntity` is grounded in CHEBI' _molecular entity_, and CHEBI's atom class (`CHEBI:33250`) is not a subclass of molecular entity in CHEBI's class hierarchy, subsuming `Atom` under `ChemicalEntity` would be ontologically incorrect. Extending `Entity` directly fixes this issues.
