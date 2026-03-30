@@ -831,7 +831,7 @@
 <p>ChemDCAT-AP grew out of a collaboration between <a href="https://nfdi4chem.de">NFDI4Chem</a> (NFDI for Chemistry) and <a href="https://nfdi4cat.org/">NFDI4Cat</a> (NFDI for Catalysis-Related Sciences). Both consortia needed fine-grained, machine-actionable metadata for domain-specific search in their data repositories, and given the overlap between chemistry and catalysis (e.g. both need chemical identifiers, characterization methods, reaction descriptions, ...) a joint effort was the natural choice. From the start it was clear that a DCAT-AP extension for this scope would need to be modular. As the schema took shape, it became apparent that its upper layer — structured provenance, generic attribute patterns, flexible classification — was entirely domain-agnostic and could serve as a reusable module for other domains. This layer was spun off as <a href="https://nfdi-de.github.io/dcat-ap-plus/">DCAT-AP+</a>, and ChemDCAT-AP became the first domain profile built on top of it.</p>
 <p>Consequently, ChemDCAT-AP serves a dual role: </p>
 <ul>
-<li>it will be implemented and further extended for <strong>production metadata schemata</strong> used by NFDI4Cat and NFDI4Chem services, such as <a href="https://search.nfdi4chem.de/">NFDI4Chem's Search Service</a> or NFDI4Cat's <a href="https://repository.nfdi4cat.org">Repo4Cat</a> and <a href="(https://nfdi4cat.org/Services/Meta4Cat.html)">Metadata4cat</a>,</li>
+<li>it will be implemented and further extended for <strong>production metadata schemata</strong> used by NFDI4Cat and NFDI4Chem services, such as <a href="https://search.nfdi4chem.de/">NFDI4Chem's Search Service</a> or NFDI4Cat's <a href="https://repository.nfdi4cat.org">Repo4Cat</a> and <a href="https://nfdi4cat.org/Services/Meta4Cat.html">Metadata4cat</a>,</li>
 <li>and a <strong>reference implementation</strong> that demonstrates the <a href="https://nfdi-de.github.io/dcat-ap-plus/latest/how-to-extend/">DCAT-AP+ extension rules</a> in practice. Every design decision documented here can serve as a template for other domains building their own DCAT-AP+ extension profiles. </li>
 </ul>
 <h2 id="design-principles">Design principles</h2>
@@ -842,7 +842,7 @@
 <li><strong>Semantic grounding</strong> — Every added class and property is mapped to an established ontology (PROV-O, QUDT, BFO, IAO, OBI, CHEBI, CHMO, SIO, etc.) via <code>class_uri</code> and <code>slot_uri</code>.</li>
 <li><strong>Simplicity for data stewards and developers</strong> — The schema remains usable without requiring deep ontology expertise. Dedicated typed slots, clear naming, and the <a href="../quickstart/">quick start</a> lower the adoption barrier.</li>
 </ol>
-<p>For more on DCAT-AP+'s design rationale and the gap in DCAT-AP that motivated this work, see the <a href="https://nfdi-de.github.io/dcat-ap-plus/design-patterns/">DCAT-AP+ design patterns documentation</a>.</p>
+<p>For more on DCAT-AP+'s design rationale and the gap in DCAT-AP that motivated this work, see the <a href="https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/">DCAT-AP+ design patterns documentation</a>.</p>
 <h2 id="publication">Publication</h2>
 <p>The design, implementation, and evaluation of DCAT-AP+ and ChemDCAT-AP were presented at the <a href="https://www.mtsr-conf.org/home">19th International Conference on Metadata and Semantics Research (MTSR 2025)</a>, Thessaloniki, Greece. Preprint: <a href="https://doi.org/10.48550/arXiv.2602.01822">https://doi.org/10.48550/arXiv.2602.01822</a>.</p>
 <h2 id="funding">Funding</h2>
