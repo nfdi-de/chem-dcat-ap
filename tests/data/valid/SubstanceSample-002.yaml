@@ -2,6 +2,9 @@
 ---
 id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
 title: "CRS-50440"
+rdf_type:
+  id: CHEBI:59999
+  title: "chemical substance"
 other_identifier:
   - notation: https://www.chemotion-repository.net/pid/50440
 has_quantitative_attribute: # not yet defined more specifically in the NMR MICHI, hence using DAT-AP-PLUS base slot.

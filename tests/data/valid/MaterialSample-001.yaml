@@ -2,8 +2,6 @@
 ---
 id: https://www.example.com/wood3000
 title: "Philip's wood sample"
-other_identifier:
-  - notation: https://www.chemotion-repository.net/pid/50440
 rdf_type:
   id: ENVO:00002040
   title: "wood"

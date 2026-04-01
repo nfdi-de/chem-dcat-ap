@@ -166,7 +166,7 @@ classes:
       - VOC4CAT:0007017
 
   Yield:
-    class_uri: qudt:Quantity
+    class_uri: CHMO:0002855
     is_a: QuantitativeAttribute
     description: A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).
     exact_mappings:
@@ -192,7 +192,7 @@ slots:
     range: StartingMaterial
     is_a: had_input_entity
     slot_uri: RO:0004009
-    description: The slot to specify the Reagent(s) of a ChemicalReaction.
+    description: The slot to specify the StartingMaterial(s) of a ChemicalReaction.
     multivalued: true
     inlined_as_list: true
     recommended: true
@@ -208,7 +208,7 @@ slots:
     range: ChemicalProduct
     is_a: had_output_entity
     slot_uri: RO:0004008
-    description: The slot to specify the Product of a ChemicalReaction.
+    description: The slot to specify the Product(s) of a ChemicalReaction.
     multivalued: true
     inlined_as_list: true
     recommended: true
