@@ -1,0 +1,1816 @@
+---
+id: handle:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1
+other_identifier:
+  - notation: https://pid4cat.org/10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1
+title:
+  - "96-well microtiter plate fluorescence kinetics (Ex 488 nm / Em 520 nm) of GFP"
+description:
+  - "Dataset for time-resolved fluorescence kinetics measurement of Green Fluorescent Protein (GFP) in a 96-well microtiter plate."
+theme:
+  - preferred_label:
+      - "Science and technology"
+is_about_entity:
+  - id: handle:10.14272/GFP-SAMPLE.1
+    title: "Green Fluorescent Protein (GFP) sample"
+    description: "The analysed protein sample containing Green Fluorescent Protein."
+    rdf_type:
+      id: CHEBI:33697
+      title: "protein"
+    has_part:
+      - id: handle:10.14272/GFP-SAMPLE.1#EvaluatedProtein
+        description: "protein assigned to handle:10.14272/GFP-SAMPLE.1"
+        other_identifier:
+          - notation: https://www.uniprot.org/uniprotkb/P42212
+        rdf_type:
+          id: CHEBI:33697
+          title: "protein"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHEMINF:000107
+              title: "IUPAC name"
+            value: "Green fluorescent protein"
+            title: "assigned protein name"
+          - rdf_type:
+              id: IAO:0020000
+              title: "identifier"
+            value: "GFP"
+            title: "common abbreviation"
+was_generated_by:
+  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#FluorescenceKineticAnalysis
+    title:
+      - "Fluorescence kinetic analysis of GFP"
+    description:
+      - "Analysis of a time-resolved fluorescence trace with excitation at 488 nm and emission at 520 nm."
+    rdf_type:
+      id: CHMO:0000575
+      title: "fluorescence spectroscopy"
+    evaluated_entity:
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A1_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A1"
+        description: "Time-resolved fluorescence measurements recorded in well A1 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A1"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A1_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A1_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15230
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A1_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A1_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14890
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A1_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A1_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14510
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A1_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A1_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14120
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A2_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A2"
+        description: "Time-resolved fluorescence measurements recorded in well A2 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A2"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A2_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A2_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A2"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15110
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A2_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A2_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A2"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14730
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A2_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A2_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A2"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14360
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A2_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A2_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A2"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 13940
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A3_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A3"
+        description: "Time-resolved fluorescence measurements recorded in well A3 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A3"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A3_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A3_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A3"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15380
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A3_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A3_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A3"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15040
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A3_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A3_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A3"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14670
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A3_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A3_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A3"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14280
+        was_generated_by:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceKineticMeasurement
+            title:
+              - "GFP fluorescence kinetic measurement in 96-well plate"
+            description:
+              - "Time-resolved fluorescence acquisition from 0 to 180 seconds for a GFP sample in a microtiter plate well."
+            rdf_type:
+              id: CHMO:0000575
+              title: "fluorescence spectroscopy"
+            evaluated_entity:
+              - id: handle:10.14272/GFP-SAMPLE.1
+                title: "Green Fluorescent Protein (GFP) sample"
+            carried_out_by:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#PlateReader
+                rdf_type:
+                  id: OBI:0000566
+                  title: "fluorescence plate reader instrument"
+                title: "Microplate Reader Model XYZ"
+                description: "The fluorescence plate reader used for kinetic measurement."
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#MTP96Plate
+                rdf_type:
+                  id: OBI:0000064
+                  title: "microtiter plate"
+                title: "96-well microtiter plate"
+                description: "96-well plate used for fluorescence kinetics acquisition."
+                has_part:
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA1
+                    title: "Well A1"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA2
+                    title: "Well A2"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA3
+                    title: "Well A3"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA4
+                    title: "Well A4"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA5
+                    title: "Well A5"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA6
+                    title: "Well A6"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA7
+                    title: "Well A7"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA8
+                    title: "Well A8"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA9
+                    title: "Well A9"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA10
+                    title: "Well A10"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA11
+                    title: "Well A11"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA12
+                    title: "Well A12"
+                    description: "Measurement well containing GFP sample."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellB1
+                    title: "Well B1"
+                    description: "Background control well without GFP."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellB2
+                    title: "Well B2"
+                    description: "Background control well without GFP."
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellB3
+                    title: "Well B3"
+                    description: "Background control well without GFP."
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#ExcitationWavelength
+                title: "excitation wavelength"
+                part_of:
+                  - title: "488 nm"
+                    description: "The fluorescence excitation wavelength"
+                    id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Ex488
+                    rdf_type:
+                      id: CHMO:0000601
+                      title: "wavelength"
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#EmissionWavelength
+                title: "emission wavelength"
+                part_of:
+                  - title: "520 nm"
+                    description: "The fluorescence emission wavelength"
+                    id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Em520
+                    rdf_type:
+                      id: CHMO:0000601
+                      title: "wavelength"
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A4_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A4"
+        description: "Time-resolved fluorescence measurements recorded in well A4 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A4"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A4_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A4_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A4"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14990
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A4_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A4_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A4"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14640
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A4_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A4_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A4"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14290
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A4_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A4_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A4"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 13920
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A5_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A5"
+        description: "Time-resolved fluorescence measurements recorded in well A5 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A5"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A5_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A5_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A5"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15060
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A5_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A5_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A5"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14710
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A5_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A5_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A5"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14350
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A5_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A5_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A5"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 13980
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A6_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A6"
+        description: "Time-resolved fluorescence measurements recorded in well A6 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A6"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A6_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A6_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A6"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15180
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A6_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A6_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A6"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14820
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A6_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A6_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A6"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14460
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A6_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A6_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A6"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14110
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A7_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A7"
+        description: "Time-resolved fluorescence measurements recorded in well A7 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A7"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A7_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A7_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A7"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15020
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A7_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A7_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A7"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14680
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A7_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A7_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A7"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14340
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A7_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A7_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A7"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 13970
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A8_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A8"
+        description: "Time-resolved fluorescence measurements recorded in well A8 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A8"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A8_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A8_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A8"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14930
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A8_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A8_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A8"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14580
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A8_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A8_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A8"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14240
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A8_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A8_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A8"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 13890
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A9_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A9"
+        description: "Time-resolved fluorescence measurements recorded in well A9 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A9"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A9_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A9_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A9"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15240
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A9_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A9_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A9"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14880
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A9_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A9_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A9"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14520
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A9_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A9_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A9"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14170
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A10_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A10"
+        description: "Time-resolved fluorescence measurements recorded in well A10 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A10"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A10_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A10_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A10"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15010
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A10_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A10_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A10"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14650
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A10_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A10_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A10"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14290
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A10_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A10_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A10"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 13930
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A11_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A11"
+        description: "Time-resolved fluorescence measurements recorded in well A11 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A11"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A11_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A11_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A11"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15140
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A11_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A11_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A11"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14790
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A11_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A11_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A11"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14440
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A11_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A11_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A11"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14080
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A12_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A12"
+        description: "Time-resolved fluorescence measurements recorded in well A12 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A12"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A12_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A12_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A12"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15070
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A12_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A12_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A12"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14710
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A12_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A12_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A12"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14360
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A12_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A12_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A12"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14010
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B1_Ex488_Em520
+        title: "Background fluorescence kinetic trace in well B1"
+        description: "Time-resolved background fluorescence measurements recorded in well B1 without GFP."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "B1"
+            title: "Well position"
+          - rdf_type:
+              id: SIO:001326
+              title: "status descriptor"
+            value: "background control"
+            title: "Control type"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B1_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B1_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 430
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B1_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B1_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 422
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B1_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B1_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 417
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B1_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B1_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 410
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B2_Ex488_Em520
+        title: "Background fluorescence kinetic trace in well B2"
+        description: "Time-resolved background fluorescence measurements recorded in well B2 without GFP."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "B2"
+            title: "Well position"
+          - rdf_type:
+              id: SIO:001326
+              title: "status descriptor"
+            value: "background control"
+            title: "Control type"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B2_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B2_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B2"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 445
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B2_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B2_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B2"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 436
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B2_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B2_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B2"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 430
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B2_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B2_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B2"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 424
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B3_Ex488_Em520
+        title: "Background fluorescence kinetic trace in well B3"
+        description: "Time-resolved background fluorescence measurements recorded in well B3 without GFP."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "B3"
+            title: "Well position"
+          - rdf_type:
+              id: SIO:001326
+              title: "status descriptor"
+            value: "background control"
+            title: "Control type"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B3_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B3_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B3"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 438
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B3_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B3_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B3"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 429
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B3_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B3_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B3"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 423
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#B3_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Control_FluorescenceTrace_B3_Ex488_Em520
+                title: "Background fluorescence kinetic trace in well B3"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 417
