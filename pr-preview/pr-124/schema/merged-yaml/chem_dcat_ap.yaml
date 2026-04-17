@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post33.dev0+54c03b52
+version: 0.1.0rc2.post38.dev0+9c6aacea
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -2443,6 +2443,9 @@ slots:
     domain_of:
     - ChemicalReaction
     range: ChemicalReaction
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   alternative_label:
     name: alternative_label
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/alternative_label
@@ -2633,6 +2636,144 @@ slots:
       binds_value_of: id
       description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
     recommended: true
+  SubstanceSampleCharacterizationDataset_was_generated_by:
+    name: SubstanceSampleCharacterizationDataset_was_generated_by
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/was_generated_by
+    description: The slot to specify the SubstanceCharacterization activity that produced
+      this dataset.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:wasGeneratedBy
+    is_a: was_generated_by
+    domain: SubstanceSampleCharacterizationDataset
+    slot_uri: prov:wasGeneratedBy
+    alias: was_generated_by
+    owner: SubstanceSampleCharacterizationDataset
+    domain_of:
+    - SubstanceSampleCharacterizationDataset
+    is_usage_slot: true
+    usage_slot_name: was_generated_by
+    range: SubstanceSampleCharacterization
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  SubstanceSampleCharacterizationDataset_is_about_entity:
+    name: SubstanceSampleCharacterizationDataset_is_about_entity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/is_about_entity
+    description: The slot to specify the SubstanceSample this dataset is about.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - dcterms:subject
+    exact_mappings:
+    - IAO:0000136
+    is_a: is_about_entity
+    domain: SubstanceSampleCharacterizationDataset
+    slot_uri: dcterms:subject
+    alias: is_about_entity
+    owner: SubstanceSampleCharacterizationDataset
+    domain_of:
+    - SubstanceSampleCharacterizationDataset
+    is_usage_slot: true
+    usage_slot_name: is_about_entity
+    range: SubstanceSample
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ReactionMonitoringDataset_was_generated_by:
+    name: ReactionMonitoringDataset_was_generated_by
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/was_generated_by
+    description: The slot to specify the ReactionMonitoring activity that produced
+      this dataset.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:wasGeneratedBy
+    is_a: was_generated_by
+    domain: ReactionMonitoringDataset
+    slot_uri: prov:wasGeneratedBy
+    alias: was_generated_by
+    owner: ReactionMonitoringDataset
+    domain_of:
+    - ReactionMonitoringDataset
+    is_usage_slot: true
+    usage_slot_name: was_generated_by
+    range: ReactionMonitoring
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ReactionMonitoringDataset_is_about_activity:
+    name: ReactionMonitoringDataset_is_about_activity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/is_about_activity
+    description: The slot to specify the ChemicalReaction this dataset is about.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - dcterms:subject
+    exact_mappings:
+    - IAO:0000136
+    is_a: is_about_activity
+    domain: ReactionMonitoringDataset
+    slot_uri: dcterms:subject
+    alias: is_about_activity
+    owner: ReactionMonitoringDataset
+    domain_of:
+    - ReactionMonitoringDataset
+    is_usage_slot: true
+    usage_slot_name: is_about_activity
+    range: ChemicalReaction
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  SubstanceSampleCharacterization_evaluated_entity:
+    name: SubstanceSampleCharacterization_evaluated_entity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/evaluated_entity
+    description: The slot to specify the SubstanceSample being characterized.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:used
+    is_a: evaluated_entity
+    domain: SubstanceSampleCharacterization
+    slot_uri: prov:used
+    alias: evaluated_entity
+    owner: SubstanceSampleCharacterization
+    domain_of:
+    - SubstanceSampleCharacterization
+    is_usage_slot: true
+    usage_slot_name: evaluated_entity
+    range: SubstanceSample
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ReactionMonitoring_evaluated_activity:
+    name: ReactionMonitoring_evaluated_activity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/evaluated_activity
+    description: The slot to specify the ChemicalReaction being recorded.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:wasInformedBy
+    is_a: evaluated_activity
+    domain: ReactionMonitoring
+    slot_uri: prov:wasInformedBy
+    alias: evaluated_activity
+    owner: ReactionMonitoring
+    domain_of:
+    - ReactionMonitoring
+    is_usage_slot: true
+    usage_slot_name: evaluated_activity
+    range: ChemicalReaction
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   Activity_title:
     name: Activity_title
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/title
@@ -6324,82 +6465,224 @@ slots:
     inlined: true
     inlined_as_list: false
 classes:
-  SubstanceSample:
-    name: SubstanceSample
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSample
-    description: A MaterialSample derived from a chemical substance that is of interest
-      in an analytical procedure.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-    aliases:
-    - analyte
-    mappings:
-    - SIO:001378
-    is_a: MaterialSample
-    mixins:
-    - ChemicalSubstanceMixin
-    slots:
-    - id
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - Entity_has_part
-    - Entity_part_of
-    - ClassifierMixin_type
-    - rdf_type
-    - EvaluatedEntity_was_generated_by
-    - EvaluatedEntity_title
-    - EvaluatedEntity_description
-    - EvaluatedEntity_other_identifier
-    - MaterialSample_derived_from
-    - alternative_label
-    - has_physical_state
-    - has_temperature
-    - has_mass
-    - has_volume
-    - has_density
-    - has_pressure
-    - has_concentration
-    - has_ph_value
-    - composed_of
-    - has_amount
-    class_uri: SIO:001378
-  PolymerSample:
-    name: PolymerSample
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/PolymerSample
-    description: A SubstanceSample derived from a Polymer.
-    todos:
-    - Find a better mapping, as it is currently mapped to same ontology class as its
-      parent.
+  SubstanceSampleCharacterizationDataset:
+    name: SubstanceSampleCharacterizationDataset
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterizationDataset
+    description: A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization
+      activity. This is a coarse-grained convenience shape that conflates measurement
+      and analysis into a single data-generating activity. Domain-specific sub-profiles
+      that need to distinguish raw measurement from post-processing or structure assignment
+      should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset
+      chain instead of reusing this class.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
     mappings:
-    - SIO:001378
-    is_a: SubstanceSample
-    mixins:
-    - PolymerMixin
+    - dcat:Dataset
+    is_a: Dataset
+    slots:
+    - Dataset_access_rights
+    - Dataset_applicable_legislation
+    - Dataset_conforms_to
+    - Dataset_contact_point
+    - Dataset_creator
+    - Dataset_dataset_distribution
+    - Dataset_description
+    - Dataset_documentation
+    - Dataset_frequency
+    - Dataset_geographical_coverage
+    - Dataset_has_version
+    - Dataset_identifier
+    - Dataset_in_series
+    - Dataset_is_referenced_by
+    - Dataset_keyword
+    - Dataset_landing_page
+    - Dataset_language
+    - Dataset_modification_date
+    - Dataset_other_identifier
+    - Dataset_provenance
+    - Dataset_publisher
+    - Dataset_qualified_attribution
+    - Dataset_qualified_relation
+    - Dataset_related_resource
+    - Dataset_release_date
+    - Dataset_sample
+    - Dataset_source
+    - Dataset_spatial_resolution
+    - Dataset_temporal_coverage
+    - Dataset_temporal_resolution
+    - Dataset_theme
+    - Dataset_title
+    - Dataset_type
+    - Dataset_version
+    - Dataset_version_notes
+    - id
+    - is_about_activity
+    - SubstanceSampleCharacterizationDataset_was_generated_by
+    - SubstanceSampleCharacterizationDataset_is_about_entity
+    slot_usage:
+      was_generated_by:
+        name: was_generated_by
+        description: The slot to specify the SubstanceCharacterization activity that
+          produced this dataset.
+        range: SubstanceSampleCharacterization
+        multivalued: true
+        inlined_as_list: true
+      is_about_entity:
+        name: is_about_entity
+        description: The slot to specify the SubstanceSample this dataset is about.
+        range: SubstanceSample
+        multivalued: true
+        inlined_as_list: true
+    class_uri: dcat:Dataset
+  ReactionMonitoringDataset:
+    name: ReactionMonitoringDataset
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ReactionMonitoringDataset
+    description: A Dataset about a ChemicalReaction that was produced by a ReactionMonitoring
+      activity. This is a coarse-grained convenience shape that conflates experimental
+      documentation and analysis into a single data-generating activity. Domain-specific
+      sub-profiles that need to distinguish reaction monitoring from subsequent data
+      evaluation should define their own Dataset subclasses, potentially using the
+      DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+    mappings:
+    - dcat:Dataset
+    is_a: Dataset
+    slots:
+    - Dataset_access_rights
+    - Dataset_applicable_legislation
+    - Dataset_conforms_to
+    - Dataset_contact_point
+    - Dataset_creator
+    - Dataset_dataset_distribution
+    - Dataset_description
+    - Dataset_documentation
+    - Dataset_frequency
+    - Dataset_geographical_coverage
+    - Dataset_has_version
+    - Dataset_identifier
+    - Dataset_in_series
+    - Dataset_is_referenced_by
+    - Dataset_keyword
+    - Dataset_landing_page
+    - Dataset_language
+    - Dataset_modification_date
+    - Dataset_other_identifier
+    - Dataset_provenance
+    - Dataset_publisher
+    - Dataset_qualified_attribution
+    - Dataset_qualified_relation
+    - Dataset_related_resource
+    - Dataset_release_date
+    - Dataset_sample
+    - Dataset_source
+    - Dataset_spatial_resolution
+    - Dataset_temporal_coverage
+    - Dataset_temporal_resolution
+    - Dataset_theme
+    - Dataset_title
+    - Dataset_type
+    - Dataset_version
+    - Dataset_version_notes
+    - id
+    - is_about_entity
+    - ReactionMonitoringDataset_was_generated_by
+    - ReactionMonitoringDataset_is_about_activity
+    slot_usage:
+      was_generated_by:
+        name: was_generated_by
+        description: The slot to specify the ReactionMonitoring activity that produced
+          this dataset.
+        range: ReactionMonitoring
+        multivalued: true
+        inlined_as_list: true
+      is_about_activity:
+        name: is_about_activity
+        description: The slot to specify the ChemicalReaction this dataset is about.
+        range: ChemicalReaction
+    class_uri: dcat:Dataset
+  SubstanceSampleCharacterization:
+    name: SubstanceSampleCharacterization
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterization
+    description: A DataGeneratingActivity that produces data about a SubstanceSample,
+      such as a spectroscopic measurement, a physical property determination, or a
+      combined measurement-and-analysis workflow. This is a coarse-grained convenience
+      shape that does not distinguish between raw data acquisition and subsequent
+      data processing or analysis. Domain-specific sub-profiles that need this distinction
+      should define their own DataGeneratingActivity subclasses and use the DCAT-AP+
+      DataAnalysis chain to separate raw measurement from derived results.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+    mappings:
+    - prov:Activity
+    broad_mappings:
+    - OBI:0000070
+    is_a: DataGeneratingActivity
     slots:
     - id
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - Entity_has_part
-    - Entity_part_of
+    - Activity_title
+    - Activity_description
+    - Activity_other_identifier
+    - Activity_has_part
+    - Activity_had_input_entity
+    - Activity_had_output_entity
+    - Activity_had_input_activity
+    - Activity_carried_out_by
+    - Activity_has_qualitative_attribute
+    - Activity_has_quantitative_attribute
+    - Activity_part_of
     - ClassifierMixin_type
     - rdf_type
-    - EvaluatedEntity_was_generated_by
-    - EvaluatedEntity_title
-    - EvaluatedEntity_description
-    - EvaluatedEntity_other_identifier
-    - MaterialSample_derived_from
-    - alternative_label
-    - has_physical_state
-    - has_temperature
-    - has_mass
-    - has_volume
-    - has_density
-    - has_pressure
-    - has_concentration
-    - has_ph_value
-    - composed_of
-    - has_amount
-    class_uri: SIO:001378
+    - evaluated_activity
+    - realized_plan
+    - occurred_in
+    - SubstanceSampleCharacterization_evaluated_entity
+    slot_usage:
+      evaluated_entity:
+        name: evaluated_entity
+        description: The slot to specify the SubstanceSample being characterized.
+        range: SubstanceSample
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Activity
+  ReactionMonitoring:
+    name: ReactionMonitoring
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ReactionMonitoring
+    description: A DataGeneratingActivity that produces data about a ChemicalReaction,
+      such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation
+      workflow. This is a coarse-grained convenience shape that does not distinguish
+      between raw experimental recording and subsequent data evaluation. Domain-specific
+      sub-profiles that need this distinction should define their own DataGeneratingActivity
+      subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from
+      derived results.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+    mappings:
+    - prov:Activity
+    is_a: DataGeneratingActivity
+    slots:
+    - id
+    - Activity_title
+    - Activity_description
+    - Activity_other_identifier
+    - Activity_has_part
+    - Activity_had_input_entity
+    - Activity_had_output_entity
+    - Activity_had_input_activity
+    - Activity_carried_out_by
+    - Activity_has_qualitative_attribute
+    - Activity_has_quantitative_attribute
+    - Activity_part_of
+    - ClassifierMixin_type
+    - rdf_type
+    - evaluated_entity
+    - realized_plan
+    - occurred_in
+    - ReactionMonitoring_evaluated_activity
+    slot_usage:
+      evaluated_activity:
+        name: evaluated_activity
+        description: The slot to specify the ChemicalReaction being recorded.
+        range: ChemicalReaction
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Activity
   Laboratory:
     name: Laboratory
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/Laboratory
@@ -8762,6 +9045,82 @@ classes:
     - title
     - description
     class_uri: time:Instant
+  SubstanceSample:
+    name: SubstanceSample
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/SubstanceSample
+    description: A MaterialSample derived from a chemical substance that is of interest
+      in an analytical procedure.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    aliases:
+    - analyte
+    mappings:
+    - SIO:001378
+    is_a: MaterialSample
+    mixins:
+    - ChemicalSubstanceMixin
+    slots:
+    - id
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - Entity_has_part
+    - Entity_part_of
+    - ClassifierMixin_type
+    - rdf_type
+    - EvaluatedEntity_was_generated_by
+    - EvaluatedEntity_title
+    - EvaluatedEntity_description
+    - EvaluatedEntity_other_identifier
+    - MaterialSample_derived_from
+    - alternative_label
+    - has_physical_state
+    - has_temperature
+    - has_mass
+    - has_volume
+    - has_density
+    - has_pressure
+    - has_concentration
+    - has_ph_value
+    - composed_of
+    - has_amount
+    class_uri: SIO:001378
+  PolymerSample:
+    name: PolymerSample
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerSample
+    description: A SubstanceSample derived from a Polymer.
+    todos:
+    - Find a better mapping, as it is currently mapped to same ontology class as its
+      parent.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    mappings:
+    - SIO:001378
+    is_a: SubstanceSample
+    mixins:
+    - PolymerMixin
+    slots:
+    - id
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - Entity_has_part
+    - Entity_part_of
+    - ClassifierMixin_type
+    - rdf_type
+    - EvaluatedEntity_was_generated_by
+    - EvaluatedEntity_title
+    - EvaluatedEntity_description
+    - EvaluatedEntity_other_identifier
+    - MaterialSample_derived_from
+    - alternative_label
+    - has_physical_state
+    - has_temperature
+    - has_mass
+    - has_volume
+    - has_density
+    - has_pressure
+    - has_concentration
+    - has_ph_value
+    - composed_of
+    - has_amount
+    class_uri: SIO:001378
   ChemicalEntity:
     name: ChemicalEntity
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalEntity
@@ -8848,6 +9207,75 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     class_uri: AFR:0002409
+  Concentration:
+    name: Concentration
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Concentration
+    description: A QuantitativeAttribute of a ChemicalSubstance that represents the
+      amount of a constituent divided by the volume of the mixture.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    mappings:
+    - CHMO:0002820
+    exact_mappings:
+    - EDAM:2140
+    - NCIT:C41185
+    - VOC4CAT:0007244
+    - AFR:0002036
+    close_mappings:
+    - PATO:0000033
+    narrow_mappings:
+    - CHMO:0002822
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: CHMO:0002820
+  AmountOfSubstance:
+    name: AmountOfSubstance
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/AmountOfSubstance
+    description: The total amount of substance used in a ChemicalReaction.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    aliases:
+    - SubstanceAmount
+    mappings:
+    - qudt:Quantity
+    close_mappings:
+    - PATO:0000070
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: qudt:Quantity
+  PHValue:
+    name: PHValue
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PHValue
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    mappings:
+    - SIO:001089
+    exact_mappings:
+    - NCIT:C45997
+    - AFR:0001142
+    close_mappings:
+    - PATO:0001842
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: SIO:001089
   InChIKey:
     name: InChIKey
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/InChIKey
@@ -8974,75 +9402,6 @@ classes:
     - composed_of
     - has_amount
     class_uri: chemical_entities_ap:PolymerMixin
-  Concentration:
-    name: Concentration
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Concentration
-    description: A QuantitativeAttribute of a ChemicalSubstance that represents the
-      amount of a constituent divided by the volume of the mixture.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-    mappings:
-    - CHMO:0002820
-    exact_mappings:
-    - EDAM:2140
-    - NCIT:C41185
-    - VOC4CAT:0007244
-    - AFR:0002036
-    close_mappings:
-    - PATO:0000033
-    narrow_mappings:
-    - CHMO:0002822
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: CHMO:0002820
-  AmountOfSubstance:
-    name: AmountOfSubstance
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/AmountOfSubstance
-    description: The total amount of substance used in a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-    aliases:
-    - SubstanceAmount
-    mappings:
-    - qudt:Quantity
-    close_mappings:
-    - PATO:0000070
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: qudt:Quantity
-  PHValue:
-    name: PHValue
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PHValue
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-    mappings:
-    - SIO:001089
-    exact_mappings:
-    - NCIT:C45997
-    - AFR:0001142
-    close_mappings:
-    - PATO:0001842
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: SIO:001089
   ChemicalReaction:
     name: ChemicalReaction
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalReaction
@@ -9578,7 +9937,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-03-18T21:00:41'
-source_file_size: 3599
-generation_date: '2026-03-18T21:00:51'
+source_file_date: '2026-04-17T16:02:40'
+source_file_size: 7591
+generation_date: '2026-04-17T16:02:52'
 
