@@ -1,0 +1,174 @@
+{
+  "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604",
+  "description": [
+    "Dataset analysing Sample ID: CRS-50440 with heteronuclear single quantum coherence (HSQC) NMR spectroscopy"
+  ],
+  "title": [
+    "heteronuclear single quantum coherence (HSQC) dataset"
+  ],
+  "was_generated_by": [
+    {
+      "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932",
+      "title": [
+        "X27932"
+      ],
+      "description": [
+        "heteronuclear single quantum coherence (HSQC) NMR spectroscopy."
+      ],
+      "carried_out_by": [
+        {
+          "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Spectrometer",
+          "title": "Avance III 400 NMR spectrometer",
+          "description": "used NMR spectrometer",
+          "rdf_type": {
+            "id": "NMR:1000371",
+            "title": "AVANCE III HD"
+          }
+        },
+        {
+          "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Solvent",
+          "description": "used solvent",
+          "has_part": [
+            {
+              "id": "https://pubchem.ncbi.nlm.nih.gov/compound/71583",
+              "title": "chloroform-D1 (CDCl3)",
+              "rdf_type": {
+                "id": "CHEBI:85365",
+                "title": "deuterated chloroform"
+              }
+            }
+          ],
+          "rdf_type": {
+            "id": "NCIT:C45790",
+            "title": "Solvent"
+          }
+        }
+      ],
+      "has_qualitative_attribute": [
+        {
+          "value": "hsqcedetgp",
+          "description": "used pulse program",
+          "rdf_type": {
+            "id": "NMR:1400037",
+            "title": "NMR pulse sequence"
+          }
+        }
+      ],
+      "has_quantitative_attribute": [
+        {
+          "value": 300.1,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Temperature",
+          "description": "used sample temperature setting",
+          "unit": "https://qudt.org/vocab/unit/K",
+          "rdf_type": {
+            "id": "NMR:1400025",
+            "title": "sample temperature in magnet"
+          }
+        },
+        {
+          "value": 2.0,
+          "has_quantity_type": "http://qudt.org/vocab/quantitykind/Count",
+          "description": "used number of scans",
+          "unit": "http://qudt.org/vocab/unit/NUM",
+          "rdf_type": {
+            "id": "NMR:1400087",
+            "title": "number of scans"
+          }
+        }
+      ],
+      "rdf_type": {
+        "id": "CHMO:0000604",
+        "title": "heteronuclear single quantum coherence"
+      },
+      "evaluated_entity": [
+        {
+          "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
+          "title": "CRS-50440"
+        }
+      ]
+    }
+  ],
+  "other_identifier": [
+    {
+      "notation": "https://www.chemotion-repository.net/pid/50438"
+    }
+  ],
+  "theme": [
+    {
+      "preferred_label": [
+        "Science and technology"
+      ]
+    }
+  ],
+  "is_about_entity": [
+    {
+      "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
+      "title": "CRS-50440",
+      "description": "The analysed chemical substance sample CRS-50440.",
+      "rdf_type": {
+        "id": "CHEBI:59999",
+        "title": "chemical substance"
+      },
+      "composed_of": [
+        {
+          "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound",
+          "description": "compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
+          "other_identifier": [
+            {
+              "notation": "https://pubchem.ncbi.nlm.nih.gov/compound/26248854"
+            }
+          ],
+          "inchi": [
+            {
+              "value": "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3",
+              "description": "assigned InChi"
+            }
+          ],
+          "inchikey": [
+            {
+              "value": "KVOIVNBYNQXCNY-BOCHJOTCSA-N",
+              "description": "assigned InChiKey"
+            }
+          ],
+          "smiles": [
+            {
+              "value": "CNCc1csc(n1)c1ccccc1",
+              "description": "assigned SMILES"
+            }
+          ],
+          "molecular_formula": [
+            {
+              "value": "C11H12N2S",
+              "description": "assigned molecular formula"
+            }
+          ],
+          "iupac_name": [
+            {
+              "value": "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine",
+              "description": "Chemotion IUPAC name"
+            },
+            {
+              "value": "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine",
+              "description": "PubChem IUPAC name"
+            }
+          ],
+          "has_molar_mass": [
+            {
+              "value": 204.072119,
+              "has_quantity_type": "http://qudt.org/vocab/quantitykind/MolarMass",
+              "description": "Molar mass as specified in the Chemotion repository.",
+              "unit": "https://qudt.org/vocab/unit/GM-PER-MOL"
+            },
+            {
+              "value": 204.29,
+              "has_quantity_type": "http://qudt.org/vocab/quantitykind/MolarMass",
+              "description": "Molar mass as specified in PubChem",
+              "unit": "https://qudt.org/vocab/unit/GM-PER-MOL"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "@type": "SubstanceSampleCharacterizationDataset"
+}
