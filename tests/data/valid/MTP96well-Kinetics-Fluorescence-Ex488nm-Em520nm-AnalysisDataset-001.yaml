@@ -1,0 +1,205 @@
+---
+id: handle:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1
+other_identifier:
+  - notation: https://pid4cat.org/10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1
+title:
+  - "96-well microtiter plate fluorescence kinetics (Ex 488 nm / Em 520 nm) of GFP"
+description:
+  - "Dataset for time-resolved fluorescence kinetics measurement of Green Fluorescent Protein (GFP) in a 96-well microtiter plate."
+theme:
+  - preferred_label:
+      - "Science and technology"
+is_about_entity:
+  - id: handle:10.14272/GFP-SAMPLE.1
+    title: "Green Fluorescent Protein (GFP) sample"
+    description: "The analysed protein sample containing Green Fluorescent Protein."
+    rdf_type:
+      id: CHEBI:33697
+      title: "protein"
+    has_part:
+      - id: handle:10.14272/GFP-SAMPLE.1#EvaluatedProtein
+        description: "protein assigned to handle:10.14272/GFP-SAMPLE.1"
+        other_identifier:
+          - notation: https://www.uniprot.org/uniprotkb/P42212
+        rdf_type:
+          id: CHEBI:33697
+          title: "protein"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHEMINF:000107
+              title: "IUPAC name"
+            value: "Green fluorescent protein"
+            title: "assigned protein name"
+          - rdf_type:
+              id: IAO:0020000
+              title: "identifier"
+            value: "GFP"
+            title: "common abbreviation"
+was_generated_by:
+  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#FluorescenceKineticAnalysis
+    title:
+      - "Fluorescence kinetic analysis of GFP"
+    description:
+      - "Analysis of a time-resolved fluorescence trace with excitation at 488 nm and emission at 520 nm."
+    rdf_type:
+      id: CHMO:0000575
+      title: "fluorescence spectroscopy"
+    evaluated_entity:
+      - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A1_Ex488_Em520
+        title: "GFP fluorescence kinetic trace in well A1"
+        description: "Time-resolved fluorescence measurements recorded in well A1 of a 96-well plate."
+        rdf_type:
+          id: CHMO:0000575
+          title: "fluorescence spectroscopy"
+        has_qualitative_attribute:
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "488"
+            title: "Excitation wavelength"
+          - rdf_type:
+              id: CHMO:0000601
+              title: "wavelength"
+            value: "520"
+            title: "Emission wavelength"
+          - rdf_type:
+              id: IAO:0000410
+              title: "measurement location"
+            value: "A1"
+            title: "Well position"
+        has_quantitative_attribute:
+          - rdf_type:
+              id: CHMO:0000599
+              title: "sample temperature information"
+            title: "sample temperature setting"
+            has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature
+            unit: https://qudt.org/vocab/unit/K
+            value: 298.15
+        has_part:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A1_t0s
+            title: "0 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A1_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 0
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 15230
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A1_t60s
+            title: "60 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A1_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 60
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14890
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A1_t120s
+            title: "120 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A1_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 120
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14510
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#A1_t180s
+            title: "180 s measurement"
+            part_of:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceTrace_A1_Ex488_Em520
+                title: "GFP fluorescence kinetic trace in well A1"
+            has_quantitative_attribute:
+              - rdf_type:
+                  id: CHMO:0000602
+                  title: "measurement time"
+                title: "Measurement time"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Time
+                unit: https://qudt.org/vocab/unit/SEC
+                value: 180
+              - rdf_type:
+                  id: CHMO:0000576
+                  title: "fluorescence intensity"
+                title: "Fluorescence intensity at Em 520 nm"
+                has_quantity_type: http://qudt.org/vocab/quantitykind/Count
+                unit: http://qudt.org/vocab/unit/NUM
+                value: 14120
+        was_generated_by:
+          - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#GFP_FluorescenceKineticMeasurement
+            title:
+              - "GFP fluorescence kinetic measurement in 96-well plate"
+            description:
+              - "Time-resolved fluorescence acquisition from 0 to 180 seconds for a GFP sample in a microtiter plate well."
+            rdf_type:
+              id: CHMO:0000575
+              title: "fluorescence spectroscopy"
+            evaluated_entity:
+              - id: handle:10.14272/GFP-SAMPLE.1
+                title: "Green Fluorescent Protein (GFP) sample"
+            carried_out_by:
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#PlateReader
+                rdf_type:
+                  id: OBI:0000566
+                  title: "fluorescence plate reader instrument"
+                title: "Microplate Reader Model XYZ"
+                description: "The fluorescence plate reader used for kinetic measurement."
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#MTP96Plate
+                rdf_type:
+                  id: OBI:0000064
+                  title: "microtiter plate"
+                title: "96-well microtiter plate"
+                description: "96-well plate used for fluorescence kinetics acquisition."
+                has_part:
+                  - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#WellA1
+                    title: "Well A1"
+                    description: "Measurement well containing GFP sample."
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#ExcitationWavelength
+                title: "excitation wavelength"
+                part_of:
+                  - title: "488 nm"
+                    description: "The fluorescence excitation wavelength"
+                    id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Ex488
+                    rdf_type:
+                      id: CHMO:0000601
+                      title: "wavelength"
+              - id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#EmissionWavelength
+                title: "emission wavelength"
+                part_of:
+                  - title: "520 nm"
+                    description: "The fluorescence emission wavelength"
+                    id: doi:10.14272/GFPFLUORESCENCEKINETICS-EX488-EM520.1#Em520
+                    rdf_type:
+                      id: CHMO:0000601
+                      title: "wavelength"
