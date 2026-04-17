@@ -10032,9 +10032,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-03-22T19:57:01",
-  "source_file_size": 7591,
-  "generation_date": "2026-03-22T20:03:30",
+  "source_file_date": "2026-03-23T11:00:36",
+  "source_file_size": 7754,
+  "generation_date": "2026-03-23T11:08:02",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/chem_dcat_ap.context.jsonld",

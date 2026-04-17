@@ -1,5 +1,5 @@
 # Auto generated from chem_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-22T22:06:09
+# Generation date: 2026-03-23T11:08:04
 # Schema: chem-dcat-ap
 #
 # id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
