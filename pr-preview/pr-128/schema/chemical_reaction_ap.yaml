@@ -258,3 +258,5 @@ slots:
     slot_uri: BFO:0000051
     description: A slot to specify a step (part) of a ChemicalReaction that is itself a ChemicalReaction.
     range: ChemicalReaction
+    multivalued: true
+    inlined_as_list: true

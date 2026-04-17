@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://nfdi-de.github.io/chem-dcat-ap/elements/classes/AgenticEntity/" rel="canonical"/>
+<link href="https://nfdi-de.github.io/chem-dcat-ap/elements/classes/SubstanceSampleCharacterization/" rel="canonical"/>
 <link href="../../../images/favicon.svg" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
-<title>Class: AgenticEntity - ChemDCAT-AP Documentation</title>
+<title>Class: SubstanceSampleCharacterization - ChemDCAT-AP Documentation</title>
 <link href="../../../assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -25,7 +25,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-agenticentity">
+<a class="md-skip" href="#class-substancesamplecharacterization">
           Skip to content
         </a>
 </div>
@@ -52,7 +52,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: AgenticEntity
+              Class: SubstanceSampleCharacterization
             
           </span>
 </div>
@@ -298,105 +298,182 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-agenticentity">Class: AgenticEntity</h1>
-<p><em>An entity that is somehow responsible for an Activity to take place.</em></p>
-<p>URI: <a href="http://www.w3.org/ns/prov#Agent">prov:Agent</a></p>
+<h1 id="class-substancesamplecharacterization">Class: SubstanceSampleCharacterization</h1>
+<p><em>A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic measurement, a physical property determination, or a combined measurement-and-analysis workflow. This is a coarse-grained convenience shape that does not distinguish between raw data acquisition and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw measurement from derived results.</em></p>
+<p>URI: <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></p>
 <pre class="mermaid"><code> classDiagram
-    class AgenticEntity
-    click AgenticEntity href "../../classes/AgenticEntity/"
-      ClassifierMixin &lt;|-- AgenticEntity
-        click ClassifierMixin href "../../classes/ClassifierMixin/"
+    class SubstanceSampleCharacterization
+    click SubstanceSampleCharacterization href "../../classes/SubstanceSampleCharacterization/"
+      DataGeneratingActivity &lt;|-- SubstanceSampleCharacterization
+        click DataGeneratingActivity href "../../classes/DataGeneratingActivity/"
 
-
-      AgenticEntity &lt;|-- Device
-        click Device href "../../classes/Device/"
-      AgenticEntity &lt;|-- Software
-        click Software href "../../classes/Software/"
-      AgenticEntity &lt;|-- DissolvingSubstance
-        click DissolvingSubstance href "../../classes/DissolvingSubstance/"
-      AgenticEntity &lt;|-- Catalyst
-        click Catalyst href "../../classes/Catalyst/"
-
-
-      AgenticEntity : description
-
-      AgenticEntity : has_part
+      SubstanceSampleCharacterization : carried_out_by
 
 
 
 
 
-        AgenticEntity --&gt; "*" AgenticEntity : has_part
+        SubstanceSampleCharacterization --&gt; "* _recommended_" AgenticEntity : carried_out_by
         click AgenticEntity href "../../classes/AgenticEntity/"
 
 
 
-      AgenticEntity : has_qualitative_attribute
+      SubstanceSampleCharacterization : description
+
+      SubstanceSampleCharacterization : evaluated_activity
 
 
 
 
 
-        AgenticEntity --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
+        SubstanceSampleCharacterization --&gt; "* _recommended_" EvaluatedActivity : evaluated_activity
+        click EvaluatedActivity href "../../classes/EvaluatedActivity/"
+
+
+
+      SubstanceSampleCharacterization : evaluated_entity
+
+
+
+
+
+        SubstanceSampleCharacterization --&gt; "* _recommended_" SubstanceSample : evaluated_entity
+        click SubstanceSample href "../../classes/SubstanceSample/"
+
+
+
+      SubstanceSampleCharacterization : had_input_activity
+
+
+
+
+
+        SubstanceSampleCharacterization --&gt; "* _recommended_" Activity : had_input_activity
+        click Activity href "../../classes/Activity/"
+
+
+
+      SubstanceSampleCharacterization : had_input_entity
+
+
+
+
+
+        SubstanceSampleCharacterization --&gt; "* _recommended_" Entity : had_input_entity
+        click Entity href "../../classes/Entity/"
+
+
+
+      SubstanceSampleCharacterization : had_output_entity
+
+
+
+
+
+        SubstanceSampleCharacterization --&gt; "* _recommended_" Entity : had_output_entity
+        click Entity href "../../classes/Entity/"
+
+
+
+      SubstanceSampleCharacterization : has_part
+
+
+
+
+
+        SubstanceSampleCharacterization --&gt; "*" Activity : has_part
+        click Activity href "../../classes/Activity/"
+
+
+
+      SubstanceSampleCharacterization : has_qualitative_attribute
+
+
+
+
+
+        SubstanceSampleCharacterization --&gt; "* _recommended_" QualitativeAttribute : has_qualitative_attribute
         click QualitativeAttribute href "../../classes/QualitativeAttribute/"
 
 
 
-      AgenticEntity : has_quantitative_attribute
+      SubstanceSampleCharacterization : has_quantitative_attribute
 
 
 
 
 
-        AgenticEntity --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
+        SubstanceSampleCharacterization --&gt; "* _recommended_" QuantitativeAttribute : has_quantitative_attribute
         click QuantitativeAttribute href "../../classes/QuantitativeAttribute/"
 
 
 
-      AgenticEntity : id
+      SubstanceSampleCharacterization : id
 
-      AgenticEntity : other_identifier
-
-
+      SubstanceSampleCharacterization : occurred_in
 
 
 
-        AgenticEntity --&gt; "*" Identifier : other_identifier
+
+
+        SubstanceSampleCharacterization --&gt; "0..1" Surrounding : occurred_in
+        click Surrounding href "../../classes/Surrounding/"
+
+
+
+      SubstanceSampleCharacterization : other_identifier
+
+
+
+
+
+        SubstanceSampleCharacterization --&gt; "*" Identifier : other_identifier
         click Identifier href "../../classes/Identifier/"
 
 
 
-      AgenticEntity : part_of
+      SubstanceSampleCharacterization : part_of
 
 
 
 
 
-        AgenticEntity --&gt; "*" AgenticEntity : part_of
-        click AgenticEntity href "../../classes/AgenticEntity/"
+        SubstanceSampleCharacterization --&gt; "*" Activity : part_of
+        click Activity href "../../classes/Activity/"
 
 
 
-      AgenticEntity : rdf_type
+      SubstanceSampleCharacterization : rdf_type
 
 
 
 
 
-        AgenticEntity --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
+        SubstanceSampleCharacterization --&gt; "0..1 _recommended_" DefinedTerm : rdf_type
         click DefinedTerm href "../../classes/DefinedTerm/"
 
 
 
-      AgenticEntity : title
-
-      AgenticEntity : type
+      SubstanceSampleCharacterization : realized_plan
 
 
 
 
 
-        AgenticEntity --&gt; "0..1" DefinedTerm : type
+        SubstanceSampleCharacterization --&gt; "0..1" Plan : realized_plan
+        click Plan href "../../classes/Plan/"
+
+
+
+      SubstanceSampleCharacterization : title
+
+      SubstanceSampleCharacterization : type
+
+
+
+
+
+        SubstanceSampleCharacterization --&gt; "0..1" DefinedTerm : type
         click DefinedTerm href "../../classes/DefinedTerm/"
 
 
@@ -405,11 +482,11 @@
 </code></pre>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>AgenticEntity</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
-<li><a href="../Device/">Device</a></li>
-<li><a href="../Software/">Software</a></li>
-<li><a href="../DissolvingSubstance/">DissolvingSubstance</a> [ <a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a>]</li>
-<li><a href="../Catalyst/">Catalyst</a> [ <a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a>]</li>
+<li><a href="../Activity/">Activity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../DataGeneratingActivity/">DataGeneratingActivity</a><ul>
+<li><strong>SubstanceSampleCharacterization</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -425,52 +502,100 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../../slots/evaluated_entity/">evaluated_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../SubstanceSample/">SubstanceSample</a></td>
+<td>The slot to specify the SubstanceSample being characterized.</td>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/evaluated_activity/">evaluated_activity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>The slot to specify the Activity about which the DataGeneratingActivity produced information.</td>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/realized_plan/">realized_plan</a></td>
+<td>0..1 <br/> <a href="../Plan/">Plan</a></td>
+<td>The slot to specify the Plan (i.e. directive information or procedure) that was realized by an Activity.</td>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/occurred_in/">occurred_in</a></td>
+<td>0..1 <br/> <a href="../Surrounding/">Surrounding</a></td>
+<td>The slot to specify the Surrounding in which an Activity took place.</td>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+</tr>
+<tr>
 <td><a href="../../slots/id/">id</a></td>
 <td>1 <br/> <a href="../../types/Uriorcurie/">Uriorcurie</a></td>
 <td>A slot to provide an URI for an entity within this schema.</td>
-<td>direct</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/title/">title</a></td>
-<td>0..1 <br/> <a href="../../types/String/">String</a></td>
-<td>This slot is described in more detail within the class in which it is used.</td>
-<td>direct</td>
+<td>* <br/> <a href="../../types/String/">String</a></td>
+<td>The slot to provide a title for the Activity.</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/description/">description</a></td>
-<td>0..1 <br/> <a href="../../types/String/">String</a></td>
-<td>This slot is described in more detail within the class in which it is used.</td>
-<td>direct</td>
+<td>* <br/> <a href="../../types/String/">String</a></td>
+<td>The slot to provide a description for the Activity.</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/other_identifier/">other_identifier</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>A slot to provide a secondary identifier for an Instrument.</td>
-<td>direct</td>
+<td>The slot to provide a secondary identifier of the Activity.</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/has_part/">has_part</a></td>
+<td>* <br/> <a href="../Activity/">Activity</a></td>
+<td>The slot to provide an Activity that is part of the Activity.</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/had_input_entity/">had_input_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Entity/">Entity</a></td>
+<td>The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed.</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/had_output_entity/">had_output_entity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Entity/">Entity</a></td>
+<td>The slot to specify the Entity that was generated as an output of an Activity.</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/had_input_activity/">had_input_activity</a></td>
+<td>* <em>recommended</em> <br/> <a href="../Activity/">Activity</a></td>
+<td>The slot to provide a previous Activity that informed the Activity by being causally via a shared participant.</td>
+<td><a href="../Activity/">Activity</a></td>
+</tr>
+<tr>
+<td><a href="../../slots/carried_out_by/">carried_out_by</a></td>
+<td>* <em>recommended</em> <br/> <a href="../AgenticEntity/">AgenticEntity</a></td>
+<td>The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
 <td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity</td>
-<td>direct</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>* <em>recommended</em> <br/> <a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
 <td>The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../../slots/has_part/">has_part</a></td>
-<td>* <br/> <a href="./">AgenticEntity</a></td>
-<td>The slot to specify parts of an AgenticEntity that are themselves AgenticEntities.</td>
-<td>direct</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/part_of/">part_of</a></td>
-<td>* <br/> <a href="./">AgenticEntity</a></td>
-<td>The slot to provide the AgenticEntity of which theAgenticEntity is a part.</td>
-<td>direct</td>
+<td>* <br/> <a href="../Activity/">Activity</a></td>
+<td>The slot to provide an Activity of which the Activity is a part.</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../../slots/type/">type</a></td>
@@ -498,100 +623,10 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
-<td><a href="../../slots/carried_out_by/">carried_out_by</a></td>
+<td><a href="../SubstanceSampleCharacterizationDataset/">SubstanceSampleCharacterizationDataset</a></td>
+<td><a href="../../slots/was_generated_by/">was_generated_by</a></td>
 <td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
-<td><a href="../../slots/carried_out_by/">carried_out_by</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../Activity/">Activity</a></td>
-<td><a href="../../slots/carried_out_by/">carried_out_by</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="./">AgenticEntity</a></td>
-<td><a href="../../slots/has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="./">AgenticEntity</a></td>
-<td><a href="../../slots/part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../DataAnalysis/">DataAnalysis</a></td>
-<td><a href="../../slots/carried_out_by/">carried_out_by</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
-<td><a href="../../slots/carried_out_by/">carried_out_by</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../Device/">Device</a></td>
-<td><a href="../../slots/part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td><a href="../../slots/carried_out_by/">carried_out_by</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../Software/">Software</a></td>
-<td><a href="../../slots/part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
-<td><a href="../../slots/carried_out_by/">carried_out_by</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../DissolvingSubstance/">DissolvingSubstance</a></td>
-<td><a href="../../slots/has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../DissolvingSubstance/">DissolvingSubstance</a></td>
-<td><a href="../../slots/part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../Catalyst/">Catalyst</a></td>
-<td><a href="../../slots/has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../Catalyst/">Catalyst</a></td>
-<td><a href="../../slots/part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
-</tr>
-<tr>
-<td><a href="../Reactor/">Reactor</a></td>
-<td><a href="../../slots/part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">AgenticEntity</a></td>
+<td><a href="./">SubstanceSampleCharacterization</a></td>
 </tr>
 </tbody>
 </table>
@@ -611,11 +646,15 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>prov:Agent</td>
+<td>prov:Activity</td>
 </tr>
 <tr>
 <td>native</td>
-<td>chemdcatap:AgenticEntity</td>
+<td>chemdcatap:SubstanceSampleCharacterization</td>
+</tr>
+<tr>
+<td>broad</td>
+<td>OBI:0000070</td>
 </tr>
 </tbody>
 </table>
@@ -623,85 +662,114 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An entity that is somehow responsible for an Activity to take place.</span>
-<span class="nt">in_subset</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A DataGeneratingActivity that produces data about a SubstanceSample,</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">such as a spectroscopic measurement, a physical property determination, or a combined</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">measurement-and-analysis workflow. This is a coarse-grained convenience shape that</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">does not distinguish between raw data acquisition and subsequent data processing</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or analysis. Domain-specific sub-profiles that need this distinction should define</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">to separate raw measurement from derived results.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="nt">mixins</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClassifierMixin</span>
-<span class="nt">slots</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">title</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">other_identifier</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_qualitative_attribute</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">part_of</span>
+<span class="nt">broad_mappings</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OBI:0000070</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">has_part</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify parts of an AgenticEntity that are themselves</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntities.</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">part_of</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">part_of</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide the AgenticEntity of which theAgenticEntity is</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">a part.</span>
-<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">  </span><span class="nt">evaluated_entity</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evaluated_entity</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the SubstanceSample being characterized.</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSample</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">other_identifier</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">other_identifier</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A slot to provide a secondary identifier for an Instrument.</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Identifier</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:Agent</span>
+<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:Activity</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An entity that is somehow responsible for an Activity to take place.</span>
-<span class="nt">in_subset</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A DataGeneratingActivity that produces data about a SubstanceSample,</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">such as a spectroscopic measurement, a physical property determination, or a combined</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">measurement-and-analysis workflow. This is a coarse-grained convenience shape that</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">does not distinguish between raw data acquisition and subsequent data processing</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">or analysis. Domain-specific sub-profiles that need this distinction should define</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">to separate raw measurement from derived results.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="nt">mixins</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClassifierMixin</span>
+<span class="nt">broad_mappings</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OBI:0000070</span>
+<span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">has_part</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify parts of an AgenticEntity that are themselves</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntities.</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">part_of</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">part_of</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide the AgenticEntity of which theAgenticEntity is</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">a part.</span>
-<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">other_identifier</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">other_identifier</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A slot to provide a secondary identifier for an Instrument.</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Identifier</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">evaluated_entity</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evaluated_entity</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the SubstanceSample being characterized.</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSample</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">attributes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">evaluated_entity</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evaluated_entity</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the SubstanceSample being characterized.</span>
+<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_entity</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:used</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evaluated_entity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSample</span>
+<span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">evaluated_activity</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evaluated_activity</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the Activity about which the DataGeneratingActivity</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">produced information.</span>
+<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_activity</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:wasInformedBy</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evaluated_activity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EvaluatedActivity</span>
+<span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">realized_plan</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">realized_plan</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the Plan (i.e. directive information or procedure)</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">that was realized by an Activity.</span>
+<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:used</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">realized_plan</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Plan</span>
+<span class="w">  </span><span class="nt">occurred_in</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">occurred_in</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the Surrounding in which an Activity took place.</span>
+<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:atLocation</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">occurred_in</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Surrounding</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A slot to provide an URI for an entity within this schema.</span>
@@ -711,7 +779,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -726,13 +794,14 @@
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">title</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">title</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This slot is described in more detail within the class in which it</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">is used.</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide a title for the Activity.</span>
+<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:title</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">title</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -772,15 +841,18 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Surrounding</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimeInstant</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This slot is described in more detail within the class in which it</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">is used.</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide a description for the Activity.</span>
+<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:description</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">description</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -819,34 +891,138 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Surrounding</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TimeInstant</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">other_identifier</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">other_identifier</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A slot to provide a secondary identifier for an Instrument.</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide a secondary identifier of the Activity.</span>
+<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adms:identifier</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">other_identifier</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dataset</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Identifier</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">has_part</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide an Activity that is part of the Activity.</span>
+<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:hasPart</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalogue</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">had_input_entity</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_entity</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the Entity that was used as an input of an Activity</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">that is to be changed, consumed or transformed.</span>
+<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
+<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:used</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_entity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
+<span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">had_output_entity</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_output_entity</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the Entity that was generated as an output of</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">an Activity.</span>
+<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
+<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:generated</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_output_entity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
+<span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">had_input_activity</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_activity</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide a previous Activity that informed the Activity</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">by being causally via a shared participant.</span>
+<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
+<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:wasInformedBy</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_activity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
+<span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">carried_out_by</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">carried_out_by</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the AgenticEntity that played a certain part</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">in carrying out the Activity, either via having a specific role, function or</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">disposition that was realized in the Activity.</span>
+<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
+<span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
+<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
+<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:wasAssociatedWith</span>
+<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">carried_out_by</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
+<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">has_qualitative_attribute</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_qualitative_attribute</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to relate a qualitative attribute to an EvaluatedEntity,</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">EvaluatedActivity or AgenticEntity</span>
+<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
 <span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:relation</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_qualitative_attribute</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -860,13 +1036,15 @@
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to relate a quantitative attribute to an EvaluatedEntity,</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">EvaluatedActivity or AgenticEntity</span>
+<span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
 <span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain_agnostic_core</span>
 <span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:relation</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
@@ -876,28 +1054,9 @@
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">has_part</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify parts of an AgenticEntity that are themselves</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntities.</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:hasPart</span>
-<span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Catalogue</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
-<span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">part_of</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">part_of</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide the AgenticEntity of which theAgenticEntity is</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">a part.</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to provide an Activity of which the Activity is a part.</span>
 <span class="w">    </span><span class="nt">notes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">not in DCAT-AP</span>
 <span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
@@ -906,13 +1065,13 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:isPartOf</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">part_of</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
 <span class="w">    </span><span class="nt">inverse</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="w">    </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span>
@@ -923,7 +1082,7 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:type</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Agent</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClassifierMixin</span>
@@ -941,13 +1100,13 @@
 <span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdf:type</span>
 <span class="w">    </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdf_type</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgenticEntity</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SubstanceSampleCharacterization</span>
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClassifierMixin</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DefinedTerm</span>
 <span class="w">    </span><span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:Agent</span>
+<span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:Activity</span>
 </code></pre></div>
 </details>
 </article>
