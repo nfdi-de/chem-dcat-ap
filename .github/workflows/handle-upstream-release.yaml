@@ -80,7 +80,17 @@ jobs:
           echo "Upstream latest: ${VERSION}"
 
       # ------------------------------------------------------------------
-      # Detect what the source schemas currently import
+      # Detect what version the source schemas currently pin dcatapplus to.
+      #
+      # The canonical form on main is: version in the prefix value
+      #   dcatapplus: https://.../v0.5.0/
+      # and the import path has no version token:
+      #   - dcatapplus:schema/dcat_ap_plus
+      #
+      # If dcatapplus is still at the base URL (unversioned — only expected
+      # before the first handle-upstream-release PR has been merged), the
+      # detect step returns "unversioned", which never equals any upstream
+      # version string and therefore always triggers the PR creation.
       # ------------------------------------------------------------------
       - name: Detect current dcatapplus import token
         id: detect
@@ -88,12 +98,12 @@ jobs:
           CURRENT=$(python3 - <<'EOF'
           import re, pathlib, sys
           for f in sorted(pathlib.Path("src/chem_dcat_ap/schema").glob("*.yaml")):
-              m = re.search(r"dcatapplus:([^/\s]+)/", f.read_text())
+              m = re.search(r'dcatapplus:\s+\S+/(v[\d.]+)/', f.read_text())
               if m:
                   print(m.group(1))
                   sys.exit(0)
-          # Fallback: no token found, assume 'latest'
-          print("latest")
+          # Fallback: dcatapplus is at base URL, not yet pinned to any version
+          print("unversioned")
           EOF
           )
           echo "current_token=${CURRENT}" >> "$GITHUB_OUTPUT"
@@ -215,18 +225,17 @@ jobs:
 
           uv run python scripts/freeze_imports.py \
             --schema-dir src/chem_dcat_ap/schema \
-            --prefix dcatapplus \
-            --from-alias "${CURRENT_TOKEN}" \
-            --to-version "${VERSION}"
+            --dcatapplus-base https://w3id.org/nfdi-de/dcat-ap-plus \
+            --dcatapplus-version "${VERSION}"
 
           git add src/chem_dcat_ap/schema/
-          git commit -m "chore: freeze dcatapplus import to ${VERSION}
+          git commit -m "chore: freeze dcatapplus prefix to ${VERSION}
 
           Automatically created by the daily upstream check workflow.
 
-          Pins the source schema imports from 'dcatapplus:${CURRENT_TOKEN}/'
-          to 'dcatapplus:${VERSION}/', making local development and all
-          future releases of chem-dcat-ap deterministic against the new
+          Pins the dcatapplus prefix value from the unversioned base URL
+          to 'https://w3id.org/nfdi-de/dcat-ap-plus/${VERSION}/', making
+          all future releases of chem-dcat-ap deterministic against this
           upstream version."
 
           git push origin "${BRANCH}"
@@ -246,7 +255,7 @@ jobs:
         run: |
           BRANCH="freeze/dcatapplus-${VERSION}"
           PR_URL=$(gh pr create \
-            --title "chore: freeze dcatapplus import to ${VERSION}" \
+            --title "chore: freeze dcatapplus prefix to ${VERSION}" \
             --base main \
             --head "${BRANCH}" \
             --body "$(cat <<EOF
@@ -255,9 +264,10 @@ jobs:
           The daily upstream check found that dcat-ap-plus has released a new
           version: **${VERSION}**.
 
-          This PR updates the source schema imports from \`dcatapplus:${CURRENT_TOKEN}/\`
-          to \`dcatapplus:${VERSION}/\`, making local development and all future releases
-          of chem-dcat-ap deterministic against this upstream version.
+          This PR pins the \`dcatapplus\` prefix value in the source schemas from
+          the unversioned base URL to \`https://w3id.org/nfdi-de/dcat-ap-plus/${VERSION}/\`
+          (version pinned in prefix, not import path), making local development and all
+          future releases of chem-dcat-ap deterministic against this upstream version.
 
           ### Before merging
           - [ ] CI passes — confirms chem-dcat-ap is compatible with dcat-ap-plus **${VERSION}**
@@ -265,9 +275,9 @@ jobs:
                 schema updates in this repo before this PR can be merged
 
           ### After merging
-          The \`main\` branch will carry \`dcatapplus:${VERSION}/\` in source.
+          The \`main\` branch will carry the version pinned in the \`dcatapplus\` prefix.
           The release-time freeze step in \`deploy-docs.yaml\` will be a no-op
-          (the import is already pinned), which is correct and expected behaviour.
+          (the prefix is already pinned), which is correct and expected behaviour.
 
           ---
           *This PR was created automatically by the \`handle-upstream-release\` workflow.*

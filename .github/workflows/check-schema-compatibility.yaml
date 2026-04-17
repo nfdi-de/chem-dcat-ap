@@ -89,6 +89,24 @@ jobs:
           git worktree remove /tmp/gh-pages
 
       # ------------------------------------------------------------------
+      # Commit compatibility.md to main so the MkDocs page stays current.
+      # Uses the main checkout (not the gh-pages worktree).
+      # No [skip ci] — we want deploy-docs to run so the dev docs on
+      # gh-pages are rebuilt with the updated compatibility page.
+      # ------------------------------------------------------------------
+      - name: Commit compatibility.md to main branch
+        run: |
+          cp /tmp/compat_output/compatibility.md docs/compatibility.md
+          git add docs/compatibility.md
+          if git diff --staged --quiet; then
+            echo "No changes to compatibility.md — nothing to commit."
+          else
+            git commit -m "chore: update schema compatibility matrix"
+            git push origin main
+            echo "Committed updated compatibility.md to main."
+          fi
+
+      # ------------------------------------------------------------------
       # Create the label if it does not exist yet (idempotent).
       # ------------------------------------------------------------------
       - name: Ensure schema-dep-stale label exists
@@ -126,7 +144,7 @@ jobs:
           | Stale versions | ${{ steps.compat.outputs.stale_count }} of ${{ steps.compat.outputs.total_count }} |
           | Badge status | ${{ steps.compat.outputs.badge_message }} |
 
-          See the [compatibility matrix](https://nfdi-de.github.io/chem-dcat-ap/compatibility.html)
+          See the [compatibility matrix](https://nfdi-de.github.io/chem-dcat-ap/latest/compatibility/)
           for the full version-by-version breakdown.
 
           ### Suggested actions
@@ -163,7 +181,7 @@ jobs:
               --comment "$(cat <<EOF
           ✅ The latest version is valid again — closing automatically.
 
-          See the [compatibility matrix](https://nfdi-de.github.io/chem-dcat-ap/compatibility.html)
+          See the [compatibility matrix](https://nfdi-de.github.io/chem-dcat-ap/latest/compatibility/)
           for the current status of all deployed versions.
           EOF
           )"

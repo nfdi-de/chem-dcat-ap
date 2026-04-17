@@ -2,12 +2,19 @@
 """check_compatibility.py — Check schema dependency compatibility.
 
 For each deployed version of chem-dcat-ap (excluding dev), fetches the
-frozen dcat-ap-plus import token from the deployed schema and checks
-whether that upstream version is still accessible on GitHub Pages.
+frozen dcat-ap-plus version from the deployed schema and checks whether
+that upstream version is still accessible on GitHub Pages.
+
+Supports both version formats:
+  New format: version in prefix value
+    dcatapplus: https://.../v0.3.0/
+  Old format (legacy): version in import path
+    dcatapplus:v0.3.0/schema/
 
 Outputs (all written to --output-dir):
   badge.json          shields.io endpoint badge data
   compatibility.html  standalone HTML compatibility matrix
+  compatibility.md    MkDocs-compatible markdown compatibility matrix
   status.env          KEY=VALUE pairs for GitHub Actions $GITHUB_OUTPUT
 
 Exit codes:
@@ -17,8 +24,8 @@ Exit codes:
 
 Usage:
   python3 scripts/check_compatibility.py \\
-      --chemdcatap-url https://nfdi-de.github.io/chem-dcat-ap \\
-      --dcatapplus-url https://nfdi-de.github.io/dcat-ap-plus \\
+      --chemdcatap-url https://HendrikBorgelt.github.io/test_chemDCAT_ap_versioning_freeze \\
+      --dcatapplus-url https://HendrikBorgelt.github.io/test_dcat_ap_plus_versioning_freeze \\
       --output-dir /tmp/compat_output
 """
 
@@ -69,13 +76,48 @@ def url_accessible(url: str) -> bool:
 
 
 # ---------------------------------------------------------------------------
+# Freeze-status lookup
+# ---------------------------------------------------------------------------
+
+def fetch_freeze_status(chemdcatap_base: str) -> dict:
+    """Fetch freeze-status.json from gh-pages. Returns {} on any error.
+    The file records whether post-deploy-validate succeeded for each released
+    version. Keys are version strings (e.g. 'v0.3.0').
+    """
+    try:
+        req = urllib.request.Request(
+            f"{chemdcatap_base}/freeze-status.json",
+            headers={"User-Agent": "chem-dcat-ap-compat-check/1.0"},
+        )
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return json.load(r)
+    except Exception:
+        return {}
+
+
+# ---------------------------------------------------------------------------
 # Schema parsing
 # ---------------------------------------------------------------------------
 
-def extract_dcatapplus_token(schema_text: str) -> str | None:
-    """Extract the dcatapplus import token (e.g. 'v0.1.0' or 'latest')."""
-    m = re.search(r"dcatapplus:([^/\s]+)/", schema_text)
-    return m.group(1) if m else None
+def extract_dcatapplus_version(schema_text: str) -> str | None:
+    """Extract the pinned dcatapplus version from either:
+    - New format: dcatapplus: https://.../vX.Y.Z/ (version in prefix value)
+    - Old format (legacy): dcatapplus:vX.Y.Z/schema/ (version in import path)
+    Returns the version string (e.g. 'v0.3.0') or None if not pinned.
+    """
+    # New format: version in prefix value
+    m = re.search(r'dcatapplus:\s+https?://\S+/(v[\d.]+)/', schema_text)
+    if m:
+        return m.group(1)
+    # Old format (legacy): version in import path
+    m = re.search(r'dcatapplus:(v[\d.]+)/schema/', schema_text)
+    if m:
+        return m.group(1)
+    return None
+
+
+# Keep old name as alias for backwards compatibility with any callers
+extract_dcatapplus_token = extract_dcatapplus_version
 
 
 # ---------------------------------------------------------------------------
@@ -119,7 +161,7 @@ _STATUS_META = {
 }
 
 
-def build_html(results: list[dict], now: str, chemdcatap_url: str) -> str:
+def build_html(results: list[dict], now: str, chemdcatap_url: str, freeze_status: dict) -> str:
     rows = []
 
     # Dev row — always first, purely informational
@@ -128,6 +170,7 @@ def build_html(results: list[dict], now: str, chemdcatap_url: str) -> str:
         "<td><code>dev</code></td>"
         "<td><em>latest (floating)</em></td>"
         '<td style="color:#57606a">🔄 Development — floating import, not checked</td>'
+        '<td style="color:#57606a">—</td>'
         "</tr>"
     )
 
@@ -152,8 +195,16 @@ def build_html(results: list[dict], now: str, chemdcatap_url: str) -> str:
         else:
             status_html = f'<td style="color:{color}">{icon} {text}</td>'
 
+        fs = freeze_status.get(ver)
+        if fs is None:
+            freeze_cell = '<td style="color:#57606a">—</td>'
+        elif fs.get("validated"):
+            freeze_cell = '<td style="color:#2d8a4e">✅ Validated</td>'
+        else:
+            freeze_cell = '<td style="color:#d93f0b">❌ Failed</td>'
+
         rows.append(
-            f"<tr><td>{ver_label}</td><td>{token_cell}</td>{status_html}</tr>"
+            f"<tr><td>{ver_label}</td><td>{token_cell}</td>{status_html}{freeze_cell}</tr>"
         )
 
     rows_html = "\n      ".join(rows)
@@ -200,6 +251,7 @@ def build_html(results: list[dict], now: str, chemdcatap_url: str) -> str:
         <th>chem-dcat-ap version</th>
         <th>dcat-ap-plus dependency</th>
         <th>Status</th>
+        <th>Freeze validated</th>
       </tr>
     </thead>
     <tbody>
@@ -210,10 +262,73 @@ def build_html(results: list[dict], now: str, chemdcatap_url: str) -> str:
     ✅ Valid — the frozen upstream schema URL responds with HTTP 200<br>
     ⚠️ Stale — the frozen upstream schema URL returns 404 or is unreachable<br>
     ❓ Schema not accessible — the deployed chem-dcat-ap schema could not be fetched<br>
-    🔄 Development — not a released version, floating import, not checked
+    🔄 Development — not a released version, floating import, not checked<br>
+    ✅/❌ Freeze validated — result of the post-deploy-validate job; — means no data yet
   </p>
 </body>
 </html>
+"""
+
+
+# ---------------------------------------------------------------------------
+# Markdown matrix (MkDocs-compatible)
+# ---------------------------------------------------------------------------
+
+def build_markdown(results: list[dict], now: str, chemdcatap_url: str, freeze_status: dict) -> str:
+    """Generate a MkDocs-compatible markdown file with the compatibility matrix."""
+    rows = []
+
+    # Dev row — always first, purely informational
+    rows.append("| `dev` | *latest (floating)* | 🔄 Not frozen / Development — floating import, not checked | — |")
+
+    for r in results:
+        ver = r["version"]
+        ver_label = f"**{ver}** *(latest)*" if r["is_latest"] else ver
+        token = r["token"] or "—"
+        token_cell = f"`{token}`"
+
+        icon, _, text = _STATUS_META.get(r["status"], ("❓", "#9a6700", "Unknown"))
+
+        if r["status"] == "stale":
+            status_cell = f"{icon} Stale — dcat-ap-plus `{token}` not found on GitHub Pages"
+        elif r["status"] == "no-schema":
+            status_cell = f"{icon} Schema not accessible — could not fetch deployed schema"
+        elif r["status"] == "not-frozen":
+            status_cell = f"🔄 Not frozen / Development — floating import, not checked"
+        else:
+            status_cell = f"{icon} {text}"
+
+        fs = freeze_status.get(ver)
+        if fs is None:
+            freeze_cell = "—"
+        elif fs.get("validated"):
+            freeze_cell = "✅ Validated"
+        else:
+            freeze_cell = "❌ Failed"
+
+        rows.append(f"| {ver_label} | {token_cell} | {status_cell} | {freeze_cell} |")
+
+    rows_md = "\n".join(rows)
+
+    return f"""---
+title: Schema Compatibility
+---
+
+# Schema Compatibility Matrix
+
+Last checked: **{now}** · [Documentation site]({chemdcatap_url}) · Generated by the `check-schema-compatibility` workflow
+
+| chem-dcat-ap version | dcat-ap-plus dependency | Status | Freeze validated |
+|---|---|---|---|
+{rows_md}
+
+**Legend:**
+
+- ✅ Valid — frozen upstream URL responds HTTP 200
+- ⚠️ Stale — frozen upstream URL returns 404 or is unreachable
+- ❓ Schema not accessible — deployed chem-dcat-ap schema could not be fetched
+- 🔄 Not frozen / Development — floating import, not checked
+- ✅/❌ Freeze validated — result of the post-deploy-validate job; — means no data yet
 """
 
 
@@ -236,7 +351,7 @@ def main() -> int:
     )
     p.add_argument(
         "--output-dir", required=True,
-        help="Directory to write badge.json, compatibility.html, status.env",
+        help="Directory to write badge.json, compatibility.html, compatibility.md, status.env",
     )
     args = p.parse_args()
 
@@ -262,6 +377,13 @@ def main() -> int:
     print(f"Latest released version: {latest_version}")
 
     # ------------------------------------------------------------------
+    # Fetch freeze-validation status
+    # ------------------------------------------------------------------
+    print(f"Fetching freeze-status from {chemdcatap_base}/freeze-status.json …")
+    freeze_status = fetch_freeze_status(chemdcatap_base)
+    print(f"  Found freeze status for {len(freeze_status)} version(s).")
+
+    # ------------------------------------------------------------------
     # Check each released version (dev excluded)
     # ------------------------------------------------------------------
     results: list[dict] = []
@@ -284,7 +406,7 @@ def main() -> int:
             })
             continue
 
-        token = extract_dcatapplus_token(schema_text)
+        token = extract_dcatapplus_version(schema_text)
         if token is None or token == "latest":
             print(f"not frozen (token={token!r})")
             results.append({
@@ -321,12 +443,16 @@ def main() -> int:
     print(f"Badge: {badge['color']} / {badge['message']!r}")
 
     # ------------------------------------------------------------------
-    # Write compatibility.html
+    # Write compatibility.html and compatibility.md
     # ------------------------------------------------------------------
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    html = build_html(results, now, chemdcatap_base)
+    html = build_html(results, now, chemdcatap_base, freeze_status)
     (output_dir / "compatibility.html").write_text(html)
     print(f"Wrote compatibility.html ({len(html):,} bytes)")
+
+    md = build_markdown(results, now, chemdcatap_base, freeze_status)
+    (output_dir / "compatibility.md").write_text(md)
+    print(f"Wrote compatibility.md ({len(md):,} bytes)")
 
     # ------------------------------------------------------------------
     # Write status.env (KEY=VALUE for GitHub Actions $GITHUB_OUTPUT)
