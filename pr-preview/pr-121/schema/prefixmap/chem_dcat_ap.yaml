@@ -256,6 +256,12 @@
    "QuantitativeAttribute": {
       "@id": "qudt:Quantity"
    },
+   "ReactionMonitoring": {
+      "@id": "prov:Activity"
+   },
+   "ReactionMonitoringDataset": {
+      "@id": "dcat:Dataset"
+   },
    "Reactor": {
       "@id": "AFE:0000153"
    },
@@ -288,6 +294,12 @@
    },
    "SubstanceSample": {
       "@id": "SIO:001378"
+   },
+   "SubstanceSampleCharacterization": {
+      "@id": "prov:Activity"
+   },
+   "SubstanceSampleCharacterizationDataset": {
+      "@id": "dcat:Dataset"
    },
    "SupportiveEntity": {
       "@id": "dcatapplus:SupportiveEntity"
