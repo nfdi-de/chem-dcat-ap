@@ -1,6 +1,6 @@
 ---
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: "0.1.0rc2.post33.dev0+fb29e03e" # Managed by dynamic-versioning. Don't change this line!
+version: "0.1.0rc2.post36.dev0+e9bd12a9" # Managed by dynamic-versioning. Don't change this line!
 name: chem-dcat-ap
 title: ChemDCAT-AP
 description: |-
@@ -117,7 +117,7 @@ classes:
   # This process is described in more depth at:
   # https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#problems-dcat-ap-addresses
 
-  SubstanceSampleCharacterization :
+  SubstanceSampleCharacterization:
     is_a: DataGeneratingActivity
     class_uri: prov:Activity
     broad_mappings:

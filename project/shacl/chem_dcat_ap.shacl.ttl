@@ -61,9 +61,8 @@ CHEBI:33250 a sh:NodeShape ;
             sh:order 6 ;
             sh:path dcterms:hasPart ],
         [ sh:class schema1:DefinedTerm ;
-            sh:description "The slot to provide the Atom as a ChEBI ID from the atom (CHEBI:33250) branch." ;
+            sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 9 ;
             sh:path rdf:type ],
@@ -254,17 +253,17 @@ dcatapplus:ClassifierMixin a sh:NodeShape ;
     sh:description "A mixin with which an entity of this schema can be classified via an additional rdf:type or dcterms:type assertion." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:class schema1:DefinedTerm ;
-            sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path rdf:type ],
-        [ sh:class schema1:DefinedTerm ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path dcterms:type ] ;
+            sh:path dcterms:type ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path rdf:type ] ;
     sh:targetClass dcatapplus:ClassifierMixin .
 
 dcatapplus:SupportiveEntity a sh:NodeShape ;
@@ -300,10 +299,10 @@ dcatapplus:SupportiveEntity a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path SIO:000008 ],
-        [ sh:class qudt:Quantity ;
-            sh:description "The slot to provide the Mass of a MaterialEntity." ;
+        [ sh:class SIO:001089 ;
+            sh:description "The slot to provide the PHValue of a ChemicalSubstance." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 7 ;
+            sh:order 1 ;
             sh:path SIO:000008 ],
         [ sh:class qudt:Quantity ;
             sh:description "The slot to provide the Volume of a MaterialEntity." ;
@@ -321,7 +320,7 @@ dcatapplus:SupportiveEntity a sh:NodeShape ;
             sh:order 2 ;
             sh:path BFO:0000051 ],
         [ sh:class qudt:Quantity ;
-            sh:description "The slot to provide the Temperature of a MaterialEntity." ;
+            sh:description "The slot to provide the AmountConcentration of a ChemicalSubstance." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
             sh:path SIO:000008 ],
@@ -331,7 +330,7 @@ dcatapplus:SupportiveEntity a sh:NodeShape ;
             sh:order 5 ;
             sh:path SIO:000008 ],
         [ sh:class qudt:Quantity ;
-            sh:description "The slot to provide the AmountConcentration of a ChemicalSubstance." ;
+            sh:description "The slot to provide the Mass of a MaterialEntity." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path SIO:000008 ],
@@ -396,6 +395,16 @@ dcatapplus:SupportiveEntity a sh:NodeShape ;
             sh:description "The slot to provide the Concentration of a ChemicalSubstance." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 0 ;
+            sh:path SIO:000008 ],
+        [ sh:class SIO:001089 ;
+            sh:description "The slot to provide the PHValue of a ChemicalSubstance." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 1 ;
+            sh:path SIO:000008 ],
+        [ sh:class SIO:001406 ;
+            sh:description "The slot to provide the Density of a MaterialEntity." ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 9 ;
             sh:path SIO:000008 ],
         [ sh:class qudt:Quantity ;
             sh:description "The slot to provide the Mass of a MaterialEntity." ;
@@ -467,12 +476,12 @@ AFE:0000153 a sh:NodeShape ;
             sh:order 3 ;
             sh:path SIO:000008 ],
         [ sh:class qudt:Quantity ;
-            sh:description "The slot to provide the Temperature of a MaterialEntity." ;
+            sh:description "The slot to provide the Mass of a MaterialEntity." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 2 ;
+            sh:order 3 ;
             sh:path SIO:000008 ],
-        [ sh:class adms:Identifier ;
-            sh:description "A slot to provide a secondary identifier for a Device." ;
+        [ sh:class SIO:001406 ;
+            sh:description "The slot to provide the Density of a MaterialEntity." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 10 ;
             sh:path adms:identifier ],
@@ -573,7 +582,6 @@ AFR:0002409 a sh:NodeShape ;
         [ sh:class schema1:DefinedTerm ;
             sh:description "The type of quality that is quantifiable according to the QUDT ontology." ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
             sh:path qudt:hasQuantityKind ],
@@ -668,8 +676,8 @@ NCIT:C48810 a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:order 5 ;
             sh:path SIO:000008 ],
-        [ sh:class prov:Entity ;
-            sh:description "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity" ;
+        [ sh:class adms:Identifier ;
+            sh:description "A slot to provide a secondary identifier of the Entity." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 15 ;
             sh:path dcterms:relation ],
@@ -693,10 +701,16 @@ NCIT:C48810 a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 3 ;
             sh:path SIO:000008 ],
+        [ sh:datatype <xsd:string> ;
+            sh:description "The slot to provide a description for the Entity." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path dcterms:description ],
         [ sh:class qudt:Quantity ;
-            sh:description "The slot to provide the Volume of a MaterialEntity." ;
+            sh:description "The slot to provide the Temperature of a MaterialEntity." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 8 ;
+            sh:order 6 ;
             sh:path SIO:000008 ],
         [ sh:class qudt:Quantity ;
             sh:description "The slot to provide the Pressure of a MaterialEntity." ;
@@ -778,7 +792,7 @@ PROCO:0000029 a sh:NodeShape ;
         [ sh:class CHMO:0002820 ;
             sh:description "The slot to provide the Concentration of a ChemicalSubstance." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
+            sh:order 9 ;
             sh:path SIO:000008 ],
         [ sh:class qudt:Quantity ;
             sh:description "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity" ;
@@ -872,8 +886,8 @@ CHEMINF:000018 a sh:NodeShape ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path dcterms:description ] ;
+            sh:order 0 ;
+            sh:path dcterms:title ] ;
     sh:targetClass CHEMINF:000018 .
 
 CHEMINF:000042 a sh:NodeShape ;
@@ -935,12 +949,12 @@ CHEMINF:000059 a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path prov:value ],
-        [ sh:class schema1:DefinedTerm ;
+        [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path dcterms:type ],
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path dcterms:description ],
         [ sh:class schema1:DefinedTerm ;
             sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
             sh:maxCount 1 ;
@@ -1057,7 +1071,7 @@ SIO:010344 a sh:NodeShape ;
         [ sh:class CHMO:0002820 ;
             sh:description "The slot to provide the Concentration of a ChemicalSubstance." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 1 ;
+            sh:order 21 ;
             sh:path SIO:000008 ],
         [ sh:class qudt:Quantity ;
             sh:description "The slot to provide the Temperature of a MaterialEntity." ;
@@ -1226,7 +1240,7 @@ SIO:010411 a sh:NodeShape ;
             sh:order 8 ;
             sh:path SIO:000008 ],
         [ sh:class schema1:DefinedTerm ;
-            sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
+            sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 21 ;
@@ -1289,8 +1303,8 @@ SIO:010417 a sh:NodeShape ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 13 ;
-            sh:path dcterms:type ],
+            sh:order 11 ;
+            sh:path dcterms:hasPart ],
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
@@ -1325,6 +1339,7 @@ SIO:010417 a sh:NodeShape ;
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 7 ;
             sh:path dcterms:description ],
@@ -1498,14 +1513,14 @@ prov:SoftwareAgent a sh:NodeShape ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path dcterms:description ],
+            sh:order 0 ;
+            sh:path dcterms:title ],
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path dcterms:title ] ;
+            sh:order 1 ;
+            sh:path dcterms:description ] ;
     sh:targetClass <locn:Geometry> .
 
 <odrl:Policy> a sh:NodeShape ;
@@ -1530,21 +1545,21 @@ prov:SoftwareAgent a sh:NodeShape ;
     sh:closed true ;
     sh:description "See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <spdx:ChecksumAlgorithm> ;
-            sh:description "The algorithm used to produce the subject Checksum." ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 0 ;
-            sh:path <spdx:algorithm> ],
-        [ sh:datatype <xsd:hexBinary> ;
+    sh:property [ sh:datatype <xsd:hexBinary> ;
             sh:description "A lower case hexadecimal encoded digest value produced using a specific algorithm." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path <spdx:checksumValue> ;
-            sh:pattern "([0-9a-fA-F]{2})*" ] ;
+            sh:pattern "([0-9a-fA-F]{2})*" ],
+        [ sh:class <spdx:ChecksumAlgorithm> ;
+            sh:description "The algorithm used to produce the subject Checksum." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 0 ;
+            sh:path <spdx:algorithm> ] ;
     sh:targetClass <spdx:Checksum> .
 
 <spdx:ChecksumAlgorithm> a sh:NodeShape ;
@@ -1845,14 +1860,14 @@ time:Instant a sh:NodeShape ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path dcterms:title ],
+            sh:order 1 ;
+            sh:path dcterms:description ],
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path dcterms:description ] ;
+            sh:order 0 ;
+            sh:path dcterms:title ] ;
     sh:targetClass time:Instant .
 
 dcat:CatalogRecord a sh:NodeShape ;
@@ -1926,6 +1941,7 @@ dcterms:LicenseDocument a sh:NodeShape ;
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path dcterms:title ],
@@ -1956,7 +1972,7 @@ dcterms:MediaType a sh:NodeShape ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
+            sh:order 3 ;
             sh:path dcterms:description ] ;
     sh:targetClass dcterms:MediaType .
 
@@ -2147,7 +2163,7 @@ dcat:Catalog a sh:NodeShape ;
             sh:order 4 ;
             sh:path dcterms:spatial ],
         [ sh:class dcat:Catalog ;
-            sh:description "A catalogue whose contents are of interest in the context of this catalogue." ;
+            sh:description "A related Catalogue that is part of the described Catalogue." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
             sh:path dcat:catalog ],
@@ -2169,7 +2185,7 @@ dcat:Catalog a sh:NodeShape ;
             sh:order 18 ;
             sh:path dcterms:title ],
         [ sh:class dcat:Catalog ;
-            sh:description "A related Catalogue that is part of the described Catalogue." ;
+            sh:description "A catalogue whose contents are of interest in the context of this catalogue." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
             sh:path dcterms:hasPart ],
@@ -2352,8 +2368,8 @@ BFO:0000040 a sh:NodeShape ;
             sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 16 ;
-            sh:path rdf:type ],
+            sh:order 15 ;
+            sh:path dcterms:type ],
         [ sh:class qudt:Quantity ;
             sh:description "The slot to provide the Mass of a MaterialEntity." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
@@ -2882,8 +2898,14 @@ dcat:Distribution a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 6 ;
             sh:path dcat:compressFormat ],
-        [ sh:datatype <xsd:nonNegativeInteger> ;
-            sh:description "The size of a Distribution in bytes." ;
+        [ sh:class skos:Concept ;
+            sh:description "An indication how long it is planned to keep the Distribution of the Dataset available." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:order 3 ;
+            sh:path <dcatap:availability> ],
+        [ sh:datatype <xsd:date> ;
+            sh:description "The date of formal issuance (e.g., publication) of the Distribution." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
@@ -2895,9 +2917,16 @@ CHMO:0002820 a sh:NodeShape ;
     sh:closed true ;
     sh:description "A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume of the mixture." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype <xsd:string> ;
+    sh:property [ sh:class schema1:DefinedTerm ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path dcterms:type ],
+        [ sh:datatype <xsd:float> ;
+            sh:description "The slot to provide the literal value of the QuantitativeAttribute." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path dcterms:description ],
@@ -2960,9 +2989,17 @@ SIO:001089 a sh:NodeShape ;
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path dcterms:title ],
+            sh:order 2 ;
+            sh:path prov:value ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The type of quality that is quantifiable according to the QUDT ontology." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path qudt:hasQuantityKind ],
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
@@ -3416,8 +3453,8 @@ dcat:Dataset a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 24 ;
             sh:path dcterms:issued ],
-        [ sh:class dcat:DatasetSeries ;
-            sh:description "A dataset series of which the dataset is part." ;
+        [ sh:class dcterms:Standard ;
+            sh:description "An implementing rule or other specification." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 12 ;
             sh:path dcat:inSeries ],
@@ -3464,7 +3501,8 @@ dcat:Dataset a sh:NodeShape ;
             sh:order 11 ;
             sh:path dcterms:identifier ],
         [ sh:datatype <xsd:string> ;
-            sh:description "A description of the differences between this version and a previous version of the Dataset." ;
+            sh:description "A free-text account of the Dataset." ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 34 ;
             sh:path adms:versionNotes ],
@@ -3517,8 +3555,8 @@ dcat:Dataset a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 35 ;
             sh:path prov:wasGeneratedBy ],
-        [ sh:class prov:Attribution ;
-            sh:description "An Agent having some form of responsibility for the resource." ;
+        [ sh:class dcterms:PeriodOfTime ;
+            sh:description "A temporal period that the Dataset covers." ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 21 ;
             sh:path prov:qualifiedAttribution ],
@@ -3827,11 +3865,11 @@ dcat:Dataset a sh:NodeShape ;
         [ sh:class rdfs:Resource ;
             sh:description "A related resource, such as a publication, that references, cites, or otherwise points to the dataset." ;
             sh:nodeKind sh:IRI ;
-            sh:order 13 ;
-            sh:path dcterms:isReferencedBy ],
-        [ sh:datatype <xsd:string> ;
-            sh:description "A free-text account of the Dataset." ;
-            sh:minCount 1 ;
+            sh:order 37 ;
+            sh:path dcterms:subject ],
+        [ sh:datatype <xsd:decimal> ;
+            sh:description "The minimum spatial separation resolvable in a dataset, measured in meters." ;
+            sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path dcterms:description ],
@@ -4067,7 +4105,7 @@ skos:Concept a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path dcterms:description ] ;
-    sh:targetClass skos:Concept .
+    sh:targetClass rdfs:Resource .
 
 prov:Agent a sh:NodeShape ;
     sh:closed true ;
@@ -4131,10 +4169,10 @@ prov:Agent a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path dcterms:relation ],
-        [ sh:class prov:Entity ;
-            sh:description "The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity" ;
+        [ sh:class qudt:Quantity ;
+            sh:description "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 4 ;
+            sh:order 5 ;
             sh:path dcterms:relation ],
         [ sh:class qudt:Quantity ;
             sh:description "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity" ;
@@ -4288,12 +4326,17 @@ prov:Activity a sh:NodeShape ;
         [ sh:datatype <xsd:anyURI> ;
             sh:description "A slot to provide an URI for an entity within this schema." ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
+            sh:order 0 ;
             sh:path dcatapplus:id ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 17 ;
+            sh:path rdf:type ],
         [ sh:class prov:Entity ;
-            sh:description "The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed." ;
+            sh:description "The slot to specify the Entity that was generated as an output of an Activity." ;
             sh:nodeKind sh:IRI ;
             sh:order 9 ;
             sh:path prov:used ],
@@ -4434,12 +4477,12 @@ prov:Activity a sh:NodeShape ;
             sh:order 9 ;
             sh:path prov:used ],
         [ sh:class prov:Activity ;
-            sh:description "The slot to provide a previous Activity that informed the Activity by being causally via a shared participant." ;
+            sh:description "The slot to provide an Activity of which the Activity is a part." ;
             sh:nodeKind sh:IRI ;
-            sh:order 11 ;
-            sh:path prov:wasInformedBy ],
+            sh:order 15 ;
+            sh:path dcterms:isPartOf ],
         [ sh:datatype <xsd:string> ;
-            sh:description "The slot to provide a title for the Activity." ;
+            sh:description "The slot to provide a description for the Activity." ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path dcterms:title ],
@@ -4552,8 +4595,18 @@ prov:Activity a sh:NodeShape ;
         [ sh:class qudt:Quantity ;
             sh:description "The slot to relate a quantitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
-            sh:order 14 ;
+            sh:order 10 ;
             sh:path dcterms:relation ],
+        [ sh:class prov:Entity ;
+            sh:description "The slot to specify the Entity that was generated as an output of an Activity." ;
+            sh:nodeKind sh:IRI ;
+            sh:order 10 ;
+            sh:path prov:generated ],
+        [ sh:datatype <xsd:string> ;
+            sh:description "The slot to provide a description for the Activity." ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path dcterms:description ],
         [ sh:class schema1:DefinedTerm ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
@@ -4636,7 +4689,7 @@ prov:Activity a sh:NodeShape ;
             sh:order 17 ;
             sh:path rdf:type ],
         [ sh:class prov:Activity ;
-            sh:description "The slot to provide an Activity that is part of the Activity." ;
+            sh:description "The slot to specify the Activity about which the DataGeneratingActivity produced information." ;
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
             sh:path dcterms:hasPart ],
@@ -4717,7 +4770,7 @@ prov:Activity a sh:NodeShape ;
             sh:description "A slot to provide an URI for an entity within this schema." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
+            sh:order 4 ;
             sh:path dcatapplus:id ],
         [ sh:class prov:Entity ;
             sh:description "The slot to specify the Entity that was generated as an output of an Activity." ;
@@ -4799,7 +4852,7 @@ prov:Entity a sh:NodeShape ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 3 ;
+            sh:order 9 ;
             sh:path dcterms:type ],
         [ sh:datatype <xsd:anyURI> ;
             sh:description "A slot to provide an URI for an entity within this schema." ;
@@ -4911,10 +4964,9 @@ prov:Entity a sh:NodeShape ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 4 ;
             sh:path adms:identifier ],
-        [ sh:datatype <xsd:anyURI> ;
-            sh:description "A slot to provide an URI for an entity within this schema." ;
+        [ sh:datatype <xsd:string> ;
+            sh:description "The slot to provide a description for the EvaluatedEntity." ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path dcatapplus:id ],
@@ -4959,7 +5011,7 @@ prov:Entity a sh:NodeShape ;
             sh:order 10 ;
             sh:path rdf:type ],
         [ sh:class prov:Entity ;
-            sh:description "The slot to specify an Entity of which the Entity is a part." ;
+            sh:description "A slot to provide a part of the Entity." ;
             sh:nodeKind sh:IRI ;
             sh:order 8 ;
             sh:path dcterms:isPartOf ],
@@ -5036,8 +5088,8 @@ qudt:Quantity a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path dcterms:title ],
-        [ sh:class schema1:DefinedTerm ;
-            sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
+        [ sh:datatype <xsd:float> ;
+            sh:description "The slot to provide the literal value of the QuantitativeAttribute." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 6 ;
@@ -5049,6 +5101,12 @@ qudt:Quantity a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
             sh:path qudt:hasQuantityKind ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:description "This slot is described in more detail within the class in which it is used." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path dcterms:type ],
         [ sh:datatype <xsd:float> ;
             sh:description "The slot to provide the literal value of the QuantitativeAttribute." ;
             sh:maxCount 1 ;
@@ -5110,6 +5168,12 @@ qudt:Quantity a sh:NodeShape ;
             sh:order 4 ;
             sh:path qudt:unit ],
         [ sh:class schema1:DefinedTerm ;
+            sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 6 ;
+            sh:path rdf:type ],
+        [ sh:class schema1:DefinedTerm ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
@@ -5118,7 +5182,6 @@ qudt:Quantity a sh:NodeShape ;
         [ sh:datatype <xsd:float> ;
             sh:description "The slot to provide the literal value of the QuantitativeAttribute." ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path prov:value ],
@@ -5167,7 +5230,7 @@ qudt:Quantity a sh:NodeShape ;
             sh:order 6 ;
             sh:path rdf:type ],
         [ sh:class schema1:DefinedTerm ;
-            sh:description "This slot is described in more detail within the class in which it is used." ;
+            sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 5 ;
@@ -5186,11 +5249,11 @@ qudt:Quantity a sh:NodeShape ;
             sh:order 3 ;
             sh:path qudt:hasQuantityKind ],
         [ sh:class schema1:DefinedTerm ;
-            sh:description "This slot is described in more detail within the class in which it is used." ;
+            sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path dcterms:type ],
+            sh:order 6 ;
+            sh:path rdf:type ],
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
@@ -5250,11 +5313,11 @@ qudt:Quantity a sh:NodeShape ;
             sh:order 3 ;
             sh:path qudt:hasQuantityKind ],
         [ sh:class schema1:DefinedTerm ;
-            sh:description "This slot is described in more detail within the class in which it is used." ;
+            sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path dcterms:type ],
+            sh:order 6 ;
+            sh:path rdf:type ],
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
@@ -5274,6 +5337,11 @@ qudt:Quantity a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 3 ;
             sh:path qudt:hasQuantityKind ],
+        [ sh:class schema1:DefinedTerm ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 4 ;
+            sh:path qudt:unit ],
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
@@ -5350,9 +5418,10 @@ qudt:Quantity a sh:NodeShape ;
         [ sh:datatype <xsd:string> ;
             sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path dcterms:description ],
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 3 ;
+            sh:path qudt:hasQuantityKind ],
         [ sh:class schema1:DefinedTerm ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
@@ -5382,11 +5451,11 @@ qudt:Quantity a sh:NodeShape ;
             sh:order 5 ;
             sh:path dcterms:type ],
         [ sh:class schema1:DefinedTerm ;
-            sh:description "The slot to specify the ontology class that is instantiated by an entity." ;
+            sh:description "This slot is described in more detail within the class in which it is used." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
-            sh:order 6 ;
-            sh:path rdf:type ] ;
+            sh:order 5 ;
+            sh:path dcterms:type ] ;
     sh:targetClass qudt:Quantity .
 
 schema1:DefinedTerm a sh:NodeShape ;
