@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post68.dev0+4caa872e
+version: 0.1.0rc2.post72.dev0+52a8d2b8
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -600,12 +600,6 @@ enums:
         description: A state of matter in which molecules are closely packed and cannot
           move past each other.
         meaning: PATO:0001736
-      CRYSTAL:
-        text: CRYSTAL
-        description: A solid state of matter whose constituents (such as atoms, molecules,
-          or ions) are arranged in a highly ordered microscopic structure, forming
-          a crystal lattice that extends in all directions.
-        meaning: PATO:0002066
       LIQUID:
         text: LIQUID
         description: A state of matter with a definite volume but no fixed shape.
@@ -616,6 +610,11 @@ enums:
         text: GASEOUS
         description: A state of matter with neither fixed volume nor fixed shape.
         meaning: PATO:0001737
+      PLASMA:
+        text: PLASMA
+        description: A state of matter in which a gas becomes ionized and conducts
+          electricity, often found in high-energy environments such as stars or lightning.
+        meaning: PATO:0015012
 slots:
   access_URL:
     name: access_URL
@@ -9941,7 +9940,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-04-17T18:10:55'
+source_file_date: '2026-04-20T06:42:42'
 source_file_size: 7590
-generation_date: '2026-04-17T18:11:06'
+generation_date: '2026-04-20T06:42:53'
 

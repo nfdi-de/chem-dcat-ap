@@ -1188,7 +1188,7 @@
 <p><code>Atom</code> (mapped to <code>CHEBI:33250</code>) extends <code>Entity</code> directly. It is a currently minimal shape whose only addition is that <code>rdf_type</code> is <code>required: true</code>, forcing every instance to declare which specific atom type it is via the <a href="https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#pattern-3-flexible-classification-classifiermixin">ClassifierMixin</a>. The slot description indicates that the value should come from CHEBI's atom branch (<code>CHEBI:33250</code> and its subclasses, e.g. <code>CHEBI:26708</code> for a sodium atom), but this constraint is not yet enforced programmatically. Future versions of ChemDCAT-AP will use LinkML <a href="https://linkml.io/linkml-model/latest/docs/bindings/">slot bindings</a> and the <a href="https://linkml.io/linkml-term-validator/">linkml-term-validator</a> to validate this.</p>
 <div class="admonition note">
 <p class="admonition-title">Why Atom extends Entity, not ChemicalEntity</p>
-<p>Since <code>ChemicalEntity</code> is grounded in CHEBI' <em>molecular entity</em>, and CHEBI's atom class (<code>CHEBI:33250</code>) is not a subclass of molecular entity in CHEBI's class hierarchy, subsuming <code>Atom</code> under <code>ChemicalEntity</code> would be ontologically incorrect. Extending <code>Entity</code> directly fixes this issues.</p>
+<p>Since <code>ChemicalEntity</code> is grounded in CHEBI' <em>molecular entity</em>, and CHEBI's atom class (<code>CHEBI:33250</code>) is not a subclass of molecular entity in CHEBI's class hierarchy, subsuming <code>Atom</code> under <code>ChemicalEntity</code> would be ontologically incorrect. Extending <code>Entity</code> directly fixes this issue.</p>
 </div>
 
 
