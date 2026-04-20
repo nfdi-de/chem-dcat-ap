@@ -1,0 +1,1139 @@
+@base <https://search.nfdi4chem.de/dataset/> .
+@prefix AFE: <http://purl.allotrope.org/ontologies/equipment#AFE_> .
+@prefix AFR: <http://purl.allotrope.org/ontologies/result#AFR_> .
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix CHEMINF: <http://semanticscience.org/resource/CHEMINF_> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix ENVO: <http://purl.obolibrary.org/obo/ENVO_> .
+@prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix NCIT: <http://purl.obolibrary.org/obo/NCIT_> .
+@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
+@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
+@prefix PROCO: <http://purl.obolibrary.org/obo/PROCO_> .
+@prefix RO: <http://purl.obolibrary.org/obo/RO_> .
+@prefix RXNO: <http://purl.obolibrary.org/obo/RXNO_> .
+@prefix SIO: <http://semanticscience.org/resource/SIO_> .
+@prefix VOC4CAT: <https://w3id.org/nfdi4cat/voc4cat_> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix schema1: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://doi.org/10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ> a dcat:Dataset ;
+    dcterms:description "This dataset contains the recorded information for the Chemotion Repository synthesis CRR-56408." ;
+    dcterms:relation <https://doi.org/10.1002/adsc.202400919>,
+        <https://doi.org/10.1016/j.jorganchem.2007.08.037>,
+        <https://doi.org/10.1021/ja00491a030>,
+        <https://doi.org/10.1080/03086648208081193> ;
+    dcterms:subject <https://www.chemotion-repository.net/pid/56408> ;
+    dcterms:title "Dataset for Chemotion Repository synthesis CRR-56408" ;
+    prov:wasGeneratedBy <https://doi.org/10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ#Monitoring> .
+
+AFR:0002371 a schema1:DefinedTerm ;
+    schema1:name "purity" .
+
+CHEBI:15366 a schema1:DefinedTerm ;
+    schema1:name "acetic acid" .
+
+CHEBI:15767 a schema1:DefinedTerm ;
+    schema1:name "dichloromethane" .
+
+CHEBI:16236 a schema1:DefinedTerm ;
+    schema1:name "ethanol" .
+
+CHEBI:16240 a schema1:DefinedTerm ;
+    schema1:name "Hydrogen Peroxide" .
+
+CHEBI:17883 a schema1:DefinedTerm ;
+    schema1:name "hydrogen chloride" .
+
+CHEBI:26911 a schema1:DefinedTerm ;
+    schema1:name "oxolane" .
+
+CHEBI:27750 a schema1:DefinedTerm ;
+    schema1:name "ethyl acetate" .
+
+CHEBI:29005 a schema1:DefinedTerm ;
+    schema1:name "cyclohexane" .
+
+CHEBI:32139 a schema1:DefinedTerm ;
+    schema1:name "sodium hydrogencarbonate" .
+
+CHEBI:32149 a schema1:DefinedTerm ;
+    schema1:name "sodium sulfate" .
+
+CHEBI:35496 a schema1:DefinedTerm ;
+    schema1:name "fluorobenzenes" .
+
+CHEBI:35702 a schema1:DefinedTerm ;
+    schema1:name "diethyl ether" .
+
+CHEBI:51469 a schema1:DefinedTerm ;
+    schema1:name "butyllithium" .
+
+CHEBI:63258 a schema1:DefinedTerm ;
+    schema1:name "phosphine derivative" .
+
+CHMO:0001577 a schema1:DefinedTerm ;
+    schema1:name "extraction" .
+
+CHMO:0001640 a schema1:DefinedTerm ;
+    schema1:name "filtration" .
+
+CHMO:0002582 a schema1:DefinedTerm ;
+    schema1:name "flash chromatography" .
+
+CHMO:0002782 a schema1:DefinedTerm ;
+    schema1:name "silica gel" .
+
+ENVO:01000623 a schema1:DefinedTerm ;
+    schema1:name "boiling" .
+
+ENVO:01001739 a schema1:DefinedTerm ;
+    schema1:name "warming of a fluid" .
+
+OBI:0000038 a schema1:DefinedTerm ;
+    schema1:name "chromatography column" .
+
+OBI:0000485 a schema1:DefinedTerm ;
+    schema1:name "chromatography instrument" .
+
+OBI:0002089 a schema1:DefinedTerm ;
+    schema1:name "container with environmental control" .
+
+PATO:0000337 a schema1:DefinedTerm ;
+    schema1:name "colorless" .
+
+PATO:0001824 a schema1:DefinedTerm ;
+    schema1:name "dry" .
+
+RXNO:0000329 a schema1:DefinedTerm ;
+    schema1:name "planned synthesis" .
+
+SIO:001326 a schema1:DefinedTerm ;
+    schema1:name "status descriptor" .
+
+<https://doi.org/10.1002/adsc.202400919> a rdfs:Resource ;
+    dcterms:title "Arylation of Secondary Phosphines with Diaryliodonium Salts under Metal-Free and Non-Photochemical Conditions" .
+
+<https://doi.org/10.1016/j.jorganchem.2007.08.037> a rdfs:Resource ;
+    dcterms:title "Synthesis and thermal behavior of dimethyl scandium complexes featuring anilido-phosphinimine ancillary ligands" .
+
+<https://doi.org/10.1021/ja00491a030> a rdfs:Resource ;
+    dcterms:title "Role of through space 2p-3d overlap in the alkylation of phosphines" .
+
+<https://doi.org/10.1080/03086648208081193> a rdfs:Resource ;
+    dcterms:title "SYNTHESE UND NMR-UNTERSUCHUNGEN VON 2-FLUOR-TRIPHENYLPHOSPHINEN UND IHREN DERIVATEN" .
+
+<https://doi.org/10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ#Monitoring> a prov:Activity ;
+    dcterms:title "Monitoring of the Chemotion Repo synthesis CRR-56408" ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408> .
+
+<https://dx.doi.org/10.14272/MTSVGCFANKMACF-UHFFFAOYSA-N.1> a CHEBI:59999,
+        NCIT:C48810 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/13005284> ;
+    dcterms:relation [ a PATO:0000337,
+                prov:Entity ;
+            dcterms:title "property: colorless" ;
+            prov:value "colorless" ] ;
+    dcterms:title "Reaction mixture containing crude 1-diphenylphosphoryl-2-fluorobenzene" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "7.779"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "2328.0"^^xsd:float ],
+        PATO:0001736 .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/13005284> a CHEBI:23367 ;
+    SIO:000008 [ a CHEMINF:000042 ;
+            prov:value "C18H14FOP" ],
+        [ a CHEMINF:000107 ;
+            prov:value "1-diphenylphosphoryl-2-fluorobenzene" ] .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/176> a CHEBI:15366,
+        CHEBI:23367 .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/313> a CHEBI:17883,
+        prov:Entity .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/3283> a CHEBI:23367,
+        CHEBI:35702 ;
+    dcterms:title "Diethyl Ether" .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/53627823> a CHEBI:23367,
+        CHEBI:51469 .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/61259> a CHEBI:23367,
+        CHEBI:35496 .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/6344> a CHEBI:15767,
+        CHEBI:23367 ;
+    dcterms:title "Dichloromethane" .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/66180> a CHEBI:23367,
+        CHEBI:63258 ;
+    SIO:000008 [ a CHEMINF:000042 ;
+            prov:value "C12H10ClP" ],
+        [ a CHEMINF:000107 ;
+            prov:value "chloro(diphenyl)phosphine" ] .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/784> a CHEBI:16240,
+        CHEBI:23367 .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/8078> a CHEBI:29005,
+        prov:Entity .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/8857> a CHEBI:27750,
+        prov:Entity .
+
+VOC4CAT:0005005 a schema1:DefinedTerm ;
+    schema1:name "yield" .
+
+VOC4CAT:0007809 a schema1:DefinedTerm ;
+    schema1:name "atmosphere" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_Reagent-1> a prov:Entity ;
+    dcterms:hasPart <https://pubchem.ncbi.nlm.nih.gov/compound/313> ;
+    dcterms:relation [ a CHMO:0002820,
+                qudt:Quantity ;
+            dcterms:title "Concentration [mol/L]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Concentration> ;
+            qudt:unit <https://qudt.org/vocab/unit/MOL-PER-L> ;
+            prov:value "1.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "10.0"^^xsd:float ] ;
+    dcterms:title "step-2_Reagent-1: HCl" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_Reagent-2> a CHEBI:59999,
+        prov:Entity ;
+    dcterms:hasPart <https://pubchem.ncbi.nlm.nih.gov/compound/516892> ;
+    dcterms:relation [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "50.0"^^xsd:float ] ;
+    dcterms:title "step-2_Reagent-2: NaHCO3" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_Reagent-3> a ENVO:00002006,
+        prov:Entity ;
+    dcterms:relation [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "50.0"^^xsd:float ] ;
+    dcterms:title "step-2_Reagent-3: water" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_Reagent-4> a ENVO:00003044,
+        prov:Entity ;
+    dcterms:relation [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "50.0"^^xsd:float ] ;
+    dcterms:title "step-2_Reagent-4: brine" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_Reagent-5> a CHEBI:59999,
+        prov:Entity ;
+    dcterms:hasPart <https://pubchem.ncbi.nlm.nih.gov/compound/24436> ;
+    dcterms:title "step-2_Reagent-5: Na2SO4" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_part-7> a CHMO:0002208,
+        prov:Activity ;
+    dcterms:description "the solvent was evaporated under reduced pressure" ;
+    dcterms:title "step-2_part-7: Evaporation to afford crude oil" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-2_Output-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-5> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-2_part-6> .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_Reagent-1> a prov:Entity ;
+    dcterms:hasPart <https://pubchem.ncbi.nlm.nih.gov/compound/516892> ;
+    dcterms:relation [ a qudt:Quantity ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "50.0"^^xsd:float ] ;
+    dcterms:title "Sat. aq. NaHCO3 solution (2 x 25.0 mL)" .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_Reagent-2> a ENVO:00002006,
+        prov:Entity ;
+    dcterms:relation [ a qudt:Quantity ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "25.0"^^xsd:float ] ;
+    dcterms:title "Water (25.0 mL)" .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_Reagent-3> a ENVO:00003044,
+        prov:Entity ;
+    dcterms:relation [ a qudt:Quantity ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "25.0"^^xsd:float ] ;
+    dcterms:title "Brine (25.0 mL)" .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_Reagent-4> a CHEBI:59999,
+        prov:Entity ;
+    dcterms:hasPart <https://pubchem.ncbi.nlm.nih.gov/compound/24436> ;
+    dcterms:title "step-4_Reagent-4: Sodium sulfate (Na2SO4)" .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_part-5> a CHMO:0002208,
+        prov:Activity ;
+    dcterms:title "step-4_part-5: Evaporation to afford crude product" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-4_Output-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-3> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-4_part-4> .
+
+<https://www.chemotion-repository.net/pid/56408#step-5> a CHMO:0002582,
+        prov:Activity ;
+    dcterms:description "The crude product was purified via flash-chromatography (Interchim® puriFLASH XS520) on silica gel (PF-30SIHP-F0040) using cyclohexane/ethyl acetate 35:65 to 30:70 in 10 CV (1 CV = 52.7 mL; flowrate = 26.0 mL/min). The product 1-diphenylphosphoryl-2-fluorobenzene (2.33 g, 7.78 mmol, 86% yield) was obtained as a colorless solid." ;
+    dcterms:relation [ a qudt:Quantity ;
+            dcterms:title "Initial Cyclohexane Concentration" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFraction> ;
+            qudt:unit <http://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "35.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Final Cyclohexane Concentration" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFraction> ;
+            qudt:unit <http://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "30.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Initial Ethyl Acetate Concentration" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFraction> ;
+            qudt:unit <http://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "65.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Gradient Duration in Column Volumes" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <http://qudt.org/vocab/unit/UNITLESS> ;
+            prov:value "10.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Flow Rate" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL-PER-MIN> ;
+            prov:value "26.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Final Ethyl Acetate Concentration" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFraction> ;
+            qudt:unit <http://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "70.0"^^xsd:float ] ;
+    dcterms:title "step-5: Purification via Flash Chromatography" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-5_Product> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-4_Output-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-5_Solvent-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-5_Solvent-2> ;
+    prov:wasAssociatedWith <https://www.chemotion-repository.net/pid/56408#step-5_device-1> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-4> .
+
+<https://www.chemotion-repository.net/pid/56408#step-5_Product> a CHEBI:59999,
+        prov:Entity ;
+    dcterms:title "step-5_Product: 1-diphenylphosphoryl-2-fluorobenzene" .
+
+<https://www.chemotion-repository.net/pid/56408#step-5_Solvent-1> a prov:Entity ;
+    dcterms:hasPart <https://pubchem.ncbi.nlm.nih.gov/compound/8078> ;
+    dcterms:title "step-5_Solvent-1: Cyclohexane" .
+
+<https://www.chemotion-repository.net/pid/56408#step-5_Solvent-2> a prov:Entity ;
+    dcterms:hasPart <https://pubchem.ncbi.nlm.nih.gov/compound/8857> ;
+    dcterms:title "step-5_Solvent-2: Ethyl acetate" .
+
+<https://www.chemotion-repository.net/pid/56408#step-5_device-3> a CHMO:0002782,
+        prov:Agent ;
+    dcterms:isPartOf <https://www.chemotion-repository.net/pid/56408#step-5_device-2> ;
+    dcterms:title "step-5_StationaryPhase: Silica gel (PF-30SIHP-F0040)" .
+
+CHMO:0001549 a schema1:DefinedTerm ;
+    schema1:name "sample drying" .
+
+CHMO:0002820 a schema1:DefinedTerm ;
+    schema1:name "concentration" .
+
+ENVO:00002006 a schema1:DefinedTerm ;
+    schema1:name "liquid water" .
+
+ENVO:00003044 a schema1:DefinedTerm ;
+    schema1:name "brine" .
+
+OBI:0000094 a schema1:DefinedTerm ;
+    schema1:name "material processing" .
+
+OBI:0302888 a schema1:DefinedTerm ;
+    schema1:name "washing" .
+
+RXNO:0000001 a schema1:DefinedTerm ;
+    schema1:name "planned reaction step" .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/24436> a CHEBI:32149,
+        prov:Entity ;
+    dcterms:title "sodium sulfate" .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/516892> a CHEBI:32139,
+        prov:Entity ;
+    dcterms:title "sodium hydrogen carbonate" .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/702> a CHEBI:16236,
+        CHEBI:23367 ;
+    dcterms:title "Ethanol" .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/8028> a CHEBI:23367,
+        CHEBI:26911 ;
+    dcterms:title "THF" ;
+    SIO:000008 [ a CHEMINF:000107 ;
+            prov:value "oxolane" ] .
+
+<https://www.chemotion-repository.net/pid/56408> a RXNO:0000329,
+        SIO:010345 ;
+    BFO:0000051 <https://www.chemotion-repository.net/pid/56408#step-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-3> ;
+    RO:0004008 <https://dx.doi.org/10.14272/MTSVGCFANKMACF-UHFFFAOYSA-N.1> ;
+    RO:0004009 <https://www.chemotion-repository.net/pid/56408_Reactant-1>,
+        <https://www.chemotion-repository.net/pid/56408_Reactant-2>,
+        <https://www.chemotion-repository.net/pid/56408_Reactant-3>,
+        <https://www.chemotion-repository.net/pid/56408_StartMat-1>,
+        <https://www.chemotion-repository.net/pid/56408_StartMat-2> ;
+    dcterms:description "The reaction has been conducted in dry glass ware under argon atmosphere. A solution of 1-bromo-2-fluorobenzene (1.76 g, 1.10 mL, 9.86 mmol, 1.08 equiv) in anhydrous THF (24.0 mL) was cooled to -78 °C, and n-BuLi (689 mg, 4.30 mL, 10.8 mmol, 2.50M in hexane, 1.18 equiv) was added drop-wise over 10 min. After stirring for further 50 min, a solution of chloro(diphenyl)phosphine (2.09 g, 1.70 mL, 9.09 mmol, 1.00 equiv) in anhydrous THF (3.00 mL) was added drop-wise over 10 min, and the reaction mixture was stirred for 8 h at -78 °C. The reaction mixture was allowed to warm up to 25 °C over 8 h, and was then quenched by the addition of 1 M HCl (10.0 mL). The phases were separated, and the aqueous phase was extracted with diethyl ether (3 × 50.0 mL). Then, the combined organic layers were washed with sat. aq. NaHCO3-solution (50.0 mL), water (50.0 mL), and with brine (50.0 mL). The organic phase was dried over Na2SO4, filtered, and the solvent was evaporated under reduced pressure to afford the phosphine intermediate as a pale yellow oil. The crude phosphine intermediate was dissolved in ethanol (150 mL), and cooled to 0 °C. Under vigorous stirring, a solution of hydrogen peroxide (3.95 g, 3.50 mL, 40.7 mmol, 35%, 4.48 equiv), and glacial acetic acid (1.91 g, 1.80 mL, 30.5 mmol, 3.36 equiv) in ethanol (15.0 mL) was added drop-wise over 15 min. The mixture was stirred for 2 h at 0 °C, and was then refluxed for 2 h. After evaporating the solvent under reduced pressure, the crude was dissolved in dichloromethane (50.0 mL), washed with sat. aq. NaHCO3-solution (2 × 25.0 mL), water (25.0 mL), and brine (25.0 mL). The organic layer was dried over Na2SO4, before evaporating the solvent under reduced pressure. Additional information for publication and purification details: The crude product was purified via flash-chromatography (Interchim® puriFLASH XS520) on silica gel (PF-30SIHP-F0040) using cyclohexane/ethyl acetate 35:65 to 30:70 in 10 CV (1 CV = 52.7 mL; flowrate = 26.0 mL/min). The product 1-diphenylphosphoryl-2-fluorobenzene (2.33 g, 7.78 mmol, 86% yield) was obtained as a colorless solid." ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-2>,
+        <https://www.chemotion-repository.net/pid/56408#step-3>,
+        <https://www.chemotion-repository.net/pid/56408#step-4>,
+        <https://www.chemotion-repository.net/pid/56408#step-5> ;
+    dcterms:relation [ a IAO:0020000,
+                prov:Entity ;
+            dcterms:title "Long-RInChIKey" ;
+            prov:value "SA-FUHFF-XGRJZXREYAXTGV-UHFFFAOYSA-N-IPWBFGUBXWMIPR-UHFFFAOYSA-N--MTSVGCFANKMACF-UHFFFAOYSA-N--QTBSBXVTEAMEQO-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-MZRVEZGGRBJDDB-UHFFFAOYSA-N-MHAJPDPJQMAIIY-UHFFFAOYSA-N" ],
+        [ a SIO:001326,
+                prov:Entity ;
+            dcterms:description "The status of the reaction" ;
+            dcterms:title "Status" ;
+            prov:value "Successful" ],
+        [ a IAO:0020000,
+                prov:Entity ;
+            dcterms:title "Short-RInChIKey" ;
+            prov:value "SA-FUHFF-SCESBIRHVX-MTSVGCFANK-IWBUMUHRPY-NUHFF-NUHFF-NUHFF-ZZZ" ],
+        [ a IAO:0020000,
+                prov:Entity ;
+            dcterms:title "RInChI" ;
+            prov:value "1.00.1S/C12H10ClP/c13-14(11-7-3-1-4-8-11) 12-9-5-2-6-10-12/h1-10H!C6H4BrF/c7-5-3-1-2-4-6(5)8/h1-4H<>C18H14FOP/c19-17-13-7-8-14-18(17)21(20,15-9-3-1-4-10-15)16-11-5-2-6-12-16/h1-14H<>C2H4O2/c1-2(3)4/h1H3,(H,3,4)!C2H6O/c1-2-3/h3H,2H2,1H3!C2H6O/c1-2-3/h3H,2H2,1H3!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H9.Li/c1-3-4-2;/h1,3-4H2,2H3;!H2O2/c1-2/h1-2H/d+" ],
+        [ a IAO:0020000,
+                prov:Entity ;
+            dcterms:title "Web-RInChIKey" ;
+            prov:value "BOMQVCJFVRPGKEKDX-NUHFFFADPSCTJSA" ] ;
+    dcterms:title "Chemotion Repository synthesis CRR-56408" ;
+    schema1:duration "PT22H"^^xsd:duration ;
+    SIO:000008 [ a CHMO:0002855 ;
+            dcterms:title "Yield [%]" ;
+            dcterms:type VOC4CAT:0005005 ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <http://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "86.0"^^xsd:float ] ;
+    prov:wasAssociatedWith <https://www.chemotion-repository.net/pid/56408_Reactor-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-2>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-3>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-4>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-5>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-6> .
+
+<https://www.chemotion-repository.net/pid/56408#step-1_part-1> a CHMO:0002773,
+        prov:Activity ;
+    dcterms:title "step-1_part-1: dissolving of 1-bromo-2-fluorobenzene in Tetrahydrofuran" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-1_Solution-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408_Solvent-1>,
+        <https://www.chemotion-repository.net/pid/56408_StartMat-1> .
+
+<https://www.chemotion-repository.net/pid/56408#step-1_part-2> a OBI:0000274,
+        prov:Activity ;
+    dcterms:relation [ a prov:Entity ;
+            dcterms:type schema:Duration ;
+            prov:value "PT10M" ] ;
+    dcterms:title "step-1_part-2: drop-wise addition of n-BuLi (2.5M in hexane)" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-1_Solution-1>,
+        <https://www.chemotion-repository.net/pid/56408_Reactant-1> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-1_part-1> .
+
+<https://www.chemotion-repository.net/pid/56408#step-1_part-3> a CHMO:0002774,
+        prov:Activity ;
+    dcterms:relation [ a prov:Entity ;
+            dcterms:title "duration of step-1_part-4" ;
+            dcterms:type schema:Duration ;
+            prov:value "PT50M" ] ;
+    dcterms:title "step-1_part-3: stirring for 50 minutes" ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-1> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-1_part-2> .
+
+<https://www.chemotion-repository.net/pid/56408#step-1_part-4> a CHMO:0002773,
+        prov:Activity ;
+    dcterms:title "step-1_part-4: dissolving of chloro(diphenyl)phosphine in anhydrous THF (3.00 mL)" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-1_Solution-2> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408_Solvent-2>,
+        <https://www.chemotion-repository.net/pid/56408_StartMat-2> .
+
+<https://www.chemotion-repository.net/pid/56408#step-1_part-5> a OBI:0000274,
+        prov:Activity ;
+    dcterms:relation [ a prov:Entity ;
+            dcterms:title "duration of step-1_part-5" ;
+            dcterms:type schema:Duration ;
+            prov:value "PT10M" ] ;
+    dcterms:title "step-1_part-5: drop-wise addition of chloro(diphenyl)phosphine in THF" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-1_Solution-2> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-1_part-3>,
+        <https://www.chemotion-repository.net/pid/56408#step-1_part-4> .
+
+<https://www.chemotion-repository.net/pid/56408#step-1_part-6> a CHMO:0002774,
+        prov:Activity ;
+    dcterms:relation [ a prov:Entity ;
+            dcterms:title "duration of step-1_part-6" ;
+            dcterms:type schema:Duration ;
+            prov:value "PT8H" ] ;
+    dcterms:title "step-1_part-6: stirring for 8 hours" ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-1_part-5> .
+
+<https://www.chemotion-repository.net/pid/56408#step-2> a OBI:0000094,
+        prov:Activity ;
+    dcterms:description "The reaction mixture was allowed to warm up to 25 °C over 8 h, and was then quenched by the addition of 1 M HCl (10.0 mL). The phases were separated, and the aqueous phase was extracted with diethyl ether (3 × 50.0 mL). Then, the combined organic layers were washed with sat. aq. NaHCO3-solution (50.0 mL), water (50.0 mL), and with brine (50.0 mL). The organic phase was dried over Na2SO4, filtered, and the solvent was evaporated under reduced pressure to afford the phosphine intermediate as a pale yellow oil." ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-2_part-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_part-2>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_part-3>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_part-4>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_part-5>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_part-6>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_part-7> ;
+    dcterms:title "Step 1: Warm-up, Quench, and Extraction",
+        "Step 2: Warm-up, Quench, and Extraction" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-2_Output-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-1> .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-1> a prov:Entity ;
+    dcterms:title "step-2_ReactionMixture-1" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-2> a prov:Entity ;
+    dcterms:title "step-2_ReactionMixture-2" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-3> a prov:Entity ;
+    dcterms:title "step-2_ReactionMixture-3" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-4> a prov:Entity ;
+    dcterms:title "step-2_ReactionMixture-4" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-5> a prov:Entity ;
+    dcterms:title "step-2_ReactionMixture-5" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_part-1> a ENVO:01001739,
+        prov:Activity ;
+    dcterms:description "The reaction mixture was allowed to warm up to 25 °C over 8 h" ;
+    dcterms:relation [ a prov:Entity ;
+            dcterms:title "duration of step-2_part-1" ;
+            dcterms:type schema:Duration ;
+            prov:value "PT8H" ],
+        [ a qudt:Quantity ;
+            dcterms:title "end temperature" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
+            prov:value "25.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "start temperature " ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
+            prov:value "-78.0"^^xsd:float ] ;
+    dcterms:title "step-2_part-1: Warming to 25 °C over 8 h" ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-1_part-6> .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_part-2> a OBI:0000274,
+        prov:Activity ;
+    dcterms:description "The reaction mixture was quenched by the addition of 1 M HCl (10.0 mL)" ;
+    dcterms:title "step-2_part-2: Quench with 1 M HCl" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_Reagent-1> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-2_part-1> .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_part-3> a CHMO:0001577,
+        prov:Activity ;
+    dcterms:description "The phases were separated, and the aqueous phase was extracted with diethyl ether (3 × 50.0 mL)." ;
+    dcterms:title "step-2_part-3: Extraction with Diethyl Ether" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-2> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-5> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-2_part-2> .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_part-4> a OBI:0302888,
+        prov:Activity ;
+    dcterms:description "The combined organic layers were washed with sat. aq. NaHCO3-solution (50.0 mL), water (50.0 mL), and with brine (50.0 mL)." ;
+    dcterms:title "step-2_part-4: Washing (NaHCO3, Water, Brine)" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-3> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-2>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_Reagent-2>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_Reagent-3>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_Reagent-4> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-2_part-3> .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_part-5> a CHMO:0001549,
+        prov:Activity ;
+    dcterms:description "The step-2_ReactionMixture-3 organic phase was dried over Na2SO4, filtered" ;
+    dcterms:title "step-2_part-5: Drying over Na2SO4" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-4> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-3>,
+        <https://www.chemotion-repository.net/pid/56408#step-2_Reagent-5> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-2_part-4> .
+
+<https://www.chemotion-repository.net/pid/56408#step-3_Solution-1> a CHEBI:75958,
+        prov:Entity ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-2_Output-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-3> ;
+    dcterms:title "step-3_Solution-1: crude phosphine in Ethanol" .
+
+<https://www.chemotion-repository.net/pid/56408#step-3_Solution-2> a CHEBI:75958,
+        prov:Entity ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408_Reactant-2>,
+        <https://www.chemotion-repository.net/pid/56408_Reactant-3>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-4> ;
+    dcterms:title "step-3_Solution-2: H2O2 and Acetic Acid in Ethanol" .
+
+<https://www.chemotion-repository.net/pid/56408#step-3_part-1> a CHMO:0002773,
+        prov:Activity ;
+    dcterms:title "step-3_part-1: dissolving of crude phosphine in Ethanol" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-3_Solution-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-2_Output-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-3> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-2_part-6> .
+
+<https://www.chemotion-repository.net/pid/56408#step-3_part-2> a CHMO:0002773,
+        prov:Activity ;
+    dcterms:title "step-3_part-2: preparation of H2O2/Acetic Acid solution in Ethanol" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-3_Solution-2> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408_Reactant-2>,
+        <https://www.chemotion-repository.net/pid/56408_Reactant-3>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-4> .
+
+<https://www.chemotion-repository.net/pid/56408#step-3_part-3> a OBI:0000274,
+        prov:Activity ;
+    dcterms:relation [ a prov:Entity ;
+            dcterms:title "duration of step-3_part-3" ;
+            dcterms:type schema:Duration ;
+            prov:value "PT15M" ],
+        [ a qudt:Quantity ;
+            dcterms:title "temperature of step-3_part-3" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
+            prov:value "0.0"^^xsd:float ] ;
+    dcterms:title "step-3_part-3: drop-wise addition of H2O2/Acetic Acid solution" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-3_ReactionMixture-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-3_Solution-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-3_Solution-2> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-3_part-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-3_part-2> .
+
+<https://www.chemotion-repository.net/pid/56408#step-3_part-4> a CHMO:0002774,
+        prov:Activity ;
+    dcterms:relation [ a prov:Entity ;
+            dcterms:title "duration of step-3_part-4" ;
+            dcterms:type schema:Duration ;
+            prov:value "PT2H" ],
+        [ a qudt:Quantity ;
+            dcterms:title "temperature of stirring" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
+            prov:value "0.0"^^xsd:float ] ;
+    dcterms:title "step-3_part-4: stirring for 2 hours at 0°C" ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-3_ReactionMixture-1> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-3_part-3> .
+
+<https://www.chemotion-repository.net/pid/56408#step-3_part-5> a ENVO:01000623,
+        prov:Activity ;
+    dcterms:relation [ a qudt:Quantity ;
+            dcterms:title "Reflux Temperature (Ethanol)" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
+            prov:value "80.0"^^xsd:float ],
+        [ a prov:Entity ;
+            dcterms:title "duration of reflux" ;
+            dcterms:type schema:Duration ;
+            prov:value "PT2H" ] ;
+    dcterms:title "step-3_part-5: reflux for 2 hours" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-3_Output-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-3_ReactionMixture-1> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-3_part-4> .
+
+<https://www.chemotion-repository.net/pid/56408#step-4> a OBI:0000094,
+        prov:Activity ;
+    dcterms:description "Evaporation of solvent, dissolution in DCM, washing (NaHCO3, water, brine), drying, and final evaporation." ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-4_part-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-4_part-2>,
+        <https://www.chemotion-repository.net/pid/56408#step-4_part-3>,
+        <https://www.chemotion-repository.net/pid/56408#step-4_part-4>,
+        <https://www.chemotion-repository.net/pid/56408#step-4_part-5> ;
+    dcterms:title "STEP 4: Work-up of Oxidation Mixture" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-4_Output-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-3_Output-1> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-3> .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-2> a CHEBI:59999,
+        prov:Entity ;
+    dcterms:title "Washed organic layer",
+        "step-4_ReactionMixture-2: Washed organic layer" .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-3> a CHEBI:59999,
+        prov:Entity ;
+    dcterms:title "step-4_ReactionMixture-3: dried organic solution" .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_Solution-1> a CHEBI:75958,
+        prov:Entity ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-6> ;
+    dcterms:title "Solution in Dichloromethane" .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_part-1> a CHMO:0002208,
+        prov:Activity ;
+    dcterms:title "step-4_part-1: Evaporation of solvent under reduced pressure" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-3_Output-1> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-3_part-5> .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_part-2> a CHMO:0002773,
+        prov:Activity ;
+    dcterms:title "step-4_part-2: Dissolution in Dichloromethane" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-4_Solution-1> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-6> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-4_part-1> .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_part-3> a OBI:0302888,
+        prov:Activity ;
+    dcterms:title "step-4_part-3: Washing (NaHCO3, Water, Brine)" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-2> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-4_Reagent-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-4_Reagent-2>,
+        <https://www.chemotion-repository.net/pid/56408#step-4_Reagent-3>,
+        <https://www.chemotion-repository.net/pid/56408#step-4_Solution-1> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-4_part-2> .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_part-4> a CHMO:0001549,
+        prov:Activity ;
+    dcterms:title "step-4_part-4: Drying over Na2SO4" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-3> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-2>,
+        <https://www.chemotion-repository.net/pid/56408#step-4_Reagent-4> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-4_part-3> .
+
+<https://www.chemotion-repository.net/pid/56408#step-5_device-1> a OBI:0000485,
+        prov:Agent ;
+    dcterms:description "Flash chromatography system." ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-5_device-2> ;
+    dcterms:title "Interchim puriFLASH XS520" .
+
+<https://www.chemotion-repository.net/pid/56408#step-5_device-2> a OBI:0000038,
+        prov:Agent ;
+    dcterms:description "Silica gel column used for purification." ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-5_device-3> ;
+    dcterms:isPartOf <https://www.chemotion-repository.net/pid/56408#step-5_device-1> ;
+    dcterms:relation [ a qudt:Quantity ;
+            dcterms:title "Column Volume (1 CV)" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "52.7"^^xsd:float ] ;
+    dcterms:title "Interchim puriFLASH Column (PF-30SIHP-F0040)" .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-5> a CHEBI:59999,
+        SIO:010417,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/3283> ;
+    dcterms:title "Solvent-5: Diethyl Ether" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "150.0"^^xsd:float ] .
+
+CHMO:0002208 a schema1:DefinedTerm ;
+    schema1:name "solvent evaporation" .
+
+CHMO:0002774 a schema1:DefinedTerm ;
+    schema1:name "stirring" .
+
+<https://www.chemotion-repository.net/pid/56408#step-1> a RXNO:0000001,
+        SIO:010345,
+        prov:Activity ;
+    RO:0004008 <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2> ;
+    RO:0004009 <https://www.chemotion-repository.net/pid/56408_Reactant-1>,
+        <https://www.chemotion-repository.net/pid/56408_StartMat-1>,
+        <https://www.chemotion-repository.net/pid/56408_StartMat-2> ;
+    dcterms:description "The reaction has been conducted in dry glass ware under argon atmosphere. A solution of 1-bromo-2-fluorobenzene (1.76 g, 1.10 mL, 9.86 mmol, 1.08 equiv) in anhydrous THF (24.0 mL) was cooled to -78 °C, and n-BuLi (689 mg, 4.30 mL, 10.8 mmol, 2.50M in hexane, 1.18 equiv) was added drop-wise over 10 min. After stirring for further 50 min, a solution of chloro(diphenyl)phosphine (2.09 g, 1.70 mL, 9.09 mmol, 1.00 equiv) in anhydrous THF (3.00 mL) was added drop-wise over 10 min, and the reaction mixture was stirred for 8 h at -78 °C." ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-1_part-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-1_part-2>,
+        <https://www.chemotion-repository.net/pid/56408#step-1_part-3>,
+        <https://www.chemotion-repository.net/pid/56408#step-1_part-4>,
+        <https://www.chemotion-repository.net/pid/56408#step-1_part-5>,
+        <https://www.chemotion-repository.net/pid/56408#step-1_part-6> ;
+    dcterms:title "Step 1: Lithiation and Phosphination" ;
+    schema1:duration "PT9H10M"^^xsd:duration ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Temperature of reaction step 1" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+            qudt:unit <http://qudt.org/vocab/unit/DEG_C> ;
+            prov:value "-78.0"^^xsd:float ] ;
+    prov:wasAssociatedWith <https://www.chemotion-repository.net/pid/56408_Reactor-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-2> .
+
+<https://www.chemotion-repository.net/pid/56408#step-1_Solution-1> a CHEBI:75958,
+        prov:Entity ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408_Solvent-1>,
+        <https://www.chemotion-repository.net/pid/56408_StartMat-1> ;
+    dcterms:title "step-1_Solution-1 of 1-bromo-2-fluorobenzene in Tetrahydrofuran",
+        "step-1_Solution-1: 1-bromo-2-fluorobenzene in Tetrahydrofuran" .
+
+<https://www.chemotion-repository.net/pid/56408#step-1_Solution-2> a CHEBI:75958,
+        prov:Entity ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408_Solvent-2>,
+        <https://www.chemotion-repository.net/pid/56408_StartMat-2> ;
+    dcterms:title "step-1_Solution-2: chloro(diphenyl)phosphine in anhydrous THF" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_part-6> a CHMO:0001640,
+        prov:Activity ;
+    dcterms:description "The step-2_ReactionMixture-4 organic phase was filtered." ;
+    dcterms:title "Filtering",
+        "step-2_part-6: Filtering" ;
+    prov:generated <https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-5> ;
+    prov:used <https://www.chemotion-repository.net/pid/56408#step-2_ReactionMixture-4> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-2_part-5> .
+
+<https://www.chemotion-repository.net/pid/56408#step-3> a RXNO:0000001,
+        SIO:010345,
+        prov:Activity ;
+    RO:0004008 <https://www.chemotion-repository.net/pid/56408#step-3_Output-1> ;
+    RO:0004009 <https://www.chemotion-repository.net/pid/56408#step-2_Output-1>,
+        <https://www.chemotion-repository.net/pid/56408_Reactant-2>,
+        <https://www.chemotion-repository.net/pid/56408_Reactant-3> ;
+    dcterms:description "The crude phosphine intermediate was dissolved in ethanol (150 mL), and cooled to 0 °C. Under vigorous stirring, a solution of hydrogen peroxide (3.95 g, 3.50 mL, 40.7 mmol, 35%, 4.48 equiv), and glacial acetic acid (1.91 g, 1.80 mL, 30.5 mmol, 3.36 equiv) in ethanol (15.0 mL) was added drop-wise over 15 min. The mixture was stirred for 2 h at 0 °C, and was then refluxed for 2 h." ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-3_part-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-3_part-2>,
+        <https://www.chemotion-repository.net/pid/56408#step-3_part-3>,
+        <https://www.chemotion-repository.net/pid/56408#step-3_part-4>,
+        <https://www.chemotion-repository.net/pid/56408#step-3_part-5> ;
+    dcterms:title "Step 3: Oxidation to Phosphine Oxide" ;
+    schema1:duration "PT4H15M"^^xsd:duration ;
+    prov:wasAssociatedWith <https://www.chemotion-repository.net/pid/56408_Reactor-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-3>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-4> ;
+    prov:wasInformedBy <https://www.chemotion-repository.net/pid/56408#step-2> .
+
+<https://www.chemotion-repository.net/pid/56408#step-3_ReactionMixture-1> a CHEBI:60004,
+        prov:Entity ;
+    dcterms:title "step-3_ReactionMixture-1 mixture at 0°C",
+        "step-3_ReactionMixture-1: mixture at 0°C" .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_Output-1> a CHEBI:59999,
+        CHEBI:60004,
+        prov:Entity ;
+    dcterms:title "step-4_Output-1: Crude 1-diphenylphosphoryl-2-fluorobenzene" .
+
+<https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-1> a CHEBI:60004,
+        prov:Entity ;
+    dcterms:title "step-4_ReactionMixture-1: crude residue after evaporation" .
+
+<https://www.chemotion-repository.net/pid/56408_Reactor-1> a AFE:0000153,
+        OBI:0002089 ;
+    dcterms:relation [ a prov:Entity ;
+            dcterms:title "dryness of the used glass ware" ;
+            dcterms:type PATO:0001824 ;
+            prov:value "dry" ],
+        [ a prov:Entity ;
+            dcterms:title "Argon atmosphere of the glass ware" ;
+            dcterms:type VOC4CAT:0007809 ;
+            prov:value "Argon atmosphere" ] ;
+    dcterms:title "dry glass ware under argon atmosphere" .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-6> a CHEBI:59999,
+        SIO:010417,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/6344> ;
+    dcterms:title "Solvent-6: Dichloromethane" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "50.0"^^xsd:float ] .
+
+IAO:0020000 a schema1:DefinedTerm ;
+    schema1:name "identifier" .
+
+OBI:0000274 a schema1:DefinedTerm ;
+    schema1:name "adding a material entity into a target" .
+
+<https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-1> a CHEBI:60004,
+        prov:Entity ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-1_Solution-1>,
+        <https://www.chemotion-repository.net/pid/56408_Reactant-1> ;
+    dcterms:title "step-1_ReactionMixture-1: 1-bromo-2-fluorobenzene in Tetrahydrofuran and n-BuLi" .
+
+<https://www.chemotion-repository.net/pid/56408#step-3_Output-1> a CHEBI:60004,
+        NCIT:C48810,
+        prov:Entity ;
+    dcterms:title "step-3_Output-1: containing crude 1-diphenylphosphoryl-2-fluorobenzene" .
+
+<https://www.chemotion-repository.net/pid/56408_Reactant-1> a CHEBI:59999,
+        SIO:010411,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/53627823> ;
+    dcterms:title "Reactant-1: n-BuLi" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "1.183"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "688.594"^^xsd:float ],
+        [ a CHMO:0002820 ;
+            dcterms:title "Molarity [M]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration> ;
+            qudt:unit <https://qudt.org/vocab/unit/MOL-PER-L> ;
+            prov:value "2.5"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "10.75"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "4.3"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Reactant-2> a CHEBI:59999,
+        SIO:010411,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/784> ;
+    dcterms:title "Reactant-2: Hydrogen Peroxide" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "40.696"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "4.477"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "3.5"^^xsd:float ],
+        [ a SIO:001406 ;
+            dcterms:title "Density [g/mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
+            prov:value "1.13"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "3955.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Reactant-3> a CHEBI:59999,
+        SIO:010411,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/176> ;
+    dcterms:relation [ a AFR:0002371,
+                prov:Entity ;
+            dcterms:title "Grade/Purity" ;
+            prov:value "Glacial" ] ;
+    dcterms:title "Reactant-3: glacial acetic acid" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "1.8"^^xsd:float ],
+        [ a SIO:001406 ;
+            dcterms:title "Density [g/mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
+            prov:value "1.06"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "30.502"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "1908.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "3.355"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-1> a CHEBI:59999,
+        SIO:010417,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/8028> ;
+    dcterms:title "Solvent-1: THF" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "24.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "PercentageOfTotal" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "13.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-2> a SIO:010417,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/8028> ;
+    dcterms:title "Solvent-2: THF" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "3.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "PercentageOfTotal" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "2.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-3> a CHEBI:59999,
+        SIO:010417,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/702> ;
+    dcterms:title "Solvent-3: Ethanol" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "150.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "PercentageOfTotal" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "78.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-4> a CHEBI:59999,
+        SIO:010417,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/702> ;
+    dcterms:title "Solvent-4: Ethanol" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "PercentageOfTotal" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "8.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "15.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_StartMat-1> a CHEBI:59999,
+        PROCO:0000029,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/61259> ;
+    dcterms:title "StartMat-1: 1-bromo-2-fluorobenzene" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "9.862"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "1.085"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "1761.1"^^xsd:float ],
+        [ a SIO:001406 ;
+            dcterms:title "Density [g/mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
+            prov:value "1.601"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "1.1"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_StartMat-2> a CHEBI:59999,
+        PROCO:0000029,
+        prov:Entity ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/66180> ;
+    dcterms:title "StartMat-2: chloro(diphenyl)phosphine" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "1.7"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "2089.3"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "1.0"^^xsd:float ],
+        [ a SIO:001406 ;
+            dcterms:title "Density [g/mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
+            prov:value "1.229"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "9.091"^^xsd:float ] .
+
+CHEBI:75958 a schema1:DefinedTerm ;
+    schema1:name "solution" .
+
+CHMO:0002773 a schema1:DefinedTerm ;
+    schema1:name "dissolving" .
+
+<https://www.chemotion-repository.net/pid/56408#step-2_Output-1> a CHEBI:60004,
+        PROCO:0000029,
+        prov:Entity ;
+    dcterms:title "Crude phosphine intermediate (pale yellow oil)",
+        "step-2_Output-1: Crude phosphine intermediate (pale yellow oil)" .
+
+<https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2> a CHEBI:60004,
+        NCIT:C48810,
+        prov:Entity ;
+    dcterms:hasPart <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-1>,
+        <https://www.chemotion-repository.net/pid/56408#step-1_Solution-2> ;
+    dcterms:title "step-1_ReactionMixture-2: 1-bromo-2-fluorobenzene & chloro(diphenyl)phosphine in THF + n-BuLi" .
+
+CHEBI:60004 a schema1:DefinedTerm ;
+    schema1:name "mixture" .
+
+schema:Duration a schema1:DefinedTerm ;
+    schema1:name "Duration" .
+
+CHEBI:59999 a schema1:DefinedTerm ;
+    schema1:name "chemical substance" .
+
