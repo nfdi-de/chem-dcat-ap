@@ -33,7 +33,7 @@ The collaborative development process between NFDI4Chem and NFDI4Cat followed fo
 3. **Semantic grounding** — Every added class and property is mapped to an established ontology (PROV-O, QUDT, BFO, IAO, OBI, CHEBI, CHMO, SIO, etc.) via `class_uri` and `slot_uri`.
 4. **Simplicity for data stewards and developers** — The schema remains usable without requiring deep ontology expertise. Dedicated typed slots, clear naming, and the [quick start](quickstart.md) lower the adoption barrier.
 
-For more on DCAT-AP+'s design rationale and the gap in DCAT-AP that motivated this work, see the [DCAT-AP+ design patterns documentation](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/).
+For more on DCAT-AP+'s design rationale and the gap in DCAT-AP, see the [DCAT-AP+ design patterns documentation](https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/).
 
 ## Publication
 
