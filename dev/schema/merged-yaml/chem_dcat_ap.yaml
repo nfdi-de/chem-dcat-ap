@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc2.post32.dev0+cca75c0d
+version: 0.1.0rc2.post72.dev0+84b8fa70
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -2258,7 +2258,7 @@ slots:
   used_starting_material:
     name: used_starting_material
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_starting_material
-    description: The slot to specify the Reagent(s) of a ChemicalReaction.
+    description: The slot to specify the StartingMaterial(s) of a ChemicalReaction.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - RO:0004009
@@ -2292,7 +2292,7 @@ slots:
   generated_product:
     name: generated_product
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/generated_product
-    description: The slot to specify the Product of a ChemicalReaction.
+    description: The slot to specify the Product(s) of a ChemicalReaction.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - RO:0004008
@@ -2480,7 +2480,9 @@ slots:
   has_temperature:
     name: has_temperature
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_temperature
-    description: The slot to provide the Temperature of a MaterialEntity.
+    description: The slot to provide the Temperature of a MaterialEntity or an Activity,
+      whereas the temperature of the Activity is ontologically rooted in the temperature
+      of the material entities that participate in the Activity.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:000008
@@ -2549,7 +2551,9 @@ slots:
   has_pressure:
     name: has_pressure
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_pressure
-    description: The slot to provide the Pressure of a MaterialEntity.
+    description: The slot to provide data about the pressure of a MaterialEntity or
+      an Activity, whereas the Pressure of an Activity is ontologically a quality
+      borne by the material entities participating in the Activity.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
     mappings:
     - SIO:000008
@@ -9693,7 +9697,7 @@ classes:
       100 %).
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
-    - qudt:Quantity
+    - CHMO:0002855
     exact_mappings:
     - VOC4CAT:0005005
     is_a: QuantitativeAttribute
@@ -9705,7 +9709,7 @@ classes:
     - quantitativeAttribute__unit
     - ClassifierMixin_type
     - rdf_type
-    class_uri: qudt:Quantity
+    class_uri: CHMO:0002855
   MolarEquivalent:
     name: MolarEquivalent
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/MolarEquivalent
@@ -9936,7 +9940,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-04-18T14:53:30'
-source_file_size: 7591
-generation_date: '2026-04-18T14:53:42'
+source_file_date: '2026-04-20T07:05:06'
+source_file_size: 7590
+generation_date: '2026-04-20T07:05:17'
 
