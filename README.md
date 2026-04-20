@@ -9,15 +9,15 @@ This is an extension of the DCAT Application Profile v3.0 in LinkML. It is inten
 as a core that can further be extended in profiles to provide domain specific metadata for a dataset.
 
 ## DCAT-AP to LinkML translation
-The [official DCAT-AP 3.0.0 SHACL shapes](src%2Fdcat_ap_shacl.jsonld) where downloaded from the DCAT-AP GitHub repository
+The [official DCAT-AP 3.0.0 SHACL shapes](https://github.com/nfdi-de/dcat-ap-plus/blob/main/src/dcat_ap_plus/dcat_ap_shacl.jsonld) where downloaded from the DCAT-AP GitHub repository
 from the [3.0.0 release folder within the master branch](https://github.com/SEMICeu/DCAT-AP/blob/master/releases/3.0.0/shacl/dcat-ap-SHACL.jsonld). We chose this shapes definition file, as they are in line with the current DCAT-AP Specification website and because its IRI resolves. It must be noted, that this is not case for the shapes provides in the GitHub 3.0.0 release
 (respectively the release branch).
 
-The downloaded SHACL shapes were then processed by the [dcat_ap_shacl_2_linkml.py](src%2Fdcat_ap_shacl_2_linkml.py)
+The downloaded SHACL shapes were then processed by the [dcat_ap_shacl_2_linkml.py](https://github.com/nfdi-de/dcat-ap-plus/blob/main/src/dcat_ap_plus/dcat_ap_shacl_2_linkml.py)
 to generate two LinkML representations from it:
-* [dcat_ap_linkml.yaml](src%2Fdcat_4c_ap%2Fschema%2Fdcat_ap_linkml.yaml) - an almost 1:1 translation from SHACL to
+* [dcat_ap_linkml.yaml](https://github.com/nfdi-de/dcat-ap-plus/blob/main/src/dcat_ap_plus/schema/dcat_ap_linkml.yaml) - an almost 1:1 translation from SHACL to
   LinkML that could be reused by anyone who wants to.
-* [dcat_ap_plus.yaml](src%2Fdcat_4c_ap%2Fschema%2Fdcat_ap_plus.yaml) - the LinkML representation of DCAT-AP to which 
+* [dcat_ap_plus.yaml](https://github.com/nfdi-de/dcat-ap-plus/blob/main/src/dcat_ap_plus/schema/dcat_ap_plus.yaml) - the LinkML representation of DCAT-AP to which 
   we added the additional constraints, classes and properties we need for our DCAT-AP extension. 
 
 ## Website
@@ -31,7 +31,10 @@ https://nfdi-de.github.io/chem-dcat-ap
 * [src/](src/) - source files (edit these)
   * [chem_dcat_ap](src/chem_dcat_ap)
     * [schema](src/chem_dcat_ap/schema) -- LinkML schema
-      (edit this)
+      * [chem_dcat_ap.yaml](src/chem_dcat_ap/schema/chem_dcat_ap.yaml)
+      * [chemical_entities_ap.yaml](src/chem_dcat_ap/schema/chemical_entities_ap.yaml)
+      * [chemical_reaction_ap.yaml](src/chem_dcat_ap/schema/chemical_reaction_ap.yaml)
+      * [material_entities_ap.yaml](src/chem_dcat_ap/schema/material_entities_ap.yaml)
     * [datamodel](src/chem_dcat_ap/datamodel) -- generated
       Python datamodel
 * [tests/](tests/) - Python tests
