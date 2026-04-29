@@ -7,8 +7,8 @@ description: |-
 license: CC-BY 4.0
 prefixes:
   chemical_reaction_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
-  chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
+  chem_dcat_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+  dcat_ap_plus: https://w3id.org/nfdi-de/dcat-ap-plus/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -40,9 +40,9 @@ prefixes:
   SIO: http://semanticscience.org/resource/SIO_
   doi: https://doi.org/
   NMR: "http://nmrML.org/nmrCV#NMR:"
-  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
-  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
-  AFP: http://purl.allotrope.org/ontologies/process#AFP_
+  allotrope.equipment: http://purl.allotrope.org/ontologies/equipment#AFE_
+  allotrope.role: http://purl.allotrope.org/ontologies/role#AFRL_
+  allotrope.process: http://purl.allotrope.org/ontologies/process#AFP_
   VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
   PROCO: http://purl.obolibrary.org/obo/PROCO_
   time: http://www.w3.org/2006/time#
@@ -52,7 +52,7 @@ default_prefix: chemical_reaction_ap
 default_range: string
 imports:
   - linkml:types
-  - dcatapplus:latest/schema/dcat_ap_plus
+  - dcat_ap_plus:latest/schema/dcat_ap_plus
   - chemical_entities_ap
 
 classes:
