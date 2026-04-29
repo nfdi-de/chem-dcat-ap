@@ -205,7 +205,7 @@ used_reactant:
       - value: "Glacial"
         title: "Grade/Purity"
         rdf_type:
-          id: AFR:0002371
+          id: allotrope.result:0002371
           title: "purity"
     composed_of:
       - id: https://pubchem.ncbi.nlm.nih.gov/compound/176

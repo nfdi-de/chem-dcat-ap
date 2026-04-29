@@ -89,7 +89,7 @@ classes:
     exact_mappings:
       - MOP:0000543
       - REX:0000002
-      - AFP:0003711
+      - allotrope.process:0003711
     narrow_mappings:
       - RXNO:0000329
 
@@ -158,7 +158,7 @@ classes:
 
   Reactor:
     is_a: Device
-    class_uri: AFE:0000153
+    class_uri: allotrope.equipment:0000153
     mixins:
       - MaterialisticMixin
     description: A reactor is a container for controlling a biological or chemical reaction or process.
