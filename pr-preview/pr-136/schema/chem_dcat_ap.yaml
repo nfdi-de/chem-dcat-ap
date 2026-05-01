@@ -1,0 +1,163 @@
+---
+id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+version: "0.1.0rc3.post3.dev0+94d0987a" # Managed by dynamic-versioning. Don't change this line!
+name: chem-dcat-ap
+title: ChemDCAT-AP
+description: |-
+  This is an extension of the DCAT Application Profile PLUS LinkML schema. It is intended to be used by NFDI4Chem & NFDI4Cat as a core that can further be extended in profiles/schemas to provide chemistry specific specific metadata for a dataset.
+license: CC-BY 4.0
+see_also:
+  - https://nfdi-de.github.io/chem-dcat-ap/
+  - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
+  - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
+prefixes:
+  chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
+  linkml: https://w3id.org/linkml/
+  biolink: https://w3id.org/biolink/vocab/
+  schema: http://schema.org/
+  dcterms: http://purl.org/dc/terms/
+  dcat: http://www.w3.org/ns/dcat#
+  adms: http://www.w3.org/ns/adms#
+  prov: http://www.w3.org/ns/prov#
+  sosa: http://www.w3.org/ns/sosa/
+  vcard: http://www.w3.org/2006/vcard/ns#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  foaf: http://xmlns.com/foaf/0.1/
+  qudt: http://qudt.org/schema/qudt/
+  RO: http://purl.obolibrary.org/obo/RO_
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  IAO: http://purl.obolibrary.org/obo/IAO_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  T4FS: http://purl.obolibrary.org/obo/T4FS_
+  FOODON: http://purl.obolibrary.org/obo/FOODON_
+  CHEMINF: http://semanticscience.org/resource/CHEMINF_
+  RXNO: http://purl.obolibrary.org/obo/RXNO_
+  MOP: http://purl.obolibrary.org/obo/MOP_
+  ex: http://example.org/
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  SIO: http://semanticscience.org/resource/SIO_
+  doi: https://doi.org/
+  NMR: "http://nmrML.org/nmrCV#NMR:"
+  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
+  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
+  AFP: http://purl.allotrope.org/ontologies/process#AFP_
+  AFR: http://purl.allotrope.org/ontologies/result#AFR_
+  VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
+  PROCO: http://purl.obolibrary.org/obo/PROCO_
+  time: http://www.w3.org/2006/time#
+  REX: http://purl.obolibrary.org/obo/REX_
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+default_prefix: chemdcatap
+default_range: string
+imports:
+  - linkml:types
+  - dcatapplus:latest/schema/dcat_ap_plus
+  - chemical_entities_ap
+  - chemical_reaction_ap
+
+classes:
+  ############
+  # Datasets #
+  ############
+  # The only difference between these classes and their DCAT-AP+ parents are the made range restrictions
+  # This process is described in more depth at:
+  # https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#problems-dcat-ap-addresses
+
+  SubstanceSampleCharacterizationDataset:
+    is_a: Dataset
+    class_uri: dcat:Dataset
+    description: >-
+      A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity.
+      This is a coarse-grained convenience shape that conflates measurement and analysis into a single
+      data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement
+      from post-processing or structure assignment should define their own Dataset subclasses, potentially
+      using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.
+    slot_usage:
+      was_generated_by:
+        range: SubstanceSampleCharacterization
+        multivalued: true
+        inlined_as_list: true
+        description: The slot to specify the SubstanceCharacterization activity that produced this dataset.
+      is_about_entity:
+        range: SubstanceSample
+        multivalued: true
+        inlined_as_list: true
+        description: The slot to specify the SubstanceSample this dataset is about.
+
+  ReactionMonitoringDataset:
+    is_a: Dataset
+    class_uri: dcat:Dataset
+    description: >-
+      A Dataset about a ChemicalReaction that was produced by a ReactionMonitoring activity.
+      This is a coarse-grained convenience shape that conflates experimental documentation and analysis
+      into a single data-generating activity. Domain-specific sub-profiles that need to distinguish
+      reaction monitoring from subsequent data evaluation should define their own Dataset subclasses,
+      potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.
+    slot_usage:
+      was_generated_by:
+        range: ReactionMonitoring
+        multivalued: true
+        inlined_as_list: true
+        description: The slot to specify the ReactionMonitoring activity that produced this dataset.
+      is_about_activity:
+        range: ChemicalReaction
+        description: The slot to specify the ChemicalReaction this dataset is about.
+
+  ############################
+  # DataGeneratingActivities #
+  # ##########################
+  # The only difference between these classes and their DCAT-AP+ parents are the made range restrictions
+  # This process is described in more depth at:
+  # https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#problems-dcat-ap-addresses
+
+  SubstanceSampleCharacterization:
+    is_a: DataGeneratingActivity
+    class_uri: prov:Activity
+    broad_mappings:
+      - OBI:0000070
+    description: >-
+      A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic
+      measurement, a physical property determination, or a combined measurement-and-analysis workflow.
+      This is a coarse-grained convenience shape that does not distinguish between raw data acquisition
+      and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction
+      should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain
+      to separate raw measurement from derived results.
+    slot_usage:
+      evaluated_entity:
+        range: SubstanceSample
+        multivalued: true
+        inlined_as_list: true
+        description: The slot to specify the SubstanceSample being characterized.
+
+  ReactionMonitoring:
+    is_a: DataGeneratingActivity
+    class_uri: prov:Activity
+    description: >-
+      A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring,
+      experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained
+      convenience shape that does not distinguish between raw experimental recording and subsequent data
+      evaluation. Domain-specific sub-profiles that need this distinction should define their own
+      DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data
+      from derived results.
+    slot_usage:
+      evaluated_activity:
+        range: ChemicalReaction
+        multivalued: true
+        inlined_as_list: true
+        description: The slot to specify the ChemicalReaction being recorded.
+
+  ################
+  # Surroundings #
+  ################
+
+  Laboratory:
+    is_a: Surrounding
+    class_uri: ENVO:01001405
+    description: A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.
