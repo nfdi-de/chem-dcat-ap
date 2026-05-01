@@ -745,14 +745,14 @@ Alias: evaluated_activity</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/ReactionMonitoring/">ReactionMonitoring</a></td>
-<td>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../../classes/DataAnalysis/">DataAnalysis</a></td>
 <td>An Activity that evaluates the data produced by another Activity.</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/ReactionMonitoring/">ReactionMonitoring</a></td>
+<td>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../../classes/SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
