@@ -8,6 +8,8 @@ description = "An extension of the DCAT Application Profile extended to provide 
 authors = [
   {name = "David Linke", email = "david.linke@catalysis.de"},
   {name = "Philip Strömert", email = "philip.stroemert@tib.eu"},
+  {name = "Hendrik Borgelt", email = "hendrik.borgelt@tu-dortmund.de"},
+  {name = "mark doerr", email = "mark.doerr@uni-greifswald.de"}
 ]
 license = "MIT"
 license-files = ["LICENSE"]
@@ -29,6 +31,16 @@ dev = [
     "mknotebooks>= 0.8.0",
     "pytest>=8.3.5",
     "coverage>=7.8.0",
+    "ipykernel>=6.31.0",
+    "pre-commit>=4.3.0",
+    "rdflib>=7.4.0",
+    "factory-boy>=3.3.3",
+    "pyshacl>=0.31.0",
+]
+test = [
+    "pytest>=8.3.5",
+    "factory-boy>=3.3.3",
+    "pyshacl>=0.31.0",
 ]
 
 # See https://hatch.pypa.io/latest/config/build/#file-selection for how to
@@ -53,6 +65,8 @@ fallback-version = "0.0.0"
 # Ref.: https://docs.pytest.org/en/stable/reference/reference.html#configuration-options
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# these options allow to see print statements in the test output and to get more verbose output for better debugging
+# addopts = '-vv -s'
 
 # https://coverage.readthedocs.io/en/latest/config.html
 [tool.coverage.paths]
