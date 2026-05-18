@@ -155,9 +155,9 @@
           "has_molar_mass": [
             {
               "value": 204.072119,
-              "has_quantity_type": "http://qudt.org/vocab/quantitykind/MolarMass",
+              "has_quantity_type": "http://qudt.org/vocab/quantitykind/MolarMassee",
               "description": "Molar mass as specified in the Chemotion repository.",
-              "unit": "https://qudt.org/vocab/unit/GM-PER-MOL"
+              "unit": "https://qudt.org/vocab/unit/GM-PER-MOLd"
             },
             {
               "value": 204.29,

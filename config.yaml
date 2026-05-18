@@ -56,6 +56,7 @@ generator_args:
     mergeimports: true
   shacl:
     mergeimports: true
+    use_class_uri_names: false
   shex:
     mergeimports: true
   sqlddl:

@@ -18,6 +18,10 @@
       }
     }
   ],
+  "rdf_type": {
+    "id": "CHEBI:59999",
+    "title": "chemical substance"
+  },
   "composed_of": [
     {
       "id": "https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound",

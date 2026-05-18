@@ -317,6 +317,6 @@
       "@id": "qudt:Quantity"
    },
    "Yield": {
-      "@id": "qudt:Quantity"
+      "@id": "CHMO:0002855"
    }
 }
