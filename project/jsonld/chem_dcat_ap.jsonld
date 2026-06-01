@@ -8,7 +8,7 @@
     "https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads"
   ],
   "id": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
-  "version": "0.1.0rc3.post4.dev0+6487672b",
+  "version": "0.1.0rc3.post5.dev0+33f48f06",
   "imports": [
     "linkml:types",
     "dcatapplus:latest/schema/dcat_ap_plus",
@@ -7546,7 +7546,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterizationDataset",
       "description": "A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:Dataset"
       ],
       "is_a": "Dataset",
@@ -7592,6 +7592,7 @@
         "SubstanceSampleCharacterizationDataset_is_about_entity"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Dataset",
       "@type": "ClassDefinition"
     },
     {
@@ -7599,7 +7600,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ReactionMonitoringDataset",
       "description": "A Dataset about a ChemicalReaction that was produced by a ReactionMonitoring activity. This is a coarse-grained convenience shape that conflates experimental documentation and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish reaction monitoring from subsequent data evaluation should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:Dataset"
       ],
       "is_a": "Dataset",
@@ -7645,6 +7646,7 @@
         "ReactionMonitoringDataset_is_about_activity"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Dataset",
       "@type": "ClassDefinition"
     },
     {
@@ -7652,7 +7654,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterization",
       "description": "A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic measurement, a physical property determination, or a combined measurement-and-analysis workflow. This is a coarse-grained convenience shape that does not distinguish between raw data acquisition and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw measurement from derived results.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Activity"
       ],
       "broad_mappings": [
@@ -7680,6 +7682,7 @@
         "SubstanceSampleCharacterization_evaluated_entity"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Activity",
       "@type": "ClassDefinition"
     },
     {
@@ -7687,7 +7690,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ReactionMonitoring",
       "description": "A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Activity"
       ],
       "is_a": "DataGeneratingActivity",
@@ -7712,6 +7715,7 @@
         "ReactionMonitoring_evaluated_activity"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Activity",
       "@type": "ClassDefinition"
     },
     {
@@ -7719,7 +7723,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/Laboratory",
       "description": "A facility that provides controlled conditions in which scientific or technological research, experiments, and measurement may be performed.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
-      "exact_mappings": [
+      "mappings": [
         "ENVO:01001405"
       ],
       "is_a": "Surrounding",
@@ -7730,6 +7734,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/ENVO_01001405",
       "@type": "ClassDefinition"
     },
     {
@@ -7743,7 +7748,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Activity"
       ],
       "mixins": [
@@ -7766,6 +7771,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Activity",
       "@type": "ClassDefinition"
     },
     {
@@ -7773,7 +7779,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Agent",
       "description": "See [DCAT-AP specs:Agent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Agent)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "foaf:Agent"
       ],
       "slots": [
@@ -7781,6 +7787,7 @@
         "Agent_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://xmlns.com/foaf/0.1/Agent",
       "@type": "ClassDefinition"
     },
     {
@@ -7791,7 +7798,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Agent"
       ],
       "mixins": [
@@ -7810,6 +7817,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Agent",
       "@type": "ClassDefinition"
     },
     {
@@ -7820,7 +7828,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:Dataset"
       ],
       "is_a": "Dataset",
@@ -7866,6 +7874,7 @@
         "AnalysisDataset_was_generated_by"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Dataset",
       "@type": "ClassDefinition"
     },
     {
@@ -7876,7 +7885,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Entity"
       ],
       "is_a": "EvaluatedEntity",
@@ -7894,6 +7903,7 @@
         "AnalysisSourceData_was_generated_by"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
       "@type": "ClassDefinition"
     },
     {
@@ -7901,7 +7911,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Any",
       "description": "This abstract class is needed to create the union of Dataset, DatasetSeries, Catalogue and DataService for the range of the slot [primary_topic](https://nfdi-de.github.io/chem-dcat-ap/elements/primary_topic/).",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "linkml:Any"
       ],
       "slots": [
@@ -7909,6 +7919,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/Any",
       "@type": "ClassDefinition"
     },
     {
@@ -7916,7 +7927,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Attribution",
       "description": "See [DCAT-AP specs:Attribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Attribution)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Attribution"
       ],
       "is_a": "SupportiveEntity",
@@ -7925,6 +7936,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Attribution",
       "@type": "ClassDefinition"
     },
     {
@@ -7932,7 +7944,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Catalogue",
       "description": "See [DCAT-AP specs:Catalogue](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Catalogue)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:Catalog"
       ],
       "slots": [
@@ -7957,6 +7969,7 @@
         "Catalogue_title"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Catalog",
       "@type": "ClassDefinition"
     },
     {
@@ -7964,7 +7977,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/CatalogueRecord",
       "description": "See [DCAT-AP specs:CatalogueRecord](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#CatalogueRecord)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:CatalogRecord"
       ],
       "slots": [
@@ -7979,6 +7992,7 @@
         "CatalogueRecord_title"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#CatalogRecord",
       "@type": "ClassDefinition"
     },
     {
@@ -7986,7 +8000,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Checksum",
       "description": "See [DCAT-AP specs:Checksum](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Checksum)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "spdx:Checksum"
       ],
       "slots": [
@@ -7994,6 +8008,7 @@
         "Checksum_checksum_value"
       ],
       "slot_usage": {},
+      "class_uri": "http://spdx.org/rdf/terms#Checksum",
       "@type": "ClassDefinition"
     },
     {
@@ -8001,7 +8016,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/ChecksumAlgorithm",
       "description": "See [DCAT-AP specs:ChecksumAlgorithm](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ChecksumAlgorithm)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "spdx:ChecksumAlgorithm"
       ],
       "is_a": "SupportiveEntity",
@@ -8010,6 +8025,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://spdx.org/rdf/terms#ChecksumAlgorithm",
       "@type": "ClassDefinition"
     },
     {
@@ -8020,9 +8036,6 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
-        "dcatapplus:ClassifierMixin"
-      ],
       "abstract": true,
       "mixin": true,
       "slots": [
@@ -8030,6 +8043,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/ClassifierMixin",
       "@type": "ClassDefinition"
     },
     {
@@ -8037,7 +8051,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Concept",
       "description": "See [DCAT-AP specs:Concept](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Concept)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "skos:Concept"
       ],
       "is_a": "SupportiveEntity",
@@ -8047,6 +8061,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/2004/02/skos/core#Concept",
       "@type": "ClassDefinition"
     },
     {
@@ -8054,7 +8069,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/ConceptScheme",
       "description": "See [DCAT-AP specs:ConceptScheme](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ConceptScheme)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "skos:ConceptScheme"
       ],
       "is_a": "SupportiveEntity",
@@ -8063,6 +8078,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
       "@type": "ClassDefinition"
     },
     {
@@ -8073,8 +8089,10 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
+      "mappings": [
+        "prov:Activity"
+      ],
       "exact_mappings": [
-        "prov:Activity",
         "OBI:0200000"
       ],
       "close_mappings": [
@@ -8102,6 +8120,7 @@
         "DataAnalysis_evaluated_entity"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Activity",
       "@type": "ClassDefinition"
     },
     {
@@ -8112,7 +8131,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Activity"
       ],
       "is_a": "Activity",
@@ -8137,6 +8156,7 @@
         "occurred_in"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Activity",
       "@type": "ClassDefinition"
     },
     {
@@ -8144,7 +8164,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/DataService",
       "description": "See [DCAT-AP specs:DataService](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DataService)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:DataService"
       ],
       "slots": [
@@ -8166,6 +8186,7 @@
         "DataService_title"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#DataService",
       "@type": "ClassDefinition"
     },
     {
@@ -8176,7 +8197,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:Dataset"
       ],
       "slots": [
@@ -8221,6 +8242,7 @@
         "is_about_activity"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Dataset",
       "@type": "ClassDefinition"
     },
     {
@@ -8228,7 +8250,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/DatasetSeries",
       "description": "See [DCAT-AP specs:DatasetSeries](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#DatasetSeries)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:DatasetSeries"
       ],
       "slots": [
@@ -8244,6 +8266,7 @@
         "DatasetSeries_title"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#DatasetSeries",
       "@type": "ClassDefinition"
     },
     {
@@ -8254,7 +8277,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "schema:DefinedTerm"
       ],
       "slots": [
@@ -8272,6 +8295,7 @@
           "@type": "SlotDefinition"
         }
       ],
+      "class_uri": "http://schema.org/DefinedTerm",
       "@type": "ClassDefinition"
     },
     {
@@ -8285,8 +8309,10 @@
       "aliases": [
         "hardware instrument"
       ],
+      "mappings": [
+        "prov:Agent"
+      ],
       "exact_mappings": [
-        "prov:Agent",
         "epos:Equipment",
         "OBI:0000968",
         "http://purl.obolibrary.org/obo/NCIT_C62103",
@@ -8307,6 +8333,7 @@
         "Device_other_identifier"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Agent",
       "@type": "ClassDefinition"
     },
     {
@@ -8314,7 +8341,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Distribution",
       "description": "See [DCAT-AP specs:Distribution](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Distribution)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:Distribution"
       ],
       "slots": [
@@ -8344,6 +8371,7 @@
         "Distribution_title"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Distribution",
       "@type": "ClassDefinition"
     },
     {
@@ -8351,7 +8379,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Document",
       "description": "See [DCAT-AP specs:Document](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Document)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "foaf:Document"
       ],
       "is_a": "SupportiveEntity",
@@ -8361,6 +8389,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://xmlns.com/foaf/0.1/Document",
       "@type": "ClassDefinition"
     },
     {
@@ -8371,7 +8400,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Entity"
       ],
       "mixins": [
@@ -8390,6 +8419,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
       "@type": "ClassDefinition"
     },
     {
@@ -8400,7 +8430,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Activity"
       ],
       "is_a": "Activity",
@@ -8421,6 +8451,7 @@
         "EvaluatedActivity_other_identifier"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Activity",
       "@type": "ClassDefinition"
     },
     {
@@ -8431,7 +8462,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Entity"
       ],
       "is_a": "Entity",
@@ -8449,6 +8480,7 @@
         "EvaluatedEntity_other_identifier"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
       "@type": "ClassDefinition"
     },
     {
@@ -8456,7 +8488,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Frequency",
       "description": "See [DCAT-AP specs:Frequency](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Frequency)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcterms:Frequency"
       ],
       "is_a": "SupportiveEntity",
@@ -8465,6 +8497,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/Frequency",
       "@type": "ClassDefinition"
     },
     {
@@ -8472,7 +8505,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Geometry",
       "description": "See [DCAT-AP specs:Geometry](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Geometry)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "locn:Geometry"
       ],
       "is_a": "SupportiveEntity",
@@ -8481,6 +8514,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/locn#Geometry",
       "@type": "ClassDefinition"
     },
     {
@@ -8488,7 +8522,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Identifier",
       "description": "See [DCAT-AP specs:Identifier](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Identifier)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "adms:Identifier"
       ],
       "is_a": "SupportiveEntity",
@@ -8498,6 +8532,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/adms#Identifier",
       "@type": "ClassDefinition"
     },
     {
@@ -8505,10 +8540,11 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Kind",
       "description": "See [DCAT-AP specs:Kind](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Kind)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "vcard:Kind"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/2006/vcard/ns#Kind",
       "@type": "ClassDefinition"
     },
     {
@@ -8516,7 +8552,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/LegalResource",
       "description": "See [DCAT-AP specs:LegalResource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LegalResource)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "eli:LegalResource"
       ],
       "is_a": "SupportiveEntity",
@@ -8526,6 +8562,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://data.europa.eu/eli/ontology#LegalResource",
       "@type": "ClassDefinition"
     },
     {
@@ -8533,7 +8570,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/LicenseDocument",
       "description": "See [DCAT-AP specs:LicenseDocument](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LicenseDocument)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcterms:LicenseDocument"
       ],
       "is_a": "SupportiveEntity",
@@ -8544,6 +8581,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/LicenseDocument",
       "@type": "ClassDefinition"
     },
     {
@@ -8551,7 +8589,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/LinguisticSystem",
       "description": "See [DCAT-AP specs:LinguisticSystem](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#LinguisticSystem)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcterms:LinguisticSystem"
       ],
       "is_a": "SupportiveEntity",
@@ -8560,6 +8598,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/LinguisticSystem",
       "@type": "ClassDefinition"
     },
     {
@@ -8567,7 +8606,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Location",
       "description": "See [DCAT-AP specs:Location](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Location)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcterms:Location"
       ],
       "slots": [
@@ -8576,6 +8615,7 @@
         "Location_geometry"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/Location",
       "@type": "ClassDefinition"
     },
     {
@@ -8583,7 +8623,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/MediaType",
       "description": "See [DCAT-AP specs:MediaType](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaType)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcterms:MediaType"
       ],
       "is_a": "SupportiveEntity",
@@ -8592,6 +8632,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/MediaType",
       "@type": "ClassDefinition"
     },
     {
@@ -8599,7 +8640,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/MediaTypeOrExtent",
       "description": "See [DCAT-AP specs:MediaTypeOrExtent](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#MediaTypeOrExtent)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcterms:MediaTypeOrExtent"
       ],
       "is_a": "SupportiveEntity",
@@ -8608,6 +8649,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/MediaTypeOrExtent",
       "@type": "ClassDefinition"
     },
     {
@@ -8615,7 +8657,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/PeriodOfTime",
       "description": "See [DCAT-AP specs:PeriodOfTime](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#PeriodOfTime)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcterms:PeriodOfTime"
       ],
       "is_a": "SupportiveEntity",
@@ -8628,6 +8670,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/PeriodOfTime",
       "@type": "ClassDefinition"
     },
     {
@@ -8649,7 +8692,7 @@
         "Method",
         "Procedure"
       ],
-      "exact_mappings": [
+      "mappings": [
         "prov:Plan"
       ],
       "mixins": [
@@ -8662,6 +8705,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Plan",
       "@type": "ClassDefinition"
     },
     {
@@ -8669,7 +8713,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Policy",
       "description": "See [DCAT-AP specs:Policy](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Policy)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "odrl:Policy"
       ],
       "is_a": "SupportiveEntity",
@@ -8678,6 +8722,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/odrl/2/Policy",
       "@type": "ClassDefinition"
     },
     {
@@ -8685,7 +8730,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/ProvenanceStatement",
       "description": "See [DCAT-AP specs:ProvenanceStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#ProvenanceStatement)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcterms:ProvenanceStatement"
       ],
       "is_a": "SupportiveEntity",
@@ -8694,6 +8739,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/ProvenanceStatement",
       "@type": "ClassDefinition"
     },
     {
@@ -8704,7 +8750,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Entity"
       ],
       "mixins": [
@@ -8718,6 +8764,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Entity",
       "@type": "ClassDefinition"
     },
     {
@@ -8728,7 +8775,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "qudt:Quantity"
       ],
       "mixins": [
@@ -8779,6 +8826,7 @@
           "@type": "SlotDefinition"
         }
       ],
+      "class_uri": "http://qudt.org/schema/qudt/Quantity",
       "@type": "ClassDefinition"
     },
     {
@@ -8786,7 +8834,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Relationship",
       "description": "See [DCAT-AP specs:Relationship](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Relationship)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:Relationship"
       ],
       "slots": [
@@ -8794,6 +8842,7 @@
         "Relationship_relation"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Relationship",
       "@type": "ClassDefinition"
     },
     {
@@ -8801,7 +8850,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Resource",
       "description": "See [DCAT-AP specs:Resource](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Resource)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "rdfs:Resource"
       ],
       "is_a": "SupportiveEntity",
@@ -8811,6 +8860,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/2000/01/rdf-schema#Resource",
       "@type": "ClassDefinition"
     },
     {
@@ -8818,7 +8868,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/RightsStatement",
       "description": "See [DCAT-AP specs:RightsStatement](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#RightsStatement)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcterms:RightsStatement"
       ],
       "is_a": "SupportiveEntity",
@@ -8827,6 +8877,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/RightsStatement",
       "@type": "ClassDefinition"
     },
     {
@@ -8834,7 +8885,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Role",
       "description": "See [DCAT-AP specs:Role](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Role)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcat:Role"
       ],
       "is_a": "SupportiveEntity",
@@ -8843,6 +8894,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/dcat#Role",
       "@type": "ClassDefinition"
     },
     {
@@ -8853,8 +8905,10 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
+      "mappings": [
+        "prov:SoftwareAgent"
+      ],
       "exact_mappings": [
-        "prov:SoftwareAgent",
         "schema:SoftwareApplication"
       ],
       "is_a": "AgenticEntity",
@@ -8871,6 +8925,7 @@
         "Software_other_identifier"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#SoftwareAgent",
       "@type": "ClassDefinition"
     },
     {
@@ -8878,7 +8933,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/Standard",
       "description": "See [DCAT-AP specs:Standard](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Standard)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "dcterms:Standard"
       ],
       "is_a": "SupportiveEntity",
@@ -8887,6 +8942,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.org/dc/terms/Standard",
       "@type": "ClassDefinition"
     },
     {
@@ -8894,14 +8950,12 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/SupportiveEntity",
       "description": "The supportive entities are supporting the main entities in the Application Profile. They are included in the Application Profile because they form the range of properties.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
-        "dcatapplus:SupportiveEntity"
-      ],
       "slots": [
         "title",
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/SupportiveEntity",
       "@type": "ClassDefinition"
     },
     {
@@ -8912,7 +8966,7 @@
         "domain_agnostic_core"
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "prov:Location"
       ],
       "mixins": [
@@ -8925,6 +8979,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/ns/prov#Location",
       "@type": "ClassDefinition"
     },
     {
@@ -8932,7 +8987,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/TimeInstant",
       "description": "See [DCAT-AP specs:TimeInstant](https://semiceu.github.io/DCAT-AP/releases/3.0.0/#TimeInstant)",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/",
-      "exact_mappings": [
+      "mappings": [
         "time:Instant"
       ],
       "is_a": "SupportiveEntity",
@@ -8941,6 +8996,7 @@
         "description"
       ],
       "slot_usage": {},
+      "class_uri": "http://www.w3.org/2006/time#Instant",
       "@type": "ClassDefinition"
     },
     {
@@ -8951,7 +9007,7 @@
       "aliases": [
         "analyte"
       ],
-      "exact_mappings": [
+      "mappings": [
         "SIO:001378"
       ],
       "is_a": "MaterialSample",
@@ -8984,6 +9040,7 @@
         "has_amount"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/SIO_001378",
       "@type": "ClassDefinition"
     },
     {
@@ -8994,7 +9051,7 @@
         "Find a better mapping, as it is currently mapped to same ontology class as its parent."
       ],
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "exact_mappings": [
+      "mappings": [
         "SIO:001378"
       ],
       "is_a": "SubstanceSample",
@@ -9027,6 +9084,7 @@
         "has_amount"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/SIO_001378",
       "@type": "ClassDefinition"
     },
     {
@@ -9037,7 +9095,7 @@
       "aliases": [
         "molecular entity"
       ],
-      "exact_mappings": [
+      "mappings": [
         "CHEBI:23367"
       ],
       "is_a": "Entity",
@@ -9060,6 +9118,7 @@
         "ChemicalEntity_has_part"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/CHEBI_23367",
       "@type": "ClassDefinition"
     },
     {
@@ -9067,7 +9126,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Atom",
       "description": "An Entity constituting the smallest component of a chemical element having the chemical properties of the element.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "exact_mappings": [
+      "mappings": [
         "CHEBI:33250"
       ],
       "is_a": "Entity",
@@ -9084,6 +9143,7 @@
         "Atom_rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/CHEBI_33250",
       "@type": "ClassDefinition"
     },
     {
@@ -9091,7 +9151,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/MolarMass",
       "description": "A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "exact_mappings": [
+      "mappings": [
         "AFR:0002409"
       ],
       "close_mappings": [
@@ -9108,6 +9168,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.allotrope.org/ontologies/result#AFR_0002409",
       "@type": "ClassDefinition"
     },
     {
@@ -9115,8 +9176,10 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Concentration",
       "description": "A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume of the mixture.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
+      "mappings": [
+        "CHMO:0002820"
+      ],
       "exact_mappings": [
-        "CHMO:0002820",
         "EDAM:2140",
         "NCIT:C41185",
         "VOC4CAT:0007244",
@@ -9139,6 +9202,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/CHMO_0002820",
       "@type": "ClassDefinition"
     },
     {
@@ -9149,7 +9213,7 @@
       "aliases": [
         "SubstanceAmount"
       ],
-      "exact_mappings": [
+      "mappings": [
         "qudt:Quantity"
       ],
       "close_mappings": [
@@ -9166,14 +9230,17 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/Quantity",
       "@type": "ClassDefinition"
     },
     {
       "name": "PHValue",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PHValue",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
+      "mappings": [
+        "SIO:001089"
+      ],
       "exact_mappings": [
-        "SIO:001089",
         "NCIT:C45997",
         "AFR:0001142"
       ],
@@ -9191,13 +9258,14 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/SIO_001089",
       "@type": "ClassDefinition"
     },
     {
       "name": "InChIKey",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/InChIKey",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "exact_mappings": [
+      "mappings": [
         "CHEMINF:000059"
       ],
       "is_a": "QualitativeAttribute",
@@ -9209,6 +9277,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000059",
       "@type": "ClassDefinition"
     },
     {
@@ -9216,7 +9285,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/InChi",
       "description": "A structure descriptor which conforms to the InChI format specification.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "exact_mappings": [
+      "mappings": [
         "CHEMINF:000113"
       ],
       "is_a": "QualitativeAttribute",
@@ -9228,6 +9297,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000113",
       "@type": "ClassDefinition"
     },
     {
@@ -9235,7 +9305,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/MolecularFormula",
       "description": "A structure descriptor which identifies each constituent element by its chemical symbol and indicates the number of atoms of each element found in each discrete molecule of that compound.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "exact_mappings": [
+      "mappings": [
         "CHEMINF:000042"
       ],
       "is_a": "QualitativeAttribute",
@@ -9247,6 +9317,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000042",
       "@type": "ClassDefinition"
     },
     {
@@ -9254,7 +9325,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/IUPACName",
       "description": "A systematic name which is formulated according to the rules and recommendations for chemical nomenclature set out by the International Union of Pure and Applied Chemistry (IUPAC).",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "exact_mappings": [
+      "mappings": [
         "CHEMINF:000107"
       ],
       "is_a": "QualitativeAttribute",
@@ -9266,6 +9337,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000107",
       "@type": "ClassDefinition"
     },
     {
@@ -9273,7 +9345,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/SMILES",
       "description": "A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "exact_mappings": [
+      "mappings": [
         "CHEMINF:000018"
       ],
       "is_a": "QualitativeAttribute",
@@ -9285,6 +9357,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/CHEMINF_000018",
       "@type": "ClassDefinition"
     },
     {
@@ -9292,9 +9365,6 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstanceMixin",
       "description": "A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "exact_mappings": [
-        "chemical_entities_ap:ChemicalSubstanceMixin"
-      ],
       "is_a": "MaterialisticMixin",
       "abstract": true,
       "mixin": true,
@@ -9312,6 +9382,7 @@
         "has_amount"
       ],
       "slot_usage": {},
+      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstanceMixin",
       "@type": "ClassDefinition"
     },
     {
@@ -9319,9 +9390,6 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerMixin",
       "description": "A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
-      "exact_mappings": [
-        "chemical_entities_ap:PolymerMixin"
-      ],
       "is_a": "ChemicalSubstanceMixin",
       "abstract": true,
       "mixin": true,
@@ -9339,6 +9407,7 @@
         "has_amount"
       ],
       "slot_usage": {},
+      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerMixin",
       "@type": "ClassDefinition"
     },
     {
@@ -9346,8 +9415,10 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalReaction",
       "description": "A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
+      "mappings": [
+        "SIO:010345"
+      ],
       "exact_mappings": [
-        "SIO:010345",
         "MOP:0000543",
         "REX:0000002",
         "AFP:0003711"
@@ -9385,6 +9456,7 @@
         "ChemicalReaction_related_resource"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/SIO_010345",
       "@type": "ClassDefinition"
     },
     {
@@ -9392,7 +9464,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/StartingMaterial",
       "description": "A ChemicalSubstance with that has a starting material role in a synthesis.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
-      "exact_mappings": [
+      "mappings": [
         "PROCO:0000029"
       ],
       "is_a": "MaterialEntity",
@@ -9424,6 +9496,7 @@
         "has_amount"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/PROCO_0000029",
       "@type": "ClassDefinition"
     },
     {
@@ -9434,8 +9507,10 @@
       "aliases": [
         "solvent"
       ],
+      "mappings": [
+        "SIO:010417"
+      ],
       "exact_mappings": [
-        "SIO:010417",
         "VOC4CAT:0007246",
         "NCIT:C45790"
       ],
@@ -9468,6 +9543,7 @@
         "has_amount"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/SIO_010417",
       "@type": "ClassDefinition"
     },
     {
@@ -9475,8 +9551,10 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Reagent",
       "description": "A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
+      "mappings": [
+        "SIO:010411"
+      ],
       "exact_mappings": [
-        "SIO:010411",
         "NCIT:C802",
         "VOC4CAT:0000101"
       ],
@@ -9513,6 +9591,7 @@
         "has_amount"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/SIO_010411",
       "@type": "ClassDefinition"
     },
     {
@@ -9520,8 +9599,10 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalProduct",
       "description": "A chemical substance that is produced by a ChemicalReaction.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
+      "mappings": [
+        "NCIT:C48810"
+      ],
       "exact_mappings": [
-        "NCIT:C48810",
         "VOC4CAT:0000194"
       ],
       "close_mappings": [
@@ -9555,6 +9636,7 @@
         "has_amount"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/NCIT_C48810",
       "@type": "ClassDefinition"
     },
     {
@@ -9562,8 +9644,10 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Catalyst",
       "description": "A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
+      "mappings": [
+        "SIO:010344"
+      ],
       "exact_mappings": [
-        "SIO:010344",
         "VOC4CAT:0000194",
         "NCIT:C48810"
       ],
@@ -9599,6 +9683,7 @@
         "has_amount"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/SIO_010344",
       "@type": "ClassDefinition"
     },
     {
@@ -9606,8 +9691,10 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Reactor",
       "description": "A reactor is a container for controlling a biological or chemical reaction or process.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
+      "mappings": [
+        "AFE:0000153"
+      ],
       "exact_mappings": [
-        "AFE:0000153",
         "VOC4CAT:0007017"
       ],
       "is_a": "Device",
@@ -9634,6 +9721,7 @@
         "has_pressure"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.allotrope.org/ontologies/equipment#AFE_0000153",
       "@type": "ClassDefinition"
     },
     {
@@ -9641,8 +9729,10 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/Yield",
       "description": "A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
+      "mappings": [
+        "CHMO:0002855"
+      ],
       "exact_mappings": [
-        "CHMO:0002855",
         "VOC4CAT:0005005"
       ],
       "is_a": "QuantitativeAttribute",
@@ -9656,6 +9746,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/CHMO_0002855",
       "@type": "ClassDefinition"
     },
     {
@@ -9663,7 +9754,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/MolarEquivalent",
       "description": "A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
-      "exact_mappings": [
+      "mappings": [
         "qudt:Quantity"
       ],
       "is_a": "QuantitativeAttribute",
@@ -9677,6 +9768,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/Quantity",
       "@type": "ClassDefinition"
     },
     {
@@ -9684,7 +9776,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/PercentageOfTotal",
       "description": "A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
-      "exact_mappings": [
+      "mappings": [
         "qudt:Quantity"
       ],
       "is_a": "QuantitativeAttribute",
@@ -9698,6 +9790,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/Quantity",
       "@type": "ClassDefinition"
     },
     {
@@ -9705,9 +9798,6 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialisticMixin",
       "description": "A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
-      "exact_mappings": [
-        "material_entities_ap:MaterialisticMixin"
-      ],
       "abstract": true,
       "mixin": true,
       "slots": [
@@ -9720,6 +9810,7 @@
         "has_pressure"
       ],
       "slot_usage": {},
+      "class_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialisticMixin",
       "@type": "ClassDefinition"
     },
     {
@@ -9727,7 +9818,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialEntity",
       "description": "A material is an Entity that has some portion of matter as proper part.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
-      "exact_mappings": [
+      "mappings": [
         "BFO:0000040"
       ],
       "is_a": "Entity",
@@ -9754,6 +9845,7 @@
         "has_pressure"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/BFO_0000040",
       "@type": "ClassDefinition"
     },
     {
@@ -9761,8 +9853,10 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialSample",
       "description": "A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
+      "mappings": [
+        "OBI:0000747"
+      ],
       "exact_mappings": [
-        "OBI:0000747",
         "SIO:001050",
         "VOC4CAT:0005056"
       ],
@@ -9792,6 +9886,7 @@
         "has_pressure"
       ],
       "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/OBI_0000747",
       "@type": "ClassDefinition"
     },
     {
@@ -9799,7 +9894,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Temperature",
       "description": "A physical quantity that quantitatively expresses the attribute of hotness or coldness.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
-      "exact_mappings": [
+      "mappings": [
         "qudt:Quantity"
       ],
       "close_mappings": [
@@ -9816,6 +9911,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/Quantity",
       "@type": "ClassDefinition"
     },
     {
@@ -9823,7 +9919,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Mass",
       "description": "The strength of a body's gravitational attraction to other bodies.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
-      "exact_mappings": [
+      "mappings": [
         "qudt:Quantity"
       ],
       "close_mappings": [
@@ -9840,6 +9936,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/Quantity",
       "@type": "ClassDefinition"
     },
     {
@@ -9847,7 +9944,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Volume",
       "description": "A measure of regions in three-dimensional space.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
-      "exact_mappings": [
+      "mappings": [
         "qudt:Quantity"
       ],
       "close_mappings": [
@@ -9864,6 +9961,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/Quantity",
       "@type": "ClassDefinition"
     },
     {
@@ -9871,7 +9969,7 @@
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Density",
       "description": "A measure of the mass per unit volume of a substance.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
-      "exact_mappings": [
+      "mappings": [
         "SIO:001406"
       ],
       "close_mappings": [
@@ -9888,13 +9986,14 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/SIO_001406",
       "@type": "ClassDefinition"
     },
     {
       "name": "Pressure",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/Pressure",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
-      "exact_mappings": [
+      "mappings": [
         "qudt:Quantity"
       ],
       "close_mappings": [
@@ -9911,14 +10010,15 @@
         "rdf_type"
       ],
       "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/Quantity",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.11.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-05-18T11:52:08",
+  "source_file_date": "2026-06-01T12:34:00",
   "source_file_size": 7752,
-  "generation_date": "2026-05-18T11:52:13",
+  "generation_date": "2026-06-01T12:34:03",
   "@type": "SchemaDefinition",
   "@context": [
     "project\\jsonld/chem_dcat_ap.context.jsonld",
