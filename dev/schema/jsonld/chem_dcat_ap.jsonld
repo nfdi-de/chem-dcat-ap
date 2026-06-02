@@ -8,7 +8,7 @@
     "https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads"
   ],
   "id": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
-  "version": "0.1.0rc2.post33.dev0+fb29e03e",
+  "version": "0.1.0rc3.post6.dev0+86151818",
   "imports": [
     "linkml:types",
     "dcatapplus:latest/schema/dcat_ap_plus",
@@ -208,7 +208,7 @@
       "definition_uri": "https://w3id.org/linkml/String",
       "description": "A character string",
       "notes": [
-        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
       ],
       "from_schema": "https://w3id.org/linkml/types",
       "imported_from": "linkml:types",
@@ -732,11 +732,6 @@
           "meaning": "PATO:0001736"
         },
         {
-          "text": "CRYSTAL",
-          "description": "A solid state of matter whose constituents (such as atoms, molecules, or ions) are arranged in a highly ordered microscopic structure, forming a crystal lattice that extends in all directions.",
-          "meaning": "PATO:0002066"
-        },
-        {
           "text": "LIQUID",
           "description": "A state of matter with a definite volume but no fixed shape. Liquids adapt to the shape of their container and are nearly incompressible, maintaining their volume even under pressure.",
           "meaning": "PATO:0001735"
@@ -745,6 +740,11 @@
           "text": "GASEOUS",
           "description": "A state of matter with neither fixed volume nor fixed shape.",
           "meaning": "PATO:0001737"
+        },
+        {
+          "text": "PLASMA",
+          "description": "A state of matter in which a gas becomes ionized and conducts electricity, often found in high-energy environments such as stars or lightning.",
+          "meaning": "PATO:0015012"
         }
       ]
     }
@@ -2740,7 +2740,7 @@
     {
       "name": "used_starting_material",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_starting_material",
-      "description": "The slot to specify the Reagent(s) of a ChemicalReaction.",
+      "description": "The slot to specify the StartingMaterial(s) of a ChemicalReaction.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://purl.obolibrary.org/obo/RO_0004009"
@@ -2782,7 +2782,7 @@
     {
       "name": "generated_product",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/generated_product",
-      "description": "The slot to specify the Product of a ChemicalReaction.",
+      "description": "The slot to specify the Product(s) of a ChemicalReaction.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
         "http://purl.obolibrary.org/obo/RO_0004008"
@@ -3005,7 +3005,7 @@
     {
       "name": "has_temperature",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_temperature",
-      "description": "The slot to provide the Temperature of a MaterialEntity.",
+      "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
@@ -3090,7 +3090,7 @@
     {
       "name": "has_pressure",
       "definition_uri": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_pressure",
-      "description": "The slot to provide the Pressure of a MaterialEntity.",
+      "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/materials/",
       "mappings": [
         "http://semanticscience.org/resource/SIO_000008"
@@ -3166,11 +3166,7 @@
       "bindings": [
         {
           "range": "QUDTQuantityKindEnum",
-          "obligation_level": {
-            "text": "RECOMMENDED",
-            "description": "The metadata element is recommended to be present in the model",
-            "@type": "PermissibleValue"
-          },
+          "obligation_level": "RECOMMENDED",
           "binds_value_of": "id",
           "description": "Binds the type of a quantifiable attribute to a QUDT Quantity Kind instance from the QUDT Quantity Kind vocabulary.",
           "@type": "EnumBinding"
@@ -3195,11 +3191,7 @@
       "bindings": [
         {
           "range": "QUDTUnitEnum",
-          "obligation_level": {
-            "text": "RECOMMENDED",
-            "description": "The metadata element is recommended to be present in the model",
-            "@type": "PermissibleValue"
-          },
+          "obligation_level": "RECOMMENDED",
           "binds_value_of": "id",
           "description": "Restricts the allowable defined terms to the QUDT Unit vocabulary.",
           "@type": "EnumBinding"
@@ -8808,11 +8800,7 @@
           "bindings": [
             {
               "range": "QUDTQuantityKindEnum",
-              "obligation_level": {
-                "text": "RECOMMENDED",
-                "description": "The metadata element is recommended to be present in the model",
-                "@type": "PermissibleValue"
-              },
+              "obligation_level": "RECOMMENDED",
               "binds_value_of": "id",
               "description": "Binds the type of a quantifiable attribute to a QUDT Quantity Kind instance from the QUDT Quantity Kind vocabulary.",
               "@type": "EnumBinding"
@@ -8828,11 +8816,7 @@
           "bindings": [
             {
               "range": "QUDTUnitEnum",
-              "obligation_level": {
-                "text": "RECOMMENDED",
-                "description": "The metadata element is recommended to be present in the model",
-                "@type": "PermissibleValue"
-              },
+              "obligation_level": "RECOMMENDED",
               "binds_value_of": "id",
               "description": "Restricts the allowable defined terms to the QUDT Unit vocabulary.",
               "@type": "EnumBinding"
@@ -9746,7 +9730,7 @@
       "description": "A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "mappings": [
-        "qudt:Quantity"
+        "CHMO:0002855"
       ],
       "exact_mappings": [
         "VOC4CAT:0005005"
@@ -9762,7 +9746,7 @@
         "rdf_type"
       ],
       "slot_usage": {},
-      "class_uri": "http://qudt.org/schema/qudt/Quantity",
+      "class_uri": "http://purl.obolibrary.org/obo/CHMO_0002855",
       "@type": "ClassDefinition"
     },
     {
@@ -10030,14 +10014,14 @@
       "@type": "ClassDefinition"
     }
   ],
-  "metamodel_version": "1.7.0",
+  "metamodel_version": "1.11.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-03-23T11:00:36",
-  "source_file_size": 7754,
-  "generation_date": "2026-03-23T11:08:02",
+  "source_file_date": "2026-06-01T14:28:49",
+  "source_file_size": 7752,
+  "generation_date": "2026-06-02T10:17:37",
   "@type": "SchemaDefinition",
   "@context": [
-    "project/jsonld/chem_dcat_ap.context.jsonld",
+    "project\\jsonld/chem_dcat_ap.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
     "https://w3id.org/nfdi-de/dcat-ap-plus/latest/schema/dcat_ap_plus.context.jsonld",
     "chemical_entities_ap.context.jsonld",

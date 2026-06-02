@@ -635,6 +635,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type and Range
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cardinality and Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In Subsets
+      
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -709,10 +748,9 @@
 
 <h1 id="slot-value">Slot: value</h1>
 <p><em>A slot to provide the literal value of an attribute.</em></p>
-<p>URI: <a href="http://www.w3.org/ns/prov#value">prov:value</a>
-Alias: value</p>
+<div>
+<p>URI: <a href="http://www.w3.org/ns/prov#value">prov:value</a></p>
 <!-- no inheritance hierarchy -->
-
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -724,38 +762,18 @@ Alias: value</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../../classes/PercentageOfTotal/">PercentageOfTotal</a></td>
-<td>A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.</td>
-<td>no</td>
+<td><a href="../../classes/QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>A piece of information that is attributed to an Entity, Activity or AgenticEntity.</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="../../classes/MolarEquivalent/">MolarEquivalent</a></td>
-<td>A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.</td>
-<td>no</td>
+<td><a href="../../classes/QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>A quantifiable piece of information that is attributed to an Entity, Activity or AgenticEntity.</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="../../classes/Temperature/">Temperature</a></td>
-<td>A physical quantity that quantitatively expresses the attribute of hotness or coldness.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/Density/">Density</a></td>
-<td>A measure of the mass per unit volume of a substance.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/MolecularFormula/">MolecularFormula</a></td>
-<td>A structure descriptor which identifies each constituent element by its chemical symbol and indicates the number of atoms of each element found in each discrete molecule of that compound.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/PHValue/">PHValue</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/Mass/">Mass</a></td>
-<td>The strength of a body's gravitational attraction to other bodies.</td>
+<td><a href="../../classes/MolarMass/">MolarMass</a></td>
+<td>A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -764,29 +782,19 @@ Alias: value</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../../classes/AmountOfSubstance/">AmountOfSubstance</a></td>
+<td>The total amount of substance used in a ChemicalReaction.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/PHValue/">PHValue</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../../classes/InChIKey/">InChIKey</a></td>
 <td></td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/MolarMass/">MolarMass</a></td>
-<td>A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/Volume/">Volume</a></td>
-<td>A measure of regions in three-dimensional space.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/Pressure/">Pressure</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../../classes/QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>A quantifiable piece of information that is attributed to an Entity, Activity or AgenticEntity.</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../../classes/InChi/">InChi</a></td>
@@ -794,8 +802,8 @@ Alias: value</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/Yield/">Yield</a></td>
-<td>A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).</td>
+<td><a href="../../classes/MolecularFormula/">MolecularFormula</a></td>
+<td>A structure descriptor which identifies each constituent element by its chemical symbol and indicates the number of atoms of each element found in each discrete molecule of that compound.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -804,30 +812,99 @@ Alias: value</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/AmountOfSubstance/">AmountOfSubstance</a></td>
-<td>The total amount of substance used in a ChemicalReaction.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../../classes/SMILES/">SMILES</a></td>
 <td>A structure descriptor that denotes a molecular structure as a graph and conforms to the SMILES format specification.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/QualitativeAttribute/">QualitativeAttribute</a></td>
-<td>A piece of information that is attributed to an Entity, Activity or AgenticEntity.</td>
-<td>yes</td>
+<td><a href="../../classes/Temperature/">Temperature</a></td>
+<td>A physical quantity that quantitatively expresses the attribute of hotness or coldness.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/Mass/">Mass</a></td>
+<td>The strength of a body's gravitational attraction to other bodies.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/Volume/">Volume</a></td>
+<td>A measure of regions in three-dimensional space.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/Density/">Density</a></td>
+<td>A measure of the mass per unit volume of a substance.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/Pressure/">Pressure</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/Yield/">Yield</a></td>
+<td>A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/MolarEquivalent/">MolarEquivalent</a></td>
+<td>A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/PercentageOfTotal/">PercentageOfTotal</a></td>
+<td>A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
+<h3 id="type-and-range">Type and Range</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><a href="../../types/String/">String</a></td>
+</tr>
+<tr>
+<td>Domain Of</td>
+<td><a href="../../classes/QualitativeAttribute/">QualitativeAttribute</a>, <a href="../../classes/QuantitativeAttribute/">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td>Slot URI</td>
+<td><a href="http://www.w3.org/ns/prov#value">prov:value</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
 <ul>
-<li>Range: <a href="../../types/String/">String</a></li>
+<li><a href="../../subsets/DomainAgnosticCore/">DomainAgnosticCore</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</li>
+<li>from schema: <a href="https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -857,19 +934,22 @@ Alias: value</p>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:value</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QualitativeAttribute</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QuantitativeAttribute</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
 </details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 

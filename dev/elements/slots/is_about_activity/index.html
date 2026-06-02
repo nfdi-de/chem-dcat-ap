@@ -635,6 +635,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#type-and-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type and Range
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinality-and-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cardinality and Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In Subsets
+      
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -709,10 +748,9 @@
 
 <h1 id="slot-is_about_activity">Slot: is_about_activity</h1>
 <p><em>A slot to provide the EvaluatedActivity a Dataset is about.</em></p>
-<p>URI: <a href="http://purl.org/dc/terms/subject">dcterms:subject</a>
-Alias: is_about_activity</p>
+<div>
+<p>URI: <a href="http://purl.org/dc/terms/subject">dcterms:subject</a></p>
 <!-- no inheritance hierarchy -->
-
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -729,14 +767,14 @@ Alias: is_about_activity</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../../classes/ReactionMonitoringDataset/">ReactionMonitoringDataset</a></td>
-<td>A Dataset about a ChemicalReaction that was produced by a ReactionMonitoring activity. This is a coarse-grained convenience shape that conflates experimental documentation and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish reaction monitoring from subsequent data evaluation should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../../classes/SubstanceSampleCharacterizationDataset/">SubstanceSampleCharacterizationDataset</a></td>
 <td>A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../../classes/ReactionMonitoringDataset/">ReactionMonitoringDataset</a></td>
+<td>A Dataset about a ChemicalReaction that was produced by a ReactionMonitoring activity. This is a coarse-grained convenience shape that conflates experimental documentation and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish reaction monitoring from subsequent data evaluation should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../../classes/AnalysisDataset/">AnalysisDataset</a></td>
@@ -746,21 +784,56 @@ Alias: is_about_activity</p>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
+<h3 id="type-and-range">Type and Range</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Range</td>
+<td><a href="../../classes/EvaluatedActivity/">EvaluatedActivity</a></td>
+</tr>
+<tr>
+<td>Domain Of</td>
+<td><a href="../../classes/Dataset/">Dataset</a></td>
+</tr>
+<tr>
+<td>Slot URI</td>
+<td><a href="http://purl.org/dc/terms/subject">dcterms:subject</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cardinality-and-requirements">Cardinality and Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recommended</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Multivalued</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="in-subsets">In Subsets</h2>
 <ul>
-<li>
-<p>Range: <a href="../../classes/EvaluatedActivity/">EvaluatedActivity</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
-<li>
-<p>Recommended: True</p>
-</li>
+<li><a href="../../subsets/DomainAgnosticCore/">DomainAgnosticCore</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</li>
+<li>from schema: <a href="https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -796,7 +869,6 @@ Alias: is_about_activity</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IAO:0000136</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:subject</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">is_about_activity</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dataset</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EvaluatedActivity</span>
@@ -806,12 +878,16 @@ Alias: is_about_activity</p>
 <span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 

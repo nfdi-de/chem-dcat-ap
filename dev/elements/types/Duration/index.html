@@ -21,7 +21,7 @@
     
     
       
-        <title>Type: Duration - ChemDCAT-AP Documentation</title>
+        <title>Duration - ChemDCAT-AP Documentation</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#type-duration" class="md-skip">
+        <a href="#type-properties" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Type: Duration
+              Duration
             
           </span>
         </div>
@@ -606,14 +606,23 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#type-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type Properties
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
@@ -674,24 +683,56 @@
   
 
 
-<h1 id="type-duration">Type: Duration</h1>
+  <h1>Duration</h1>
+
+<hr />
+<p>search:
+  boost: 1.0
+---# Type: Duration </p>
 <p><em>The datatype that represents durations of time.</em></p>
+<div>
 <p>URI: <a href="http://www.w3.org/2001/XMLSchema#duration">xsd:duration</a></p>
-<ul>
-<li>
-<p><a href="https://w3id.org/linkml/base">base</a>: str</p>
-</li>
-<li>
-<p><a href="https://w3id.org/linkml/uri">uri</a>: xsd:duration</p>
-</li>
-<li>
-<p><a href="https://w3id.org/linkml/pattern">pattern</a>: <code>-?P((([0-9]+Y([0-9]+M)?([0-9]+D)?|([0-9]+M)([0-9]+D)?|([0-9]+D))(T(([0-9]+H)([0-9]+M)?([0-9]+(\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\.[0-9]+)?S)?|([0-9]+(\.[0-9]+)?S)))?)|(T(([0-9]+H)([0-9]+M)?([0-9]+(\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\.[0-9]+)?S)?|([0-9]+(\.[0-9]+)?S))))</code></p>
-</li>
-</ul>
+<h2 id="type-properties">Type Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td><code>str</code></td>
+</tr>
+<tr>
+<td>Type URI</td>
+<td><a href="http://www.w3.org/2001/XMLSchema#duration">xsd:duration</a></td>
+</tr>
+<tr>
+<td>## Value Constraints</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regex Pattern</td>
+<td><code>-?P((([0-9]+Y([0-9]+M)?([0-9]+D)?|([0-9]+M)([0-9]+D)?|([0-9]+D))(T(([0-9]+H)([0-9]+M)?([0-9]+(\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\.[0-9]+)?S)?|([0-9]+(\.[0-9]+)?S)))?)|(T(([0-9]+H)([0-9]+M)?([0-9]+(\.[0-9]+)?S)?|([0-9]+M)([0-9]+(\.[0-9]+)?S)?|([0-9]+(\.[0-9]+)?S))))</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</li>
+<li>from schema: <a href="https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/">https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -712,6 +753,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 
 
 

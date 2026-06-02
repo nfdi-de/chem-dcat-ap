@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc3.post4.dev0+6487672b
+version: 0.1.0rc3.post9.dev0+6a74d34c
 imports:
 - linkml:types
 - dcatapplus:latest/schema/dcat_ap_plus
@@ -163,8 +163,8 @@ types:
     description: A character string
     notes:
     - In RDF serializations, a slot with range of string is treated as a literal or
-      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
-      referenced with the lower case "string".
+      type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced
+      with the lower case "string".
     from_schema: https://w3id.org/linkml/types
     imported_from: linkml:types
     exact_mappings:
@@ -2613,9 +2613,7 @@ slots:
     range: DefinedTerm
     bindings:
     - range: QUDTQuantityKindEnum
-      obligation_level:
-        text: RECOMMENDED
-        description: The metadata element is recommended to be present in the model
+      obligation_level: &id001 RECOMMENDED
       binds_value_of: id
       description: Binds the type of a quantifiable attribute to a QUDT Quantity Kind
         instance from the QUDT Quantity Kind vocabulary.
@@ -2633,9 +2631,7 @@ slots:
     range: DefinedTerm
     bindings:
     - range: QUDTUnitEnum
-      obligation_level:
-        text: RECOMMENDED
-        description: The metadata element is recommended to be present in the model
+      obligation_level: &id002 RECOMMENDED
       binds_value_of: id
       description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
     recommended: true
@@ -8867,10 +8863,7 @@ classes:
         range: DefinedTerm
         bindings:
         - range: QUDTQuantityKindEnum
-          obligation_level:
-            text: RECOMMENDED
-            description: The metadata element is recommended to be present in the
-              model
+          obligation_level: *id001
           binds_value_of: id
           description: Binds the type of a quantifiable attribute to a QUDT Quantity
             Kind instance from the QUDT Quantity Kind vocabulary.
@@ -8881,10 +8874,7 @@ classes:
         range: DefinedTerm
         bindings:
         - range: QUDTUnitEnum
-          obligation_level:
-            text: RECOMMENDED
-            description: The metadata element is recommended to be present in the
-              model
+          obligation_level: *id002
           binds_value_of: id
           description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
         recommended: true
@@ -9938,9 +9928,9 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     class_uri: qudt:Quantity
-metamodel_version: 1.7.0
+metamodel_version: 1.11.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-05-01T14:24:46'
+source_file_date: '2026-06-02T09:14:10'
 source_file_size: 7589
-generation_date: '2026-05-01T14:24:58'
+generation_date: '2026-06-02T09:14:20'
 
