@@ -8,7 +8,7 @@
     "https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads"
   ],
   "id": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
-  "version": "0.1.0rc3.post5.dev0+33f48f06",
+  "version": "0.1.0rc3.post6.dev0+86151818",
   "imports": [
     "linkml:types",
     "dcatapplus:latest/schema/dcat_ap_plus",
@@ -10016,9 +10016,9 @@
   ],
   "metamodel_version": "1.11.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-06-01T12:34:00",
+  "source_file_date": "2026-06-01T14:28:49",
   "source_file_size": 7752,
-  "generation_date": "2026-06-01T12:34:03",
+  "generation_date": "2026-06-02T10:17:37",
   "@type": "SchemaDefinition",
   "@context": [
     "project\\jsonld/chem_dcat_ap.context.jsonld",

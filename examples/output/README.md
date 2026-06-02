@@ -2076,8 +2076,8 @@ is_about_entity:
   - description: compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
     has_molar_mass:
     - description: Molar mass as specified in the Chemotion repository.
-      has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMassee
-      unit: https://qudt.org/vocab/unit/GM-PER-MOLd
+      has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
+      unit: https://qudt.org/vocab/unit/GM-PER-MOL
       value: 204.072119
     - description: Molar mass as specified in PubChem
       has_quantity_type: http://qudt.org/vocab/quantitykind/MolarMass
