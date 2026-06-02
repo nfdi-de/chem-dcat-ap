@@ -84,6 +84,7 @@ nav:
   - Ontology Alignment: ontology-alignment.md
   - Adoption Guide: guidance.md
   - Quick Start: quickstart.md
+  - Working with Data: working-with-data.md
   - Schema Reference: elements/overview.md
   - Versioning: versioning.md
   - Users: users.md
