@@ -1,6 +1,6 @@
 ---
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: "0.1.0rc2.post36.dev0+e9bd12a9" # Managed by dynamic-versioning. Don't change this line!
+version: "0.1.0rc3.post6.dev0+86151818" # Managed by dynamic-versioning. Don't change this line!
 name: chem-dcat-ap
 title: ChemDCAT-AP
 description: |-

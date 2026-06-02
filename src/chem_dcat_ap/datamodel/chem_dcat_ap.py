@@ -1,5 +1,5 @@
 # Auto generated from chem_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-03-23T11:08:04
+# Generation date: 2026-06-02T10:18:08
 # Schema: chem-dcat-ap
 #
 # id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
@@ -59,8 +59,8 @@ from rdflib import (
 from linkml_runtime.linkml_model.types import Date, Decimal, Float, String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import Decimal, URIorCURIE, XSDDate
 
-metamodel_version = "1.7.0"
-version = "0.1.0rc2.post33.dev0+fb29e03e"
+metamodel_version = "1.11.0"
+version = "0.1.0rc3.post6.dev0+86151818"
 
 # Namespaces
 AFE = CurieNamespace('AFE', 'http://purl.allotrope.org/ontologies/equipment#AFE_')
@@ -323,9 +323,7 @@ class Activity(YAMLRoot):
             self.description = [self.description] if self.description is not None else []
         self.description = [v if isinstance(v, str) else str(v) for v in self.description]
 
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+        self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="has_part", slot_type=Activity, key_name="id", keyed=True)
 
@@ -337,13 +335,9 @@ class Activity(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="carried_out_by", slot_type=AgenticEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_qualitative_attribute, list):
-            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
-        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
+        self._normalize_inlined_as_list(slot_name="has_qualitative_attribute", slot_type=QualitativeAttribute, key_name="value", keyed=False)
 
-        if not isinstance(self.has_quantitative_attribute, list):
-            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
-        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
+        self._normalize_inlined_as_list(slot_name="has_quantitative_attribute", slot_type=QuantitativeAttribute, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="part_of", slot_type=Activity, key_name="id", keyed=True)
 
@@ -419,17 +413,11 @@ class AgenticEntity(YAMLRoot):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+        self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
 
-        if not isinstance(self.has_qualitative_attribute, list):
-            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
-        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
+        self._normalize_inlined_as_list(slot_name="has_qualitative_attribute", slot_type=QualitativeAttribute, key_name="value", keyed=False)
 
-        if not isinstance(self.has_quantitative_attribute, list):
-            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
-        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
+        self._normalize_inlined_as_list(slot_name="has_quantitative_attribute", slot_type=QuantitativeAttribute, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="has_part", slot_type=AgenticEntity, key_name="id", keyed=True)
 
@@ -498,9 +486,7 @@ class Catalogue(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="applicable_legislation", slot_type=LegalResource, key_name="id", keyed=True)
 
-        if not isinstance(self.catalogue, list):
-            self.catalogue = [self.catalogue] if self.catalogue is not None else []
-        self.catalogue = [v if isinstance(v, Catalogue) else Catalogue(**as_dict(v)) for v in self.catalogue]
+        self._normalize_inlined_as_list(slot_name="catalogue", slot_type=Catalogue, key_name="description", keyed=False)
 
         if self.creator is not None and not isinstance(self.creator, Agent):
             self.creator = Agent(**as_dict(self.creator))
@@ -511,9 +497,7 @@ class Catalogue(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="has_dataset", slot_type=Dataset, key_name="id", keyed=True)
 
-        if not isinstance(self.has_part, list):
-            self.has_part = [self.has_part] if self.has_part is not None else []
-        self.has_part = [v if isinstance(v, Catalogue) else Catalogue(**as_dict(v)) for v in self.has_part]
+        self._normalize_inlined_as_list(slot_name="has_part", slot_type=Catalogue, key_name="description", keyed=False)
 
         if self.homepage is not None and not isinstance(self.homepage, Document):
             self.homepage = Document(**as_dict(self.homepage))
@@ -528,9 +512,7 @@ class Catalogue(YAMLRoot):
         if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
             self.modification_date = XSDDate(self.modification_date)
 
-        if not isinstance(self.record, list):
-            self.record = [self.record] if self.record is not None else []
-        self.record = [v if isinstance(v, CatalogueRecord) else CatalogueRecord(**as_dict(v)) for v in self.record]
+        self._normalize_inlined_as_list(slot_name="record", slot_type=CatalogueRecord, key_name="modification_date", keyed=False)
 
         if self.release_date is not None and not isinstance(self.release_date, XSDDate):
             self.release_date = XSDDate(self.release_date)
@@ -538,17 +520,13 @@ class Catalogue(YAMLRoot):
         if self.rights is not None and not isinstance(self.rights, RightsStatement):
             self.rights = RightsStatement(**as_dict(self.rights))
 
-        if not isinstance(self.service, list):
-            self.service = [self.service] if self.service is not None else []
-        self.service = [v if isinstance(v, DataService) else DataService(**as_dict(v)) for v in self.service]
+        self._normalize_inlined_as_list(slot_name="service", slot_type=DataService, key_name="title", keyed=False)
 
         if not isinstance(self.temporal_coverage, list):
             self.temporal_coverage = [self.temporal_coverage] if self.temporal_coverage is not None else []
         self.temporal_coverage = [v if isinstance(v, PeriodOfTime) else PeriodOfTime(**as_dict(v)) for v in self.temporal_coverage]
 
-        if not isinstance(self.themes, list):
-            self.themes = [self.themes] if self.themes is not None else []
-        self.themes = [v if isinstance(v, ConceptScheme) else ConceptScheme(**as_dict(v)) for v in self.themes]
+        self._normalize_inlined_as_list(slot_name="themes", slot_type=ConceptScheme, key_name="title", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -866,9 +844,7 @@ class DataService(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="serves_dataset", slot_type=Dataset, key_name="id", keyed=True)
 
-        if not isinstance(self.theme, list):
-            self.theme = [self.theme] if self.theme is not None else []
-        self.theme = [v if isinstance(v, Concept) else Concept(**as_dict(v)) for v in self.theme]
+        self._normalize_inlined_as_list(slot_name="theme", slot_type=Concept, key_name="preferred_label", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -961,9 +937,7 @@ class Dataset(YAMLRoot):
             self.contact_point = [self.contact_point] if self.contact_point is not None else []
         self.contact_point = [v if isinstance(v, Kind) else Kind(**as_dict(v)) for v in self.contact_point]
 
-        if not isinstance(self.creator, list):
-            self.creator = [self.creator] if self.creator is not None else []
-        self.creator = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.creator]
+        self._normalize_inlined_as_list(slot_name="creator", slot_type=Agent, key_name="name", keyed=False)
 
         if not isinstance(self.dataset_distribution, list):
             self.dataset_distribution = [self.dataset_distribution] if self.dataset_distribution is not None else []
@@ -984,9 +958,7 @@ class Dataset(YAMLRoot):
             self.identifier = [self.identifier] if self.identifier is not None else []
         self.identifier = [v if isinstance(v, str) else str(v) for v in self.identifier]
 
-        if not isinstance(self.in_series, list):
-            self.in_series = [self.in_series] if self.in_series is not None else []
-        self.in_series = [v if isinstance(v, DatasetSeries) else DatasetSeries(**as_dict(v)) for v in self.in_series]
+        self._normalize_inlined_as_list(slot_name="in_series", slot_type=DatasetSeries, key_name="description", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="is_referenced_by", slot_type=Resource, key_name="id", keyed=True)
 
@@ -1003,9 +975,7 @@ class Dataset(YAMLRoot):
         if self.modification_date is not None and not isinstance(self.modification_date, XSDDate):
             self.modification_date = XSDDate(self.modification_date)
 
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+        self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
 
         if not isinstance(self.provenance, list):
             self.provenance = [self.provenance] if self.provenance is not None else []
@@ -1043,13 +1013,9 @@ class Dataset(YAMLRoot):
         if self.temporal_resolution is not None and not isinstance(self.temporal_resolution, str):
             self.temporal_resolution = str(self.temporal_resolution)
 
-        if not isinstance(self.theme, list):
-            self.theme = [self.theme] if self.theme is not None else []
-        self.theme = [v if isinstance(v, Concept) else Concept(**as_dict(v)) for v in self.theme]
+        self._normalize_inlined_as_list(slot_name="theme", slot_type=Concept, key_name="preferred_label", keyed=False)
 
-        if not isinstance(self.type, list):
-            self.type = [self.type] if self.type is not None else []
-        self.type = [v if isinstance(v, Concept) else Concept(**as_dict(v)) for v in self.type]
+        self._normalize_inlined_as_list(slot_name="type", slot_type=Concept, key_name="preferred_label", keyed=False)
 
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
@@ -1287,9 +1253,7 @@ class Device(AgenticEntity):
 
         self._normalize_inlined_as_list(slot_name="has_part", slot_type=Device, key_name="id", keyed=True)
 
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+        self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -1336,9 +1300,7 @@ class Distribution(YAMLRoot):
             self.MissingRequiredField("access_URL")
         self._normalize_inlined_as_list(slot_name="access_URL", slot_type=Resource, key_name="id", keyed=True)
 
-        if not isinstance(self.access_service, list):
-            self.access_service = [self.access_service] if self.access_service is not None else []
-        self.access_service = [v if isinstance(v, DataService) else DataService(**as_dict(v)) for v in self.access_service]
+        self._normalize_inlined_as_list(slot_name="access_service", slot_type=DataService, key_name="title", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="applicable_legislation", slot_type=LegalResource, key_name="id", keyed=True)
 
@@ -1445,17 +1407,11 @@ class Entity(YAMLRoot):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+        self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
 
-        if not isinstance(self.has_qualitative_attribute, list):
-            self.has_qualitative_attribute = [self.has_qualitative_attribute] if self.has_qualitative_attribute is not None else []
-        self.has_qualitative_attribute = [v if isinstance(v, QualitativeAttribute) else QualitativeAttribute(**as_dict(v)) for v in self.has_qualitative_attribute]
+        self._normalize_inlined_as_list(slot_name="has_qualitative_attribute", slot_type=QualitativeAttribute, key_name="value", keyed=False)
 
-        if not isinstance(self.has_quantitative_attribute, list):
-            self.has_quantitative_attribute = [self.has_quantitative_attribute] if self.has_quantitative_attribute is not None else []
-        self.has_quantitative_attribute = [v if isinstance(v, QuantitativeAttribute) else QuantitativeAttribute(**as_dict(v)) for v in self.has_quantitative_attribute]
+        self._normalize_inlined_as_list(slot_name="has_quantitative_attribute", slot_type=QuantitativeAttribute, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="has_part", slot_type=Entity, key_name="id", keyed=True)
 
@@ -1491,9 +1447,7 @@ class EvaluatedActivity(Activity):
         if not isinstance(self.id, EvaluatedActivityId):
             self.id = EvaluatedActivityId(self.id)
 
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+        self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -1530,9 +1484,7 @@ class EvaluatedEntity(Entity):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+        self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -1779,9 +1731,7 @@ class Software(AgenticEntity):
 
         self._normalize_inlined_as_list(slot_name="has_part", slot_type=Software, key_name="id", keyed=True)
 
-        if not isinstance(self.other_identifier, list):
-            self.other_identifier = [self.other_identifier] if self.other_identifier is not None else []
-        self.other_identifier = [v if isinstance(v, Identifier) else Identifier(**as_dict(v)) for v in self.other_identifier]
+        self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -2088,9 +2038,7 @@ class LicenseDocument(SupportiveEntity):
         if not isinstance(self.id, LicenseDocumentId):
             self.id = LicenseDocumentId(self.id)
 
-        if not isinstance(self.type, list):
-            self.type = [self.type] if self.type is not None else []
-        self.type = [v if isinstance(v, Concept) else Concept(**as_dict(v)) for v in self.type]
+        self._normalize_inlined_as_list(slot_name="type", slot_type=Concept, key_name="preferred_label", keyed=False)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -2472,29 +2420,17 @@ class ChemicalEntity(Entity):
         if not isinstance(self.id, ChemicalEntityId):
             self.id = ChemicalEntityId(self.id)
 
-        if not isinstance(self.inchi, list):
-            self.inchi = [self.inchi] if self.inchi is not None else []
-        self.inchi = [v if isinstance(v, InChi) else InChi(**as_dict(v)) for v in self.inchi]
+        self._normalize_inlined_as_list(slot_name="inchi", slot_type=InChi, key_name="value", keyed=False)
 
-        if not isinstance(self.inchikey, list):
-            self.inchikey = [self.inchikey] if self.inchikey is not None else []
-        self.inchikey = [v if isinstance(v, InChIKey) else InChIKey(**as_dict(v)) for v in self.inchikey]
+        self._normalize_inlined_as_list(slot_name="inchikey", slot_type=InChIKey, key_name="value", keyed=False)
 
-        if not isinstance(self.smiles, list):
-            self.smiles = [self.smiles] if self.smiles is not None else []
-        self.smiles = [v if isinstance(v, SMILES) else SMILES(**as_dict(v)) for v in self.smiles]
+        self._normalize_inlined_as_list(slot_name="smiles", slot_type=SMILES, key_name="value", keyed=False)
 
-        if not isinstance(self.molecular_formula, list):
-            self.molecular_formula = [self.molecular_formula] if self.molecular_formula is not None else []
-        self.molecular_formula = [v if isinstance(v, MolecularFormula) else MolecularFormula(**as_dict(v)) for v in self.molecular_formula]
+        self._normalize_inlined_as_list(slot_name="molecular_formula", slot_type=MolecularFormula, key_name="value", keyed=False)
 
-        if not isinstance(self.iupac_name, list):
-            self.iupac_name = [self.iupac_name] if self.iupac_name is not None else []
-        self.iupac_name = [v if isinstance(v, IUPACName) else IUPACName(**as_dict(v)) for v in self.iupac_name]
+        self._normalize_inlined_as_list(slot_name="iupac_name", slot_type=IUPACName, key_name="value", keyed=False)
 
-        if not isinstance(self.has_molar_mass, list):
-            self.has_molar_mass = [self.has_molar_mass] if self.has_molar_mass is not None else []
-        self.has_molar_mass = [v if isinstance(v, MolarMass) else MolarMass(**as_dict(v)) for v in self.has_molar_mass]
+        self._normalize_inlined_as_list(slot_name="has_molar_mass", slot_type=MolarMass, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="has_part", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
@@ -2691,17 +2627,11 @@ class ChemicalReaction(EvaluatedActivity):
 
         self._normalize_inlined_as_list(slot_name="used_reactor", slot_type=Reactor, key_name="id", keyed=True)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
-        if not isinstance(self.has_yield, list):
-            self.has_yield = [self.has_yield] if self.has_yield is not None else []
-        self.has_yield = [v if isinstance(v, Yield) else Yield(**as_dict(v)) for v in self.has_yield]
+        self._normalize_inlined_as_list(slot_name="has_yield", slot_type=Yield, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="has_reaction_step", slot_type=ChemicalReaction, key_name="id", keyed=True)
 
@@ -2742,9 +2672,7 @@ class DissolvingSubstance(AgenticEntity):
         if not isinstance(self.id, DissolvingSubstanceId):
             self.id = DissolvingSubstanceId(self.id)
 
-        if not isinstance(self.has_percentage_of_total, list):
-            self.has_percentage_of_total = [self.has_percentage_of_total] if self.has_percentage_of_total is not None else []
-        self.has_percentage_of_total = [v if isinstance(v, PercentageOfTotal) else PercentageOfTotal(**as_dict(v)) for v in self.has_percentage_of_total]
+        self._normalize_inlined_as_list(slot_name="has_percentage_of_total", slot_type=PercentageOfTotal, key_name="value", keyed=False)
 
         if self.alternative_label is not None and not isinstance(self.alternative_label, str):
             self.alternative_label = str(self.alternative_label)
@@ -2752,39 +2680,23 @@ class DissolvingSubstance(AgenticEntity):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
-        if not isinstance(self.has_concentration, list):
-            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
-        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+        self._normalize_inlined_as_list(slot_name="has_concentration", slot_type=Concentration, key_name="value", keyed=False)
 
-        if not isinstance(self.has_ph_value, list):
-            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
-        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+        self._normalize_inlined_as_list(slot_name="has_ph_value", slot_type=PHValue, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_amount, list):
-            self.has_amount = [self.has_amount] if self.has_amount is not None else []
-        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+        self._normalize_inlined_as_list(slot_name="has_amount", slot_type=AmountOfSubstance, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -2822,9 +2734,7 @@ class Catalyst(AgenticEntity):
         if not isinstance(self.id, CatalystId):
             self.id = CatalystId(self.id)
 
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
+        self._normalize_inlined_as_list(slot_name="has_molar_equivalent", slot_type=MolarEquivalent, key_name="value", keyed=False)
 
         if self.alternative_label is not None and not isinstance(self.alternative_label, str):
             self.alternative_label = str(self.alternative_label)
@@ -2832,39 +2742,23 @@ class Catalyst(AgenticEntity):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
-        if not isinstance(self.has_concentration, list):
-            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
-        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+        self._normalize_inlined_as_list(slot_name="has_concentration", slot_type=Concentration, key_name="value", keyed=False)
 
-        if not isinstance(self.has_ph_value, list):
-            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
-        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+        self._normalize_inlined_as_list(slot_name="has_ph_value", slot_type=PHValue, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_amount, list):
-            self.has_amount = [self.has_amount] if self.has_amount is not None else []
-        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+        self._normalize_inlined_as_list(slot_name="has_amount", slot_type=AmountOfSubstance, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -2902,25 +2796,15 @@ class Reactor(Device):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -2934,8 +2818,8 @@ class Yield(QuantitativeAttribute):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
-    class_class_curie: ClassVar[str] = "qudt:Quantity"
+    class_class_uri: ClassVar[URIRef] = CHMO["0002855"]
+    class_class_curie: ClassVar[str] = "CHMO:0002855"
     class_name: ClassVar[str] = "Yield"
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.Yield
 
@@ -3003,25 +2887,15 @@ class MaterialisticMixin(YAMLRoot):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3046,19 +2920,13 @@ class ChemicalSubstanceMixin(MaterialisticMixin):
     has_amount: Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if not isinstance(self.has_concentration, list):
-            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
-        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+        self._normalize_inlined_as_list(slot_name="has_concentration", slot_type=Concentration, key_name="value", keyed=False)
 
-        if not isinstance(self.has_ph_value, list):
-            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
-        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+        self._normalize_inlined_as_list(slot_name="has_ph_value", slot_type=PHValue, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_amount, list):
-            self.has_amount = [self.has_amount] if self.has_amount is not None else []
-        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+        self._normalize_inlined_as_list(slot_name="has_amount", slot_type=AmountOfSubstance, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3112,25 +2980,15 @@ class MaterialEntity(Entity):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3173,43 +3031,25 @@ class StartingMaterial(MaterialEntity):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
+        self._normalize_inlined_as_list(slot_name="has_molar_equivalent", slot_type=MolarEquivalent, key_name="value", keyed=False)
 
-        if not isinstance(self.has_concentration, list):
-            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
-        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+        self._normalize_inlined_as_list(slot_name="has_concentration", slot_type=Concentration, key_name="value", keyed=False)
 
-        if not isinstance(self.has_ph_value, list):
-            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
-        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+        self._normalize_inlined_as_list(slot_name="has_ph_value", slot_type=PHValue, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_amount, list):
-            self.has_amount = [self.has_amount] if self.has_amount is not None else []
-        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+        self._normalize_inlined_as_list(slot_name="has_amount", slot_type=AmountOfSubstance, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3252,43 +3092,25 @@ class Reagent(MaterialEntity):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
-        if not isinstance(self.has_molar_equivalent, list):
-            self.has_molar_equivalent = [self.has_molar_equivalent] if self.has_molar_equivalent is not None else []
-        self.has_molar_equivalent = [v if isinstance(v, MolarEquivalent) else MolarEquivalent(**as_dict(v)) for v in self.has_molar_equivalent]
+        self._normalize_inlined_as_list(slot_name="has_molar_equivalent", slot_type=MolarEquivalent, key_name="value", keyed=False)
 
-        if not isinstance(self.has_concentration, list):
-            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
-        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+        self._normalize_inlined_as_list(slot_name="has_concentration", slot_type=Concentration, key_name="value", keyed=False)
 
-        if not isinstance(self.has_ph_value, list):
-            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
-        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+        self._normalize_inlined_as_list(slot_name="has_ph_value", slot_type=PHValue, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_amount, list):
-            self.has_amount = [self.has_amount] if self.has_amount is not None else []
-        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+        self._normalize_inlined_as_list(slot_name="has_amount", slot_type=AmountOfSubstance, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3330,39 +3152,23 @@ class ChemicalProduct(MaterialEntity):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
-        if not isinstance(self.has_concentration, list):
-            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
-        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+        self._normalize_inlined_as_list(slot_name="has_concentration", slot_type=Concentration, key_name="value", keyed=False)
 
-        if not isinstance(self.has_ph_value, list):
-            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
-        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+        self._normalize_inlined_as_list(slot_name="has_ph_value", slot_type=PHValue, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_amount, list):
-            self.has_amount = [self.has_amount] if self.has_amount is not None else []
-        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+        self._normalize_inlined_as_list(slot_name="has_amount", slot_type=AmountOfSubstance, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3404,25 +3210,15 @@ class MaterialSample(EvaluatedEntity):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3464,39 +3260,23 @@ class SubstanceSample(MaterialSample):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
-        if not isinstance(self.has_concentration, list):
-            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
-        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+        self._normalize_inlined_as_list(slot_name="has_concentration", slot_type=Concentration, key_name="value", keyed=False)
 
-        if not isinstance(self.has_ph_value, list):
-            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
-        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+        self._normalize_inlined_as_list(slot_name="has_ph_value", slot_type=PHValue, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_amount, list):
-            self.has_amount = [self.has_amount] if self.has_amount is not None else []
-        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+        self._normalize_inlined_as_list(slot_name="has_amount", slot_type=AmountOfSubstance, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3538,39 +3318,23 @@ class PolymerSample(SubstanceSample):
         if self.has_physical_state is not None and not isinstance(self.has_physical_state, PhysicalStateEnum):
             self.has_physical_state = PhysicalStateEnum(self.has_physical_state)
 
-        if not isinstance(self.has_temperature, list):
-            self.has_temperature = [self.has_temperature] if self.has_temperature is not None else []
-        self.has_temperature = [v if isinstance(v, Temperature) else Temperature(**as_dict(v)) for v in self.has_temperature]
+        self._normalize_inlined_as_list(slot_name="has_temperature", slot_type=Temperature, key_name="value", keyed=False)
 
-        if not isinstance(self.has_mass, list):
-            self.has_mass = [self.has_mass] if self.has_mass is not None else []
-        self.has_mass = [v if isinstance(v, Mass) else Mass(**as_dict(v)) for v in self.has_mass]
+        self._normalize_inlined_as_list(slot_name="has_mass", slot_type=Mass, key_name="value", keyed=False)
 
-        if not isinstance(self.has_volume, list):
-            self.has_volume = [self.has_volume] if self.has_volume is not None else []
-        self.has_volume = [v if isinstance(v, Volume) else Volume(**as_dict(v)) for v in self.has_volume]
+        self._normalize_inlined_as_list(slot_name="has_volume", slot_type=Volume, key_name="value", keyed=False)
 
-        if not isinstance(self.has_density, list):
-            self.has_density = [self.has_density] if self.has_density is not None else []
-        self.has_density = [v if isinstance(v, Density) else Density(**as_dict(v)) for v in self.has_density]
+        self._normalize_inlined_as_list(slot_name="has_density", slot_type=Density, key_name="value", keyed=False)
 
-        if not isinstance(self.has_pressure, list):
-            self.has_pressure = [self.has_pressure] if self.has_pressure is not None else []
-        self.has_pressure = [v if isinstance(v, Pressure) else Pressure(**as_dict(v)) for v in self.has_pressure]
+        self._normalize_inlined_as_list(slot_name="has_pressure", slot_type=Pressure, key_name="value", keyed=False)
 
-        if not isinstance(self.has_concentration, list):
-            self.has_concentration = [self.has_concentration] if self.has_concentration is not None else []
-        self.has_concentration = [v if isinstance(v, Concentration) else Concentration(**as_dict(v)) for v in self.has_concentration]
+        self._normalize_inlined_as_list(slot_name="has_concentration", slot_type=Concentration, key_name="value", keyed=False)
 
-        if not isinstance(self.has_ph_value, list):
-            self.has_ph_value = [self.has_ph_value] if self.has_ph_value is not None else []
-        self.has_ph_value = [v if isinstance(v, PHValue) else PHValue(**as_dict(v)) for v in self.has_ph_value]
+        self._normalize_inlined_as_list(slot_name="has_ph_value", slot_type=PHValue, key_name="value", keyed=False)
 
         self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
-        if not isinstance(self.has_amount, list):
-            self.has_amount = [self.has_amount] if self.has_amount is not None else []
-        self.has_amount = [v if isinstance(v, AmountOfSubstance) else AmountOfSubstance(**as_dict(v)) for v in self.has_amount]
+        self._normalize_inlined_as_list(slot_name="has_amount", slot_type=AmountOfSubstance, key_name="value", keyed=False)
 
         super().__post_init__(**kwargs)
 
@@ -3769,10 +3533,6 @@ class PhysicalStateEnum(EnumDefinitionImpl):
         text="SOLID",
         description="A state of matter in which molecules are closely packed and cannot move past each other.",
         meaning=PATO["0001736"])
-    CRYSTAL = PermissibleValue(
-        text="CRYSTAL",
-        description="""A solid state of matter whose constituents (such as atoms, molecules, or ions) are arranged in a highly ordered microscopic structure, forming a crystal lattice that extends in all directions.""",
-        meaning=PATO["0002066"])
     LIQUID = PermissibleValue(
         text="LIQUID",
         description="""A state of matter with a definite volume but no fixed shape. Liquids adapt to the shape of their container and are nearly incompressible, maintaining their volume even under pressure.""",
@@ -3781,6 +3541,10 @@ class PhysicalStateEnum(EnumDefinitionImpl):
         text="GASEOUS",
         description="A state of matter with neither fixed volume nor fixed shape.",
         meaning=PATO["0001737"])
+    PLASMA = PermissibleValue(
+        text="PLASMA",
+        description="""A state of matter in which a gas becomes ionized and conducts electricity, often found in high-energy environments such as stars or lightning.""",
+        meaning=PATO["0015012"])
 
     _defn = EnumDefinition(
         name="PhysicalStateEnum",

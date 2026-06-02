@@ -86,10 +86,7 @@
                 },
                 "id": {
                     "description": "A slot to provide an URI for an entity within this schema.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "other_identifier": {
                     "description": "The slot to provide a secondary identifier of the Activity.",
@@ -1377,7 +1374,7 @@
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Pressure"
                     },
@@ -1407,7 +1404,7 @@
                     ]
                 },
                 "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Temperature"
                     },
@@ -1783,7 +1780,7 @@
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Pressure"
                     },
@@ -1813,7 +1810,7 @@
                     ]
                 },
                 "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Temperature"
                     },
@@ -1917,7 +1914,7 @@
                     ]
                 },
                 "generated_product": {
-                    "description": "The slot to specify the Product of a ChemicalReaction.",
+                    "description": "The slot to specify the Product(s) of a ChemicalReaction.",
                     "items": {
                         "$ref": "#/$defs/ChemicalProduct"
                     },
@@ -2141,7 +2138,7 @@
                     ]
                 },
                 "used_starting_material": {
-                    "description": "The slot to specify the Reagent(s) of a ChemicalReaction.",
+                    "description": "The slot to specify the StartingMaterial(s) of a ChemicalReaction.",
                     "items": {
                         "$ref": "#/$defs/StartingMaterial"
                     },
@@ -2155,6 +2152,145 @@
                 "id"
             ],
             "title": "ChemicalReaction",
+            "type": "object"
+        },
+        "ChemicalSubstanceMixin": {
+            "additionalProperties": false,
+            "description": "A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.",
+            "properties": {
+                "alternative_label": {
+                    "description": "The slot to specify an alternative label, name or title for a MaterialEntity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "composed_of": {
+                    "description": "The slot to provide the chemical entities of which a ChemicalSubstance is composed of.",
+                    "items": {
+                        "$ref": "#/$defs/ChemicalEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_amount": {
+                    "description": "The slot to provide the AmountConcentration of a ChemicalSubstance.",
+                    "items": {
+                        "$ref": "#/$defs/AmountOfSubstance"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_concentration": {
+                    "description": "The slot to provide the Concentration of a ChemicalSubstance.",
+                    "items": {
+                        "$ref": "#/$defs/Concentration"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_density": {
+                    "description": "The slot to provide the Density of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Density"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_mass": {
+                    "description": "The slot to provide the Mass of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Mass"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_ph_value": {
+                    "description": "The slot to provide the PHValue of a ChemicalSubstance.",
+                    "items": {
+                        "$ref": "#/$defs/PHValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_physical_state": {
+                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "description": "The slot to specify the physical state of a MaterialEntity."
+                },
+                "has_pressure": {
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Pressure"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_temperature": {
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Temperature"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_volume": {
+                    "description": "The slot to provide the Volume of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Volume"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ChemicalSubstanceMixin",
+            "type": "object"
+        },
+        "ClassifierMixin": {
+            "additionalProperties": false,
+            "description": "A mixin with which an entity of this schema can be classified via an additional rdf:type or dcterms:type assertion.",
+            "properties": {
+                "rdf_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The slot to specify the ontology class that is instantiated by an entity."
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/DefinedTerm"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This slot is described in more detail within the class in which it is used."
+                }
+            },
+            "title": "ClassifierMixin",
             "type": "object"
         },
         "Concentration": {
@@ -3623,7 +3759,7 @@
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Pressure"
                     },
@@ -3653,7 +3789,7 @@
                     ]
                 },
                 "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Temperature"
                     },
@@ -4881,7 +5017,7 @@
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Pressure"
                     },
@@ -4911,7 +5047,7 @@
                     ]
                 },
                 "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Temperature"
                     },
@@ -5054,7 +5190,7 @@
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Pressure"
                     },
@@ -5084,7 +5220,7 @@
                     ]
                 },
                 "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Temperature"
                     },
@@ -5171,6 +5307,75 @@
                 "id"
             ],
             "title": "MaterialSample",
+            "type": "object"
+        },
+        "MaterialisticMixin": {
+            "additionalProperties": false,
+            "description": "A LinkML mixin used to pass down properties common to all material entities. It is needed for example to have MaterialSample have the same properties as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.",
+            "properties": {
+                "alternative_label": {
+                    "description": "The slot to specify an alternative label, name or title for a MaterialEntity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "has_density": {
+                    "description": "The slot to provide the Density of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Density"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_mass": {
+                    "description": "The slot to provide the Mass of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Mass"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_physical_state": {
+                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "description": "The slot to specify the physical state of a MaterialEntity."
+                },
+                "has_pressure": {
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Pressure"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_temperature": {
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Temperature"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_volume": {
+                    "description": "The slot to provide the Volume of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Volume"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "MaterialisticMixin",
             "type": "object"
         },
         "MediaType": {
@@ -5580,9 +5785,9 @@
             "description": "",
             "enum": [
                 "SOLID",
-                "CRYSTAL",
                 "LIQUID",
-                "GASEOUS"
+                "GASEOUS",
+                "PLASMA"
             ],
             "title": "PhysicalStateEnum",
             "type": "string"
@@ -5651,6 +5856,115 @@
                 }
             },
             "title": "Policy",
+            "type": "object"
+        },
+        "PolymerMixin": {
+            "additionalProperties": false,
+            "description": "A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..",
+            "properties": {
+                "alternative_label": {
+                    "description": "The slot to specify an alternative label, name or title for a MaterialEntity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "composed_of": {
+                    "description": "The slot to provide the chemical entities of which a ChemicalSubstance is composed of.",
+                    "items": {
+                        "$ref": "#/$defs/ChemicalEntity"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_amount": {
+                    "description": "The slot to provide the AmountConcentration of a ChemicalSubstance.",
+                    "items": {
+                        "$ref": "#/$defs/AmountOfSubstance"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_concentration": {
+                    "description": "The slot to provide the Concentration of a ChemicalSubstance.",
+                    "items": {
+                        "$ref": "#/$defs/Concentration"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_density": {
+                    "description": "The slot to provide the Density of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Density"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_mass": {
+                    "description": "The slot to provide the Mass of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Mass"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_ph_value": {
+                    "description": "The slot to provide the PHValue of a ChemicalSubstance.",
+                    "items": {
+                        "$ref": "#/$defs/PHValue"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_physical_state": {
+                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "description": "The slot to specify the physical state of a MaterialEntity."
+                },
+                "has_pressure": {
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Pressure"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_temperature": {
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
+                    "items": {
+                        "$ref": "#/$defs/Temperature"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "has_volume": {
+                    "description": "The slot to provide the Volume of a MaterialEntity.",
+                    "items": {
+                        "$ref": "#/$defs/Volume"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "title": "PolymerMixin",
             "type": "object"
         },
         "PolymerSample": {
@@ -5757,7 +6071,7 @@
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Pressure"
                     },
@@ -5787,7 +6101,7 @@
                     ]
                 },
                 "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Temperature"
                     },
@@ -6705,7 +7019,7 @@
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Pressure"
                     },
@@ -6735,7 +7049,7 @@
                     ]
                 },
                 "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Temperature"
                     },
@@ -6917,7 +7231,7 @@
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Pressure"
                     },
@@ -6947,7 +7261,7 @@
                     ]
                 },
                 "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Temperature"
                     },
@@ -7402,7 +7716,7 @@
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Pressure"
                     },
@@ -7432,7 +7746,7 @@
                     ]
                 },
                 "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Temperature"
                     },
@@ -7615,7 +7929,7 @@
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
-                    "description": "The slot to provide the Pressure of a MaterialEntity.",
+                    "description": "The slot to provide data about the pressure of a MaterialEntity or an Activity, whereas the Pressure of an Activity is ontologically a quality borne by the material entities participating in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Pressure"
                     },
@@ -7645,7 +7959,7 @@
                     ]
                 },
                 "has_temperature": {
-                    "description": "The slot to provide the Temperature of a MaterialEntity.",
+                    "description": "The slot to provide the Temperature of a MaterialEntity or an Activity, whereas the temperature of the Activity is ontologically rooted in the temperature of the material entities that participate in the Activity.",
                     "items": {
                         "$ref": "#/$defs/Temperature"
                     },
@@ -8599,8 +8913,8 @@
     "$id": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "metamodel_version": "1.7.0",
+    "metamodel_version": "1.11.0",
     "title": "chem-dcat-ap",
     "type": "object",
-    "version": "0.1.0rc2.post33.dev0+fb29e03e"
+    "version": "0.1.0rc3.post6.dev0+86151818"
 }
