@@ -1,5 +1,5 @@
 {
-  "id": "doi:10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ",
+  "id": "https://doi.org/10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ",
   "description": [
     "This dataset contains the recorded information for the Chemotion Repository synthesis CRR-56408."
   ],
@@ -8,7 +8,7 @@
   ],
   "was_generated_by": [
     {
-      "id": "doi:10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ#Monitoring",
+      "id": "https://doi.org/10.14272/reaction/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NUHFF-ZZZ#Monitoring",
       "title": [
         "Monitoring of the Chemotion Repo synthesis CRR-56408"
       ],
@@ -25,19 +25,19 @@
   "related_resource": [
     {
       "title": "SYNTHESE UND NMR-UNTERSUCHUNGEN VON 2-FLUOR-TRIPHENYLPHOSPHINEN UND IHREN DERIVATEN",
-      "id": "doi:10.1080/03086648208081193"
+      "id": "https://doi.org/10.1080/03086648208081193"
     },
     {
       "title": "Synthesis and thermal behavior of dimethyl scandium complexes featuring anilido-phosphinimine ancillary ligands",
-      "id": "doi:10.1016/j.jorganchem.2007.08.037"
+      "id": "https://doi.org/10.1016/j.jorganchem.2007.08.037"
     },
     {
       "title": "Role of through space 2p-3d overlap in the alkylation of phosphines",
-      "id": "doi:10.1021/ja00491a030"
+      "id": "https://doi.org/10.1021/ja00491a030"
     },
     {
       "title": "Arylation of Secondary Phosphines with Diaryliodonium Salts under Metal-Free and Non-Photochemical Conditions",
-      "id": "doi:10.1002/adsc.202400919"
+      "id": "https://doi.org/10.1002/adsc.202400919"
     }
   ],
   "is_about_activity": [
@@ -112,7 +112,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "ENVO:01001739",
+                "id": "http://purl.obolibrary.org/obo/RXNO_01001739",
                 "title": "warming of a fluid"
               }
             },
@@ -145,7 +145,7 @@
                       "title": "Concentration [mol/L]",
                       "unit": "https://qudt.org/vocab/unit/MOL-PER-L",
                       "rdf_type": {
-                        "id": "CHMO:0002820",
+                        "id": "http://purl.obolibrary.org/obo/CHMO_0002820",
                         "title": "concentration"
                       }
                     }
@@ -154,7 +154,7 @@
                     {
                       "id": "https://pubchem.ncbi.nlm.nih.gov/compound/313",
                       "rdf_type": {
-                        "id": "CHEBI:17883",
+                        "id": "http://purl.obolibrary.org/obo/CHEBI_17883",
                         "title": "hydrogen chloride"
                       }
                     }
@@ -176,7 +176,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "OBI:0000274",
+                "id": "http://purl.obolibrary.org/obo/OBI_0000274",
                 "title": "adding a material entity into a target"
               }
             },
@@ -213,7 +213,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0001577",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0001577",
                 "title": "extraction"
               }
             },
@@ -246,13 +246,13 @@
                       "id": "https://pubchem.ncbi.nlm.nih.gov/compound/516892",
                       "title": "sodium hydrogen carbonate",
                       "rdf_type": {
-                        "id": "CHEBI:32139",
+                        "id": "http://purl.obolibrary.org/obo/CHEBI_32139",
                         "title": "sodium hydrogencarbonate"
                       }
                     }
                   ],
                   "rdf_type": {
-                    "id": "CHEBI:59999",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
                     "title": "chemical substance"
                   }
                 },
@@ -268,7 +268,7 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "ENVO:00002006",
+                    "id": "http://purl.obolibrary.org/obo/RXNO_00002006",
                     "title": "liquid water"
                   }
                 },
@@ -284,7 +284,7 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "ENVO:00003044",
+                    "id": "http://purl.obolibrary.org/obo/RXNO_00003044",
                     "title": "brine"
                   }
                 }
@@ -304,7 +304,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "OBI:0302888",
+                "id": "http://purl.obolibrary.org/obo/OBI_0302888",
                 "title": "washing"
               }
             },
@@ -328,13 +328,13 @@
                     {
                       "id": "https://pubchem.ncbi.nlm.nih.gov/compound/24436",
                       "rdf_type": {
-                        "id": "CHEBI:32149",
+                        "id": "http://purl.obolibrary.org/obo/CHEBI_32149",
                         "title": "sodium sulfate"
                       }
                     }
                   ],
                   "rdf_type": {
-                    "id": "CHEBI:59999",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
                     "title": "chemical substance"
                   }
                 }
@@ -354,7 +354,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0001549",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0001549",
                 "title": "sample drying"
               }
             },
@@ -387,7 +387,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0001640",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0001640",
                 "title": "filtration"
               }
             },
@@ -420,7 +420,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002208",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002208",
                 "title": "solvent evaporation"
               }
             }
@@ -436,7 +436,7 @@
               "id": "https://www.chemotion-repository.net/pid/56408#step-2_Output-1",
               "title": "step-2_Output-1: Crude phosphine intermediate (pale yellow oil)",
               "rdf_type": {
-                "id": "CHEBI:60004",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_60004",
                 "title": "mixture"
               }
             }
@@ -450,7 +450,7 @@
             }
           ],
           "rdf_type": {
-            "id": "OBI:0000094",
+            "id": "http://purl.obolibrary.org/obo/OBI_0000094",
             "title": "material processing"
           }
         },
@@ -485,7 +485,7 @@
                   "id": "https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-1",
                   "title": "step-4_ReactionMixture-1: crude residue after evaporation",
                   "rdf_type": {
-                    "id": "CHEBI:60004",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_60004",
                     "title": "mixture"
                   }
                 }
@@ -499,7 +499,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002208",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002208",
                 "title": "solvent evaporation"
               }
             },
@@ -533,7 +533,7 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "CHEBI:75958",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_75958",
                     "title": "solution"
                   }
                 }
@@ -547,7 +547,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002773",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002773",
                 "title": "dissolving"
               }
             },
@@ -589,7 +589,7 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "ENVO:00002006",
+                    "id": "http://purl.obolibrary.org/obo/RXNO_00002006",
                     "title": "liquid water"
                   }
                 },
@@ -604,7 +604,7 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "ENVO:00003044",
+                    "id": "http://purl.obolibrary.org/obo/RXNO_00003044",
                     "title": "brine"
                   }
                 }
@@ -614,7 +614,7 @@
                   "id": "https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-2",
                   "title": "Washed organic layer",
                   "rdf_type": {
-                    "id": "CHEBI:59999",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
                     "title": "chemical substance"
                   }
                 }
@@ -628,7 +628,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "OBI:0302888",
+                "id": "http://purl.obolibrary.org/obo/OBI_0302888",
                 "title": "washing"
               }
             },
@@ -652,7 +652,7 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "CHEBI:59999",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
                     "title": "chemical substance"
                   }
                 }
@@ -662,7 +662,7 @@
                   "id": "https://www.chemotion-repository.net/pid/56408#step-4_ReactionMixture-3",
                   "title": "step-4_ReactionMixture-3: dried organic solution",
                   "rdf_type": {
-                    "id": "CHEBI:59999",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
                     "title": "chemical substance"
                   }
                 }
@@ -676,7 +676,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0001549",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0001549",
                 "title": "sample drying"
               }
             },
@@ -696,7 +696,7 @@
                   "id": "https://www.chemotion-repository.net/pid/56408#step-4_Output-1",
                   "title": "step-4_Output-1: Crude 1-diphenylphosphoryl-2-fluorobenzene",
                   "rdf_type": {
-                    "id": "CHEBI:59999",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
                     "title": "chemical substance"
                   }
                 }
@@ -710,7 +710,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002208",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002208",
                 "title": "solvent evaporation"
               }
             }
@@ -726,7 +726,7 @@
               "id": "https://www.chemotion-repository.net/pid/56408#step-4_Output-1",
               "title": "step-4_Output-1: Crude 1-diphenylphosphoryl-2-fluorobenzene",
               "rdf_type": {
-                "id": "CHEBI:60004",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_60004",
                 "title": "mixture"
               }
             }
@@ -740,7 +740,7 @@
             }
           ],
           "rdf_type": {
-            "id": "OBI:0000094",
+            "id": "http://purl.obolibrary.org/obo/OBI_0000094",
             "title": "material processing"
           }
         },
@@ -764,7 +764,7 @@
                 {
                   "id": "https://pubchem.ncbi.nlm.nih.gov/compound/8078",
                   "rdf_type": {
-                    "id": "CHEBI:29005",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_29005",
                     "title": "cyclohexane"
                   }
                 }
@@ -777,7 +777,7 @@
                 {
                   "id": "https://pubchem.ncbi.nlm.nih.gov/compound/8857",
                   "rdf_type": {
-                    "id": "CHEBI:27750",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_27750",
                     "title": "ethyl acetate"
                   }
                 }
@@ -789,7 +789,7 @@
               "id": "https://www.chemotion-repository.net/pid/56408#step-5_Product",
               "title": "step-5_Product: 1-diphenylphosphoryl-2-fluorobenzene",
               "rdf_type": {
-                "id": "CHEBI:59999",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
                 "title": "chemical substance"
               }
             }
@@ -831,7 +831,7 @@
                         }
                       ],
                       "rdf_type": {
-                        "id": "CHMO:0002782",
+                        "id": "http://purl.obolibrary.org/obo/CHMO_0002782",
                         "title": "silica gel"
                       }
                     }
@@ -843,13 +843,13 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "OBI:0000038",
+                    "id": "http://purl.obolibrary.org/obo/OBI_0000038",
                     "title": "chromatography column"
                   }
                 }
               ],
               "rdf_type": {
-                "id": "OBI:0000485",
+                "id": "http://purl.obolibrary.org/obo/OBI_0000485",
                 "title": "chromatography instrument"
               }
             }
@@ -893,7 +893,7 @@
             }
           ],
           "rdf_type": {
-            "id": "CHMO:0002582",
+            "id": "http://purl.obolibrary.org/obo/CHMO_0002582",
             "title": "flash chromatography"
           }
         }
@@ -903,7 +903,7 @@
           "value": "1.00.1S/C12H10ClP/c13-14(11-7-3-1-4-8-11) 12-9-5-2-6-10-12/h1-10H!C6H4BrF/c7-5-3-1-2-4-6(5)8/h1-4H<>C18H14FOP/c19-17-13-7-8-14-18(17)21(20,15-9-3-1-4-10-15)16-11-5-2-6-12-16/h1-14H<>C2H4O2/c1-2(3)4/h1H3,(H,3,4)!C2H6O/c1-2-3/h3H,2H2,1H3!C2H6O/c1-2-3/h3H,2H2,1H3!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H9.Li/c1-3-4-2;/h1,3-4H2,2H3;!H2O2/c1-2/h1-2H/d+",
           "title": "RInChI",
           "rdf_type": {
-            "id": "IAO:0020000",
+            "id": "http://purl.obolibrary.org/obo/IAO_0020000",
             "title": "identifier"
           }
         },
@@ -911,7 +911,7 @@
           "value": "SA-FUHFF-XGRJZXREYAXTGV-UHFFFAOYSA-N-IPWBFGUBXWMIPR-UHFFFAOYSA-N--MTSVGCFANKMACF-UHFFFAOYSA-N--QTBSBXVTEAMEQO-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-MZRVEZGGRBJDDB-UHFFFAOYSA-N-MHAJPDPJQMAIIY-UHFFFAOYSA-N",
           "title": "Long-RInChIKey",
           "rdf_type": {
-            "id": "IAO:0020000",
+            "id": "http://purl.obolibrary.org/obo/IAO_0020000",
             "title": "identifier"
           }
         },
@@ -919,7 +919,7 @@
           "value": "SA-FUHFF-SCESBIRHVX-MTSVGCFANK-IWBUMUHRPY-NUHFF-NUHFF-NUHFF-ZZZ",
           "title": "Short-RInChIKey",
           "rdf_type": {
-            "id": "IAO:0020000",
+            "id": "http://purl.obolibrary.org/obo/IAO_0020000",
             "title": "identifier"
           }
         },
@@ -927,7 +927,7 @@
           "value": "BOMQVCJFVRPGKEKDX-NUHFFFADPSCTJSA",
           "title": "Web-RInChIKey",
           "rdf_type": {
-            "id": "IAO:0020000",
+            "id": "http://purl.obolibrary.org/obo/IAO_0020000",
             "title": "identifier"
           }
         },
@@ -936,13 +936,13 @@
           "title": "Status",
           "description": "The status of the reaction",
           "rdf_type": {
-            "id": "SIO:001326",
+            "id": "http://semanticscience.org/resource/SIO_001326",
             "title": "status descriptor"
           }
         }
       ],
       "rdf_type": {
-        "id": "RXNO:0000329",
+        "id": "http://purl.obolibrary.org/obo/RXNO_0000329",
         "title": "planned synthesis"
       },
       "used_starting_material": [
@@ -950,7 +950,7 @@
           "id": "https://www.chemotion-repository.net/pid/56408_StartMat-1",
           "title": "StartMat-1: 1-bromo-2-fluorobenzene",
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_mass": [
@@ -989,7 +989,7 @@
             {
               "id": "https://pubchem.ncbi.nlm.nih.gov/compound/61259",
               "rdf_type": {
-                "id": "CHEBI:35496",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_35496",
                 "title": "fluorobenzenes"
               }
             }
@@ -1007,7 +1007,7 @@
           "id": "https://www.chemotion-repository.net/pid/56408_StartMat-2",
           "title": "StartMat-2: chloro(diphenyl)phosphine",
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_mass": [
@@ -1046,7 +1046,7 @@
             {
               "id": "https://pubchem.ncbi.nlm.nih.gov/compound/66180",
               "rdf_type": {
-                "id": "CHEBI:63258",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_63258",
                 "title": "phosphine derivative"
               },
               "molecular_formula": [
@@ -1076,7 +1076,7 @@
           "id": "https://www.chemotion-repository.net/pid/56408_Reactant-1",
           "title": "Reactant-1: n-BuLi",
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_mass": [
@@ -1115,7 +1115,7 @@
             {
               "id": "https://pubchem.ncbi.nlm.nih.gov/compound/53627823",
               "rdf_type": {
-                "id": "CHEBI:51469",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_51469",
                 "title": "butyllithium"
               }
             }
@@ -1133,7 +1133,7 @@
           "id": "https://www.chemotion-repository.net/pid/56408_Reactant-2",
           "title": "Reactant-2: Hydrogen Peroxide",
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_mass": [
@@ -1172,7 +1172,7 @@
             {
               "id": "https://pubchem.ncbi.nlm.nih.gov/compound/784",
               "rdf_type": {
-                "id": "CHEBI:16240",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_16240",
                 "title": "Hydrogen Peroxide"
               }
             }
@@ -1194,13 +1194,13 @@
               "value": "Glacial",
               "title": "Grade/Purity",
               "rdf_type": {
-                "id": "AFR:0002371",
+                "id": "http://purl.allotrope.org/ontologies/result#AFR_0002371",
                 "title": "purity"
               }
             }
           ],
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_mass": [
@@ -1239,7 +1239,7 @@
             {
               "id": "https://pubchem.ncbi.nlm.nih.gov/compound/176",
               "rdf_type": {
-                "id": "CHEBI:15366",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_15366",
                 "title": "acetic acid"
               }
             }
@@ -1263,13 +1263,13 @@
               "value": "colorless",
               "title": "property: colorless",
               "rdf_type": {
-                "id": "PATO:0000337",
+                "id": "http://purl.obolibrary.org/obo/PATO_0000337",
                 "title": "colorless"
               }
             }
           ],
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_physical_state": "SOLID",
@@ -1311,7 +1311,7 @@
           "id": "https://www.chemotion-repository.net/pid/56408_Solvent-1",
           "title": "Solvent-1: THF",
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_percentage_of_total": [
@@ -1335,7 +1335,7 @@
               "id": "https://pubchem.ncbi.nlm.nih.gov/compound/8028",
               "title": "THF",
               "rdf_type": {
-                "id": "CHEBI:26911",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_26911",
                 "title": "oxolane"
               },
               "iupac_name": [
@@ -1376,7 +1376,7 @@
           "id": "https://www.chemotion-repository.net/pid/56408_Solvent-3",
           "title": "Solvent-3: Ethanol",
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_percentage_of_total": [
@@ -1400,7 +1400,7 @@
               "id": "https://pubchem.ncbi.nlm.nih.gov/compound/702",
               "title": "Ethanol",
               "rdf_type": {
-                "id": "CHEBI:16236",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_16236",
                 "title": "ethanol"
               }
             }
@@ -1410,7 +1410,7 @@
           "id": "https://www.chemotion-repository.net/pid/56408_Solvent-4",
           "title": "Solvent-4: Ethanol",
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_percentage_of_total": [
@@ -1440,7 +1440,7 @@
           "id": "https://www.chemotion-repository.net/pid/56408_Solvent-5",
           "title": "Solvent-5: Diethyl Ether",
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_volume": [
@@ -1456,7 +1456,7 @@
               "id": "https://pubchem.ncbi.nlm.nih.gov/compound/3283",
               "title": "Diethyl Ether",
               "rdf_type": {
-                "id": "CHEBI:35702",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_35702",
                 "title": "diethyl ether"
               }
             }
@@ -1466,7 +1466,7 @@
           "id": "https://www.chemotion-repository.net/pid/56408_Solvent-6",
           "title": "Solvent-6: Dichloromethane",
           "rdf_type": {
-            "id": "CHEBI:59999",
+            "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
             "title": "chemical substance"
           },
           "has_volume": [
@@ -1482,7 +1482,7 @@
               "id": "https://pubchem.ncbi.nlm.nih.gov/compound/6344",
               "title": "Dichloromethane",
               "rdf_type": {
-                "id": "CHEBI:15767",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_15767",
                 "title": "dichloromethane"
               }
             }
@@ -1499,7 +1499,7 @@
               "value": "Argon atmosphere",
               "title": "Argon atmosphere of the glass ware",
               "type": {
-                "id": "VOC4CAT:0007809",
+                "id": "https://w3id.org/nfdi4cat/voc4cat_0007809",
                 "title": "atmosphere"
               }
             },
@@ -1507,13 +1507,13 @@
               "value": "dry",
               "title": "dryness of the used glass ware",
               "type": {
-                "id": "PATO:0001824",
+                "id": "http://purl.obolibrary.org/obo/PATO_0001824",
                 "title": "dry"
               }
             }
           ],
           "rdf_type": {
-            "id": "OBI:0002089",
+            "id": "http://purl.obolibrary.org/obo/OBI_0002089",
             "title": "container with environmental control"
           }
         }
@@ -1525,7 +1525,7 @@
           "title": "Yield [%]",
           "unit": "http://qudt.org/vocab/unit/PERCENT",
           "type": {
-            "id": "VOC4CAT:0005005",
+            "id": "https://w3id.org/nfdi4cat/voc4cat_0005005",
             "title": "yield"
           }
         }
@@ -1570,13 +1570,13 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "CHEBI:75958",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_75958",
                     "title": "solution"
                   }
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002773",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002773",
                 "title": "dissolving"
               }
             },
@@ -1610,7 +1610,7 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "CHEBI:60004",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_60004",
                     "title": "mixture"
                   }
                 }
@@ -1633,7 +1633,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "OBI:0000274",
+                "id": "http://purl.obolibrary.org/obo/OBI_0000274",
                 "title": "adding a material entity into a target"
               }
             },
@@ -1667,7 +1667,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002774",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002774",
                 "title": "stirring"
               }
             },
@@ -1701,13 +1701,13 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "CHEBI:75958",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_75958",
                     "title": "solution"
                   }
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002773",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002773",
                 "title": "dissolving"
               }
             },
@@ -1741,7 +1741,7 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "CHEBI:60004",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_60004",
                     "title": "mixture"
                   }
                 }
@@ -1771,7 +1771,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "OBI:0000274",
+                "id": "http://purl.obolibrary.org/obo/OBI_0000274",
                 "title": "adding a material entity into a target"
               }
             },
@@ -1805,13 +1805,13 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002774",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002774",
                 "title": "stirring"
               }
             }
           ],
           "rdf_type": {
-            "id": "RXNO:0000001",
+            "id": "http://purl.obolibrary.org/obo/RXNO_0000001",
             "title": "planned reaction step"
           },
           "used_starting_material": [
@@ -1901,7 +1901,7 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "CHEBI:75958",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_75958",
                     "title": "solution"
                   }
                 }
@@ -1915,7 +1915,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002773",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002773",
                 "title": "dissolving"
               }
             },
@@ -1957,13 +1957,13 @@
                     }
                   ],
                   "rdf_type": {
-                    "id": "CHEBI:75958",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_75958",
                     "title": "solution"
                   }
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002773",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002773",
                 "title": "dissolving"
               }
             },
@@ -1987,7 +1987,7 @@
                   "id": "https://www.chemotion-repository.net/pid/56408#step-3_ReactionMixture-1",
                   "title": "step-3_ReactionMixture-1 mixture at 0Â°C",
                   "rdf_type": {
-                    "id": "CHEBI:60004",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_60004",
                     "title": "mixture"
                   }
                 }
@@ -2025,7 +2025,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "OBI:0000274",
+                "id": "http://purl.obolibrary.org/obo/OBI_0000274",
                 "title": "adding a material entity into a target"
               }
             },
@@ -2067,7 +2067,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "CHMO:0002774",
+                "id": "http://purl.obolibrary.org/obo/CHMO_0002774",
                 "title": "stirring"
               }
             },
@@ -2087,7 +2087,7 @@
                   "id": "https://www.chemotion-repository.net/pid/56408#step-3_Output-1",
                   "title": "step-3_Output-1: containing crude 1-diphenylphosphoryl-2-fluorobenzene",
                   "rdf_type": {
-                    "id": "CHEBI:60004",
+                    "id": "http://purl.obolibrary.org/obo/CHEBI_60004",
                     "title": "mixture"
                   }
                 }
@@ -2119,7 +2119,7 @@
                 }
               ],
               "rdf_type": {
-                "id": "ENVO:01000623",
+                "id": "http://purl.obolibrary.org/obo/RXNO_01000623",
                 "title": "boiling"
               }
             }
@@ -2133,7 +2133,7 @@
             }
           ],
           "rdf_type": {
-            "id": "RXNO:0000001",
+            "id": "http://purl.obolibrary.org/obo/RXNO_0000001",
             "title": "planned reaction step"
           },
           "used_starting_material": [

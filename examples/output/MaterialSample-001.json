@@ -2,13 +2,13 @@
   "id": "https://www.example.com/wood3000",
   "title": "Philip's wood sample",
   "rdf_type": {
-    "id": "ENVO:00002040",
+    "id": "http://purl.obolibrary.org/obo/ENVO_00002040",
     "title": "wood"
   },
   "derived_from": {
     "id": "https://www.wikidata.org/wiki/Q4204",
     "rdf_type": {
-      "id": "ENVO:01000174",
+      "id": "http://purl.obolibrary.org/obo/ENVO_01000174",
       "title": "forest biome"
     }
   },

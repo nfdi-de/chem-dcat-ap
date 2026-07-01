@@ -13,10 +13,6 @@
          "@id": "http://purl.allotrope.org/ontologies/result#AFR_",
          "@prefix": true
       },
-      "AFRL": {
-         "@id": "http://purl.allotrope.org/ontologies/role#AFRL_",
-         "@prefix": true
-      },
       "AFX": {
          "@id": "http://purl.allotrope.org/ontologies/property#AFX_",
          "@prefix": true
@@ -61,7 +57,6 @@
          "@id": "http://purl.obolibrary.org/obo/NCIT_",
          "@prefix": true
       },
-      "NMR": "http://nmrML.org/nmrCV#NMR:",
       "OBI": {
          "@id": "http://purl.obolibrary.org/obo/OBI_",
          "@prefix": true
@@ -90,26 +85,19 @@
          "@id": "http://semanticscience.org/resource/SIO_",
          "@prefix": true
       },
-      "T4FS": {
-         "@id": "http://purl.obolibrary.org/obo/T4FS_",
-         "@prefix": true
-      },
       "VOC4CAT": {
          "@id": "https://w3id.org/nfdi4cat/voc4cat_",
          "@prefix": true
       },
       "adms": "http://www.w3.org/ns/adms#",
-      "biolink": "https://w3id.org/biolink/vocab/",
       "chemdcatap": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
       "chemical_entities_ap": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "dcat": "http://www.w3.org/ns/dcat#",
       "dcatap": "http://data.europa.eu/r5r/",
       "dcatapplus": "https://w3id.org/nfdi-de/dcat-ap-plus/",
       "dcterms": "http://purl.org/dc/terms/",
-      "doi": "https://doi.org/",
       "eli": "http://data.europa.eu/eli/ontology#",
       "epos": "https://www.epos-eu.org/epos-dcat-ap#",
-      "ex": "http://example.org/",
       "foaf": "http://xmlns.com/foaf/0.1/",
       "linkml": "https://w3id.org/linkml/",
       "locn": "http://www.w3.org/ns/locn#",
@@ -122,7 +110,6 @@
       "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
       "schema": "http://schema.org/",
       "skos": "http://www.w3.org/2004/02/skos/core#",
-      "sosa": "http://www.w3.org/ns/sosa/",
       "spdx": "http://spdx.org/rdf/terms#",
       "time": "http://www.w3.org/2006/time#",
       "vcard": "http://www.w3.org/2006/vcard/ns#",
