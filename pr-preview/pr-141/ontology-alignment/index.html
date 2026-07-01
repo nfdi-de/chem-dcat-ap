@@ -1,0 +1,1462 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nfdi-de.github.io/chem-dcat-ap/ontology-alignment/">
+      
+      
+        <link rel="prev" href="../dataset-activity-shapes/">
+      
+      
+        <link rel="next" href="../guidance/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../images/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Ontology Alignment - ChemDCAT-AP Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ontology-alignment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ChemDCAT-AP Documentation" class="md-header__button md-logo" aria-label="ChemDCAT-AP Documentation" data-md-component="logo">
+      <img id="logo_dark_mode" src="../images/logo-icon.svg" alt="logo">
+<img id="logo_light_mode" src="../images/logo-icon.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ChemDCAT-AP Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Ontology Alignment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nfdi-de/chem-dcat-ap" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ChemDCAT-AP Documentation" class="md-nav__button md-logo" aria-label="ChemDCAT-AP Documentation" data-md-component="logo">
+      <img id="logo_dark_mode" src="../images/logo-icon.svg" alt="logo">
+<img id="logo_light_mode" src="../images/logo-icon.svg" alt="logo">
+    </a>
+    ChemDCAT-AP Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nfdi-de/chem-dcat-ap" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../material-entities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Entities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemical-entities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemical Entities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemical-reactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemical Reactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataset-activity-shapes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemical Datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ontology Alignment
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ontology Alignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ontologies-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ontologies used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-slot_uri-replacement-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The slot_uri replacement strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The slot_uri replacement strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sio000008-as-the-chemistry-attribute-predicate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SIO:000008 as the chemistry attribute predicate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ro-predicates-for-reaction-inputsoutputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RO predicates for reaction inputs/outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rxno-for-catalyst-association" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RXNO for catalyst association
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfo0000051-for-parthood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BFO:0000051 for parthood
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interoperability-implications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interoperability implications
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-bfo-alignment-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why BFO alignment matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-sio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why SIO
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why SIO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bfo-compatible-upper-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BFO-compatible upper level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#established-prior-art-in-pubchemrdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Established prior art in PubChemRDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gap-filling-for-missing-obo-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gap-filling for missing OBO classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-most-quantity-classes-map-to-qudtquantity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why most quantity classes map to qudt:Quantity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-workarounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known workarounds
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known workarounds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#duration-on-sub-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duration on sub-steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping annotations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guidance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adoption Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elements/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../versioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Versioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Users
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ontologies-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ontologies used
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-slot_uri-replacement-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The slot_uri replacement strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The slot_uri replacement strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sio000008-as-the-chemistry-attribute-predicate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SIO:000008 as the chemistry attribute predicate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ro-predicates-for-reaction-inputsoutputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RO predicates for reaction inputs/outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rxno-for-catalyst-association" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RXNO for catalyst association
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfo0000051-for-parthood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BFO:0000051 for parthood
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interoperability-implications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interoperability implications
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-bfo-alignment-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why BFO alignment matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-sio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why SIO
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why SIO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bfo-compatible-upper-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BFO-compatible upper level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#established-prior-art-in-pubchemrdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Established prior art in PubChemRDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gap-filling-for-missing-obo-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gap-filling for missing OBO classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-most-quantity-classes-map-to-qudtquantity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why most quantity classes map to qudt:Quantity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-workarounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known workarounds
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known workarounds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#duration-on-sub-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duration on sub-steps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping annotations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ontology-alignment">Ontology alignment</h1>
+<p>ChemDCAT-AP maps every class and slot to established ontology terms via <code>class_uri</code> and <code>slot_uri</code>. This page documents the ontology choices, the <code>slot_uri</code> replacement strategy, and the rationale for BFO alignment.</p>
+<h2 id="ontologies-used">Ontologies used</h2>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Ontology</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>CHEBI</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/chebi">Chemical Entities of Biological Interest</a></td>
+<td>Chemical entity types (<code>ChemicalEntity</code>, <code>Atom</code>)</td>
+</tr>
+<tr>
+<td><em>CHEMINF</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/cheminf">Chemical Information Ontology</a></td>
+<td>Structure descriptors (<code>InChi</code>, <code>SMILES</code>, <code>MolecularFormula</code>, <code>IUPACName</code>, <code>InChIKey</code>). Also used in PubChemRDF alongside SIO.</td>
+</tr>
+<tr>
+<td><em>CHMO</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/chmo">Chemical Methods Ontology</a></td>
+<td>Analytical methods, concentration (<code>Concentration</code>), yield (<code>Yield</code>)</td>
+</tr>
+<tr>
+<td><em>SIO</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/sio">Semanticscience Integrated Ontology</a></td>
+<td>Chemical processes and substances (<code>ChemicalReaction</code>, <code>Reagent</code>, <code>Catalyst</code>, <code>DissolvingSubstance</code>, <code>SubstanceSample</code>), attribute predicate (<code>SIO:000008</code>), pH, density. Also used in PubChemRDF alongside CHEMINF.</td>
+</tr>
+<tr>
+<td><em>OBI</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/obi">Ontology for Biomedical Investigations</a></td>
+<td><code>MaterialSample</code></td>
+</tr>
+<tr>
+<td><em>BFO</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/bfo">Basic Formal Ontology</a></td>
+<td><code>MaterialEntity</code>, parthood (<code>BFO:0000051</code>)</td>
+</tr>
+<tr>
+<td><em>IAO</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/iao">Information Artifact Ontology</a></td>
+<td>Information content entity concept; identifier class (<code>IAO:0020000</code>) used for reaction identifiers (e.g. RInChI) without a dedicated CHEMINF class</td>
+</tr>
+<tr>
+<td><em>PATO</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/pato">Phenotype And Trait Ontology</a></td>
+<td>Physical states, close mappings for physical quantities</td>
+</tr>
+<tr>
+<td><em>QUDT</em></td>
+<td><a href="https://www.qudt.org/pages/QUDToverviewPage.html">Quantities, Units, Dimensions, Types</a></td>
+<td>Quantity classes (<code>Temperature</code>, <code>Mass</code>, <code>Volume</code>, <code>Pressure</code>, etc.), quantity kinds, units</td>
+</tr>
+<tr>
+<td><em>RO</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/ro">OBO Relations Ontology</a></td>
+<td>Reaction input/output (<code>RO:0004009</code>, <code>RO:0004008</code>)</td>
+</tr>
+<tr>
+<td><em>RXNO</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/rxno">Named Reaction Ontology</a></td>
+<td>Reaction types, catalyst role (<code>RXNO:0000425</code>)</td>
+</tr>
+<tr>
+<td><em>MOP</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/mop">Molecular Process Ontology</a></td>
+<td>Molecular process types (exact mapping)</td>
+</tr>
+<tr>
+<td><em>PROCO</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/proco">Process Chemistry Ontology</a></td>
+<td>Starting material (<code>PROCO:0000029</code>)</td>
+</tr>
+<tr>
+<td><em>NCIT</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/ncit">NCI Thesaurus OBO Edition</a></td>
+<td>Product, catalyst, reagent, pH (exact/close mappings)</td>
+</tr>
+<tr>
+<td><em>VOC4CAT</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/voc4cat">Voc4Cat - A SKOS vocabulary for Catalysis</a></td>
+<td>Catalysis-specific terms (exact mappings)</td>
+</tr>
+<tr>
+<td><em>AFE/AFR</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/afo">Allotrope Foundation Ontology</a></td>
+<td>Equipment (<code>Reactor</code>), molar mass, concentration (exact mappings)</td>
+</tr>
+<tr>
+<td><em>ENVO</em></td>
+<td><a href="https://terminology.nfdi4chem.de/ts/ontologies/envo">The Environment Ontology</a></td>
+<td><code>Laboratory</code> (<code>ENVO:01001405</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-slot_uri-replacement-strategy">The <code>slot_uri</code> replacement strategy</h2>
+<p>DCAT-AP+ assigns intentionally generic predicates to its slots. The Dublin Core Terms predicates (<code>dcterms:relation</code>, <code>dcterms:hasPart</code>) are semantically weak by design, chosen as the lowest common denominator that avoids conflicting with domain-specific vocabularies. The PROV-O predicates (<code>prov:used</code>, <code>prov:generated</code>, <code>prov:wasAssociatedWith</code>) are well-defined within the provenance model but carry no domain-specific semantics: <code>prov:used</code> does not distinguish a starting material from a reactant, and <code>prov:wasAssociatedWith</code> does not distinguish a catalyst from a solvent.</p>
+<table>
+<thead>
+<tr>
+<th>DCAT-AP+ slot</th>
+<th>Default <code>slot_uri</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>has_quantitative_attribute</code></td>
+<td><code>dcterms:relation</code></td>
+</tr>
+<tr>
+<td><code>has_qualitative_attribute</code></td>
+<td><code>dcterms:relation</code></td>
+</tr>
+<tr>
+<td><code>had_input_entity</code></td>
+<td><code>prov:used</code></td>
+</tr>
+<tr>
+<td><code>had_output_entity</code></td>
+<td><code>prov:generated</code></td>
+</tr>
+<tr>
+<td><code>carried_out_by</code></td>
+<td><code>prov:wasAssociatedWith</code></td>
+</tr>
+<tr>
+<td><code>has_part</code></td>
+<td><code>dcterms:hasPart</code></td>
+</tr>
+</tbody>
+</table>
+<p>When ChemDCAT-AP creates a sub-slot (via <code>is_a</code>), it may assign a different, semantically richer <code>slot_uri</code> that replaces the parent's predicate in the generated RDF. This is a valid specialization per the <a href="https://nfdi-de.github.io/dcat-ap-plus/how-to-extend/">DCAT-AP+ extension rules</a>, but it has interoperability implications. The following table summarizes all replacements; the subsections below document the rationale for each.</p>
+<table>
+<thead>
+<tr>
+<th>ChemDCAT-AP sub-slot(s)</th>
+<th>Parent slot</th>
+<th>Parent <code>slot_uri</code></th>
+<th>Replacement <code>slot_uri</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>has_temperature</code>, <code>has_mass</code>, <code>inchi</code>, <code>smiles</code>, <code>has_concentration</code>, <code>has_yield</code>, etc.</td>
+<td><code>has_quantitative/qualitative_attribute</code></td>
+<td><code>dcterms:relation</code></td>
+<td><code>SIO:000008</code> (has attribute)</td>
+</tr>
+<tr>
+<td><code>used_starting_material</code>, <code>used_reactant</code></td>
+<td><code>had_input_entity</code></td>
+<td><code>prov:used</code></td>
+<td><code>RO:0004009</code> (has input)</td>
+</tr>
+<tr>
+<td><code>generated_product</code></td>
+<td><code>had_output_entity</code></td>
+<td><code>prov:generated</code></td>
+<td><code>RO:0004008</code> (has output)</td>
+</tr>
+<tr>
+<td><code>used_catalyst</code></td>
+<td><code>carried_out_by</code></td>
+<td><code>prov:wasAssociatedWith</code></td>
+<td><code>RXNO:0000425</code> (has catalyst)</td>
+</tr>
+<tr>
+<td><code>has_part</code> (on MaterialEntity), <code>composed_of</code>, <code>has_reaction_step</code></td>
+<td><code>has_part</code></td>
+<td><code>dcterms:hasPart</code></td>
+<td><code>BFO:0000051</code> (has part)</td>
+</tr>
+<tr>
+<td><code>used_solvent</code>, <code>used_reactor</code></td>
+<td><code>carried_out_by</code></td>
+<td><code>prov:wasAssociatedWith</code></td>
+<td><em>(not replaced)</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sio000008-as-the-chemistry-attribute-predicate">SIO:000008 as the chemistry attribute predicate</h3>
+<p>All ChemDCAT-AP attribute sub-slots (<code>has_temperature</code>, <code>has_mass</code>, <code>inchi</code>, <code>smiles</code>, <code>has_concentration</code>, <code>has_yield</code>, etc.) use <code>slot_uri: SIO:000008</code> (has attribute) instead of the DCAT-AP+ default <code>dcterms:relation</code>. The rationale:</p>
+<ul>
+<li><code>dcterms:relation</code> is maximally generic and says nothing about the nature of the relationship.</li>
+<li><code>SIO:000008</code> is a well-established predicate in the Semanticscience Integrated Ontology that means "has attribute." It is semantically more appropriate for linking an entity to its characteristics.</li>
+<li>SIO is already used elsewhere in ChemDCAT-AP for class mappings (<code>ChemicalReaction</code>, <code>Catalyst</code>, etc.), so adding it as a predicate does not introduce a new dependency.</li>
+</ul>
+<h3 id="ro-predicates-for-reaction-inputsoutputs">RO predicates for reaction inputs/outputs</h3>
+<p>The reaction participant slots use OBO Relations Ontology predicates instead of the PROV-O defaults:</p>
+<table>
+<thead>
+<tr>
+<th>ChemDCAT-AP slot</th>
+<th>Replaces</th>
+<th>New <code>slot_uri</code></th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>used_starting_material</code></td>
+<td><code>had_input_entity</code> (<code>prov:used</code>)</td>
+<td><code>RO:0004009</code></td>
+<td>has input</td>
+</tr>
+<tr>
+<td><code>used_reactant</code></td>
+<td><code>had_input_entity</code> (<code>prov:used</code>)</td>
+<td><code>RO:0004009</code></td>
+<td>has input</td>
+</tr>
+<tr>
+<td><code>generated_product</code></td>
+<td><code>had_output_entity</code> (<code>prov:generated</code>)</td>
+<td><code>RO:0004008</code></td>
+<td>has output</td>
+</tr>
+</tbody>
+</table>
+<p><code>RO:0004009</code> (has input) and <code>RO:0004008</code> (has output) are process-to-entity relations from the OBO Relations Ontology. They are more specific than <code>prov:used</code> and <code>prov:generated</code> and align with OBO Foundry practices.</p>
+<h3 id="rxno-for-catalyst-association">RXNO for catalyst association</h3>
+<p>The <code>used_catalyst</code> slot uses <code>slot_uri: RXNO:0000425</code> (has catalyst) from the RXNO Ontology, replacing the parent <code>carried_out_by</code>'s <code>prov:wasAssociatedWith</code>. This predicate precisely captures the catalytic role. <code>used_solvent</code> and <code>used_reactor</code> keep the parent's <code>prov:wasAssociatedWith</code> because there currently is no established predicate that provides equivalent precision for these roles.</p>
+<h3 id="bfo0000051-for-parthood">BFO:0000051 for parthood</h3>
+<p><code>has_part</code> on <code>MaterialEntity</code>, <code>ChemicalEntity</code>, <code>composed_of</code>, and <code>has_reaction_step</code> uses <code>slot_uri: BFO:0000051</code> (has part), replacing the DCAT-AP+ default <code>dcterms:hasPart</code>. BFO's parthood relation carries formal mereological axioms (transitivity, reflexivity) that <code>dcterms:hasPart</code> does not.</p>
+<h3 id="interoperability-implications">Interoperability implications</h3>
+<p>When a ChemDCAT-AP instance is serialized to RDF, the triples use the domain-specific predicates (<code>SIO:000008</code>, <code>RO:0004009</code>, etc.), not the DCAT-AP+ defaults (<code>dcterms:relation</code>, <code>prov:used</code>, etc.). This means:</p>
+<ul>
+<li>A SPARQL query written against DCAT-AP+ predicates will <strong>not</strong> find ChemDCAT-AP data unless the query accounts for the replaced predicates.</li>
+<li>Conversely, a query written against ChemDCAT-AP predicates will find exactly the right data with higher precision.</li>
+</ul>
+<p>To bridge both query patterns, use SPARQL CONSTRUCT rules that add DCAT-AP+ predicates alongside the domain-specific ones:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CONSTRUCT</span> <span class="p">{</span>
+  <span class="nv">?entity</span> <span class="nn">dcterms</span><span class="p">:</span><span class="nt">relation</span> <span class="nv">?attr</span> <span class="p">.</span>
+<span class="p">}</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="nv">?entity</span> <span class="nn">SIO</span><span class="p">:</span><span class="nt">000008</span> <span class="nv">?attr</span> <span class="p">.</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This is the same approach recommended in the <a href="https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#for-slots-property-shapes-with-replaceable-predicates">DCAT-AP+ design patterns documentation</a> for avoiding blank node duplication when projecting between vocabularies. Generate RDF from the domain-specific schema and use CONSTRUCT rules to add the generic predicates to the existing nodes.</p>
+<div class="admonition info">
+<p class="admonition-title">Planned: formal projection queries</p>
+<p>We plan to provide a complete set of SPARQL CONSTRUCT queries covering all predicate replacements listed above, with worked examples from the ChemDCAT-AP test data. These will allow any triplestore hosting ChemDCAT-AP data to materialize the DCAT-AP+ base predicates alongside the domain-specific ones, ensuring backward-compatible querying without losing semantic precision.</p>
+</div>
+<h2 id="why-bfo-alignment-matters">Why BFO alignment matters</h2>
+<p>Several of ChemDCAT-AP's ontology choices (CHEBI, OBI, RO, PATO) are part of the <a href="https://obofoundry.org/">OBO Foundry</a>, which is built on the <a href="https://basic-formal-ontology.org/">Basic Formal Ontology (BFO)</a>. This alignment has practical value:</p>
+<ul>
+<li>A <a href="https://doi.org/10.1038/s41597-025-04580-1">formal mapping between PROV-O and BFO</a> has been published. This means ChemDCAT-AP data (which uses PROV-O via DCAT-AP+ and BFO-aligned terms via OBO ontologies) can be reasoned over coherently without manual bridging.</li>
+<li>OBO Foundry ontologies share a common upper-level structure, so terms from CHEBI, OBI, CHMO, and RO interoperate without custom alignment work.</li>
+<li>BFO's <code>material entity</code> (<code>BFO:0000040</code>) is the natural <code>class_uri</code> for <code>MaterialEntity</code>, and <code>BFO:0000051</code> (has part) is the established parthood relation in this ecosystem.</li>
+</ul>
+<h2 id="why-sio">Why SIO</h2>
+<p>The Semanticscience Integrated Ontology (SIO) is used in ChemDCAT-AP for both its <code>has attribute</code> predicate (<code>SIO:000008</code>) and several class mappings. Three reasons drove this choice.</p>
+<h3 id="bfo-compatible-upper-level">BFO-compatible upper level</h3>
+<p>SIO has its own upper-level structure, but it aligns naturally with BFO. SIO's three top-level branches under <code>entity</code> correspond to BFO's continuant subtypes, though not perfectly:</p>
+<ul>
+<li><code>attribute</code> (with subtypes <code>quality</code> and <code>realizable entity</code>) corresponds to BFO's specifically dependent continuant (SDC) branch</li>
+<li><code>object</code> groups together <code>material entity</code>, <code>information content entity</code>, and <code>spatial region</code>. In BFO, these are split: <code>material entity</code> and <code>spatial region</code> (via <code>immaterial entity</code>) fall under independent continuant, while <code>information content entity</code> is a generically dependent continuant (GDC), a sibling branch to both independent continuant and SDC</li>
+<li><code>process</code> corresponds to BFO's occurrent/process branch</li>
+</ul>
+<p>A formal OWL bridge module has not been published yet, but producing one would be a straightforward alignment task given this structural correspondence.</p>
+<h3 id="established-prior-art-in-pubchemrdf">Established prior art in PubChemRDF</h3>
+<p>SIO is used alongside CHEMINF in the <a href="https://pubchem.ncbi.nlm.nih.gov/docs/rdf">PubChemRDF</a> graph (<a href="https://doi.org/10.1186/s13321-015-0084-4">Fu et al. 2015</a>). The concrete overlap is the compound descriptor pattern: PubChemRDF links compounds to CHEMINF-typed descriptors via <code>SIO:000008</code> (has attribute), which is the same predicate and descriptor vocabulary ChemDCAT-AP uses for its chemical entity attribute slots (<code>inchi</code>, <code>smiles</code>, <code>molecular_formula</code>, etc.). This shared pattern means SPARQL queries over chemical descriptors can target both ChemDCAT-AP and PubChemRDF data using the same predicate and type assertions.</p>
+<h3 id="gap-filling-for-missing-obo-classes">Gap-filling for missing OBO classes</h3>
+<p>The SIO <em>classes</em> reused in ChemDCAT-AP (e.g., <code>SIO:010345</code> for chemical reaction, <code>SIO:010344</code> for catalyst) were chosen because no equivalent existed in OBO ontologies. Given SIO's BFO-similar upper level, their use was considered appropriate. If OBO equivalents are minted in the future, the <code>class_uri</code> mappings may change, but the SIO correspondence would be preserved via <code>exact_mappings</code> or <code>close_mappings</code> in the schema.</p>
+<h2 id="why-most-quantity-classes-map-to-qudtquantity">Why most quantity classes map to <code>qudt:Quantity</code></h2>
+<p>A glance at the schema shows that <code>Temperature</code>, <code>Mass</code>, <code>Volume</code>, <code>Pressure</code>, <code>AmountOfSubstance</code>, and others all carry <code>class_uri: qudt:Quantity</code>. This looks like a missed opportunity for more precise ontology mappings. It is, but the gap is not in ChemDCAT-AP; it is in the OBO/BFO ontology ecosystem.</p>
+<p>The issue comes down to a BFO distinction between three layers:</p>
+<ol>
+<li><strong>Qualities</strong> (specifically dependent continuants in BFO): the physical property <em>inhering in</em> a material entity. PATO provides these: <code>PATO:0000146</code> (temperature), <code>PATO:0000125</code> (mass), <code>PATO:0000918</code> (volume), etc. In QUDT terms, these correspond to <strong>QuantityKinds</strong>.</li>
+<li><strong>Information content entities (ICEs)</strong>: a class from the OBO/BFO ecosystem (defined in the <a href="http://www.obofoundry.org/ontology/iao.html">Information Artifact Ontology, IAO</a>) that represents an information artifact <em>about</em> a quality, i.e. the recorded measurement value as it appears in a dataset or lab notebook, not the physical property itself. In QUDT terms, this corresponds to a <strong>Quantity</strong> (a value + unit + quantity kind). This is what ChemDCAT-AP's attribute classes actually represent: a recorded value, not the quality itself.</li>
+<li><strong>The QUDT model</strong> collapses layers 1 and 2 into a single <code>qudt:Quantity</code> class that carries both the quantity kind reference and the numeric value.</li>
+</ol>
+<p>The problem: OBO/BFO ontologies provide good coverage of layer 1 (PATO qualities) but almost no coverage of layer 2 (ICEs about those qualities). There is no established OBO class for "a recorded temperature measurement" as distinct from "the quality of temperature." Chris Mungall has created a <a href="https://raw.githubusercontent.com/pato-ontology/pato/refs/heads/master/src/mappings/pato-to-qudt-quantitykind.sssom.tsv">PATO-to-QUDT QuantityKinds SSSOM mapping</a>, which bridges layer 1 across the two ecosystems. But what ChemDCAT-AP needs for its <code>class_uri</code> values are layer 2 classes, and those mostly do not yet exist in the OBO world.</p>
+<p>Four exceptions exist where a more precise class <em>is</em> available:</p>
+<ul>
+<li><strong>Density</strong> is mapped to <code>SIO:001406</code>, an information content entity about density in SIO.</li>
+<li><strong>Yield</strong> is mapped to <code>CHMO:0002855</code> (yield percentage), a CHMO class representing the recorded yield value.</li>
+<li><strong>Concentration</strong> is mapped to <code>CHMO:0002820</code>, a CHMO class for concentration measurements.</li>
+<li><strong>Molar mass</strong> is mapped to <code>AFR:0002409</code>, an Allotrope Foundation class for molar mass values.</li>
+</ul>
+<p>These four demonstrate that precise mappings are possible when the right class exists in an established ontology. For the remaining quantities, ChemDCAT-AP maps to <code>qudt:Quantity</code> and uses <code>has_quantity_type</code> (pointing to QUDT QuantityKinds) to differentiate them. The PATO terms appear as <code>close_mappings</code> rather than <code>class_uri</code> values, because they represent the quality, not the information entity about the quality.</p>
+<div class="admonition tip">
+<p class="admonition-title">Future work</p>
+<p>The long-term goal is to mint proper ICE classes for recorded quantity values in a suitable OBO ontology, allowing <code>class_uri</code> mappings that are both BFO-aligned and semantically precise. Until then, the QUDT mapping combined with <code>has_quantity_type</code> typing is the pragmatic solution, and the <code>close_mappings</code> to PATO terms preserve the link to the OBO ecosystem for future alignment.</p>
+</div>
+<h2 id="known-workarounds">Known workarounds</h2>
+<h3 id="duration-on-sub-steps">Duration on sub-steps</h3>
+<p>The DCAT-AP+ <code>has_duration</code> slot is only available on <code>EvaluatedActivity</code> and its subclasses (like <code>ChemicalReaction</code>). For sub-steps of a reaction that are modeled as generic <code>Activity</code> instances (dissolving, stirring, drop-wise addition), <code>has_duration</code> is not in scope. As a temporary workaround, these sub-steps express their duration using the generic <code>has_qualitative_attribute</code> slot with <code>type: schema:Duration</code> and an ISO 8601 value (e.g. <code>PT10M</code>). This is tracked in <a href="https://github.com/nfdi-de/dcat-ap-plus/issues/69">DCAT-AP+ issue #69</a>. Once <code>has_duration</code> is made available on <code>Activity</code>, the workaround will be replaced.</p>
+<h2 id="mapping-annotations">Mapping annotations</h2>
+<p>ChemDCAT-AP uses LinkML's <code>exact_mappings</code>, <code>close_mappings</code>, <code>broad_mappings</code>, and <code>narrow_mappings</code> to document cross-ontology correspondences. These are documentation annotations, not formal OWL axioms. More mappings will be added over time, and it will be explored in how far they can be used to produce SSSOM mapping sets, which can then be transformed into OWL bridge modules using the <a href="https://github.com/INCATools/ontology-development-kit">Ontology Development Kit (ODK)</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Meaning</th>
+<th>Use in ChemDCAT-AP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exact_mappings</code></td>
+<td>Equivalent semantics</td>
+<td><code>ChemicalReaction</code> maps exactly to <code>MOP:0000543</code>, <code>REX:0000002</code>, <code>AFP:0003711</code></td>
+</tr>
+<tr>
+<td><code>close_mappings</code></td>
+<td>Similar but not identical</td>
+<td><code>Concentration</code> close to <code>PATO:0000033</code> (PATO captures the quality, not the measurement)</td>
+</tr>
+<tr>
+<td><code>broad_mappings</code></td>
+<td>Target is more general</td>
+<td><code>SubstanceSampleCharacterization</code> broadly maps to <code>OBI:0000070</code> (assay), which covers more than just substance characterization</td>
+</tr>
+<tr>
+<td><code>narrow_mappings</code></td>
+<td>Target is more specific</td>
+<td><code>ChemicalReaction</code> has narrow mapping to <code>RXNO:0000329</code> (a planned synthesis)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "search.highlight", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": ["stable"], "provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
