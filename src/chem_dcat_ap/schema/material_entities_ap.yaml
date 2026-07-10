@@ -7,7 +7,7 @@ description: |-
 license: CC-BY 4.0
 prefixes:
   material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
+  dcat_ap_plus: https://w3id.org/nfdi-de/dcat-ap-plus/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -22,18 +22,17 @@ prefixes:
   OBI: http://purl.obolibrary.org/obo/OBI_
   IAO: http://purl.obolibrary.org/obo/IAO_
   BFO: http://purl.obolibrary.org/obo/BFO_
-  ex: http://example.org/
   SIO: http://semanticscience.org/resource/SIO_
   doi: https://doi.org/
-  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
-  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
-  AFP: http://purl.allotrope.org/ontologies/process#AFP_
+  allotrope.equipment: http://purl.allotrope.org/ontologies/equipment#AFE_
+  allotrope.role: http://purl.allotrope.org/ontologies/role#AFRL_
+  allotrope.process: http://purl.allotrope.org/ontologies/process#AFP_
   VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
 default_prefix: material_entities_ap
 default_range: string
 imports:
   - linkml:types
-  - dcatapplus:latest/schema/dcat_ap_plus
+  - dcat_ap_plus:latest/schema/dcat_ap_plus
 
 classes:
   MaterialisticMixin:
