@@ -11,8 +11,8 @@ see_also:
   - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
   - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 prefixes:
-  chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
+  chem_dcat_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+  dcat_ap_plus: https://w3id.org/nfdi-de/dcat-ap-plus/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
@@ -40,25 +40,24 @@ prefixes:
   CHEMINF: http://semanticscience.org/resource/CHEMINF_
   RXNO: http://purl.obolibrary.org/obo/RXNO_
   MOP: http://purl.obolibrary.org/obo/MOP_
-  ex: http://example.org/
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   SIO: http://semanticscience.org/resource/SIO_
   doi: https://doi.org/
   NMR: "http://nmrML.org/nmrCV#NMR:"
-  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
-  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
-  AFP: http://purl.allotrope.org/ontologies/process#AFP_
-  AFR: http://purl.allotrope.org/ontologies/result#AFR_
+  allotrope.equipment: http://purl.allotrope.org/ontologies/equipment#AFE_
+  allotrope.role: http://purl.allotrope.org/ontologies/role#AFRL_
+  allotrope.process: http://purl.allotrope.org/ontologies/process#AFP_
+  allotrope.result: http://purl.allotrope.org/ontologies/result#AFR_
   VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
   PROCO: http://purl.obolibrary.org/obo/PROCO_
   time: http://www.w3.org/2006/time#
   REX: http://purl.obolibrary.org/obo/REX_
   ENVO: http://purl.obolibrary.org/obo/ENVO_
-default_prefix: chemdcatap
+default_prefix: chem_dcat_ap
 default_range: string
 imports:
   - linkml:types
-  - dcatapplus:latest/schema/dcat_ap_plus
+  - dcat_ap_plus:latest/schema/dcat_ap_plus
   - chemical_entities_ap
   - chemical_reaction_ap
 
