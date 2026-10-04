@@ -9,10 +9,8 @@ prefixes:
   chemical_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
   chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
   linkml: https://w3id.org/linkml/
-  biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
   dcterms: http://purl.org/dc/terms/
-  sosa: http://www.w3.org/ns/sosa/
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   owl: http://www.w3.org/2002/07/owl#
@@ -20,13 +18,9 @@ prefixes:
   RO: http://purl.obolibrary.org/obo/RO_
   PATO: http://purl.obolibrary.org/obo/PATO_
   OBI: http://purl.obolibrary.org/obo/OBI_
-  IAO: http://purl.obolibrary.org/obo/IAO_
   BFO: http://purl.obolibrary.org/obo/BFO_
-  ex: http://example.org/
   SIO: http://semanticscience.org/resource/SIO_
-  doi: https://doi.org/
   AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
-  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
   AFP: http://purl.allotrope.org/ontologies/process#AFP_
   AFX: http://purl.allotrope.org/ontologies/property#AFX_
   AFR: http://purl.allotrope.org/ontologies/result#AFR_

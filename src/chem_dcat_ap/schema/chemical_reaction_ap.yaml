@@ -10,38 +10,27 @@ prefixes:
   chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
   dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
   linkml: https://w3id.org/linkml/
-  biolink: https://w3id.org/biolink/vocab/
   schema: http://schema.org/
   dcterms: http://purl.org/dc/terms/
   dcat: http://www.w3.org/ns/dcat#
   prov: http://www.w3.org/ns/prov#
-  sosa: http://www.w3.org/ns/sosa/
-  vcard: http://www.w3.org/2006/vcard/ns#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   owl: http://www.w3.org/2002/07/owl#
   skos: http://www.w3.org/2004/02/skos/core#
-  foaf: http://xmlns.com/foaf/0.1/
   qudt: http://qudt.org/schema/qudt/
   RO: http://purl.obolibrary.org/obo/RO_
   PATO: http://purl.obolibrary.org/obo/PATO_
   OBI: http://purl.obolibrary.org/obo/OBI_
-  IAO: http://purl.obolibrary.org/obo/IAO_
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_
   CHMO: http://purl.obolibrary.org/obo/CHMO_
   BFO: http://purl.obolibrary.org/obo/BFO_
-  T4FS: http://purl.obolibrary.org/obo/T4FS_
-  FOODON: http://purl.obolibrary.org/obo/FOODON_
   CHEMINF: http://semanticscience.org/resource/CHEMINF_
   RXNO: http://purl.obolibrary.org/obo/RXNO_
   MOP: http://purl.obolibrary.org/obo/MOP_
-  ex: http://example.org/
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   SIO: http://semanticscience.org/resource/SIO_
-  doi: https://doi.org/
-  NMR: "http://nmrML.org/nmrCV#NMR:"
   AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
-  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
   AFP: http://purl.allotrope.org/ontologies/process#AFP_
   VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
   PROCO: http://purl.obolibrary.org/obo/PROCO_

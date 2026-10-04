@@ -3,13 +3,13 @@
 id: https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2
 title: "CRS-50440"
 rdf_type:
-  id: CHEBI:59999
+  id: http://purl.obolibrary.org/obo/CHEBI_59999
   title: "chemical substance"
 other_identifier:
   - notation: https://www.chemotion-repository.net/pid/50440
 has_quantitative_attribute: # not yet defined more specifically in the NMR MICHI, hence using DAT-AP-PLUS base slot.
   - rdf_type:
-      id: NMR:1400025
+      id: http://nmrML.org/nmrCV#NMR:1400025
       title: "sample temperature in magnet"
     title: "sample temperature in magnet"
     has_quantity_type: http://qudt.org/vocab/quantitykind/Temperature

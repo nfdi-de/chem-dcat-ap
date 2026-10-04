@@ -13,13 +13,13 @@
       "title": "sample temperature in magnet",
       "unit": "https://qudt.org/vocab/unit/K",
       "rdf_type": {
-        "id": "NMR:1400025",
+        "id": "http://nmrML.org/nmrCV#NMR:1400025",
         "title": "sample temperature in magnet"
       }
     }
   ],
   "rdf_type": {
-    "id": "CHEBI:59999",
+    "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
     "title": "chemical substance"
   },
   "composed_of": [

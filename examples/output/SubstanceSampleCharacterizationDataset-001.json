@@ -1,5 +1,5 @@
 {
-  "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604",
+  "id": "https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604",
   "description": [
     "Dataset analysing Sample ID: CRS-50440 with heteronuclear single quantum coherence (HSQC) NMR spectroscopy"
   ],
@@ -8,7 +8,7 @@
   ],
   "was_generated_by": [
     {
-      "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932",
+      "id": "https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932",
       "title": [
         "X27932"
       ],
@@ -17,29 +17,29 @@
       ],
       "carried_out_by": [
         {
-          "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Spectrometer",
+          "id": "https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Spectrometer",
           "title": "Avance III 400 NMR spectrometer",
           "description": "used NMR spectrometer",
           "rdf_type": {
-            "id": "NMR:1000371",
+            "id": "http://nmrML.org/nmrCV#NMR:1000371",
             "title": "AVANCE III HD"
           }
         },
         {
-          "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Solvent",
+          "id": "https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N/CHMO0000604#X27932_NMR_Solvent",
           "description": "used solvent",
           "has_part": [
             {
               "id": "https://pubchem.ncbi.nlm.nih.gov/compound/71583",
               "title": "chloroform-D1 (CDCl3)",
               "rdf_type": {
-                "id": "CHEBI:85365",
+                "id": "http://purl.obolibrary.org/obo/CHEBI_85365",
                 "title": "deuterated chloroform"
               }
             }
           ],
           "rdf_type": {
-            "id": "NCIT:C45790",
+            "id": "http://purl.obolibrary.org/obo/NCIT_C45790",
             "title": "Solvent"
           }
         }
@@ -49,7 +49,7 @@
           "value": "hsqcedetgp",
           "description": "used pulse program",
           "rdf_type": {
-            "id": "NMR:1400037",
+            "id": "http://nmrML.org/nmrCV#NMR:1400037",
             "title": "NMR pulse sequence"
           }
         }
@@ -61,7 +61,7 @@
           "description": "used sample temperature setting",
           "unit": "https://qudt.org/vocab/unit/K",
           "rdf_type": {
-            "id": "NMR:1400025",
+            "id": "http://nmrML.org/nmrCV#NMR:1400025",
             "title": "sample temperature in magnet"
           }
         },
@@ -71,18 +71,18 @@
           "description": "used number of scans",
           "unit": "http://qudt.org/vocab/unit/NUM",
           "rdf_type": {
-            "id": "NMR:1400087",
+            "id": "http://nmrML.org/nmrCV#NMR:1400087",
             "title": "number of scans"
           }
         }
       ],
       "rdf_type": {
-        "id": "CHMO:0000604",
+        "id": "http://purl.obolibrary.org/obo/CHMO_0000604",
         "title": "heteronuclear single quantum coherence"
       },
       "evaluated_entity": [
         {
-          "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
+          "id": "https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
           "title": "CRS-50440"
         }
       ]
@@ -102,17 +102,17 @@
   ],
   "is_about_entity": [
     {
-      "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
+      "id": "https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
       "title": "CRS-50440",
       "description": "The analysed chemical substance sample CRS-50440.",
       "rdf_type": {
-        "id": "CHEBI:59999",
+        "id": "http://purl.obolibrary.org/obo/CHEBI_59999",
         "title": "chemical substance"
       },
       "composed_of": [
         {
-          "id": "doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound",
-          "description": "compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
+          "id": "https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound",
+          "description": "compound assigned to https://doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2",
           "other_identifier": [
             {
               "notation": "https://pubchem.ncbi.nlm.nih.gov/compound/26248854"

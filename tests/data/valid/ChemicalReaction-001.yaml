@@ -6,28 +6,28 @@ title:
 description:
   - "Synthesis of 1-diphenylphosphoryl-2-fluorobenzene via lithiation-phosphination-oxidation"
 rdf_type:
-  id: RXNO:0000329
+  id: http://purl.obolibrary.org/obo/RXNO_0000329
   title: "planned synthesis"
 # None of the following reaction ID types have a class in CHEMINF or another ontology yet,
 # so we fall back on the IAO identifier class and DCAT-AP+ qualitative attribute pattern.
 has_qualitative_attribute:
   - rdf_type:
-      id: IAO:0020000
+      id: http://purl.obolibrary.org/obo/IAO_0020000
       title: "identifier"
     title: "RInChI"
     value: "1.00.1S/C12H10ClP/c13-14(11-7-3-1-4-8-11) 12-9-5-2-6-10-12/h1-10H!C6H4BrF/c7-5-3-1-2-4-6(5)8/h1-4H<>C18H14FOP/c19-17-13-7-8-14-18(17)21(20,15-9-3-1-4-10-15)16-11-5-2-6-12-16/h1-14H<>C2H4O2/c1-2(3)4/h1H3,(H,3,4)!C2H6O/c1-2-3/h3H,2H2,1H3!C2H6O/c1-2-3/h3H,2H2,1H3!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H9.Li/c1-3-4-2;/h1,3-4H2,2H3;!H2O2/c1-2/h1-2H/d+"
   - rdf_type:
-      id: IAO:0020000
+      id: http://purl.obolibrary.org/obo/IAO_0020000
       title: "identifier"
     title: "Long-RInChIKey"
     value: "SA-FUHFF-XGRJZXREYAXTGV-UHFFFAOYSA-N-IPWBFGUBXWMIPR-UHFFFAOYSA-N--MTSVGCFANKMACF-UHFFFAOYSA-N--QTBSBXVTEAMEQO-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-MZRVEZGGRBJDDB-UHFFFAOYSA-N-MHAJPDPJQMAIIY-UHFFFAOYSA-N"
   - rdf_type:
-      id: IAO:0020000
+      id: http://purl.obolibrary.org/obo/IAO_0020000
       title: "identifier"
     title: "Short-RInChIKey"
     value: "SA-FUHFF-SCESBIRHVX-MTSVGCFANK-IWBUMUHRPY-NUHFF-NUHFF-NUHFF-ZZZ"
   - rdf_type:
-      id: IAO:0020000
+      id: http://purl.obolibrary.org/obo/IAO_0020000
       title: "identifier"
     title: "Web-RInChIKey"
     value: "BOMQVCJFVRPGKEKDX-NUHFFFADPSCTJSA"
@@ -35,7 +35,7 @@ has_qualitative_attribute:
     title: "Status"
     description: "The status of the reaction"
     rdf_type:
-      id: SIO:001326
+      id: http://semanticscience.org/resource/SIO_001326
       title: "status descriptor"
 used_starting_material:
   - id: https://www.chemotion-repository.net/pid/56408_StartMat-1
@@ -68,7 +68,7 @@ used_starting_material:
     composed_of:
       - id: https://pubchem.ncbi.nlm.nih.gov/compound/61259
         rdf_type:
-          id: CHEBI:35496
+          id: http://purl.obolibrary.org/obo/CHEBI_35496
           title: "fluorobenzenes"
   - id: https://www.chemotion-repository.net/pid/56408_StartMat-2
     title: "StartMat-2: chloro(diphenyl)phosphine"
@@ -104,13 +104,13 @@ used_starting_material:
         iupac_name:
           - value: "chloro(diphenyl)phosphine"
         rdf_type:
-          id: CHEBI:63258
+          id: http://purl.obolibrary.org/obo/CHEBI_63258
           title: "phosphine derivative"
 used_reactant:
   - id: https://www.chemotion-repository.net/pid/56408_Reactant-1
     title: "Reactant-1: n-BuLi"
     rdf_type:
-      id: CHEBI:60004
+      id: http://purl.obolibrary.org/obo/CHEBI_60004
       title: "mixture"
     has_concentration:
       - title: "Molarity [M]"
@@ -140,7 +140,7 @@ used_reactant:
     composed_of:
       - id: https://pubchem.ncbi.nlm.nih.gov/compound/53627823
         rdf_type:
-          id: CHEBI:51469
+          id: http://purl.obolibrary.org/obo/CHEBI_51469
           title: "butyllithium"
   - id: https://www.chemotion-repository.net/pid/56408_Reactant-2
     title: "Reactant-2: Hydrogen Peroxide"
@@ -172,7 +172,7 @@ used_reactant:
     composed_of:
       - id: https://pubchem.ncbi.nlm.nih.gov/compound/784
         rdf_type:
-          id: CHEBI:16240
+          id: http://purl.obolibrary.org/obo/CHEBI_16240
           title: "Hydrogen Peroxide"
   - id: https://www.chemotion-repository.net/pid/56408_Reactant-3
     title: "Reactant-3: glacial acetic acid"
@@ -205,12 +205,12 @@ used_reactant:
       - value: "Glacial"
         title: "Grade/Purity"
         rdf_type:
-          id: AFR:0002371
+          id: http://purl.allotrope.org/ontologies/result#AFR_0002371
           title: "purity"
     composed_of:
       - id: https://pubchem.ncbi.nlm.nih.gov/compound/176
         rdf_type:
-          id: CHEBI:15366
+          id: http://purl.obolibrary.org/obo/CHEBI_15366
           title: "acetic acid"
 generated_product:
   - id: https://dx.doi.org/10.14272/MTSVGCFANKMACF-UHFFFAOYSA-N.1
@@ -236,7 +236,7 @@ generated_product:
       - title: "property: colorless"
         value: "colorless"
         rdf_type:
-          id: PATO:0000337
+          id: http://purl.obolibrary.org/obo/PATO_0000337
           title: colorless
 used_solvent:
   - id: https://www.chemotion-repository.net/pid/56408_Solvent-1
@@ -254,7 +254,7 @@ used_solvent:
     composed_of:
       - id: https://pubchem.ncbi.nlm.nih.gov/compound/8028
         rdf_type:
-          id: CHEBI:26911
+          id: http://purl.obolibrary.org/obo/CHEBI_26911
           title: "oxolane"
         title: "THF"
         iupac_name:
@@ -290,7 +290,7 @@ used_solvent:
       - id: https://pubchem.ncbi.nlm.nih.gov/compound/702
         title: "Ethanol"
         rdf_type:
-          id: CHEBI:16236
+          id: http://purl.obolibrary.org/obo/CHEBI_16236
           title: "ethanol"
   - id: https://www.chemotion-repository.net/pid/56408_Solvent-4
     title: "Solvent-4: Ethanol"
@@ -318,7 +318,7 @@ used_solvent:
       - id: https://pubchem.ncbi.nlm.nih.gov/compound/3283
         title: "Diethyl Ether"
         rdf_type:
-          id: CHEBI:35702
+          id: http://purl.obolibrary.org/obo/CHEBI_35702
           title: "diethyl ether"
   - id: https://www.chemotion-repository.net/pid/56408_Solvent-6
     title: "Solvent-6: Dichloromethane"
@@ -331,11 +331,11 @@ used_solvent:
       - id: https://pubchem.ncbi.nlm.nih.gov/compound/6344
         title: "Dichloromethane"
         rdf_type:
-          id: CHEBI:15767
+          id: http://purl.obolibrary.org/obo/CHEBI_15767
           title: "dichloromethane"
 has_yield:
   - type:
-      id: VOC4CAT:0005005
+      id: https://w3id.org/nfdi4cat/voc4cat_0005005
       title: "yield"
     has_quantity_type: http://qudt.org/vocab/quantitykind/Dimensionless
     unit: http://qudt.org/vocab/unit/PERCENT
@@ -345,18 +345,17 @@ used_reactor:
   - id: https://www.chemotion-repository.net/pid/56408_Reactor-1
     title: "dry glass ware under argon atmosphere"
     rdf_type:
-      id: OBI:0002089
+      id: http://purl.obolibrary.org/obo/OBI_0002089
       title: "container with environmental control"
     has_qualitative_attribute:
       - title: "Argon atmosphere of the glass ware"
         value: "Argon atmosphere"
         type:
-          id: VOC4CAT:0007809
+          id: https://w3id.org/nfdi4cat/voc4cat_0007809
           title: atmosphere
       - title: "dryness of the used glass ware"
         value: "dry"
         type:
-          id: PATO:0001824
+          id: http://purl.obolibrary.org/obo/PATO_0001824
           title: dry
 has_duration: PT22H
-

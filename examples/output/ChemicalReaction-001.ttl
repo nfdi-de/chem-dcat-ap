@@ -1,0 +1,421 @@
+@prefix AFE: <http://purl.allotrope.org/ontologies/equipment#AFE_> .
+@prefix AFR: <http://purl.allotrope.org/ontologies/result#AFR_> .
+@prefix BFO: <http://purl.obolibrary.org/obo/BFO_> .
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix CHEMINF: <http://semanticscience.org/resource/CHEMINF_> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix NCIT: <http://purl.obolibrary.org/obo/NCIT_> .
+@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
+@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
+@prefix PROCO: <http://purl.obolibrary.org/obo/PROCO_> .
+@prefix RO: <http://purl.obolibrary.org/obo/RO_> .
+@prefix RXNO: <http://purl.obolibrary.org/obo/RXNO_> .
+@prefix SIO: <http://semanticscience.org/resource/SIO_> .
+@prefix VOC4CAT: <https://w3id.org/nfdi4cat/voc4cat_> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix schema1: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://www.chemotion-repository.net/pid/56408> a RXNO:0000329,
+        SIO:010345 ;
+    RO:0004008 <https://dx.doi.org/10.14272/MTSVGCFANKMACF-UHFFFAOYSA-N.1> ;
+    RO:0004009 <https://www.chemotion-repository.net/pid/56408_Reactant-1>,
+        <https://www.chemotion-repository.net/pid/56408_Reactant-2>,
+        <https://www.chemotion-repository.net/pid/56408_Reactant-3>,
+        <https://www.chemotion-repository.net/pid/56408_StartMat-1>,
+        <https://www.chemotion-repository.net/pid/56408_StartMat-2> ;
+    dcterms:description "Synthesis of 1-diphenylphosphoryl-2-fluorobenzene via lithiation-phosphination-oxidation" ;
+    dcterms:relation [ a SIO:001326,
+                prov:Entity ;
+            dcterms:description "The status of the reaction" ;
+            dcterms:title "Status" ;
+            prov:value "Successful" ],
+        [ a <http://purl.obolibrary.org/obo/IAO_0020000>,
+                prov:Entity ;
+            dcterms:title "Short-RInChIKey" ;
+            prov:value "SA-FUHFF-SCESBIRHVX-MTSVGCFANK-IWBUMUHRPY-NUHFF-NUHFF-NUHFF-ZZZ" ],
+        [ a <http://purl.obolibrary.org/obo/IAO_0020000>,
+                prov:Entity ;
+            dcterms:title "Web-RInChIKey" ;
+            prov:value "BOMQVCJFVRPGKEKDX-NUHFFFADPSCTJSA" ],
+        [ a <http://purl.obolibrary.org/obo/IAO_0020000>,
+                prov:Entity ;
+            dcterms:title "Long-RInChIKey" ;
+            prov:value "SA-FUHFF-XGRJZXREYAXTGV-UHFFFAOYSA-N-IPWBFGUBXWMIPR-UHFFFAOYSA-N--MTSVGCFANKMACF-UHFFFAOYSA-N--QTBSBXVTEAMEQO-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-LFQSCWFLJHTTHZ-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-WYURNTSHIVDZCO-UHFFFAOYSA-N-MZRVEZGGRBJDDB-UHFFFAOYSA-N-MHAJPDPJQMAIIY-UHFFFAOYSA-N" ],
+        [ a <http://purl.obolibrary.org/obo/IAO_0020000>,
+                prov:Entity ;
+            dcterms:title "RInChI" ;
+            prov:value "1.00.1S/C12H10ClP/c13-14(11-7-3-1-4-8-11) 12-9-5-2-6-10-12/h1-10H!C6H4BrF/c7-5-3-1-2-4-6(5)8/h1-4H<>C18H14FOP/c19-17-13-7-8-14-18(17)21(20,15-9-3-1-4-10-15)16-11-5-2-6-12-16/h1-14H<>C2H4O2/c1-2(3)4/h1H3,(H,3,4)!C2H6O/c1-2-3/h3H,2H2,1H3!C2H6O/c1-2-3/h3H,2H2,1H3!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H8O/c1-2-4-5-3-1/h1-4H2!C4H9.Li/c1-3-4-2;/h1,3-4H2,2H3;!H2O2/c1-2/h1-2H/d+" ] ;
+    dcterms:title "Chemotion Repository synthesis CRR-56408" ;
+    schema1:duration "PT22H"^^xsd:duration ;
+    SIO:000008 [ a CHMO:0002855 ;
+            dcterms:title "Yield [%]" ;
+            dcterms:type VOC4CAT:0005005 ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <http://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "86.0"^^xsd:float ] ;
+    prov:wasAssociatedWith <https://www.chemotion-repository.net/pid/56408_Reactor-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-1>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-2>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-3>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-4>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-5>,
+        <https://www.chemotion-repository.net/pid/56408_Solvent-6> .
+
+AFR:0002371 a schema1:DefinedTerm ;
+    schema1:name "purity" .
+
+CHEBI:15366 a schema1:DefinedTerm ;
+    schema1:name "acetic acid" .
+
+CHEBI:15767 a schema1:DefinedTerm ;
+    schema1:name "dichloromethane" .
+
+CHEBI:16236 a schema1:DefinedTerm ;
+    schema1:name "ethanol" .
+
+CHEBI:16240 a schema1:DefinedTerm ;
+    schema1:name "Hydrogen Peroxide" .
+
+CHEBI:26911 a schema1:DefinedTerm ;
+    schema1:name "oxolane" .
+
+CHEBI:35496 a schema1:DefinedTerm ;
+    schema1:name "fluorobenzenes" .
+
+CHEBI:35702 a schema1:DefinedTerm ;
+    schema1:name "diethyl ether" .
+
+CHEBI:51469 a schema1:DefinedTerm ;
+    schema1:name "butyllithium" .
+
+CHEBI:60004 a schema1:DefinedTerm ;
+    schema1:name "mixture" .
+
+CHEBI:63258 a schema1:DefinedTerm ;
+    schema1:name "phosphine derivative" .
+
+OBI:0002089 a schema1:DefinedTerm ;
+    schema1:name "container with environmental control" .
+
+PATO:0000337 a schema1:DefinedTerm ;
+    schema1:name "colorless" .
+
+PATO:0001824 a schema1:DefinedTerm ;
+    schema1:name "dry" .
+
+RXNO:0000329 a schema1:DefinedTerm ;
+    schema1:name "planned synthesis" .
+
+SIO:001326 a schema1:DefinedTerm ;
+    schema1:name "status descriptor" .
+
+<https://dx.doi.org/10.14272/MTSVGCFANKMACF-UHFFFAOYSA-N.1> a NCIT:C48810 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/13005284> ;
+    dcterms:relation [ a PATO:0000337,
+                prov:Entity ;
+            dcterms:title "property: colorless" ;
+            prov:value "colorless" ] ;
+    dcterms:title "Reaction mixture containing crude 1-diphenylphosphoryl-2-fluorobenzene" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "7.779"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "2328.0"^^xsd:float ],
+        PATO:0001736 .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/13005284> a CHEBI:23367 ;
+    SIO:000008 [ a CHEMINF:000107 ;
+            prov:value "1-diphenylphosphoryl-2-fluorobenzene" ],
+        [ a CHEMINF:000042 ;
+            prov:value "C18H14FOP" ] .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/176> a CHEBI:15366,
+        CHEBI:23367 .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/3283> a CHEBI:23367,
+        CHEBI:35702 ;
+    dcterms:title "Diethyl Ether" .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/53627823> a CHEBI:23367,
+        CHEBI:51469 .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/61259> a CHEBI:23367,
+        CHEBI:35496 .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/6344> a CHEBI:15767,
+        CHEBI:23367 ;
+    dcterms:title "Dichloromethane" .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/66180> a CHEBI:23367,
+        CHEBI:63258 ;
+    SIO:000008 [ a CHEMINF:000107 ;
+            prov:value "chloro(diphenyl)phosphine" ],
+        [ a CHEMINF:000042 ;
+            prov:value "C12H10ClP" ] .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/784> a CHEBI:16240,
+        CHEBI:23367 .
+
+VOC4CAT:0005005 a schema1:DefinedTerm ;
+    schema1:name "yield" .
+
+VOC4CAT:0007809 a schema1:DefinedTerm ;
+    schema1:name "atmosphere" .
+
+<https://www.chemotion-repository.net/pid/56408_Reactant-1> a CHEBI:60004,
+        SIO:010411 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/53627823> ;
+    dcterms:title "Reactant-1: n-BuLi" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "1.183"^^xsd:float ],
+        [ a CHMO:0002820 ;
+            dcterms:title "Molarity [M]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstanceConcentration> ;
+            qudt:unit <https://qudt.org/vocab/unit/MOL-PER-L> ;
+            prov:value "2.5"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "4.3"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "688.594"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "10.75"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Reactant-2> a SIO:010411 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/784> ;
+    dcterms:title "Reactant-2: Hydrogen Peroxide" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "4.477"^^xsd:float ],
+        [ a SIO:001406 ;
+            dcterms:title "Density [g/mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
+            prov:value "1.13"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "3.5"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "40.696"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "3955.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Reactant-3> a SIO:010411 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/176> ;
+    dcterms:relation [ a AFR:0002371,
+                prov:Entity ;
+            dcterms:title "Grade/Purity" ;
+            prov:value "Glacial" ] ;
+    dcterms:title "Reactant-3: glacial acetic acid" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "1908.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "3.355"^^xsd:float ],
+        [ a SIO:001406 ;
+            dcterms:title "Density [g/mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
+            prov:value "1.06"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "1.8"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "30.502"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Reactor-1> a AFE:0000153,
+        OBI:0002089 ;
+    dcterms:relation [ a prov:Entity ;
+            dcterms:title "Argon atmosphere of the glass ware" ;
+            dcterms:type VOC4CAT:0007809 ;
+            prov:value "Argon atmosphere" ],
+        [ a prov:Entity ;
+            dcterms:title "dryness of the used glass ware" ;
+            dcterms:type PATO:0001824 ;
+            prov:value "dry" ] ;
+    dcterms:title "dry glass ware under argon atmosphere" .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-1> a SIO:010417 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/8028> ;
+    dcterms:title "Solvent-1: THF" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "PercentageOfTotal" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "13.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "24.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-2> a SIO:010417 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/8028> ;
+    dcterms:title "Solvent-2: THF" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "PercentageOfTotal" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "2.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "3.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-3> a SIO:010417 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/702> ;
+    dcterms:title "Solvent-3: Ethanol" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "150.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "PercentageOfTotal" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "78.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-4> a SIO:010417 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/702> ;
+    dcterms:title "Solvent-4: Ethanol" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "PercentageOfTotal" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "8.0"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "15.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-5> a SIO:010417 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/3283> ;
+    dcterms:title "Solvent-5: Diethyl Ether" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "150.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_Solvent-6> a SIO:010417 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/6344> ;
+    dcterms:title "Solvent-6: Dichloromethane" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "50.0"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_StartMat-1> a PROCO:0000029 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/61259> ;
+    dcterms:title "StartMat-1: 1-bromo-2-fluorobenzene" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "1761.1"^^xsd:float ],
+        [ a SIO:001406 ;
+            dcterms:title "Density [g/mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
+            prov:value "1.601"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "9.862"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "1.1"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "1.085"^^xsd:float ] .
+
+<https://www.chemotion-repository.net/pid/56408_StartMat-2> a PROCO:0000029 ;
+    BFO:0000051 <https://pubchem.ncbi.nlm.nih.gov/compound/66180> ;
+    dcterms:title "StartMat-2: chloro(diphenyl)phosphine" ;
+    SIO:000008 [ a qudt:Quantity ;
+            dcterms:title "Volume [mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliL> ;
+            prov:value "1.7"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Amount [mmol]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/AmountOfSubstance> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliMOL> ;
+            prov:value "9.091"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Molar Equivalent" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
+            qudt:unit <https://qudt.org/vocab/unit/PERCENT> ;
+            prov:value "1.0"^^xsd:float ],
+        [ a SIO:001406 ;
+            dcterms:title "Density [g/mL]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Density> ;
+            qudt:unit <https://qudt.org/vocab/unit/GM-PER-MilliL> ;
+            prov:value "1.229"^^xsd:float ],
+        [ a qudt:Quantity ;
+            dcterms:title "Mass [mg]" ;
+            qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+            qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+            prov:value "2089.3"^^xsd:float ] .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/702> a CHEBI:16236,
+        CHEBI:23367 ;
+    dcterms:title "Ethanol" .
+
+<https://pubchem.ncbi.nlm.nih.gov/compound/8028> a CHEBI:23367,
+        CHEBI:26911 ;
+    dcterms:title "THF" ;
+    SIO:000008 [ a CHEMINF:000107 ;
+            prov:value "oxolane" ] .
+
+<http://purl.obolibrary.org/obo/IAO_0020000> a schema1:DefinedTerm ;
+    schema1:name "identifier" .
+
