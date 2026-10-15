@@ -1,0 +1,40 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix SIO: <http://semanticscience.org/resource/SIO_> .
+@prefix ENVO: <http://purl.obolibrary.org/obo/ENVO_> .
+@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
+@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema1: <http://schema.org/> .
+ENVO:00002040 schema1:name "wood" ;
+	a schema1:DefinedTerm .
+ENVO:01000174 schema1:name "forest biome" ;
+	a schema1:DefinedTerm .
+<https://www.example.com/wood3000> dcterms:title "Philip's wood sample" ;
+	SIO:000008 PATO:0001736 , _:c14n0 , _:c14n1 , _:c14n2 , _:c14n3 ;
+	a ENVO:00002040 , OBI:0000747 ;
+	prov:wasDerivedFrom <https://www.wikidata.org/wiki/Q4204> .
+<https://www.wikidata.org/wiki/Q4204> a ENVO:01000174 , prov:Entity .
+_:c14n0 dcterms:title "Volume in L" ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Volume> ;
+	qudt:unit <https://qudt.org/vocab/unit/L> ;
+	a qudt:Quantity ;
+	prov:value "0.03"^^xsd:float .
+_:c14n1 dcterms:title "Temperature" ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+	qudt:unit <https://qudt.org/vocab/unit/DEG_C> ;
+	a qudt:Quantity ;
+	prov:value "20.0"^^xsd:float .
+_:c14n2 dcterms:title "Mass in mg" ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Mass> ;
+	qudt:unit <https://qudt.org/vocab/unit/MilliGM> ;
+	a qudt:Quantity ;
+	prov:value "300.0"^^xsd:float .
+_:c14n3 dcterms:description "This is just a test value for this attribute, well knowing that this value makes no sense for a piece of wood" ;
+	dcterms:title "Pressure in Bar" ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Pressure> ;
+	qudt:unit <https://qudt.org/vocab/unit/BAR> ;
+	a qudt:Quantity ;
+	prov:value "2.0"^^xsd:float .
