@@ -1,0 +1,177 @@
+@prefix CHEMINF: <http://semanticscience.org/resource/CHEMINF_> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix CHEBI: <http://purl.obolibrary.org/obo/CHEBI_> .
+@prefix CHMO: <http://purl.obolibrary.org/obo/CHMO_> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema1: <http://schema.org/> .
+@prefix doi: <https://doi.org/> .
+<http://nmrML.org/nmrCV#NMR:1400037> schema1:name "NMR pulse sequence" ;
+	a schema1:DefinedTerm .
+<http://nmrML.org/nmrCV#NMR:1400042> schema1:name "NMR data processing" ;
+	a schema1:DefinedTerm .
+<http://nmrML.org/nmrCV#NMR:1400087> schema1:name "number of scans" ;
+	a schema1:DefinedTerm .
+<http://nmrML.org/nmrCV#NMR:1400262> schema1:name "sample temperature information" ;
+	a schema1:DefinedTerm .
+CHEBI:23367 schema1:name "molecular entity" ;
+	a schema1:DefinedTerm .
+CHEBI:28262 schema1:name "dimethyl sulfoxide" ;
+	a schema1:DefinedTerm .
+CHEBI:36928 schema1:name "carbon-13 atom" ;
+	a schema1:DefinedTerm .
+CHEBI:59999 schema1:name "chemical substance" ;
+	a schema1:DefinedTerm .
+CHEBI:85365 schema1:name "deuterated chloroform" ;
+	a schema1:DefinedTerm .
+CHMO:0000595 schema1:name "13C nuclear magnetic resonance spectroscopy" ;
+	a schema1:DefinedTerm .
+OBI:0000566 schema1:name "NMR instrument" ;
+	a schema1:DefinedTerm .
+CHEMINF:000018 schema1:name "SMILES descriptor" ;
+	a schema1:DefinedTerm .
+CHEMINF:000042 schema1:name "molecular formula" ;
+	a schema1:DefinedTerm .
+CHEMINF:000059 schema1:name "InChiKey" ;
+	a schema1:DefinedTerm .
+CHEMINF:000107 schema1:name "IUPAC name" ;
+	a schema1:DefinedTerm .
+CHEMINF:000113 schema1:name "InChi" ;
+	a schema1:DefinedTerm .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2\#EvaluatedCompound dcterms:description "compound assigned to doi:10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2" ;
+	dcterms:relation _:c14n10 , _:c14n14 , _:c14n15 , _:c14n17 , _:c14n18 , _:c14n2 , _:c14n4 , _:c14n9 ;
+	a CHEBI:23367 , prov:Entity ;
+	adms:identifier _:c14n6 .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2 dcterms:description "The analysed chemical substance sample CRS-50440." ;
+	dcterms:hasPart doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2\#EvaluatedCompound ;
+	dcterms:title "CRS-50440" ;
+	a CHEBI:59999 , prov:Entity .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#CDCl3_13C_NMR dcterms:relation _:c14n0 , _:c14n12 , _:c14n7 ;
+	dcterms:title "CDCl3_13C_NMR" ;
+	a CHMO:0000595 , prov:Activity ;
+	prov:used doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2 ;
+	prov:wasAssociatedWith doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#CDCl3_13C_NMR_AcquisitionNucleus , doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#CDCl3_13C_NMR_Solvent , doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#CDCl3_13C_NMR_Spectrometer , <https://pubchem.ncbi.nlm.nih.gov/compound/71583> .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#CDCl3_13C_NMR_AcquisitionNucleus dcterms:isPartOf doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_AcquisitionNucleusAtom ;
+	dcterms:title "probed nucleus" ;
+	a prov:Agent .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#CDCl3_13C_NMR_Solvent dcterms:description "used solvent" ;
+	dcterms:hasPart <https://pubchem.ncbi.nlm.nih.gov/compound/71583> ;
+	a prov:Agent .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#CDCl3_13C_NMR_Spectrometer dcterms:description "The NMR spectrometer used." ;
+	dcterms:title "Bruker 400 MHz" ;
+	a OBI:0000566 , prov:Agent .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#CDCl3_13C_NMR_Spectrum a prov:Entity ;
+	prov:wasGeneratedBy doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#CDCl3_13C_NMR .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR dcterms:relation _:c14n1 , _:c14n13 , _:c14n3 ;
+	dcterms:title "DMSO_13C_NMR" ;
+	a CHMO:0000595 , prov:Activity ;
+	prov:used doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2 ;
+	prov:wasAssociatedWith doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_AcquisitionNucleus , doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_Solvent , doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_Spectrometer , <https://pubchem.ncbi.nlm.nih.gov/compound/679> .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_AcquisitionNucleus dcterms:isPartOf doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_AcquisitionNucleusAtom ;
+	dcterms:title "probed nucleus" ;
+	a prov:Agent .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_AcquisitionNucleusAtom dcterms:description "The atom of the probed nucleus" ;
+	dcterms:title "13C" ;
+	a CHEBI:36928 , prov:Agent .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_Solvent dcterms:description "used solvent" ;
+	dcterms:hasPart <https://pubchem.ncbi.nlm.nih.gov/compound/679> ;
+	a prov:Agent .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_Spectrometer dcterms:description "used spectrometer" ;
+	dcterms:title "Bruker 400 MHz" ;
+	a OBI:0000566 , prov:Agent .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_Spectrum a prov:Entity ;
+	prov:wasGeneratedBy doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#NMRSpectralAnalysis dcterms:description "Analysis of NMR spectra." ;
+	a <http://nmrML.org/nmrCV#NMR:1400042> , prov:Activity ;
+	prov:used doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#CDCl3_13C_NMR_Spectrum , doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#DMSO_13C_NMR_Spectrum .
+doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1 dcterms:description "Dataset for 13C nuclear magnetic resonance spectroscopy (13C NMR)" ;
+	dcterms:subject doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2 ;
+	dcterms:title "13C nuclear magnetic resonance spectroscopy (13C NMR)" ;
+	a dcat:Dataset ;
+	adms:identifier _:c14n5 ;
+	dcat:theme _:c14n16 ;
+	prov:wasGeneratedBy doi:10.14272\/UGRXAOUDHZOHPF-UHFFFAOYSA-N\/CHMO0000595.1\#NMRSpectralAnalysis .
+<https://pubchem.ncbi.nlm.nih.gov/compound/679> dcterms:description "The used calibration compound" ;
+	dcterms:relation _:c14n8 ;
+	dcterms:title "DMSO" ;
+	a CHEBI:28262 , prov:Agent .
+<https://pubchem.ncbi.nlm.nih.gov/compound/71583> dcterms:description "The used calibration compound" ;
+	dcterms:relation _:c14n11 ;
+	dcterms:title "Chloroform-D" , "chloroform-D1 (CDCl3)" ;
+	a CHEBI:85365 , prov:Agent .
+_:c14n0 dcterms:title "sample temperature setting" ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+	qudt:unit <https://qudt.org/vocab/unit/K> ;
+	a <http://nmrML.org/nmrCV#NMR:1400262> , qudt:Quantity ;
+	prov:value "300.0"^^xsd:float .
+_:c14n1 dcterms:title "sample temperature setting" ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+	qudt:unit <https://qudt.org/vocab/unit/K> ;
+	a <http://nmrML.org/nmrCV#NMR:1400262> , qudt:Quantity ;
+	prov:value "300.0"^^xsd:float .
+_:c14n10 dcterms:description "Molar mass as specified in PubChem" ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
+	qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
+	a qudt:Quantity ;
+	prov:value "204.29"^^xsd:float .
+_:c14n11 dcterms:description "The chemical shift of the peak used for chemical shift calibration." ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+	qudt:unit <https://qudt.org/vocab/unit/PPM> ;
+	a qudt:Quantity ;
+	prov:value "77.16"^^xsd:float .
+_:c14n12 dcterms:title "Number of scans" ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
+	qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+	a <http://nmrML.org/nmrCV#NMR:1400087> , qudt:Quantity ;
+	prov:value "1024.0"^^xsd:float .
+_:c14n13 dcterms:title "Puls programme" ;
+	a <http://nmrML.org/nmrCV#NMR:1400037> , prov:Entity ;
+	prov:value "zgpg30" .
+_:c14n14 dcterms:title "assigned SMILES" ;
+	a CHEMINF:000018 , prov:Entity ;
+	prov:value "CNCc1csc(n1)c1ccccc1" .
+_:c14n15 dcterms:description "Molar mass as specified in the Chemotion repository." ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/MolarMass> ;
+	qudt:unit <https://qudt.org/vocab/unit/GM-PER-MOL> ;
+	a qudt:Quantity ;
+	prov:value "204.072119"^^xsd:float .
+_:c14n16 a skos:Concept ;
+	skos:prefLabel "Science and technology" .
+_:c14n17 dcterms:title "assigned molecular formula" ;
+	a CHEMINF:000042 , prov:Entity ;
+	prov:value "C11H12N2S" .
+_:c14n18 dcterms:description "PubChem IUPAC name" ;
+	a CHEMINF:000107 , prov:Entity ;
+	prov:value "Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine" .
+_:c14n2 dcterms:description "Chemotion IUPAC name" ;
+	a CHEMINF:000107 , prov:Entity ;
+	prov:value "N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine" .
+_:c14n3 dcterms:title "Number of scans" ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Count> ;
+	qudt:unit <http://qudt.org/vocab/unit/NUM> ;
+	a <http://nmrML.org/nmrCV#NMR:1400087> , qudt:Quantity ;
+	prov:value "1024.0"^^xsd:float .
+_:c14n4 dcterms:title "assigned InChiKey" ;
+	a CHEMINF:000059 , prov:Entity ;
+	prov:value "KVOIVNBYNQXCNY-BOCHJOTCSA-N" .
+_:c14n5 a adms:Identifier ;
+	skos:notation "https://www.chemotion-repository.net/pid/50434" .
+_:c14n6 a adms:Identifier ;
+	skos:notation "https://pubchem.ncbi.nlm.nih.gov/compound/26248854" .
+_:c14n7 dcterms:title "Puls programme" ;
+	a <http://nmrML.org/nmrCV#NMR:1400037> , prov:Entity ;
+	prov:value "zgpg30" .
+_:c14n8 dcterms:description "The chemical shift of the peak used for chemical shift calibration." ;
+	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+	qudt:unit <https://qudt.org/vocab/unit/PPM> ;
+	a qudt:Quantity ;
+	prov:value "39.52"^^xsd:float .
+_:c14n9 dcterms:title "assigned InChi" ;
+	a CHEMINF:000113 , prov:Entity ;
+	prov:value "InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3" .
