@@ -1370,7 +1370,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -1776,7 +1783,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -2226,7 +2240,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -3755,7 +3776,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -5013,7 +5041,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -5186,7 +5221,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -5341,7 +5383,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -5930,7 +5979,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -6067,7 +6123,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -7015,7 +7078,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -7227,7 +7297,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -7712,7 +7789,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -7925,7 +8009,14 @@
                     ]
                 },
                 "has_physical_state": {
-                    "$ref": "#/$defs/PhysicalStateEnum",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/PhysicalStateEnum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "The slot to specify the physical state of a MaterialEntity."
                 },
                 "has_pressure": {
@@ -8913,8 +9004,8 @@
     "$id": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "metamodel_version": "1.11.0",
+    "metamodel_version": "1.12.0",
     "title": "chem-dcat-ap",
     "type": "object",
-    "version": "0.1.0rc3.post6.dev0+86151818"
+    "version": "0.1.0rc3.post17.dev0+8d0c0eb6"
 }

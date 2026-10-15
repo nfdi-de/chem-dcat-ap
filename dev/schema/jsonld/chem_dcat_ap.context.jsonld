@@ -104,7 +104,7 @@
       "chemical_entities_ap": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "dcat": "http://www.w3.org/ns/dcat#",
       "dcatap": "http://data.europa.eu/r5r/",
-      "dcatapplus": "https://w3id.org/nfdi-de/dcat-ap-plus/",
+      "dcatap_plus": "https://w3id.org/nfdi-de/dcat-ap-plus/",
       "dcterms": "http://purl.org/dc/terms/",
       "doi": "https://doi.org/",
       "eli": "http://data.europa.eu/eli/ontology#",
@@ -756,7 +756,7 @@
          "@id": "chemical_entities_ap:ChemicalSubstanceMixin"
       },
       "ClassifierMixin": {
-         "@id": "dcatapplus:ClassifierMixin",
+         "@id": "dcatap_plus:ClassifierMixin",
          "@context": {
             "type": {
                "@id": "dcterms:type",
@@ -1349,7 +1349,7 @@
          }
       },
       "SupportiveEntity": {
-         "@id": "dcatapplus:SupportiveEntity"
+         "@id": "dcatap_plus:SupportiveEntity"
       },
       "Surrounding": {
          "@id": "prov:Location"
