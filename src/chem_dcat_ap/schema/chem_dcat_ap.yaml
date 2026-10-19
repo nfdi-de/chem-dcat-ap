@@ -40,16 +40,15 @@ prefixes:
   CHEMINF: http://semanticscience.org/resource/CHEMINF_
   RXNO: http://purl.obolibrary.org/obo/RXNO_
   MOP: http://purl.obolibrary.org/obo/MOP_
-  ex: http://example.org/
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   SIO: http://semanticscience.org/resource/SIO_
   doi: https://doi.org/
   NMR: "http://nmrML.org/nmrCV#NMR:"
-  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
-  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
-  AFP: http://purl.allotrope.org/ontologies/process#AFP_
-  AFR: http://purl.allotrope.org/ontologies/result#AFR_
-  VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
+  allotrope.equipment: http://purl.allotrope.org/ontologies/equipment#AFE_
+  allotrope.role: http://purl.allotrope.org/ontologies/role#AFRL_
+  allotrope.process: http://purl.allotrope.org/ontologies/process#AFP_
+  allotrope.result: http://purl.allotrope.org/ontologies/result#AFR_
+  voc4cat: https://w3id.org/nfdi4cat/voc4cat_
   PROCO: http://purl.obolibrary.org/obo/PROCO_
   time: http://www.w3.org/2006/time#
   REX: http://purl.obolibrary.org/obo/REX_

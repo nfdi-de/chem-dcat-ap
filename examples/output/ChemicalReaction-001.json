@@ -290,7 +290,7 @@
           "value": "Glacial",
           "title": "Grade/Purity",
           "rdf_type": {
-            "id": "AFR:0002371",
+            "id": "allotrope.result::0002371",
             "title": "purity"
           }
         }

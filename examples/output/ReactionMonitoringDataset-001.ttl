@@ -13,7 +13,7 @@
 @prefix IAO: <http://purl.obolibrary.org/obo/IAO_> .
 @prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
 @prefix RO: <http://purl.obolibrary.org/obo/RO_> .
-@prefix VOC4CAT: <https://w3id.org/nfdi4cat/voc4cat_> .
+@prefix voc4cat: <https://w3id.org/nfdi4cat/voc4cat_> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
@@ -156,9 +156,9 @@ doi:10.14272\/reaction\/SA-FUHFF-UHFFFADPSC-MTSVGCFANK-UHFFFADPSC-NUHFF-NUHFF-NU
 <https://pubchem.ncbi.nlm.nih.gov/compound/8857> a CHEBI:27750 , prov:Entity .
 schema:Duration schema1:name "Duration" ;
 	a schema1:DefinedTerm .
-VOC4CAT:0005005 schema1:name "yield" ;
+voc4cat:0005005 schema1:name "yield" ;
 	a schema1:DefinedTerm .
-VOC4CAT:0007809 schema1:name "atmosphere" ;
+voc4cat:0007809 schema1:name "atmosphere" ;
 	a schema1:DefinedTerm .
 <https://www.chemotion-repository.net/pid/56408#step-1> RO:0004008 <https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2> ;
 	RO:0004009 <https://www.chemotion-repository.net/pid/56408_Reactant-1> , <https://www.chemotion-repository.net/pid/56408_StartMat-1> , <https://www.chemotion-repository.net/pid/56408_StartMat-2> ;
@@ -655,7 +655,7 @@ _:c14n43 dcterms:title "Molar Equivalent" ;
 	a qudt:Quantity ;
 	prov:value "3.355"^^xsd:float .
 _:c14n44 dcterms:title "Yield [%]" ;
-	dcterms:type VOC4CAT:0005005 ;
+	dcterms:type voc4cat:0005005 ;
 	qudt:hasQuantityKind <http://qudt.org/vocab/quantitykind/Dimensionless> ;
 	qudt:unit <http://qudt.org/vocab/unit/PERCENT> ;
 	a CHMO:0002855 ;
@@ -786,7 +786,7 @@ _:c14n70 dcterms:title "Volume [mL]" ;
 	a qudt:Quantity ;
 	prov:value "24.0"^^xsd:float .
 _:c14n71 dcterms:title "Argon atmosphere of the glass ware" ;
-	dcterms:type VOC4CAT:0007809 ;
+	dcterms:type voc4cat:0007809 ;
 	a prov:Entity ;
 	prov:value "Argon atmosphere" .
 _:c14n72 dcterms:title "Amount [mmol]" ;

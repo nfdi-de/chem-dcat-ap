@@ -378,7 +378,7 @@ used_reactant:
     value: 3.355
   has_qualitative_attribute:
   - rdf_type:
-      id: AFR:0002371
+      id: allotrope.result::0002371
       title: purity
     title: Grade/Purity
     value: Glacial
@@ -1712,7 +1712,7 @@ is_about_activity:
       value: 3.355
     has_qualitative_attribute:
     - rdf_type:
-        id: AFR:0002371
+        id: allotrope.result:0002371
         title: purity
       title: Grade/Purity
       value: Glacial

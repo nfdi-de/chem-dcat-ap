@@ -80,15 +80,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'chemdcatap',
                  'chemical_reaction_ap'],
      'license': 'CC-BY 4.0',
      'name': 'chem-dcat-ap',
-     'prefixes': {'AFE': {'prefix_prefix': 'AFE',
-                          'prefix_reference': 'http://purl.allotrope.org/ontologies/equipment#AFE_'},
-                  'AFP': {'prefix_prefix': 'AFP',
-                          'prefix_reference': 'http://purl.allotrope.org/ontologies/process#AFP_'},
-                  'AFR': {'prefix_prefix': 'AFR',
-                          'prefix_reference': 'http://purl.allotrope.org/ontologies/result#AFR_'},
-                  'AFRL': {'prefix_prefix': 'AFRL',
-                           'prefix_reference': 'http://purl.allotrope.org/ontologies/role#AFRL_'},
-                  'BFO': {'prefix_prefix': 'BFO',
+     'prefixes': {'BFO': {'prefix_prefix': 'BFO',
                           'prefix_reference': 'http://purl.obolibrary.org/obo/BFO_'},
                   'CHEBI': {'prefix_prefix': 'CHEBI',
                             'prefix_reference': 'http://purl.obolibrary.org/obo/CHEBI_'},
@@ -124,10 +116,16 @@ linkml_meta = LinkMLMeta({'default_prefix': 'chemdcatap',
                           'prefix_reference': 'http://semanticscience.org/resource/SIO_'},
                   'T4FS': {'prefix_prefix': 'T4FS',
                            'prefix_reference': 'http://purl.obolibrary.org/obo/T4FS_'},
-                  'VOC4CAT': {'prefix_prefix': 'VOC4CAT',
-                              'prefix_reference': 'https://w3id.org/nfdi4cat/voc4cat_'},
                   'adms': {'prefix_prefix': 'adms',
                            'prefix_reference': 'http://www.w3.org/ns/adms#'},
+                  'allotrope.equipment': {'prefix_prefix': 'allotrope.equipment',
+                                          'prefix_reference': 'http://purl.allotrope.org/ontologies/equipment#AFE_'},
+                  'allotrope.process': {'prefix_prefix': 'allotrope.process',
+                                        'prefix_reference': 'http://purl.allotrope.org/ontologies/process#AFP_'},
+                  'allotrope.result': {'prefix_prefix': 'allotrope.result',
+                                       'prefix_reference': 'http://purl.allotrope.org/ontologies/result#AFR_'},
+                  'allotrope.role': {'prefix_prefix': 'allotrope.role',
+                                     'prefix_reference': 'http://purl.allotrope.org/ontologies/role#AFRL_'},
                   'biolink': {'prefix_prefix': 'biolink',
                               'prefix_reference': 'https://w3id.org/biolink/vocab/'},
                   'chemdcatap': {'prefix_prefix': 'chemdcatap',
@@ -140,8 +138,6 @@ linkml_meta = LinkMLMeta({'default_prefix': 'chemdcatap',
                               'prefix_reference': 'http://purl.org/dc/terms/'},
                   'doi': {'prefix_prefix': 'doi',
                           'prefix_reference': 'https://doi.org/'},
-                  'ex': {'prefix_prefix': 'ex',
-                         'prefix_reference': 'http://example.org/'},
                   'foaf': {'prefix_prefix': 'foaf',
                            'prefix_reference': 'http://xmlns.com/foaf/0.1/'},
                   'linkml': {'prefix_prefix': 'linkml',
@@ -165,7 +161,9 @@ linkml_meta = LinkMLMeta({'default_prefix': 'chemdcatap',
                   'time': {'prefix_prefix': 'time',
                            'prefix_reference': 'http://www.w3.org/2006/time#'},
                   'vcard': {'prefix_prefix': 'vcard',
-                            'prefix_reference': 'http://www.w3.org/2006/vcard/ns#'}},
+                            'prefix_reference': 'http://www.w3.org/2006/vcard/ns#'},
+                  'voc4cat': {'prefix_prefix': 'voc4cat',
+                              'prefix_reference': 'https://w3id.org/nfdi4cat/voc4cat_'}},
      'see_also': ['https://nfdi-de.github.io/chem-dcat-ap/',
                   'https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml',
                   'https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads'],
@@ -6605,10 +6603,10 @@ class Concentration(QuantitativeAttribute):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHMO:0002820',
          'close_mappings': ['PATO:0000033'],
-         'exact_mappings': ['EDAM:2140',
+         'exact_mappings': ['edam:2140',
                             'NCIT:C41185',
-                            'VOC4CAT:0007244',
-                            'AFR:0002036'],
+                            'voc4cat:0007244',
+                            'allotrope.result:0002036'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/',
          'narrow_mappings': ['CHMO:0002822']})
 
@@ -6828,7 +6826,7 @@ class AmountOfSubstance(QuantitativeAttribute):
 class PHValue(QuantitativeAttribute):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:001089',
          'close_mappings': ['PATO:0001842'],
-         'exact_mappings': ['NCIT:C45997', 'AFR:0001142'],
+         'exact_mappings': ['NCIT:C45997', 'allotrope.result:0001142'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',
@@ -7451,7 +7449,7 @@ class ChemicalSubstanceMixin(MaterialisticMixin):
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['allotrope.property:0000940'],
          'domain_of': ['ChemicalSubstanceMixin'],
          'is_a': 'has_part',
          'recommended': True,
@@ -7508,7 +7506,7 @@ class PolymerMixin(ChemicalSubstanceMixin):
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['allotrope.property:0000940'],
          'domain_of': ['ChemicalSubstanceMixin'],
          'is_a': 'has_part',
          'recommended': True,
@@ -7711,7 +7709,7 @@ class MaterialSample(MaterialisticMixin, EvaluatedEntity):
     A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'OBI:0000747',
-         'exact_mappings': ['SIO:001050', 'VOC4CAT:0005056'],
+         'exact_mappings': ['SIO:001050', 'voc4cat:0005056'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/',
          'mixins': ['MaterialisticMixin'],
          'slot_usage': {'derived_from': {'description': 'The slot to specify the '
@@ -7882,7 +7880,7 @@ class SubstanceSample(MaterialSample, ChemicalSubstanceMixin):
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['allotrope.property:0000940'],
          'domain_of': ['ChemicalSubstanceMixin'],
          'is_a': 'has_part',
          'recommended': True,
@@ -8054,7 +8052,7 @@ class PolymerSample(SubstanceSample, PolymerMixin):
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['allotrope.property:0000940'],
          'domain_of': ['ChemicalSubstanceMixin'],
          'is_a': 'has_part',
          'recommended': True,
@@ -8432,7 +8430,7 @@ class MolarMass(Mass):
     """
     A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'AFR:0002409',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'allotrope.result:0002409',
          'close_mappings': ['PATO:0001681'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/'})
 
@@ -8870,7 +8868,7 @@ class ChemicalReaction(EvaluatedActivity):
     A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:010345',
-         'exact_mappings': ['MOP:0000543', 'REX:0000002', 'AFP:0003711'],
+         'exact_mappings': ['MOP:0000543', 'REX:0000002', 'allotrope.process:0003711'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'narrow_mappings': ['RXNO:0000329'],
          'slot_usage': {'has_pressure': {'description': 'The slot to specify the '
@@ -9089,7 +9087,7 @@ class StartingMaterial(MaterialEntity, ChemicalSubstanceMixin):
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['allotrope.property:0000940'],
          'domain_of': ['ChemicalSubstanceMixin'],
          'is_a': 'has_part',
          'recommended': True,
@@ -9245,7 +9243,7 @@ class DissolvingSubstance(ChemicalSubstanceMixin, AgenticEntity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['solvent'],
          'class_uri': 'SIO:010417',
-         'exact_mappings': ['VOC4CAT:0007246', 'NCIT:C45790'],
+         'exact_mappings': ['voc4cat:0007246', 'NCIT:C45790'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['ChemicalSubstanceMixin']})
 
@@ -9261,7 +9259,7 @@ class DissolvingSubstance(ChemicalSubstanceMixin, AgenticEntity):
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['allotrope.property:0000940'],
          'domain_of': ['ChemicalSubstanceMixin'],
          'is_a': 'has_part',
          'recommended': True,
@@ -9416,7 +9414,7 @@ class Reagent(MaterialEntity, ChemicalSubstanceMixin):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:010411',
          'close_mappings': ['OBI:0001879', 'PROCO:0000029'],
-         'exact_mappings': ['NCIT:C802', 'VOC4CAT:0000101'],
+         'exact_mappings': ['NCIT:C802', 'voc4cat:0000101'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['ChemicalSubstanceMixin']})
 
@@ -9432,7 +9430,7 @@ class Reagent(MaterialEntity, ChemicalSubstanceMixin):
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['allotrope.property:0000940'],
          'domain_of': ['ChemicalSubstanceMixin'],
          'is_a': 'has_part',
          'recommended': True,
@@ -9588,7 +9586,7 @@ class ChemicalProduct(MaterialEntity, ChemicalSubstanceMixin):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'NCIT:C48810',
          'close_mappings': ['ENVO:2000000'],
-         'exact_mappings': ['VOC4CAT:0000194'],
+         'exact_mappings': ['voc4cat:0000194'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['ChemicalSubstanceMixin']})
 
@@ -9600,7 +9598,7 @@ class ChemicalProduct(MaterialEntity, ChemicalSubstanceMixin):
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['allotrope.property:0000940'],
          'domain_of': ['ChemicalSubstanceMixin'],
          'is_a': 'has_part',
          'recommended': True,
@@ -9756,7 +9754,7 @@ class Catalyst(ChemicalSubstanceMixin, AgenticEntity):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'SIO:010344',
          'close_mappings': ['CHEBI:35223'],
-         'exact_mappings': ['VOC4CAT:0000194', 'NCIT:C48810'],
+         'exact_mappings': ['voc4cat:0000194', 'NCIT:C48810'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['ChemicalSubstanceMixin']})
 
@@ -9772,7 +9770,7 @@ class Catalyst(ChemicalSubstanceMixin, AgenticEntity):
          'is_a': 'has_quantitative_attribute',
          'recommended': True,
          'slot_uri': 'SIO:000008'} })
-    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['AFX:0000940'],
+    composed_of: Optional[list[ChemicalEntity]] = Field(default=None, description="""The slot to provide the chemical entities of which a ChemicalSubstance is composed of.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['allotrope.property:0000940'],
          'domain_of': ['ChemicalSubstanceMixin'],
          'is_a': 'has_part',
          'recommended': True,
@@ -9925,8 +9923,8 @@ class Reactor(MaterialisticMixin, Device):
     """
     A reactor is a container for controlling a biological or chemical reaction or process.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'AFE:0000153',
-         'exact_mappings': ['VOC4CAT:0007017'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'allotrope.equipment:0000153',
+         'exact_mappings': ['voc4cat:0007017'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/',
          'mixins': ['MaterialisticMixin']})
 
@@ -10075,7 +10073,7 @@ class Yield(QuantitativeAttribute):
     A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'CHMO:0002855',
-         'exact_mappings': ['VOC4CAT:0005005'],
+         'exact_mappings': ['voc4cat:0005005'],
          'from_schema': 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/'})
 
     title: Optional[str] = Field(default=None, description="""This slot is described in more detail within the class in which it is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',

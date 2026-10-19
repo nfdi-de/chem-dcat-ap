@@ -22,13 +22,12 @@ prefixes:
   OBI: http://purl.obolibrary.org/obo/OBI_
   IAO: http://purl.obolibrary.org/obo/IAO_
   BFO: http://purl.obolibrary.org/obo/BFO_
-  ex: http://example.org/
   SIO: http://semanticscience.org/resource/SIO_
   doi: https://doi.org/
-  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
-  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
-  AFP: http://purl.allotrope.org/ontologies/process#AFP_
-  VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
+  allotrope.equipment: http://purl.allotrope.org/ontologies/equipment#AFE_
+  allotrope.role: http://purl.allotrope.org/ontologies/role#AFRL_
+  allotrope.process: http://purl.allotrope.org/ontologies/process#AFP_
+  voc4cat: https://w3id.org/nfdi4cat/voc4cat_
 default_prefix: material_entities_ap
 default_range: string
 imports:
@@ -78,7 +77,7 @@ classes:
         description: The slot to specify the MaterialEntity or MaterialSample from which the MaterialSample was created.
     exact_mappings:
       - SIO:001050
-      - VOC4CAT:0005056
+      - voc4cat:0005056
 
   Temperature:
     is_a: QuantitativeAttribute

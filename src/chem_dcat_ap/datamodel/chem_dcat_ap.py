@@ -62,16 +62,10 @@ metamodel_version = "1.12.0"
 version = "0.1.0rc3.post17.dev0+8d0c0eb6"
 
 # Namespaces
-AFE = CurieNamespace('AFE', 'http://purl.allotrope.org/ontologies/equipment#AFE_')
-AFP = CurieNamespace('AFP', 'http://purl.allotrope.org/ontologies/process#AFP_')
-AFR = CurieNamespace('AFR', 'http://purl.allotrope.org/ontologies/result#AFR_')
-AFRL = CurieNamespace('AFRL', 'http://purl.allotrope.org/ontologies/role#AFRL_')
-AFX = CurieNamespace('AFX', 'http://purl.allotrope.org/ontologies/property#AFX_')
 BFO = CurieNamespace('BFO', 'http://purl.obolibrary.org/obo/BFO_')
 CHEBI = CurieNamespace('CHEBI', 'http://purl.obolibrary.org/obo/CHEBI_')
 CHEMINF = CurieNamespace('CHEMINF', 'http://semanticscience.org/resource/CHEMINF_')
 CHMO = CurieNamespace('CHMO', 'http://purl.obolibrary.org/obo/CHMO_')
-EDAM = CurieNamespace('EDAM', 'http://edamontology.org/data_')
 ENVO = CurieNamespace('ENVO', 'http://purl.obolibrary.org/obo/ENVO_')
 FOODON = CurieNamespace('FOODON', 'http://purl.obolibrary.org/obo/FOODON_')
 IAO = CurieNamespace('IAO', 'http://purl.obolibrary.org/obo/IAO_')
@@ -86,8 +80,12 @@ RO = CurieNamespace('RO', 'http://purl.obolibrary.org/obo/RO_')
 RXNO = CurieNamespace('RXNO', 'http://purl.obolibrary.org/obo/RXNO_')
 SIO = CurieNamespace('SIO', 'http://semanticscience.org/resource/SIO_')
 T4FS = CurieNamespace('T4FS', 'http://purl.obolibrary.org/obo/T4FS_')
-VOC4CAT = CurieNamespace('VOC4CAT', 'https://w3id.org/nfdi4cat/voc4cat_')
 ADMS = CurieNamespace('adms', 'http://www.w3.org/ns/adms#')
+ALLOTROPE_EQUIPMENT = CurieNamespace('allotrope_equipment', 'http://purl.allotrope.org/ontologies/equipment#AFE_')
+ALLOTROPE_PROCESS = CurieNamespace('allotrope_process', 'http://purl.allotrope.org/ontologies/process#AFP_')
+ALLOTROPE_PROPERTY = CurieNamespace('allotrope_property', 'http://purl.allotrope.org/ontologies/property#AFX_')
+ALLOTROPE_RESULT = CurieNamespace('allotrope_result', 'http://purl.allotrope.org/ontologies/result#AFR_')
+ALLOTROPE_ROLE = CurieNamespace('allotrope_role', 'http://purl.allotrope.org/ontologies/role#AFRL_')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
 CHEMDCATAP = CurieNamespace('chemdcatap', 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/')
 CHEMICAL_ENTITIES_AP = CurieNamespace('chemical_entities_ap', 'https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/')
@@ -96,9 +94,9 @@ DCATAP = CurieNamespace('dcatap', 'http://data.europa.eu/r5r/')
 DCATAP_PLUS = CurieNamespace('dcatap_plus', 'https://w3id.org/nfdi-de/dcat-ap-plus/')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
 DOI = CurieNamespace('doi', 'https://doi.org/')
+EDAM = CurieNamespace('edam', 'http://edamontology.org/data_')
 ELI = CurieNamespace('eli', 'http://data.europa.eu/eli/ontology#')
 EPOS = CurieNamespace('epos', 'https://www.epos-eu.org/epos-dcat-ap#')
-EX = CurieNamespace('ex', 'http://example.org/')
 FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 LOCN = CurieNamespace('locn', 'http://www.w3.org/ns/locn#')
@@ -115,6 +113,7 @@ SOSA = CurieNamespace('sosa', 'http://www.w3.org/ns/sosa/')
 SPDX = CurieNamespace('spdx', 'http://spdx.org/rdf/terms#')
 TIME = CurieNamespace('time', 'http://www.w3.org/2006/time#')
 VCARD = CurieNamespace('vcard', 'http://www.w3.org/2006/vcard/ns#')
+VOC4CAT = CurieNamespace('voc4cat', 'https://w3id.org/nfdi4cat/voc4cat_')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = CHEMDCATAP
 
@@ -2782,8 +2781,8 @@ class Reactor(Device):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = AFE["0000153"]
-    class_class_curie: ClassVar[str] = "AFE:0000153"
+    class_class_uri: ClassVar[URIRef] = ALLOTROPE_EQUIPMENT["0000153"]
+    class_class_curie: ClassVar[str] = "allotrope.equipment:0000153"
     class_name: ClassVar[str] = "Reactor"
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.Reactor
 
@@ -3389,8 +3388,8 @@ class MolarMass(Mass):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = AFR["0002409"]
-    class_class_curie: ClassVar[str] = "AFR:0002409"
+    class_class_uri: ClassVar[URIRef] = ALLOTROPE_RESULT["0002409"]
+    class_class_curie: ClassVar[str] = "allotrope.result:0002409"
     class_name: ClassVar[str] = "MolarMass"
     class_model_uri: ClassVar[URIRef] = CHEMDCATAP.MolarMass
 
