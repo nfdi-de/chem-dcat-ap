@@ -9,7 +9,7 @@ see_also:
 - https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml
 - https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads
 id: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-version: 0.1.0rc4.post1.dev0+2ac9fb85
+version: 0.1.0rc4.post2.dev0+d0fbe232
 imports:
 - linkml:types
 - dcatap_plus:latest/schema/dcat_ap_plus
@@ -9920,6 +9920,6 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.12.0
 source_file: chem_dcat_ap.yaml
-source_file_date: '2026-11-01T09:55:24'
+source_file_date: '2026-11-01T09:58:42'
 source_file_size: 7591
 
