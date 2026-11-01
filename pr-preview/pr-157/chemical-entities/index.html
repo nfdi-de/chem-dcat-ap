@@ -1,0 +1,1253 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nfdi-de.github.io/chem-dcat-ap/chemical-entities/">
+      
+      
+        <link rel="prev" href="../material-entities/">
+      
+      
+        <link rel="next" href="../chemical-reactions/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../images/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Chemical Entities - ChemDCAT-AP Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chemical-entities" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ChemDCAT-AP Documentation" class="md-header__button md-logo" aria-label="ChemDCAT-AP Documentation" data-md-component="logo">
+      <img id="logo_dark_mode" src="../images/logo-icon.svg" alt="logo">
+<img id="logo_light_mode" src="../images/logo-icon.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ChemDCAT-AP Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chemical Entities
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nfdi-de/chem-dcat-ap" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ChemDCAT-AP Documentation" class="md-nav__button md-logo" aria-label="ChemDCAT-AP Documentation" data-md-component="logo">
+      <img id="logo_dark_mode" src="../images/logo-icon.svg" alt="logo">
+<img id="logo_light_mode" src="../images/logo-icon.svg" alt="logo">
+    </a>
+    ChemDCAT-AP Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nfdi-de/chem-dcat-ap" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../material-entities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Entities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemical Entities
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemical Entities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#design-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chemicalentity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChemicalEntity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ChemicalEntity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-descriptor-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure descriptor slots
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compositional-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compositional structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chemicalsubstancemixin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChemicalSubstanceMixin
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ChemicalSubstanceMixin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chemistry-specific-attribute-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chemistry-specific attribute classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#substancesample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SubstanceSample
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SubstanceSample">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-a-substancesample-with-chemical-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: a SubstanceSample with chemical identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polymersample-and-polymermixin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PolymerSample and PolymerMixin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atom
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemical-reactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemical Reactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataset-activity-shapes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemical Datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ontology-alignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ontology Alignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guidance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adoption Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elements/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../versioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Versioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Users
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#design-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chemicalentity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChemicalEntity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ChemicalEntity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-descriptor-slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure descriptor slots
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compositional-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compositional structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chemicalsubstancemixin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ChemicalSubstanceMixin
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ChemicalSubstanceMixin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chemistry-specific-attribute-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chemistry-specific attribute classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#substancesample" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SubstanceSample
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SubstanceSample">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-a-substancesample-with-chemical-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: a SubstanceSample with chemical identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polymersample-and-polymermixin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PolymerSample and PolymerMixin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atom
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="chemical-entities">Chemical entities</h1>
+<p>The Chemical Entities AP module (<a href="../schema/chemical_entities_ap.yaml">chemical_entities_ap.yaml</a>) imports the Material Entities AP module and thus adds chemical identity to the material entity layer. It allows describing chemical substances as material things that are mixable, soluble and most importantly composed of certain chemical structures.</p>
+<h2 id="design-pattern">Design Pattern</h2>
+<p><img alt="chemical_entities_dark.svg" src="../images/chemical_entities_dark.svg#only-dark" />
+<img alt="chemical_entities_light.svg" src="../images/chemical_entities_light.svg#only-light" /></p>
+<h2 id="chemicalentity">ChemicalEntity</h2>
+<p>The <code>ChemicalEntity</code> shape is mapped to <code>CHEBI:23367</code> (labeled <em>molecular entity</em> in CHEBI; aliased as such in the schema) and extends <code>Entity</code> from DCAT-AP+, <strong>not</strong> <code>MaterialEntity</code>. It was labeled <code>ChemicalEntity</code> because chemists often find CHEBI's label misleading as it suggests only molecules, excluding ions, radicals, complexes, and conformers that are all in scope of <code>CHEBI:23367</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Why ChemicalEntity extends Entity, not MaterialEntity</p>
+<p>Ontologically, a CHEBI chemical entity <em>is</em> a BFO material entity, and a reasoner can infer this from the ontology axioms. But ChemDCAT-AP is a shape specification, not an ontology. If <code>ChemicalEntity</code> extended <code>MaterialEntity</code>, it would inherit the <code>MaterialisticMixin</code> slots (<code>has_temperature</code>, <code>has_mass</code>, <code>has_volume</code>, <code>has_density</code>, <code>has_pressure</code>, <code>has_physical_state</code>) via LinkML's <code>is_a</code> inheritance. These physical property slots do not make sense at the molecular level (an individual molecule does not have a temperature or a density) and would confuse schema users into thinking they should populate them. Extending <code>Entity</code> directly avoids this: molecular-level classes get only the slots they need (structure descriptors), while macroscopic substance classes get physical properties through the <code>ChemicalSubstanceMixin</code> applied to <code>MaterialEntity</code> subclasses.</p>
+</div>
+<h3 id="structure-descriptor-slots">Structure descriptor slots</h3>
+<p><code>ChemicalEntity</code> introduces six slots for chemical identity, all sub-slots of the DCAT-AP+ <code>has_qualitative_attribute</code> or <code>has_quantitative_attribute</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Range class</th>
+<th>class_uri</th>
+<th>What it captures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>inchi</code></td>
+<td><code>InChi</code></td>
+<td><code>CHEMINF:000113</code></td>
+<td>InChI structure descriptor</td>
+</tr>
+<tr>
+<td><code>inchikey</code></td>
+<td><code>InChIKey</code></td>
+<td><code>CHEMINF:000059</code></td>
+<td>InChI key descriptor</td>
+</tr>
+<tr>
+<td><code>smiles</code></td>
+<td><code>SMILES</code></td>
+<td><code>CHEMINF:000018</code></td>
+<td>SMILES line notation</td>
+</tr>
+<tr>
+<td><code>molecular_formula</code></td>
+<td><code>MolecularFormula</code></td>
+<td><code>CHEMINF:000042</code></td>
+<td>Hill system formula</td>
+</tr>
+<tr>
+<td><code>iupac_name</code></td>
+<td><code>IUPACName</code></td>
+<td><code>CHEMINF:000107</code></td>
+<td>Systematic IUPAC name</td>
+</tr>
+<tr>
+<td><code>has_molar_mass</code></td>
+<td><code>MolarMass</code></td>
+<td><code>AFR:0002409</code></td>
+<td>Molar mass quantity</td>
+</tr>
+</tbody>
+</table>
+<p>The first five are <code>QualitativeAttribute</code> subclasses (string-valued descriptors); <code>MolarMass</code> is a <code>QuantitativeAttribute</code> subclass (numeric-valued with unit). All use <code>slot_uri: SIO:000008</code> (has attribute). All descriptor slots are <code>recommended: true</code>, meaning they should be provided when available but are not required for validation.</p>
+<div class="admonition tip">
+<p class="admonition-title">Use dedicated slots, not generic <code>has_qualitative_attribute</code></p>
+<p>ChemDCAT-AP defines <code>inchi</code>, <code>smiles</code>, etc. as dedicated sub-slots with typed ranges. Use these instead of the generic <code>has_qualitative_attribute</code> with a <code>rdf_type</code> classification. The dedicated slots produce more explicit instance data, enable tighter validation, and are easier to query.</p>
+</div>
+<h3 id="compositional-structure">Compositional structure</h3>
+<p><code>ChemicalEntity</code> overrides <code>has_part</code> (inherited from <code>Entity</code>) to constrain its range to <code>ChemicalEntity</code> and its mapping is changed to <code>BFO:0000051</code>. This enables recursive molecular composition: a complex can declare its ligands as parts, each with their own structure descriptors.</p>
+<h2 id="chemicalsubstancemixin">ChemicalSubstanceMixin</h2>
+<p>An abstract mixin that extends <code>MaterialisticMixin</code> with chemistry-specific substance properties. It is applied to <code>MaterialEntity</code> subclasses that represent macroscopic chemical substances.</p>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Range</th>
+<th>Inherited from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>has_concentration</code></td>
+<td><code>Concentration</code></td>
+<td>ChemicalSubstanceMixin</td>
+</tr>
+<tr>
+<td><code>has_ph_value</code></td>
+<td><code>PHValue</code></td>
+<td>ChemicalSubstanceMixin</td>
+</tr>
+<tr>
+<td><code>has_amount</code></td>
+<td><code>AmountOfSubstance</code></td>
+<td>ChemicalSubstanceMixin</td>
+</tr>
+<tr>
+<td><code>composed_of</code></td>
+<td><code>ChemicalEntity[]</code></td>
+<td>ChemicalSubstanceMixin</td>
+</tr>
+<tr>
+<td><code>has_temperature</code></td>
+<td><code>Temperature</code></td>
+<td>MaterialisticMixin</td>
+</tr>
+<tr>
+<td><code>has_mass</code></td>
+<td><code>Mass</code></td>
+<td>MaterialisticMixin</td>
+</tr>
+<tr>
+<td><code>has_volume</code></td>
+<td><code>Volume</code></td>
+<td>MaterialisticMixin</td>
+</tr>
+<tr>
+<td><code>has_density</code></td>
+<td><code>Density</code></td>
+<td>MaterialisticMixin</td>
+</tr>
+<tr>
+<td><code>has_pressure</code></td>
+<td><code>Pressure</code></td>
+<td>MaterialisticMixin</td>
+</tr>
+<tr>
+<td><code>has_physical_state</code></td>
+<td><code>PhysicalStateEnum</code></td>
+<td>MaterialisticMixin</td>
+</tr>
+<tr>
+<td><code>alternative_label</code></td>
+<td><code>string</code></td>
+<td>MaterialisticMixin</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>composed_of</code> slot (a sub-slot of <code>has_part</code>, mapped to <code>BFO:0000051</code>) links a substance to its constituent <code>ChemicalEntity</code> instances. This is the bridge between the macroscopic substance and the molecular-level identity.</p>
+<h3 id="chemistry-specific-attribute-classes">Chemistry-specific attribute classes</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>class_uri</th>
+<th>Parent</th>
+<th>Mappings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Concentration</code></td>
+<td><code>CHMO:0002820</code></td>
+<td><code>QuantitativeAttribute</code></td>
+<td>exact: <code>EDAM:2140</code>, <code>NCIT:C41185</code>, <code>VOC4CAT:0007244</code>, <code>AFR:0002036</code></td>
+</tr>
+<tr>
+<td><code>AmountOfSubstance</code></td>
+<td><code>qudt:Quantity</code></td>
+<td><code>QuantitativeAttribute</code></td>
+<td>close: <code>PATO:0000070</code></td>
+</tr>
+<tr>
+<td><code>PHValue</code></td>
+<td><code>SIO:001089</code></td>
+<td><code>QuantitativeAttribute</code></td>
+<td>exact: <code>NCIT:C45997</code>, <code>AFR:0001142</code></td>
+</tr>
+</tbody>
+</table>
+<p>These follow the DCAT-AP+ <a href="https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#quantitativeattribute">QuantitativeAttribute pattern</a>. Each narrows the semantic intent while preserving the structural <code>value</code> + <code>has_quantity_type</code> + <code>unit</code> shape.</p>
+<div class="admonition warning">
+<p class="admonition-title">Enum bindings for <code>has_quantity_type</code> and <code>unit</code> are still experimental</p>
+<p>The schema declares bindings that constrain <code>has_quantity_type</code> and <code>unit</code> values to QUDT QuantityKind and Unit vocabularies respectively. These bindings are not enforced by <code>linkml-validate</code>. They will be validated using the <a href="https://linkml.io/linkml-term-validator/">linkml-term-validator</a>, which is meant to supports dynamic enums and binding validation. Yet, this still needs to be implemented in the ChemDCAT-AP pipeline.</p>
+</div>
+<h2 id="substancesample">SubstanceSample</h2>
+<p>Mapped to <code>SIO:001378</code> (analyte), <code>SubstanceSample</code> extends <code>MaterialSample</code> (from <code>material_entities_ap</code>) and uses the <code>ChemicalSubstanceMixin</code>. It is the central class for any evaluated chemical substance in ChemDCAT-AP. It combines three capabilities:</p>
+<ul>
+<li><strong>Provenance linking</strong> (via <code>EvaluatedEntity</code>): it is meant to be used as the range of <code>evaluated_entity</code> and <code>is_about_entity</code> in specializations of <code>DataGeneratingActivity</code> respectively <code>Dataset</code> (see <a href="../dataset-activity-shapes/">dataset and activity shapes</a>).</li>
+<li><strong>Physical properties</strong> (via <code>MaterialisticMixin</code>, inherited through <code>ChemicalSubstanceMixin</code>): temperature, mass, volume, density, pressure, physical state.</li>
+<li><strong>Chemical identity</strong> (via <code>ChemicalSubstanceMixin</code>): <code>composed_of</code> linking to <code>ChemicalEntity</code> instances with structure descriptors, plus concentration, pH, and amount of substance.</li>
+</ul>
+<p>Use <code>SubstanceSample</code> whenever your data describes a chemical substance that was the subject of a measurement or analysis. This covers NMR samples, catalysis test substances, reaction aliquots, and any other analytically characterized chemical material. For substances that participate in a reaction but are not themselves the evaluated subject, use the reaction participant classes (<code>StartingMaterial</code>, <code>Reagent</code>, etc.) instead.</p>
+<h3 id="example-a-substancesample-with-chemical-identity">Example: a SubstanceSample with chemical identity</h3>
+<p>From the test dataset, a Chemotion Repository compound:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2</span>
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CRS-50440&quot;</span>
+<span class="nt">rdf_type</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:59999</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chemical</span><span class="nv"> </span><span class="s">substance&quot;</span>
+<span class="nt">other_identifier</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">notation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.chemotion-repository.net/pid/50440</span>
+<span class="nt">has_temperature</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">rdf_type</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NMR:1400025</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sample</span><span class="nv"> </span><span class="s">temperature</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">magnet&quot;</span>
+<span class="w">    </span><span class="nt">has_quantity_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://qudt.org/vocab/quantitykind/Temperature</span>
+<span class="w">    </span><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://qudt.org/vocab/unit/K</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300.0</span>
+<span class="nt">composed_of</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://dx.doi.org/10.14272/UGRXAOUDHZOHPF-UHFFFAOYSA-N.2#EvaluatedCompound</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;compound</span><span class="nv"> </span><span class="s">assigned</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample&quot;</span>
+<span class="w">    </span><span class="nt">other_identifier</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">notation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://pubchem.ncbi.nlm.nih.gov/compound/26248854</span>
+<span class="w">    </span><span class="nt">inchikey</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;UGRXAOUDHZOHPF-UHFFFAOYSA-N&quot;</span>
+<span class="w">        </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;assigned</span><span class="nv"> </span><span class="s">InChiKey&quot;</span>
+<span class="w">    </span><span class="nt">inchi</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;InChI=1S/C11H12N2S/c1-12-7-10-8-14-11(13-10)9-5-3-2-4-6-9/h2-6,8,12H,7H2,1H3&quot;</span>
+<span class="w">        </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;assigned</span><span class="nv"> </span><span class="s">InChi&quot;</span>
+<span class="w">    </span><span class="nt">smiles</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv"> </span><span class="s">CNCc1csc(n1)c1ccccc1&quot;</span>
+<span class="w">        </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;assigned</span><span class="nv"> </span><span class="s">SMILES&quot;</span>
+<span class="w">    </span><span class="nt">molecular_formula</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;C11H12N2S&quot;</span>
+<span class="w">        </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;assigned</span><span class="nv"> </span><span class="s">molecular</span><span class="nv"> </span><span class="s">formula&quot;</span>
+<span class="w">    </span><span class="nt">iupac_name</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;N-methyl-1-(2-phenyl-1,3-thiazol-4-yl)methanamine&quot;</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Chemotion IUPAC name</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Methyl[(2-phenyl-1,3-thiazol-4-yl)methyl]amine&quot;</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PubChem IUPAC name</span>
+<span class="w">    </span><span class="nt">has_molar_mass</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">has_quantity_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://qudt.org/vocab/quantitykind/MolarMass</span>
+<span class="w">        </span><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://qudt.org/vocab/unit/GM-PER-MOL</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">204.072119</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Molar mass as specified in the Chemotion repository.</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">has_quantity_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://qudt.org/vocab/quantitykind/MolarMass</span>
+<span class="w">        </span><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://qudt.org/vocab/unit/GM-PER-MOL</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">204.29</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Molar mass as specified in PubChem.</span>
+</code></pre></div>
+<p>Key observations:</p>
+<ul>
+<li>The <code>SubstanceSample</code> (macroscopic level) links to its <code>ChemicalEntity</code> (molecular level) via <code>composed_of</code>.</li>
+<li>The <code>ChemicalEntity</code> carries all structure descriptors. Each descriptor slot allows multiple values (e.g. two <code>iupac_name</code> entries from different sources, two <code>has_molar_mass</code> entries with different precision).</li>
+<li>The sample's temperature uses <code>rdf_type</code> to classify it as specifically the sample temperature in the NMR magnet (<code>NMR:1400025</code>), not just any temperature. Similarly, the <code>SubstanceSample</code> is additionally typed to be an instance of CHEBI's <em>chemical substance</em> class. This is the <a href="https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#pattern-3-flexible-classification-classifiermixin">ClassifierMixin</a> at work.</li>
+</ul>
+<h2 id="polymersample-and-polymermixin">PolymerSample and PolymerMixin</h2>
+<p><code>PolymerSample</code> extends <code>SubstanceSample</code> and mixes in <code>PolymerMixin</code>. It follows the same pattern as <code>SubstanceSample</code> itself: a substance class gains domain-specific properties through a mixin.</p>
+<p><code>PolymerMixin</code> extends <code>ChemicalSubstanceMixin</code> but currently defines no additional slots. It is a placeholder for future polymer-specific properties (degree of polymerization, molecular weight distribution, branching, etc.) that will follow the same mixin-based pattern used throughout ChemDCAT-AP.</p>
+<div class="admonition warning">
+<p class="admonition-title">Stub: shared <code>class_uri</code></p>
+<p><code>PolymerSample</code> currently shares <code>class_uri: SIO:001378</code> with its parent <code>SubstanceSample</code>. A more specific mapping is planned for a future release. The schema flags this as a TODO.</p>
+</div>
+<h2 id="atom">Atom</h2>
+<p><code>Atom</code> (mapped to <code>CHEBI:33250</code>) extends <code>Entity</code> directly. It is a currently minimal shape whose only addition is that <code>rdf_type</code> is <code>required: true</code>, forcing every instance to declare which specific atom type it is via the <a href="https://nfdi-de.github.io/dcat-ap-plus/latest/design-patterns/#pattern-3-flexible-classification-classifiermixin">ClassifierMixin</a>. The slot description indicates that the value should come from CHEBI's atom branch (<code>CHEBI:33250</code> and its subclasses, e.g. <code>CHEBI:26708</code> for a sodium atom), but this constraint is not yet enforced programmatically. Future versions of ChemDCAT-AP will use LinkML <a href="https://linkml.io/linkml-model/latest/docs/bindings/">slot bindings</a> and the <a href="https://linkml.io/linkml-term-validator/">linkml-term-validator</a> to validate this.</p>
+<div class="admonition note">
+<p class="admonition-title">Why Atom extends Entity, not ChemicalEntity</p>
+<p>Since <code>ChemicalEntity</code> is grounded in CHEBI' <em>molecular entity</em>, and CHEBI's atom class (<code>CHEBI:33250</code>) is not a subclass of molecular entity in CHEBI's class hierarchy, subsuming <code>Atom</code> under <code>ChemicalEntity</code> would be ontologically incorrect. Extending <code>Entity</code> directly fixes this issue.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "search.highlight", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": ["stable"], "provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
