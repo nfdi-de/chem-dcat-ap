@@ -30,7 +30,7 @@ from pydantic import (
 
 
 metamodel_version = "1.12.0"
-version = "0.1.0rc3.post17.dev0+8d0c0eb6"
+version = "0.1.0rc4.post1.dev0+4d5c71ce"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -167,7 +167,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'chemdcatap',
      'see_also': ['https://nfdi-de.github.io/chem-dcat-ap/',
                   'https://github.com/HendrikBorgelt/DCAT-ap_as_LinkML_template/blob/main/src/dcatlinkml/schema/dcatlinkml.yaml',
                   'https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads'],
-     'source_file': 'src\\chem_dcat_ap\\schema\\chem_dcat_ap.yaml',
+     'source_file': 'src/chem_dcat_ap/schema/chem_dcat_ap.yaml',
      'title': 'ChemDCAT-AP'} )
 
 class DatasetThemes(str, Enum):

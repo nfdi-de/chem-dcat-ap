@@ -8,7 +8,7 @@
     "https://gitlab.com/opensourcelab/scientificdata/scidats/-/blob/feature/linkml-schemata/schemata/metadata_model_scidats_dcat_ap.yaml?ref_type=heads"
   ],
   "id": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
-  "version": "0.1.0rc3.post17.dev0+8d0c0eb6",
+  "version": "0.1.0rc4.post1.dev0+4d5c71ce",
   "imports": [
     "linkml:types",
     "dcatap_plus:latest/schema/dcat_ap_plus",
@@ -135,10 +135,6 @@
       "prefix_reference": "http://purl.obolibrary.org/obo/MOP_"
     },
     {
-      "prefix_prefix": "ex",
-      "prefix_reference": "http://example.org/"
-    },
-    {
       "prefix_prefix": "NCIT",
       "prefix_reference": "http://purl.obolibrary.org/obo/NCIT_"
     },
@@ -155,23 +151,23 @@
       "prefix_reference": "http://nmrML.org/nmrCV#NMR:"
     },
     {
-      "prefix_prefix": "AFE",
+      "prefix_prefix": "allotrope.equipment",
       "prefix_reference": "http://purl.allotrope.org/ontologies/equipment#AFE_"
     },
     {
-      "prefix_prefix": "AFRL",
+      "prefix_prefix": "allotrope.role",
       "prefix_reference": "http://purl.allotrope.org/ontologies/role#AFRL_"
     },
     {
-      "prefix_prefix": "AFP",
+      "prefix_prefix": "allotrope.process",
       "prefix_reference": "http://purl.allotrope.org/ontologies/process#AFP_"
     },
     {
-      "prefix_prefix": "AFR",
+      "prefix_prefix": "allotrope.result",
       "prefix_reference": "http://purl.allotrope.org/ontologies/result#AFR_"
     },
     {
-      "prefix_prefix": "VOC4CAT",
+      "prefix_prefix": "voc4cat",
       "prefix_reference": "https://w3id.org/nfdi4cat/voc4cat_"
     },
     {
@@ -9149,7 +9145,7 @@
       "description": "A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "exact_mappings": [
-        "AFR:0002409"
+        "allotrope.result:0002409"
       ],
       "close_mappings": [
         "PATO:0001681"
@@ -9175,10 +9171,10 @@
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
       "exact_mappings": [
         "CHMO:0002820",
-        "EDAM:2140",
+        "edam:2140",
         "NCIT:C41185",
-        "VOC4CAT:0007244",
-        "AFR:0002036"
+        "voc4cat:0007244",
+        "allotrope.result:0002036"
       ],
       "close_mappings": [
         "PATO:0000033"
@@ -9235,7 +9231,7 @@
       "exact_mappings": [
         "SIO:001089",
         "NCIT:C45997",
-        "AFR:0001142"
+        "allotrope.result:0001142"
       ],
       "close_mappings": [
         "PATO:0001842"
@@ -9412,7 +9408,7 @@
         "SIO:010345",
         "MOP:0000543",
         "REX:0000002",
-        "AFP:0003711"
+        "allotrope.process:0003711"
       ],
       "narrow_mappings": [
         "RXNO:0000329"
@@ -9500,7 +9496,7 @@
       ],
       "exact_mappings": [
         "SIO:010417",
-        "VOC4CAT:0007246",
+        "voc4cat:0007246",
         "NCIT:C45790"
       ],
       "is_a": "AgenticEntity",
@@ -9543,7 +9539,7 @@
       "exact_mappings": [
         "SIO:010411",
         "NCIT:C802",
-        "VOC4CAT:0000101"
+        "voc4cat:0000101"
       ],
       "close_mappings": [
         "OBI:0001879",
@@ -9588,7 +9584,7 @@
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "exact_mappings": [
         "NCIT:C48810",
-        "VOC4CAT:0000194"
+        "voc4cat:0000194"
       ],
       "close_mappings": [
         "ENVO:2000000"
@@ -9631,7 +9627,7 @@
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "exact_mappings": [
         "SIO:010344",
-        "VOC4CAT:0000194",
+        "voc4cat:0000194",
         "NCIT:C48810"
       ],
       "close_mappings": [
@@ -9675,8 +9671,8 @@
       "description": "A reactor is a container for controlling a biological or chemical reaction or process.",
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "exact_mappings": [
-        "AFE:0000153",
-        "VOC4CAT:0007017"
+        "allotrope.equipment:0000153",
+        "voc4cat:0007017"
       ],
       "is_a": "Device",
       "mixins": [
@@ -9712,7 +9708,7 @@
       "from_schema": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/",
       "exact_mappings": [
         "CHMO:0002855",
-        "VOC4CAT:0005005"
+        "voc4cat:0005005"
       ],
       "is_a": "QuantitativeAttribute",
       "slots": [
@@ -9835,7 +9831,7 @@
       "exact_mappings": [
         "OBI:0000747",
         "SIO:001050",
-        "VOC4CAT:0005056"
+        "voc4cat:0005056"
       ],
       "is_a": "EvaluatedEntity",
       "mixins": [
@@ -9993,11 +9989,11 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "chem_dcat_ap.yaml",
-  "source_file_date": "2026-10-15T09:58:20",
-  "source_file_size": 7755,
+  "source_file_date": "2026-10-20T08:46:30",
+  "source_file_size": 7618,
   "@type": "SchemaDefinition",
   "@context": [
-    "project\\jsonld/chem_dcat_ap.context.jsonld",
+    "project/jsonld/chem_dcat_ap.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
     "https://w3id.org/nfdi-de/dcat-ap-plus/latest/schema/dcat_ap_plus.context.jsonld",
     "chemical_entities_ap.context.jsonld",

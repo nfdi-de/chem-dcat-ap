@@ -59,7 +59,7 @@ from linkml_runtime.linkml_model.types import Date, Decimal, Float, Integer, Str
 from linkml_runtime.utils.metamodelcore import Decimal, URIorCURIE, XSDDate
 
 metamodel_version = "1.12.0"
-version = "0.1.0rc3.post17.dev0+8d0c0eb6"
+version = "0.1.0rc4.post1.dev0+4d5c71ce"
 
 # Namespaces
 BFO = CurieNamespace('BFO', 'http://purl.obolibrary.org/obo/BFO_')

@@ -640,30 +640,30 @@ is_about_activity:
 - description:
   - "The reaction has been conducted in dry glass ware under argon atmosphere. A solution\
     \ of 1-bromo-2-fluorobenzene (1.76 g, 1.10 mL, 9.86 mmol, 1.08 equiv) in anhydrous\
-    \ THF (24.0 mL) was cooled to -78 \xC2\xB0C, and n-BuLi (689 mg, 4.30 mL, 10.8\
-    \ mmol, 2.50M in hexane, 1.18 equiv) was added drop-wise over 10 min. After stirring\
+    \ THF (24.0 mL) was cooled to -78 \xB0C, and n-BuLi (689 mg, 4.30 mL, 10.8 mmol,\
+    \ 2.50M in hexane, 1.18 equiv) was added drop-wise over 10 min. After stirring\
     \ for further 50 min, a solution of chloro(diphenyl)phosphine (2.09 g, 1.70 mL,\
     \ 9.09 mmol, 1.00 equiv) in anhydrous THF (3.00 mL) was added drop-wise over 10\
-    \ min, and the reaction mixture was stirred for 8 h at -78 \xC2\xB0C. The reaction\
-    \ mixture was allowed to warm up to 25 \xC2\xB0C over 8 h, and was then quenched\
-    \ by the addition of 1 M HCl (10.0 mL). The phases were separated, and the aqueous\
-    \ phase was extracted with diethyl ether (3 \xC3\u2014 50.0 mL). Then, the combined\
+    \ min, and the reaction mixture was stirred for 8 h at -78 \xB0C. The reaction\
+    \ mixture was allowed to warm up to 25 \xB0C over 8 h, and was then quenched by\
+    \ the addition of 1 M HCl (10.0 mL). The phases were separated, and the aqueous\
+    \ phase was extracted with diethyl ether (3 \xD7 50.0 mL). Then, the combined\
     \ organic layers were washed with sat. aq. NaHCO3-solution (50.0 mL), water (50.0\
     \ mL), and with brine (50.0 mL). The organic phase was dried over Na2SO4, filtered,\
     \ and the solvent was evaporated under reduced pressure to afford the phosphine\
     \ intermediate as a pale yellow oil. The crude phosphine intermediate was dissolved\
-    \ in ethanol (150 mL), and cooled to 0 \xC2\xB0C. Under vigorous stirring, a solution\
+    \ in ethanol (150 mL), and cooled to 0 \xB0C. Under vigorous stirring, a solution\
     \ of hydrogen peroxide (3.95 g, 3.50 mL, 40.7 mmol, 35%, 4.48 equiv), and glacial\
     \ acetic acid (1.91 g, 1.80 mL, 30.5 mmol, 3.36 equiv) in ethanol (15.0 mL) was\
-    \ added drop-wise over 15 min. The mixture was stirred for 2 h at 0 \xC2\xB0C,\
-    \ and was then refluxed for 2 h. After evaporating the solvent under reduced pressure,\
+    \ added drop-wise over 15 min. The mixture was stirred for 2 h at 0 \xB0C, and\
+    \ was then refluxed for 2 h. After evaporating the solvent under reduced pressure,\
     \ the crude was dissolved in dichloromethane (50.0 mL), washed with sat. aq. NaHCO3-solution\
-    \ (2 \xC3\u2014 25.0 mL), water (25.0 mL), and brine (25.0 mL). The organic layer\
-    \ was dried over Na2SO4, before evaporating the solvent under reduced pressure.\
-    \ Additional information for publication and purification details: The crude product\
-    \ was purified via flash-chromatography (Interchim\xC2\xAE\xC2\_puriFLASH XS520)\
-    \ on silica gel (PF-30SIHP-F0040) using cyclohexane/ethyl acetate 35:65 to 30:70\
-    \ in 10 CV (1 CV = 52.7 mL; flowrate = 26.0 mL/min). The product 1-diphenylphosphoryl-2-fluorobenzene\
+    \ (2 \xD7 25.0 mL), water (25.0 mL), and brine (25.0 mL). The organic layer was\
+    \ dried over Na2SO4, before evaporating the solvent under reduced pressure. Additional\
+    \ information for publication and purification details: The crude product was\
+    \ purified via flash-chromatography (Interchim\xAE\_puriFLASH XS520) on silica\
+    \ gel (PF-30SIHP-F0040) using cyclohexane/ethyl acetate 35:65 to 30:70 in 10 CV\
+    \ (1 CV = 52.7 mL; flowrate = 26.0 mL/min). The product 1-diphenylphosphoryl-2-fluorobenzene\
     \ (2.33 g, 7.78 mmol, 86% yield) was obtained as a colorless solid."
   generated_product:
   - composed_of:
@@ -700,13 +700,13 @@ is_about_activity:
     title:
     - 'Step 1: Lithiation and Phosphination'
   - description:
-    - "The reaction mixture was allowed to warm up to 25 \xC2\xB0C over 8 h, and was\
-      \ then quenched by the addition of 1 M HCl (10.0 mL). The phases were separated,\
-      \ and the aqueous phase was extracted with diethyl ether (3 \xC3\u2014 50.0\
-      \ mL). Then, the combined organic layers were washed with sat. aq. NaHCO3-solution\
-      \ (50.0 mL), water (50.0 mL), and with brine (50.0 mL). The organic phase was\
-      \ dried over Na2SO4, filtered, and the solvent was evaporated under reduced\
-      \ pressure to afford the phosphine intermediate as a pale yellow oil."
+    - "The reaction mixture was allowed to warm up to 25 \xB0C over 8 h, and was then\
+      \ quenched by the addition of 1 M HCl (10.0 mL). The phases were separated,\
+      \ and the aqueous phase was extracted with diethyl ether (3 \xD7 50.0 mL). Then,\
+      \ the combined organic layers were washed with sat. aq. NaHCO3-solution (50.0\
+      \ mL), water (50.0 mL), and with brine (50.0 mL). The organic phase was dried\
+      \ over Na2SO4, filtered, and the solvent was evaporated under reduced pressure\
+      \ to afford the phosphine intermediate as a pale yellow oil."
     had_input_activity:
     - id: https://www.chemotion-repository.net/pid/56408#step-1
       title:
@@ -723,7 +723,7 @@ is_about_activity:
       title: 'step-2_Output-1: Crude phosphine intermediate (pale yellow oil)'
     has_part:
     - description:
-      - "The reaction mixture was allowed to warm up to 25 \xC2\xB0C over 8 h"
+      - "The reaction mixture was allowed to warm up to 25 \xB0C over 8 h"
       had_input_activity:
       - id: https://www.chemotion-repository.net/pid/56408#step-1_part-6
         title:
@@ -752,13 +752,13 @@ is_about_activity:
         id: ENVO:01001739
         title: warming of a fluid
       title:
-      - "step-2_part-1: Warming to 25 \xC2\xB0C over 8 h"
+      - "step-2_part-1: Warming to 25 \xB0C over 8 h"
     - description:
       - The reaction mixture was quenched by the addition of 1 M HCl (10.0 mL)
       had_input_activity:
       - id: https://www.chemotion-repository.net/pid/56408#step-2_part-1
         title:
-        - "step-2_part-1: Warming to 25 \xC2\xB0C over 8 h"
+        - "step-2_part-1: Warming to 25 \xB0C over 8 h"
       had_input_entity:
       - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2
         title: 'step-1_ReactionMixture-2: 1-bromo-2-fluorobenzene & chloro(diphenyl)phosphine
@@ -793,7 +793,7 @@ is_about_activity:
       - 'step-2_part-2: Quench with 1 M HCl'
     - description:
       - "The phases were separated, and the aqueous phase was extracted with diethyl\
-        \ ether (3 \xC3\u2014 50.0 mL)."
+        \ ether (3 \xD7 50.0 mL)."
       had_input_activity:
       - id: https://www.chemotion-repository.net/pid/56408#step-2_part-2
         title:
@@ -1132,11 +1132,10 @@ is_about_activity:
         title: chromatography instrument
       title: Interchim puriFLASH XS520
     description:
-    - "The crude product was purified via flash-chromatography (Interchim\xC2\xAE\xC2\
-      \_puriFLASH XS520) on silica gel (PF-30SIHP-F0040) using cyclohexane/ethyl acetate\
-      \ 35:65 to 30:70 in 10 CV (1 CV = 52.7 mL; flowrate = 26.0 mL/min). The product\
-      \ 1-diphenylphosphoryl-2-fluorobenzene (2.33 g, 7.78 mmol, 86% yield) was obtained\
-      \ as a colorless solid."
+    - "The crude product was purified via flash-chromatography (Interchim\xAE\_puriFLASH\
+      \ XS520) on silica gel (PF-30SIHP-F0040) using cyclohexane/ethyl acetate 35:65\
+      \ to 30:70 in 10 CV (1 CV = 52.7 mL; flowrate = 26.0 mL/min). The product 1-diphenylphosphoryl-2-fluorobenzene\
+      \ (2.33 g, 7.78 mmol, 86% yield) was obtained as a colorless solid."
     had_input_activity:
     - id: https://www.chemotion-repository.net/pid/56408#step-4
       title:
@@ -1226,12 +1225,12 @@ is_about_activity:
   - description:
     - "The reaction has been conducted in dry glass ware under argon atmosphere. A\
       \ solution of 1-bromo-2-fluorobenzene (1.76 g, 1.10 mL, 9.86 mmol, 1.08 equiv)\
-      \ in anhydrous THF (24.0 mL) was cooled to -78 \xC2\xB0C, and n-BuLi (689 mg,\
-      \ 4.30 mL, 10.8 mmol, 2.50M in hexane, 1.18 equiv) was added drop-wise over\
-      \ 10 min. After stirring for further 50 min, a solution of chloro(diphenyl)phosphine\
+      \ in anhydrous THF (24.0 mL) was cooled to -78 \xB0C, and n-BuLi (689 mg, 4.30\
+      \ mL, 10.8 mmol, 2.50M in hexane, 1.18 equiv) was added drop-wise over 10 min.\
+      \ After stirring for further 50 min, a solution of chloro(diphenyl)phosphine\
       \ (2.09 g, 1.70 mL, 9.09 mmol, 1.00 equiv) in anhydrous THF (3.00 mL) was added\
       \ drop-wise over 10 min, and the reaction mixture was stirred for 8 h at -78\
-      \ \xC2\xB0C."
+      \ \xB0C."
     generated_product:
     - id: https://www.chemotion-repository.net/pid/56408#step-1_ReactionMixture-2
       title: 'step-1_ReactionMixture-2: 1-bromo-2-fluorobenzene & chloro(diphenyl)phosphine
@@ -1423,10 +1422,10 @@ is_about_activity:
       title: 'StartMat-2: chloro(diphenyl)phosphine'
   - description:
     - "The crude phosphine intermediate was dissolved in ethanol (150 mL), and cooled\
-      \ to 0 \xC2\xB0C. Under vigorous stirring, a solution of hydrogen peroxide (3.95\
+      \ to 0 \xB0C. Under vigorous stirring, a solution of hydrogen peroxide (3.95\
       \ g, 3.50 mL, 40.7 mmol, 35%, 4.48 equiv), and glacial acetic acid (1.91 g,\
       \ 1.80 mL, 30.5 mmol, 3.36 equiv) in ethanol (15.0 mL) was added drop-wise over\
-      \ 15 min. The mixture was stirred for 2 h at 0 \xC2\xB0C, and was then refluxed\
+      \ 15 min. The mixture was stirred for 2 h at 0 \xB0C, and was then refluxed\
       \ for 2 h."
     generated_product:
     - id: https://www.chemotion-repository.net/pid/56408#step-3_Output-1
@@ -1506,7 +1505,7 @@ is_about_activity:
         rdf_type:
           id: CHEBI:60004
           title: mixture
-        title: "step-3_ReactionMixture-1 mixture at 0\xC2\xB0C"
+        title: "step-3_ReactionMixture-1 mixture at 0\xB0C"
       has_qualitative_attribute:
       - title: duration of step-3_part-3
         type:
@@ -1530,7 +1529,7 @@ is_about_activity:
         - 'step-3_part-3: drop-wise addition of H2O2/Acetic Acid solution'
       had_input_entity:
       - id: https://www.chemotion-repository.net/pid/56408#step-3_ReactionMixture-1
-        title: "step-3_ReactionMixture-1 mixture at 0\xC2\xB0C"
+        title: "step-3_ReactionMixture-1 mixture at 0\xB0C"
       has_qualitative_attribute:
       - title: duration of step-3_part-4
         type:
@@ -1547,14 +1546,14 @@ is_about_activity:
         id: CHMO:0002774
         title: stirring
       title:
-      - "step-3_part-4: stirring for 2 hours at 0\xC2\xB0C"
+      - "step-3_part-4: stirring for 2 hours at 0\xB0C"
     - had_input_activity:
       - id: https://www.chemotion-repository.net/pid/56408#step-3_part-4
         title:
-        - "step-3_part-4: stirring for 2 hours at 0\xC2\xB0C"
+        - "step-3_part-4: stirring for 2 hours at 0\xB0C"
       had_input_entity:
       - id: https://www.chemotion-repository.net/pid/56408#step-3_ReactionMixture-1
-        title: "step-3_ReactionMixture-1: mixture at 0\xC2\xB0C"
+        title: "step-3_ReactionMixture-1: mixture at 0\xB0C"
       had_output_entity:
       - id: https://www.chemotion-repository.net/pid/56408#step-3_Output-1
         rdf_type:

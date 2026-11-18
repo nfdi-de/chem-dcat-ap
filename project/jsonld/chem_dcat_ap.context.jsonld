@@ -1,26 +1,6 @@
 {
    "@context": {
       "xsd": "http://www.w3.org/2001/XMLSchema#",
-      "AFE": {
-         "@id": "http://purl.allotrope.org/ontologies/equipment#AFE_",
-         "@prefix": true
-      },
-      "AFP": {
-         "@id": "http://purl.allotrope.org/ontologies/process#AFP_",
-         "@prefix": true
-      },
-      "AFR": {
-         "@id": "http://purl.allotrope.org/ontologies/result#AFR_",
-         "@prefix": true
-      },
-      "AFRL": {
-         "@id": "http://purl.allotrope.org/ontologies/role#AFRL_",
-         "@prefix": true
-      },
-      "AFX": {
-         "@id": "http://purl.allotrope.org/ontologies/property#AFX_",
-         "@prefix": true
-      },
       "BFO": {
          "@id": "http://purl.obolibrary.org/obo/BFO_",
          "@prefix": true
@@ -35,10 +15,6 @@
       },
       "CHMO": {
          "@id": "http://purl.obolibrary.org/obo/CHMO_",
-         "@prefix": true
-      },
-      "EDAM": {
-         "@id": "http://edamontology.org/data_",
          "@prefix": true
       },
       "ENVO": {
@@ -94,11 +70,27 @@
          "@id": "http://purl.obolibrary.org/obo/T4FS_",
          "@prefix": true
       },
-      "VOC4CAT": {
-         "@id": "https://w3id.org/nfdi4cat/voc4cat_",
+      "adms": "http://www.w3.org/ns/adms#",
+      "allotrope.equipment": {
+         "@id": "http://purl.allotrope.org/ontologies/equipment#AFE_",
          "@prefix": true
       },
-      "adms": "http://www.w3.org/ns/adms#",
+      "allotrope.process": {
+         "@id": "http://purl.allotrope.org/ontologies/process#AFP_",
+         "@prefix": true
+      },
+      "allotrope.property": {
+         "@id": "http://purl.allotrope.org/ontologies/property#AFX_",
+         "@prefix": true
+      },
+      "allotrope.result": {
+         "@id": "http://purl.allotrope.org/ontologies/result#AFR_",
+         "@prefix": true
+      },
+      "allotrope.role": {
+         "@id": "http://purl.allotrope.org/ontologies/role#AFRL_",
+         "@prefix": true
+      },
       "biolink": "https://w3id.org/biolink/vocab/",
       "chemdcatap": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
       "chemical_entities_ap": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
@@ -107,9 +99,12 @@
       "dcatap_plus": "https://w3id.org/nfdi-de/dcat-ap-plus/",
       "dcterms": "http://purl.org/dc/terms/",
       "doi": "https://doi.org/",
+      "edam": {
+         "@id": "http://edamontology.org/data_",
+         "@prefix": true
+      },
       "eli": "http://data.europa.eu/eli/ontology#",
       "epos": "https://www.epos-eu.org/epos-dcat-ap#",
-      "ex": "http://example.org/",
       "foaf": "http://xmlns.com/foaf/0.1/",
       "linkml": "https://w3id.org/linkml/",
       "locn": "http://www.w3.org/ns/locn#",
@@ -126,6 +121,10 @@
       "spdx": "http://spdx.org/rdf/terms#",
       "time": "http://www.w3.org/2006/time#",
       "vcard": "http://www.w3.org/2006/vcard/ns#",
+      "voc4cat": {
+         "@id": "https://w3id.org/nfdi4cat/voc4cat_",
+         "@prefix": true
+      },
       "@vocab": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
       "access_rights": {
          "@id": "dcterms:accessRights"
@@ -1213,7 +1212,7 @@
          "@id": "qudt:Quantity"
       },
       "MolarMass": {
-         "@id": "AFR:0002409"
+         "@id": "allotrope.result:0002409"
       },
       "MolecularFormula": {
          "@id": "CHEMINF:000042"
@@ -1288,7 +1287,7 @@
          }
       },
       "Reactor": {
-         "@id": "AFE:0000153"
+         "@id": "allotrope.equipment:0000153"
       },
       "Reagent": {
          "@id": "SIO:010411"
