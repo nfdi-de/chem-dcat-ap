@@ -1,14 +1,8 @@
 {
-   "AFE": "http://purl.allotrope.org/ontologies/equipment#AFE_",
-   "AFP": "http://purl.allotrope.org/ontologies/process#AFP_",
-   "AFR": "http://purl.allotrope.org/ontologies/result#AFR_",
-   "AFRL": "http://purl.allotrope.org/ontologies/role#AFRL_",
-   "AFX": "http://purl.allotrope.org/ontologies/property#AFX_",
    "BFO": "http://purl.obolibrary.org/obo/BFO_",
    "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_",
    "CHEMINF": "http://semanticscience.org/resource/CHEMINF_",
    "CHMO": "http://purl.obolibrary.org/obo/CHMO_",
-   "EDAM": "http://edamontology.org/data_",
    "ENVO": "http://purl.obolibrary.org/obo/ENVO_",
    "FOODON": "http://purl.obolibrary.org/obo/FOODON_",
    "IAO": "http://purl.obolibrary.org/obo/IAO_",
@@ -23,8 +17,12 @@
    "RXNO": "http://purl.obolibrary.org/obo/RXNO_",
    "SIO": "http://semanticscience.org/resource/SIO_",
    "T4FS": "http://purl.obolibrary.org/obo/T4FS_",
-   "VOC4CAT": "https://w3id.org/nfdi4cat/voc4cat_",
    "adms": "http://www.w3.org/ns/adms#",
+   "allotrope.equipment": "http://purl.allotrope.org/ontologies/equipment#AFE_",
+   "allotrope.process": "http://purl.allotrope.org/ontologies/process#AFP_",
+   "allotrope.property": "http://purl.allotrope.org/ontologies/property#AFX_",
+   "allotrope.result": "http://purl.allotrope.org/ontologies/result#AFR_",
+   "allotrope.role": "http://purl.allotrope.org/ontologies/role#AFRL_",
    "biolink": "https://w3id.org/biolink/vocab/",
    "chemdcatap": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/",
    "chemical_entities_ap": "https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/",
@@ -33,9 +31,9 @@
    "dcatap_plus": "https://w3id.org/nfdi-de/dcat-ap-plus/",
    "dcterms": "http://purl.org/dc/terms/",
    "doi": "https://doi.org/",
+   "edam": "http://edamontology.org/data_",
    "eli": "http://data.europa.eu/eli/ontology#",
    "epos": "https://www.epos-eu.org/epos-dcat-ap#",
-   "ex": "http://example.org/",
    "foaf": "http://xmlns.com/foaf/0.1/",
    "linkml": "https://w3id.org/linkml/",
    "locn": "http://www.w3.org/ns/locn#",
@@ -52,6 +50,7 @@
    "spdx": "http://spdx.org/rdf/terms#",
    "time": "http://www.w3.org/2006/time#",
    "vcard": "http://www.w3.org/2006/vcard/ns#",
+   "voc4cat": "https://w3id.org/nfdi4cat/voc4cat_",
    "Activity": {
       "@id": "prov:Activity"
    },
@@ -218,7 +217,7 @@
       "@id": "qudt:Quantity"
    },
    "MolarMass": {
-      "@id": "AFR:0002409"
+      "@id": "allotrope.result:0002409"
    },
    "MolecularFormula": {
       "@id": "CHEMINF:000042"
@@ -263,7 +262,7 @@
       "@id": "dcat:Dataset"
    },
    "Reactor": {
-      "@id": "AFE:0000153"
+      "@id": "allotrope.equipment:0000153"
    },
    "Reagent": {
       "@id": "SIO:010411"

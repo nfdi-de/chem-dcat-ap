@@ -35,15 +35,14 @@ prefixes:
   CHEMINF: http://semanticscience.org/resource/CHEMINF_
   RXNO: http://purl.obolibrary.org/obo/RXNO_
   MOP: http://purl.obolibrary.org/obo/MOP_
-  ex: http://example.org/
   NCIT: http://purl.obolibrary.org/obo/NCIT_
   SIO: http://semanticscience.org/resource/SIO_
   doi: https://doi.org/
   NMR: "http://nmrML.org/nmrCV#NMR:"
-  AFE: http://purl.allotrope.org/ontologies/equipment#AFE_
-  AFRL: http://purl.allotrope.org/ontologies/role#AFRL_
-  AFP: http://purl.allotrope.org/ontologies/process#AFP_
-  VOC4CAT: https://w3id.org/nfdi4cat/voc4cat_
+  allotrope.equipment: http://purl.allotrope.org/ontologies/equipment#AFE_
+  allotrope.role: http://purl.allotrope.org/ontologies/role#AFRL_
+  allotrope.process: http://purl.allotrope.org/ontologies/process#AFP_
+  voc4cat: https://w3id.org/nfdi4cat/voc4cat_
   PROCO: http://purl.obolibrary.org/obo/PROCO_
   time: http://www.w3.org/2006/time#
   REX: http://purl.obolibrary.org/obo/REX_
@@ -89,7 +88,7 @@ classes:
     exact_mappings:
       - MOP:0000543
       - REX:0000002
-      - AFP:0003711
+      - allotrope.process:0003711
     narrow_mappings:
       - RXNO:0000329
 
@@ -113,7 +112,7 @@ classes:
       - ChemicalSubstanceMixin
     description: A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ChemicalSubstance.
     exact_mappings:
-      - VOC4CAT:0007246
+      - voc4cat:0007246
       - NCIT:C45790
 
   Reagent:
@@ -126,7 +125,7 @@ classes:
       - has_molar_equivalent
     exact_mappings:
       - NCIT:C802
-      - VOC4CAT:0000101
+      - voc4cat:0000101
     close_mappings:
       - OBI:0001879
       - PROCO:0000029
@@ -138,7 +137,7 @@ classes:
       - ChemicalSubstanceMixin
     description: A chemical substance that is produced by a ChemicalReaction.
     exact_mappings:
-      - VOC4CAT:0000194
+      - voc4cat:0000194
     close_mappings:
       - ENVO:2000000
 
@@ -151,26 +150,26 @@ classes:
     slots:
       - has_molar_equivalent
     exact_mappings:
-      - VOC4CAT:0000194
+      - voc4cat:0000194
       - NCIT:C48810
     close_mappings:
       - CHEBI:35223
 
   Reactor:
     is_a: Device
-    class_uri: AFE:0000153
+    class_uri: allotrope.equipment:0000153
     mixins:
       - MaterialisticMixin
     description: A reactor is a container for controlling a biological or chemical reaction or process.
     exact_mappings:
-      - VOC4CAT:0007017
+      - voc4cat:0007017
 
   Yield:
     class_uri: CHMO:0002855
     is_a: QuantitativeAttribute
     description: A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).
     exact_mappings:
-      - VOC4CAT:0005005
+      - voc4cat:0005005
 
   MolarEquivalent:
     class_uri: qudt:Quantity
