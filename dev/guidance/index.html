@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1075,15 +1075,15 @@
 <p class="admonition-title">Do: use the dedicated <code>inchikey</code> slot</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># On a ChemicalEntity</span>
 <span class="nt">inchikey</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;UGRXAOUDHZOHPF-UHFFFAOYSA-N&quot;</span>
-<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;assigned</span><span class="nv"> </span><span class="s">InChiKey&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"UGRXAOUDHZOHPF-UHFFFAOYSA-N"</span>
+<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"assigned</span><span class="nv"> </span><span class="s">InChiKey"</span>
 </code></pre></div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Don't: encode an InChIKey as a generic QualitativeAttribute</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># This works but is less precise and harder to query</span>
 <span class="nt">has_qualitative_attribute</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;UGRXAOUDHZOHPF-UHFFFAOYSA-N&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"UGRXAOUDHZOHPF-UHFFFAOYSA-N"</span>
 <span class="w">    </span><span class="nt">rdf_type</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEMINF:000059</span>
 <span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InChiKey</span>
@@ -1146,7 +1146,7 @@
 <span class="nt">composed_of</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ex:compound-001</span>
 <span class="w">    </span><span class="nt">inchikey</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;BSYNRYMUTXBXSQ-UHFFFAOYSA-N&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"BSYNRYMUTXBXSQ-UHFFFAOYSA-N"</span>
 </code></pre></div>
 </div>
 <div class="admonition warning">
@@ -1154,7 +1154,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># Wrong level -- the sample is not the molecule</span>
 <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ex:sample-001</span>
 <span class="nt">inchikey</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;BSYNRYMUTXBXSQ-UHFFFAOYSA-N&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"BSYNRYMUTXBXSQ-UHFFFAOYSA-N"</span>
 </code></pre></div>
 <p>This would fail schema validation because <code>SubstanceSample</code> does not directly carry the <code>inchikey</code> slot. It inherits chemical identity only through the <code>ChemicalSubstanceMixin</code>'s <code>composed_of</code> -&gt; <code>ChemicalEntity</code> chain. See <a href="../chemical-entities/#substancesample">Chemical entities: SubstanceSample</a>.</p>
 </div>
@@ -1210,7 +1210,7 @@
 <p class="admonition-title">Don't: value without unit context</p>
 <div class="highlight"><pre><span></span><code><span class="nt">has_temperature</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300.0</span>
-<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Temperature</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">K&quot;</span><span class="w">  </span><span class="c1"># title is for humans, not machines</span>
+<span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Temperature</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">K"</span><span class="w">  </span><span class="c1"># title is for humans, not machines</span>
 </code></pre></div>
 </div>
 <hr />
@@ -1294,34 +1294,34 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># Activity 1: The Suzuki coupling - Pd complex is the catalyst (agent)</span>
 <span class="c1"># An instance of a ChemicalReaction as defined in ChemDCAT-AP</span>
 <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ex:suzuki-001</span>
-<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Suzuki</span><span class="nv"> </span><span class="s">coupling</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">aryl</span><span class="nv"> </span><span class="s">bromide&quot;</span>
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Suzuki</span><span class="nv"> </span><span class="s">coupling</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">aryl</span><span class="nv"> </span><span class="s">bromide"</span>
 <span class="nt">rdf_type</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RXNO:0000329</span>
-<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Suzuki</span><span class="nv"> </span><span class="s">coupling&quot;</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Suzuki</span><span class="nv"> </span><span class="s">coupling"</span>
 <span class="nt">used_catalyst</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ex:pd-catalyst-001</span>
 <span class="w">    </span><span class="nt">rdf_type</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHEBI:59999</span>
-<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;chemical</span><span class="nv"> </span><span class="s">substance&quot;</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"chemical</span><span class="nv"> </span><span class="s">substance"</span>
 <span class="w">    </span><span class="nt">composed_of</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://pubchem.ncbi.nlm.nih.gov/compound/6102075</span>
 <span class="w">        </span><span class="nt">molecular_formula</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;C36H30Cl2P2Pd&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"C36H30Cl2P2Pd"</span>
 <span class="w">        </span><span class="nt">iupac_name</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dichloropalladium;bis(triphenylphosphane)&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"dichloropalladium;bis(triphenylphosphane)"</span>
 
 <span class="c1"># Activity 2: The NMR study - same Pd complex is now the evaluated entity</span>
 <span class="c1"># An instance of a NMRSpectroscopy as defined in NMR-DCAT-AP</span>
 <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ex:nmr-measurement-001</span>
 <span class="nt">rdf_type</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CHMO:0000595</span>
-<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;carbon-13</span><span class="nv"> </span><span class="s">nuclear</span><span class="nv"> </span><span class="s">magnetic</span><span class="nv"> </span><span class="s">resonance</span><span class="nv"> </span><span class="s">spectroscopy&quot;</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"carbon-13</span><span class="nv"> </span><span class="s">nuclear</span><span class="nv"> </span><span class="s">magnetic</span><span class="nv"> </span><span class="s">resonance</span><span class="nv"> </span><span class="s">spectroscopy"</span>
 <span class="nt">evaluated_entity</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ex:pd-catalyst-001</span><span class="w">    </span><span class="c1"># same IRI as the catalyst above</span>
 <span class="w">    </span><span class="nt">has_quantitative_attribute</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">rdf_type</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NMR:1400025</span>
-<span class="w">          </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sample</span><span class="nv"> </span><span class="s">temperature</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">magnet&quot;</span>
+<span class="w">          </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"sample</span><span class="nv"> </span><span class="s">temperature</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">magnet"</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">298.0</span>
 <span class="w">        </span><span class="nt">has_quantity_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://qudt.org/vocab/quantitykind/Temperature</span>
 <span class="w">        </span><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://qudt.org/vocab/unit/K</span>
@@ -1413,10 +1413,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "search.highlight", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": ["stable"], "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "search.highlight", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": ["stable"], "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
