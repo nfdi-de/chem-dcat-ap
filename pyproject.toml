@@ -12,7 +12,7 @@ authors = [
 license = "MIT"
 license-files = ["LICENSE"]
 readme = "README_pypkg.md"
-requires-python = ">=3.10,<4.0"
+requires-python = ">=3.11,<4.0"
 dynamic = ["version"]
 
 dependencies = [
@@ -23,11 +23,11 @@ dependencies = [
 dev = [
     "linkml>=1.12.1",
     "mike>=2.1.3",
-    "mkdocs-material>=8.2.8",
+    "mkdocs-material>=9.7.7",
     "mkdocs-mermaid2-plugin>=1.1.1",
     "jupyter>=1.0.0",
     "mknotebooks>= 0.8.0",
-    "pytest>=8.3.5",
+    "pytest>=9.0.3",
     "coverage>=7.8.0",
 ]
 
@@ -108,4 +108,43 @@ extend-exclude = [
   "project/*",
   "src/dcat_4c_ap/datamodel/chem_dcat_ap_pydantic.py",
   "src/dcat_4c_ap/datamodel/chem_dcat_ap.py",
+]
+
+[tool.uv]
+# Every patched soupsieve release (>=2.8.4, pulled in by beautifulsoup4 via
+# nbconvert / mkdocs-mermaid2-plugin) requires Python >=3.11.5. Without this,
+# uv forks the lock and falls back to beautifulsoup4 4.6.3 (2018) on
+# 3.11.0-3.11.4. This only narrows the dev lockfile.
+environments = ["python_full_version >= '3.11.5'"]
+constraint-dependencies = [
+    # GitPython security fixes
+    "GitPython>=3.2.1",
+
+    # Jupyter security fixes
+    "jupyter-server>=2.21.1",
+    "jupyterlab>=4.6.6",
+    "notebook>=7.6.5",
+    "nbconvert>=7.17.2",
+
+    # HTTP and TLS security fixes
+    "urllib3>=2.8.0",
+    "anyio>=4.16.0",
+    "certifi>=2026.11.20",
+
+    # Parser and web server security fixes
+    "mistune>=3.4.0",
+    "tornado>=6.6.1",
+
+    # HTML/CSS parsing and sanitising (via beautifulsoup4 / nbconvert)
+    "soupsieve>=4.0.0",
+    "bleach>=6.4.0",
+
+    # Docs toolchain (via mkdocs-material / mkdocs-mermaid2-plugin)
+    "pymdown-extensions>=11.0.1",
+    "pygments>=2.20.0",
+    "setuptools>=84.1.0",
+
+    # HTTP stack
+    "requests>=2.33.0",
+    "idna>=3.15",
 ]
